@@ -61,9 +61,9 @@ namespace ara
             // Blocks and returns with a process control value when the next activation is triggered by the Runtime
             ara::exec::ActivationReturnType state;
 
-            read(fd, &state, sizeof(state));
-            if (state == ActivationReturnType::kRun)
-                DeterministicClient::Activated = std::chrono::system_clock::now();
+            // read(fd, &state, sizeof(state));
+            // if (state == ActivationReturnType::kRun)
+            //     DeterministicClient::Activated = std::chrono::system_clock::now();
             return state;
         }
         uint64_t DeterministicClient::GetRandom() noexcept

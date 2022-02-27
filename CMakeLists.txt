@@ -3,8 +3,8 @@ project(Adaptive_Platform VERSION 0.1.0)
 
 
 
-# This AUTOSAR Adaptive Platform requires C++14
-set(CMAKE_CXX_STANDARD 14)
+# This AUTOSAR Adaptive Platform requires C++17
+set(CMAKE_CXX_STANDARD 17)
 # Enable 'rdyamic' switch to export the executable's symbols for debugging
 set(CMAKE_ENABLE_EXPORTS 1)
 
@@ -68,11 +68,32 @@ target_include_directories(
   ara 
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara>
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/exec>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/core>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/exec>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/exec/parser>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/ipc>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/ipc/server>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/ipc/client>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/proxy_skeleton>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/proxy_skeleton/skeleton>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/proxy_skeleton/SOMEIP>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/SOMEIP/entry>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/SOMEIP/option>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/com/SOMEIP/helper>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/ara/sm>  
 )
 # get executable 
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY src/processes)
+add_executable(
+  process1
+  src/test_process.cpp
+)
+target_link_libraries(
+  process1
+  ara
+)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY src)
 add_executable(
   ${PROJECT_NAME} 
   src/exec_main.cpp 
@@ -82,14 +103,18 @@ target_link_libraries(
   ara
 )
 
+
+
 # option for testing
 option(build_tests "Build all the tests.")
 set(build_tests OFF)
 message(STATUS "print_all_variables------------------------------------------${build_tests}")
 
 if(build_tests)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY src/test)
 
   enable_testing()
+ 
   add_executable(
     ara_unit_test
     Testing/hello_test.cpp
@@ -99,7 +124,6 @@ if(build_tests)
     gtest_main
     gmock_main
     ara
-    
   )
 
 endif()
