@@ -1,4 +1,14 @@
-#include "execution_client.h"
+/**
+ * @file execution_client.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-03-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+#include "ara/exec/execution_client.hpp"
 #include "sys/stat.h"
 #include "sys/types.h"
 #include "errno.h"
@@ -32,7 +42,7 @@ namespace ara
             // close file descriptor
             close(fd);
         }
-        void ExecutionClient::ReportExecutionState(ara::exec::ExecutionState state) const noexcept
+        boost::variant2::variant<boost::variant2::monostate , ExecErrc> ExecutionClient::ReportExecutionState(ara::exec::ExecutionState state) const noexcept
         {
             std::string m = "run";
             if (write(fd, &state, sizeof(state)) == -1)

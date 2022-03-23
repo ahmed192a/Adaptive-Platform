@@ -1,4 +1,14 @@
-#include "eventgroup_entry.h"
+/**
+ * @file eventgroup_entry.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-03-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+#include "ara/com/SOMEIP/entry/eventgroup_entry.hpp"
 
 namespace ara
 {

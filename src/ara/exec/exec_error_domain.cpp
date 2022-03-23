@@ -1,5 +1,14 @@
-
- #include "exec_error_domain.h"
+/**
+ * @file exec_error_domain.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-03-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+ #include "ara/exec/exec_error_domain.hpp"
  #include <iostream>
 
  namespace ara
@@ -14,7 +23,6 @@
  		 */
  		 /*ExecException::ExecException(ara::core::ErrorCode errorCode) noexcept :  ara::core::Exception(errorCode)
  		 {
-
  		 	this->errorCode = errorCode;
  		 }*/
 
@@ -89,4 +97,3 @@
  		}
  	}
  }
-

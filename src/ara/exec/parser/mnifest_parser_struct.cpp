@@ -1,4 +1,14 @@
-#include "manifest_parser_struct.h"
+/**
+ * @file mnifest_parser_struct.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-03-06
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+#include "ara/exec/parser/manifest_parser_struct.hpp"
 #include <iostream>
 #include "errno.h"
 #include "unistd.h"
@@ -7,7 +17,7 @@
 #include <sys/wait.h>
 #include "sys/stat.h"
 #include <signal.h>
-
+// #include <string>
 using namespace ara::exec::parser;
 using namespace std;
 
@@ -69,8 +79,8 @@ bool Process::start(){
             //}
 
             // Redirect terminal output for application to /var/redirected/<application_name_>
-            //utility::RedirectProcessOutput(("/var/redirected/"+name).c_str());
-
+            // utility::RedirectProcessOutput(("/var/redirected/"+name).c_str());
+            freopen (("redirected/"+name+".txt").c_str(), "w", stdout);
 
             //cout<<"EM(child): in dir "<<get_current_dir_name()<<endl;
             // Execute the executable with the specified arguments
@@ -107,6 +117,7 @@ bool Process::start(){
                 // Log Error : counldn't send the state to fifo
             }
             close(fd);
+            unlink("processes/execution_client_fifo");
             if(state == ara::exec::ExecutionState::kRunning) 
             cout<<"EM: report succeed "<<(int) state<<endl;
         }
@@ -185,27 +196,27 @@ bool MachineManifest::operator!=(const MachineManifest &other) const noexcept
     return !(*this == other);
 }
 
-bool MachineManifest::ModeDeclarationGroup::operator==(const ModeDeclarationGroup &other) const
-    noexcept
-{
-    return (function_group_name == other.function_group_name) &&
-            (mode_declarations == other.mode_declarations);
-}
+// bool MachineManifest::ModeDeclarationGroup::operator==(const ModeDeclarationGroup &other) const
+//     noexcept
+// {
+//     return (function_group_name == other.function_group_name) &&
+//             (mode_declarations == other.mode_declarations);
+// }
 
-bool MachineManifest::ModeDeclarationGroup::operator!=(const ModeDeclarationGroup &other) const
-    noexcept
-{
-    return !(*this == other);
-}
+// bool MachineManifest::ModeDeclarationGroup::operator!=(const ModeDeclarationGroup &other) const
+//     noexcept
+// {
+//     return !(*this == other);
+// }
 
-bool MachineManifest::ModeDeclarationGroup::ModeDeclaration::operator==(
-    const ModeDeclaration &other) const noexcept
-{
-    return (mode == other.mode);
-}
+// bool MachineManifest::ModeDeclarationGroup::ModeDeclaration::operator==(
+//     const ModeDeclaration &other) const noexcept
+// {
+//     return (mode == other.mode);
+// }
 
-bool MachineManifest::ModeDeclarationGroup::ModeDeclaration::operator!=(
-    const ModeDeclaration &other) const noexcept
-{
-    return !(*this == other);
-}
+// bool MachineManifest::ModeDeclarationGroup::ModeDeclaration::operator!=(
+//     const ModeDeclaration &other) const noexcept
+// {
+//     return !(*this == other);
+// }

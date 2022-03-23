@@ -1,4 +1,14 @@
-#include "entry.h"
+/**
+ * @file entry.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-03-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+#include "ara/com/SOMEIP/entry/entry.hpp"
 
 namespace ara
 {
@@ -13,14 +23,14 @@ namespace ara
                          uint8_t majorVersion) noexcept :GBType{type},
                                                          GBServiceId{serviceId},
                                                          GBInstanceId{instanceId},
-                                                         GBTTL{ttl},
-                                                         GBMajorVersion{majorVersion}
+                                                         GBMajorVersion{majorVersion},
+                                                         GBTTL{ttl}
             {
             }
 
             bool Entry::ValidateOption(const option::Option *option) const noexcept
             {
-                bool _result;
+                bool _result=true;
 
                 switch (option->Type())
                 {
@@ -44,14 +54,14 @@ namespace ara
 
                     break;
                 }
-                case option::OptionType::IPv4SdEndpoint:
-                case option::OptionType::IPv6SdEndpoint:
-                {
-                    // Service discovery endpoints are not allowed in entries.
-                    _result = false;
+                // case option::OptionType::IPv4SdEndpoint:
+                // case option::OptionType::IPv6SdEndpoint:
+                // {
+                //     // Service discovery endpoints are not allowed in entries.
+                //     _result = false;
 
-                    break;
-                }
+                //     break;
+                // }
                 default:
                 {
                     // Other options cannot be validated in the base entry class.

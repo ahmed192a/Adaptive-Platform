@@ -1,11 +1,27 @@
+/**
+ * @file socket_Client.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-03-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include<unistd.h>
 #include<iostream>
 #include<strings.h>
 #include<stdio.h>
 #include<string.h>
 #include <errno.h>
-#include"socket_Client.h"
-#include <iostream>
+#include <arpa/inet.h>
+
+#include <fcntl.h>      /* for fcntl() */
+// #include <sys/file.h>   /* for O_NONBLOCK and FASYNC */
+// #include <netinet/in.h>
+#include <signal.h>
+
+#include "ara/com/ipc/client/socket_Client.hpp"
 using namespace std;
 
 CClient::CClient(int type)
@@ -17,7 +33,15 @@ CClient::CClient(int type)
 error_kind CClient::OpenSocket()
 {
 	error_kind Error = SUCCEEDED;
+	
 	this->sockfd = socket(AF_INET,type,0);
+	// std::cout<<"socket opened\n";
+	// sleep(1);
+
+	// if(type = SOCK_DGRAM)
+	// {
+	// 	inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
+	// }
 	if(this->sockfd < 0)
 	{
 		Error = FAILEDSOCETOPEN;
@@ -39,11 +63,41 @@ error_kind CClient::GetHost(std::string hostname,int hostno)
 	}
 	return Error;
 }
+error_kind CClient::UDPSendTo( void * buffer,size_t n, sockaddr * address)
+{
+	error_kind Error = SUCCEEDED;
+
+	ssize_t sndRet = sendto(this->sockfd, buffer , n,MSG_CONFIRM, address, sizeof(sockaddr_in));
+	if(sndRet < 0)
+	{
+		Error = SEND_FAILED;
+		std::cout<<"[SERVER SOCKET] Error Code :"<<errno<<std::endl;
+	}
+
+
+	return Error;
+}
+
+error_kind CClient::UDPRecFrom(void * buffer,size_t n, sockaddr * address, socklen_t * size)
+{
+	error_kind Error = SUCCEEDED;
+
+	ssize_t sndRet = recvfrom(this->sockfd, buffer , n,MSG_WAITALL, address, size);
+	if(sndRet < 0)
+	{
+		Error = SEND_FAILED;
+		std::cout<<"[SERVER SOCKET] Error Code :"<<errno<<std::endl;
+	}
+
+
+	return Error;
+}
 
 error_kind CClient::ClientConnect()
 {
 	error_kind Error = SUCCEEDED;
-	bzero((char*)&this->serv_addr,sizeof(this->serv_addr));
+	memset((char*)&this->serv_addr,'\0', sizeof(this->serv_addr));
+
 	this->serv_addr.sin_family = AF_INET;
 	bcopy((char *)this->server->h_addr,(char *)&this->serv_addr.sin_addr.s_addr,this->server->h_length);
 	this->serv_addr.sin_port = htons(this->portno);
@@ -55,7 +109,44 @@ error_kind CClient::ClientConnect()
 	}
 	return Error;
 }
+error_kind CClient::EnableInterrupt(void (*SIGIOHandler)(int) )
+{
+	struct sigaction hand;        /* Signal handling action definition */
 
+	error_kind Error = SUCCEEDED;
+
+    /* Set signal handler for SIGIO */
+    hand.sa_handler = SIGIOHandler;
+    /* Create mask that mask all signals */
+    if (sigfillset(&hand.sa_mask) < 0) {
+		Error = FAILED;
+		return Error;
+	}
+    /* No flags */
+    hand.sa_flags = SA_RESTART;
+
+    if (sigaction(SIGIO, &hand, 0) < 0)
+	{
+				Error = FAILED;
+		return Error;
+	}
+
+    /* We must own the socket to receive the SIGIO message */
+    if (fcntl(sockfd, F_SETOWN, getpid()) < 0)
+	{
+				Error = FAILED;
+		return Error;
+	}
+
+    /* Arrange for nonblocking I/O and SIGIO delivery  O_NONBLOCK |*/
+    if (fcntl(sockfd, F_SETFL, FASYNC) < 0)
+	{
+		Error = FAILED;
+		return Error;
+	}
+	return Error;
+
+}
 error_kind CClient::ClientWrite(void* data, int size)
 {
 	error_kind Error = SUCCEEDED;
@@ -73,7 +164,7 @@ error_kind CClient::ClientWrite(void* data, int size)
 error_kind CClient::ClientRead(void* data, int size)
 {
 	error_kind Error = SUCCEEDED;
-	bzero(data, size);
+	memset(data, '\0', size);
 	int RdRet = read(this->sockfd, data, size);
 	if(RdRet < 0)
 	{
