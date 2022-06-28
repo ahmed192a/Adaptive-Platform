@@ -14,6 +14,7 @@
 
 #include "packagemanagement_common.hpp"
 #include "ara/com/proxy_skeleton/proxy/service_proxy.hpp"
+#include "ara/com/proxy_skeleton/proxy/field.hpp"
 
 namespace ara
 {
@@ -34,7 +35,7 @@ namespace ara
                      * 
                      * 
                      */
-                    using CurrentStatus = ara::com::proxy_skeleton::skeleton::FieldType<ara::ucm::pkgmgr::PackageManagement::PackageManagerStatusType, true, false, true>::type;
+                    using CurrentStatus = ara::com::proxy_skeleton::proxy::FieldType<ara::ucm::pkgmgr::PackageManagement::PackageManagerStatusType, true, true, true>::type;
                 }
                 namespace methods
                 {
@@ -86,8 +87,8 @@ namespace ara
                      Finish(this),
                      DeleteTransfer(this),
                      Cancel(this),
-                     Activate(this)
-                    //  CurrentStatus(this, "CurrentStatus", 0)
+                     Activate(this),
+                     CurrentStatus(this,"CurrentStatus", 0)
                     {
 
                     }
@@ -109,7 +110,7 @@ namespace ara
                     methods::TransferData TransferData;
                     methods::TransferExit TransferExit;
                     methods::TransferStart TransferStart;
-                    // fields::CurrentStatus CurrentStatus;
+                    fields::CurrentStatus CurrentStatus;
                     
                 };
 

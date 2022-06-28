@@ -16,7 +16,6 @@
 #include "ara/com/ipc/server/socket_Server.hpp"
 #include "ara/com/proxy_skeleton/skeleton/field.hpp"
 #include "ara/com/proxy_skeleton/definitions.hpp"
-using C_Info = ara::com::proxy_skeleton::C_Info;
 
 #define portNumber 5365
 #define service_descovery_port_number 1690
@@ -36,6 +35,7 @@ class skeleton : public ara::com::proxy_skeleton::skeleton::ServiceSkeleton
 private:
     struct sockaddr_in cliaddr;
     ara::com::InstanceIdentifier serviceid;
+    uint16_t s_id;
 
 public:
     event::event event1;
@@ -43,7 +43,8 @@ public:
     field::field field1;
     skeleton(ara::com::InstanceIdentifier instance, ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle skeleton_handle);
     ~skeleton();
-    void method_dispatch(std::vector<uint8_t> &message, Socket &cserver);
+    void method_dispatch(ara::com::SOMEIP_MESSAGE::Message&message, Socket &cserver);
+    void field_method_dispatch(ara::com::SOMEIP_MESSAGE::Message& message, Socket& cserver);
 
     std::future<int> ADD(int p1, int p2)
     {

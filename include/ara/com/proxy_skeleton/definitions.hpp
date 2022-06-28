@@ -23,41 +23,24 @@ namespace ara
         namespace proxy_skeleton
         {
 
-            // Definition of service version type
-            using ServiceVersion = std::uint32_t;
+            using ServiceVersion = std::uint32_t;       //!< Definition of service version type
 
-            // Definition of proxy_skeleton instance ID type that should be binding agnostic.
-            using InstanceId = std::uint16_t;
+            using InstanceId = std::uint16_t;       //!< Definition of proxy_skeleton instance ID type.
 
-            // Definition of proxy_skeleton service ID type that should be binding agnostic.
-            using ServiceId = std::uint16_t;
+            using ServiceId = std::uint16_t;        //!< Definition of proxy_skeleton service ID type. 
 
-            // "Null" instance ID
-            static const InstanceId INSTANCE_ID_UNKNOWN = 0xFFFF;
+            static const InstanceId INSTANCE_ID_UNKNOWN = 0xFFFF;   //!< Definition of Unkown (NULL) instance ID type.
 
-            struct Message
-            {
-                int process_id;
-                char method_name[30];
-                std::vector<uint8_t> payload;
-            };
 
-            struct C_Info
-            {
-                int process_id;
-                char method_name[30];
-                int param1;
-                int param2;
-            };
+
             struct SD_data
             {
-                uint32_t service_id;
-                int process_id;
+                uint16_t service_id;
+                uint16_t instance_id;
                 uint32_t port_number;
-                bool message_type;
                 bool operator==(SD_data &other)
                 {
-                    if (service_id == other.service_id && process_id == other.process_id && port_number == other.port_number && message_type == other.message_type)
+                    if (service_id == other.service_id && instance_id == other.instance_id && port_number == other.port_number)
                     {
                         return true;
                     }
@@ -67,21 +50,8 @@ namespace ara
 
             struct event_info
             {
-
                 uint32_t service_id;
                 uint32_t event_id;
-
-                /**
-                 * 0 ->new value
-                 * 1 ->subscripe
-                 * 2 ->unsubscripe
-                 * 3 ->set
-                 * 4 ->get
-                 */
-                uint32_t data_size;
-                uint8_t operation;
-
-                // std::vector<uint8_t> data;
             };
             template <typename T>
             struct event_notify
@@ -92,11 +62,11 @@ namespace ara
             };
             struct Client_udp_Info
             {
-                int port;
+                uint32_t port;
                 std::string addr;
-                bool operator==(const Client_udp_Info &kl)
+                bool operator==(const Client_udp_Info &other)
                 {
-                    if (port == kl.port && addr == kl.addr)
+                    if (port == other.port && addr == other.addr)
                         return true;
                     return false;
                 }

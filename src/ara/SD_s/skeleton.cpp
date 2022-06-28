@@ -23,7 +23,8 @@ skeleton::skeleton(
     ara::com::InstanceIdentifier instance,
     ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle skeleton_handle)
     : serviceid(instance.GetInstanceId()),
-      ara::com::proxy_skeleton::skeleton::ServiceSkeleton(serviceid, instance, skeleton_handle),
+        s_id{instance.GetInstanceId()},
+      ara::com::proxy_skeleton::skeleton::ServiceSkeleton(s_id, instance, skeleton_handle),
       event1(this, "event1", 0),
       event2(this, "event2", 1),
       field1(this, "field1", 2)
@@ -35,25 +36,51 @@ skeleton::~skeleton()
 }
 
 
-void skeleton::method_dispatch(std::vector<uint8_t>& message, Socket& cserver)
+void skeleton::method_dispatch(ara::com::SOMEIP_MESSAGE::Message& message, Socket& cserver)
 {
     ara::com::Deserializer dser;
-    int methodID = dser.deserialize<int>(message,0);
-    std::future<int> result;
-    int result2;
+
+    int methodID = message.MessageId().method_id;
+
 	cout<<"\t[SERVER] Dispatch " << methodID << endl;
-    std::vector<uint8_t> msg;
-    msg.insert(msg.begin(), message.begin()+sizeof(int), message.end());
+
 
     switch (methodID)
     {
     case 5:
-        HandleCall(*this,&skeleton::ADD,msg,cserver);
+        HandleCall(*this,&skeleton::ADD,message,cserver);
 
         break;
     default:
-    	cserver.Send(&result2, sizeof(int));
-    	cserver.CloseSocket();
+        // send error
+    	// cserver.Send(&result2, sizeof(int));
+    	// cserver.CloseSocket();
         break;
     }
 }
+
+void skeleton::field_method_dispatch(ara::com::SOMEIP_MESSAGE::Message& message, Socket& cserver)
+{
+    ara::com::Deserializer dser;
+    // int methodID = dser.deserialize<int>(message,0);
+
+    int event_id = message.MessageId().method_id&0x7FFF;
+        switch (event_id)
+    {
+    case 2:
+    if(message.Length() > 16){
+        field1.HandleGet(message, cserver);
+    }
+    else{
+        field1.HandleSet(message, cserver);
+    }
+        // field1.HandleCall(message, cserver);
+        break;
+    default:
+    	// cserver.Send(&result2, sizeof(int));
+    	// cserver.CloseSocket();
+       
+        break;
+    }
+}
+

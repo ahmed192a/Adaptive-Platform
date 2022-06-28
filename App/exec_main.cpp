@@ -1,3 +1,12 @@
+/**
+ * @file exec_main.cpp
+ * @brief EM
+ * @version 0.1
+ * @date 2022-06-28
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include "ara/exec/function_group.hpp"
 #include "ara/exec/function_group_state.hpp"
@@ -22,162 +31,192 @@ using namespace ara::exec;
 using namespace ara::exec::parser;
 using namespace std;
 
-#define MC_MF "/manifest_samples/machine_manifest.json"
+#define MC_MF   "/manifest_samples/machine_manifest.json"
 #define EM_MF "/manifest_samples/execution_manifest.json"
 #define SM_FIFO "processes/state_client_fifo"
-
 #define MAX_BUF 1024
 
-// struct GLOB{
-//     FunctionGroup *c_FG;
-//     string FG_name;
-//     vector<Process> processes;
-//     FunctionGroupState *current_FGS;
-// };
 static map<string, GLOB> sys_FG;
+std::vector<Process> process_pool;
 
-void exec_init_map();
-void terminate_p(GLOB &G);
-void start_p(GLOB &G);
+void exec_init();
 void change_state(std::string n_FG, std::string n_state);
 void view_out();
-void create_man();
+void create_manifests();
+void p_operate();
+void p_terminate();
 
 // Backup streambuffers of  cout
 streambuf* stream_buffer_cout = cout.rdbuf();
 streambuf* stream_buffer_cin = cin.rdbuf();
 
-int main(int, char **)
-{
-    std::filesystem::create_directories("processes/redirected");
-    // freopen("processes/redirected/EM.txt", "w", stdout);
-
-    fstream file;
-    file.open("processes/redirected/EM.txt", ios::out);
-    cout.rdbuf(file.rdbuf());
-    // 1. parsing the Mahcine manifest
-    // 2. parsing the Execution manifest
-    // 3. start state management
-    // 4. get the state from SM
-    // 5. switch state (start terminating sequence and starting sequence)
-
-    // Log lg;
-    // lg.Insert("\n\n----------------------------program started-------------\n", "EM");
-    create_man();
-    cout << "\n\n----------------------------program started-------------\n";
-
-    exec_init_map();
-
-    for(map<string, GLOB>::iterator it = sys_FG.begin(); it!= sys_FG.end(); it++ ){
-    //for(auto it:  sys_FG){
-        //lg.Insert("EM: Function group name : " + it->first+ " with number of processes = "+ to_string(it->second.processes.size()) + "\n", "EM");
-        cout<<"EM: Function group name : "<<it->first<< " with number of processes = "<<it->second.processes.size()<<endl;
+/**
+ * @brief Main program of Excution Managiment program
+ * @param argc
+ * @param argv
+ * 
+ * @note   this is the Main program of Excution managiment which has the following functions:
+ *  1. Parsing manifest files
+ *  2. start state management
+ *  3. get the state from SM
+ *  4. switch state (start terminating sequence and starting sequence)
+ * @return
+ */
+int main(int argc, char ** argv){
+    //check if the folder exists
+    if(std::filesystem::exists("processes/redirected")){
+        // remove the folder and its content
+        std::filesystem::remove_all("processes/redirected");
     }
-    mkfifo(SM_FIFO, 0666);
-    std::string msg;
-    msg.resize(MAX_BUF);
+    // create the redirected folder
+    std::filesystem::create_directories("processes/redirected");    
+
+    // file stream to write the output of EM to a EM.txt file
+    fstream file;   
+    // open the file
+    file.open("processes/redirected/EM.txt", ios::out); 
+    // redirect cout to the file
+    cout.rdbuf(file.rdbuf());                        
 
 
-   // get FG name and new state from SM an change the state
-    change_state("MachineFG" , "Starting-up");
-    int fd = open(SM_FIFO, O_RDONLY);
-    int n =read(fd,&msg[0],MAX_BUF);
-    msg[n] = '\0';
-    msg = msg.substr(0,n);
+    create_manifests();     // create the manifest files 
+
+    cout << "\n-------------Program Started-------------"<<endl;
+    exec_init();            // initialize the system and parse the manifest files
+
+    mkfifo(SM_FIFO, 0666);  // create the fifo to communicate with State Management process
+    std::string msg;        // message to send to SM
+    msg.resize(MAX_BUF);    // resize the message to MAX_BUF bytes
+
+
+   
+   // change the state of MachineFG to Starting-up to start the state management process
+    change_state("MachineFG" , "Starting-up");  
+    int fd = open(SM_FIFO, O_RDONLY);   // open the fifo to read the state from SM
+    // get FG name and new state from SM an change the state
+    int n =read(fd,&msg[0],MAX_BUF);    // read the FG state from SM
+    msg[n] = '\0';                      // set the end of string
+    msg = msg.substr(0,n);              // remove the extra bytes from the string
+    
     cout<<"Received From SM : "<<msg<<endl;
-    cout<<msg.substr(0, msg.find('/'))<<"  "<< msg.substr(msg.find('/')+1, n)<<"_1\n";
 
-    change_state(msg.substr(0, msg.find('/')), msg.substr(msg.find('/')+1, n-(msg.find('/')+1)) );
-    usleep(10000);
-    change_state("FG_1" , "off");
-    change_state("MachineFG" , "off");
-    close(fd);
-    unlink(SM_FIFO);
+    // change the state of the FG to the state received from SM
+    change_state(msg.substr(0, msg.find('/')), msg.substr(msg.find('/')+1, n-(msg.find('/')+1)) );  
+    usleep(10000);                      // sleep for 10ms
+    change_state("FG_1" , "off");       // change the state of FG_1 to off
+    cout<<"FG_1 is off"<<endl;
+    change_state("MachineFG" , "off");  // change the state of MachineFG to off
+    close(fd);                          // close the fifo
+    unlink(SM_FIFO);                    // delete the fifo
+    cout<<"\n-------------Program Ended-------------"<<endl;
 
-    cout.rdbuf(stream_buffer_cout);
-    file.close();
-    view_out();
+    cout.rdbuf(stream_buffer_cout);     // restore the cout stream buffer
+    file.close();                       // close the file stream
+    view_out();                         // view the output of all processe
     return 0;
 }
 
-void exec_init_map(){
-    // parse machine manifest
-    ManifestParser parser;
- 
-    MachineManifest MM = parser.pares_test(std::string(get_current_dir_name())+ MC_MF, sys_FG);
-    cout<<"1: succeed parsing Machine manifest id = "+MM.manifest_id<<endl;
+void exec_init(){
+    ManifestParser parser;              // create a parser to parse the manifest files
 
-    cout<<"2: we have "<<sys_FG.size()<<" function groups\n";
-        
-    
-    // parse execution manifests
+    //Parse Machine manifest
+    MachineManifest MM = parser.parse_machine_manifest(std::string(get_current_dir_name())+ MC_MF, sys_FG);
+    cout<<"1) Succeed parsing Machine manifest id = "+MM.manifest_id<<endl
+        <<"FG's no.:"<<sys_FG.size()<<endl;
+
+    //Parse Execution manifests
     ExecutionManifest EM = parser.parse_execution_manifest(std::string(get_current_dir_name())+ EM_MF);
-    cout<<"succeed parsing Execution manifest id = "+EM.manifest_id<<endl;
-    cout<<"num process : "<<EM.processes.size()<<endl;
+    cout<<"2) Succeed parsing Execution manifest id = "+EM.manifest_id
+        <<endl<<"processes no.:"<<EM.processes.size()<<endl;
 
-    // push the process in vector 
-    for(auto i = 0; i<EM.processes.size(); i++){
-        for (auto j = 0; j < EM.processes[i].startup_configs.size(); j++)
-        {
-            for (auto h = 0; h < EM.processes[i].startup_configs[j].machine_instance_refs.size(); h++)
-            {
-                sys_FG[EM.processes[i].startup_configs[j].machine_instance_refs[h].function_group].processes.push_back(EM.processes[i]);
+    //Fetching processes from execution manifest parser
+    process_pool = EM.processes;
+}
+/**
+ * @brief operate is the method responsible for starting the processes that is satisfied by the FG state
+ *          after changing the state of the FG 
+ * 
+ * @return void
+ */
+void p_operator(){
+    for(auto &process : process_pool){       // for each process in the process pool
+        // if the process is running continue
+        if(process.prun|| process._pid != 0)continue;  
+        //print process name
+        // cout<<"Process "<<process.name<<" is checked "<< process.prun<<endl;     
+        bool will_run = false;              // flag to indicate if the process will run or not
+
+        //check if the current state doesnt violate the configuration,otherwise terminate
+        for(int config = 0; config < process.startup_configs.size();config++){  
+            bool violate = false;           // flag to indicate if the current state violates the configuration
+            // for each machine instance(FG) reference in the current configuration
+            for(auto &mref: process.startup_configs[config].machine_instance_refs){  
+                // get the current state of the FG
+                string key = sys_FG[mref.function_group].current_FGS->get_states(); 
+                // if the current state of the FG doesnt match the mode
+                if(!std::count(mref.modes.begin(), mref.modes.end(), key)){ 
+                    // set the flag to true to indicate that the current state violates the configuration
+                    violate = true;         
+                    break;
+                }
+            }
+            if(!violate){           // if the current state doesnt violate the configuration
+                process.current_config = &process.startup_configs[config];  // set the current configuration 
+                will_run = true;    // set the flag to true to indicate that the process will run
+                break;
             }
         }
-    }  
+        if(will_run)process.start();    // if the process will run start it
+    }
+}
 
-}
-void terminate_p(GLOB &G){  
-    for (vector<Process>::iterator i = G.processes.begin(); i != G.processes.end(); i++)
-    {
-       if((*i).prun == true){
-           for (vector<ara::exec::parser::Process::StartupConfig::MachineInstanceRef>::iterator fg_ref = (*(*i).current_config).machine_instance_refs.begin(); fg_ref != (*(*i).current_config).machine_instance_refs.end(); fg_ref++)
-           {
-               if((*fg_ref).function_group == G.c_FG->get_FGname()){
-                   if((*fg_ref).mode == G.current_FGS->get_states()) continue;
-                   else {
-                       (*i).terminate();
-                       (*i).prun  = false;
-                       (*i).current_config=nullptr;
-                       break;
-                   }
-               }
-           }
-       }
+/**
+ * @brief terminate is the method responsible for terminating the processes that is not satisfied by the FG state 
+ *            after changing the state of the FG 
+ * 
+ * @return void
+ */
+void p_terminator(){
+    for(auto &process : process_pool){
+         //if not running continue
+        if(!process.prun)continue;
+        //check if the current state doesnt violate the configuration,otherwise terminate
+        for(auto &mref:process.current_config->machine_instance_refs){
+            string key = sys_FG[mref.function_group].current_FGS->get_states();
+            if(!(std::count(mref.modes.begin(), mref.modes.end(), key))){
+                process.terminate();
+                break;
+            }
+        }
     }
 }
-void start_p(GLOB &G){
-    for (vector<Process>::iterator i = G.processes.begin(); i != G.processes.end(); i++)
-    {
-       if((*i).current_config == nullptr || (*i).prun == false){
-           for (vector<ara::exec::parser::Process::StartupConfig>::iterator stc = (*i).startup_configs.begin(); stc != (*i).startup_configs.end(); stc++)
-           {
-                for (vector<ara::exec::parser::Process::StartupConfig::MachineInstanceRef>::iterator fg_ref = (*stc).machine_instance_refs.begin(); fg_ref != (*stc).machine_instance_refs.end(); fg_ref++)
-                {
-                    if((*fg_ref).function_group == G.c_FG->get_FGname()){
-                        if((*fg_ref).mode == G.current_FGS->get_states())
-                        { 
-                            (*i).start();
-                            (*i).prun = true;
-                            (*i).current_config=&((*i).startup_configs[stc -(*i).startup_configs.begin()]);
-                            break;
-                        }
-                    }
-                }
-           }
-       }
-    }
-}
+
+/**
+ * @brief change_state Change the state of a function group and terminate the process if it's 
+ *          not in vaild state and start the process if it's in valid state
+ * @param n_FG          The function group name
+ * @param n_state       The new state
+ *
+ * @return void 
+ */
 void change_state(std::string n_FG, std::string n_state)
 {
     sys_FG[n_FG].current_FGS.reset();
     FunctionGroupState::CtorToken token={n_FG,n_state};
     sys_FG[n_FG].current_FGS = std::make_shared<FunctionGroupState>(std::move(token));
     cout<<"\nEM: check transition : "<<sys_FG[n_FG].current_FGS->get_FGname()<<" -> state : "<<sys_FG[n_FG].current_FGS->get_states()<<endl<<endl;
-
-    terminate_p(sys_FG[n_FG]);
-    start_p(sys_FG[n_FG]);
+    p_terminator();
+    p_operator();
 }
+
+/*********************************************************************************************
+ *                         This section is used for testing on Github                        *
+ *********************************************************************************************/
+/**
+ * @brief view_out Print the output files in the redirected folder
+ *
+ * @return void 
+ */
 void view_out(){
     namespace fs = std::filesystem;
     //system("cd processes/redirected");
@@ -195,10 +234,16 @@ void view_out(){
     }
     
 }
-
-void create_man()
+/**
+ * @brief create_manifests Create the manifest files for the program
+ *
+ * @return void 
+ */
+void create_manifests()
 {
-    rmdir("manifest_samples");
+    // detete folder and its content if it exists
+    system("rm -rf manifest_samples");
+    // rmdir("manifest_samples");
     const int dir_err = mkdir("manifest_samples", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
     fstream file;
     file.open("manifest_samples/machine_manifest.json",ios::app);
@@ -272,7 +317,9 @@ void create_man()
             "                        \"FunctionGroupDependencies\": [\n"
             "                            {\n"
             "                                \"Function_group\": \"FG_1\",\n"
-            "                                \"Mode\": \"on\"\n"
+            "                                \"Modes\": [ \n"
+            "                                           {\"Mode\" : \"on\"} \n"
+            "                                           ]\n"
             "                            }\n"
             "                        ]\n"
             "                    }\n"
@@ -291,9 +338,12 @@ void create_man()
             "                            }\n"
             "                        ],\n"
             "                        \"FunctionGroupDependencies\": [\n"
-            "                            {\n"
+            "                            {\n"  //
             "                                \"Function_group\": \"MachineFG\",\n"
-            "                                \"Mode\": \"Starting-up\"\n"
+            "                                \"Modes\": [ \n"
+            "                                           {\"Mode\" : \"Starting-up\"}, \n"
+            "                                           {\"Mode\" : \"Running\"} \n"
+            "                                           ]\n"
             "                            }\n"
             "                        ]\n"
             "                    }\n"
