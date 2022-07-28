@@ -1,7 +1,6 @@
 /**
  * @file socket_Client.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-03-07
  * 
@@ -103,4 +102,4 @@ public:
 	void CloseSocket();
 };
 
-#endif
+#endif // CCLIENT_H

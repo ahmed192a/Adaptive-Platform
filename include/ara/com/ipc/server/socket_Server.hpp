@@ -1,7 +1,6 @@
 /**
  * @file socket_Server.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-03-07
  * 
@@ -10,9 +9,6 @@
  */
 #ifndef CSERVER_H
 #define CSERVER_H
-#include <netinet/in.h>
-#include <sys/socket.h>
-#include "ara/com/ipc/ipc_errors.hpp"
 #include "ara/com/ipc/server/socket.hpp"
 
 class CServer
@@ -94,4 +90,4 @@ public:
 };
 
 
-#endif
+#endif // CSERVER_H

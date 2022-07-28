@@ -1,7 +1,7 @@
 /**
  * @file manifest_parser.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
+ * @brief definition of manifest parser classes and keys
  * @version 0.1
  * @date 2022-03-06
  * 
@@ -17,6 +17,10 @@ using namespace ara::exec;
 using namespace ara::exec::parser;
 using namespace std;
 
+/**
+ * @brief stucture used to store the current function group name and the current function group state
+ * 
+ */
 struct GLOB{
     std::shared_ptr<FunctionGroup>c_FG;
     std::shared_ptr<FunctionGroupState> current_FGS;
@@ -28,28 +32,80 @@ namespace ara
         namespace parser
         {
 
-            using json = nlohmann::json;
+            using json = nlohmann::json;        
 
-            class IManifestParser
+            /**
+             * @brief Class Manifest Parser used to parse Execution and Machine manifiests of the system
+             * @class ManifestParser
+             */
+            class ManifestParser 
             {
             public:
-                virtual ~IManifestParser() noexcept = default;
-                virtual ExecutionManifest parse_execution_manifest(const std::string &path) noexcept(false) = 0;
-                virtual MachineManifest parse_machine_manifest(const std::string &path, map<std::string, GLOB> &sys_FG) noexcept(false) = 0;
-            };
-
-            class ManifestParser : public IManifestParser
-            {
-            public:
-                virtual ~ManifestParser() noexcept = default;
-                virtual ExecutionManifest parse_execution_manifest(const std::string &path) noexcept(
-                    false) override;
-                virtual MachineManifest parse_machine_manifest(const std::string &path,map<std::string, GLOB> &sys_FG )noexcept(
-                    false) override;
-            private:    
+                /**
+                 * @brief Construct a new Manifest Parser object
+                 * 
+                 */
+                ManifestParser() noexcept = default;
+                /**
+                 * @brief Destroy the Manifest Parser object
+                 * 
+                 */
+                ~ManifestParser() noexcept = default;
+                /**
+                 * @brief parse the execution manifest
+                 * 
+                 * @param path 
+                 * @return ExecutionManifest 
+                 */
+                ExecutionManifest parse_execution_manifest(const std::string &path) noexcept(false) ;
+                /**
+                 * @brief parse machine manifest and fill the map of sys function groups
+                 * 
+                 * @param path 
+                 * @param sys_FG 
+                 * @return MachineManifest 
+                 */
+                MachineManifest   parse_machine_manifest(const std::string &path,map<std::string, GLOB> &sys_FG )noexcept(false) ;
             
             };
 
+            /**
+             * @brief read the value of the passed key from the json object
+             * 
+             * @tparam T            Type of the value to be returned
+             * @param [in] json_obj         json object to be parsed
+             * @param [in] key              key to be searched in the json object
+             * @param [out] output_value    value to be returned
+             * @return true                 if the key is found and the value is successfully read
+             * @return false                if the key is not found or the value is not successfully read
+             */
+            template <typename T>
+            bool read_value(const json &json_obj, const std::string &key, T &output_value) noexcept;
+            /**
+             * @brief read the data from the passed file and return json object filled with this data
+             * 
+             * @param [in] path      path to the file to be read
+             * @return json    json object filled with the data from the file
+             */
+            json read_manifest_file(const std::string &path) noexcept(false);
+            /**
+             * @brief  checks if the json object violate the passed vector of keys
+             * 
+             * @param [in] json_obj     json object to be parsed
+             * @param [in] json_keys    vector of keys to be checked
+             * 
+             * @throw runtime_error if the json object violate the passed vector of keys
+             */
+            void validate_content(const json &json_obj, const std::vector<std::string> &json_keys) noexcept(false);
+
+
+
+            /****************************************************************************/
+
+            /**
+             * @brief All Keys which should be in the Execution manifiests
+             * 
+             */
             namespace EMJsonKeys
             {
                 const std::string kApplicationManifest = "Execution_manifest";
@@ -65,8 +121,6 @@ namespace ara
                 const std::string KFunctionGroupDependencies = "FunctionGroupDependencies";
                 const std::string kFunctionGroup = "Function_group";
                 const std::string kModes = "Modes";
-                const std::string kMode = "Mode";
-
                 const std::vector<std::string> kAsVector{kApplicationManifest,
                                                             kApplicationManifestId,
                                                             kProcess,
@@ -79,11 +133,16 @@ namespace ara
                                                             KExecutionDependencies,
                                                             KFunctionGroupDependencies,
                                                             kFunctionGroup,
-                                                            kMode};
+                                                            kModes};
 
             } // namespace EMJsonKeys
+            /****************************************************************************/
 
-            namespace MMJsonKeys
+            /**
+             * @brief All Keys which should be in the Machine manifiests
+             * 
+             */
+            namespace MMJsonKeys    
             {
                 const std::string kMachineManifest = "Machine_manifest";
                 const std::string kMachineManifestId = "Machine_manifest_id";
@@ -95,16 +154,8 @@ namespace ara
                                                             kModeDeclarationGroup, kFunctionGroupName,
                                                             kModeDeclarations, kMode};
             } // namespace MMJsonKeys
-
-
-            template <typename T>
-            bool read_value(const json &json_obj, const std::string &key, T &output_value) noexcept;
-            json read_manifest_file(const std::string &path) noexcept(false);
-            void validate_content(const json &json_obj, const std::vector<std::string> &json_keys) 
-                    noexcept(false);
-
         } // namespace parser
-    }     // namespace exec
+    }  // namespace exec
 } // namespace ara
 
 #endif // ARA_EXEC_PARSER_MANIFEST_PARSER_H_

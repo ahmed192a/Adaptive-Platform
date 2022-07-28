@@ -1,7 +1,6 @@
 /**
  * @file Message.cpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-03-07
  * 
@@ -40,14 +39,8 @@ namespace ara
                 Mtype, 
                 ReturnCode::E_OK)
             {
-                /*
-                 if ((Mtype != MessageType::REQUEST) &&
-                    (Mtype != MessageType::NOTIFICATION))
-                {
-                    // E2E is not supported yet.
-                    throw std::invalid_argument("Invalid message type.");
-                }
-                */
+               
+                
             }
 
             Message::Message(
@@ -60,18 +53,7 @@ namespace ara
                 )noexcept:
             Message( mID, rID, protocol_version, interface_version, Mtype, Rcode)
             {
-                //  if ((Mtype != MessageType::REQUEST) ||
-                //     (Mtype != MessageType::NOTIFICATION))
-                // {
-                //     // E2E is not supported yet.
-                //     throw std::invalid_argument("Invalid message type.");
-                // }
-                // else if ((Mtype != MessageType::ERROR) &&
-                //          (Rcode == ReturnCode::E_OK))
-                // {
-                //     // Error message cannot have OK return code.
-                //     throw std::invalid_argument("Invalid return code.");
-                // }
+              
 
             }
             struct Message_ID Message::MessageId() const noexcept
@@ -169,10 +151,7 @@ namespace ara
 
             Message Message::Deserialize(const std::vector<uint8_t> &msg)
             {
-                // if (payload.size() < Header::HeaderSize)
-                // {
-                //     throw std::invalid_argument("Invalid payload size.");
-                // }
+                
                 uint32_t offset = 0;
                 Message_ID _mid;
                 _mid.serivce_id = msg[offset]<<8 | msg[offset+1];
@@ -194,7 +173,7 @@ namespace ara
 
                 Message m (_mid, _rid, GBProtocol_Version, GBinterface_version, GBMessageType, GBReturnCode);
                
-                // GBlength = Header::HeaderSize;
+                
                 if(length > Header::HeaderSize){
                     std::vector<uint8_t> pay = {msg.begin()+offset, msg.begin()+length};
                     m.SetPayload(pay);

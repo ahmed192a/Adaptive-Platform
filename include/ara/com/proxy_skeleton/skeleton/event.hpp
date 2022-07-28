@@ -1,6 +1,6 @@
 /**
  * @file event.hpp
- * @author your name (you@domain.com)
+ * @author Flashing Adapter Graduation Project Team
  * @brief
  * @version 0.1
  * @date 2022-03-07
@@ -37,10 +37,7 @@ namespace ara
         {
             namespace skeleton
             {
-                namespace EVENT
-                {
-                    void set_handle(void (*handler)(int, siginfo_t *, void *));
-                }
+
 
                 template <typename T>
                 class Event
@@ -100,6 +97,25 @@ namespace ara
                      * 
                      */
                     ~Event() {}
+
+                    /**
+                     * @brief return the id of the event
+                     * 
+                     * @return int 
+                     */
+                    int Get_event_id()
+                    {
+                        return m_event_id;
+                    }
+
+                    /**
+                     * @brief get the event variable
+                     */
+                    T get_event()
+                    {
+                        return event_data;
+                    }
+
                     /**
                      * @brief Set the subscriber object
                      * 
@@ -172,10 +188,11 @@ namespace ara
 
                         if (TTL == 0)
                         {
+                            cout << "\t\t Unsubscribe from " << m_name << " event\n";
                             Del_subscriber(client);
                             print_subscribers();
                         }else{
-
+                            cout << "\t\t Subscribe to " << m_name << " event\n";
                             set_subscriber(client);
                             print_subscribers();
                         }

@@ -1,7 +1,6 @@
 /**
  * @file update_request_return_types.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-03-14
  * 

@@ -1,0 +1,8 @@
+##############(Windows)##############
+java --module-path "..\lib" --add-modules javafx.controls,javafx.fxml -jar jarname.jar
+
+##############(LINUX)##############
+java --module-path "../lib/linux_lib" --add-modules javafx.controls,javafx.fxml -jar jarname.jar
+or 
+./rmanifest
+./rservice

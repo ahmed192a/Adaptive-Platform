@@ -1,17 +1,16 @@
 /**
  * @file stateclient.cpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-04-29
  * 
  * @copyright Copyright (c) 2022
  * 
  */
-#include "ara/exec/exec_error_domain.hpp"
-#include "ara/exec/function_group.hpp"
-#include "ara/exec/function_group_state.hpp"
-#include "ara/exec/state_client.hpp"
+#include "../../include/ara/exec/exec_error_domain.hpp"
+#include "../../include/ara/exec/function_group.hpp"
+#include "../../include/ara/exec/function_group_state.hpp"
+#include "../../include/ara/exec/state_client.hpp"
 
 #include <fcntl.h>
 #include <sys/stat.h>

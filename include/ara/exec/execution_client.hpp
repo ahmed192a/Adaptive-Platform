@@ -1,7 +1,7 @@
 /**
  * @file execution_client.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
+ * @brief Definition of the execution client class
  * @version 0.1
  * @date 2022-03-07
  * 
@@ -15,7 +15,6 @@
 #include <string>
 #include <boost/variant2/variant.hpp>
 #include "ara/exec/exec_error_domain.hpp"
-// #include <iostream>
 
 namespace ara
 {
@@ -38,6 +37,7 @@ namespace ara
          */
         class ExecutionClient final
         {
+        private:
             // location of FIFO to communicate between EM & SM
             char fifo_l[30] = "execution_client_fifo";
             // index of File descriptor

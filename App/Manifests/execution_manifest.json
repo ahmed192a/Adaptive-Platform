@@ -1,0 +1,63 @@
+{
+    "Execution_manifest": {
+        "Execution_manifest_id": "exec_id",
+        "Process": [
+            {
+                "Process_name": "SD",
+                "Mode_dependent_startup_configs": [
+                    {
+                        "FunctionGroupDependencies": [
+                            {
+                                "Function_group": "MachineFG",
+                                "Modes": "Starting-up,Running" 
+                            }
+                        ]
+                    }
+                ]
+                
+            },
+            {
+                "Process_name": "sm_process",
+                "Mode_dependent_startup_configs": [
+                    {
+                        "FunctionGroupDependencies": [
+                            {
+                                "Function_group": "MachineFG",
+                                "Modes": "Starting-up,Running" 
+                            }
+                        ]
+                    }
+                ]
+                
+            },
+            {
+                "Process_name": "ota_process",
+                "Mode_dependent_startup_configs": [
+                    {
+                        "FunctionGroupDependencies": [
+                            {
+                                "Function_group": "FG_1",
+                                "Modes": "on" 
+                            }
+                        ]
+                    }
+                ]
+                
+            },
+            {
+                "Process_name": "UCM_SERVER",
+                "Mode_dependent_startup_configs": [
+                    {
+                        "FunctionGroupDependencies": [
+                            {
+                                "Function_group": "MachineFG",
+                                "Modes": "Running" 
+                            }
+                        ]
+                    }
+                ]
+                
+            }
+        ]
+    }
+}

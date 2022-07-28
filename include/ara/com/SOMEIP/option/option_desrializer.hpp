@@ -1,12 +1,35 @@
+/**
+ * @file option_desrializer.hpp
+ * @author 
+ * @version 0.1
+ * @date 2022-03-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+#ifndef OPTION_DESRIALIZER_H
+#define OPTION_DESRIALIZER_H
 #include "ara/com/SOMEIP/option/ipv4_endpoint_option.hpp"
 #include "ara/com/SOMEIP/option/option.hpp"
 #include "ara/com/SOMEIP/option/ipv4_endpoint_option.hpp"
 namespace ara{
     namespace com{
         namespace option{
+            /**
+             * @brief Class for Option deserialization
+             * 
+             */
             class OptionDeserializer
             {
             public:
+                /**
+                 * @brief Deserialize Option from byte array
+                 * 
+                 * @param payload   byte array containing Option payload
+                 * @param offset    offset in byte array
+                 * @return Option*  pointer to deserialized Option
+                 */
                 static Option* Deserialize(
                     const std::vector<uint8_t> &payload,
                     std::size_t offset) noexcept
@@ -100,3 +123,4 @@ namespace ara{
         }
     }
 }
+#endif // OPTION_DESRIALIZER_H

@@ -1,7 +1,7 @@
 /**
  * @file state_client.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
+ * @brief Definition of the StateClient class
  * @version 0.1
  * @date 2022-03-06
  * 

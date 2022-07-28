@@ -28,9 +28,12 @@
 
 # Executables
 *.exe
+!Manifest_Builder.exe
+!Service_Generator.exe
 *.out
 *.app
 
+# CMake files
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -42,16 +45,10 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
-
-
-
-  
+# Visual Studio Code files 
 .vscode/*
 !.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+
 
 # Local History for Visual Studio Code
 .history/
@@ -65,6 +62,20 @@ build
 .metadata
 .setting*
 Debug
+
+# Eclipse files
+.project
+.cproject
+*.launch
+.loadpath
+.recommenders
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.buildpath                            
+.settings/ 
 
 
 

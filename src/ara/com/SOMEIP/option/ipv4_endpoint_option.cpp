@@ -1,7 +1,6 @@
 /**
  * @file ipv4_endpoint_option.cpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-02-25
  * 

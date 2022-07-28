@@ -1,7 +1,6 @@
 /**
  * @file updaterequest_skeleton.h
- * @author basmala
- * @brief
+ * @author  Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-02-23
  *
@@ -34,7 +33,7 @@ namespace ara
                 {
                 private:
                     struct sockaddr_in cliaddr;
-                    ara::com::InstanceIdentifier serviceid;
+                    ara::com::proxy_skeleton::ServiceId serviceid;
 
                 public:
                     update_request_Skeleton(

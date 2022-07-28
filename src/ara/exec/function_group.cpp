@@ -1,13 +1,14 @@
 /**
  * @file function_group.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Flashing Adapter Graduation Project Team
+ * @brief Implementation of FunctionGroup class
  * @version 0.1
  * @date 2022-03-07
  *
  * @copyright Copyright (c) 2022
  *
  */
+#include <iostream>
 #include "ara/exec/function_group.hpp"
 #include "ara/exec/parser/manifest_parser.hpp"
 #include <filesystem>
@@ -36,8 +37,6 @@ namespace ara
 
             json manifest_json_content{};
             read_value(manifest_json_full, kMachineManifest, manifest_json_content);
-
-            // read_value(manifest_json_content, kMachineManifestId, man.manifest_id);
 
             json mode_declaration_groups{};
             if (read_value(manifest_json_content, kModeDeclarationGroup, mode_declaration_groups))

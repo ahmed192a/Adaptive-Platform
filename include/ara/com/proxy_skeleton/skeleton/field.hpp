@@ -1,6 +1,6 @@
 /**
  * @file field.hpp
- * @author your name (you@domain.com)
+ * @author Flashing Adapter Graduation Project Team
  * @brief
  * @version 0.1
  * @date 2022-02-19
@@ -74,7 +74,6 @@ namespace ara
 
                         ara::com::Deserializer dser;
                         this->event_data = dser.deserialize<T>(_data, 0);
-
                         // Setpayload in message
                         R_msg.SetPayload(_data);
                         _data = R_msg.Serializer();

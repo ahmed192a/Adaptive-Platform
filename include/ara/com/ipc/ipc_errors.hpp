@@ -1,7 +1,6 @@
 /**
  * @file ipc_errors.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-03-07
  * 
@@ -29,5 +28,5 @@ enum error_kind
 };
 
 
-#endif
+#endif // ERRORS_H
 

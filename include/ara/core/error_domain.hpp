@@ -1,4 +1,12 @@
-
+/**
+ * @file error_domain.hpp
+ * @brief  ErrorDomain class declaration
+ * @version 0.1
+ * @date 2022-07-13
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef ARA_CORE_ERROR_DOMAIN_H_
 #define ARA_CORE_ERROR_DOMAIN_H_
 
@@ -25,9 +33,9 @@ namespace ara
         class ErrorDomain
         {
         public:
-            using IdType = std::uint64_t;
-            using CodeType = std::int32_t;
-            using SupportDataType = std::int32_t;
+            using IdType            = std::uint64_t;
+            using CodeType          = std::int32_t;
+            using SupportDataType   = std::int32_t;
 
             ErrorDomain(ErrorDomain const &) = delete;
             ErrorDomain(ErrorDomain &&) = delete;

@@ -8,6 +8,8 @@ project(
 
 # This AUTOSAR Adaptive Platform requires C++17
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Enable 'rdyamic' switch to export the executable's symbols for debugging
 set(CMAKE_ENABLE_EXPORTS 1)
 
@@ -28,52 +30,34 @@ endif()
 # The compiled library code is here
 add_subdirectory(src)
 add_subdirectory(App)
+
+
+## For Subsystem testing
+
 # add_subdirectory(test_partial_processes/SAM/server)
 # add_subdirectory(test_partial_processes/SD_TEST/server)
 # add_subdirectory(test_partial_processes/SD_TEST/client)
- add_subdirectory(test_partial_processes/SD_TEST/SD)
-add_subdirectory(test_partial_processes/SD_TEST/ucm_client)
- add_subdirectory(test_partial_processes/SD_TEST/ucm_server)
+# add_subdirectory(test_partial_processes/SD_TEST/SD)
+# add_subdirectory(test_partial_processes/SD_TEST/ucm_client)
+# add_subdirectory(test_partial_processes/SD_TEST/ucm_server)
 # add_subdirectory(test_partial_processes/SD_TEST/Classic)
 
 # add_subdirectory(test_partial_processes/SomeIP/some_client)
 # add_subdirectory(test_partial_processes/SomeIP/some_server)
 
 
-# set (CMAKE_RUNTIME_OUTPUT_DIRECTORY src/processes)
+
+
+# copy manifest files to the build directory
+file(COPY App/Manifests DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App)
+file(COPY App/UCM/sw_packages.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App/processes/UCM_SERVER)
+file(COPY App/UCM/config.conf DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App/processes/UCM_SERVER)
+
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/App/processes/redirected)
 
 
 
-# add_executable(
-#   SOMEIP_SP
-#   test_partial_processes/server_someip.cpp
-#   ${SRC_FILES}
-# )
-# target_link_libraries(
-#   SOMEIP_SP
-#   PUBLIC
-#   ara
-#   nlohmann_json::nlohmann_json
 
-# )
-# add_executable(
-#   SOMEIP_CP
-#   test_partial_processes/client_someip.cpp
-#   ${SRC_FILES}
-# )
-# target_link_libraries(
-#   SOMEIP_CP
-#   PUBLIC
-#   ara
-#   nlohmann_json::nlohmann_json
-  
-# )
-
-
-
-# option for testing
-option(build_tests "Build all the tests.")
-set(build_tests ON)
-message(STATUS "print_all_variables------------------------------------------${build_tests}")
-add_subdirectory(Testing)
+# option for unit testing
+# add_subdirectory(Testing)
 

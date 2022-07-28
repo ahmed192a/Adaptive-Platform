@@ -1,6 +1,6 @@
 /**
  * @file data_type.hpp
- * @author your name (you@domain.com)
+ * @author Flashing Adapter Graduation Project Team
  * @brief
  * @version 0.1
  * @date 2022-02-23
@@ -175,23 +175,23 @@ namespace ara
         {
             proxy_skeleton::ServiceId service_id;
             proxy_skeleton::InstanceId instance_id;
-            std::uint32_t uid;
+            std::uint32_t portnum;
 
             bool operator==(const FindServiceHandle &other) const
             {
-                return service_id == other.service_id && instance_id == other.instance_id && uid == other.uid;
+                return service_id == other.service_id && instance_id == other.instance_id && portnum == other.portnum;
             }
 
             bool operator<(const FindServiceHandle &other) const
             {
-                return uid < other.uid;
+                return portnum < other.portnum;
             }
 
             FindServiceHandle &operator=(const FindServiceHandle &other)
             {
                 service_id = other.service_id;
                 instance_id = other.instance_id;
-                uid = other.uid;
+                portnum = other.portnum;
 
                 return *this;
             }

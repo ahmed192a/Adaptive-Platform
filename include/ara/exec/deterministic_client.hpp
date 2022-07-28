@@ -1,7 +1,7 @@
 /**
  * @file deterministic_client.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
+ * @brief Definition of the DeterministicClient class
  * @version 0.1
  * @date 2022-03-07
  * 

@@ -1,7 +1,6 @@
 /**
  * @file service_entry.cpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-03-07
  * 
@@ -64,7 +63,7 @@ namespace ara
 
                 if (ttl == 0)
                 {
-                    throw std::invalid_argument("TTL cannot be zero.");
+                    throw std::invalid_argument("find TTL cannot be zero.");
                 }
 
                 ServiceEntry _result(
@@ -83,13 +82,13 @@ namespace ara
                 uint16_t instanceId,
                 uint8_t majorVersion,
                 uint32_t minorVersion,
-                uint32_t ttl)
+                uint32_t ttl )
             {
                 const EntryType cOfferServiceEntry = EntryType::Offering;
 
                 if (ttl == 0)
                 {
-                    throw std::invalid_argument("TTL cannot be zero.");
+                    throw std::invalid_argument("offer TTL cannot be zero.");
                 }
 
                 ServiceEntry _result(

@@ -1,7 +1,6 @@
 /**
  * @file ttl_timer.hpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-02-25
  * 
@@ -27,13 +26,13 @@ namespace ara
             class TtlTimer
             {
             private:
-                std::mutex mMutex;
-                std::unique_lock<std::mutex> mLock;
-                std::condition_variable mConditionVariable;
-                std::future<void> mFuture;
-                bool mRunning;
-                uint32_t mTtl;
-                std::function<void()> mOnExpired;
+                std::mutex mMutex;                      //!< mutex for the condition variable
+                std::unique_lock<std::mutex> mLock;     //!< lock for the condition variable
+                std::condition_variable mConditionVariable; //!< condition variable for the countdown
+                std::future<void> mFuture;              //!< future for the countdown
+                bool mRunning;                          //!< flag to indicate if the timer is running
+                uint32_t mTtl;                          //!< time to live in milliseconds
+                std::function<void()> mOnExpired;       //!< callback function to be called when the timer expires
 
                 void countdown();
 

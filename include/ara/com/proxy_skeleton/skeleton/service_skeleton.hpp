@@ -1,6 +1,6 @@
 /**
  * @file service_skeleton.hpp
- * @author your name (you@domain.com)
+ * @author Flashing Adapter Graduation Project Team
  * @brief
  * @version 0.1
  * @date 2022-02-19
@@ -12,18 +12,15 @@
 #ifndef ARA_COM_proxy_skeleton_SKELETON_SERVICE_SKELETON_H_
 #define ARA_COM_proxy_skeleton_SKELETON_SERVICE_SKELETON_H_
 
-// #include "ara/com/proxy_skeleton/definitions.hpp"
+#include "ara/com/proxy_skeleton/skeleton/data_type.hpp"
 #include "ara/com/proxy_skeleton/skeleton/data_type.hpp"
 #include "ara/com/ipc/server/socket_Server.hpp"
 #include "ara/com/ipc/client/socket_Client.hpp"
 #include "ara/com/SOMEIP/SomeipSDMessage.hpp"
-#include "ara/com/SOMEIP/helper/ipv4_address.hpp"
+#include "ara/com/serializer.hpp"
 #include "ara/com/marshal.hpp"
 #include <utility>
 #include <unistd.h>
-#include "ara/com/serializer.hpp"
-#include "ara/com/proxy_skeleton/skeleton/data_type.hpp"
-// #include <map>
 #include <queue>
 #include <future>
 
@@ -42,23 +39,28 @@ namespace ara
                 class ServiceSkeleton
                 {
                 public:
+                    /**
+                     * @struct ServiceSkeleton::SK_Handle
+                     * @brief ServiceSkeleton handles the communication with the service
+                     * 
+                     */
                     struct SK_Handle
                     {
 
-                        uint32_t service_portnum;
-                        uint32_t sd_portnum;
-                        // CClient *m_server_UPD;
+                        uint32_t service_portnum;   //!< service port number
+                        uint32_t sd_portnum;        //!< Service Discovery port number
                     };
-                    SK_Handle m_skeleton_handle;
-                    ara::com::proxy_skeleton::ServiceId &m_service_id;
-                    ara::com::InstanceIdentifier &m_instance_id;
+                    SK_Handle m_skeleton_handle;                        //!< skeleton handle
+                    ara::com::proxy_skeleton::ServiceId &m_service_id;  //!< service id
+                    ara::com::InstanceIdentifier &m_instance_id;        //!< instance id
+                    
                     /**
                      * @brief Construct a new Service Skeleton object
                      * 
-                     * @param service_id 
-                     * @param instance 
-                     * @param skeleton_handle 
-                     * @param mode 
+                     * @param service_id            service id of the service
+                     * @param instance              instance id of the service
+                     * @param skeleton_handle       skeleton handle
+                     * @param mode                  mode of the service
                      */
                     ServiceSkeleton(
                         ara::com::proxy_skeleton::ServiceId &service_id,
@@ -72,23 +74,31 @@ namespace ara
                           m_skeleton_handle{skeleton_handle}
                     {
 
-                        // skeleton_handle.m_server_UPD = &m_skeleton_udp;
-                        this->cliaddr.sin_family = AF_INET; // IPv4
-                        this->cliaddr.sin_addr.s_addr = INADDR_ANY;
-                        this->cliaddr.sin_port = htons(m_skeleton_handle.sd_portnum);
+                        this->cliaddr.sin_family = AF_INET;             // IPv4
+                        this->cliaddr.sin_addr.s_addr = INADDR_ANY;     // IP of the client (INADDR_ANY = listen on all interfaces)
+                        this->cliaddr.sin_port = htons(m_skeleton_handle.sd_portnum);   // Port of the client
                     }
                     /**
                      * @brief Destroy the Service Skeleton object
                      * 
                      */
                     virtual ~ServiceSkeleton() {}
+
+                    /**
+                     * @brief Get the Service Id object
+                     * 
+                     * @return const ara::com::proxy_skeleton::ServiceId 
+                     */
+                    const ara::com::proxy_skeleton::ServiceId GetServiceId()
+                    {
+                        return m_service_id;
+                    }
                     /**
                      * @brief Offer Service 
                      * 
                      */
                     void OfferService()
                     {
-                        cout<<"ser < " <<m_service_id<<endl;
                         this->m_skeleton_udp.OpenSocket();
                         const uint32_t minorV = 0;
                         const uint8_t majorV = 1;
@@ -103,6 +113,7 @@ namespace ara
                         this->m_skeleton_udp.UDPSendTo((void *)_payload.data(), _payload.size(), (struct sockaddr *)&this->cliaddr);
                         this->m_skeleton_udp.CloseSocket();
                     }
+
                     /**
                      * @brief StopOfferService
                      * 
@@ -115,7 +126,8 @@ namespace ara
                         this->m_skeleton_udp.OpenSocket();
                         // SD_data service = {m_service_id.GetInstanceId(), getpid() ,m_skeleton_handle.service_portnum, false};
                         SOMEIP_MESSAGE::sd::SomeIpSDMessage sd_msg;
-                        entry::ServiceEntry stop_offer_e = entry::ServiceEntry::CreateOfferServiceEntry(m_service_id, 0, majorV, minorV, stop_ttl);
+                        //entry::ServiceEntry stop_offer_e = entry::ServiceEntry::CreateOfferServiceEntry(m_service_id, 0, majorV, minorV, stop_ttl);
+                        entry::ServiceEntry stop_offer_e = entry::ServiceEntry::CreateStopOfferEntry(m_service_id, m_instance_id.GetInstanceId(), majorV, minorV);
                         sd_msg.AddEntry(&stop_offer_e);
                         std::vector<uint8_t> _payload = sd_msg.Serializer();
                         uint32_t _size = _payload.size();
@@ -125,13 +137,11 @@ namespace ara
                     }
 
                     /**
-                     * @brief
-                     * @todo edit vector data in event info
-                     * @tparam T
-                     * @param event_id
-                     * @param data
-                     * @param is_field
-                     * @param client_add
+                     * @brief SendEvent     send an event update to clients
+                     * @tparam T            type of the event
+                     * @param event_id      event id
+                     * @param data          data of the event
+                     * @param client_add    client address
                      */
                     template <typename T>
                     void SendEvent(int event_id, const T &data, sockaddr_in client_add)
@@ -160,18 +170,40 @@ namespace ara
                         this->m_skeleton_udp.UDPSendTo((void *)&__payload[0], __payload.size(), (sockaddr *)&client_add);
                         this->m_skeleton_udp.CloseSocket();
                     }
+                    /**
+                     * @brief NoServiceHandler --> handle error
+                     * 
+                     * @param S_msg         --> message from client
+                     * @param binding       --> binding of the client
+                     */
+                    static void NoServiceHandler(SOMEIP_MESSAGE::Message S_msg, Socket &binding)
+                    {
+                        SOMEIP_MESSAGE::Message R_msg(
+                            SOMEIP_MESSAGE::Request_ID{5, 6},
+                            SOMEIP_MESSAGE::Message_ID{S_msg.MessageId().serivce_id, S_msg.MessageId().method_id}, 
+                            2, // protocol version
+                            7, // Interface Version
+                            SOMEIP_MESSAGE::ReturnCode::E_UNKNOWN_SERVICE,
+                            SOMEIP_MESSAGE::MessageType::ERROR);
+
+                        std::vector<uint8_t> _Payload = R_msg.Serializer();
+                        uint32_t size = _Payload.size();
+                        binding.Send(&size, sizeof(size));
+                        binding.Send(_Payload.data(), size);
+                        binding.CloseSocket();
+                    }
 
                 protected:
                     /**
                      * @brief 1- HandleCall  R ARGS
                      * 
-                     * @tparam Class 
-                     * @tparam R 
-                     * @tparam Args 
-                     * @param c 
-                     * @param method 
-                     * @param msg 
-                     * @param binding 
+                     * @tparam Class        Class to call the method on
+                     * @tparam R            Return type of the method
+                     * @tparam Args         Argument types of the method
+                     * @param c             object of type Class to call the method on
+                     * @param method        method to be called
+                     * @param msg           message from client
+                     * @param binding       binding of the client
                      */
                     template <typename Class, typename R, typename... Args>
                     void HandleCall(Class &c,
@@ -189,12 +221,12 @@ namespace ara
                     /**
                      * @brief 2- HandleCall future<void> ARGS
                      * 
-                     * @tparam Class 
-                     * @tparam Args 
-                     * @param c 
-                     * @param method 
-                     * @param msg 
-                     * @param binding 
+                     * @tparam Class        Class to call the method on
+                     * @tparam Args         Argument types of the method
+                     * @param c             object of type Class to call the method on
+                     * @param method        method to be called
+                     * @param msg           message from client
+                     * @param binding       binding of the client
                      */
                     template <typename Class, typename... Args>
                     void HandleCall(Class &c,
@@ -207,12 +239,12 @@ namespace ara
                     /**
                      * @brief 3- HandleCall R
                      * 
-                     * @tparam Class 
-                     * @tparam R 
-                     * @param c 
-                     * @param method 
-                     * @param msg 
-                     * @param binding 
+                     * @tparam Class        Class to call the method on
+                     * @tparam R            Return type of the method
+                     * @param c             object of type Class to call the method on
+                     * @param method        method to be called
+                     * @param msg           message from client
+                     * @param binding       binding of the client
                      */
                     template <typename Class, typename R>
                     void HandleCall(Class &c,
@@ -220,7 +252,8 @@ namespace ara
                                     SOMEIP_MESSAGE::Message msg,
                                     Socket &binding)
                     {
-                        R result = (c.*method)();
+                        std::future<R> f = (c.*method)();
+                        R result = f.get();
                         // create serialize object
                         ara::com::Serializer s1;
                         // serialize the result
@@ -244,13 +277,13 @@ namespace ara
                         binding.CloseSocket();
                     }
                     /**
-                     * @brief 4- HandleCall future <void>
+                     * @brief 4- HandleCall future void
                      * 
-                     * @tparam Class 
-                     * @param c 
-                     * @param method 
-                     * @param msg 
-                     * @param binding 
+                     * @tparam Class        Class to call the method on
+                     * @param c             object of type Class to call the method on
+                     * @param method        method to be called
+                     * @param msg           message from client
+                     * @param binding       binding of the client
                      */
                     template <typename Class>
                     void HandleCall(Class &c,
@@ -275,12 +308,12 @@ namespace ara
                     /**
                      * @brief 5- HandleCall void ARGS
                      * 
-                     * @tparam Class 
-                     * @tparam Args 
-                     * @param c 
-                     * @param method 
-                     * @param msg 
-                     * @param binding 
+                     * @tparam Class    Class to call the method on
+                     * @tparam Args     Argument types of the method
+                     * @param c         object of type Class to call the method on
+                     * @param method    method to be called
+                     * @param msg       message from client
+                     * @param binding   binding of the client
                      */
                     template <typename Class, typename... Args>
                     void HandleCall(Class &c,
@@ -297,11 +330,11 @@ namespace ara
                     /**
                      * @brief 6- HandleCall void
                      * 
-                     * @tparam Class 
-                     * @param c 
-                     * @param method 
-                     * @param msg 
-                     * @param binding 
+                     * @tparam Class    Class to call the method on
+                     * @param c         object of type Class to call the method on
+                     * @param method    method to be called
+                     * @param msg       message from client
+                     * @param binding   binding of the client
                      */
                     template <typename Class>
                     void HandleCall(Class &c,
@@ -315,8 +348,8 @@ namespace ara
                     /**
                      * @brief No Handler --> handle error
                      * 
-                     * @param method_id 
-                     * @param binding 
+                     * @param method_id     method id of the method that was called
+                     * @param binding       binding of the client
                      */
                     void NoMethodHandler(uint16_t method_id, Socket &binding)
                     {
@@ -334,18 +367,19 @@ namespace ara
                         binding.Send(_Payload.data(), size);
                         binding.CloseSocket();
                     }
+
                 private:
                 /**
                  * @brief sHandleCall
                  * 
-                 * @tparam Class 
-                 * @tparam R 
-                 * @tparam Args 
-                 * @tparam index 
-                 * @param c 
-                 * @param method 
-                 * @param msg 
-                 * @param binding 
+                 * @tparam Class    Class to call the method on
+                 * @tparam R        Return type of the method
+                 * @tparam Args     Argument types of the method
+                 * @tparam index    index of the method
+                 * @param c         object of type Class to call the method on
+                 * @param method    method to be called
+                 * @param msg       message from client
+                 * @param binding   binding of the client
                  */
                     template <typename Class, typename R, typename... Args, std::size_t... index>
                     void sHandleCall(Class &c,
@@ -381,13 +415,13 @@ namespace ara
                     /**
                      * @brief sHandleCall handle return type future void
                      * 
-                     * @tparam Class 
-                     * @tparam Args 
-                     * @tparam index 
-                     * @param c 
-                     * @param method 
-                     * @param msg 
-                     * @param binding 
+                     * @tparam Class        Class to call the method on
+                     * @tparam Args         Argument types of the method
+                     * @tparam index        index of the method
+                     * @param c             object of type Class to call the method on
+                     * @param method        method to be called
+                     * @param msg           message from client
+                     * @param binding       binding of the client
                      */
                     template <typename Class, typename... Args, std::size_t... index>
                     void sHandleCall(Class &c,
@@ -416,13 +450,13 @@ namespace ara
                     /**
                      * @brief sHandleCall handle return type void
                      * 
-                     * @tparam Class 
-                     * @tparam Args 
-                     * @tparam index 
-                     * @param c 
-                     * @param method 
-                     * @param msg 
-                     * @param binding 
+                     * @tparam Class    Class to call the method on
+                     * @tparam Args     The types of the arguments to the method
+                     * @tparam index    The size of the index sequence
+                     * @param c         The object to call the method on
+                     * @param method    The method to call
+                     * @param msg       The message to handle
+                     * @param binding   The socket to send the response on
                      */
                     template <typename Class, typename... Args, std::size_t... index>
                     void sHandleCall(Class &c,
@@ -441,8 +475,8 @@ namespace ara
                 };
 
             } // skeleton
-        }     // proxy_skeleton
-    }         // com
+        }  // proxy_skeleton
+    }  // com
 } // ara
 
 #endif // ARA_COM_proxy_skeleton_SKELETON_SERVICE_SKELETON_H_

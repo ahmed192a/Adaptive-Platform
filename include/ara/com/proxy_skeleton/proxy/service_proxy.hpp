@@ -1,6 +1,6 @@
 /**
  * @file service_proxy.hpp
- * @author your name (you@domain.com)
+ * @author Flashing Adapter Graduation Project Team
  * @brief
  * @version 0.1
  * @date 2022-03-07
@@ -15,6 +15,12 @@
 #include <sys/types.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <cstring>
+#include <signal.h>
+#include <future>
+#include <arpa/inet.h>
+#include <algorithm>
+#include <queue>
 #include "ara/com/ipc/client/socket_Client.hpp"
 #include "ara/com/ipc/server/socket_Server.hpp"
 #include "ara/com/proxy_skeleton/definitions.hpp"
@@ -22,16 +28,8 @@
 #include "ara/com/serializer.hpp"
 #include "ara/com/SOMEIP/SomeipSDMessage.hpp"
 #include "ara/com/SOMEIP/entry/eventgroup_entry.hpp"
-#include "ara/com/SOMEIP/option/ipv4_endpoint_option.hpp"
-#include "ara/com/SOMEIP/helper/ipv4_address.hpp"
 #include "ara/com/deserializer.hpp"
-#include <cstring>
-#include <signal.h>
-#include <future>
-#include <arpa/inet.h>
-#include "algorithm"
 
-#include <queue>
 using SD_data = ara::com::proxy_skeleton::SD_data;
 
 namespace ara
@@ -72,6 +70,16 @@ namespace ara
                      * 
                      */
                     virtual ~ServiceProxy();
+
+                    /**
+                     * @brief Get the Service Id object
+                     * 
+                     * @return const ara::com::proxy_skeleton::ServiceId 
+                     */
+                    const ara::com::proxy_skeleton::ServiceId GetServiceId()
+                    {
+                        return m_proxy_handle.m_server_com.service_id;
+                    }
                     /**
                      * @brief FindService 
                      * 
@@ -120,7 +128,6 @@ namespace ara
                         int msg_size = msgser.size();
                         service_proxy_tcp.ClientWrite((void *)&msg_size, sizeof(msg_size));
                         service_proxy_tcp.ClientWrite(&msgser[0], msg_size);
-                        std::cout << "SEND REQUEST\n";
                         // receive the methods result
                         msgser.clear();
                         service_proxy_tcp.ClientRead((void *)&msg_size, sizeof(msg_size));
@@ -187,6 +194,53 @@ namespace ara
                         result = deser.deserialize<R>(_data_payload, 0);
 
                         return result;
+                    }
+                    /**
+                     * @brief SendRequest
+                     * 
+                     * @param method_id 
+                     * @return std::vector<uint8_t>
+                     */
+                    std::vector<uint8_t> SendRequest(uint32_t method_id)
+                    {
+                        SOMEIP_MESSAGE::Message R_msg(
+                            SOMEIP_MESSAGE::Message_ID{(uint16_t)this->m_proxy_handle.m_server_com.service_id, (uint16_t)method_id},
+                            SOMEIP_MESSAGE::Request_ID{5, 6},
+                            2, // protocol version
+                            7, // Interface Version
+                            SOMEIP_MESSAGE::MessageType::REQUEST);
+
+                        ara::com::Serializer ser;
+                        ara::com::Deserializer deser;
+
+                        ser.serialize(method_id);
+
+                        service_proxy_tcp.OpenSocket();
+                        service_proxy_tcp.GetHost("127.0.0.1", this->m_proxy_handle.m_server_com.port_number);
+                        service_proxy_tcp.ClientConnect();
+
+                        // get payload of argumnets
+                        std::vector<uint8_t> msgser = ser.Payload();
+                        // push the payload to the message
+                        R_msg.SetPayload(msgser);
+                        // get the serialized message
+                        msgser = R_msg.Serializer();
+
+                        int msg_size = msgser.size();
+                        service_proxy_tcp.ClientWrite((void *)&msg_size, sizeof(msg_size));
+                        service_proxy_tcp.ClientWrite(&msgser[0], msg_size);
+                        msgser.clear();
+                        service_proxy_tcp.ClientRead((void *)&msg_size, sizeof(msg_size));
+                        msgser.resize(msg_size);
+                        service_proxy_tcp.ClientRead((void *)&msgser[0], msg_size);
+                        service_proxy_tcp.CloseSocket();
+
+                        // deserialize the result
+                        SOMEIP_MESSAGE::Message Res_msg = SOMEIP_MESSAGE::Message::Deserialize(msgser);
+                        // get the payload
+                        std::vector<uint8_t> _data_payload = Res_msg.GetPayload();
+
+                        return _data_payload;
                     }
                     /**
                      * @brief SendRequest

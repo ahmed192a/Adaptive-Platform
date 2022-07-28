@@ -1,6 +1,6 @@
 /**
  * @file event.hpp
- * @author your name (you@domain.com)
+ * @author Flashing Adapter Graduation Project Team
  * @brief
  * @version 0.1
  * @date 2022-03-07
@@ -52,6 +52,17 @@ namespace ara
                           m_event_id{event_id}
                     {
                         event_data = std::make_shared<T>();
+                    }
+
+
+                    /**
+                     * @brief get the id of the event (unique identifier)
+                     * 
+                     * @return int 
+                     */
+                    int Get_event_id()
+                    {
+                        return m_event_id;
                     }
                     /**
                      * @brief Destroy the Event object

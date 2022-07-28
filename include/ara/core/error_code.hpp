@@ -1,4 +1,12 @@
-
+/**
+ * @file error_code.hpp
+ * @brief  Error code class
+ * @version 0.1
+ * @date 2022-07-13
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef ARA_CORE_ERROR_CODE_H_
 #define ARA_CORE_ERROR_CODE_H_
 
@@ -14,6 +22,13 @@ namespace ara
 
         class ErrorCode
         {
+            /**
+             * @brief 
+             * 
+             * @param out 
+             * @param e 
+             * @return std::ostream& 
+             */
             friend std::ostream &operator<<(std::ostream &out, ErrorCode const &e)
             {
                 return (out << e.mDomain->Name() << ":" << e.mValue << ":" << e.mSupportData << ":"
@@ -75,13 +90,13 @@ namespace ara
             {
                 Domain().ThrowAsException(*this);
 
-                // Never reached, but apparently needed to avoid warnings from certain compilers (such as 5.4.0).
+                // Never reached, but needed to avoid warnings from certain compilers.
                 std::terminate();
             }
 
         private:
             CodeType mValue;
-            SupportDataType mSupportData;
+            SupportDataType mSupportData;   
             ErrorDomain const *mDomain; // non-owning pointer to the associated ErrorDomain
             char const *mUserMessage;   // non-owning pointer to a static, null-terminated string
         };

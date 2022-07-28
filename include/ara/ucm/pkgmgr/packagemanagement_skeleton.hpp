@@ -1,6 +1,6 @@
 /**
  * @file PackageManagement_skeleton.h
- * @author Sarah Mohamed
+ * @author Flashing Adapter Graduation Project Team
  * @brief Skeleton(service provider) file for ucm::pkgmgr
  * @version 0.1
  * @date 2022-02-19
@@ -13,23 +13,20 @@
 #define ARA_UCM_PKGMGR_PackageManagement_SKELETON_H_
 
 #include "ara/com/proxy_skeleton/skeleton/field.hpp"
-#include "ara/com/proxy_skeleton/skeleton/service_skeleton.hpp"
 #include "ara/com/proxy_skeleton/definitions.hpp"
 #include "ara/ucm/pkgmgr/ucm_types.hpp"
-#include "ucm_return_types.hpp"
-#include "ucm_error.hpp"
+#include "ara/ucm/pkgmgr/ucm_return_types.hpp"
+#include "ara/ucm/pkgmgr/ucm_error.hpp"
 #include "ara/ucm/pkgmgr/packet.hpp"
-
-
 #include <future>
 #include <vector>
 #include <iterator>
 #include <algorithm>
 #include <boost/uuid/uuid.hpp>
+#include <boost/uuid/random_generator.hpp>
 // #include <boost/uuid/uuid_generators.hpp>
 // #include <boost/uuid/uuid_io.hpp>
 // #include <boost/lexical_cast.hpp>
-#include <boost/uuid/random_generator.hpp>
 // #include <boost/variant2/variant.hpp>
 // #include <bits/stdc++.h>
 
@@ -78,6 +75,8 @@ namespace ara
                     std::vector<uint8_t> buffer;  
                     // Service ID of UCM Package management service  
                     ara::com::proxy_skeleton::ServiceId UCM_Service_id ;
+                    // current software process progress
+                    ara::ucm::pkgmgr::PackageManagement::GetSwProcessProgressOutput currentSwProcessProgress ={0};
 
                 public:
                     /**
@@ -95,6 +94,7 @@ namespace ara
                         ara::com::proxy_skeleton::skeleton::ServiceSkeleton(UCM_Service_id, instance, skeleton_handle),
                         CurrentStatus(this, "CurrentStatus", 0)
                     {
+                        TransferInfoData.TransferExitFlag = 1;
                     }
 
                     // ara::ucm::pkgmgr::PackageManagement::PackageManagerStatusType CurrentStatus_Get()
@@ -107,7 +107,7 @@ namespace ara
                      * 
                      * @return ara::ucm::pkgmgr::PackageManagement::ActivateOutput 
                      */
-                    ara::ucm::pkgmgr::PackageManagement::ActivateOutput Activate();
+                    std::future<ara::ucm::pkgmgr::PackageManagement::ActivateOutput> Activate();
                     /**
                      * @brief Cancel
                      * 
@@ -127,7 +127,7 @@ namespace ara
                      * 
                      * @return ara::ucm::pkgmgr::PackageManagement::FinishOutput 
                      */
-                    ara::ucm::pkgmgr::PackageManagement::FinishOutput Finish();
+                    std::future<ara::ucm::pkgmgr::PackageManagement::FinishOutput> Finish();
                     /**
                      * @brief Get the History 
                      * 
@@ -173,7 +173,7 @@ namespace ara
                      * @param id 
                      * @return ara::ucm::pkgmgr::PackageManagement::GetSwProcessProgressOutput 
                      */
-                    ara::ucm::pkgmgr::PackageManagement::GetSwProcessProgressOutput GetSwProcessProgress(ara::ucm::pkgmgr::PackageManagement::TransferIdType id);
+                    std::future<ara::ucm::pkgmgr::PackageManagement::GetSwProcessProgressOutput> GetSwProcessProgress(ara::ucm::pkgmgr::PackageManagement::TransferIdType id);
                     /**
                      * @brief Get the Sw Process Progress 
                      * 
