@@ -15,6 +15,23 @@ FetchContent_Declare(
         GIT_PROGRESS TRUE)
 FetchContent_MakeAvailable(json)
 
+############################################################################################
+# Install spdlog lib 
+############################################################################################
+
+message(STATUS "Fetching spdlog library")
+FetchContent_Declare(
+        spdlog
+        GIT_REPOSITORY https://github.com/gabime/spdlog.git
+        GIT_TAG v1.11.0
+        GIT_SHALLOW TRUE
+        GIT_PROGRESS TRUE)
+# disable tests and benchmarks
+set(SPDLOG_BUILD_EXAMPLE OFF CACHE INTERNAL "")
+set(SPDLOG_BUILD_TESTS OFF CACHE INTERNAL "")
+set(SPDLOG_BUILD_BENCH OFF CACHE INTERNAL "")
+FetchContent_MakeAvailable(spdlog)
+
 
 
 ############################################################################################
@@ -49,5 +66,6 @@ FetchContent_Declare(
         GIT_PROGRESS TRUE
 )
 FetchContent_MakeAvailable(${CRYPTOPP_CMAKE})
+
 
 

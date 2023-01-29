@@ -16,10 +16,17 @@
 
 using namespace std;
 using namespace ara::exec;
-Log lg("test_process");
-ExecutionClient client;
 
-int sigval = 0;
+Log lg("test_process"); ///< log object
+ExecutionClient client; ///< execution client object
+
+int sigval = 0; ///< signal value
+
+/**
+ * @brief handle sigterm signal
+ * 
+ * @param sig 
+ */
 void handle_sigterm(int sig){
     sigval = sig;
     lg.Insert("terminating");
