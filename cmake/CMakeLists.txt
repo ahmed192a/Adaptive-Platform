@@ -54,18 +54,18 @@ FetchContent_MakeAvailable(uuid)
 # Get the CryptoPP CMakeLists.txt File for CryptoPP Package GIT_TAG Must be the Same
 ############################################################################################
 
-message(CHECK_START "Fetching CryptoPP-CMAKE")
-set(CRYPTOPP_CMAKE "cryptopp-cmake")
-set(CRYPTOPP_GIT_TAG "CRYPTOPP_8_7_0_1")
+# message(CHECK_START "Fetching CryptoPP-CMAKE")
+# set(CRYPTOPP_CMAKE "cryptopp-cmake")
+# set(CRYPTOPP_GIT_TAG "CRYPTOPP_8_7_0_1")
 
-FetchContent_Declare(
-        ${CRYPTOPP_CMAKE}
-        GIT_REPOSITORY  https://github.com/abdes/cryptopp-cmake.git
-        GIT_TAG         ${CRYPTOPP_GIT_TAG}
-        GIT_SHALLOW TRUE
-        GIT_PROGRESS TRUE
-)
-FetchContent_MakeAvailable(${CRYPTOPP_CMAKE})
+# FetchContent_Declare(
+#         ${CRYPTOPP_CMAKE}
+#         GIT_REPOSITORY  https://github.com/abdes/cryptopp-cmake.git
+#         GIT_TAG         ${CRYPTOPP_GIT_TAG}
+#         GIT_SHALLOW TRUE
+#         GIT_PROGRESS TRUE
+# )
+# FetchContent_MakeAvailable(${CRYPTOPP_CMAKE})
 
 
 
