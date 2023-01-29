@@ -8,17 +8,25 @@
  * 
  */
 #include <iostream>
-#include "ara/exec/execution_client.hpp"
 #include <unistd.h>
 #include <signal.h>
 #include <csignal>
-#include "ara/Log_trace/Log.hpp"
+#include "ara/exec/execution_client.h"
+#include "ara/Log_trace/Log.h"
+
 using namespace std;
 using namespace ara::exec;
-Log lg("test_process");
-ExecutionClient client;
 
-int sigval = 0;
+Log lg("test_process"); ///< log object
+ExecutionClient client; ///< execution client object
+
+int sigval = 0; ///< signal value
+
+/**
+ * @brief handle sigterm signal
+ * 
+ * @param sig 
+ */
 void handle_sigterm(int sig){
     sigval = sig;
     lg.Insert("terminating");

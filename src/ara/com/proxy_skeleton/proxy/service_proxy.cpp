@@ -1,27 +1,24 @@
 /**
  * @file service_proxy.cpp
  * @author Flashing Adapter Graduation Project Team
- * @brief
+ * @brief Base class for all services.
  * @version 0.1
  * @date 2022-03-07
  *
  * @copyright Copyright (c) 2022
  *
  */
-#include "ara/com/proxy_skeleton/proxy/service_proxy.hpp"
-#include "ara/com/proxy_skeleton/definitions.hpp"
-#include "ara/com/SOMEIP/SomeipSDMessage.hpp"
-#include "ara/com/SOMEIP/helper/ipv4_address.hpp"
-#include "ara/com/SOMEIP/option/ipv4_endpoint_option.hpp"
-#include "ara/com/SOMEIP/option/option.hpp"
-#include "ara/com/serializer.hpp"
-#include "ara/com/deserializer.hpp"
-#include "ara/com/proxy_skeleton/skeleton/data_type.hpp"
-#include "ara/com/SOMEIP/entry/entry.hpp"
+#include "ara/com/proxy_skeleton/proxy/service_proxy.h"
+#include "ara/com/SOMEIP/option/ipv4_endpoint_option.h"
+#include "ara/com/proxy_skeleton/data_type.h"
+#include "ara/com/proxy_skeleton/definitions.h"
+#include "ara/com/SOMEIP/helper/ipv4_address.h"
+#include "ara/com/SOMEIP/SomeipSDMessage.h"
+#include "ara/com/SOMEIP/option/option.h"
+#include "ara/com/SOMEIP/entry/entry.h"
+#include "ara/com/deserializer.h"
+#include "ara/com/serializer.h"
 #include <iostream>
-
-
-
 
 namespace ara
 {
@@ -111,9 +108,7 @@ namespace ara
                     // service_proxy_udp.OpenSocket();
                     //m_proxy_handle.m_client_UPD = &service_proxy_udp;
                 }
-                ServiceProxy::~ServiceProxy()
-                {
-                }
+                
 
             }
         }

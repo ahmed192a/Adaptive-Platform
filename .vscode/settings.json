@@ -87,6 +87,7 @@
         "stop_token": "cpp",
         "filesystem": "cpp"
     },
-    "cmake.configureOnOpen": true,
+    "cmake.configureOnOpen": false,
+    "C_Cpp.errorSquiggles": "disabled",
 
 }

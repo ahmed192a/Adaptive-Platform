@@ -24,10 +24,10 @@
 #include <sys/wait.h>
 #include <filesystem>
 
-#include "ara/exec/parser/manifest_parser.hpp"
-#include "ara/exec/function_group.hpp"
-#include "ara/exec/function_group_state.hpp"
-#include "ara/Log_trace/Log.hpp"
+#include "ara/exec/parser/manifest_parser.h"
+#include "ara/exec/function_group.h"
+#include "ara/exec/function_group_state.h"
+#include "ara/Log_trace/Log.h"
 
 /***************************************************************************
  *                           Define Section                                *
@@ -62,7 +62,7 @@ void handle_sigterm(int sig){
 /***************************************************************************
  *                      Global Variable Section                            *
  ***************************************************************************/
-static map<string, GLOB> sys_FG;                // Map of all function groups of the system
+static map<string, ara::exec::parser::GLOB> sys_FG;                // Map of all function groups of the system
 std::vector<Process> process_pool;              // Vector of all processes of the system
 
 // Backup streambuffers of  cout

@@ -46,8 +46,8 @@ CTestTestfile.cmake
 _deps
 
 # Visual Studio Code files 
-.vscode/*
-!.vscode/settings.json
+.vscode
+
 
 
 # Local History for Visual Studio Code
@@ -79,4 +79,4 @@ local.properties
 
 
 
-doc/html*
+# doc/html*

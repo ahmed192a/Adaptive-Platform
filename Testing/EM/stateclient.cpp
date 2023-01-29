@@ -7,20 +7,20 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#include "../../include/ara/exec/exec_error_domain.hpp"
-#include "../../include/ara/exec/function_group.hpp"
-#include "../../include/ara/exec/function_group_state.hpp"
-#include "../../include/ara/exec/state_client.hpp"
+#include "ara/exec/exec_error_domain.h"
+#include "ara/exec/function_group.h"
+#include "ara/exec/function_group_state.h"
+#include "ara/exec/state_client.h"
 
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <gtest/gtest.h>
-#include <boost/variant2/variant.hpp>
-extern int fg_num;
-using namespace boost::variant2;
+#include <variant>
+// extern int fg_num;
 #define FIFO_NAME "state_client_fifo"
+using namespace std;
 namespace ara
 {
     namespace exec
@@ -34,10 +34,10 @@ namespace ara
             mkfifo(FIFO_NAME, 0666);
             int fd = open(FIFO_NAME, O_RDWR);
             StateClient sc;
-            fg_num = 0;
+            // fg_num = 0;
             std::string msg;
             msg.resize(150);
-            const std::string cShortnamePath{"../App/manifest_samples/machine_manifest.json"};
+            const std::string cShortnamePath{"../App/Manifests/machine_manifest.json/MachineFG"};
             
             variant<ara::exec::ExecErrc, FunctionGroup::CtorToken> _functionGroup = FunctionGroup::Preconstruct(cShortnamePath);
             FunctionGroup FG(std::move(get<1>(_functionGroup)));
@@ -46,8 +46,8 @@ namespace ara
             
             FunctionGroupState functionGroupState(std::move(get<1>(_functionGroupState)));
 
-            std::future<boost::variant2::variant<boost::variant2::monostate, ara::exec::ExecErrc>> var0 =sc.SetState(functionGroupState);
-            boost::variant2::variant<boost::variant2::monostate, ara::exec::ExecErrc> var = var0.get();
+            std::future<std::variant<std::monostate, ara::exec::ExecErrc>> var0 =sc.SetState(functionGroupState);
+            std::variant<std::monostate, ara::exec::ExecErrc> var = var0.get();
             EXPECT_TRUE(var.index()==0);
             // get<1>(var).get();
             int n = read(fd,&msg[0],150);

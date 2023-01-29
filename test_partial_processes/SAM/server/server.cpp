@@ -9,9 +9,9 @@
 #include <signal.h>
 #include <memory>
 
-#include "ara/SD_s/skeleton.hpp"
-#include "ara/com/proxy_skeleton/definitions.hpp"
-#include "ara/com/deserializer.hpp"
+#include "SD_s/skeleton.h"
+#include "ara/com/proxy_skeleton/definitions.h"
+#include "ara/com/deserializer.h"
 
 #include <sys/mman.h>
 #include <sys/ipc.h>
@@ -47,7 +47,7 @@ int main()
 
         /// VARIABLES
         char buffer[256];
-        C_Info x;
+        // C_Info x;
         std::vector<uint8_t> msg;
         int msg_size;
         ara::com::Deserializer dser;
