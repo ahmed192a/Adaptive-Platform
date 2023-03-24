@@ -47,7 +47,7 @@ _deps
 
 # Visual Studio Code files 
 .vscode
-
+.cache
 
 
 # Local History for Visual Studio Code
