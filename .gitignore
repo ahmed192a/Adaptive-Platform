@@ -46,7 +46,7 @@ CTestTestfile.cmake
 _deps
 
 # Visual Studio Code files 
-.vscode
+.vscode/*
 .cache
 
 

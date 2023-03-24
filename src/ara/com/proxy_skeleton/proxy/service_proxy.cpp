@@ -19,6 +19,7 @@
 #include "ara/com/deserializer.h"
 #include "ara/com/serializer.h"
 #include <iostream>
+#include <thread>
 
 namespace ara
 {
