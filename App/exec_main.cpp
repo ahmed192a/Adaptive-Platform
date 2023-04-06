@@ -25,7 +25,6 @@
 #include <sys/wait.h>
 #include <filesystem>
 
-#include "ara/exec/parser/manifest_parser.h"
 #include "ara/exec/function_group.h"
 #include "ara/exec/function_group_state.h"
 #include "ara/Log_trace/Log.h"

@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include "ara/exec/parser/Parser.h"
-#include "ara/exec/parser/manifest_parser.h"
 
 using namespace ara::exec::parser;
 

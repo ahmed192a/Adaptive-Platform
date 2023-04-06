@@ -197,8 +197,7 @@ namespace ara
 					uint8_t interface_version,
 					ReturnCode Rcode,
 					MessageType Mtype) noexcept;  
-			// create a copy constructor
-			Message(const Message& other) noexcept = default;
+
 
 
 
