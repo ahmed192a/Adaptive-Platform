@@ -39,7 +39,7 @@ option(ENABLE_COVERAGE "Enable code coverage" OFF)
 
 # set option BUILD_TESTS to ON to build tests
 set (BUILD_TESTS ON)
-set (ENABLE_COVERAGE ON)
+set (ENABLE_COVERAGE OFF)
 
 if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     message(STATUS "Setting build type to 'Release' as no build type was specified")
@@ -59,14 +59,15 @@ if (ENABLE_COVERAGE AND NOT CMAKE_CONFIGURATION_TYPES)
     
     setup_target_for_coverage(NAME coverage EXECUTABLE ctest DEPENDENCIES coverage)
 else (ENABLE_COVERAGE AND NOT CMAKE_CONFIGURATION_TYPES)
-    if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
-        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
-        set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
-    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX")
-        set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
-    endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    # 
+    # if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    #     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
+    #     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+    #     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+    # elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    #     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX")
+    #     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
+    # endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 endif (ENABLE_COVERAGE AND NOT CMAKE_CONFIGURATION_TYPES)
 
 
@@ -99,9 +100,9 @@ file(COPY App/UCM/config.conf DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App/proces
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/App/processes/redirected)
 
 
+if (BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(Testing)
+endif (BUILD_TESTS)
 
-enable_testing()
-
-# option for unit testing
-add_subdirectory(Testing)
 

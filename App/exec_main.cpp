@@ -17,6 +17,7 @@
 #include <sys/stat.h>   // mkdir
 #include <dirent.h>    // opendir
 #include <filesystem> // to get all files in certain dir
+#include "ara/exec/parser/Parser.h"
 #include "errno.h"      // errno
 #include "unistd.h"
 #include <fcntl.h>
@@ -135,10 +136,20 @@ int main(int argc, char ** argv){
     /****************************** Main Logic of EM ***********************************/
     // get FG name and new state from SM an change the state
     while(sys_FG["MachineFG"].current_FGS->get_states() != "off"){
+        // clear the message
+        msg.clear();
+        msg.resize(MAX_BUF);                // resize the message to MAX_BUF bytes
         int n= read(fd, &msg[0], MAX_BUF); // read the state from SM
-        cout << "-    EM: New State from SM " <<endl;
+        if (n < 0) {
+            perror("EM: read");
+            // exit(1);
+            change_state("MachineFG", "off");
+            continue;
+        }
+        cout << "-    EM: New State from SM " << n << " "<< msg.substr(0, n) << endl;
         std::string FG_name = msg.substr(0, msg.find("/")); // get the FG name
         std::string new_state = msg.substr(msg.find("/")+1, n-(msg.find('/')+1)); // get the new state
+        cout << "-    EM: FG: " << FG_name << " New State: " << new_state << endl;
         change_state(FG_name, new_state); // change the state of FG
     }
     /***********************************************************************************/
@@ -158,16 +169,24 @@ int main(int argc, char ** argv){
  * @return void
  */
 int exec_init(){
-    //Parser Inistantiation
-    ManifestParser parser;              
-    //Parse Machine manifest
-    MachineManifest MM = parser.parse_machine_manifest(std::string(get_current_dir_name())+ MC_MF, sys_FG);
-    cout<<"- Machine Manifest ID: \""+MM.manifest_id+"\" Parsed Successfully, FGs No.: "<<sys_FG.size()<<endl;
-    //Parse Execution manifests
-    ExecutionManifest EM = parser.parse_execution_manifest(std::string(get_current_dir_name())+ EM_MF);
-    cout<<"- Execution Manifest ID: \""+EM.manifest_id+"\" Parsed Successfully, Processes No.: "<<EM.processes.size()<<endl;
-    //Fetching processes from execution manifest parser
-    process_pool = EM.processes;
+    
+    Parser MachineManifestParser(std::string(get_current_dir_name())+ MC_MF);
+    Parser ExecutionManifestParser(std::string(get_current_dir_name())+ EM_MF);
+    auto MM = MachineManifestParser.ParseMachineManifest(sys_FG);
+    if (MM == nullptr){
+        std::cerr << "Machine Manifest isn't Valid" <<std::endl;
+        exit(1); 
+    }
+    cout<<"- Machine Manifest ID: \""+MM->manifest_id+"\" Parsed Successfully, FGs No.: "<<sys_FG.size()<<endl;
+
+    auto EM = ExecutionManifestParser.ParseExecutionManifest();
+    if (EM == nullptr){
+        std::cerr << "Execution Manifest isn't Valid" <<std::endl;
+        exit(1); 
+    }
+    cout<<"- Execution Manifest ID: \""+EM->manifest_id+"\" Parsed Successfully, Processes No.: "<<EM->processes.size()<<endl;
+    process_pool = EM->processes; 
+   
     return 0;
 }
 /**

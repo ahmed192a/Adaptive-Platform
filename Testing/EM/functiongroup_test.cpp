@@ -108,8 +108,11 @@ namespace ara
          */
         TEST_F(FunctionGroupTest, Equality)
         {
-            FunctionGroup functionGroup(std::move(std::get<1>(_functionGroup_1)));
-            FunctionGroup otherFunctionGroup(std::move(get<1>(_functionGroup_1)));
+            FunctionGroup::CtorToken token1 = std::get<1>(_functionGroup_1);
+            FunctionGroup::CtorToken token2 = std::get<1>(_functionGroup_1);
+
+            FunctionGroup functionGroup(std::move(token1));
+            FunctionGroup otherFunctionGroup(std::move(token2));
 
             EXPECT_TRUE(functionGroup == otherFunctionGroup);
         }

@@ -14,25 +14,14 @@
 
 #include "ara/sm/diagnostic_reset/diagnostic_reset_types.h"
 
+namespace ara::sm::diagnostic_reset {
+struct MessageDiagnosticOutput {
+  DiagnosticResetMsg msg;
+};
+struct EventDiagnosticOutput {
+  DiagnosticResetRespMsg respMsg;
+};
 
-namespace ara
-{
-    namespace sm
-    {
-        namespace diagnostic_reset
-        {
-            struct MessageDiagnosticOutput
-            {
-                DiagnosticResetMsg msg;
-            };
-            struct EventDiagnosticOutput
-            {
-                DiagnosticResetRespMsg respMsg;
-            };
-        } // namespace DiagnosticReset
-
-    } // namespace sm
-
-} // namespace ara
+} // namespace ara::sm::diagnostic_reset
 
 #endif

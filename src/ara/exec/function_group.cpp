@@ -12,12 +12,12 @@
 #include <filesystem>
 #include "ara/exec/function_group.h"
 #include "ara/exec/parser/manifest_parser.h"
+#include <fstream>
 using namespace ara::exec;
 using namespace nlohmann;
-using namespace parser;
-// uint32_t fg_num = 0;
 
-std::variant<ara::exec::ExecErrc, FunctionGroup::CtorToken> FunctionGroup::Preconstruct(std::string metaModelIdentifier) noexcept
+
+std::variant<ara::exec::ExecErrc, FunctionGroup::CtorToken> FunctionGroup::Preconstruct(std::string const& metaModelIdentifier) noexcept
 {
     // metaModelIdentifier is the path to the manifest file and the last part of the path is the name of the function group
     // we need to get the function group name from the path and then search for it in the manifest file
@@ -25,70 +25,52 @@ std::variant<ara::exec::ExecErrc, FunctionGroup::CtorToken> FunctionGroup::Preco
     // if the function group is not found, we need to return ExecErrc::kMetaModelError
     std::string fg_name = metaModelIdentifier.substr(metaModelIdentifier.find_last_of("/") + 1);
     std::string path = metaModelIdentifier.substr(0, metaModelIdentifier.find_last_of("/"));
-    // std::cout << "fg_name: " << fg_name << std::endl;
-    // std::cout << "path: " << path << std::endl;
     std::variant<ara::exec::ExecErrc, FunctionGroup::CtorToken> token;
-    if (!std::filesystem::exists(path))
-    {
-        token.emplace<0>(ara::exec::ExecErrc::kMetaModelError);
-        return token;
+    std::ifstream ifs(path);
+    json manifest_json_full;
+    if (!ifs.good()) {
+      std::cerr << "File does not exist." << std::endl;
+      exit(1);
     }
-    using namespace MMJsonKeys;
-    auto manifest_json_full = read_manifest_file(path);
-    MachineManifest man{};
-    if (! validate_content(manifest_json_full, kAsVector)){
-        token.emplace<0>(ara::exec::ExecErrc::kMetaModelError);
-        return token;
-    }
+    ifs >> manifest_json_full;
 
-    json manifest_json_content{};
-    read_value(manifest_json_full, kMachineManifest, manifest_json_content);
+    json mode_declaration_groups = manifest_json_full["Machine_manifest"]["Mode_declaration_group"];
 
-    json mode_declaration_groups{};
 
-    if (read_value(manifest_json_content, kModeDeclarationGroup, mode_declaration_groups))
-    {
         // find fg_name in mode_declaration_groups
         for (auto &mode_declaration_group : mode_declaration_groups)
         {
-            if (mode_declaration_group[kFunctionGroupName] == fg_name)
+            if (mode_declaration_group["Function_group_name"] == fg_name)
             {
                 token.emplace<1>(mode_declaration_group);
                 return token;
             }
             
         }
-    }
+    
     token.emplace<0>(ara::exec::ExecErrc::kMetaModelError);
     return token;
 }
 
 FunctionGroup::FunctionGroup(FunctionGroup::CtorToken &&token) noexcept
 {
-    using namespace MMJsonKeys;
-    read_value(token, kFunctionGroupName, mFunction_group_name);
-
-    json mode_declarations{};
-    if (read_value(token, kModeDeclarations, mode_declarations))
+    FunctionGroup::CtorToken _token = std::move(token);
+    mFunction_group_name = _token["Function_group_name"];
+    auto mode_declarations = _token["Mode_declarations"];
+    for (auto const &mode_declaration : mode_declarations)
     {
-        for (auto &mode_declaration : mode_declarations)
-        {
-            std::string mode;
-            read_value(mode_declaration, kMode, mode);
-            mstates.push_back(mode);
-        }
+        std::string mode = mode_declaration["Mode"];
+        mstates.push_back(mode);
     }
+    
 }
 
-FunctionGroup::~FunctionGroup() noexcept
-{
-}
 
-void FunctionGroup::set_FGname(std::string fg_name)
+void FunctionGroup::set_FGname(std::string const& fg_name)
 {
     mFunction_group_name = fg_name;
 }
-void FunctionGroup::set_states(std::vector<std::string> states)
+void FunctionGroup::set_states(std::vector<std::string> const& states)
 {
     mstates = states;
 }
@@ -117,11 +99,4 @@ bool FunctionGroup::operator!=(FunctionGroup const &other) const noexcept
         return false;
     }
     return true;
-}
-
-FunctionGroup &FunctionGroup::operator=(FunctionGroup &&other)
-{
-    this->mFunction_group_name = std::move(other.mFunction_group_name);
-    this->mstates = std::move(other.mstates);
-    return *this;
 }

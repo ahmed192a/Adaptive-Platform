@@ -71,9 +71,12 @@ namespace ara
             FunctionGroup FG(std::move(get<1>(_functionGroup)));
 
             variant<ara::exec::ExecErrc, FunctionGroupState::CtorToken> _functionGroupState = FunctionGroupState::Preconstruct(FG, FG.get_FGname() + "/" + FG.get_states()[0]);
+            // create a copy _functionGroupState
+            FunctionGroupState::CtorToken token1 = get<1>(_functionGroupState);
+            FunctionGroupState::CtorToken token2 = get<1>(_functionGroupState);
 
-            FunctionGroupState functionGroupState(std::move(get<1>(_functionGroupState)));
-            FunctionGroupState otherfunctionGroupState(std::move(get<1>(_functionGroupState)));
+            FunctionGroupState functionGroupState(std::move(token1));
+            FunctionGroupState otherfunctionGroupState(std::move(token2));
 
             EXPECT_TRUE(functionGroupState == otherfunctionGroupState);
         }
