@@ -44,13 +44,19 @@ macro(create_library)
     PUBLIC 
     ${create_library_INCLUDES}
   )
-
-  # link the library with its external dependencies
-  target_link_libraries(
-    ${create_library_LIBNAME}
-    PUBLIC
-    ${create_library_DEPENDS}
-  )
+  # check if list create_library_DEPENDS is not empty
+  if (NOT create_library_DEPENDS STREQUAL "")
+    if (create_library_STATIC)
+      set(create_library_DEPENDS ${create_library_DEPENDS} -static)
+    endif()
+    
+    # link the library with its external dependencies
+    target_link_libraries(
+      ${create_library_LIBNAME}
+      PUBLIC
+      ${create_library_DEPENDS}
+    )
+  endif()
 
   # add -std=gnu++17 to the compile flags
   target_compile_options(
