@@ -16,4 +16,5 @@ TEST(MarshalTest, MarshalTest)
     auto args = m.get_args<int, float>(payload);
 
     auto result = std::apply(test1, args);
+    EXPECT_EQ(result, 3.2f);
 }
