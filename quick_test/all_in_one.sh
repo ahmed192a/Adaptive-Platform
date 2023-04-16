@@ -52,13 +52,14 @@ case $choice in
 2)  # run
     echo "Current PID: $$";
     echo "build and run cloud server"
-    cd ../Cloud
-    g++ server.cpp metadata.h -o output.exe
-    gnome-terminal -- './output.exe';
+    # cd ../Cloud
+    cd build/Cloud;
+    # g++ server.cpp metadata.h -o output.exe
+    gnome-terminal -- './Cloud';
     # wait for 1 second
     sleep 1; 
     echo "Run adaptive platform"
-    cd ../build/App;
+    cd ../App;
     ./Adaptive_Platform
     ;;
 3)  # test

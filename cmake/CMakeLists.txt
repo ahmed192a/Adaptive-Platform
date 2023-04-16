@@ -1,5 +1,17 @@
-Set(FETCHCONTENT_QUIET FALSE)
+########################################################################
+#
+# Dependencies:
+# FetchContent added in CMake 3.11, downloads during the configure step
+include(FetchContent)
+# FetchContent_MakeAvailable was not added until CMake 3.14; use our shim
+if(${CMAKE_VERSION} VERSION_LESS 3.14)
+  include(add_FetchContent_MakeAvailable.cmake)
+endif()
 
+Set(FETCHCONTENT_QUIET FALSE)
+if (${ENABLE_COVERAGE})
+include (coverageModule.cmake)
+endif()
 
 ############################################################################################
 # Install json lib  
