@@ -71,12 +71,11 @@ message(STATUS "Fetching P7 library")
 FetchContent_Declare(
         p7
         GIT_REPOSITORY https://github.com/CMakePorts/libp7-baical.git
-        GIT_TAG  v5.2
+        GIT_TAG  v5.0
         GIT_SHALLOW TRUE
         GIT_PROGRESS TRUE)
-# disable tests and benchmarks
-set(UUID_BUILD_TESTS OFF CACHE INTERNAL "")
-set(UUID_BUILD_BENCHMARKS OFF CACHE INTERNAL "")
+
+        
 FetchContent_MakeAvailable(p7) 
 
 ############################################################################################

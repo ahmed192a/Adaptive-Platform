@@ -418,10 +418,10 @@ namespace ara
                 /// method id
                 const int methodid = 13;
 
-                uint8_t stringToUint8_t(string str)
+                uint8_t stringToUint8_t(std::string str)
                 {
                     uint8_t result;
-                    stringstream ss;
+                    std::stringstream ss;
                     ss << std::hex << str;
                     ss >> result;
                     return result;

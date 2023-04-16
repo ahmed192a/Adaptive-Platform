@@ -53,7 +53,7 @@ case $choice in
     echo "Current PID: $$";
     echo "build and run cloud server"
     # cd ../Cloud
-    cd build/Cloud;
+    cd ../build/Cloud;
     # g++ server.cpp metadata.h -o output.exe
     gnome-terminal -- './Cloud';
     # wait for 1 second
