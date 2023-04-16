@@ -205,11 +205,29 @@ protected:
   template <typename Class, typename R, typename... Args>
   void HandleCall(Class &c, std::future<R> (Class::*method)(Args...),
                   SOMEIP_MESSAGE::Message msg, Socket &binding) {
-    /**
-     * @brief Construct a new s Handle Call object
-     *
-     */
-    sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
+    // sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
+    Marshal marshal;
+    auto arg_payload = msg.GetPayload();
+    auto args = marshal.get_args<Args...>(arg_payload);
+    auto f_result = std::apply(method, std::tuple_cat(std::make_tuple(&c), args));
+    R result = f_result.get();
+    auto payload = marshal.serialize_params(result);
+                  
+
+    SOMEIP_MESSAGE::Message R_msg(
+         SOMEIP_MESSAGE::Message_ID{
+            this->m_service_id,
+            (uint16_t)(msg.MessageId().method_id & 0x7fff)},
+        SOMEIP_MESSAGE::Request_ID{5, 6},
+        2, // protocol version
+        7, // Interface Version
+        SOMEIP_MESSAGE::MessageType::RESPONSE);
+    R_msg.SetPayload(payload);
+    std::vector<uint8_t> _Payload = R_msg.Serializer();
+    unsigned long size = _Payload.size();
+    binding.Send(&size, sizeof(size));
+    binding.Send(_Payload.data(), size);
+    binding.CloseSocket();
   }
   /**/
   /**
@@ -225,7 +243,27 @@ protected:
   template <typename Class, typename... Args>
   void HandleCall(Class &c, std::future<void> (Class::*method)(Args...),
                   SOMEIP_MESSAGE::Message msg, Socket &binding) {
-    sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
+    // sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
+    Marshal marshal;
+    auto arg_payload = msg.GetPayload();
+    auto args = marshal.get_args<Args...>(arg_payload);
+    auto f_result = std::apply(method, std::tuple_cat(std::make_tuple(&c), args));
+    f_result.get();
+                  
+
+    SOMEIP_MESSAGE::Message R_msg(
+         SOMEIP_MESSAGE::Message_ID{
+            this->m_service_id,
+            (uint16_t)(msg.MessageId().method_id & 0x7fff)},
+        SOMEIP_MESSAGE::Request_ID{5, 6},
+        2, // protocol version
+        7, // Interface Version
+        SOMEIP_MESSAGE::MessageType::RESPONSE);
+    std::vector<uint8_t> _Payload = R_msg.Serializer();
+    unsigned long size = _Payload.size();
+    binding.Send(&size, sizeof(size));
+    binding.Send(_Payload.data(), size);
+    binding.CloseSocket();
   }
   /**
    * @brief 3- HandleCall R
@@ -306,11 +344,26 @@ protected:
   template <typename Class, typename... Args>
   void HandleCall(Class &c, void (Class::*method)(Args...),
                   SOMEIP_MESSAGE::Message msg, Socket &binding) {
-    /**
-     * @brief Construct a new s Handle Call object
-     *
-     */
-    sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
+
+    // sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
+    Marshal marshal;
+    auto arg_payload = msg.GetPayload();
+    auto args = marshal.get_args<Args...>(arg_payload);
+    std::apply(method, std::tuple_cat(std::make_tuple(&c), args));                  
+
+    SOMEIP_MESSAGE::Message R_msg(
+         SOMEIP_MESSAGE::Message_ID{
+            this->m_service_id,
+            (uint16_t)(msg.MessageId().method_id & 0x7fff)},
+        SOMEIP_MESSAGE::Request_ID{5, 6},
+        2, // protocol version
+        7, // Interface Version
+        SOMEIP_MESSAGE::MessageType::RESPONSE);
+    std::vector<uint8_t> _Payload = R_msg.Serializer();
+    unsigned long size = _Payload.size();
+    binding.Send(&size, sizeof(size));
+    binding.Send(_Payload.data(), size);
+    binding.CloseSocket();
   }
   /**
    * @brief 6- HandleCall void
@@ -324,8 +377,8 @@ protected:
   template <typename Class>
   void HandleCall(Class &c, void (Class::*method)(),
                   SOMEIP_MESSAGE::Message msg, Socket &binding) {
-    (c.*method)();
     binding.CloseSocket();
+    (c.*method)();
   }
   /**
    * @brief No Handler --> handle error
@@ -350,100 +403,100 @@ protected:
   }
 
 private:
-  /**
-   * @brief sHandleCall
-   *
-   * @tparam Class    Class to call the method on
-   * @tparam R        Return type of the method
-   * @tparam Args     Argument types of the method
-   * @tparam index    index of the method
-   * @param c         object of type Class to call the method on
-   * @param method    method to be called
-   * @param msg       message from client
-   * @param binding   binding of the client
-   */
-  template <typename Class, typename R, typename... Args, std::size_t... index>
-  void sHandleCall(Class &c, std::future<R> (Class::*method)(Args...),
-                   SOMEIP_MESSAGE::Message msg, Socket &binding,
-                   std::index_sequence<index...>) {
-    SOMEIP_MESSAGE::Message R_msg(
-        SOMEIP_MESSAGE::Message_ID{this->m_service_id,
-                                   msg.MessageId().method_id},
-        SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
-        7, // Interface Version
-        SOMEIP_MESSAGE::MessageType::RESPONSE);
+  // /**
+  //  * @brief sHandleCall
+  //  *
+  //  * @tparam Class    Class to call the method on
+  //  * @tparam R        Return type of the method
+  //  * @tparam Args     Argument types of the method
+  //  * @tparam index    index of the method
+  //  * @param c         object of type Class to call the method on
+  //  * @param method    method to be called
+  //  * @param msg       message from client
+  //  * @param binding   binding of the client
+  //  */
+  // template <typename Class, typename R, typename... Args, std::size_t... index>
+  // void sHandleCall(Class &c, std::future<R> (Class::*method)(Args...),
+  //                  SOMEIP_MESSAGE::Message msg, Socket &binding,
+  //                  std::index_sequence<index...>) {
+  //   SOMEIP_MESSAGE::Message R_msg(
+  //       SOMEIP_MESSAGE::Message_ID{this->m_service_id,
+  //                                  msg.MessageId().method_id},
+  //       SOMEIP_MESSAGE::Request_ID{5, 6},
+  //       2, // protocol version
+  //       7, // Interface Version
+  //       SOMEIP_MESSAGE::MessageType::RESPONSE);
 
-    vector<uint8_t> payload = msg.getload();
-    ara::com::Deserializer dser;
-    uint64_t xx = dser.deserialize<uint64_t>(payload, 0);
+  //   vector<uint8_t> payload = msg.getload();
+  //   ara::com::Deserializer dser;
+  //   uint64_t xx = dser.deserialize<uint64_t>(payload, 0);
 
-    Marshal<Args...> unmarshaller(payload);
-    std::future<R> result =
-        (c.*method)(unmarshaller.template unmarshal<index>()...);
-    R rval = result.get();
-    ara::com::Serializer ser;
-    ser.serialize(rval);
-    std::vector<uint8_t> _payload = ser.Payload();
-    R_msg.SetPayload(_payload);
-    _payload = R_msg.Serializer();
-    uint32_t msg_size = _payload.size();
-    binding.Send(&msg_size, sizeof(msg_size));
-    binding.Send(_payload.data(), msg_size);
-    binding.CloseSocket();
-  }
-  /**
-   * @brief sHandleCall handle return type future void
-   *
-   * @tparam Class        Class to call the method on
-   * @tparam Args         Argument types of the method
-   * @tparam index        index of the method
-   * @param c             object of type Class to call the method on
-   * @param method        method to be called
-   * @param msg           message from client
-   * @param binding       binding of the client
-   */
-  template <typename Class, typename... Args, std::size_t... index>
-  void sHandleCall(Class &c, std::future<void> (Class::*method)(Args...),
-                   SOMEIP_MESSAGE::Message msg, Socket binding,
-                   std::index_sequence<index...>) {
-    SOMEIP_MESSAGE::Message R_msg(
-        SOMEIP_MESSAGE::Message_ID{this->m_service_id,
-                                   msg.MessageId().method_id},
-        SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
-        7, // Interface Version
-        SOMEIP_MESSAGE::MessageType::RESPONSE);
+  //   Marshal<Args...> unmarshaller(payload);
+  //   std::future<R> result =
+  //       (c.*method)(unmarshaller.template unmarshal<index>()...);
+  //   R rval = result.get();
+  //   ara::com::Serializer ser;
+  //   ser.serialize(rval);
+  //   std::vector<uint8_t> _payload = ser.Payload();
+  //   R_msg.SetPayload(_payload);
+  //   _payload = R_msg.Serializer();
+  //   uint32_t msg_size = _payload.size();
+  //   binding.Send(&msg_size, sizeof(msg_size));
+  //   binding.Send(_payload.data(), msg_size);
+  //   binding.CloseSocket();
+  // }
+  // /**
+  //  * @brief sHandleCall handle return type future void
+  //  *
+  //  * @tparam Class        Class to call the method on
+  //  * @tparam Args         Argument types of the method
+  //  * @tparam index        index of the method
+  //  * @param c             object of type Class to call the method on
+  //  * @param method        method to be called
+  //  * @param msg           message from client
+  //  * @param binding       binding of the client
+  //  */
+  // template <typename Class, typename... Args, std::size_t... index>
+  // void sHandleCall(Class &c, std::future<void> (Class::*method)(Args...),
+  //                  SOMEIP_MESSAGE::Message msg, Socket binding,
+  //                  std::index_sequence<index...>) {
+  //   SOMEIP_MESSAGE::Message R_msg(
+  //       SOMEIP_MESSAGE::Message_ID{this->m_service_id,
+  //                                  msg.MessageId().method_id},
+  //       SOMEIP_MESSAGE::Request_ID{5, 6},
+  //       2, // protocol version
+  //       7, // Interface Version
+  //       SOMEIP_MESSAGE::MessageType::RESPONSE);
 
-    Marshal<Args...> unmarshaller(msg.GetPayload());
+  //   Marshal<Args...> unmarshaller(msg.GetPayload());
 
-    std::future<void> f =
-        (c.*method)(unmarshaller.template unmarshal<index>()...);
-    f.get();
-    std::vector<uint8_t> _payload = R_msg.Serializer();
-    uint32_t msg_size = _payload.size();
-    binding.Send(&msg_size, sizeof(msg_size));
-    binding.Send(_payload.data(), msg_size);
-    binding.CloseSocket();
-  }
-  /**
-   * @brief sHandleCall handle return type void
-   *
-   * @tparam Class    Class to call the method on
-   * @tparam Args     The types of the arguments to the method
-   * @tparam index    The size of the index sequence
-   * @param c         The object to call the method on
-   * @param method    The method to call
-   * @param msg       The message to handle
-   * @param binding   The socket to send the response on
-   */
-  template <typename Class, typename... Args, std::size_t... index>
-  void sHandleCall(Class &c, void (Class::*method)(Args...),
-                   SOMEIP_MESSAGE::Message msg, Socket &binding,
-                   std::index_sequence<index...>) {
-    Marshal<Args...> unmarshaller(msg.GetPayload());
-    (c.*method)(unmarshaller.template unmarshal<index>()...);
-  }
+  //   std::future<void> f =
+  //       (c.*method)(unmarshaller.template unmarshal<index>()...);
+  //   f.get();
+  //   std::vector<uint8_t> _payload = R_msg.Serializer();
+  //   uint32_t msg_size = _payload.size();
+  //   binding.Send(&msg_size, sizeof(msg_size));
+  //   binding.Send(_payload.data(), msg_size);
+  //   binding.CloseSocket();
+  // }
+  // /**
+  //  * @brief sHandleCall handle return type void
+  //  *
+  //  * @tparam Class    Class to call the method on
+  //  * @tparam Args     The types of the arguments to the method
+  //  * @tparam index    The size of the index sequence
+  //  * @param c         The object to call the method on
+  //  * @param method    The method to call
+  //  * @param msg       The message to handle
+  //  * @param binding   The socket to send the response on
+  //  */
+  // template <typename Class, typename... Args, std::size_t... index>
+  // void sHandleCall(Class &c, void (Class::*method)(Args...),
+  //                  SOMEIP_MESSAGE::Message msg, Socket &binding,
+  //                  std::index_sequence<index...>) {
+  //   Marshal<Args...> unmarshaller(msg.GetPayload());
+  //   (c.*method)(unmarshaller.template unmarshal<index>()...);
+  // }
   // Private variables
   struct sockaddr_in cliaddr;
   ara::com::MethodCallProcessingMode m_mode;
