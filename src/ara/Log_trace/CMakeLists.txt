@@ -1,13 +1,11 @@
 create_library(
         ${LIB_BUILD_TYPE}
     LIBNAME
-        ara_com_lib
+        ara_log_lib
     SOURCES_DIR
         ${CMAKE_CURRENT_SOURCE_DIR}
     INCLUDES
         ${PROJECT_SOURCE_DIR}/src
     DEPENDS
-        nlohmann_json::nlohmann_json
-        pthread
-        stduuid
+    spdlog
 )

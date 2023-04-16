@@ -1,7 +1,7 @@
 create_library(
         ${LIB_BUILD_TYPE}
     LIBNAME
-        ara_com_lib
+        ara_core_lib
     SOURCES_DIR
         ${CMAKE_CURRENT_SOURCE_DIR}
     INCLUDES
@@ -9,5 +9,4 @@ create_library(
     DEPENDS
         nlohmann_json::nlohmann_json
         pthread
-        stduuid
 )

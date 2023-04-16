@@ -1,0 +1,11 @@
+create_library(
+        ${LIB_BUILD_TYPE}
+    LIBNAME
+        sds_lib
+    SOURCES_DIR
+        ${CMAKE_CURRENT_SOURCE_DIR}
+    INCLUDES
+        ${PROJECT_SOURCE_DIR}/src
+    DEPENDS
+        ara_com_lib
+)

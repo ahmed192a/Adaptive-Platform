@@ -1,0 +1,6 @@
+add_subdirectory(com)
+add_subdirectory(core)
+add_subdirectory(exec)
+add_subdirectory(Log_trace)
+add_subdirectory(sm)
+add_subdirectory(ucm)
