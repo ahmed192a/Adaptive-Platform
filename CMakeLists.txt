@@ -28,12 +28,17 @@ set (CMAKE_INSTALL_BINDIR               ${CMAKE_BINARY_DIR}/install/bin)
 
 
 # set option BUILD_TESTS to ON to build tests
-option(BUILD_TESTS "Build tests" OFF)
-option(ENABLE_COVERAGE "Enable code coverage" OFF)
+option(BUILD_TESTS      "Build tests"           OFF)
+option(ENABLE_COVERAGE  "Enable code coverage"  OFF)
 
 # set option BUILD_TESTS to ON to build tests
-set (BUILD_TESTS ON)
-set (ENABLE_COVERAGE OFF)
+set (BUILD_TESTS                                ON)
+set (ENABLE_COVERAGE                            OFF)
+set (LIB_BUILD_TYPE                             STATIC)
+
+message(STATUS "BUILD_TESTS: ${BUILD_TESTS}")
+message(STATUS "ENABLE_COVERAGE: ${ENABLE_COVERAGE}")
+message(STATUS "LIB_BUILD_TYPE: ${LIB_BUILD_TYPE}")
 
 
 

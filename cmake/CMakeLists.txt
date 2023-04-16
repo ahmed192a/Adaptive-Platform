@@ -10,7 +10,7 @@ endif()
 
 Set(FETCHCONTENT_QUIET FALSE)
 if (${ENABLE_COVERAGE})
-include (coverageModule.cmake)
+        include (coverageModule.cmake)
 endif()
 
 ############################################################################################

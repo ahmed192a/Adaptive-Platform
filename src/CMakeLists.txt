@@ -14,7 +14,6 @@ set(source_ara_com_dir "${CMAKE_SOURCE_DIR}/src/ara/com")
 set(source_ara_exec_dir "${CMAKE_SOURCE_DIR}/src/ara/exec")
 set(source_ara_log_dir "${CMAKE_SOURCE_DIR}/src/ara/Log_trace")
 set(source_ara_sm_dir "${CMAKE_SOURCE_DIR}/src/ara/sm")
-# set(source_ara_crypto_dir "${CMAKE_SOURCE_DIR}/src/ara/crypto")
 set(source_ara_ucm_dir "${CMAKE_SOURCE_DIR}/src/ara/ucm")
 
 file(GLOB_RECURSE HEADER_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.h")
@@ -24,7 +23,6 @@ file (GLOB_RECURSE source_ara_com_files "${source_ara_com_dir}/*.cpp" "${source_
 file (GLOB_RECURSE source_ara_exec_files "${source_ara_exec_dir}/*.cpp" "${source_ara_exec_dir}/*.h")
 file (GLOB_RECURSE source_ara_log_files "${source_ara_log_dir}/*.cpp" "${source_ara_log_dir}/*.h")
 file (GLOB_RECURSE source_ara_sm_files "${source_ara_sm_dir}/*.cpp" "${source_ara_sm_dir}/*.h")
-# file (GLOB_RECURSE source_ara_crypto_files "${source_ara_crypto_dir}/*.cpp" "${source_ara_crypto_dir}/*.h")
 file (GLOB_RECURSE source_ara_ucm_files "${source_ara_ucm_dir}/*.cpp" "${source_ara_ucm_dir}/*.h")
 
 add_library(
@@ -52,10 +50,7 @@ add_library(
   ${source_ara_sm_files}
 )
 
-# add_library(
-#   ara_crypto_lib
-#   ${source_ara_crypto_files}
-# )
+
 
 add_library(
   ara_ucm_lib
