@@ -8,4 +8,5 @@ create_library(
         ${PROJECT_SOURCE_DIR}/src
     DEPENDS
         ara_com_lib
+        uuid_v4
 )
