@@ -34,7 +34,7 @@ option(ENABLE_COVERAGE  "Enable code coverage"  OFF)
 # set option BUILD_TESTS to ON to build tests
 set (BUILD_TESTS                                ON)
 set (ENABLE_COVERAGE                            OFF)
-set (LIB_BUILD_TYPE                             STATIC)
+set (LIB_BUILD_TYPE                             SHARED)
 
 message(STATUS "BUILD_TESTS: ${BUILD_TESTS}")
 message(STATUS "ENABLE_COVERAGE: ${ENABLE_COVERAGE}")
@@ -50,7 +50,7 @@ add_subdirectory(cmake)
 add_subdirectory(Cloud)
 add_subdirectory(src)
 add_subdirectory(App)
-
+add_subdirectory(test_partial_processes)
 
 ## For Subsystem testing
 

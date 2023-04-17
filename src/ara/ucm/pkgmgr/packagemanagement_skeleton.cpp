@@ -550,7 +550,7 @@ void ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::field_method_dispatc
     switch (event_id)
     {
     case 0:                                                                  /* Id of CurrentStatus Field   */
-        if (message.Length() > ara::com::SOMEIP_MESSAGE::Header::HeaderSize) /* if Message has payload So it's Set request with the new data  */
+        if (message.Length() > ara::com::SOMEIP_MESSAGE::Message::HeaderSize) /* if Message has payload So it's Set request with the new data  */
         {
             /*    CurrentStatus does't have setter   */
             NoMethodHandler(event_id, cserver); /* Send Error Message unknown event_id  */

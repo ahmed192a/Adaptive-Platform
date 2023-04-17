@@ -3,202 +3,108 @@
  * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-03-07
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
-#include"ara/com/SOMEIP/Message.h"
+#include "ara/com/SOMEIP/Message.h"
+#include <cstdint>
+#include <cstring>
 #include <unistd.h>
 
-namespace ara
-{
-    namespace com
-    {
-        namespace SOMEIP_MESSAGE
-        {
-            Message::Message(
-                struct Message_ID mID,
-                struct Request_ID rID,
-                uint8_t protocol_version,
-                uint8_t interface_version,
-                enum MessageType Mtype,
-                enum ReturnCode Rcode)noexcept:
-            Header(mID,rID,protocol_version,interface_version,Mtype,Rcode)
-            {}
-            Message::Message(
-                struct Message_ID mID,
-                struct Request_ID rID,
-                uint8_t protocol_version,
-                uint8_t interface_version,
-                enum MessageType Mtype)noexcept:
-            Message( 
-                mID, 
-                rID, 
-                protocol_version, 
-                interface_version, 
-                Mtype, 
-                ReturnCode::E_OK)
-            {
-               
-                
-            }
+namespace ara::com::SOMEIP_MESSAGE {
+Message::Message(struct Message_ID mID, struct Request_ID rID,
+                 uint8_t protocol_version, uint8_t interface_version,
+                 enum MessageType Mtype, enum ReturnCode Rcode) noexcept
+    : header{mID.serivce_id,
+             mID.method_id,
+             16,
+             rID.client_id,
+             rID.session_id,
+             protocol_version,
+             interface_version,
+             static_cast<uint8_t>(Mtype),
+             static_cast<uint8_t>(Rcode)}
 
-            Message::Message(
-                Request_ID rID,
-                Message_ID mID,
-                uint8_t protocol_version,
-                uint8_t interface_version,
-                ReturnCode Rcode,
-                MessageType Mtype
-                )noexcept:
-            Message( mID, rID, protocol_version, interface_version, Mtype, Rcode)
-            {
-              
+{}
+Message::Message(struct Message_ID mID, struct Request_ID rID,
+                 uint8_t protocol_version, uint8_t interface_version,
+                 enum MessageType Mtype) noexcept
+    : Message(mID, rID, protocol_version, interface_version, Mtype,
+              ReturnCode::E_OK) {}
 
-            }
-            struct Message_ID Message::MessageId() const noexcept
-            {
-                return GBMessageID;
-            }
-
-            uint16_t Message::ClientId() const noexcept
-            {
-                return GBRequest_ID.client_id;
-            }
-
-            uint16_t Message::SessionId() const noexcept
-            {
-                return GBRequest_ID.session_id;
-            }
-            
-            void Message::SetSessionId(uint16_t sessionId)
-            {
-                GBRequest_ID.session_id = sessionId;
-            }
-
-            bool Message::IncrementSessionId() noexcept
-            {
-                const uint8_t SessionIdMin = 1;
-                constexpr uint8_t SessionIdMax = std::numeric_limits<uint8_t>::max();
-
-                if ( GBRequest_ID.session_id == SessionIdMax)
-                {
-                    GBRequest_ID.session_id= SessionIdMin;
-                    return true;
-                }
-                else
-                {
-                    GBRequest_ID.session_id++;
-                    return false;
-                }
-            }
-            
-            uint8_t Message::ProtocolVersion() const noexcept
-            {
-                return GBProtocol_Version;
-            }
-
-            uint8_t Message::InterfaceVersion() const noexcept
-            {
-                return GBinterface_version;
-            }
-
-            MessageType Message::Messagetype() const noexcept
-            {
-                return GBMessageType;
-            }
-
-            ReturnCode Message::Returncode() const noexcept
-            {
-                return GBReturnCode;
-            }
-            uint32_t Message::Length() noexcept {
-					return GBlength;
-				}
-
-            std::vector<uint8_t> Message::Serializer() 
-            {
-                std::vector<uint8_t> result;
-                Message_ID mid = MessageId();
-
-                helper::Inject(result, mid.serivce_id);
-                helper::Inject(result, mid.method_id); 
-                helper::Inject(result, GBlength);
-                helper::Inject(result, ClientId());
-                helper::Inject(result, SessionId());
-                result.push_back(ProtocolVersion());
-                result.push_back(InterfaceVersion());
-
-                uint8_t messageType = static_cast<uint8_t>(MessageType());
-                result.push_back(messageType);
-
-                uint8_t returnCode = static_cast<uint8_t>(ReturnCode());
-                result.push_back(returnCode);
-                // concatenate result and payload and put them in the result
-                result.insert(result.end(), payload.begin(), payload.end());
-
-                return result;
-            }
-            void Message::SetPayload(std::vector<uint8_t>&data){
-                payload = data;
-                GBlength+=payload.size();
-            }
-
-            std::vector<uint8_t> Message::GetPayload()
-            {
-                return payload;
-            }
-
-            Message Message::Deserialize(const std::vector<uint8_t> &msg)
-            {
-                
-                uint32_t offset = 0;
-                Message_ID _mid;
-                _mid.serivce_id = msg[offset]<<8 | msg[offset+1];
-                _mid.method_id = msg[offset+2]<<8 | msg[offset+3];
-                offset += 4;
-                uint32_t length ;
-                length = msg[offset] <<24 | msg[offset+1] << 16 | msg[offset+2] << 8 | msg[offset+3];
-                offset += 4;
-                Request_ID _rid;
-                _rid.client_id = msg[offset]<<8 | msg[offset+1];
-                _rid.session_id = msg[offset+2]<<8 | msg[offset+3];
-                offset += 4;
-
-                uint8_t GBProtocol_Version = msg[offset];
-                uint8_t GBinterface_version = msg[offset+1];
-                MessageType GBMessageType = static_cast<MessageType>(msg[offset+2]);
-                ReturnCode GBReturnCode = static_cast<ReturnCode>(msg[offset+3]);
-                offset += 4;
-
-                Message m (_mid, _rid, GBProtocol_Version, GBinterface_version, GBMessageType, GBReturnCode);
-               
-                
-                if(length > Header::HeaderSize){
-                    std::vector<uint8_t> pay = {msg.begin()+offset, msg.begin()+length};
-                    m.SetPayload(pay);
-                }
-                return m;
-            }
-
-
-            Message& Message::operator=(Message &msg){
-                GBMessageID = msg.MessageId();
-                GBlength = msg.Length();
-                GBRequest_ID.client_id = msg.ClientId();
-                GBRequest_ID.session_id = msg.SessionId();
-                GBProtocol_Version = msg.ProtocolVersion();
-                GBinterface_version = msg.InterfaceVersion();
-                GBMessageType = msg.Messagetype();
-                GBReturnCode = msg.Returncode();
-                payload = msg.Serializer();
-                return *this;
-            }
-
-            std::vector<uint8_t> Message::getload(){
-                return payload;
-            }
-
-        }
-    }
+Message::Message(Request_ID rID, Message_ID mID, uint8_t protocol_version,
+                 uint8_t interface_version, ReturnCode Rcode,
+                 MessageType Mtype) noexcept
+    : Message(mID, rID, protocol_version, interface_version, Mtype, Rcode) {}
+struct Message_ID Message::MessageId() const noexcept {
+  return {(uint16_t)header.service_id, (uint16_t)header.method_id};
 }
+
+uint16_t Message::ClientId() const noexcept { return header.client_id; }
+
+uint16_t Message::SessionId() const noexcept { return header.session_id; }
+
+void Message::SetSessionId(uint16_t sessionId) {
+  header.session_id = sessionId;
+}
+
+bool Message::IncrementSessionId() noexcept {
+  const uint8_t SessionIdMin = 1;
+  constexpr uint8_t SessionIdMax = std::numeric_limits<uint8_t>::max();
+
+  if (header.session_id == SessionIdMax) {
+    header.session_id = SessionIdMin;
+    return true;
+  } else {
+    header.session_id++;
+    return false;
+  }
+}
+
+uint8_t Message::ProtocolVersion() const noexcept {
+  return header.protocol_version;
+}
+
+uint8_t Message::InterfaceVersion() const noexcept {
+  return header.protocol_version;
+}
+
+MessageType Message::Messagetype() const noexcept {
+  return static_cast<MessageType>(header.message_type);
+}
+
+ReturnCode Message::Returncode() const noexcept {
+  return static_cast<ReturnCode>(header.return_code);
+}
+
+uint32_t Message::Length() noexcept { return header.length; }
+
+std::vector<uint8_t> Message::Serializer() {
+  std::vector<uint8_t> result(HeaderSize, 0);
+  memcpy(result.data(), &header, HeaderSize);
+
+  // concatenate result and payload and put them in the result
+  result.insert(result.end(), payload.begin(), payload.end());
+
+  return result;
+}
+void Message::SetPayload(std::vector<uint8_t> const &data) {
+  payload = data;
+  header.length += payload.size();
+}
+
+std::vector<uint8_t> Message::GetPayload() const { return payload; }
+
+Message Message::Deserialize(const std::vector<uint8_t> &msg) {
+  header_t header;
+  memcpy(&header, msg.data(), HeaderSize);
+  std::vector<uint8_t> payload;
+  if (header.length > HeaderSize) {
+    payload = {msg.begin() + HeaderSize, msg.begin() + header.length};
+  }
+  return Message(header, payload);
+}
+
+} // namespace ara::com::SOMEIP_MESSAGE
+

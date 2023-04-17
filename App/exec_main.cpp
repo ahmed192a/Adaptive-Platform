@@ -84,6 +84,7 @@ streambuf* stream_buffer_cin = cin.rdbuf();     // backup cin stream buffer
 int main(int argc, char ** argv){
     signal(SIGTERM, handle_sigterm);    // handle SIGTERM signal used for terminating the system
     signal(SIGKILL, handle_sigterm);    // handle SIGKILL signal used for terminating the system
+    std::cout << "EM: Hello, World!" << std::endl;
 
     // check if there are files the the directory "processes/redirected"
     // if there are files, then delete them
@@ -97,6 +98,7 @@ int main(int argc, char ** argv){
         }
         closedir (dir);
     }
+    std::cout << "EM: Directory processes/redirected is empty" << std::endl;    
 
 
 
@@ -110,6 +112,7 @@ int main(int argc, char ** argv){
     cout.rdbuf(file.rdbuf()); 
     // open the file EM.txt to visualize it in real time in another genome terminal
     //system("gnome-terminal -- sh -c 'tail -f -n 100 processes/redirected/EM.txt'");
+    std::cout << "EM: EM.txt is created" << std::endl;
 
 
 

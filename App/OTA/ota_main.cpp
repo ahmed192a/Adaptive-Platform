@@ -40,6 +40,7 @@
 #define NUM_THREADS 3
 
 //// Namespaces
+using namespace std;
 using namespace OTA;
 using namespace ara::exec;
 
