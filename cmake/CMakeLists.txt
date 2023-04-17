@@ -52,17 +52,17 @@ FetchContent_MakeAvailable(spdlog)
 # Install uuid lib
 ############################################################################################
 
-message(STATUS "Fetching UUID library")
-FetchContent_Declare(
-        uuid
-        GIT_REPOSITORY https://github.com/mariusbancila/stduuid.git
-        GIT_TAG  v1.2.2
-        GIT_SHALLOW TRUE
-        GIT_PROGRESS TRUE)
-# disable tests and benchmarks
-set(UUID_BUILD_TESTS OFF CACHE INTERNAL "")
-set(UUID_BUILD_BENCHMARKS OFF CACHE INTERNAL "")
-FetchContent_MakeAvailable(uuid)
+# message(STATUS "Fetching UUID library")
+# FetchContent_Declare(
+#         uuid
+#         GIT_REPOSITORY https://github.com/mariusbancila/stduuid.git
+#         GIT_TAG  v1.2.2
+#         GIT_SHALLOW TRUE
+#         GIT_PROGRESS TRUE)
+# # disable tests and benchmarks
+# set(UUID_BUILD_TESTS OFF CACHE INTERNAL "")
+# set(UUID_BUILD_BENCHMARKS OFF CACHE INTERNAL "")
+# FetchContent_MakeAvailable(uuid)
 
 ############################################################################################
 # Install P7 lib for logging

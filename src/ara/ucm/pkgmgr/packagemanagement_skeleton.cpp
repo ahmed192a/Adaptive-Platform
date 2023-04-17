@@ -10,6 +10,7 @@
 
 #include "ara/ucm/pkgmgr/packagemanagement_skeleton.h"
 #include "ara/ucm/pkgmgr/uart_linux.h"
+#include "uuid_v4.h"
 #include "nlohmann/json.hpp"
 #include <cmath>
 #include <filesystem>
@@ -517,8 +518,18 @@ std::future<ara::ucm::pkgmgr::PackageManagement::TransferStartOutput> ara::ucm::
         //     result.id[i] = u.data[i];
 
         // }
+        
+        UUIDv4::UUIDGenerator<std::mt19937_64> uuidGenerator;
+        UUIDv4::UUID uuid = uuidGenerator.getUUID();
+        std::string bytes = uuid.bytes();
+        char bytes2[16];
+        uuid.bytes(bytes2);
+        for(int i = 0; i < 16; i++)
+        {
+            TransferInfoData.id[i] = (uint8_t)bytes2[i];
+            result.id[i] = (uint8_t)bytes2[i];   
+        }
         // std::cout << std::endl;
-
         // don't change 64 (ucm_client.cpp)
         TransferInfoData.BlockSize = 1024;
         TransferInfoData.size = size;
