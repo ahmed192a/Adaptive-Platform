@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <iostream>
 #include <stdexcept>
 #include <stdlib.h>
@@ -26,12 +27,12 @@ public:
 private:
   static void Telemetry_Enable_Callback(void *i_pContext, tUINT16 i_wId,
                                         tBOOL i_bEnable) {
-    P7Wrapper *pThis = (P7Wrapper *)i_pContext;
+    auto pThis = (P7Wrapper *)i_pContext;
     pThis->Telemetry_Enable(i_wId, i_bEnable);
   }
 
   static void Connect_Callback(void *i_pContext, tBOOL i_bConnect) {
-    P7Wrapper *pThis = (P7Wrapper *)i_pContext;
+    auto pThis = (P7Wrapper *)i_pContext;
     pThis->Connect(i_bConnect);
   }
 

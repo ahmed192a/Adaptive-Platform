@@ -13,12 +13,14 @@
 #define ARA_COM_proxy_skeleton_SKELETON_SERVICE_SKELETON_H_
 
 #include "ara/com/SOMEIP/SomeipSDMessage.h"
+#include "ara/com/SOMEIP/option/ipv4_endpoint_option.h"
 #include "ara/com/ipc/client/socket_Client.h"
 #include "ara/com/ipc/server/socket_Server.h"
 #include "ara/com/marshal.h"
 #include "ara/com/proxy_skeleton/data_type.h"
 #include "ara/com/serializer.h"
 #include <future>
+#include <memory>
 #include <queue>
 #include <unistd.h>
 #include <utility>
@@ -91,11 +93,11 @@ public:
     entry::ServiceEntry offer_service_e =
         entry::ServiceEntry::CreateOfferServiceEntry(
             m_service_id, m_instance_id.GetInstanceId(), majorV, minorV);
-    option::Ipv4EndpointOption optionA =
+    std::shared_ptr<option::Ipv4EndpointOption> optionA = std::make_shared<option::Ipv4EndpointOption>(
         option::Ipv4EndpointOption::CreateSdEndpoint(
             false, helper::Ipv4Address(127, 0, 0, 1),
-            option::Layer4ProtocolType::Udp, m_skeleton_handle.service_portnum);
-    offer_service_e.AddFirstOption(&optionA);
+            option::Layer4ProtocolType::Udp, m_skeleton_handle.service_portnum));
+    offer_service_e.AddFirstOption(optionA);
     sd_msg.AddEntry(&offer_service_e);
     std::vector<uint8_t> _payload = sd_msg.Serializer();
     unsigned long _size = _payload.size();

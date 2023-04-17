@@ -6,6 +6,7 @@
  * @copyright Copyright (c) 2022
  * 
  */
+#include <memory>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <stdio.h>
@@ -139,9 +140,10 @@ void *pthread1(void *)
         csv.FindRow(CSV_FILE, serviceid, data); // search the file for the service id
 
             // create dynamic Ipv4EndpointOption object from static function
-        ara::com::option::Ipv4EndpointOption ipv4_option = ara::com::option::Ipv4EndpointOption::CreateSdEndpoint(false, ara::com::helper::Ipv4Address(127, 0, 0, 1), ara::com::option::Layer4ProtocolType::Udp, data[0].port_number);
+        std::shared_ptr<ara::com::option::Ipv4EndpointOption> ipv4_option = std::make_shared<ara::com::option::Ipv4EndpointOption>(
+        ara::com::option::Ipv4EndpointOption::CreateSdEndpoint(false, ara::com::helper::Ipv4Address(127, 0, 0, 1), ara::com::option::Layer4ProtocolType::Udp, data[0].port_number));
 
-        eventgroup_entry.AddFirstOption(&ipv4_option); // add the ipv4 option to the eventgroup entry
+        eventgroup_entry.AddFirstOption(ipv4_option); // add the ipv4 option to the eventgroup entry
     
 
         R_msg.AddEntry(&eventgroup_entry);                          // add the eventgroup entry to the SomeIP SD message
@@ -195,7 +197,7 @@ void *pthread0(void *)
             {
                 auto first_option = entry->FirstOptions()[0]; // get the first entry option
 
-                ara::com::option::Ipv4EndpointOption *ipv4_option = (ara::com::option::Ipv4EndpointOption *)first_option; // store first option as ipv4 option
+                std::shared_ptr<ara::com::option::Ipv4EndpointOption> ipv4_option =std::dynamic_pointer_cast<ara::com::option::Ipv4EndpointOption>(first_option); // store first option as ipv4 option
                 
                 // print the ipv4 address
                 cout << "           IPv4: " << int(ipv4_option->IpAddress().Octets[0]) << "." << int(ipv4_option->IpAddress().Octets[1]) << "." << int(ipv4_option->IpAddress().Octets[2]) << "." << int(ipv4_option->IpAddress().Octets[3]) << endl;

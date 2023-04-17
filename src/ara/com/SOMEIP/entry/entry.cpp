@@ -121,12 +121,12 @@ namespace ara
                 return GBTTL;
             }
 
-            const std::vector<option::Option *> &Entry::FirstOptions() const noexcept
+            const std::vector<std::shared_ptr<option::Option>> &Entry::FirstOptions() const noexcept
             {
                 return GBFirstOptions;
             }
 
-            void Entry::AddFirstOption(option::Option *firstOption)
+            void Entry::AddFirstOption(std::shared_ptr<option::Option> firstOption)
             {
                 
                      GBFirstOptions.push_back(firstOption);
@@ -134,12 +134,12 @@ namespace ara
             
             }
 
-            const std::vector<option::Option *> &Entry::SecondOptions() const noexcept
+            const std::vector<std::shared_ptr<option::Option>> &Entry::SecondOptions() const noexcept
             {
                 return GBSecondOptions;
             }
 
-            void Entry::AddSecondOption(option::Option *secondOption)
+            void Entry::AddSecondOption(std::shared_ptr<option::Option> secondOption)
             {
                 
                 

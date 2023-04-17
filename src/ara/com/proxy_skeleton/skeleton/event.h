@@ -181,7 +181,7 @@ namespace ara
                     {
 
                         auto entry = (ara::com::entry::EventgroupEntry *)sd_msg.Entries()[0];
-                        auto option = (ara::com::option::Ipv4EndpointOption *)entry->FirstOptions()[0];
+                        auto option = std::dynamic_pointer_cast<ara::com::option::Ipv4EndpointOption>(entry->FirstOptions()[0]);
                         client.port = option->Port();
                         uint32_t TTL = entry->TTL();
 

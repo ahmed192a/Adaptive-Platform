@@ -12,6 +12,7 @@
 #define ARA_COM_INTERNAL_SERVICE_PROXY_H_
 
 #include <iostream>
+#include <memory>
 #include <sys/types.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -397,14 +398,14 @@ namespace ara
                                 1, // major version
                                 event_id);
 
-                        ara::com::option::Ipv4EndpointOption sub_option =
+                        std::shared_ptr<ara::com::option::Ipv4EndpointOption> sub_option = std::make_shared<ara::com::option::Ipv4EndpointOption>(
                             ara::com::option::Ipv4EndpointOption::CreateSdEndpoint(
                                 false,
                                 ara::com::helper::Ipv4Address(127, 0, 0, 1),
                                 option::Layer4ProtocolType::Udp,
-                                pport);
+                                pport));
 
-                        event_gr_entry.AddFirstOption(&sub_option);
+                        event_gr_entry.AddFirstOption(sub_option);
                         m_info.AddEntry(&event_gr_entry);
 
                         std::vector<uint8_t> _payload = m_info.Serializer();
@@ -436,11 +437,12 @@ namespace ara
                                                                                                                     event_id);
 
                         int pport = htons(m_proxy_handle.UDP_port);
-                        option::Ipv4EndpointOption sub_option = option::Ipv4EndpointOption::CreateSdEndpoint(false,
+                        std::shared_ptr<option::Ipv4EndpointOption> sub_option = std::make_shared<option::Ipv4EndpointOption>(option::Ipv4EndpointOption::CreateSdEndpoint(false,
                                                                                                              helper::Ipv4Address(127, 0, 0, 1),
                                                                                                              option::Layer4ProtocolType::Udp,
-                                                                                                             pport);
-                        event_gr_entry.AddFirstOption(&sub_option);
+                                                                                                             pport));
+
+                        event_gr_entry.AddFirstOption(sub_option);
                         m_info.AddEntry(&event_gr_entry);
 
                         std::vector<uint8_t> _payload = m_info.Serializer();

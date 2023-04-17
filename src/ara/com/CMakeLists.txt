@@ -9,5 +9,4 @@ create_library(
     DEPENDS
         nlohmann_json::nlohmann_json
         pthread
-        stduuid
 )

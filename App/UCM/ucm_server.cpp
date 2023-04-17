@@ -143,7 +143,7 @@ void handle_sigterm(int sig)
 void *pthread0(void *v_var)
 {
     /* TCP with client */
-    cout << "---------------------------------------------" << endl;
+    std::cout << "----------------------Thread 1--------------------" << std::endl;
     cout << "[UCM SERVER] OPEN MAIN SOCKET ON " << endl;
     
     server_main_socket.OpenSocket(SERVER_PORT);
@@ -205,6 +205,7 @@ void *pthread0(void *v_var)
  */
 void *pthread1(void *v_var)
 {
+    std::cout << "----------------------Thread 2--------------------" << std::endl;
 
     while (1)
     {
