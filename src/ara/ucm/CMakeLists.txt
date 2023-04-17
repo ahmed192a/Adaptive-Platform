@@ -6,8 +6,6 @@ create_library(
         ${CMAKE_CURRENT_SOURCE_DIR}
     INCLUDES
         ${PROJECT_SOURCE_DIR}/src
-        ${uuid_v4_SOURCE_DIR}
     DEPENDS
         ara_com_lib
-        uuid_v4
 )
