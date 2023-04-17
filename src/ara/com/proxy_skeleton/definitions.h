@@ -15,6 +15,7 @@
 #include <memory>
 #include <vector>
 #include <functional>
+#include <string>
 
 namespace ara
 {
@@ -37,7 +38,7 @@ namespace ara
             {
                 uint16_t service_id;
                 uint16_t instance_id;
-                uint32_t port_number;
+                uint16_t port_number;
                 bool operator==(SD_data &other)
                 {
                     if (service_id == other.service_id && instance_id == other.instance_id && port_number == other.port_number)
@@ -50,8 +51,8 @@ namespace ara
 
             struct event_info
             {
-                uint32_t service_id;
-                uint32_t event_id;
+                uint16_t service_id;
+                uint16_t event_id;
             };
             template <typename T>
             struct event_notify
@@ -62,9 +63,9 @@ namespace ara
             };
             struct Client_udp_Info
             {
-                uint32_t port;
+                uint16_t port;
                 std::string addr;
-                bool operator==(const Client_udp_Info &other)
+                bool operator==(const Client_udp_Info &other) const
                 {
                     if (port == other.port && addr == other.addr)
                         return true;

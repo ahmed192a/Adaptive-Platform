@@ -20,6 +20,7 @@
 #include "ara/com/serializer.h"
 #include <iostream>
 #include <thread>
+#include <vector>
 
 namespace ara::com::proxy_skeleton::proxy {
 ServiceHandleContainer<ServiceProxy::SP_Handle>
@@ -38,26 +39,15 @@ ServiceProxy::FindService(FindServiceHandle FSH) {
     // Send a service id to the service discovery
     // receive a struct
     // m_service_id = service_id;
-    char buffer[256];
-    char hostbuffer[256];
-
-    memset(hostbuffer, '\0', 256);
-    int hostnameRet = gethostname(hostbuffer, sizeof(hostbuffer));
-
-    if (hostnameRet < 0) {
-      std::cout << ("[SERVICE PROXY] ERROR : Unable to local machine get Host "
-                    "Name\n");
-    }
 
     SOMEIP_MESSAGE::sd::SomeIpSDMessage m_info;
     SOMEIP_MESSAGE::sd::SomeIpSDMessage msg_info;
     entry::ServiceEntry event_gr_entry =
-        entry::ServiceEntry::CreateFindServiceEntry(
-            static_cast<uint16_t>(FSH.service_id));
+        entry::ServiceEntry::CreateFindServiceEntry(FSH.service_id);
 
     m_info.AddEntry(&event_gr_entry);
     std::vector<uint8_t> _payload = m_info.Serializer();
-    uint32_t _payload_size = _payload.size();
+    auto _payload_size = (uint32_t)_payload.size();
 
     Client_SD.GetHost("127.0.0.1", FSH.portnum);
     Client_SD.ClientConnect();
@@ -74,8 +64,9 @@ ServiceProxy::FindService(FindServiceHandle FSH) {
 
     Client_SD.CloseSocket();
 
-    auto entry = msg_info.Entries()[0];
-    auto const &options = entry->FirstOptions();
+    std::vector<entry::Entry *> entries = msg_info.Entries();
+
+    auto const &options = entries[0]->FirstOptions();
 
     for (auto option : options) {
       ServiceProxy::SP_Handle handle;
@@ -91,13 +82,6 @@ ServiceProxy::FindService(FindServiceHandle FSH) {
     }
   } while (vhandler.size() == 0);
   return vhandler;
-}
-
-ServiceProxy::ServiceProxy(SP_Handle proxy_handle)
-    : m_proxy_handle{proxy_handle}, service_proxy_tcp(SOCK_STREAM),
-      service_proxy_udp(SOCK_DGRAM) {
-  // service_proxy_udp.OpenSocket();
-  // m_proxy_handle.m_client_UPD = &service_proxy_udp;
 }
 
 } // namespace ara::com::proxy_skeleton::proxy

@@ -29,7 +29,7 @@ public:
    * @param name      name of the field
    * @param field_id  id of the field
    */
-  Field(ServiceProxy *service, std::string name, uint32_t field_id)
+  Field(ServiceProxy *service, std::string name, uint16_t field_id)
       : Event<T>(service, name, field_id), m_service{service}, m_name{name},
         m_field_id{field_id} {}
 
@@ -70,7 +70,7 @@ public:
 private:
   ServiceProxy *m_service; /*!< pointer to service proxy */
   std::string m_name;      /*!< name of the field */
-  uint32_t m_field_id;     /*!< id of the field */
+  uint16_t m_field_id;     /*!< id of the field */
 };
 /**
  * @brief FieldNoSetter Class for field with no setter.
@@ -79,6 +79,7 @@ private:
  */
 template <typename T> class FieldNoSetter : public Field<T> {
 public:
+  using Field<T>::Field;
   void Set(T &value) = delete;
 };
 /**
@@ -88,6 +89,8 @@ public:
  */
 template <typename T> class FieldNoGetter : public Field<T> {
 public:
+  using Field<T>::Field;
+
   T Get() = delete;
 };
 /**
@@ -97,6 +100,8 @@ public:
  */
 template <typename T> class FieldNoGetterAndSetter : public Field<T> {
 public:
+  using Field<T>::Field;
+
   T Get() = delete;
   void Set(T &value) = delete;
 };
@@ -105,7 +110,11 @@ public:
  *
  * @tparam T
  */
-template <typename T> class FieldNoNotifier : public Field<T> {};
+template <typename T> class FieldNoNotifier : public Field<T> {
+  public:
+    using Field<T>::Field;
+
+};
 /**
  * @brief FieldNoNotifierAndSetter Class for field with no getter and no setter.
  *
@@ -114,6 +123,8 @@ template <typename T> class FieldNoNotifier : public Field<T> {};
 template <typename T> class FieldNoNotifierAndSetter : public Field<T> {
 
 public:
+  using Field<T>::Field;
+
   void Set(T &value) = delete;
 };
 /**
@@ -123,6 +134,8 @@ public:
  */
 template <typename T> class FieldNoNotifierAndGetter : public Event<T> {
 public:
+  using Field<T>::Field;
+
   T Get() = delete;
 };
 /**
