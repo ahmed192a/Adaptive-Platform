@@ -209,14 +209,18 @@ void *pthread0(void *v_var)
                 for (auto &metaData : metaData_v)
                 {
                     bool isDifferent = false;
-                    for (auto &oldMetaData : metaDataList)
+                    bool notFound = true;
+                    for (auto const &oldMetaData : metaDataList)
                     {
-                        if (metaData == oldMetaData && metaData > oldMetaData)
+                        if (metaData == oldMetaData )
                         {
-                            isDifferent = true;
+                            notFound = false;
+                            if (metaData > oldMetaData)
+                                isDifferent = true;
                         }
+                        
                     }
-                    if (isDifferent)
+                    if (isDifferent || notFound)
                     {
                         std::cout << "[OTA] new meta-data found" << std::endl;
                         new_metaData_v.push_back(metaData);
@@ -242,8 +246,11 @@ void *pthread0(void *v_var)
                         std::vector<uint8_t> small_data;
 
                         uint64_t package_size = package.size();
+                        std::cout << "\t[OTA] Package size " << package_size << std::endl;
                         result = pkg_proxy_ptr->TransferStart(package_size);
+                        std::cout << "\t[OTA] transfer start ..." << std::endl;
                         ara::ucm::pkgmgr::PackageManagement::TransferStartOutput transfer_start_output = result.get();
+                        std::cout << "\t[OTA] transfer id : " << std::endl;
 
                         int block_counter = 0;
                         for (int i = 0; i < package.size(); i++)
@@ -265,6 +272,7 @@ void *pthread0(void *v_var)
 
                             ara::ucm::pkgmgr::PackageManagement::TransferDataOutput result3;
                             result3 = result2.get();
+                            std::cout << "\t[OTA] block " << block_counter << " sent" << std::endl;
                             block_counter++;
                             small_data.clear();
                             if (block_counter * transfer_start_output.BlockSize > package.size())

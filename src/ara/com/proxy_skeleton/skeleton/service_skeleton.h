@@ -20,6 +20,7 @@
 #include "ara/com/proxy_skeleton/data_type.h"
 #include "ara/com/serializer.h"
 #include <cstdint>
+#include <functional>
 #include <future>
 #include <memory>
 #include <queue>
@@ -57,24 +58,18 @@ public:
    */
   ServiceSkeleton(
       ara::com::proxy_skeleton::ServiceId &service_id,
-      InstanceIdentifier &instance, 
-      SK_Handle const& skeleton_handle,
+      InstanceIdentifier &instance, SK_Handle const &skeleton_handle,
       MethodCallProcessingMode mode = MethodCallProcessingMode::kEvent)
-      :  m_skeleton_handle{skeleton_handle},
-      m_service_id(service_id), 
-      m_instance_id(instance), 
-         m_mode{mode}, 
-         cliaddr{AF_INET, htons(m_skeleton_handle.sd_portnum), INADDR_ANY}
-         {}
-
-
+      : m_skeleton_handle{skeleton_handle}, m_service_id(service_id),
+        m_instance_id(instance), m_mode{mode},
+        cliaddr{AF_INET, htons(m_skeleton_handle.sd_portnum), INADDR_ANY} {}
 
   /**
    * @brief Get the Service Id object
    *
    * @return const ara::com::proxy_skeleton::ServiceId
    */
-  const ara::com::proxy_skeleton::ServiceId& GetServiceId() const {
+  const ara::com::proxy_skeleton::ServiceId &GetServiceId() const {
     return m_service_id;
   }
   /**
@@ -94,13 +89,14 @@ public:
     auto optionA = std::make_shared<option::Ipv4EndpointOption>(
         option::Ipv4EndpointOption::CreateSdEndpoint(
             false, helper::Ipv4Address(127, 0, 0, 1),
-            option::Layer4ProtocolType::Udp, m_skeleton_handle.service_portnum));
+            option::Layer4ProtocolType::Udp,
+            m_skeleton_handle.service_portnum));
 
     offer_service_e.AddFirstOption(optionA);
     sd_msg.AddEntry(&offer_service_e);
 
     std::vector<uint8_t> _payload = sd_msg.Serializer();
-    unsigned long _size = _payload.size();
+    uint32_t _size = _payload.size();
 
     this->m_skeleton_udp.OpenSocket();
     this->m_skeleton_udp.UDPSendTo((void *)&_size, sizeof(_size),
@@ -126,7 +122,7 @@ public:
             m_service_id, m_instance_id.GetInstanceId(), majorV, minorV);
     sd_msg.AddEntry(&stop_offer_e);
     std::vector<uint8_t> _payload = sd_msg.Serializer();
-    unsigned long _size = _payload.size();
+    uint32_t _size = _payload.size();
     this->m_skeleton_udp.UDPSendTo((void *)&_size, sizeof(_size),
                                    (struct sockaddr *)&this->cliaddr);
     this->m_skeleton_udp.UDPSendTo((void *)_payload.data(), _payload.size(),
@@ -155,14 +151,14 @@ public:
     std::cout << "send event to client " << client_add.sin_port << std::endl;
     // Create Mesaage {, event_id | 0x8000}, NOTIFICATION
     ara::com::SOMEIP_MESSAGE::Message M1(
-        {this->m_service_id, (uint16_t)(event_id | 0x8000)}, {1, 2},
-        3, 4, ara::com::SOMEIP_MESSAGE::MessageType::NOTIFICATION);
+        {this->m_service_id, (uint16_t)(event_id | 0x8000)}, {1, 2}, 3, 4,
+        ara::com::SOMEIP_MESSAGE::MessageType::NOTIFICATION);
 
     M1.SetPayload(sermsg);
 
     std::vector<uint8_t> __payload = M1.Serializer();
     // size of vector
-    unsigned long size = __payload.size();
+    uint32_t size = __payload.size();
 
     this->m_skeleton_udp.OpenSocket();
     this->m_skeleton_udp.UDPSendTo((void *)&size, sizeof(size),
@@ -177,7 +173,8 @@ public:
    * @param S_msg         --> message from client
    * @param binding       --> binding of the client
    */
-  static void NoServiceHandler(SOMEIP_MESSAGE::Message const& S_msg, Socket &binding) {
+  static void NoServiceHandler(SOMEIP_MESSAGE::Message const &S_msg,
+                               Socket &binding) {
     SOMEIP_MESSAGE::Message R_msg(
         SOMEIP_MESSAGE::Request_ID{5, 6},
         SOMEIP_MESSAGE::Message_ID{S_msg.MessageId().serivce_id,
@@ -188,7 +185,7 @@ public:
         SOMEIP_MESSAGE::MessageType::ERROR);
 
     std::vector<uint8_t> _Payload = R_msg.Serializer();
-    unsigned long size = _Payload.size();
+    uint32_t size = _Payload.size();
     binding.Send(&size, sizeof(size));
     binding.Send(_Payload.data(), size);
     binding.CloseSocket();
@@ -208,29 +205,34 @@ protected:
    */
   template <typename Class, typename R, typename... Args>
   void HandleCall(Class &c, std::future<R> (Class::*method)(Args...),
-                  const SOMEIP_MESSAGE::Message& msg, Socket &binding) {
-    // sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
+                   const SOMEIP_MESSAGE::Message &msg, Socket &binding)               
+  {
     Marshal marshal;
     auto arg_payload = msg.GetPayload();
+    std::cout << "i am here 1"<<std::endl;
+    
     auto args = marshal.get_args<Args...>(arg_payload);
-    auto f_result = std::apply(method, std::tuple_cat(std::make_tuple(&c), args));
+    auto f_result =
+        std::apply(method, std::tuple_cat(std::make_tuple(&c), args));
     R result = f_result.get();
-    auto payload = marshal.serialize_params(result);
-                  
+    Serializer ser;
+    ser.serialize(result);
+    std::vector<uint8_t> payload = ser.Payload();
+
 
     SOMEIP_MESSAGE::Message R_msg(
-         SOMEIP_MESSAGE::Message_ID{
-            this->m_service_id,
-            (uint16_t)(msg.MessageId().method_id & 0x7fff)},
+        SOMEIP_MESSAGE::Message_ID{
+            this->m_service_id, (uint16_t)(msg.MessageId().method_id & 0x7fff)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
         2, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
     R_msg.SetPayload(payload);
     std::vector<uint8_t> _Payload = R_msg.Serializer();
-    unsigned long size = _Payload.size();
+
+    uint32_t size = _Payload.size();
     binding.Send(&size, sizeof(size));
-    binding.Send(_Payload.data(), size);
+    binding.Send(&_Payload[0], size);
     binding.CloseSocket();
   }
   /**/
@@ -249,22 +251,23 @@ protected:
                   SOMEIP_MESSAGE::Message msg, Socket &binding) {
     // sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
     Marshal marshal;
+    std::cout << "i am here 2"<<std::endl;
+
     auto arg_payload = msg.GetPayload();
     auto args = marshal.get_args<Args...>(arg_payload);
-    auto f_result = std::apply(method, std::tuple_cat(std::make_tuple(&c), args));
+    auto f_result =
+        std::apply(method, std::tuple_cat(std::make_tuple(&c), args));
     f_result.get();
-                  
 
     SOMEIP_MESSAGE::Message R_msg(
-         SOMEIP_MESSAGE::Message_ID{
-            this->m_service_id,
-            (uint16_t)(msg.MessageId().method_id & 0x7fff)},
+        SOMEIP_MESSAGE::Message_ID{
+            this->m_service_id, (uint16_t)(msg.MessageId().method_id & 0x7fff)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
         2, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
     std::vector<uint8_t> _Payload = R_msg.Serializer();
-    unsigned long size = _Payload.size();
+    uint32_t size = _Payload.size();
     binding.Send(&size, sizeof(size));
     binding.Send(_Payload.data(), size);
     binding.CloseSocket();
@@ -282,6 +285,8 @@ protected:
   template <typename Class, typename R>
   void HandleCall(Class &c, std::future<R> (Class::*method)(),
                   SOMEIP_MESSAGE::Message msg, Socket &binding) {
+    std::cout << "i am here 3"<<std::endl;
+
     std::future<R> f = (c.*method)();
     R result = f.get();
     // create serialize object
@@ -320,6 +325,9 @@ protected:
   template <typename Class>
   void HandleCall(Class &c, std::future<void> (Class::*method)(),
                   SOMEIP_MESSAGE::Message msg, Socket &binding) {
+
+    std::cout << "i am here 4"<<std::endl;
+    
     SOMEIP_MESSAGE::Message R_msg(
         SOMEIP_MESSAGE::Message_ID{this->m_service_id,
                                    msg.MessageId().method_id},
@@ -348,23 +356,23 @@ protected:
   template <typename Class, typename... Args>
   void HandleCall(Class &c, void (Class::*method)(Args...),
                   SOMEIP_MESSAGE::Message msg, Socket &binding) {
+    std::cout << "i am here 5"<<std::endl;
 
     // sHandleCall(c, method, msg, binding, std::index_sequence_for<Args...>());
     Marshal marshal;
     auto arg_payload = msg.GetPayload();
     auto args = marshal.get_args<Args...>(arg_payload);
-    std::apply(method, std::tuple_cat(std::make_tuple(&c), args));                  
+    std::apply(method, std::tuple_cat(std::make_tuple(&c), args));
 
     SOMEIP_MESSAGE::Message R_msg(
-         SOMEIP_MESSAGE::Message_ID{
-            this->m_service_id,
-            (uint16_t)(msg.MessageId().method_id & 0x7fff)},
+        SOMEIP_MESSAGE::Message_ID{
+            this->m_service_id, (uint16_t)(msg.MessageId().method_id & 0x7fff)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
         2, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
     std::vector<uint8_t> _Payload = R_msg.Serializer();
-    unsigned long size = _Payload.size();
+    uint32_t size = _Payload.size();
     binding.Send(&size, sizeof(size));
     binding.Send(_Payload.data(), size);
     binding.CloseSocket();
@@ -407,7 +415,6 @@ protected:
   }
 
 private:
-
   // Private variables
   ara::com::MethodCallProcessingMode m_mode;
   struct sockaddr_in cliaddr;

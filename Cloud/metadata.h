@@ -23,16 +23,26 @@ public:
         sizeInBytes(sizeInBytes), version(ver) {}
 
   explicit MetaData(std::string const &jsonStr) {
+    std::cout << "jsonStr: " << jsonStr << std::endl;
     // parse the json string and get the values
     nlohmann::json j = nlohmann::json::parse(jsonStr);
     // if empty json string return
     if (j.empty()) {
       return;
     }
+    // {"platformName": "classic", "appID" : "K234" , "appName": "app1", "sizeInBytes": "145", "version": "0.1.0","result":"ok"}
+    // parse the sizeinbytes to int
+
     this->platformName = j["platformName"];
     this->appName = j["appName"];
     this->appID = j["appID"];
-    this->sizeInBytes = j["sizeInBytes"];
+    // this->sizeInBytes = j["sizeInBytes"].get<unsigned long>();
+    // check if the sizeInBytes is a number or string
+    if (j["sizeInBytes"].is_number()) {
+      this->sizeInBytes = j["sizeInBytes"].get<unsigned long>();
+    } else {
+      this->sizeInBytes = std::stoul(j["sizeInBytes"].get<std::string>());
+    }
     this->version = j["version"];
   }
 

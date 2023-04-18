@@ -150,6 +150,7 @@ int main(int argc, char const *argv[])
 
         while(1){
             map<string, string > maping= metadata_parser();
+            
 
             char buffer[50] = {0};
 
@@ -221,7 +222,7 @@ int main(int argc, char const *argv[])
                     cout<<"\t[CLOUD] send package size failed"<<endl;
                     exit(EXIT_FAILURE);
                 }
-
+                std::cout << "packageDataSize: " << packageDataSize << std::endl;
                 if(send(new_socket ,  packageData.data() , packageDataSize , 0) < 0) 
                 {
                     cout<<"\t Error sending package"<<endl;

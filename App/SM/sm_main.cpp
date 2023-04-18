@@ -281,32 +281,32 @@ void *pthread0(void *v_var){
             //used for OTA  
             // Comment the next code in this if condition to disable system shutdown and to run the system normally
             cout<<"[SM] OTA_STATE_INITIALIZED"<<endl;
-            SM_State = State::STATE_UPDATE;
-            FunctionGroupState::CtorToken token;
-            token.fg_name = "FG_1";
-            token.c_state = "off";
-            FunctionGroupState FGS(std::move(token));
-            std::cout << "[SM] Create Function group state for FG1 to off state" << std::endl;
+            // SM_State = State::STATE_UPDATE;
+            // FunctionGroupState::CtorToken token;
+            // token.fg_name = "FG_1";
+            // token.c_state = "off";
+            // FunctionGroupState FGS(std::move(token));
+            // std::cout << "[SM] Create Function group state for FG1 to off state" << std::endl;
             
-            std::future<std::variant<std::monostate,ara::exec::ExecErrc>> _future = state_client_ptr->SetState(FGS);
-            std::variant<std::monostate,ara::exec::ExecErrc> var = _future.get();
-            if(var.index() == 0)
-                std::cout<<"[SM] state changed successfully"<<std::endl;
-            else
-                std::cout<<"[SM] state change failed"<<std::endl;
+            // std::future<std::variant<std::monostate,ara::exec::ExecErrc>> _future = state_client_ptr->SetState(FGS);
+            // std::variant<std::monostate,ara::exec::ExecErrc> var = _future.get();
+            // if(var.index() == 0)
+            //     std::cout<<"[SM] state changed successfully"<<std::endl;
+            // else
+            //     std::cout<<"[SM] state change failed"<<std::endl;
 
-            //--------------------------------------------------------------------------------------------------
-            token.fg_name = "MachineFG";
-            token.c_state = "off";
-            FunctionGroupState FGS1(std::move(token));
-            std::cout << "[SM] Create Function group state for MachineFG to off state" << std::endl;
+            // //--------------------------------------------------------------------------------------------------
+            // token.fg_name = "MachineFG";
+            // token.c_state = "off";
+            // FunctionGroupState FGS1(std::move(token));
+            // std::cout << "[SM] Create Function group state for MachineFG to off state" << std::endl;
             
-            std::future<std::variant<std::monostate,ara::exec::ExecErrc>> _future1 = state_client_ptr->SetState(FGS1);
-            std::variant<std::monostate,ara::exec::ExecErrc> var1 = _future1.get();
-            if(var1.index() == 0)
-                std::cout<<"[SM] state changed successfully"<<std::endl;
-            else
-                std::cout<<"[SM] state change failed"<<std::endl;
+            // std::future<std::variant<std::monostate,ara::exec::ExecErrc>> _future1 = state_client_ptr->SetState(FGS1);
+            // std::variant<std::monostate,ara::exec::ExecErrc> var1 = _future1.get();
+            // if(var1.index() == 0)
+            //     std::cout<<"[SM] state changed successfully"<<std::endl;
+            // else
+            //     std::cout<<"[SM] state change failed"<<std::endl;
         }
 
         /*******************************        END OF FSM      **************************************/

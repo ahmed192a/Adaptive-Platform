@@ -64,7 +64,7 @@ public:
    * @param proxy_handle a struct to receive in it the process id & port number
    *                      of the server from service discovery
    */
-  explicit ServiceProxy(SP_Handle proxy_handle): m_proxy_handle(proxy_handle) {}
+  explicit ServiceProxy(SP_Handle const& proxy_handle): m_proxy_handle(proxy_handle) {}
   
   /**
    * @brief Destroy the Service Proxy object
@@ -99,6 +99,8 @@ public:
    * @return R
    */
   template <typename R, typename... Args>
+  // if the pass argument is not vector or string
+  
   R SendRequest(uint32_t method_id, Args &&...args) {
 
     SOMEIP_MESSAGE::Message R_msg(
@@ -134,12 +136,11 @@ public:
     service_proxy_tcp.ClientWrite(&message_buffer[0], msg_size);
 
     // receive the methods result
-    msg_size = 0;
-    std::vector<uint8_t> respone_buffer;
+    uint32_t msg_size_r = 0;
 
-    service_proxy_tcp.ClientRead((void *)&msg_size, sizeof(msg_size));
-    respone_buffer.resize(msg_size);
-    service_proxy_tcp.ClientRead((void *)&respone_buffer[0], msg_size);
+    service_proxy_tcp.ClientRead((void *)&msg_size_r, sizeof(msg_size_r));
+    std::vector<uint8_t> respone_buffer(msg_size_r);
+    service_proxy_tcp.ClientRead((void *)&respone_buffer[0], msg_size_r);
     service_proxy_tcp.CloseSocket();
 
     // deserialize the result
@@ -147,6 +148,7 @@ public:
         SOMEIP_MESSAGE::Message::Deserialize(respone_buffer);
     // get the payload
     std::vector<uint8_t> result_payload = Res_msg.GetPayload();
+
     // deserialize the payload
     result = deser.deserialize<R>(result_payload, 0);
     return result;
@@ -289,6 +291,7 @@ public:
                                   sizeof(_payload_size));
     service_proxy_tcp.ClientWrite(&_payload[0], _payload_size);
     _payload.clear();
+    _payload_size = 0;
     service_proxy_tcp.ClientRead((void *)&_payload_size, sizeof(_payload_size));
     _payload.resize(_payload_size);
     service_proxy_tcp.ClientRead((void *)&_payload[0], _payload_size);
@@ -486,7 +489,7 @@ public:
       printf("\nInvalid address/ Address not supported \n");
     }
     ara::com::SOMEIP_MESSAGE::Message get_msg(
-        {(uint16_t)(f_get.service_id), (uint16_t)(f_get.event_id | 0x8000)},
+        {(f_get.service_id), (uint16_t)(f_get.event_id | 0x8000)},
         {5, 6},
         5, // protocol verion
         6, // interface version

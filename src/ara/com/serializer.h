@@ -46,9 +46,16 @@ public:
    * @param data
    */
   template <typename T> void serialize(T data) {
+    // if T is string or vector<uint8_t> 
+    if constexpr (std::is_same<T, std::string>::value ||
+                  std::is_same<T, std::vector<uint8_t>>::value) {
+      payload.insert(payload.end(), data.begin(), data.end());
+
+    }else{
     std::vector<uint8_t> buffer(sizeof(data));
     memcpy(&buffer[0], (const void *)&data, sizeof(data));
     payload.insert(payload.end(), buffer.begin(), buffer.end());
+    }
   }
   /**
    * @brief Clear the payload of the serializer

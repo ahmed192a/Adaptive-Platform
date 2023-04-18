@@ -81,8 +81,9 @@ ReturnCode Message::Returncode() const noexcept {
 uint32_t Message::Length() noexcept { return header.length; }
 
 std::vector<uint8_t> Message::Serializer() {
-  std::vector<uint8_t> result(HeaderSize, 0);
-  memcpy(result.data(), &header, HeaderSize);
+  std::vector<uint8_t> result;
+  result.insert(result.end(), (uint8_t *)(&header),
+                (uint8_t *)(&header) + sizeof(header_t));
 
   // concatenate result and payload and put them in the result
   result.insert(result.end(), payload.begin(), payload.end());
@@ -98,11 +99,9 @@ std::vector<uint8_t> Message::GetPayload() const { return payload; }
 
 Message Message::Deserialize(const std::vector<uint8_t> &msg) {
   header_t header;
-  memcpy(&header, msg.data(), HeaderSize);
+  memcpy(&header, msg.data(), sizeof(header_t));
   std::vector<uint8_t> payload;
-  if (header.length > HeaderSize) {
-    payload = {msg.begin() + HeaderSize, msg.begin() + header.length};
-  }
+  payload.insert(payload.end(), msg.begin() + sizeof(header_t), msg.end());
   return Message(header, payload);
 }
 

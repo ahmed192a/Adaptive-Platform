@@ -770,6 +770,7 @@ namespace ara
                     ser.serialize(id);              // serialize the id
                     ser.serialize(blockCounter);    // serialize the block counter
                     std::vector<uint8_t> msgser = ser.Payload();    // get the serialized data
+
                     msgser.insert(msgser.end(), data.begin(), data.end());  // append the data to the serialized data
                     // send the request to the service and receive the response
                     return service_proxy->SendRequest<ara::ucm::pkgmgr::PackageManagement::TransferDataOutput>(methodid, msgser);   
