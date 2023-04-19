@@ -23,7 +23,7 @@
 #define SERVER_PORT             5375    // port for the server socket OF State Manament used with UDP and TCP sockets
 #define SD_PORT                 1690    // port of Service Discovery
 #define T_IN_UCM_INSTANCE_ID    1       // instance id Trigger in UCM service (1)
-#define T_IN_OTA_INSTANCE_ID    2       // instance id Trigger in UCM service (2)
+#define T_IN_OTA_INSTANCE_ID    2       // instance id Trigger in OTA service (2)
 #define MAX_QUEUE_CLIENTS       3       // max number of clients in the queue for STREAM server socket
 
 ///// Namespaces
@@ -58,7 +58,7 @@ ara::com::InstanceIdentifier instance(T_IN_UCM_INSTANCE_ID);
 // skeleton handle for constructor Trigger in UCM service
 ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle triggerin_handle{SERVER_PORT, SD_PORT};  
 // Create shared pointer object of Trigger in UCM service skeleton
-auto UCM_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_UCM_Skeleton>(instance, triggerin_handle); 
+auto UCM_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_skeleton<ara::sm::triggerin::UCM_State>>(55, instance, triggerin_handle); 
 
 /**     OTA Trigger In Skeleton    **/
 // instance id of Trigger in OTA service (2)
@@ -66,7 +66,7 @@ ara::com::InstanceIdentifier instance_ota(T_IN_OTA_INSTANCE_ID);
 // skeleton handle for constructor Trigger in OTA service
 ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle triggerin_handle_ota{SERVER_PORT, SD_PORT};
 // Create shared pointer object of Trigger in OTA service skeleton
-auto OTA_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_OTA_Skeleton>( instance_ota, triggerin_handle_ota);
+auto OTA_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_skeleton<ara::sm::triggerin::OTA_State>>(56, instance_ota, triggerin_handle_ota);
 
 
 CServer server_main_socket_DG(SOCK_DGRAM);  // socket for events (UDP)

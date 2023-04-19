@@ -2,7 +2,6 @@
 #define SM_TRIGGERIN_TYPES_H_
 
 namespace ara::sm::triggerin {
-using TriggerInType = int;
 // define enum for ucm states
 enum class UCM_State {
   UCM_STATE_UNKNOWN,

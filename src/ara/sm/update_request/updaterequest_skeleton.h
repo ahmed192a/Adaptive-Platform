@@ -56,7 +56,7 @@ public:
    */
   std::future<ara::sm::update_request::ResetMachineOutput> ResetMachine() {
     return std::async(std::launch::async, [this]() {
-      ara::sm::update_request::ResetMachineOutput result= std::monostate();
+      ara::sm::update_request::ResetMachineOutput result = std::monostate();
       // resetting the machine will be rejected in case
       // - There is an active session
       // - The RequestUpdateSession() was not called successfully
@@ -113,7 +113,7 @@ public:
    rejected as only single active (update) session is allowed)
    */
   std::future<ara::sm::update_request::RequestUpdateSessionOutput>
-  RequestUpdateSession(){
+  RequestUpdateSession() {
     return std::async(std::launch::async, [this]() {
       ara::sm::update_request::RequestUpdateSessionOutput result =
           std::monostate();
@@ -122,9 +122,9 @@ public:
         result = ara::sm::errorDomains::kNotAllowedMultipleUpdateSessions;
       } else {
         // chekc if the state of the machine is running or not
-        // if not running, return kRejected, The Machine current status do not accept session activation
-        // else opening a new session
-        // 
+        // if not running, return kRejected, The Machine current status do not
+        // accept session activation else opening a new session
+        //
         activeSession = true;
         update_status = UpdateStatus::acquired;
       }
@@ -147,14 +147,15 @@ public:
    *                - kPrepareFailed (Preparation step of update failed.)
    */
   std::future<ara::sm::update_request::PrepareUpdateOutput>
-  PrepareUpdate(FunctionGroupListType functionGroupList){
+  PrepareUpdate(FunctionGroupListType const& functionGroupList) {
     return std::async(std::launch::async, [this, &functionGroupList]() {
       ara::sm::update_request::PrepareUpdateOutput result = std::monostate();
-      if (update_status == UpdateStatus::acquired){
-        for (auto &functionGroup : functionGroupList){
-            // set the state of these function groups to "off" ans send the state to the EM
+      if (update_status == UpdateStatus::acquired) {
+        for (auto const &functionGroup : functionGroupList) {
+          // set the state of these function groups to "off" ans send the state
+          // to the EM
         }
-      }else{
+      } else {
         result = ara::sm::errorDomains::kRejected;
       }
       return result;
@@ -199,9 +200,8 @@ public:
    * @param message
    * @param cserver
    */
-  void method_dispatch(ara::com::SOMEIP_MESSAGE::Message &message,
+  void method_dispatch(ara::com::SOMEIP_MESSAGE::Message const &message,
                        Socket &cserver) {
-    ara::com::Deserializer dser;
     int methodID = message.MessageId().method_id;
     std::cout << "\t[SERVER] Dispatch " << methodID << std::endl;
     switch (methodID) {

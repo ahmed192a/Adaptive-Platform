@@ -21,7 +21,7 @@ namespace ara::sm::update_request {
 
 class ResetMachine {
 private:
-  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr;
+  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr{nullptr};
   const int methodid{1};
 
 public:
@@ -41,9 +41,13 @@ public:
     return result;
   }
 };
+
+
+
+
 class StopUpdateSession {
 private:
-  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr;
+  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr{nullptr};
   const int methodid {2};
 
 public:
@@ -60,9 +64,13 @@ public:
     return result;
   }
 };
+
+
+
+
 class StartUpdateSession {
 private:
-  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr;
+  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr{nullptr};
   const int methodid = 3;
 
 public:
@@ -82,9 +90,15 @@ public:
     return result;
   }
 };
+
+
+
+
+
+
 class RequestUpdateSession {
 private:
-  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr;
+  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr{nullptr};
   const int methodid = 4;
 
 public:
@@ -105,9 +119,13 @@ public:
     return result;
   }
 };
+
+
+
+
 class PrepareUpdate {
 private:
-  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr;
+  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr{nullptr};
   const int methodid{5};
 
 public:
@@ -128,16 +146,20 @@ public:
     return result;
   }
 };
+
+
+
+
 class VerifyUpdate {
 private:
-  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr;
+  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr{nullptr};
   const int methodid = 6;
 
 public:
   explicit VerifyUpdate(ara::com::proxy_skeleton::proxy::ServiceProxy *service)
       : service_proxy_ptr{service} {}
   std::future<ara::sm::update_request::VerifyUpdateOutput>
-  operator()(FunctionGroupListType FunctionGroupList) {
+  operator()(FunctionGroupListType & FunctionGroupList) {
     std::future<ara::sm::update_request::VerifyUpdateOutput> result =
         std::async([this, &FunctionGroupList]() {
           ara::sm::update_request::VerifyUpdateOutput f;
@@ -145,22 +167,25 @@ public:
           // under development
           // return app error krejected, kverify_failed
           // return
-          // service_proxy_ptr->SendRequest<ara::sm::update_request::VerifyUpdateOutput>(methodid,FunctionGroupList);
+          service_proxy_ptr->SendRequest<ara::sm::update_request::VerifyUpdateOutput>(methodid,FunctionGroupList);
         });
     return result;
   }
 };
+
+
+
 class PrepareRollback {
 private:
-  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr;
-  const int methodid = 7;
+  ara::com::proxy_skeleton::proxy::ServiceProxy *service_proxy_ptr{nullptr};
+  const int methodid {7};
 
 public:
   explicit PrepareRollback(
       ara::com::proxy_skeleton::proxy::ServiceProxy *service)
       : service_proxy_ptr{service} {}
   std::future<ara::sm::update_request::PrepareRollbackOutput>
-  operator()(FunctionGroupListType const &FunctionGroupList) {
+  operator()(FunctionGroupListType  &FunctionGroupList) {
     std::future<ara::sm::update_request::PrepareRollbackOutput> result =
         std::async([this, &FunctionGroupList]() {
           ara::sm::update_request::PrepareRollbackOutput f;
@@ -168,11 +193,14 @@ public:
           // under development
           // return app error krejected, krollback_failed
           // return
-          // service_proxy_ptr->SendRequest<ara::sm::update_request::PrepareRollbackOutput>(methodid,FunctionGroupList);
+          service_proxy_ptr->SendRequest<ara::sm::update_request::PrepareRollbackOutput>(methodid,FunctionGroupList);
         });
     return result;
   }
 };
+
+
+
 } // namespace ara::sm::update_request
 
 #endif

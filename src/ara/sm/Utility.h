@@ -2,7 +2,7 @@
 #define UTILITY_H
 
 
-enum eErrorType
+enum class eErrorType
 {
 	SUCCESS,
 	FILEOPENFAIL,

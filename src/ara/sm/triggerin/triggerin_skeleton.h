@@ -24,57 +24,24 @@ using OTA_Trigger =
                                                   true, true, true>::type;
 } // namespace fields
 
-class Trigger_In_UCM_Skeleton
+template <typename T>
+class Trigger_In_skeleton
     : public ara::com::proxy_skeleton::skeleton::ServiceSkeleton {
-private:
-  ara::com::proxy_skeleton::ServiceId serviceid{55};
+  ara::com::proxy_skeleton::ServiceId m_serviceid{0};
 
 public:
-  Trigger_In_UCM_Skeleton(
+  explicit Trigger_In_skeleton(
+      ara::com::proxy_skeleton::ServiceId serviceid,
       ara::com::InstanceIdentifier instance,
       ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle
           skeleton_handle)
-      : ara::com::proxy_skeleton::skeleton::ServiceSkeleton(serviceid, instance,
-                                                            skeleton_handle),
-        trigger(this, "trigger", 0) {}
-  ~Trigger_In_UCM_Skeleton() = default;
-  // Fields
-  fields::UCM_Trigger trigger;
-
-  void field_method_dispatch(ara::com::SOMEIP_MESSAGE::Message const &message,
-                             Socket &cserver) {
-
-    int event_id = message.MessageId().method_id & 0x7FFF;
-
-    if (event_id == 0) {
-      if (message.Length() > 16) {
-        trigger.HandleSet(message, cserver);
-      } else {
-        trigger.HandleGet(message, cserver);
-      }
-
-    } else {
-      NoMethodHandler(message.MessageId().method_id, cserver);
-    }
-  }
-};
-class Trigger_In_OTA_Skeleton
-    : public ara::com::proxy_skeleton::skeleton::ServiceSkeleton {
-private:
-  ara::com::proxy_skeleton::ServiceId serviceid{56};
-
-public:
-  Trigger_In_OTA_Skeleton(
-      ara::com::InstanceIdentifier instance,
-      ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle
-          skeleton_handle)
-      : ara::com::proxy_skeleton::skeleton::ServiceSkeleton(serviceid, instance,
-                                                            skeleton_handle),
-        trigger(this, "trigger", 0) {}
-  ~Trigger_In_OTA_Skeleton() = default;
+      : ara::com::proxy_skeleton::skeleton::ServiceSkeleton(
+            m_serviceid, instance, skeleton_handle),
+        m_serviceid(serviceid), trigger(this, "trigger", 0) {}
 
   // Fields
-  fields::OTA_Trigger trigger;
+  typename ara::com::proxy_skeleton::skeleton::FieldType<T, true, true,
+                                                         true>::type trigger;
 
   void field_method_dispatch(ara::com::SOMEIP_MESSAGE::Message const &message,
                              Socket &cserver) {
@@ -92,34 +59,6 @@ public:
     }
   }
 };
-
-
-// template<typename T> class Trigger_In_skeleton : public ara::com::proxy_skeleton::skeleton::ServiceSkeleton{
-// public:
-//     explicit Trigger_In_skeleton(ara::com::proxy_skeleton::ServiceId serviceid,
-//                                  ara::com::InstanceIdentifier instance,
-//                                  ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle skeleton_handle)
-//         : ara::com::proxy_skeleton::skeleton::ServiceSkeleton(serviceid, instance, skeleton_handle),
-//           trigger(this, "trigger", 0) {}
-
-//     // Fields
-//     typename ara::com::proxy_skeleton::skeleton::FieldType<T, true, true, true>::type trigger;
-
-//     void field_method_dispatch(ara::com::SOMEIP_MESSAGE::Message const &message, Socket &cserver) {
-
-//         int event_id = message.MessageId().method_id & 0x7FFF;
-//         if (event_id == 0) {
-//             if (message.Length() > 16) {
-//                 trigger.HandleSet(message, cserver);
-//             } else {
-//                 trigger.HandleGet(message, cserver);
-//             }
-
-//         } else {
-//             NoMethodHandler(message.MessageId().method_id, cserver);
-//         }
-//     }
-// };
 
 } // namespace ara::sm::triggerin::skeleton
 #endif // SM_TRIGGERIN_SKELETON_H_

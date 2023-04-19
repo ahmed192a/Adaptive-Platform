@@ -21,6 +21,7 @@
 #include "ara/com/ipc/server/socket_Server.h"
 #include "ara/com/SOMEIP/SomeipSDMessage.h"
 // ara::ucm related includes
+#include "ara/sm/triggerin/triggerin_types.h"
 #include "ara/ucm/pkgmgr/packagemanagement_proxy.h"
 #include "ara/ucm/pkgmgr/ucm_return_types.h"
 // ara::sm related includes
@@ -57,7 +58,7 @@ ara::com::FindServiceHandle findhandle_pkg{PKG_SERVICE_ID, 0, SD_PORT};
 std::shared_ptr<ara::ucm::pkgmgr::proxy::PackageManagementProxy> pkg_proxy_ptr;
 /** OTA Trigger in Proxy    **/
 ara::com::FindServiceHandle findhandle_ota_triggerin{SM_OTA_TRIGGERIN_SERVICE_ID, 0, SD_PORT};
-std::shared_ptr<ara::sm::triggerin::proxy::Trigger_In_OTA_Proxy> ota_triggerin_proxy_ptr;
+std::shared_ptr<ara::sm::triggerin::proxy::Trigger_In<ara::sm::triggerin::OTA_State>> ota_triggerin_proxy_ptr;
 
 ara::sm::triggerin::OTA_State ota_state_g = ara::sm::triggerin::OTA_State::OTA_STATE_UNKNOWN;
 
@@ -84,10 +85,10 @@ int main(void)
     pkg_proxy_ptr = std::make_shared<ara::ucm::pkgmgr::proxy::PackageManagementProxy>(handle_pkg);
 
     /** create OTA Trigger in proxy **/
-    ara::com::proxy_skeleton::proxy::ServiceProxy::SP_Handle handle_ota = ara::sm::triggerin::proxy::Trigger_In_OTA_Proxy::FindService(findhandle_ota_triggerin)[0];
+    ara::com::proxy_skeleton::proxy::ServiceProxy::SP_Handle handle_ota = ara::sm::triggerin::proxy::Trigger_In<ara::sm::triggerin::OTA_State>::FindService(findhandle_ota_triggerin)[0];
     cout << "-----------------------------------------------------------------" << endl;
     handle_ota.UDP_port = UDP_PORT_EVENTS;
-    ota_triggerin_proxy_ptr = std::make_shared<ara::sm::triggerin::proxy::Trigger_In_OTA_Proxy>(handle_ota);
+    ota_triggerin_proxy_ptr = std::make_shared<ara::sm::triggerin::proxy::Trigger_In<ara::sm::triggerin::OTA_State>>(handle_ota);
 
     cout << "[OTA] Starting OTA process" << endl;
     cout << "handle pkg : " << handle_pkg.m_server_com.port_number << " " << handle_pkg.m_server_com.service_id << endl;

@@ -62,7 +62,8 @@ public:
       MethodCallProcessingMode mode = MethodCallProcessingMode::kEvent)
       : m_skeleton_handle{skeleton_handle}, m_service_id(service_id),
         m_instance_id(instance), m_mode{mode},
-        cliaddr{AF_INET, htons(m_skeleton_handle.sd_portnum), INADDR_ANY} {}
+        cliaddr{AF_INET, htons(m_skeleton_handle.sd_portnum), INADDR_ANY} {
+        }
 
   /**
    * @brief Get the Service Id object
