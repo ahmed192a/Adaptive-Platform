@@ -601,49 +601,52 @@ void ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::method_dispatch(
   case 8: // TransferData
   {
     cout << " TransferData" << endl;
-    std::vector<uint8_t> msg = message.GetPayload();
+    std::cout <<"parameters size " << message.GetPayload().size() << std::endl;
+    HandleCall(*this, &PackageManagementSkeleton::TransferData, message,
+               cserver);
+    // std::vector<uint8_t> msg = message.GetPayload();
 
 
-    ara::ucm::pkgmgr::PackageManagement::ByteVectorType data;
-    uint64_t blockCounter = dser.deserialize<uint64_t>(msg, 16);
-    ara::ucm::pkgmgr::PackageManagement::TransferIdType id =
-        dser.deserialize<ara::ucm::pkgmgr::PackageManagement::TransferIdType>(
-            msg, 0);
-    std::future<ara::ucm::pkgmgr::PackageManagement::TransferDataOutput>
-        transfer_data_output;
-    ara::ucm::pkgmgr::PackageManagement::TransferDataOutput rval;
+    // ara::ucm::pkgmgr::PackageManagement::ByteVectorType data;
+    // uint64_t blockCounter = dser.deserialize<uint64_t>(msg, 16);
+    // ara::ucm::pkgmgr::PackageManagement::TransferIdType id =
+    //     dser.deserialize<ara::ucm::pkgmgr::PackageManagement::TransferIdType>(
+    //         msg, 0);
+    // std::future<ara::ucm::pkgmgr::PackageManagement::TransferDataOutput>
+    //     transfer_data_output;
+    // ara::ucm::pkgmgr::PackageManagement::TransferDataOutput rval;
 
 
-    data.clear();
-    data.insert(data.begin(), msg.begin() + 24, msg.end());
+    // data.clear();
+    // data.insert(data.begin(), msg.begin() + 24, msg.end());
 
-    // cout << "msgsize" << msg.size() << endl;
-    transfer_data_output = TransferData(id, data, blockCounter);
-    rval = transfer_data_output.get();
-    // create message and send it
-    ara::com::SOMEIP_MESSAGE::Message response_m(
-        ara::com::SOMEIP_MESSAGE::Message_ID{
-            this->UCM_Service_id,
-            (uint16_t)(message.MessageId().method_id & 0x7fff)},
-        ara::com::SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
-        7, // Interface Version
-        ara::com::SOMEIP_MESSAGE::MessageType::RESPONSE);
+    // // cout << "msgsize" << msg.size() << endl;
+    // transfer_data_output = TransferData(id, data, blockCounter);
+    // rval = transfer_data_output.get();
+    // // create message and send it
+    // ara::com::SOMEIP_MESSAGE::Message response_m(
+    //     ara::com::SOMEIP_MESSAGE::Message_ID{
+    //         this->UCM_Service_id,
+    //         (uint16_t)(message.MessageId().method_id & 0x7fff)},
+    //     ara::com::SOMEIP_MESSAGE::Request_ID{5, 6},
+    //     2, // protocol version
+    //     7, // Interface Version
+    //     ara::com::SOMEIP_MESSAGE::MessageType::RESPONSE);
 
-    // create serialize object
-    ara::com::Serializer s1;
-    // serialize the result
-    s1.serialize(rval);
-    std::vector<uint8_t> _payload = s1.Payload();
-    response_m.SetPayload(_payload);
-    _payload.clear();
-    _payload = response_m.Serializer();
+    // // create serialize object
+    // ara::com::Serializer s1;
+    // // serialize the result
+    // s1.serialize(rval);
+    // std::vector<uint8_t> _payload = s1.Payload();
+    // response_m.SetPayload(_payload);
+    // _payload.clear();
+    // _payload = response_m.Serializer();
 
-    uint32_t msg_size = _payload.size();
-    // send message
-    cserver.Send(&msg_size, sizeof(msg_size));
-    cserver.Send(_payload.data(), msg_size);
-    cserver.CloseSocket();
+    // uint32_t msg_size = _payload.size();
+    // // send message
+    // cserver.Send(&msg_size, sizeof(msg_size));
+    // cserver.Send(_payload.data(), msg_size);
+    // cserver.CloseSocket();
   }
 
   break;

@@ -1,6 +1,7 @@
-#ifndef _DIAGNOSTIC_RESET_RETURN_TYPES_H_
-#define _DIAGNOSTIC_RESET_RETURN_TYPES_H_
+#ifndef _DIAGNOSTIC_RESET_TYPES_H_
+#define _DIAGNOSTIC_RESET_TYPES_H_
 #include <string>
+namespace ara::sm::diagnostic_reset {
 //**************************TYPE DEFINITIONS AND MEMBERS*************************//
 //1.Reply message from Process, which received DiagnosticResetMessage from State Management
 enum class DiagnosticResetRespMsg{
@@ -13,4 +14,5 @@ enum class DiagnosticResetRespMsg{
 
 //2.Message to all Processes(in a SoftwareCluster) to indicate a request to perform Diagnostic Reset
 using DiagnosticResetMsg = std::string;
+}
 #endif

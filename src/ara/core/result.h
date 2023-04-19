@@ -78,7 +78,7 @@ namespace ara
              * 
              * \param[in] other     the other instance
              */
-            Result(Result const &&other) noexcept(std::is_nothrow_move_constructible<T>::value &&std::is_nothrow_move_constructible<E>::value);
+            explicit Result(Result const &&other) noexcept(std::is_nothrow_move_constructible_v<T> &&std::is_nothrow_move_constructible_v<E>);
 
             // SWS_CORE_00727
             /**
@@ -88,7 +88,7 @@ namespace ara
              * destructible<E>::value is true.
              * 
              */
-            ~Result();
+            ~Result() noexcept(std::is_trivially_destructible_v<T> &&std::is_trivially_destructible_v<E>);
 
             // SWS_CORE_00731
             /**
@@ -182,8 +182,8 @@ namespace ara
              * \return Result&      *this, containing the contents of other
              */
             Result& operator=(Result &&other) noexcept(
-                  std::is_nothrow_move_constructible<T>::value &&std::is_nothrow_move_assignable<T>::value 
-                &&std::is_nothrow_move_constructible<E>::value &&std::is_nothrow_move_assignable<E>::value);
+                  std::is_nothrow_move_constructible_v<T> &&std::is_nothrow_move_assignable_v<T> 
+                &&std::is_nothrow_move_constructible_v<E> &&std::is_nothrow_move_assignable_v<E>);
 
             // SWS_CORE_00743
             /**
@@ -216,8 +216,8 @@ namespace ara
              * \param[in] other     the other instance
              */
             void Swap(Result &other) noexcept(
-                  std::is_nothrow_move_constructible<T>::value &&std::is_nothrow_move_assignable<T>::value
-                &&std::is_nothrow_move_constructible<E>::value &&std::is_nothrow_move_assignable<E>::value
+                  std::is_nothrow_move_constructible_v<T> &&std::is_nothrow_move_assignable_v<T>
+                &&std::is_nothrow_move_constructible_v<E> &&std::is_nothrow_move_assignable_v<E>
             );
 
             // SWS_CORE_00751

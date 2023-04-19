@@ -82,36 +82,48 @@ inline std::ostream &operator<<(std::ostream &out, Exception const &ex) {
  * thus cause a terminate().
  */
 
-/// class ApplicationErrorException : public Exception
-/// {
-/// public:
-///     /**
-///      * \brief Default constructor that deliberately leaves the exception in
-///      an undefined state.
-///      *
-///      */
-///     ApplicationErrorException()
-///         : Exception( std::move(ErrorCode<ApplicationError>(0)) )
-///     {
-///     }
-///    /**
-///     * \brief All subclassess of ApplicationErrorException shall override
-///     this method.
-///     * The string returned by the overriden method shall have the following
-///     format:
-///     * "<error> in <service interface> with ErrorCode: <error code>"
-///     * where:
-///     * <error> is the short name of the ApplicationError element within the
-///     ARXML model
-///     * <service interface> is the fullyy qualified short name (short name
-///     path) of the service interface wherein
-///     * the Application Error has been declared.
-///     * <error code> the 6 bit error code defined within the ApplicationError
-///     element in decimal format.
-///     * \return string representation of this ApplicationError (see above).
-///     */
-///    virtual const char* what() const noexcept override = 0;
-/// };
+//  class ApplicationErrorException : public Exception
+//  {
+//   private :
+//     ApplicationError mError {ApplicationError::Unknown};
+//     std::string mServiceInterface;
+//     uint8_t mErrorCode;
+//  public:
+//      /**
+//       * \brief Default constructor that deliberately leaves the exception in
+//       an undefined state.
+//       *
+//       */
+//     ApplicationErrorException()
+//         : Exception(ErrorCode(mError))
+//     {
+//     }
+
+
+//     /**
+//      * \brief All subclassess of ApplicationErrorException shall override
+//      this method.
+//      * The string returned by the overriden method shall have the following
+//      format:
+//      * "<error> in <service interface> with ErrorCode: <error code>"
+//      * where:
+//      * <error> is the short name of the ApplicationError element within the
+//      ARXML model
+//      * <service interface> is the fullyy qualified short name (short name
+//      path) of the service interface wherein
+//      * the Application Error has been declared.
+//      * <error code> the 6 bit error code defined within the ApplicationError
+//      element in decimal format.
+//      * \return string representation of this ApplicationError (see above).
+//      */
+//     virtual const char* what() const noexcept override = 0;
+
+//     ara::core::ErrorCode
+//   MakeErrorCode(ApplicationError error, 
+//                 ara::core::ErrorDomain::SupportDataType data, char const *userMessage = nullptr) const noexcept{
+//     return ara::core::ErrorCode(static_cast<ara::core::ErrorDomain::CodeType>(error), 2, data, userMessage);
+//                 }
+//  };
 
 } // namespace ara::core
 

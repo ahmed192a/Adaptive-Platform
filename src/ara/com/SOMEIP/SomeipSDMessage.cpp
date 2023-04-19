@@ -49,7 +49,7 @@ void SomeIpSDMessage::AddEntry(entry::Entry *entry) {
   entries.push_back(entry);
 }
 
-uint32_t SomeIpSDMessage::Length() noexcept {
+uint32_t SomeIpSDMessage::Length() const noexcept {
   const uint32_t LengthFieldSize = 4;
   // Request ID + Versions + Message Type + Return Code +Message ID
   const uint32_t GeneralHeaderSize = 12;

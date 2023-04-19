@@ -61,7 +61,8 @@ template <typename T> class Field : public Event<T> {
         SOMEIP_MESSAGE::MessageType::RESPONSE);
 
     ara::com::Deserializer dser;
-    this->event_data = dser.deserialize<T>(_data, 0);
+    int offset = 0;
+    this->event_data = dser.deserialize<T>(_data, offset);
     // Setpayload in message
     R_msg.SetPayload(_data);
     _data = R_msg.Serializer();
@@ -235,79 +236,6 @@ struct FieldType {
                                          FieldNoGetterAndSetter<T>>>>>>>;
 };
 
-// /**
-//  * @brief if all true create object of Field class
-//  *
-//  * @tparam T
-//  */
-// template <typename T>
-// struct FieldType<T, true, true, true>
-// {
-//     using type = Field<T>;
-// };
-
-// /**
-//  * @brief if No Setter create object of FieldNoSetter class
-//  *
-//  * @tparam T
-//  */
-// template <typename T>
-// struct FieldType<T, true, false, true>
-// {
-//     using type = FieldNoSetter<T>;
-// };
-// /**
-//  * @brief if No Getter create object of FieldNoGetter class
-//  *
-//  * @tparam T
-//  */
-// template <typename T>
-// struct FieldType<T, false, true, true>
-// {
-//     using type = FieldNoGetter<T>;
-// };
-// /**
-//  * @brief if No Getter & Setter create object of FieldNoGetterAndSetter class
-//  *
-//  * @tparam T
-//  */
-// template <typename T>
-// struct FieldType<T, false, false, true>
-// {
-//     using type = FieldNoGetterAndSetter<T>;
-// };
-// /**
-//  * @brief if No Notifier create object of FieldNoNotifier class
-//  *
-//  * @tparam T
-//  */
-// template <typename T>
-// struct FieldType<T, true, true, false>
-// {
-//     using type = FieldNoNotifier<T>;
-// };
-// /**
-//  * @brief if No Notifier & setter create object of FieldNoNotifierAndSetter
-//  class
-//  *
-//  * @tparam T
-//  */
-// template <typename T>
-// struct FieldType<T, true, false, false>
-// {
-//     using type = FieldNoNotifierAndSetter<T>;
-// };
-// /**
-//  * @brief if No Notifier & Getter create object of FieldNoNotifierAndGetter
-//  class
-//  *
-//  * @tparam T
-//  */
-// template <typename T>
-// struct FieldType<T, false, true, false>
-// {
-//     using type = FieldNoNotifierAndGetter<T>;
-// };
 
 } // namespace ara::com::proxy_skeleton::skeleton
 

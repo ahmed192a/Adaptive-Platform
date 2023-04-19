@@ -84,7 +84,7 @@ public:
    *
    * @return uint32_t
    */
-  uint32_t Length() noexcept override;
+  uint32_t Length() const noexcept override;
 
   /**
    * @brief Set the Session Id object

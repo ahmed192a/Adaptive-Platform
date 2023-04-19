@@ -177,7 +177,7 @@ public:
 
   /// @brief Get message length
   /// @returns Message length including the payload length
-  virtual uint32_t Length() noexcept;
+  virtual uint32_t Length() const noexcept;
 
   /// @brief Get client ID
   /// @returns Client ID including ID prefix

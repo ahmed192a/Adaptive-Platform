@@ -46,15 +46,42 @@ public:
    * @param data
    */
   template <typename T> void serialize(T data) {
-    // if T is string or vector<uint8_t> 
-    if constexpr (std::is_same<T, std::string>::value ||
-                  std::is_same<T, std::vector<uint8_t>>::value) {
+
+    // if T is string or vector<uint8_t>
+    if constexpr (std::is_same_v<T, std::string> ||
+                  std::is_same_v<T, std::vector<uint8_t>>) {
+
+      // insert size of the data
+      int size = data.size();
+
+      std::vector<uint8_t> buffer(sizeof(size));
+      memcpy(&buffer[0], (const void *)&size, sizeof(size));
+      payload.insert(payload.end(), buffer.begin(), buffer.end());
       payload.insert(payload.end(), data.begin(), data.end());
 
-    }else{
-    std::vector<uint8_t> buffer(sizeof(data));
-    memcpy(&buffer[0], (const void *)&data, sizeof(data));
-    payload.insert(payload.end(), buffer.begin(), buffer.end());
+    }
+    // else if it's vector of strings or vector of vector<uint8_t>
+    else if constexpr (std::is_same_v<T, std::vector<std::string>> ||
+                       std::is_same_v<T, std::vector<std::vector<uint8_t>>>) {
+      // insert size of the data
+      int size = data.size();
+      std::vector<uint8_t> buffer(sizeof(size));
+      memcpy(&buffer[0], (const void *)&size, sizeof(size));
+      payload.insert(payload.end(), buffer.begin(), buffer.end());
+      payload.insert(payload.end(), data.size());
+      for (auto &element : data) {
+        // insert size of each element
+        int size2 = element.size();
+        std::vector<uint8_t> buffer2(sizeof(size2));
+        memcpy(&buffer2[0], (const void *)&size2, sizeof(size2));
+        payload.insert(payload.end(), buffer2.begin(), buffer2.end());
+
+        payload.insert(payload.end(), element.begin(), element.end());
+      }
+    } else {
+      std::vector<uint8_t> buffer(sizeof(data));
+      memcpy(&buffer[0], (const void *)&data, sizeof(data));
+      payload.insert(payload.end(), buffer.begin(), buffer.end());
     }
   }
   /**
@@ -66,7 +93,7 @@ public:
    * @brief Get the Payload object of the serializer
    *
    */
-  std::vector<uint8_t> Payload() { return payload; }
+  std::vector<uint8_t> Payload() const { return payload; }
 };
 } // namespace ara::com
 

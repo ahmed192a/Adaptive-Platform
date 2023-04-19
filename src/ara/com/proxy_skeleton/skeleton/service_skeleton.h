@@ -69,7 +69,7 @@ public:
    *
    * @return const ara::com::proxy_skeleton::ServiceId
    */
-  const ara::com::proxy_skeleton::ServiceId &GetServiceId() const {
+  ara::com::proxy_skeleton::ServiceId GetServiceId() const {
     return m_service_id;
   }
   /**
@@ -296,7 +296,7 @@ protected:
     // create SOME IP message
     SOMEIP_MESSAGE::Message R_msg(
         SOMEIP_MESSAGE::Message_ID{
-            (uint16_t)this->m_service_id,
+             this->m_service_id,
             (uint16_t)(msg.MessageId().method_id & 0x7fff)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
         2, // protocol version

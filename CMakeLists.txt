@@ -50,7 +50,7 @@ add_subdirectory(cmake)
 add_subdirectory(Cloud)
 add_subdirectory(src)
 add_subdirectory(App)
-add_subdirectory(test_partial_processes)
+# add_subdirectory(test_partial_processes)
 
 ## For Subsystem testing
 

@@ -9,8 +9,8 @@
  *
  */
 
-#ifndef COMMON_H_
-#define COMMON_H_
+#ifndef _DIAGNOSTIC_RESET_COMMON_H_
+#define _DIAGNOSTIC_RESET_COMMON_H_
 
 #include "ara/com/proxy_skeleton/proxy/service_proxy.h"
 #include "ara/sm/diagnostic_reset/diagnostic_reset_return_types.h"
@@ -29,7 +29,7 @@ public:
   std::future<ara::sm::diagnostic_reset::MessageDiagnosticOutput> operator()() {
 
     std::future<ara::sm::diagnostic_reset::MessageDiagnosticOutput> result =
-        std::async([*this]() {
+        std::async([this]() {
           // add function code
           return service_proxy_ptr
               ->SendRequest<ara::sm::diagnostic_reset::MessageDiagnosticOutput>(
@@ -52,7 +52,7 @@ public:
 
   std::future<ara::sm::diagnostic_reset::EventDiagnosticOutput> operator()() {
     std::future<ara::sm::diagnostic_reset::EventDiagnosticOutput> result =
-        std::async([*this]() {
+        std::async([this]() {
           // add function code
           return service_proxy_ptr
               ->SendRequest<ara::sm::diagnostic_reset::EventDiagnosticOutput>(

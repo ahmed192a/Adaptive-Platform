@@ -58,7 +58,7 @@ ara::com::InstanceIdentifier instance(T_IN_UCM_INSTANCE_ID);
 // skeleton handle for constructor Trigger in UCM service
 ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle triggerin_handle{SERVER_PORT, SD_PORT};  
 // Create shared pointer object of Trigger in UCM service skeleton
-std::shared_ptr<ara::sm::triggerin::skeleton::Trigger_In_UCM_Skeleton> UCM_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_UCM_Skeleton>(instance, triggerin_handle); 
+auto UCM_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_UCM_Skeleton>(instance, triggerin_handle); 
 
 /**     OTA Trigger In Skeleton    **/
 // instance id of Trigger in OTA service (2)
@@ -66,7 +66,7 @@ ara::com::InstanceIdentifier instance_ota(T_IN_OTA_INSTANCE_ID);
 // skeleton handle for constructor Trigger in OTA service
 ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle triggerin_handle_ota{SERVER_PORT, SD_PORT};
 // Create shared pointer object of Trigger in OTA service skeleton
-std::shared_ptr<ara::sm::triggerin::skeleton::Trigger_In_OTA_Skeleton> OTA_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_OTA_Skeleton>(instance_ota, triggerin_handle_ota);
+auto OTA_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_OTA_Skeleton>( instance_ota, triggerin_handle_ota);
 
 
 CServer server_main_socket_DG(SOCK_DGRAM);  // socket for events (UDP)

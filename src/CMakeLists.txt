@@ -15,8 +15,8 @@ add_subdirectory(ara)
 #                         SETUP THE EXTRA LIBS                                      #
 #####################################################################################
 add_subdirectory(OTA)
-add_subdirectory(SD_c)
-add_subdirectory(SD_s)
+# add_subdirectory(SD_c)
+# add_subdirectory(SD_s)
 
 
 # here we are adding the header files to the project tree in visual studio

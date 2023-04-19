@@ -78,7 +78,7 @@ ReturnCode Message::Returncode() const noexcept {
   return static_cast<ReturnCode>(header.return_code);
 }
 
-uint32_t Message::Length() noexcept { return header.length; }
+uint32_t Message::Length() const noexcept { return header.length; }
 
 std::vector<uint8_t> Message::Serializer() {
   std::vector<uint8_t> result;

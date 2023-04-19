@@ -66,7 +66,8 @@ public:
    */
   void handlecall(const std::vector<uint8_t> &msg) {
     ara::com::Deserializer dser;
-    event_data = dser.deserialize<T>(msg, 0);
+    int offset = 0;
+    event_data = dser.deserialize<T>(msg, offset);
   }
 
   /**

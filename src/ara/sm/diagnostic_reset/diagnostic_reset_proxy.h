@@ -7,7 +7,8 @@
  * @copyright Copyright (c) 2022
  *
  */
-
+#ifndef DIAGNOSTIC_RESET_PROXY_H_
+#define DIAGNOSTIC_RESET_PROXY_H_
 #include "ara/com/proxy_skeleton/proxy/field.h"
 #include "ara/com/proxy_skeleton/proxy/service_proxy.h"
 #include "ara/sm/diagnostic_reset/diagnostic_reset_common.h"
@@ -27,3 +28,5 @@ public:
   methods::message_diagnostic message_diagnostic;
 };
 } // namespace ara::sm::diagnostic_reset::proxy
+
+#endif

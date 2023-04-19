@@ -8,21 +8,30 @@
  * @copyright Copyright (c) 2022
  *
  */
+#ifndef _DIAGNOSTIC_RESET_SKELETON_H_
+#define _DIAGNOSTIC_RESET_SKELETON_H_
 
-#include "ara/com/proxy_skeleton/skeleton/service_skeleton.h"
 #include "ara/com/proxy_skeleton/skeleton/field.h"
+#include "ara/com/proxy_skeleton/skeleton/service_skeleton.h"
 
 #include "ara/sm/diagnostic_reset/diagnostic_reset_return_types.h"
-#include <iostream>
 #include <future>
+#include <iostream>
 
 namespace ara::sm::diagnostic_reset::skeleton {
-class diagnostic_reset_skeleton : public ara::com::proxy_skeleton::skeleton::ServiceSkeleton {
+class diagnostic_reset_skeleton
+    : public ara::com::proxy_skeleton::skeleton::ServiceSkeleton {
 private:
   struct sockaddr_in cliaddr;
   ara::com::proxy_skeleton::ServiceId serviceid{14};
+  // 2.1 Message to all Processes(in a SoftwareCluster) to indicate a request to
+  // perform Diagnostic SoftReset
+  DiagnosticResetMsg SoftReset = "SoftReset"; // normal operation
 
 public:
+  // 3. to represent if there is active session
+  static bool activeSession;
+
   diagnostic_reset_skeleton(
       ara::com::InstanceIdentifier instance,
       ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle
@@ -30,18 +39,27 @@ public:
       : ara::com::proxy_skeleton::skeleton::ServiceSkeleton(serviceid, instance,
                                                             skeleton_handle) {}
 
-  /*sends DiagnosticResetMsg defined in 9.1 Type definition to all Processes in
-   * a SoftwareCluster.*/
+  /**
+   * @brief sends DiagnosticResetMsg defined in 9.1 Type definition to all
+   * Processes in a SoftwareCluster.
+   *
+   * @return std::future<ara::sm::diagnostic_reset::MessageDiagnosticOutput>
+   */
   std::future<ara::sm::diagnostic_reset::MessageDiagnosticOutput> message();
 
-  /*All Processes which got a DiagnosticReset request sends this as answer to
-   * State Management*/
+
+  /**
+   * @brief All Processes which got a DiagnosticReset request sends this as
+   * answer to State Management
+   *
+   * @return std::future<ara::sm::diagnostic_reset::EventDiagnosticOutput>
+   */
   std::future<ara::sm::diagnostic_reset::EventDiagnosticOutput> event();
 
   void method_dispatch(ara::com::SOMEIP_MESSAGE::Message &message,
-                                 Socket &cserver) {
+                       Socket &cserver) {
     int methodID = message.MessageId().method_id;
-    // std::cout << "\t[SERVER] Dispatch " << methodID << endl;
+    std::cout << "\t[SERVER] Dispatch " << methodID << std::endl;
 
     switch (methodID) {
     case 0:
@@ -52,9 +70,10 @@ public:
       break;
     default:
 
-
       break;
     }
   }
 };
-} // namespace ara::sm::diagnostic_reset
+} // namespace ara::sm::diagnostic_reset::skeleton
+
+#endif // _DIAGNOSTIC_RESET_SKELETON_H_

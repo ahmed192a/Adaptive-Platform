@@ -99,8 +99,6 @@ public:
    * @return R
    */
   template <typename R, typename... Args>
-  // if the pass argument is not vector or string
-  
   R SendRequest(uint32_t method_id, Args &&...args) {
 
     SOMEIP_MESSAGE::Message R_msg(
@@ -115,10 +113,14 @@ public:
     R result; // to save the result of the method
     ara::com::Serializer ser;
     ara::com::Deserializer deser;
+    std::cout << "Sending Request..." << std::endl;
 
     (ser.serialize(std::forward<Args>(args)), ...);
+    
     // get payload of argumnets
     std::vector<uint8_t> payload_buffer = ser.Payload();
+    std::cout << "parameters payload size " << payload_buffer.size()
+              << std::endl;
     // push the payload to the message
     R_msg.SetPayload(payload_buffer);
 
@@ -150,7 +152,8 @@ public:
     std::vector<uint8_t> result_payload = Res_msg.GetPayload();
 
     // deserialize the payload
-    result = deser.deserialize<R>(result_payload, 0);
+    int offset = 0;
+    result = deser.deserialize<R>(result_payload, offset);
     return result;
   }
   /**
@@ -203,7 +206,8 @@ public:
     // get the payload
     std::vector<uint8_t> _data_payload = Res_msg.GetPayload();
     // deserialize the payload
-    result = deser.deserialize<R>(_data_payload, 0);
+    int offset = 0;
+    result = deser.deserialize<R>(_data_payload, offset);
 
     return result;
   }
@@ -303,7 +307,8 @@ public:
     // get the payload
     std::vector<uint8_t> _data_payload = Res_msg.GetPayload();
     // deserialize the payload
-    result = deser.deserialize<R>(_data_payload, 0);
+    int offset = 0;
+    result = deser.deserialize<R>(_data_payload, offset);
 
     return result;
   }

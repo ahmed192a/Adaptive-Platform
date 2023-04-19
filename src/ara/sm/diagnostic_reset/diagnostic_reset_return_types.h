@@ -9,18 +9,16 @@
  *
  */
 
-#ifndef RETURN_TYPES_H_
-#define RETURN_TYPES_H_
+#ifndef _DIAGNOSTIC_RESET_RETURN_TYPES_H_
+#define _DIAGNOSTIC_RESET_RETURN_TYPES_H_
 
 #include "ara/sm/diagnostic_reset/diagnostic_reset_types.h"
+#include <variant>
 
 namespace ara::sm::diagnostic_reset {
-struct MessageDiagnosticOutput {
-  DiagnosticResetMsg msg;
-};
-struct EventDiagnosticOutput {
-  DiagnosticResetRespMsg respMsg;
-};
+
+using MessageDiagnosticOutput = std::variant<DiagnosticResetMsg, std::monostate>;
+using EventDiagnosticOutput = std::variant<DiagnosticResetRespMsg, std::monostate>;
 
 } // namespace ara::sm::diagnostic_reset
 

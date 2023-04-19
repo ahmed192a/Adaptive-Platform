@@ -2,6 +2,7 @@
 #ifndef ARA_CORE_SPAN_H_
 #define ARA_CORE_SPAN_H_
 
+#include <array>
 #include <cstddef>
 #include <iterator>
 #include <limits>
@@ -43,7 +44,7 @@ namespace ara
              * \brief Alias for the type of values in this Span.
              * 
              */
-            using value_type = typename std::remove_cv<element_type>::type;
+            using value_type = typename std::remove_cv_t<element_type>;
 
             // SWS_CORE_01913
             /**
@@ -74,6 +75,8 @@ namespace ara
              */
             using pointer = element_type*;
 
+            
+
             // SWS_CORE_01916
             /**
              * \brief Alias type for a reference to an element.
@@ -89,7 +92,10 @@ namespace ara
              * ConstexprIterator.
              * 
              */
-            using iterator = implementation_defined;
+
+            using iterator = std::iterator<std::random_access_iterator_tag, value_type>;
+
+
 
             // SWS_CORE_01918
             /**
@@ -99,7 +105,7 @@ namespace ara
              * ConstexprIterator.
              * 
              */
-            using const_iterator = implementation_defined;
+            using const_iterator = const iterator;
 
             // SWS_CORE_01919
             /**
@@ -113,14 +119,14 @@ namespace ara
              * \brief The type of a const_reverse_iterator to elements.
              * 
              */
-            using const_reverse_iterator = std_reverse_iterator<const_iterator>;
+            using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
             // SWS_CORE_01931
             /**
              * \brief A constant reflecting the configured Extent of this Span.
              * 
              */
-            constexpr index_type extent = Extent;
+            static constexpr index_type extent = Extent;
 
             // SWS_CORE_01941
             /**
@@ -179,7 +185,7 @@ namespace ara
              * \param[in] arr   the array
              */
             template<std::size_t N>
-            constexpr Span(Array<value_type, N> &arr) noexcept;
+            constexpr Span(std::array<value_type, N> &arr) noexcept;
 
             // SWS_CORE_01946
             /**
@@ -192,7 +198,7 @@ namespace ara
              * \param[in] arr   the array
              */
             template<std::size_t N>
-            constexpr Span(Array<value_type, N> const &arr) noexcept;
+            constexpr Span(std::array<value_type, N> const &arr) noexcept;
 
             // SWS_CORE_01947
             /**
@@ -321,7 +327,7 @@ namespace ara
              * \return Span<element_type, SEE_BELOW>    the subspan
              */
             template<std::size_t Offset, std::size_t Count = dynamic_extent>
-            constexpr auto subspan() const -> Span<element_type, SEE_BELOW>;
+            constexpr auto subspan() const -> Span<element_type, Count != dynamic_extent ? Count : (Extent != dynamic_extent ? Extent - Offset : dynamic_extent)>;
 
             // SWS_CORE_01966
             /**
