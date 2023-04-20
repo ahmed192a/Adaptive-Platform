@@ -10,7 +10,7 @@
 
 void handle_sigterm(int sig);
 
-
+serviceRegistry * instance = nullptr;
 
 /**
  * @brief main function of service discovery
@@ -22,6 +22,7 @@ int main() {
 
 
   serviceRegistry sd;
+  instance = &sd;
   sd.run();
 
   return 0;
@@ -35,4 +36,8 @@ int main() {
 void handle_sigterm(int ) {
   serviceRegistry::isRunning = false;
   cout << "[SD] SIGTERM received" << endl;
+  if (instance != nullptr) {
+    instance->stop();
+  }
+  exit(0);
 }

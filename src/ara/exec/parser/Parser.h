@@ -57,7 +57,6 @@ public:
 
     for (auto &process : processes) {
       Process proc{process};
-      // std::cout << proc.name << std::endl;
       execution_manifest->processes.push_back(proc);
     }
 
@@ -65,7 +64,7 @@ public:
   }
 
   std::unique_ptr<MachineManifest>
-  ParseMachineManifest(std::map<std::string, ara::exec::parser::GLOB> &sys_FG) {
+  ParseMachineManifest(std::map<std::string, ara::exec::parser::GLOB, std::less<>> &sys_FG) {
     // - Validate the machine manifest file using the MachineValidator class.
     // - Create a MachineManifest object and populate it with the parsed data.
     // - Parse the machine manifest file using the JSON parser library.

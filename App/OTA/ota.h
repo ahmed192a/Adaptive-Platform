@@ -74,6 +74,13 @@ public:
   void run() ;
 
   void handler() ;
+
+  void stop() {
+    isRunning = false;
+    server_udp_socket.CloseSocket();
+    std::cout << "[OTA] terminating" << std::endl;
+    client.ReportExecutionState(ara::exec::ExecutionState::kTerminating);
+  }
 };
 
 #endif

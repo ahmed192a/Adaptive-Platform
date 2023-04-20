@@ -11,6 +11,8 @@
 #include "ota.h"
 
 
+
+otaServer * instance = nullptr;
 void handle_sigterm(int sig);
 
 
@@ -18,6 +20,7 @@ void handle_sigterm(int sig);
 int main(void) {
   signal(SIGTERM, handle_sigterm); // register signal handler
   otaServer server;
+  instance = &server;
   server.run();
 
   return 0;
@@ -30,4 +33,9 @@ int main(void) {
  */
 void handle_sigterm(int ) {
     otaServer::isRunning = false;
+    if (instance != nullptr) {
+        instance->stop();
+    }
+
+    exit (0);
 }

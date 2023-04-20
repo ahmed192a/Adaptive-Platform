@@ -1,12 +1,12 @@
 /**
  * @file ucm.h
  * @author your name (you@domain.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2023-04-18
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 #ifndef UCM_H
 #define UCM_H
@@ -21,16 +21,16 @@
 #include <thread>
 #include <vector>
 
-
 /************************************************************************
  *                           Defines                                    *
  ************************************************************************/
-constexpr int SERVER_PORT = 5365;   /*server port number*/
-constexpr int SD_PORT = 1690;    /*Service discovery port number*/
-constexpr int MAX_QUEUE_CLIENTS = 5;    /*Max number of clients*/
-constexpr int PKG_INSTANCE_ID = 1;  /*Instance Id*/
-constexpr int NUM_THREADS = 3;  /*number of threads*/
-constexpr int SM_TRIGGERIN_SERVICE_ID = 55; /*SM_TRIGGERIN_SERVICE_ID in UCM skeleton*/
+constexpr int SERVER_PORT = 5365;    /*server port number*/
+constexpr int SD_PORT = 1690;        /*Service discovery port number*/
+constexpr int MAX_QUEUE_CLIENTS = 5; /*Max number of clients*/
+constexpr int PKG_INSTANCE_ID = 1;   /*Instance Id*/
+constexpr int NUM_THREADS = 3;       /*number of threads*/
+constexpr int SM_TRIGGERIN_SERVICE_ID =
+    55; /*SM_TRIGGERIN_SERVICE_ID in UCM skeleton*/
 class UCM_Server {
 private:
   ara::com::InstanceIdentifier instance{PKG_INSTANCE_ID};
@@ -61,10 +61,23 @@ private:
 public:
   static bool isRunning;
 
-  UCM_Server() ;
-  void mainThread() ;
+  UCM_Server();
+  void mainThread();
 
-  void handle() ;
+  void handle();
+
+  void stop() {
+    isRunning = false;
+    std::cout << "---------------------------------------------" << std::endl;
+    std::cout << "[UCM] Reporting terminating to EM" << std::endl;
+    std::cout << "---------------------------------------------" << std::endl;
+    client.ReportExecutionState(
+        ara::exec::ExecutionState::kTerminating); // report execution state to the
+                                       // execution server
+
+    server_main_socket.CloseSocket();    /* close server socket   */
+    server_main_socket_DG.CloseSocket(); /* close server socket   */
+  }
 };
 
 #endif

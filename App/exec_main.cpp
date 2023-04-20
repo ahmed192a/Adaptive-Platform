@@ -49,7 +49,7 @@ using namespace std;
  ***************************************************************************/
 
 int exec_init();
-void change_state(std::string n_FG, std::string n_state);
+void change_state(std::string const&n_FG, std::string const&n_state);
 void view_out();
 void p_operate();
 void p_terminate();
@@ -62,7 +62,7 @@ void handle_sigterm(int sig){
 /***************************************************************************
  *                      Global Variable Section                            *
  ***************************************************************************/
-static map<string, ara::exec::parser::GLOB> sys_FG;                // Map of all function groups of the system
+static map<string, ara::exec::parser::GLOB, std::less<>> sys_FG;                // Map of all function groups of the system
 std::vector<Process> process_pool;              // Vector of all processes of the system
 
 // Backup streambuffers of  cout
@@ -232,19 +232,23 @@ void p_operator(){
 void p_terminator(){
     // loop on process_pool from back to front
     for(int i = process_pool.size()-1; i >= 0; i--){
+        // for(auto &process : process_pool){
         // if the process is not running continue
         if(!process_pool[i].prun)continue;
+        std::cout << "-    EM: Terminating Process: " << process_pool[i].name << std::endl;
         // for each machine instance(FG) reference in the current configuration
         for(auto &mref: process_pool[i].current_config->machine_instance_refs){
             //Get the current state of the FG
             string fg_statue = sys_FG[mref.function_group].current_FGS->get_states(); 
             //Process wont terminate if fg_state is not process_config_states
             if (!count(mref.modes.begin(), mref.modes.end(), fg_statue)){
+                std::cout << "-    EM: Terminating Process: 22 " << process_pool[i].name << std::endl;
                 process_pool[i].terminate();
                 break;
             }
         }
-    }
+        }
+    // }
 
 
 }
@@ -256,7 +260,7 @@ void p_terminator(){
  *
  * @return void 
  */
-void change_state(std::string n_FG, std::string n_state)
+void change_state(std::string const&n_FG, std::string const&n_state)
 {
     cout<<"---------------------------------------------------------------"<<endl;
     cout<<"- EM: State Transition ("<<sys_FG[n_FG].current_FGS->get_FGname()<<"):  "+sys_FG[n_FG].current_FGS->get_states()+" --> "<<n_state<<endl;

@@ -115,17 +115,12 @@ public:
       explicit MachineInstanceRef(nlohmann::json &machine_instance_ref_json) noexcept {
         this->function_group = machine_instance_ref_json["Function_group"];
         std::string modes_str = machine_instance_ref_json["Modes"];
-        // modes_str.erase(0, 1);
-        // modes_str.erase(modes_str.size() - 1, 1);
-        // std::cout << "modes_str: " << modes_str << std::endl;
-        // modes are string coma separated
+        
         while (modes_str.find(",") != std::string::npos) {
           std::string mode = modes_str.substr(0, modes_str.find(","));
           modes_str.erase(0, modes_str.find(",") + 1);
-          // std::cout << mode << ", ";
           this->modes.push_back(mode);
         }
-        // std::cout << modes_str << std::endl;
         this->modes.push_back(modes_str);
       }
       std::string function_group{}; /*!< name of the functiongroup */

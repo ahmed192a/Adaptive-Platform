@@ -11,16 +11,35 @@
 #include "errno.h"
 #include "sys/stat.h"
 #include "unistd.h"
+#include <cstddef>
+#include <cstdlib>
 #include <fcntl.h>
 #include <iostream>
 #include <signal.h>
 #include <sys/wait.h>
 #include <utility>
+#include <vector>
 
 #define W_DIR "processes/"
 
 using namespace ara::exec::parser;
 using namespace std;
+
+namespace utility {
+
+
+void RedirectProcessOutput(std::string const& path){
+    int fd = open(path.c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd == -1) {
+        std::cout << "Error: Failed to open file " << path << std::endl;
+        return;
+    }
+    dup2(fd, STDOUT_FILENO);  // make stdout go to file
+    dup2(fd, STDERR_FILENO);  // make stderr go to file - you may choose to not do this
+    close(fd);
+}
+}
+
 
 // Definitions of operators
 bool ExecutionManifest::operator==(
@@ -81,24 +100,35 @@ bool Process::start() {
       cout << name << ": chdir() failed for dir " << W_DIR + name
            << ",errno: " << errno << endl;
     } else {
-      // Set environment variables
-      // for (const auto& variable : environment_) {
-      //    ::putenv(const_cast<char*>(variable.c_str()));
-      //}
+      /**
+       Set environment variables
+       for (const auto& variable : environment_) {
+          ::putenv(const_cast<char*>(variable.c_str()));
+       } 
+      */
+   
+      
 
       // Redirect terminal output for application to
       // /var/redirected/<application_name_>
-      // utility::RedirectProcessOutput(("/var/redirected/"+name).c_str());
-      freopen(("../redirected/" + name + ".txt").c_str(), "w", stdout);
+      utility::RedirectProcessOutput(("../redirected/"+name+".txt").c_str());
 
-      // system(("gnome-terminal -- sh -c 'tail -f -n 100
-      // ../redirected/"+name+".txt'").c_str());
+      
 
-      // cout<<"EM(child): in dir "<<get_current_dir_name()<<endl;
       //  Execute the executable with the specified arguments
-      char *args[] = {&name[0], NULL};
-      cout << name << ": Executing... " << endl;
-      execve(args[0], &args[0], NULL);
+      std::vector<char *>args = {&name[0]};
+      std::vector<std::string> startup_options;
+      for (auto const& startup_option: current_config->startup_options){
+        if (startup_option.kind == "commandLineShortForm")
+          startup_options.push_back( "-" + startup_option.name + " " + startup_option.arg);
+        else
+          startup_options.push_back( "--" + startup_option.name + " " + startup_option.arg);
+        args.push_back(&startup_options.back()[0]);
+      }
+      args.push_back(nullptr);
+      cout << name << ": Executing... " << name << endl;
+
+      execve(name.c_str(), args.data(), environ);
 
       // When execv() is successful, the current process is replaced by the
       // child. Otherwise, the following code will be reached.
@@ -123,13 +153,11 @@ bool Process::start() {
         cout << "EM: couldn't read the state to fifo" << endl;
         return false;
       }
-      // close(fd);
       if (current_state == ara::exec::ExecutionState::kRunning)
         cout << "EM: report succeed executing \"" << name
              << "\". [code:" << (int)current_state << ", pid:" << pid << "]"
              << endl;
     }
-    // state_ = ProcessState::kStarting;
     _pid = pid;
     prun = true;
     return true;
@@ -154,7 +182,7 @@ void Process::terminate() {
   else
     cout << "EM: ERROR: coundn't Terminate the process " << name << endl;
 
-  wait(NULL); // wait for the process to be terminated
+  wait(nullptr); // wait for the process to be terminated
   // delete the unused execution client fifo
   unlink(("processes/" + name + "/execution_client_fifo").c_str());
   this->prun = false;             // set flag to indicated process not running

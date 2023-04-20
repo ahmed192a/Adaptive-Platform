@@ -54,6 +54,11 @@ public:
   void run() ;
 
   void handler();
+
+  void stop(){
+    cout << "   [SD] Reported Terminating to EM..." << endl;
+    client.ReportExecutionState(ara::exec::ExecutionState::kTerminating);
+  }
 };
 
 #endif /* SERVICEREGISTRY_H_ */

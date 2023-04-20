@@ -77,6 +77,19 @@ FetchContent_Declare(
 
         
 FetchContent_MakeAvailable(p7) 
+############################################################################################
+# CLI11 lib for command line parsing
+############################################################################################
+message(STATUS "Fetching CLI11 library")
+FetchContent_Declare(
+        cli11
+        GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
+        GIT_TAG  v2.3.2
+        GIT_SHALLOW TRUE
+        GIT_PROGRESS TRUE)
+
+FetchContent_MakeAvailable(cli11)
+
 
 ############################################################################################
 # Get the CryptoPP CMakeLists.txt File for CryptoPP Package GIT_TAG Must be the Same

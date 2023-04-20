@@ -23,7 +23,7 @@ void handle_sigterm(int sig);
  * **********        Globale variables      ************************
  * **********************************************************************/
 
-
+UCM_Server * instance = nullptr;
 
 /**
  * @brief Main Function
@@ -34,6 +34,7 @@ int main() {
   signal(SIGTERM, handle_sigterm);
 
   UCM_Server server;
+  instance = &server;
   server.mainThread();
 
   return 0;
@@ -43,4 +44,12 @@ int main() {
  *
  * @param sig
  */
-void handle_sigterm(int ) { UCM_Server::isRunning = false; }
+void handle_sigterm(int ) { 
+  UCM_Server::isRunning = false; 
+  if (instance != nullptr) {
+    instance->stop();
+  }
+
+  exit(0);
+  
+}
