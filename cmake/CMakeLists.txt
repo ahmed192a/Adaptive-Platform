@@ -1,5 +1,19 @@
-Set(FETCHCONTENT_QUIET FALSE)
+########################################################################
+#
+# Dependencies:
+# FetchContent added in CMake 3.11, downloads during the configure step
+include(FetchContent)
 
+include(Create_lib_macro.cmake)
+# FetchContent_MakeAvailable was not added until CMake 3.14; use our shim
+if(${CMAKE_VERSION} VERSION_LESS 3.14)
+  include(add_FetchContent_MakeAvailable.cmake)
+endif()
+
+Set(FETCHCONTENT_QUIET FALSE)
+if (${ENABLE_COVERAGE})
+        include (coverageModule.cmake)
+endif()
 
 ############################################################################################
 # Install json lib  
@@ -38,17 +52,44 @@ FetchContent_MakeAvailable(spdlog)
 # Install uuid lib
 ############################################################################################
 
-message(STATUS "Fetching UUID library")
+# message(STATUS "Fetching UUID library")
+# FetchContent_Declare(
+#         uuid
+#         GIT_REPOSITORY https://github.com/mariusbancila/stduuid.git
+#         GIT_TAG  v1.2.2
+#         GIT_SHALLOW TRUE
+#         GIT_PROGRESS TRUE)
+# # disable tests and benchmarks
+# set(UUID_BUILD_TESTS OFF CACHE INTERNAL "")
+# set(UUID_BUILD_BENCHMARKS OFF CACHE INTERNAL "")
+# FetchContent_MakeAvailable(uuid)
+
+############################################################################################
+# Install P7 lib for logging
+############################################################################################
+message(STATUS "Fetching P7 library")
 FetchContent_Declare(
-        uuid
-        GIT_REPOSITORY https://github.com/mariusbancila/stduuid.git
-        GIT_TAG  v1.2.2
+        p7
+        GIT_REPOSITORY https://github.com/CMakePorts/libp7-baical.git
+        GIT_TAG  v5.0
         GIT_SHALLOW TRUE
         GIT_PROGRESS TRUE)
-# disable tests and benchmarks
-set(UUID_BUILD_TESTS OFF CACHE INTERNAL "")
-set(UUID_BUILD_BENCHMARKS OFF CACHE INTERNAL "")
-FetchContent_MakeAvailable(uuid)
+
+        
+FetchContent_MakeAvailable(p7) 
+############################################################################################
+# CLI11 lib for command line parsing
+############################################################################################
+message(STATUS "Fetching CLI11 library")
+FetchContent_Declare(
+        cli11
+        GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
+        GIT_TAG  v2.3.2
+        GIT_SHALLOW TRUE
+        GIT_PROGRESS TRUE)
+
+FetchContent_MakeAvailable(cli11)
+
 
 ############################################################################################
 # Get the CryptoPP CMakeLists.txt File for CryptoPP Package GIT_TAG Must be the Same

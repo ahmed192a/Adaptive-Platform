@@ -10,6 +10,7 @@
 #ifndef ENTRY_H
 #define ENTRY_H
 
+#include <memory>
 #include <stdint.h>
 #include <vector>
 #include <stdexcept>
@@ -36,8 +37,8 @@ namespace ara
             {
             private:
                 EntryType GBType;
-                std::vector<option::Option *> GBFirstOptions;
-                std::vector<option::Option *> GBSecondOptions;
+                std::vector<std::shared_ptr<option::Option>> GBFirstOptions;
+                std::vector<std::shared_ptr<option::Option>> GBSecondOptions;
                 uint16_t GBServiceId;
                 uint16_t GBInstanceId;
                 uint8_t GBMajorVersion;
@@ -99,19 +100,19 @@ namespace ara
 
                 /// @brief Get first (general) options
                 /// @returns Exisiting first options
-                const std::vector<option::Option *> &FirstOptions() const noexcept;
+                const std::vector<std::shared_ptr<option::Option>> &FirstOptions() const noexcept;
 
                 /// @brief Add a first (general) option
                 /// @param firstOption First option to be added
-                void AddFirstOption(option::Option *firstOption);
+                void AddFirstOption(std::shared_ptr<option::Option> firstOption);
 
                 /// @brief Get second (specific) options
                 /// @returns Exisiting second options
-                const std::vector<option::Option *> &SecondOptions() const noexcept;
+                const std::vector<std::shared_ptr<option::Option>> &SecondOptions() const noexcept;
 
                 /// @brief Add a second (specific) option
                 /// @param secondOption Second option to be added
-                void AddSecondOption(option::Option *secondOption);
+                void AddSecondOption(std::shared_ptr<option::Option> secondOption);
 
                 /// @brief Get entity payload
                 /// @param optionIndex Index of the last added option

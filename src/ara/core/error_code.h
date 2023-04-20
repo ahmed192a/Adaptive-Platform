@@ -39,14 +39,14 @@ namespace ara
             using SupportDataType = ErrorDomain::SupportDataType;
 
         public:
-            template <typename EnumT, typename = typename std::enable_if<std::is_enum<EnumT>::value>::type>
+            template <typename EnumT, typename = typename std::enable_if_t<std::is_enum_v<EnumT>>>
             constexpr ErrorCode(EnumT e, SupportDataType data = 0, char const *userMessage = nullptr) noexcept
                 // Call MakeErrorCode() unqualified, so the correct overload is found via ADL.
                 : ErrorCode(MakeErrorCode(e, data, userMessage))
             {
             }
 
-            template <typename EnumT, typename = typename std::enable_if<std::is_enum<EnumT>::value>::type>
+            template <typename EnumT, typename = typename std::enable_if_t<std::is_enum_v<EnumT>>>
             constexpr ErrorCode(EnumT e, char const *userMessage, SupportDataType data = 0) noexcept
                 // Call MakeError() unqualified, so the correct overload is found via ADL.
                 : ErrorCode(MakeErrorCode(e, data, userMessage))

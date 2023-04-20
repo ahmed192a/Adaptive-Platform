@@ -17,10 +17,10 @@ namespace ara
     namespace exec
     {
 
-        std::variant<ara::exec::ExecErrc, FunctionGroupState::CtorToken> FunctionGroupState::Preconstruct(FunctionGroup const &functionGroup, std::string metaModelIdentifier) noexcept
+        std::variant<ara::exec::ExecErrc, FunctionGroupState::CtorToken> FunctionGroupState::Preconstruct(FunctionGroup const &functionGroup, std::string const& metaModelIdentifier) noexcept
         {
             std::variant<ara::exec::ExecErrc, FunctionGroupState::CtorToken> token;
-            int sl = metaModelIdentifier.find('/');
+            unsigned long sl = metaModelIdentifier.find('/');
             if (functionGroup.get_FGname() != metaModelIdentifier.substr(0, sl))
             {
                 token.emplace<0>(ara::exec::ExecErrc::kMetaModelError);
@@ -34,44 +34,40 @@ namespace ara
         }
 
 
-        FunctionGroupState::FunctionGroupState(FunctionGroupState::CtorToken &&token) noexcept
-        {
-            this->mFunction_group_name = token.fg_name;
-            this->mc_state = token.c_state;
-        }
-
-
-        FunctionGroupState::~FunctionGroupState() noexcept
+        FunctionGroupState::FunctionGroupState(FunctionGroupState::CtorToken &&token) noexcept : mCtorToken(std::move(token))
         {
         }
 
 
-        void FunctionGroupState::set_FGname(std::string fg_name)
+
+
+
+        void FunctionGroupState::set_FGname(std::string const& fg_name)
         {
-            mFunction_group_name = fg_name;
+            mCtorToken.fg_name = fg_name;
         }
 
 
-        void FunctionGroupState::set_states(std::string state)
+        void FunctionGroupState::set_states(std::string const& state)
         {
-            mc_state = state;
+            mCtorToken.c_state = state;
         }
 
 
         std::string FunctionGroupState::get_FGname() const noexcept
         {
-            return mFunction_group_name;
+            return mCtorToken.fg_name;
         }
 
         std::string FunctionGroupState::get_states() const noexcept
         {
-            return mc_state;
+            return mCtorToken.c_state;
         }
 
 
         bool FunctionGroupState::operator==(FunctionGroupState const &other) const noexcept
         {
-            if (this->mFunction_group_name == other.mFunction_group_name)
+            if (this->mCtorToken.fg_name == other.mCtorToken.fg_name)
             {
                 return true;
             }
@@ -81,7 +77,7 @@ namespace ara
 
         bool FunctionGroupState::operator!=(FunctionGroupState const &other) const noexcept
         {
-            if (this->mFunction_group_name == other.mFunction_group_name)
+            if (this->mCtorToken.fg_name == other.mCtorToken.fg_name)
             {
                 return false;
             }

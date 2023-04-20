@@ -23,7 +23,7 @@
 #define SERVER_PORT             5375    // port for the server socket OF State Manament used with UDP and TCP sockets
 #define SD_PORT                 1690    // port of Service Discovery
 #define T_IN_UCM_INSTANCE_ID    1       // instance id Trigger in UCM service (1)
-#define T_IN_OTA_INSTANCE_ID    2       // instance id Trigger in UCM service (2)
+#define T_IN_OTA_INSTANCE_ID    2       // instance id Trigger in OTA service (2)
 #define MAX_QUEUE_CLIENTS       3       // max number of clients in the queue for STREAM server socket
 
 ///// Namespaces
@@ -58,7 +58,7 @@ ara::com::InstanceIdentifier instance(T_IN_UCM_INSTANCE_ID);
 // skeleton handle for constructor Trigger in UCM service
 ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle triggerin_handle{SERVER_PORT, SD_PORT};  
 // Create shared pointer object of Trigger in UCM service skeleton
-std::shared_ptr<ara::sm::triggerin::skeleton::Trigger_In_UCM_Skeleton> UCM_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_UCM_Skeleton>(instance, triggerin_handle); 
+auto UCM_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_skeleton<ara::sm::triggerin::UCM_State>>(55, instance, triggerin_handle); 
 
 /**     OTA Trigger In Skeleton    **/
 // instance id of Trigger in OTA service (2)
@@ -66,7 +66,7 @@ ara::com::InstanceIdentifier instance_ota(T_IN_OTA_INSTANCE_ID);
 // skeleton handle for constructor Trigger in OTA service
 ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SK_Handle triggerin_handle_ota{SERVER_PORT, SD_PORT};
 // Create shared pointer object of Trigger in OTA service skeleton
-std::shared_ptr<ara::sm::triggerin::skeleton::Trigger_In_OTA_Skeleton> OTA_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_OTA_Skeleton>(instance_ota, triggerin_handle_ota);
+auto OTA_triggerin_skeleton_ptr = std::make_shared<ara::sm::triggerin::skeleton::Trigger_In_skeleton<ara::sm::triggerin::OTA_State>>(56, instance_ota, triggerin_handle_ota);
 
 
 CServer server_main_socket_DG(SOCK_DGRAM);  // socket for events (UDP)
@@ -130,50 +130,6 @@ int main(){
     server_main_socket_DG.OpenSocket(SERVER_PORT);          // open socket for events (UDP)
     server_main_socket_DG.BindServer();                     // bind socket for events (UDP)
 
-    pthread_t threads[NUM_THREADS];                         // create threads
-    int th1_id, th2_id;                                     // thread ids
-    int counter_thead = 0;                                  // thread counter
-
-    // create thread 0
-    th1_id = pthread_create(&threads[0], NULL, pthread0, (void *)&counter_thead);  
-    if (th1_id){
-        // print error if thread can't be created
-        cout << "[UCM SERVER] ERROR can't create thread " << th1_id << endl;    
-        exit(-1);
-    }
-
-
-    pthread_exit(NULL);                                     // exit thread
-
-    return 0;
-}
-
-/////// Functions definitions
-/**
- * @brief Signal handler for SIGTERM
- * @param sig signal number
- * @return void
- */
-void handle_sigterm(int sig){
-    sigval = 1;                                 // set signal value will be used as flag
-    cout<<"[SM] terminating"<<endl;            
-    client.ReportExecutionState(ExecutionState::kTerminating);  // report execution state to the execution server         
-    // UCM_triggerin_skeleton_ptr->StopOfferService();     // stop offering service
-    server_main_socket.CloseSocket();                   // close server socket
-    server_main_socket_DG.CloseSocket();                // close server socket
-    exit(0);                                            // exit program
-}
-
-/**
- * @brief thread0 used to handle methods and FSM of SM
- * 
- * @param v_var     pointer to thread counter
- * @return void*    
- */
-void *pthread0(void *v_var){
-    
-
-    // cout<<"[SM] pthread0"<<endl;
     cout<<endl;
     cout<<"[SM SERVER] OPEN SOCKET ON "<<endl;
     server_main_socket.OpenSocket(SERVER_PORT);         // open socket for methods handle (TCP)
@@ -219,8 +175,7 @@ void *pthread0(void *v_var){
     while(1){
         Socket Sclient = server_main_socket.AcceptServer(); // accept client socket (TCP)
         cout<<"[SM] Accepted client socket"<<endl;
-        // cout << "\t[SM]  accepted" << endl; 
-
+\
         std::vector<uint8_t> msg;                           // Payload message from client              
         uint32_t msg_size;                                  // Size of message 
 
@@ -262,16 +217,18 @@ void *pthread0(void *v_var){
         /*******************************          FSM           **************************************/
         if(SM_State == State::STATE_INITIAL && UCM_triggerin_skeleton_ptr->trigger.get_event() == ara::sm::triggerin::UCM_State::UCM_STATE_INITIALIZED)
         {
-            FunctionGroupState::CtorToken token;
-            token.fg_name = "FG_1";
-            token.c_state = "on";
-            FunctionGroupState FGS(std::move(token));
+            FunctionGroupState::CtorToken token2{"FG_1", "on"};
+            FunctionGroupState FG_1_on(std::move(token2));
             // std::cout<<"[SM] FGS created "<<endl;
             cout<<endl;
             std::cout << "[SM] Create Function group state for MachineFG to ON state" << std::endl;
             std::cout<<"[SM] FGS created "<<endl;       
-            std::future<std::variant<std::monostate,ara::exec::ExecErrc>> _future = state_client_ptr->SetState(FGS);
-            std::variant<std::monostate,ara::exec::ExecErrc> var = _future.get();
+            std::future<std::variant<std::monostate,ara::exec::ExecErrc>> _future2 = state_client_ptr->SetState(FG_1_on);
+            std::variant<std::monostate, ara::exec::ExecErrc> var2 = _future2.get();
+            if(var2.index() == 0)
+                std::cout<<"[SM] state changed successfully"<<std::endl;
+            else
+                std::cout<<"[SM] state change failed"<<std::endl;
             std::cout<<"[SM] state changed"<<endl;
             cout << "---------------------------------------------" << endl;
             cout << "---------------------------------------------" << endl;
@@ -282,31 +239,9 @@ void *pthread0(void *v_var){
             // Comment the next code in this if condition to disable system shutdown and to run the system normally
             cout<<"[SM] OTA_STATE_INITIALIZED"<<endl;
             SM_State = State::STATE_UPDATE;
-            FunctionGroupState::CtorToken token;
-            token.fg_name = "FG_1";
-            token.c_state = "off";
-            FunctionGroupState FGS(std::move(token));
-            std::cout << "[SM] Create Function group state for FG1 to off state" << std::endl;
+            // raise SIGUSER1 signal
+            std::raise (SIGUSR1);
             
-            std::future<std::variant<std::monostate,ara::exec::ExecErrc>> _future = state_client_ptr->SetState(FGS);
-            std::variant<std::monostate,ara::exec::ExecErrc> var = _future.get();
-            if(var.index() == 0)
-                std::cout<<"[SM] state changed successfully"<<std::endl;
-            else
-                std::cout<<"[SM] state change failed"<<std::endl;
-
-            //--------------------------------------------------------------------------------------------------
-            token.fg_name = "MachineFG";
-            token.c_state = "off";
-            FunctionGroupState FGS1(std::move(token));
-            std::cout << "[SM] Create Function group state for MachineFG to off state" << std::endl;
-            
-            std::future<std::variant<std::monostate,ara::exec::ExecErrc>> _future1 = state_client_ptr->SetState(FGS1);
-            std::variant<std::monostate,ara::exec::ExecErrc> var1 = _future1.get();
-            if(var1.index() == 0)
-                std::cout<<"[SM] state changed successfully"<<std::endl;
-            else
-                std::cout<<"[SM] state change failed"<<std::endl;
         }
 
         /*******************************        END OF FSM      **************************************/
@@ -314,4 +249,22 @@ void *pthread0(void *v_var){
     }
     UCM_triggerin_skeleton_ptr->StopOfferService();    // stop offering service
     server_main_socket.CloseSocket();           // close server socket
+
+    return 0;
 }
+
+/////// Functions definitions
+/**
+ * @brief Signal handler for SIGTERM
+ * @param sig signal number
+ * @return void
+ */
+void handle_sigterm(int ){
+    cout<<"[SM] terminating"<<endl;            
+    client.ReportExecutionState(ExecutionState::kTerminating);  // report execution state to the execution server         
+    // UCM_triggerin_skeleton_ptr->StopOfferService();     // stop offering service
+    server_main_socket.CloseSocket();                   // close server socket
+    server_main_socket_DG.CloseSocket();                // close server socket
+    exit(0);                                            // exit program
+}
+

@@ -9,7 +9,7 @@ namespace ara
         namespace powermode
         {
             using PowerModeMsg = std::string;
-            enum PowerModeRespMsg
+            enum class PowerModeRespMsg
             {
                 Done,        // requested mode sucessfully reached//
                 Failed,      // requested mode not reached.//

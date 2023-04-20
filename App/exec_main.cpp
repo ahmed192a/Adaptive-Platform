@@ -17,6 +17,7 @@
 #include <sys/stat.h>   // mkdir
 #include <dirent.h>    // opendir
 #include <filesystem> // to get all files in certain dir
+#include "ara/exec/parser/Parser.h"
 #include "errno.h"      // errno
 #include "unistd.h"
 #include <fcntl.h>
@@ -24,7 +25,6 @@
 #include <sys/wait.h>
 #include <filesystem>
 
-#include "ara/exec/parser/manifest_parser.h"
 #include "ara/exec/function_group.h"
 #include "ara/exec/function_group_state.h"
 #include "ara/Log_trace/Log.h"
@@ -49,7 +49,7 @@ using namespace std;
  ***************************************************************************/
 
 int exec_init();
-void change_state(std::string n_FG, std::string n_state);
+void change_state(std::string const&n_FG, std::string const&n_state);
 void view_out();
 void p_operate();
 void p_terminate();
@@ -62,7 +62,7 @@ void handle_sigterm(int sig){
 /***************************************************************************
  *                      Global Variable Section                            *
  ***************************************************************************/
-static map<string, ara::exec::parser::GLOB> sys_FG;                // Map of all function groups of the system
+static map<string, ara::exec::parser::GLOB, std::less<>> sys_FG;                // Map of all function groups of the system
 std::vector<Process> process_pool;              // Vector of all processes of the system
 
 // Backup streambuffers of  cout
@@ -84,6 +84,7 @@ streambuf* stream_buffer_cin = cin.rdbuf();     // backup cin stream buffer
 int main(int argc, char ** argv){
     signal(SIGTERM, handle_sigterm);    // handle SIGTERM signal used for terminating the system
     signal(SIGKILL, handle_sigterm);    // handle SIGKILL signal used for terminating the system
+    std::cout << "EM: Hello, World!" << std::endl;
 
     // check if there are files the the directory "processes/redirected"
     // if there are files, then delete them
@@ -97,6 +98,7 @@ int main(int argc, char ** argv){
         }
         closedir (dir);
     }
+    std::cout << "EM: Directory processes/redirected is empty" << std::endl;    
 
 
 
@@ -110,6 +112,7 @@ int main(int argc, char ** argv){
     cout.rdbuf(file.rdbuf()); 
     // open the file EM.txt to visualize it in real time in another genome terminal
     //system("gnome-terminal -- sh -c 'tail -f -n 100 processes/redirected/EM.txt'");
+    std::cout << "EM: EM.txt is created" << std::endl;
 
 
 
@@ -135,10 +138,20 @@ int main(int argc, char ** argv){
     /****************************** Main Logic of EM ***********************************/
     // get FG name and new state from SM an change the state
     while(sys_FG["MachineFG"].current_FGS->get_states() != "off"){
+        // clear the message
+        msg.clear();
+        msg.resize(MAX_BUF);                // resize the message to MAX_BUF bytes
         int n= read(fd, &msg[0], MAX_BUF); // read the state from SM
-        cout << "-    EM: New State from SM " <<endl;
+        if (n < 0) {
+            perror("EM: read");
+            // exit(1);
+            change_state("MachineFG", "off");
+            continue;
+        }
+        cout << "-    EM: New State from SM " << n << " "<< msg.substr(0, n) << endl;
         std::string FG_name = msg.substr(0, msg.find("/")); // get the FG name
         std::string new_state = msg.substr(msg.find("/")+1, n-(msg.find('/')+1)); // get the new state
+        cout << "-    EM: FG: " << FG_name << " New State: " << new_state << endl;
         change_state(FG_name, new_state); // change the state of FG
     }
     /***********************************************************************************/
@@ -158,16 +171,24 @@ int main(int argc, char ** argv){
  * @return void
  */
 int exec_init(){
-    //Parser Inistantiation
-    ManifestParser parser;              
-    //Parse Machine manifest
-    MachineManifest MM = parser.parse_machine_manifest(std::string(get_current_dir_name())+ MC_MF, sys_FG);
-    cout<<"- Machine Manifest ID: \""+MM.manifest_id+"\" Parsed Successfully, FGs No.: "<<sys_FG.size()<<endl;
-    //Parse Execution manifests
-    ExecutionManifest EM = parser.parse_execution_manifest(std::string(get_current_dir_name())+ EM_MF);
-    cout<<"- Execution Manifest ID: \""+EM.manifest_id+"\" Parsed Successfully, Processes No.: "<<EM.processes.size()<<endl;
-    //Fetching processes from execution manifest parser
-    process_pool = EM.processes;
+    
+    Parser MachineManifestParser(std::string(get_current_dir_name())+ MC_MF);
+    Parser ExecutionManifestParser(std::string(get_current_dir_name())+ EM_MF);
+    auto MM = MachineManifestParser.ParseMachineManifest(sys_FG);
+    if (MM == nullptr){
+        std::cerr << "Machine Manifest isn't Valid" <<std::endl;
+        exit(1); 
+    }
+    cout<<"- Machine Manifest ID: \""+MM->manifest_id+"\" Parsed Successfully, FGs No.: "<<sys_FG.size()<<endl;
+
+    auto EM = ExecutionManifestParser.ParseExecutionManifest();
+    if (EM == nullptr){
+        std::cerr << "Execution Manifest isn't Valid" <<std::endl;
+        exit(1); 
+    }
+    cout<<"- Execution Manifest ID: \""+EM->manifest_id+"\" Parsed Successfully, Processes No.: "<<EM->processes.size()<<endl;
+    process_pool = EM->processes; 
+   
     return 0;
 }
 /**
@@ -211,19 +232,23 @@ void p_operator(){
 void p_terminator(){
     // loop on process_pool from back to front
     for(int i = process_pool.size()-1; i >= 0; i--){
+        // for(auto &process : process_pool){
         // if the process is not running continue
         if(!process_pool[i].prun)continue;
+        std::cout << "-    EM: Terminating Process: " << process_pool[i].name << std::endl;
         // for each machine instance(FG) reference in the current configuration
         for(auto &mref: process_pool[i].current_config->machine_instance_refs){
             //Get the current state of the FG
             string fg_statue = sys_FG[mref.function_group].current_FGS->get_states(); 
             //Process wont terminate if fg_state is not process_config_states
             if (!count(mref.modes.begin(), mref.modes.end(), fg_statue)){
+                std::cout << "-    EM: Terminating Process: 22 " << process_pool[i].name << std::endl;
                 process_pool[i].terminate();
                 break;
             }
         }
-    }
+        }
+    // }
 
 
 }
@@ -235,7 +260,7 @@ void p_terminator(){
  *
  * @return void 
  */
-void change_state(std::string n_FG, std::string n_state)
+void change_state(std::string const&n_FG, std::string const&n_state)
 {
     cout<<"---------------------------------------------------------------"<<endl;
     cout<<"- EM: State Transition ("<<sys_FG[n_FG].current_FGS->get_FGname()<<"):  "+sys_FG[n_FG].current_FGS->get_states()+" --> "<<n_state<<endl;

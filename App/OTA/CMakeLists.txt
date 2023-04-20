@@ -2,6 +2,8 @@
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ../processes/ota_process)
 add_executable(
     ota_process
+    ota.h
+    ota.cpp
     ota_main.cpp
 )
 target_compile_features(

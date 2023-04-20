@@ -13,10 +13,10 @@ FetchContent_MakeAvailable(googletest)
 
 
 
-file(GLOB_RECURSE TEST_SRC_FILES ./*.cpp ./EM/*.cpp)
+file(GLOB_RECURSE TEST_SRC_FILES ./*.cpp ./EM/*.cpp ./COM/*.cpp)
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY src/test)
 
-enable_testing()
+
 
 add_executable(
   ${PROJECT_NAME}-ut 

@@ -18,7 +18,6 @@ target_link_libraries(
     ara_log_lib
 )
 
-add_subdirectory(EM_test_process)
 add_subdirectory(SD)
 add_subdirectory(SM)
 add_subdirectory(UCM)

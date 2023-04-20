@@ -13,7 +13,6 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-// #include ""
 using namespace std;
 
 enum class LogType : uint8_t

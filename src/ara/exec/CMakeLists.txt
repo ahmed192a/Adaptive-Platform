@@ -1,0 +1,13 @@
+create_library(
+        ${LIB_BUILD_TYPE}
+    LIBNAME
+        ara_exec_lib
+    SOURCES_DIR
+        ${CMAKE_CURRENT_SOURCE_DIR}
+    INCLUDES
+        ${PROJECT_SOURCE_DIR}/src
+    DEPENDS
+        ara_core_lib
+        nlohmann_json::nlohmann_json
+        pthread
+)

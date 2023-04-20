@@ -3,163 +3,162 @@
  * @author Flashing Adapter Graduation Project Team
  * @version 0.1
  * @date 2022-03-14
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 #ifndef _SUBSCRIBER_FILE_H_
 #define _SUBSCRIBER_FILE_H_
-#include <fstream>
-#include <string>
-#include <string.h>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
-#include <sstream>
 #include "ara/com/proxy_skeleton/definitions.h"
-using namespace std;
-class Subscriber
-{
-private:
-    // const char *mfile_name;
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
+#include <string.h>
+#include <string>
+#include <vector>
 
+class Subscriber {
 public:
-    // Subscriber(const char *file_name) : mfile_name{file_name}
-    // {
-    //     clear(mfile_name);
-    // }
-    void write(const char *file_name, ara::com::proxy_skeleton::Client_udp_Info client)
-    {
-        // first check if the data already exists
-        // if exists -> do not write
-        if (check(file_name, client))
-        {
-            return;
-        }
-
-        // open file for writing, append data
-        fstream sub_file;
-        sub_file.open(file_name, ios::app);
-
-        // if opened, write the data into the file
-        if (sub_file.is_open())
-        {
-            sub_file << client.port << ","
-                     << client.addr << "\n";
-        }
-        else
-            cout << "Error. Creating empty file." << endl;
-
-        // close the file
-        sub_file.close();
-    }
-    // Check before writing in file -> No repeated data
-    bool check(const char *file_name, ara::com::proxy_skeleton::Client_udp_Info client)
-    {
-        // open file for reading
-        fstream sub_file;
-        sub_file.open(file_name, ios::in);
-
-        // strings to store the rows elements in
-        string first_item, second_item;
-
-        while (getline(sub_file, first_item, ','))
-        {
-            getline(sub_file, second_item, '\n');
-            int port = stoi(first_item);
-            if (port == client.port && second_item == client.addr)
-            {
-                sub_file.close();
-                return true;
-            }
-        }
-        sub_file.close();
-        return false;
-    }
-    std::vector<ara::com::proxy_skeleton::Client_udp_Info> getrows(const char *file_name)
-    {
-        fstream sub_file;
-        std::vector<ara::com::proxy_skeleton::Client_udp_Info> vclients;
-        sub_file.open(file_name, ios::in);
-        ara::com::proxy_skeleton::Client_udp_Info client;
-        string first_item, second_item;
-        while (getline(sub_file, first_item, ','))
-        {
-            getline(sub_file, second_item, '\n');
-
-            client.port = stoi(first_item);
-            client.addr = second_item;
-            vclients.push_back(client);
-        }
-        return vclients;
+  void write(std::string const& file_name,
+             const ara::com::proxy_skeleton::Client_udp_Info &client) const {
+    // Check if the data already exists
+    if (check(file_name.c_str(), client)) {
+      return;
     }
 
-    // Server sendes stop offer service
-    void delete_record(const char *file_name, ara::com::proxy_skeleton::Client_udp_Info client)
-    {
-        // Open File pointers
-        fstream fin, fout;
+    // Open file for writing, append data
+    std::ofstream sub_file(file_name.c_str(), std::ios::app);
 
-        // Open the existing file
-        fin.open(file_name, ios::in);
+    // If opened, write the data into the file
+    if (sub_file.is_open()) {
+      sub_file << client.port << "," << client.addr << "\n";
+    } else {
+      throw std::invalid_argument("Error opening file for writing, file name: " + file_name);
+    }
+  }
 
-        // Create a new file to store the non-deleted data
-        fout.open("temp.sub", ios::out);
+  // Check before writing in file -> No repeated data
+  bool check(std::string const& file_name,
+             const ara::com::proxy_skeleton::Client_udp_Info &client) const {
+    // Open file for reading
+    std::ifstream sub_file(file_name.c_str());
 
-        int roll1, marks, count = 0, i;
-        char sub;
-        int index, new_marks;
-        string line, word1,word2;
-        vector<string> row;
-
-        // Check if this record exists
-        // If exists, leave it and
-        // add all other data to the new file
-        while (getline(fin, word1, ','))
-        {
-            // getline(s, word1, ',');
-            getline(fin, word2, '\n');
-
-
-            
-
-
-            // writing all records,
-            // except the record to be deleted,
-            // into the new file 'reportcardnew.sub'
-            // using fout pointer
-            if (!(stoi(word1) == client.port && strcmp(word2.data() ,client.addr.data())==0 ))
-            {
-                fout << word1 << ", ";
-                fout << word2 << "\n";
-            }
-            else
-            {
-                count = 1;
-            }
+    // If opened, check for repeated data
+    if (sub_file.is_open()) {
+      std::string line;
+      while (std::getline(sub_file, line)) {
+        auto comma_pos = line.find(',');
+        if (comma_pos != std::string::npos) {
+          int port = std::stoi(line.substr(0, comma_pos));
+          std::string addr = line.substr(comma_pos + 1);
+          if (port == client.port && addr == client.addr) {
+            return true;
+          }
         }
-        // if (count == 1)
-        //     cout << "Record deleted\n";
-        // else
-        //     cout << "Record not found\n";
-
-        // Close the pointers
-        fin.close();
-        fout.close();
-
-        // removing the existing file
-        remove(file_name);
-
-        // renaming the new file with the existing file name
-        rename("temp.sub", file_name);
+      }
+    } else {
+      throw std::invalid_argument("Error opening file for reading, file name: " + file_name);
     }
 
-    void clear(const char *file_name)
-    {
-        ofstream ofs;
-        ofs.open(file_name, std::ofstream::out | std::ofstream::trunc);
-        ofs.close();
+    return false;
+  }
+
+  std::vector<ara::com::proxy_skeleton::Client_udp_Info>
+  getrows(std::string const& file_name) const {
+    std::vector<ara::com::proxy_skeleton::Client_udp_Info> vclients;
+
+    // Open file for reading
+    std::ifstream sub_file(file_name.c_str());
+
+    // If opened, read the data into the vector
+    if (sub_file.is_open()) {
+      std::string line;
+      while (std::getline(sub_file, line)) {
+        auto comma_pos = line.find(',');
+        if (comma_pos != std::string::npos) {
+          auto port = (uint16_t)std::stoi(line.substr(0, comma_pos));
+          std::string addr = line.substr(comma_pos + 1);
+          vclients.push_back({port, addr});
+        }
+      }
+    } else {
+      throw std::invalid_argument("Error opening file for reading, file name: " + file_name);
     }
+
+    return vclients;
+  }
+
+  // Server sendes stop offer service
+  void delete_record(std::string const &file_name,
+                     ara::com::proxy_skeleton::Client_udp_Info const& client) const {
+    // Open the input file for reading
+    std::ifstream infile(file_name);
+    if (!infile.is_open()) {
+      std::cerr << "Error: Could not open file " << file_name
+                << " for reading.\n";
+      return;
+    }
+
+    // Open the output file for writing
+    std::ofstream outfile("temp.sub");
+    if (!outfile.is_open()) {
+      std::cerr << "Error: Could not create temporary file for writing.\n";
+      return;
+    }
+
+    // Loop through each line of the input file
+    std::string line;
+    while (std::getline(infile, line)) {
+      /// Split the line into port and addr
+      std::istringstream iss(line);
+      int port;
+      std::string addr;
+      if (!(iss >> port >> addr)) {
+        std::cerr << "Error: Invalid line in input file: " << line << "\n";
+        continue;
+      }
+
+      // Check if this line matches the client to delete
+      if (port == client.port && addr == client.addr) {
+        continue; // Skip this line
+      }
+
+      // Write the line to the output file
+      outfile << line << "\n";
+    }
+
+    // Close the files
+    infile.close();
+    outfile.close();
+
+    // Replace the input file with the output file
+    if (std::remove(file_name.c_str()) != 0) {
+      std::cerr << "Error: Could not delete file " << file_name << "\n";
+      return;
+    }
+    if (std::rename("temp.sub", file_name.c_str()) != 0) {
+      std::cerr << "Error: Could not rename temporary file to " << file_name
+                << "\n";
+      return;
+    }
+  }
+
+  void clear(std::string const &file_name) const {
+    // open file and clear its contents
+    std::ofstream ofs;
+    ofs.open(file_name, std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
+  }
+
+  void delete_file(std::string const &file_name) const {
+    // delete file
+    if (std::remove(file_name.c_str()) != 0) {
+      std::cerr << "Error: Could not delete file " << file_name << "\n";
+      return;
+    }
+  }
 };
 
 #endif // _SUBSCRIBER_FILE_H_

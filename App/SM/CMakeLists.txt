@@ -2,6 +2,8 @@
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ../processes/sm_process)
 add_executable(
     sm_process
+    # state_manage.h
+    # state_manage.cpp
     sm_main.cpp
 )
 target_compile_features(

@@ -113,7 +113,7 @@ mark_as_advanced(
     CMAKE_SHARED_LINKER_FLAGS_COVERAGE )
 
 if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    message(WARNING "Code coverage results with an optimised (non-Debug) build may be misleading")
+    message( "Code coverage results with an optimised (non-Debug) build may be misleading")
 endif() # NOT CMAKE_BUILD_TYPE STREQUAL "Debug"
 
 if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
