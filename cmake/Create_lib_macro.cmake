@@ -37,6 +37,7 @@ macro(create_library)
       ${create_library_SOURCES}
     )
   endif()
+  set_target_properties(${create_library_LIBNAME} PROPERTIES LINKER_LANGUAGE CXX)
 
   # set the include directory to detect header files
   target_include_directories(

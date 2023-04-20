@@ -78,7 +78,13 @@ public:
    * @brief Destroy the Event object
    *
    */
-  ~Event() = default;
+  virtual ~Event(){
+    subscribers_data.delete_file(subname_file.data());
+  }
+
+  Event(Event const &) = delete;
+
+  Event &operator=(Event const &) = delete;
 
   /**
    * @brief return the id of the event

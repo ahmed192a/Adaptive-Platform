@@ -146,9 +146,18 @@ public:
   }
 
   void clear(std::string const &file_name) const {
+    // open file and clear its contents
     std::ofstream ofs;
     ofs.open(file_name, std::ofstream::out | std::ofstream::trunc);
     ofs.close();
+  }
+
+  void delete_file(std::string const &file_name) const {
+    // delete file
+    if (std::remove(file_name.c_str()) != 0) {
+      std::cerr << "Error: Could not delete file " << file_name << "\n";
+      return;
+    }
   }
 };
 

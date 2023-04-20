@@ -48,16 +48,26 @@ bool Process::start() {
   }
   cout << "EM: Starting executable \"" + name << "\", Path: \""
        << get_current_dir_name() << "\"" << endl;
-  if (mkfifo(("processes/" + name + "/execution_client_fifo").c_str(), 0666) ==
-      -1) {
-    if (errno != EEXIST) {
-      // TO DO
-      // Log Error : coundn't create fifo
-      cout << "EM: couldn't create fifo" << endl;
+
+  // check if fifo exists 
+  // Check if FIFO exists
+  std::string fifo_path = "processes/" + name + "/execution_client_fifo";
+  if (access(fifo_path.c_str(), F_OK) != -1) {
+    std::cout << "FIFO already exists, deleting it" << std::endl;
+    if (remove(fifo_path.c_str()) != 0) {
+      std::cout << "Error: Failed to delete FIFO" << std::endl;
     }
-    cout << "EM: fifo already exists" << endl;
-    return false;
   }
+  // Create FIFO
+  if (mkfifo(fifo_path.c_str(), 0666) == -1) {
+    if (errno != EEXIST) {
+      std::cout << "Error: Failed to create FIFO" << std::endl;
+      return false;
+    } else {
+      std::cout << "FIFO already exists" << std::endl;
+    }
+  }
+
   int pid = fork();
   if (pid < 0) {
     cout << "EM: fork() failed"
@@ -102,8 +112,8 @@ bool Process::start() {
   } else if (pid > 0) {
     /*       ----------------       Parent Process       ---------------- */
     // get file discreptor
-    exec_clinet_fd = open(
-        ("processes/" + name + "/execution_client_fifo").c_str(), O_RDONLY);
+    exec_clinet_fd = open(fifo_path.c_str(), O_RDONLY);
+
     if (exec_clinet_fd == -1) {
       cout << "EM:[ERROR] => can't open fifo" << endl;
     } else {

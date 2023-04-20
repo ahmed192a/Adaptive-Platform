@@ -34,6 +34,12 @@ namespace ara::com::proxy_skeleton::skeleton {
 template <typename T> class Field : public Event<T> {
 
   public:
+
+  // Field destructor is the same as Event destructor
+  using Event<T>::Event;
+  
+
+
   /**
    * @brief Construct a new Field object
    * @todo edit all other fields

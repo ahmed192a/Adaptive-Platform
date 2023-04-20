@@ -1,6 +1,10 @@
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ../processes/SD)
 
-add_executable(SD service_descovery.cpp)
+add_executable(
+    SD 
+    sd.h
+    sd.cpp
+    service_descovery.cpp)
 target_compile_features(
     SD 
     PRIVATE 

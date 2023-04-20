@@ -47,7 +47,7 @@ case $choice in
     ;;
 1)  # build
     cd ../build;
-    make
+    make -j8
     ;;
 2)  # run
     echo "Current PID: $$";
