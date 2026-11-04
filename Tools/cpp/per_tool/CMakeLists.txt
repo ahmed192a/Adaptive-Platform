@@ -1,0 +1,6 @@
+add_executable(ap_per_tool main.cpp)
+target_link_libraries(ap_per_tool PRIVATE ara_per_lib CLI11::CLI11 ap::warnings ap::sanitizers ap::coverage)
+set_target_properties(ap_per_tool PROPERTIES FOLDER "tools")
+if(AP_INSTALL)
+  install(TARGETS ap_per_tool RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+endif()
