@@ -1,12 +1,1 @@
-create_library(
-        ${LIB_BUILD_TYPE}
-    LIBNAME
-        ara_sm_lib
-    SOURCES_DIR
-        ${CMAKE_CURRENT_SOURCE_DIR}
-    INCLUDES
-        ${PROJECT_SOURCE_DIR}/src
-    DEPENDS
-        ara_exec_lib
-        ara_com_lib
-)
+ap_add_cluster(NAME sm LEGACY DEPENDS ara_exec_lib ara_com_lib)

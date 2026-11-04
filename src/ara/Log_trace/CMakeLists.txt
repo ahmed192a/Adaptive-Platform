@@ -1,11 +1,3 @@
-create_library(
-        ${LIB_BUILD_TYPE}
-    LIBNAME
-        ara_log_lib
-    SOURCES_DIR
-        ${CMAKE_CURRENT_SOURCE_DIR}
-    INCLUDES
-        ${PROJECT_SOURCE_DIR}/src
-    DEPENDS
-    spdlog
-)
+# Legacy file logger ("Log" class) used by the platform processes.
+# New code should use the spec-compliant ara::log (src/ara/log).
+ap_add_cluster(TARGET ara_log_legacy_lib LEGACY DEPENDS spdlog::spdlog)
