@@ -1,84 +1,63 @@
-cmake_minimum_required(VERSION 3.13...3.20)
-project(
-  Adaptive_Platform 
-  VERSION 0.1.0
-  LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.16)
 
+project(Adaptive_Platform
+        VERSION 0.2.0
+        DESCRIPTION "AUTOSAR Adaptive Platform for Linux"
+        LANGUAGES CXX)
 
-if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-  message(STATUS "Setting build type to 'Release' as no build type was specified")
-  set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the build type (Debug/Release)" FORCE)
-endif (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
 
-# This AUTOSAR Adaptive Platform requires C++17
-set(CMAKE_CXX_STANDARD              17)
-set(CMAKE_CXX_STANDARD_REQUIRED     ON)
+include(AdaptiveOptions)
+include(AdaptiveCompilerOptions)
+include(AdaptiveDependencies)
+include(AdaptiveCluster)
 
-# Enable 'rdyamic' switch to export the executable's symbols for debugging
-set(CMAKE_ENABLE_EXPORTS            1)
+# Staged install tree inside the build folder unless the user chooses one.
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT AND AP_IS_TOP_LEVEL)
+  set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install CACHE PATH "" FORCE)
+endif()
 
-# Let's nicely support folders in IDEs
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
-# set the install prefix folder
-set(CMAKE_INSTALL_PREFIX                ${CMAKE_BINARY_DIR}/install)
-set (CMAKE_INSTALL_INCLUDEDIR           ${CMAKE_BINARY_DIR}/install/include)
-set (CMAKE_INSTALL_LIBDIR               ${CMAKE_BINARY_DIR}/install/lib)
-set (CMAKE_INSTALL_BINDIR               ${CMAKE_BINARY_DIR}/install/bin)
-
-
-# set option BUILD_TESTS to ON to build tests
-option(BUILD_TESTS      "Build tests"           OFF)
-option(ENABLE_COVERAGE  "Enable code coverage"  OFF)
-
-# set option BUILD_TESTS to ON to build tests
-set (BUILD_TESTS                                ON)
-set (ENABLE_COVERAGE                            OFF)
-set (LIB_BUILD_TYPE                             SHARED)
-
-message(STATUS "BUILD_TESTS: ${BUILD_TESTS}")
-message(STATUS "ENABLE_COVERAGE: ${ENABLE_COVERAGE}")
-message(STATUS "LIB_BUILD_TYPE: ${LIB_BUILD_TYPE}")
-
-
-
-# Add the cmake folder to the module path
-add_subdirectory(cmake)
-
-
-# The compiled library code is here
-add_subdirectory(Cloud)
+# ---------------------------------------------------------------------------
+# Libraries: ara::core, ara::exec, ara::com, ara::sm, ara::ucm, ara::log, ...
+# ---------------------------------------------------------------------------
 add_subdirectory(src)
-add_subdirectory(App)
-add_subdirectory(test_partial_processes)
 
-## For Subsystem testing
+# Process manifests are copied next to the binaries; the unit tests and the
+# platform processes read them through paths relative to the build folder.
+file(COPY App/Manifests            DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App)
+file(COPY App/UCM/sw_packages.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App/processes/UCM_SERVER)
+file(COPY App/UCM/config.conf      DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App/processes/UCM_SERVER)
+file(MAKE_DIRECTORY                       ${CMAKE_CURRENT_BINARY_DIR}/App/processes/redirected)
 
-# add_subdirectory(test_partial_processes/SAM/server)
-# add_subdirectory(test_partial_processes/SD_TEST/server)
-# add_subdirectory(test_partial_processes/SD_TEST/client)
-# add_subdirectory(test_partial_processes/SD_TEST/SD)
-# add_subdirectory(test_partial_processes/SD_TEST/ucm_client)
-# add_subdirectory(test_partial_processes/SD_TEST/ucm_server)
-# add_subdirectory(test_partial_processes/SD_TEST/Classic)
+if(AP_BUILD_APPS)
+  add_subdirectory(Cloud)
+  add_subdirectory(App)
+endif()
+if(AP_BUILD_TOOLS)
+  add_subdirectory(Tools/cpp)
+endif()
+if(AP_BUILD_EXAMPLES)
+  add_subdirectory(test_partial_processes)
+endif()
 
-# add_subdirectory(test_partial_processes/SomeIP/some_client)
-# add_subdirectory(test_partial_processes/SomeIP/some_server)
+if(AP_BUILD_TESTS)
+  include(AdaptiveTesting)
+  enable_testing()
+  add_subdirectory(Testing)
+endif()
 
-
-
-
-# copy manifest files to the build directory
-file(COPY App/Manifests             DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App)
-file(COPY App/UCM/sw_packages.json  DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App/processes/UCM_SERVER)
-file(COPY App/UCM/config.conf       DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/App/processes/UCM_SERVER)
-
-file(MAKE_DIRECTORY                ${CMAKE_CURRENT_BINARY_DIR}/App/processes/redirected)
-
-
-if (BUILD_TESTS)
-    enable_testing()
-    add_subdirectory(Testing)
-endif (BUILD_TESTS)
-
-
+if(AP_INSTALL)
+  include(CMakePackageConfigHelpers)
+  set(AP_CMAKE_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/AdaptivePlatform)
+  install(EXPORT AdaptivePlatformTargets
+          NAMESPACE AdaptivePlatform:: DESTINATION ${AP_CMAKE_INSTALL_DIR})
+  configure_package_config_file(cmake/AdaptivePlatformConfig.cmake.in
+          ${CMAKE_CURRENT_BINARY_DIR}/AdaptivePlatformConfig.cmake
+          INSTALL_DESTINATION ${AP_CMAKE_INSTALL_DIR})
+  write_basic_package_version_file(
+          ${CMAKE_CURRENT_BINARY_DIR}/AdaptivePlatformConfigVersion.cmake
+          VERSION ${PROJECT_VERSION} COMPATIBILITY SameMajorVersion)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/AdaptivePlatformConfig.cmake
+                ${CMAKE_CURRENT_BINARY_DIR}/AdaptivePlatformConfigVersion.cmake
+          DESTINATION ${AP_CMAKE_INSTALL_DIR})
+endif()

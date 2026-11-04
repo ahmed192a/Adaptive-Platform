@@ -10,6 +10,7 @@
 #ifndef LOG_H_
 #define LOG_H_
 
+#include <cstdint>
 #include <string>
 #include <fstream>
 #include <iostream>

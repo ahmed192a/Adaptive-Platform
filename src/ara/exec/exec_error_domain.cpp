@@ -10,6 +10,7 @@
  *
  */
 #include "ara/exec/exec_error_domain.h"
+#include <exception>
 #include <iostream>
 #include <memory>
 
@@ -33,27 +34,43 @@ ara::core::ErrorCode ExecException::MakeErrorCode(
 
 /*---------------------------------ExecErrorDomain---------------------------------*/
 
-constexpr ExecErrorDomain::ExecErrorDomain(IdType id) noexcept
-    : ara::core::ErrorDomain(id) {}
-
 char const *ExecErrorDomain::Name() const noexcept { return "Exec"; }
 
 char const *ExecErrorDomain::Message(CodeType errorCode) const noexcept {
-  // return "CodeType of error message: " + std::to_string(errorCode) as char
-  // const* std::string message = "CodeType of error message: " +
-  // std::to_string(errorCode);
-  // return message.c_str(); // return the message as a const char*
-  std::string message =
-      "CodeType of error message: " + std::to_string(errorCode);
-  std::shared_ptr<char> msg(new char[message.size() + 1],
-							std::default_delete<char[]>());
-  return msg.get();                 // return pointer to message
+  // Must return storage that outlives the call: only string literals are used.
+  switch (static_cast<ExecErrc>(errorCode)) {
+  case ExecErrc::kGeneralError:
+    return "Some unspecified error occurred";
+  case ExecErrc::kInvalidArguments:
+    return "Invalid argument was passed";
+  case ExecErrc::kCommunicationError:
+    return "Communication error occurred";
+  case ExecErrc::kMetaModelError:
+    return "Wrong meta model identifier passed to a function";
+  case ExecErrc::kCancelled:
+    return "Transition to the requested Function Group state was cancelled by a newer request";
+  case ExecErrc::kFailed:
+    return "Transition to the requested Function Group state failed";
+  case ExecErrc::kFailedUnexpectedTerminationOnExit:
+    return "Unexpected termination during transition in a process of the previous Function Group state";
+  case ExecErrc::kFailedUnexpectedTerminationOnEnter:
+    return "Unexpected termination during transition in a process of the target Function Group state";
+  case ExecErrc::kInvalidTransition:
+    return "Transition invalid";
+  case ExecErrc::kAlreadyInState:
+    return "Function Group is already in the requested state";
+  case ExecErrc::kInTransitionToSameState:
+    return "Transition to the requested Function Group state is already in progress";
+  case ExecErrc::kNoTimeStamp:
+    return "DeterministicClient time stamp information is not available";
+  }
+  return "Unknown execution management error";
 }
 
 void ExecErrorDomain::ThrowAsException(
     ara::core::ErrorCode const &errorCode) const noexcept(false) {
-  ExecException exp(errorCode);
-  std::string c = exp.what();
+  ara::core::ThrowOrTerminate<ExecException>(errorCode);
+  std::terminate(); // unreachable; satisfies [[noreturn]]
 }
 } // namespace exec
 } // namespace ara
