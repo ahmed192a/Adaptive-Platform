@@ -1,1 +1,2 @@
-# C++ command line tools; added together with the clusters they operate on.
+# C++ command line tools
+add_subdirectory(per_tool)
