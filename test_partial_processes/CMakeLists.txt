@@ -1,11 +1,6 @@
-include_directories(${P7_Headers})
-
-set(SOURCE11
-   p7.cpp
-)
-
-add_executable(p7-cpp-example11 ${SOURCE11})
-target_link_libraries(p7-cpp-example11 P7)
+add_executable(p7-cpp-example11 p7.cpp)
+target_include_directories(p7-cpp-example11 PRIVATE ${P7_Headers})
+target_link_libraries(p7-cpp-example11 PRIVATE P7)
 
 add_executable(CLI cli.cpp)
-target_link_libraries(CLI CLI11::CLI11)
+target_link_libraries(CLI PRIVATE CLI11::CLI11)

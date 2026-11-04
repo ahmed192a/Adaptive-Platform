@@ -101,7 +101,7 @@ public:
    * @brief Construct a new Exec Error Domain object
    * @note SWS_EM_02286
    */
-  explicit constexpr ExecErrorDomain(IdType id) noexcept;
+  explicit constexpr ExecErrorDomain(IdType id) noexcept : ara::core::ErrorDomain(id) {}
 
 
   /**
@@ -126,7 +126,7 @@ public:
    * @note SWS_EM_02289
    * \param[in] errorCode     The error to throw.
    */
-  void ThrowAsException(ara::core::ErrorCode const &errorCode) const noexcept(false) override;
+  [[noreturn]] void ThrowAsException(ara::core::ErrorCode const &errorCode) const noexcept(false) override;
 };
 
 } // namespace ara::exec

@@ -1,18 +1,14 @@
-#ifndef ARA_CORE_H_
-#define ARA_CORE_H_
-#include <memory>
-#include <iostream>
+/**
+ * @file StringView.h
+ * @brief ara::core::StringView (SWS_CORE_02001) - maps to std::string_view (C++17).
+ */
+#ifndef ARA_CORE_STRING_VIEW_H_
+#define ARA_CORE_STRING_VIEW_H_
 
-namespace ara
-{
-    namespace core
-    {
-        class StringView
-        {
-            public:
-            StringView();
-        };
+#include <string_view>
 
-    }
-}
-#endif // ARA_CORE_H_
+namespace ara::core {
+using StringView = std::basic_string_view<char>;
+} // namespace ara::core
+
+#endif // ARA_CORE_STRING_VIEW_H_
