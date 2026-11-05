@@ -30,7 +30,7 @@ class StateClient {
 private:
   const std::string fifo_l{"state_client_fifo"}; /*!< location of FIFO to communicate
                                             between EM & SM */
-  int fd;                                /*!< index of File descriptor */
+  int fd{-1};                              /*!< index of File descriptor */
 public:
   /**
    * @brief Constructor that creates StateClient instance
