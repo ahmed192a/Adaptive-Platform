@@ -23,11 +23,6 @@ using namespace std;
 static uint16_t current_state; /*!< variable to store the state of the
                                   bootloader updating sequence */
 
-void SaveBlock(const char *filename, std::vector<uint8_t> &data_block) {
-  std::ofstream outfile(filename, std::ios::out | std::ofstream::app);
-  outfile.write((const char *)&data_block[0], data_block.size());
-  outfile.close();
-}
 
 std::vector<char> ReadAllBytes2(char const *filename) {
   ifstream ifs(filename, ios::binary | ios::ate);
@@ -54,77 +49,63 @@ uint64_t stringToUint64_t(string str) {
   }
   return result;
 }
-
 std::future<ara::ucm::pkgmgr::PackageManagement::ActivateOutput>
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::Activate() {
-  std::future<ara::ucm::pkgmgr::PackageManagement::ActivateOutput>
-      future_output = std::async([&]() {
-        ara::ucm::pkgmgr::PackageManagement::ActivateOutput output;
-        // uart_linux u_linux;
-        uint16_t current_state = UPDATE_SUCCESS; // Activate_s;
-        // u_linux.UART_sendBlock((uint8_t *)&current_state, CMD_SIZE);
-        std::cout << "\t\t\t\tSend Activate CMD : ";
-        printf("%x", current_state);
-        cout << endl;
-
-        // u_linux.UART_receiveBlock((uint8_t *)&current_state, CMD_SIZE);
-        if (current_state == UPDATE_SUCCESS) {
-          cout << "\t\t\t\tActivate Success" << endl;
-          output.error = 0;
-        } else {
-          cout << "\t\t\t\tActivate Failed" << endl;
-          output.error = 1;
-        }
-        return output;
-      });
-  return future_output;
+  return std::async(std::launch::async, [this]() {
+    ara::ucm::pkgmgr::PackageManagement::ActivateOutput output;
+    /* [SWS_UCM_00241] only allowed in kReady; enters kActivating */
+    if (int e = core_.BeginActivate()) {
+      output.error = e;
+      return output;
+    }
+    /* The flashing-adapter hand-over (UART) is currently stubbed: activation
+     * always succeeds. Rejected update sessions ([SWS_UCM_00258]) are not
+     * modelled yet. */
+    std::cout << "\t\t\t\tActivate Success" << std::endl;
+    core_.EndActivate(true);
+    output.error = 0;
+    return output;
+  });
 }
-
 ara::ucm::pkgmgr::PackageManagement::CancelOutput
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::Cancel(
     ara::ucm::pkgmgr::PackageManagement::TransferIdType id) {
   ara::ucm::pkgmgr::PackageManagement::CancelOutput output;
-  output.error = 0;
+  output.error = core_.Cancel(id); /* 00234 / 00235 */
   return output;
 }
-
 ara::ucm::pkgmgr::PackageManagement::DeleteTransferOutput
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::DeleteTransfer(
     ara::ucm::pkgmgr::PackageManagement::TransferIdType id) {
   ara::ucm::pkgmgr::PackageManagement::DeleteTransferOutput output;
-  output.error = 0;
+  output.error = core_.DeleteTransfer(id); /* 00214 / 00215 */
+  if (output.error == 0) {
+    std::error_code ec;
+    std::string const base = "./SWP/" + core::IdToString(id);
+    std::filesystem::remove(base + ".zip", ec);
+    std::filesystem::remove_all(base, ec);
+  }
   return output;
 }
-
 std::future<ara::ucm::pkgmgr::PackageManagement::FinishOutput>
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::Finish() {
-  std::future<ara::ucm::pkgmgr::PackageManagement::FinishOutput> future_output =
-      std::async(std::launch::async, [&]() {
-        ara::ucm::pkgmgr::PackageManagement::FinishOutput output;
-        //  delete the package with id  =  TransferInfoData.id package id the
-        //  id.zip nad id folder
-        std::string id_str;
-        for (auto byte : TransferInfoData.id) {
-          id_str += std::to_string(byte);
-        }
-        // remove the file and check if it is deleletion is successfull
-        if (std::filesystem::remove("./SWP/" + id_str + ".zip")) {
-          cout << "\t\t\t\tDeleting Package Success" << endl;
-          if (std::filesystem::remove("./SWP/" + id_str)) {
-            cout << "\t\t\t\tDeleting Package Success" << endl;
-            output.error = 0;
-          } else {
-            cout << "\t\t\t\tDeleting Package folder Failed" << endl;
-            output.error = 1;
-          }
-        } else {
-          cout << "\t\t\t\tDeleting Package zipped Failed" << endl;
-          output.error = 1;
-        }
-        return output;
-      });
-  return future_output;
+  return std::async(std::launch::async, [this]() {
+    ara::ucm::pkgmgr::PackageManagement::FinishOutput output;
+    if (int e = core_.BeginFinish()) { /* only after Activate / Rollback */
+      output.error = e;
+      return output;
+    }
+    /* remove the package files of every processed transfer */
+    std::error_code ec;
+    for (auto const &entry : std::filesystem::directory_iterator("./SWP", ec)) {
+      std::filesystem::remove_all(entry.path(), ec);
+    }
+    core_.EndFinish();
+    output.error = 0;
+    return output;
+  });
 }
+
 
 ara::ucm::pkgmgr::PackageManagement::GetHistoryOutput
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::GetHistory(
@@ -229,19 +210,21 @@ std::future<ara::ucm::pkgmgr::PackageManagement::ProcessSwPackageOutput>
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::ProcessSwPackage(
     ara::ucm::pkgmgr::PackageManagement::TransferIdType id) {
   std::future<ara::ucm::pkgmgr::PackageManagement::ProcessSwPackageOutput> f =
-      std::async([&, id]() {
+      std::async(std::launch::async, [this, id]() {
         ara::ucm::pkgmgr::PackageManagement::ProcessSwPackageOutput result;
+        /* [SWS_UCM_00218/00017/00219] InvalidTransferId / ServiceBusy /
+         * OperationNotPermitted; enters kProcessing */
+        if (int e = core_.BeginProcess(id)) {
+          result.error = e;
+          return result;
+        }
         // uart_linux u_linux;
         current_state = trigger_seq;
         uint16_t packet_num, const_packet_num;
         uint16_t extra_bytes;
         int block_counter = 0;
         // convert std::array<int,16> id to string str_id
-        std::string str_id;
-        for (int i = 0; i < 16; i++) {
-          str_id += " ";
-          snprintf(&str_id[i], 4, "%d", id[i]);
-        }
+        std::string const str_id = core::IdToString(id);
 
         // unzip the SWP/id.zip
         std::string zip_file_name = "SWP/" + str_id + ".zip";
@@ -255,12 +238,25 @@ ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::ProcessSwPackage(
         std::ifstream sw_conf(unzip_file_name + "sw.conf");
         if (!sw_conf.is_open()) {
           std::cout << "Error opening sw.conf" << std::endl;
-          result.error = 1;
+          core_.EndProcess(id, false);
+          result.error = ara::ucm::pkgmgr::PackageManagement::InvalidPackageManifest;
           return result;
         }
-        nlohmann::json sw_conf_json;
-        sw_conf >> sw_conf_json;
+        nlohmann::json sw_conf_json = nlohmann::json::parse(sw_conf, nullptr, false);
         sw_conf.close();
+        if (!sw_conf_json.is_object() || !sw_conf_json.contains("app_name") ||
+            !sw_conf_json.contains("app_version") ||
+            !sw_conf_json["app_name"].is_string() ||
+            !sw_conf_json["app_version"].is_string()) {
+          core_.EndProcess(id, false);
+          result.error = ara::ucm::pkgmgr::PackageManagement::InvalidPackageManifest;
+          return result;
+        }
+        if (core_.CancelRequested(id)) { /* [SWS_UCM_00150] */
+          core_.EndProcess(id, false);
+          result.error = ara::ucm::pkgmgr::PackageManagement::ProcessSwPackageCancelled;
+          return result;
+        }
         // get the app name and version from sw.conf
         std::string app_name = sw_conf_json["app_name"];
         std::string app_version = sw_conf_json["app_version"];
@@ -284,11 +280,21 @@ ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::ProcessSwPackage(
         // binary_file_size); binary_file.close();
 
         ifstream ifs(unzip_file_name + app_name, ios::binary | ios::ate);
+        if (!ifs.is_open()) {
+          core_.EndProcess(id, false);
+          result.error = ara::ucm::pkgmgr::PackageManagement::ProcessedSoftwarePackageInconsistent;
+          return result;
+        }
         ifstream::pos_type pos = ifs.tellg();
         std::vector<uint8_t> binary_file_buffer(pos);
         ifs.seekg(0, ios::beg);
         ifs.read((char *)&binary_file_buffer[0], pos);
 
+        if (binary_file_buffer.size() < 52) { /* header would be out of range */
+          core_.EndProcess(id, false);
+          result.error = ara::ucm::pkgmgr::PackageManagement::ProcessedSoftwarePackageInconsistent;
+          return result;
+        }
         std::vector<uint8_t> data_block(binary_file_buffer.begin() + 52,
                                         binary_file_buffer.end());
         cout << "*************************" << endl;
@@ -411,150 +417,84 @@ ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::ProcessSwPackage(
         //     if(current_state == END_OF_UPDATE) break;
         // }
         cout << "-------------- ProcessSwPackage End --------------" << endl;
+        core_.EndProcess(id, true);
         result.error = 0;
         return result;
       });
   return f;
 }
-
-ara::ucm::pkgmgr::PackageManagement::RevertProcessedSwPackagesOutput ara::ucm::
-    pkgmgr::skeleton::PackageManagementSkeleton::RevertProcessedSwPackages() {
+ara::ucm::pkgmgr::PackageManagement::RevertProcessedSwPackagesOutput
+ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::RevertProcessedSwPackages() {
   ara::ucm::pkgmgr::PackageManagement::RevertProcessedSwPackagesOutput output;
+  output.error = core_.RevertProcessed(); /* 00237 */
   return output;
 }
-
 ara::ucm::pkgmgr::PackageManagement::RollbackOutput
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::Rollback() {
   ara::ucm::pkgmgr::PackageManagement::RollbackOutput output;
+  if (int e = core_.BeginRollback()) { /* 00239 */
+    output.error = e;
+    return output;
+  }
+  /* No hardware rollback exists yet: the previous image is simply kept. */
+  core_.EndRollback(true);
   return output;
 }
-
 std::future<ara::ucm::pkgmgr::PackageManagement::TransferDataOutput>
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::TransferData(
     ara::ucm::pkgmgr::PackageManagement::TransferIdType id,
     ara::ucm::pkgmgr::PackageManagement::ByteVectorType data,
     uint64_t blockCounter) {
-  std::future<ara::ucm::pkgmgr::PackageManagement::TransferDataOutput> f =
-      std::async([&, id, data, blockCounter]() {
-        ara::ucm::pkgmgr::PackageManagement::TransferDataOutput result;
-
-
-        if (TransferInfoData.id == id &&
-            TransferInfoData.TransferExitFlag == 0) {
-          if (blockCounter == TransferInfoData.localBlockCounter) {
-            /* Check if the received block size is equal the block size returned
-             * by TransferStart for the same TransferId */
-
-            if (data.size() == TransferInfoData.BlockSize) {
-              if (blockCounter == TransferInfoData.lastBlockCounter) {
-                TransferInfoData.BlockSize =
-                    TransferInfoData.size % TransferInfoData.BlockSize;
-              }
-              for (int i = 0; i < TransferInfoData.BlockSize; i++) {
-                buffer.push_back(data[i]);
-              }
-              // print percentage of the transfer process
-              float percentage =
-                  (float)buffer.size() / (float)TransferInfoData.size;
-              std::cout << "\t\t\t\t->Percentage : [" << percentage * 100
-                        << "%]" << std::endl;
-
-              struct ara::ucm::pkgmgr::PackageManagement::TransferDataOutput
-                  output = {1};
-              // result = output;
-            } else {
-              /* ApplicationError IncorrectBlockSize -> Too big block size
-               * received by UCM */
-              /* In case the received block size with TransferData */
-              /* exceeds the block size returned by TransferStart for the same
-               * TransferId */
-            }
-          } else {
-            /* ApplicationError BlockInconsistent */
-            /* ApplicationError IncorrectBlock    */
-          }
-          TransferInfoData.localBlockCounter++;
-        } else {
-          /* ApplicationError InvalidTransferId   */
-        }
-        return result;
-      });
-
-  return f;
+  return std::async(std::launch::async, [this, id, data = std::move(data), blockCounter]() {
+    ara::ucm::pkgmgr::PackageManagement::TransferDataOutput result;
+    auto r = core_.TransferData(id, data.size(), blockCounter);
+    result.error = r.error;
+    if (r.error == 0) {
+      /* append only the bytes that belong to the package (a padded last block
+       * is trimmed) */
+      std::ofstream out("./SWP/" + core::IdToString(id) + ".zip",
+                        std::ios::binary | std::ios::app);
+      out.write(reinterpret_cast<const char *>(data.data()),
+                static_cast<std::streamsize>(r.accepted));
+      if (!out) result.error = ara::ucm::pkgmgr::PackageManagement::InsufficientMemory;
+    }
+    return result;
+  });
 }
-
 std::future<ara::ucm::pkgmgr::PackageManagement::TransferExitOutput>
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::TransferExit(
     ara::ucm::pkgmgr::PackageManagement::TransferIdType id) {
-  std::future<ara::ucm::pkgmgr::PackageManagement::TransferExitOutput> f =
-      std::async([&, id]() {
-        ara::ucm::pkgmgr::PackageManagement::TransferExitOutput result;
-        std::string str;
-        /*   convert std::array<uint8_t, 16> to string    */
-        for (int i = 0; i < 16; i++) {
-          str += " ";
-          snprintf(&str[i], 4, "%d", id[i]);
-        }
-        // check if folder SWP doesn't exists
-        if (!std::filesystem::exists("./SWP")) {
-          std::filesystem::create_directory("./SWP");
-        }
-        str = "SWP/" + str + ".zip";
-        std::cout << "TransferExit : " << str
-                  << " with size = " << buffer.size() << std::endl;
-        SaveBlock(str.data(), this->buffer);
-        TransferInfoData.TransferExitFlag = 1;
-        return result;
-      });
-
-  return f;
+  return std::async(std::launch::async, [this, id]() {
+    ara::ucm::pkgmgr::PackageManagement::TransferExitOutput result;
+    result.error = core_.TransferExit(id); /* 00148 / 00212 / 00087 */
+    return result;
+  });
 }
-
 std::future<ara::ucm::pkgmgr::PackageManagement::TransferStartOutput>
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::TransferStart(
     uint64_t size) {
-
-  std::future<ara::ucm::pkgmgr::PackageManagement::TransferStartOutput> f =
-      std::async([&, size]() {
-        ara::ucm::pkgmgr::PackageManagement::TransferStartOutput result;
-        TransferInfoData.TransferExitFlag = 0;
-        TransferInfoData.localBlockCounter = 0;
-        TransferInfoData.TransferExitFlag = false;
-        /// @todo implement your logic here for uuid
-        // uuid u;
-        // u = (boost::uuids::random_generator()());
-        // for (int i = 0; i < 16; i++)
-        // {
-        //     TransferInfoData.id[i] = u.data[i];
-        //     result.id[i] = u.data[i];
-
-        // }
-
-        UUIDv4::UUIDGenerator<std::mt19937_64> uuidGenerator;
-        UUIDv4::UUID uuid = uuidGenerator.getUUID();
-        std::string bytes = uuid.bytes();
-        char bytes2[16];
-        uuid.bytes(bytes2);
-        for (int i = 0; i < 16; i++) {
-          TransferInfoData.id[i] = bytes2[i];
-          result.id[i] = bytes2[i];
-          printf("%02x ", (uint8_t)TransferInfoData.id[i]);
-        }
-        std::cout << std::endl;
-        // don't change 64 (ucm_client.cpp)
-        TransferInfoData.BlockSize = 1024;
-        TransferInfoData.size = size;
-        buffer.clear();
-        result.BlockSize = TransferInfoData.BlockSize;
-
-        TransferInfoData.lastBlockCounter =
-            ceil((double)TransferInfoData.size / TransferInfoData.BlockSize) -
-            1;
-
-        return result;
-      });
-  return f;
+  return std::async(std::launch::async, [this, size]() {
+    ara::ucm::pkgmgr::PackageManagement::TransferStartOutput result{};
+    UUIDv4::UUIDGenerator<std::mt19937_64> uuidGenerator;
+    UUIDv4::UUID uuid = uuidGenerator.getUUID();
+    char bytes[16];
+    uuid.bytes(bytes);
+    ara::ucm::pkgmgr::PackageManagement::TransferIdType id;
+    for (int i = 0; i < 16; i++) id[i] = static_cast<uint8_t>(bytes[i]);
+    auto r = core_.TransferStart(size, id);
+    if (r.error != 0) { /* 00140: reported as BlockSize 0 (no error field on the wire) */
+      result.BlockSize = 0;
+      return result;
+    }
+    std::error_code ec;
+    std::filesystem::create_directories("./SWP", ec);
+    std::ofstream("./SWP/" + core::IdToString(id) + ".zip", std::ios::binary | std::ios::trunc);
+    result.id = r.id;
+    result.BlockSize = r.blockSize;
+    return result;
+  });
 }
+
 
 void ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::
     field_method_dispatch(ara::com::SOMEIP_MESSAGE::Message &message,
