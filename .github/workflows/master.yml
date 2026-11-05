@@ -66,6 +66,13 @@ jobs:
           build/release/App/dashboard/ap_dashboard --port 8099 --data-dir "$RUNNER_TEMP/ap" > out/dashboard.log 2>&1 &
           sleep 2
           python3 Tools/demo/record_demo.py --url http://127.0.0.1:8099 --out out --video
+      - name: Diagnostics on failure
+        if: failure()
+        run: |
+          echo "--- dashboard.log"; cat out/dashboard.log || true
+          echo "--- overview"; curl -s http://127.0.0.1:8099/api/overview | head -c 3000 || true
+          echo "--- EM logs"; for f in build/release/App/processes/redirected/*.txt; do echo "## $f"; tail -n 30 "$f"; done || true
+          echo "--- processes"; ps aux | grep -E "Adaptive|ap_dash|sm_process|ota|UCM|SD" | grep -v grep || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
