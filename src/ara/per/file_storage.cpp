@@ -106,7 +106,7 @@ Result<std::string> ReadAccessor::ReadRaw(std::uint64_t n) {
   return Result<std::string>(std::move(out));
 }
 
-Result<char> ReadAccessor::PeekChar() const {
+Result<char> ReadAccessor::PeekChar() const noexcept {
   auto const saved = mPosition;
   auto *self = const_cast<ReadAccessor *>(this); // position is restored below
   auto r = self->ReadRaw(1);
@@ -116,35 +116,35 @@ Result<char> ReadAccessor::PeekChar() const {
   }
   return Result<char>(r.Value()[0]);
 }
-Result<Byte> ReadAccessor::PeekByte() const {
+Result<Byte> ReadAccessor::PeekByte() const noexcept {
   auto c = PeekChar();
   if (!c.HasValue()) {
     return Result<Byte>(c.Error());
   }
   return Result<Byte>(static_cast<Byte>(static_cast<unsigned char>(c.Value())));
 }
-Result<char> ReadAccessor::GetChar() {
+Result<char> ReadAccessor::GetChar() noexcept {
   auto r = ReadRaw(1);
   if (!r.HasValue()) {
     return Result<char>(r.Error());
   }
   return Result<char>(r.Value()[0]);
 }
-Result<Byte> ReadAccessor::GetByte() {
+Result<Byte> ReadAccessor::GetByte() noexcept {
   auto c = GetChar();
   if (!c.HasValue()) {
     return Result<Byte>(c.Error());
   }
   return Result<Byte>(static_cast<Byte>(static_cast<unsigned char>(c.Value())));
 }
-Result<ara::core::String> ReadAccessor::ReadText(std::uint64_t n) {
+Result<ara::core::String> ReadAccessor::ReadText(std::uint64_t n) noexcept {
   auto r = ReadRaw(n);
   if (!r.HasValue()) {
     return Result<ara::core::String>(r.Error());
   }
   return Result<ara::core::String>(std::move(r).Value());
 }
-Result<ara::core::Vector<Byte>> ReadAccessor::ReadBinary(std::uint64_t n) {
+Result<ara::core::Vector<Byte>> ReadAccessor::ReadBinary(std::uint64_t n) noexcept {
   auto r = ReadRaw(n);
   if (!r.HasValue()) {
     return Result<ara::core::Vector<Byte>>(r.Error());
@@ -156,7 +156,7 @@ Result<ara::core::Vector<Byte>> ReadAccessor::ReadBinary(std::uint64_t n) {
   }
   return Result<ara::core::Vector<Byte>>(std::move(out));
 }
-Result<ara::core::String> ReadAccessor::ReadLine(char delimiter) {
+Result<ara::core::String> ReadAccessor::ReadLine(char delimiter) noexcept {
   if (!mCanRead) {
     return Result<ara::core::String>(MakeErrorCode(PerErrc::kUnsupported, 0, "file is write-only"));
   }
@@ -173,14 +173,14 @@ Result<ara::core::String> ReadAccessor::ReadLine(char delimiter) {
   }
   return Result<ara::core::String>(std::move(line));
 }
-Result<void> ReadAccessor::SetPosition(Position position) {
+Result<void> ReadAccessor::SetPosition(Position position) noexcept {
   if (position > GetSize()) {
     return Result<void>(MakeErrorCode(PerErrc::kInvalidPosition));
   }
   mPosition = position;
   return Result<void>();
 }
-Result<void> ReadAccessor::MovePosition(Origin origin, Offset offset) {
+Result<ReadAccessor::Position> ReadAccessor::MovePosition(Origin origin, Offset offset) noexcept {
   std::int64_t base = 0;
   switch (origin) {
   case Origin::kBeginning: base = 0; break;
@@ -189,10 +189,10 @@ Result<void> ReadAccessor::MovePosition(Origin origin, Offset offset) {
   }
   std::int64_t const target = base + offset;
   if (target < 0 || static_cast<Position>(target) > GetSize()) {
-    return Result<void>(MakeErrorCode(PerErrc::kInvalidPosition));
+    return Result<Position>(MakeErrorCode(PerErrc::kInvalidPosition));
   }
   mPosition = static_cast<Position>(target);
-  return Result<void>();
+  return Result<Position>(mPosition);
 }
 
 // ---------------------------------------------------------------------------
@@ -289,7 +289,7 @@ FileStorage::FileStorage(StorageConfig cfg) : mState(std::make_shared<detail::Fi
 }
 FileStorage::~FileStorage() = default;
 
-Result<ara::core::Vector<ara::core::String>> FileStorage::GetAllFileNames() const {
+Result<ara::core::Vector<ara::core::String>> FileStorage::GetAllFileNames() const noexcept {
   ara::core::Vector<ara::core::String> names;
   std::error_code ec;
   for (auto const &e : fs::directory_iterator(mState->FilesDir(), ec)) {
@@ -301,7 +301,7 @@ Result<ara::core::Vector<ara::core::String>> FileStorage::GetAllFileNames() cons
   return Result<ara::core::Vector<ara::core::String>>(std::move(names));
 }
 
-Result<bool> FileStorage::FileExists(StringView fileName) const {
+Result<bool> FileStorage::FileExists(StringView fileName) const noexcept {
   if (!ValidName(fileName)) {
     return Result<bool>(false);
   }
@@ -309,7 +309,7 @@ Result<bool> FileStorage::FileExists(StringView fileName) const {
   return Result<bool>(fs::is_regular_file(mState->FilesDir() / std::string(fileName), ec));
 }
 
-Result<void> FileStorage::DeleteFile(StringView fileName) {
+Result<void> FileStorage::DeleteFile(StringView fileName) noexcept {
   if (!ValidName(fileName)) {
     return BadName();
   }
@@ -327,7 +327,7 @@ Result<void> FileStorage::DeleteFile(StringView fileName) {
   return Result<void>();
 }
 
-Result<void> FileStorage::RecoverFile(StringView) {
+Result<void> FileStorage::RecoverFile(StringView) noexcept {
   return Result<void>(MakeErrorCode(PerErrc::kValidationFailed, 0, "no redundancy configured"));
 }
 

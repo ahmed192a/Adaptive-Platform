@@ -54,9 +54,13 @@ TEST_F(FileTest, PositioningAndPartialReads) {
   EXPECT_EQ(r->ReadText(4).Value(), "0123");
   ASSERT_TRUE(r->SetPosition(8).HasValue());
   EXPECT_EQ(r->ReadText(100).Value(), "89");
-  ASSERT_TRUE(r->MovePosition(ara::per::ReadAccessor::Origin::kEnd, -3).HasValue());
+  auto moved = r->MovePosition(ara::per::ReadAccessor::Origin::kEnd, -3);
+  ASSERT_TRUE(moved.HasValue());
+  EXPECT_EQ(moved.Value(), 7U) << "MovePosition returns the new position";
   EXPECT_EQ(r->GetChar().Value(), '7');
-  ASSERT_TRUE(r->MovePosition(ara::per::ReadAccessor::Origin::kCurrent, -2).HasValue());
+  moved = r->MovePosition(ara::per::ReadAccessor::Origin::kCurrent, -2);
+  ASSERT_TRUE(moved.HasValue());
+  EXPECT_EQ(moved.Value(), 6U);
   EXPECT_EQ(r->GetChar().Value(), '6');
   EXPECT_TRUE(r->SetPosition(11).CheckError(PerErrc::kInvalidPosition));
   EXPECT_TRUE(r->MovePosition(ara::per::ReadAccessor::Origin::kBeginning, -1).CheckError(PerErrc::kInvalidPosition));

@@ -39,12 +39,12 @@ public:
   KeyValueStorage &operator=(KeyValueStorage const &) = delete;
   ~KeyValueStorage() = default;
 
-  ara::core::Result<ara::core::Vector<ara::core::String>> GetAllKeys() const;
-  ara::core::Result<bool> KeyExists(ara::core::StringView key) const;
+  ara::core::Result<ara::core::Vector<ara::core::String>> GetAllKeys() const noexcept;
+  ara::core::Result<bool> KeyExists(ara::core::StringView key) const noexcept;
 
   /// Reads `key` as T (arithmetic, bool, std::string, or JSON-convertible
   /// containers).  kKeyNotFound / kDataTypeMismatch on failure.
-  template <typename T> ara::core::Result<T> GetValue(ara::core::StringView key) const {
+  template <typename T> ara::core::Result<T> GetValue(ara::core::StringView key) const noexcept {
     auto json = GetJson(key);
     if (!json.HasValue()) {
       return ara::core::Result<T>(json.Error());
@@ -52,19 +52,34 @@ public:
     return Convert<T>(json.Value());
   }
 
-  /// Stores `value` under `key` (in memory until SyncToStorage()).
-  template <typename T> ara::core::Result<void> SetValue(ara::core::StringView key, T const &value) {
-    return SetJson(key, nlohmann::json(value));
+  /// Output-parameter form (SWS: `Result<void> GetValue(StringView, T&)`).
+  template <typename T> ara::core::Result<void> GetValue(ara::core::StringView key, T &value) const noexcept {
+    auto r = GetValue<T>(key);
+    if (!r.HasValue()) {
+      return ara::core::Result<void>(r.Error());
+    }
+    value = std::move(r).Value();
+    return ara::core::Result<void>();
   }
 
-  ara::core::Result<void> RemoveKey(ara::core::StringView key);
-  ara::core::Result<void> RemoveAllKeys();
-  ara::core::Result<void> SyncToStorage();
-  ara::core::Result<void> DiscardPendingChanges();
+  /// Stores `value` under `key` (in memory until SyncToStorage()).
+  template <typename T>
+  ara::core::Result<void> SetValue(ara::core::StringView key, T const &value) noexcept {
+    try {
+      return SetJson(key, nlohmann::json(value));
+    } catch (...) { // value not representable as JSON
+      return ara::core::Result<void>(MakeErrorCode(PerErrc::kDataTypeMismatch));
+    }
+  }
+
+  ara::core::Result<void> RemoveKey(ara::core::StringView key) noexcept;
+  ara::core::Result<void> RemoveAllKeys() noexcept;
+  ara::core::Result<void> SyncToStorage() noexcept;
+  ara::core::Result<void> DiscardPendingChanges() noexcept;
   /// Restores the configured initial value (kInitValueNotAvailable if none).
-  ara::core::Result<void> ResetKey(ara::core::StringView key);
+  ara::core::Result<void> ResetKey(ara::core::StringView key) noexcept;
   /// Restores `key` from the redundant copy on disk (kValidationFailed if absent).
-  ara::core::Result<void> RecoverKey(ara::core::StringView key);
+  ara::core::Result<void> RecoverKey(ara::core::StringView key) noexcept;
   /// Serialized size of the current in-memory image in bytes.
   ara::core::Result<std::uint64_t> GetCurrentStorageSize() const;
   bool HasPendingChanges() const;
@@ -73,8 +88,8 @@ private:
   friend struct KvsAccess;
   explicit KeyValueStorage(StorageConfig cfg) : mConfig(std::move(cfg)) {}
 
-  ara::core::Result<nlohmann::json> GetJson(ara::core::StringView key) const;
-  ara::core::Result<void> SetJson(ara::core::StringView key, nlohmann::json value);
+  ara::core::Result<nlohmann::json> GetJson(ara::core::StringView key) const noexcept;
+  ara::core::Result<void> SetJson(ara::core::StringView key, nlohmann::json value) noexcept;
 
   template <typename T> static ara::core::Result<T> Convert(nlohmann::json const &j) {
     using ara::core::Result;
