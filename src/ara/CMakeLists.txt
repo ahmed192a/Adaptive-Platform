@@ -9,6 +9,7 @@ add_subdirectory(ucm)
 add_subdirectory(per)
 add_subdirectory(phm)
 add_subdirectory(diag)
+add_subdirectory(nm)
 
 set(AP_HAVE_CRYPTO OFF CACHE INTERNAL "ara::crypto is built")
 if(AP_BUILD_CRYPTO)
