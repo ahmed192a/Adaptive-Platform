@@ -31,9 +31,9 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
   target_compile_options(ap_warnings INTERFACE
     -Wall -Wextra -Wpedantic -Wshadow -Wnon-virtual-dtor -Wcast-align
     -Woverloaded-virtual -Wconversion -Wsign-conversion -Wnull-dereference
-    -Wformat=2 -Wduplicated-cond)
+    -Wformat=2)
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    target_compile_options(ap_warnings INTERFACE -Wlogical-op -Wuseless-cast)
+    target_compile_options(ap_warnings INTERFACE -Wlogical-op -Wuseless-cast -Wduplicated-cond)
   endif()
   if(AP_WARNINGS_AS_ERRORS)
     target_compile_options(ap_warnings INTERFACE -Werror)

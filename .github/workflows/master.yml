@@ -48,31 +48,23 @@ jobs:
       - uses: actions/upload-artifact@v4
         with: { name: coverage-info, path: coverage.info }
 
-  web_generate:
-    name: Generate The documentationon the website using Doxygen
+  docs:
+    name: Doxygen documentation
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-    - name: Checkout the Repository Code
-      uses: actions/checkout@v3
-    - name: Generate the documentation
-      run: |
-        sudo apt-get install doxygen graphviz -y 
-        doxygen doxygen.conf
-    - name: push the documentation to the website
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.TOKEN }}
-        # copy the data from doc/html and overwrite the root of the gh-pages branch
-        publish_dir: ${{github.workspace}}/doc/html
-        publish_branch: gh-pages
-        # clear all files on the gh-pages branch and push only the files in the publish_dir
-        force_orphan: true
-        # commit the changes to gh-pages branch
-        commit_message: 'update the documentation'
-        user_name: ahmed192a
-        user_email: ah1326996@gmail.com
-
-        
-
-
-
+      - uses: actions/checkout@v4
+      - name: Generate the documentation
+        run: |
+          sudo apt-get update && sudo apt-get install -y doxygen graphviz
+          doxygen doxygen.conf
+      - name: Publish to GitHub Pages (master only)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ github.workspace }}/doc/html
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: 'update the documentation'
