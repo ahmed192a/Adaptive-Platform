@@ -68,7 +68,7 @@ void skeleton::field_method_dispatch(ara::com::SOMEIP_MESSAGE::Message& message,
         switch (event_id)
     {
     case 2:
-    if(message.Length() > 16){
+    if(message.Length() > ara::com::SOMEIP_MESSAGE::Message::EmptyLength){
         field1.HandleGet(message, cserver);
     }
     else{

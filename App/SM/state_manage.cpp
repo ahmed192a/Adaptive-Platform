@@ -91,8 +91,12 @@ void StateManager::run() {
     std::cout << "[SM] Received message from client" << std::endl;
 
     // deserialize message to SOMEIP_MESSAGE::Message object
-    ara::com::SOMEIP_MESSAGE::Message someip_msg =
-        ara::com::SOMEIP_MESSAGE::Message::Deserialize(msg);
+    auto parsed_msg = ara::com::SOMEIP_MESSAGE::Message::TryDeserialize(msg);
+    if (!parsed_msg) { // malformed datagram: drop the request
+      Sclient.CloseSocket();
+      continue;
+    }
+    ara::com::SOMEIP_MESSAGE::Message someip_msg = *parsed_msg;
 
     // check if message is a method call or field methods (SET, GET)
     if (someip_msg.MessageId().serivce_id ==

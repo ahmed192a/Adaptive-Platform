@@ -48,7 +48,7 @@ public:
 
     int event_id = message.MessageId().method_id & 0x7FFF;
     if (event_id == 0) {
-      if (message.Length() > 16) {
+      if (message.Length() > ara::com::SOMEIP_MESSAGE::Message::EmptyLength) {
         trigger.HandleSet(message, cserver);
       } else {
         trigger.HandleGet(message, cserver);

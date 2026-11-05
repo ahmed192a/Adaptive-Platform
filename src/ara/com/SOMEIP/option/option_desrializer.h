@@ -35,7 +35,7 @@ public:
     offset += 2;
     const auto optionType = static_cast<OptionType>(payload[offset]);
     offset += 1;
-    const bool discardable = payload[offset] & 0x01;
+    const bool discardable = (payload[offset] & 0x80) != 0;
     offset += 1;
 
     switch (optionType) {

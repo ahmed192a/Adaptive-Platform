@@ -14,6 +14,7 @@
 #include "ara/com/SOMEIP/helper/ttl_timer.h"
 #include <iostream>
 #include <limits>
+#include <optional>
 #include <stdexcept>
 #include <stdint.h>
 #include <vector>
@@ -26,6 +27,9 @@ namespace ara::com::SOMEIP_MESSAGE {
  * SOME IP
  *
  */
+/// SOME/IP protocol version carried in every header [PRS_SOMEIP_00051].
+constexpr uint8_t kProtocolVersion = 0x01;
+
 enum class MessageType : uint8_t {
   REQUEST = 0x00,           /**< A request expecting a response (even void)	*/
   REQUEST_NO_RETURN = 0x01, /**< A fire&forget request	*/
@@ -37,8 +41,8 @@ enum class MessageType : uint8_t {
   TP_REQUEST_NO_RETURN = 0x21, /**< A TP fire & forget request	*/
   TP_NOTIFICATION = 0x22, /**< A TP request of a notification/event callback
                              expecting no response	*/
-  TP_RESPONSE = 0x23,     /**< The TP response message	*/
-  TP_ERROR = 0x24         /**< The TP response containing an error	*/
+  TP_RESPONSE = 0xA0,     /**< The TP response message [PRS_SOMEIP_00055]	*/
+  TP_ERROR = 0xA1         /**< The TP response containing an error [PRS_SOMEIP_00055]	*/
 };
 /**
  * @enum ReturnCode
@@ -106,17 +110,19 @@ struct Request_ID {
  */
 class Message  {
 private:
+  /// Host-order copy of the SOME/IP header. On the wire every field is big
+  /// endian [PRS_SOMEIP_00368]; see Serializer()/TryDeserialize().
   struct header_t {
-    unsigned service_id : 16;
-    unsigned method_id : 16;
-    unsigned length : 32;
-    unsigned client_id : 16;
-    unsigned session_id : 16;
-    unsigned protocol_version : 8;
-    unsigned interface_version : 8;
-    unsigned message_type : 8;
-    unsigned return_code : 8;
-  } __attribute__((packed));
+    uint16_t service_id;
+    uint16_t method_id;
+    uint32_t length;  //!< bytes from Request ID to the end of the payload
+    uint16_t client_id;
+    uint16_t session_id;
+    uint8_t protocol_version;
+    uint8_t interface_version;
+    uint8_t message_type;
+    uint8_t return_code;
+  };
   header_t header;
   std::vector<uint8_t>
       payload; //!< Payload of the message used to store the serialized message
@@ -139,6 +145,10 @@ private:
 
 public:
   static const uint32_t HeaderSize = 16; //!< Header size in bytes
+  /// Value of the Length field for an empty payload: Request ID, Protocol
+  /// Version, Interface Version, Message Type and Return Code
+  /// [PRS_SOMEIP_00042].
+  static const uint32_t EmptyLength = 8;
 
   /**
    * @brief Construct a new Message object
@@ -220,9 +230,22 @@ public:
   /// @returns Byte array
   std::vector<uint8_t> GetPayload() const;
 
-  /// @brief Deserialize message payload
-  /// @param msg Byte array
+  /// @brief Deserialize a complete SOME/IP message (header + payload)
+  /// @param msg Byte array in network byte order
+  /// @throws std::invalid_argument when the buffer is not a well-formed message
   static Message Deserialize(const std::vector<uint8_t> &msg);
+
+  /// @brief Non-throwing variant of Deserialize()
+  /// @returns The message, or std::nullopt when the buffer is shorter than the
+  ///          header or when the Length field does not match the buffer size
+  static std::optional<Message>
+  TryDeserialize(const std::vector<uint8_t> &msg) noexcept;
+
+  /// @brief Check the header against what a receiver must accept
+  /// @returns E_OK, E_WRONG_PROTOCOL_VERSION or E_WRONG_MESSAGE_TYPE
+  /// @note Interface version / message type matching against a concrete
+  ///       service is the responsibility of the dispatcher.
+  ReturnCode ValidateHeader() const noexcept;
 
   bool check_Methode_ID() const {
     if ((uint16_t)(this->header.method_id & 0x8000) == 0)
