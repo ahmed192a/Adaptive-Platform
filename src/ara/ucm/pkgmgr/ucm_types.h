@@ -8,6 +8,7 @@
  */
 #ifndef ARA_UCM_UCM_TYPES_H_
 #define ARA_UCM_UCM_TYPES_H_
+#include <cstdint>
 #include <string>
 #include <vector>
 #include <array>
@@ -123,7 +124,7 @@ namespace ara
                              * Range/Symbol     Limit   Description
                              * kPresent         0x00    State of a SoftwareCluster that is installed on the adaptive platform and installation has finished.
                              * kAdded           0x01    State of a SoftwareCluster that has been newly installed.
-                             * kUpdated         0x02    State of a SoftwareCluster that has been updated.
+                             * kUpdating        0x02    State of a SoftwareCluster that is being updated (named kUpdated in older releases).
                              * kRemoved         0x03    State of a SoftwareCluster that has been removed.
                              */
                              using SwClusterStateType = uint8_t ;
@@ -164,14 +165,14 @@ namespace ara
                              * kInstall         0x01    Installation of a new SoftwareCluster.
                              * kRemove          0x02    Removal of a SoftwareCluster.
                              */
-                            using ActionType = uint8_t &;
+                            using ActionType = uint8_t;
                             /**
                              * @brief Represents the result of UCM action.
                              * Range/Symbol     Limit   Description
                              * kSuccessfull     0x00    UCM’s action was successful.
                              * kFailed          0x01    UCM’s action failed.
                              */
-                             using ResultType = uint8_t &;
+                             using ResultType = uint8_t;
                             /**
                              * @brief Time refers to the activation time of the software cluster. It is represented in milliseconds
                              *          of UCM’s action resolution since 01.01.1970 (UTC).
@@ -208,7 +209,7 @@ namespace ara
                              * kPreActivate     0x02        Software Cluster pre activation
                              * kVerify          0x03        Software Cluster verification
                              */
-                            using SoftwarePackageStepType = uint8_t &;
+                            using SoftwarePackageStepType = uint8_t;
                             /**
                              * @brief UCM Error
                              * 
@@ -231,7 +232,7 @@ namespace ara
                              * kCampaignCancelled                           0x06        Campaign was cancelled
                              * 
                              */
-                            using CampaignFailureType = uint8_t &;
+                            using CampaignFailureType = uint8_t;
                             /**
                              * @brief Campaign Error
                              * 
@@ -263,7 +264,7 @@ namespace ara
                              * kVehicleChecking                 0x06        UCM Master is performing post-activation checks (OEM specific).
                              * kCancelling                      0x07        UCM Master is rolling-back the activated SWCLs on the UCM subordinates.
                              */
-                            using CampaignStateType = uint8_t &;
+                            using CampaignStateType = uint8_t;
                             /**
                              * @brief Represents the state of an update from OTA Client perspective.
                              * Range/Symbol     Limit   Description
@@ -272,7 +273,7 @@ namespace ara
                              * kUpdating        0x02    Software Clusters are being updated in the vehicle.
                              * kCancelling      0x03    An error occurred, campaign is being cancelled, reverting changes.
                              */
-                            using TransferStateType = uint8_t &;
+                            using TransferStateType = uint8_t;
                             /**
                              * @brief The type of the Safety Policy.
                              * 
