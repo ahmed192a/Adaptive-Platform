@@ -36,7 +36,7 @@ def main():
                                   record_video_dir=vdir if a.video else None,
                                   record_video_size={"width": 1440, "height": 900})
         page = ctx.new_page()
-        page.set_default_timeout(15000)
+        page.set_default_timeout(45000)
         pause = lambda s: page.wait_for_timeout(int(s * 1000 * a.pace))
         cap = lambda t: page.evaluate(CAPTION_JS, t)
         def shot(name, full=False):
@@ -56,7 +56,7 @@ def main():
         focus("#cardEm")
         cap("Execution Management starts the platform processes from the manifests")
         page.click("#btnEmStart")
-        page.wait_for_function("document.querySelector('#emState').textContent === 'running'")
+        page.wait_for_function("document.querySelector('#emState').textContent === 'running'", timeout=60000)
         page.wait_for_function("document.querySelectorAll('#procTable tbody tr').length >= 2")
         pause(1.2)
         shot("02-execution-management.png")
