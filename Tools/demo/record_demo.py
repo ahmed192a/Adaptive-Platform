@@ -60,7 +60,9 @@ def main():
         page.wait_for_function("document.querySelectorAll('#procTable tbody tr').length >= 2")
         pause(1.2)
         shot("02-execution-management.png")
-        page.wait_for_function("document.querySelector('#emState').textContent === 'idle'", timeout=40000)
+        cap("Stopping the platform: Execution Management terminates every process")
+        page.click("#btnEmStop")
+        page.wait_for_function("document.querySelector('#emState').textContent === 'idle'", timeout=60000)
         pause(1.0)
         shot("03-execution-management-done.png", full=True)
 
