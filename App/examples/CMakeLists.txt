@@ -1,1 +1,2 @@
-# Demo applications for the new clusters are added together with the clusters.
+# Demo applications for the functional clusters.
+add_subdirectory(phm_demo)

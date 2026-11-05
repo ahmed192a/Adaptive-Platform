@@ -100,9 +100,12 @@ public:
 
   // SWS_CORE_00753 ff.
   T const &operator*() const & { return std::get<0>(mData); }
+  T &operator*() & { return std::get<0>(mData); } // extension: mutable access (as std::optional)
   T &&operator*() && { return std::get<0>(std::move(mData)); }
   T const *operator->() const { return &std::get<0>(mData); }
+  T *operator->() { return &std::get<0>(mData); }
   T const &Value() const & { return std::get<0>(mData); }
+  T &Value() & { return std::get<0>(mData); } // extension: mutable access (as std::optional)
   T &&Value() && { return std::get<0>(std::move(mData)); }
   E const &Error() const & { return std::get<1>(mData); }
   E &&Error() && { return std::get<1>(std::move(mData)); }
