@@ -13,7 +13,8 @@ Reference: AUTOSAR Adaptive Platform R25-11 (SWS documents at https://www.autosa
 | ara::exec | **hardened** | Manifest parsing no longer calls exit()/throws under noexcept; clients report kCommunicationError; StateClient no longer dangles; FunctionGroupState compares group and state; added `GetExecDomain`/`MakeErrorCode`. 7 tests. Exec domain id 0x8000000000000202 is unverified. Still missing: StateClient transition results, DeterministicClient review. |
 | ara::com | legacy | SOME/IP + SD present; warnings and tests need work. |
 | ara::sm, ara::ucm | legacy | |
-| Not started | | Diagnostics, Crypto, Network Management, Time Sync, IDSM, Firewall, RawDataStream, OSI, Remote Persistency, VUCM |
+| ara::diag | **UDS core (partial)** | Transport-independent `DiagnosticServer`: sessions + S3 timeout, 0x10/0x11/0x22/0x2E/0x3E, suppress-positive-response, DID registry, custom services. 12 tests. Missing: the SWS facade (Conversation, GenericUDSService, DataIdentifier classes), DTC/DEM (0x14/0x19), SecurityAccess (0x27), routines (0x31), DoIP/ISO-TP transport, Monitor/Event interfaces. |
+| Not started | | Crypto, Network Management, Time Sync, IDSM, Firewall, RawDataStream, OSI, Remote Persistency, VUCM |
 
 Suggested order: exec (hardening) -> diag -> crypto -> nm/tsync -> idsm.
 

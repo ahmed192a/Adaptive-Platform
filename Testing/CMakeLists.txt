@@ -13,6 +13,7 @@ ap_add_test(
 # One test executable per functional cluster.
 add_subdirectory(core)
 add_subdirectory(exec)
+add_subdirectory(diag)
 add_subdirectory(log)
 add_subdirectory(per)
 add_subdirectory(phm)
