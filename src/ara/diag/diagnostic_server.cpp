@@ -12,7 +12,12 @@ bool IsBuiltin(std::uint8_t sid) {
   case uds::kEcuReset:
   case uds::kReadDataByIdentifier:
   case uds::kWriteDataByIdentifier:
-  case uds::kTesterPresent: return true;
+  case uds::kTesterPresent:
+  case uds::kSecurityAccess:
+  case uds::kRoutineControl:
+  case uds::kClearDiagnosticInformation:
+  case uds::kReadDtcInformation:
+  case uds::kControlDtcSetting: return true;
   default: return false;
   }
 }
@@ -71,9 +76,57 @@ void DiagnosticServer::SetResetHandler(ResetHandler h) {
   reset_ = std::move(h);
 }
 
+void DiagnosticServer::SetSessionLocked(uds::Session s) {
+  if (s != session_) { // ISO 14229-1: a session change relocks security access
+    securityLevel_ = 0;
+    pendingLevel_ = 0;
+    pendingSeed_.clear();
+  }
+  session_ = s;
+}
+
 void DiagnosticServer::ExpireSessionLocked(TimePoint now) {
   if (session_ != uds::Session::kDefault && now - lastActivity_ > cfg_.s3Timeout)
-    session_ = uds::Session::kDefault;
+    SetSessionLocked(uds::Session::kDefault);
+}
+
+ara::core::Result<void> DiagnosticServer::RegisterRoutine(std::uint16_t id, Routine r) {
+  if ((!r.start && !r.stop && !r.requestResults) || r.sessions == 0 || (r.sessions & ~kAllSessions) != 0)
+    return ara::core::Result<void>::FromError(MakeErrorCode(DiagErrc::kInvalidArgument));
+  std::lock_guard<std::mutex> lk(mutex_);
+  if (!routines_.emplace(id, std::move(r)).second)
+    return ara::core::Result<void>::FromError(MakeErrorCode(DiagErrc::kAlreadyOffered));
+  return {};
+}
+
+void DiagnosticServer::SetSecurityProvider(SecurityProvider p) {
+  std::lock_guard<std::mutex> lk(mutex_);
+  security_ = std::move(p);
+}
+
+std::uint8_t DiagnosticServer::CurrentSecurityLevel() {
+  std::lock_guard<std::mutex> lk(mutex_);
+  ExpireSessionLocked(cfg_.clock());
+  return securityLevel_;
+}
+
+void DiagnosticServer::ReportDtc(std::uint32_t dtc, bool testFailed) {
+  std::lock_guard<std::mutex> lk(mutex_);
+  if (!dtcSettingOn_) return;
+  auto &st = dtcs_[dtc & 0xFFFFFF];
+  if (testFailed) {
+    st = static_cast<std::uint8_t>(st | dtc::kTestFailed | dtc::kTestFailedThisOperationCycle |
+                                   dtc::kConfirmed | dtc::kTestFailedSinceLastClear);
+  } else {
+    st = static_cast<std::uint8_t>(st & ~dtc::kTestFailed);
+  }
+}
+
+std::optional<std::uint8_t> DiagnosticServer::DtcStatus(std::uint32_t dtc) {
+  std::lock_guard<std::mutex> lk(mutex_);
+  auto it = dtcs_.find(dtc & 0xFFFFFF);
+  if (it == dtcs_.end()) return std::nullopt;
+  return it->second;
 }
 
 uds::Session DiagnosticServer::CurrentSession() {
@@ -110,6 +163,11 @@ std::optional<ByteVector> DiagnosticServer::Dispatch(ByteVector const &req) {
     case uds::kEcuReset: return HandleEcuReset(req);
     case uds::kReadDataByIdentifier: return HandleRead(req);
     case uds::kWriteDataByIdentifier: return HandleWrite(req);
+    case uds::kSecurityAccess: return HandleSecurityAccess(req);
+    case uds::kRoutineControl: return HandleRoutineControl(req);
+    case uds::kClearDiagnosticInformation: return HandleClearDtc(req);
+    case uds::kReadDtcInformation: return HandleReadDtc(req);
+    case uds::kControlDtcSetting: return HandleControlDtcSetting(req);
     default: return uds::NegativeResponse(sid, Nrc::kServiceNotSupported);
     }
   } catch (...) {
@@ -125,7 +183,7 @@ std::optional<ByteVector> DiagnosticServer::HandleSessionControl(ByteVector cons
   if (sub < 1 || sub > 3) return uds::NegativeResponse(sid, Nrc::kSubFunctionNotSupported);
   {
     std::lock_guard<std::mutex> lk(mutex_);
-    session_ = static_cast<uds::Session>(sub);
+    SetSessionLocked(static_cast<uds::Session>(sub));
   }
   if (suppress) return std::nullopt;
   ByteVector payload{sub};
@@ -194,6 +252,8 @@ std::optional<ByteVector> DiagnosticServer::HandleWrite(ByteVector const &req) {
     auto it = dids_.find(did);
     if (it == dids_.end() || !it->second.write || !InSession(it->second.writeSessions))
       return uds::NegativeResponse(sid, Nrc::kRequestOutOfRange);
+    if (securityLevel_ < it->second.writeSecurityLevel)
+      return uds::NegativeResponse(sid, Nrc::kSecurityAccessDenied);
     write = it->second.write;
     expected = it->second.writeLength;
   }
@@ -204,6 +264,156 @@ std::optional<ByteVector> DiagnosticServer::HandleWrite(ByteVector const &req) {
   ByteVector payload;
   PutBe16(payload, did);
   return Positive(sid, std::move(payload));
+}
+
+std::optional<ByteVector> DiagnosticServer::HandleSecurityAccess(ByteVector const &req) {
+  constexpr auto sid = uds::kSecurityAccess;
+  if (req.size() < 2) return uds::NegativeResponse(sid, Nrc::kIncorrectMessageLengthOrInvalidFormat);
+  std::uint8_t const sub = req[1] & 0x7F;
+  bool const suppress = (req[1] & uds::kSuppressPositiveResponseBit) != 0;
+  if (sub == 0 || sub > 0x7E) return uds::NegativeResponse(sid, Nrc::kSubFunctionNotSupported);
+  SecurityProvider prov;
+  {
+    std::lock_guard<std::mutex> lk(mutex_);
+    prov = security_;
+  }
+  if (!prov.seed || !prov.validateKey) return uds::NegativeResponse(sid, Nrc::kServiceNotSupported);
+  auto const now = cfg_.clock();
+  if (sub % 2 == 1) { // requestSeed
+    std::uint8_t const level = sub;
+    {
+      std::lock_guard<std::mutex> lk(mutex_);
+      if (failedAttempts_ >= prov.maxAttempts && now < lockedUntil_)
+        return uds::NegativeResponse(sid, Nrc::kRequiredTimeDelayNotExpired);
+      if (securityLevel_ == level) { // already unlocked: all-zero seed of the usual length
+        ByteVector zeros(std::max<std::size_t>(1, pendingSeed_.size()), 0);
+        return Positive(sid, [&] { ByteVector p{sub}; p.insert(p.end(), zeros.begin(), zeros.end()); return p; }());
+      }
+    }
+    auto seed = prov.seed(level);
+    if (!seed.HasValue()) return uds::NegativeResponse(sid, seed.Error());
+    if (seed.Value().empty()) return uds::NegativeResponse(sid, Nrc::kGeneralReject);
+    ByteVector payload{sub};
+    payload.insert(payload.end(), seed.Value().begin(), seed.Value().end());
+    {
+      std::lock_guard<std::mutex> lk(mutex_);
+      pendingLevel_ = level;
+      pendingSeed_ = seed.Value();
+    }
+    return Positive(sid, std::move(payload)); // a seed response is never suppressed
+  }
+  // sendKey
+  if (req.size() < 3) return uds::NegativeResponse(sid, Nrc::kIncorrectMessageLengthOrInvalidFormat);
+  std::uint8_t const level = static_cast<std::uint8_t>(sub - 1);
+  ByteVector seed;
+  {
+    std::lock_guard<std::mutex> lk(mutex_);
+    if (pendingLevel_ != level) return uds::NegativeResponse(sid, Nrc::kRequestSequenceError);
+    if (failedAttempts_ >= prov.maxAttempts) {
+      if (now < lockedUntil_) return uds::NegativeResponse(sid, Nrc::kRequiredTimeDelayNotExpired);
+      failedAttempts_ = 0;
+    }
+    seed = pendingSeed_;
+  }
+  bool const ok = prov.validateKey(level, seed, ByteVector(req.begin() + 2, req.end()));
+  std::lock_guard<std::mutex> lk(mutex_);
+  pendingLevel_ = 0;
+  if (!ok) {
+    if (++failedAttempts_ >= prov.maxAttempts) {
+      lockedUntil_ = now + prov.lockout;
+      return uds::NegativeResponse(sid, Nrc::kExceededNumberOfAttempts);
+    }
+    return uds::NegativeResponse(sid, Nrc::kInvalidKey);
+  }
+  failedAttempts_ = 0;
+  securityLevel_ = level;
+  if (suppress) return std::nullopt;
+  return Positive(sid, {sub});
+}
+
+std::optional<ByteVector> DiagnosticServer::HandleRoutineControl(ByteVector const &req) {
+  constexpr auto sid = uds::kRoutineControl;
+  if (req.size() < 4) return uds::NegativeResponse(sid, Nrc::kIncorrectMessageLengthOrInvalidFormat);
+  std::uint8_t const sub = req[1] & 0x7F;
+  bool const suppress = (req[1] & uds::kSuppressPositiveResponseBit) != 0;
+  if (sub < 1 || sub > 3) return uds::NegativeResponse(sid, Nrc::kSubFunctionNotSupported);
+  std::uint16_t const id = Be16(req, 2);
+  Routine::Handler h;
+  {
+    std::lock_guard<std::mutex> lk(mutex_);
+    auto it = routines_.find(id);
+    if (it == routines_.end()) return uds::NegativeResponse(sid, Nrc::kRequestOutOfRange);
+    if (!InSession(it->second.sessions)) return uds::NegativeResponse(sid, Nrc::kServiceNotSupportedInActiveSession);
+    h = sub == 1 ? it->second.start : sub == 2 ? it->second.stop : it->second.requestResults;
+    if (!h) return uds::NegativeResponse(sid, Nrc::kSubFunctionNotSupported);
+    if (securityLevel_ < it->second.securityLevel) return uds::NegativeResponse(sid, Nrc::kSecurityAccessDenied);
+  }
+  auto r = h(ByteVector(req.begin() + 4, req.end()));
+  if (!r.HasValue()) return uds::NegativeResponse(sid, r.Error());
+  if (suppress) return std::nullopt;
+  ByteVector payload{sub};
+  PutBe16(payload, id);
+  payload.insert(payload.end(), r.Value().begin(), r.Value().end());
+  return Positive(sid, std::move(payload));
+}
+
+std::optional<ByteVector> DiagnosticServer::HandleClearDtc(ByteVector const &req) {
+  constexpr auto sid = uds::kClearDiagnosticInformation;
+  if (req.size() != 4) return uds::NegativeResponse(sid, Nrc::kIncorrectMessageLengthOrInvalidFormat);
+  std::uint32_t const group = (static_cast<std::uint32_t>(req[1]) << 16) | (static_cast<std::uint32_t>(req[2]) << 8) | req[3];
+  std::lock_guard<std::mutex> lk(mutex_);
+  if (group == 0xFFFFFF) {
+    dtcs_.clear();
+  } else if (dtcs_.erase(group) == 0) {
+    return uds::NegativeResponse(sid, Nrc::kRequestOutOfRange); // unknown DTC / group
+  }
+  return Positive(sid);
+}
+
+std::optional<ByteVector> DiagnosticServer::HandleReadDtc(ByteVector const &req) {
+  constexpr auto sid = uds::kReadDtcInformation;
+  if (req.size() < 2) return uds::NegativeResponse(sid, Nrc::kIncorrectMessageLengthOrInvalidFormat);
+  std::uint8_t const sub = req[1] & 0x7F;
+  bool const suppress = (req[1] & uds::kSuppressPositiveResponseBit) != 0;
+  if (sub != 0x01 && sub != 0x02 && sub != 0x0A) return uds::NegativeResponse(sid, Nrc::kSubFunctionNotSupported);
+  bool const needsMask = sub != 0x0A;
+  if (req.size() != (needsMask ? 3U : 2U)) return uds::NegativeResponse(sid, Nrc::kIncorrectMessageLengthOrInvalidFormat);
+  std::uint8_t const mask = needsMask ? req[2] : 0xFF;
+  ByteVector payload{sub, dtc::kStatusAvailabilityMask};
+  std::lock_guard<std::mutex> lk(mutex_);
+  if (sub == 0x01) {
+    std::uint16_t n = 0;
+    for (auto const &[code, st] : dtcs_) {
+      (void)code;
+      if ((st & mask & dtc::kStatusAvailabilityMask) != 0) ++n;
+    }
+    payload.push_back(0x01); // DTCFormatIdentifier: ISO 14229-1
+    PutBe16(payload, n);
+  } else {
+    for (auto const &[code, st] : dtcs_) {
+      if (sub == 0x02 && (st & mask & dtc::kStatusAvailabilityMask) == 0) continue;
+      payload.push_back(static_cast<std::uint8_t>(code >> 16));
+      payload.push_back(static_cast<std::uint8_t>(code >> 8));
+      payload.push_back(static_cast<std::uint8_t>(code));
+      payload.push_back(static_cast<std::uint8_t>(st & dtc::kStatusAvailabilityMask));
+    }
+  }
+  if (suppress) return std::nullopt;
+  return Positive(sid, std::move(payload));
+}
+
+std::optional<ByteVector> DiagnosticServer::HandleControlDtcSetting(ByteVector const &req) {
+  constexpr auto sid = uds::kControlDtcSetting;
+  if (req.size() < 2) return uds::NegativeResponse(sid, Nrc::kIncorrectMessageLengthOrInvalidFormat);
+  std::uint8_t const sub = req[1] & 0x7F;
+  bool const suppress = (req[1] & uds::kSuppressPositiveResponseBit) != 0;
+  if (sub != 0x01 && sub != 0x02) return uds::NegativeResponse(sid, Nrc::kSubFunctionNotSupported);
+  {
+    std::lock_guard<std::mutex> lk(mutex_);
+    dtcSettingOn_ = (sub == 0x01);
+  }
+  if (suppress) return std::nullopt;
+  return Positive(sid, {sub});
 }
 
 } // namespace ara::diag
