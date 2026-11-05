@@ -89,12 +89,12 @@ strict warnings (`-Werror`) and unit tests with every cluster.
 | `ara::phm` | ✅ new | alive / deadline / logical supervision, global supervision, recovery actions, watchdog escalation |
 | `ara::diag` | 🟡 UDS core | session layer, S3 timer, `0x10 0x11 0x22 0x2E 0x3E`, DIDs, custom services |
 | `ara::nm` | ✅ new | NM state machine, partial networks, NM PDU codec, injectable clock ([doc](doc/nm.md)) |
-| `ara::crypto` | 🟡 primitives | RNG, SHA-2, HMAC, AES-GCM, Ed25519, ECDSA-P256, zeroizing keys, key store |
+| `ara::crypto` | 🟡 primitives + key slots | RNG, SHA-2, HMAC, AES-GCM, Ed25519, ECDSA-P256, zeroizing keys, usage-enforced key slots persisted (encrypted) via `ara::per` |
 | `ara::tsync` | 🟡 time base | synchronized time base with injectable clock, rate deviation, offset slew/step, timeout detection, status flags, update callback |
 | `ara::exec` | 🟡 hardened | safe manifest parsing, client error reporting; EM process uses it |
 | `ara::com` | 🟠 legacy | SOME/IP + service discovery |
 | `ara::sm`, `ara::ucm` | 🟠 legacy | state management, update & configuration management |
-| NM, IDSM, Firewall, … | ⬜ planned | see [doc/ROADMAP.md](doc/ROADMAP.md) |
+| IDSM, Firewall, … | ⬜ planned | see [doc/ROADMAP.md](doc/ROADMAP.md) |
 
 The detailed gap analysis against AUTOSAR R25-11, known deviations and next steps are in
 **[doc/ROADMAP.md](doc/ROADMAP.md)**.
