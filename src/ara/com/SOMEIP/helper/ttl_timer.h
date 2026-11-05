@@ -31,7 +31,7 @@ namespace ara
                 std::condition_variable mConditionVariable; //!< condition variable for the countdown
                 std::future<void> mFuture;              //!< future for the countdown
                 bool mRunning;                          //!< flag to indicate if the timer is running
-                uint32_t mTtl;                          //!< time to live in milliseconds
+                uint32_t mTtl;                          //!< time to live in seconds
                 std::function<void()> mOnExpired;       //!< callback function to be called when the timer expires
 
                 void countdown();
