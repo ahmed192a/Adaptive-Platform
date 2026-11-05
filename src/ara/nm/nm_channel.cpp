@@ -104,7 +104,7 @@ bool NmChannel::Step(Millis now, Pending &p) {
 NmPdu NmChannel::MakePdu() const {
   NmPdu pdu;
   pdu.sourceNodeId = cfg_.nodeId;
-  pdu.repeatMessageRequest = state_ == NmState::kRepeatMessage;
+  pdu.repeatMessageRequest = false; // SWS_ANM_00037: transmitted Repeat Message Request bit is always 0
   pdu.partialNetworkInfo = cfg_.pnFilterMask != 0;
   pdu.pnRequest = pdu.partialNetworkInfo ? (localPn_ & cfg_.pnFilterMask) : 0U;
   return pdu;
@@ -119,6 +119,7 @@ void NmChannel::Pump(Millis now, Pending &p) {
   }
   if (Transmits(state_) && now >= txDeadline_) {
     p.tx.push_back(MakePdu());
+    nmTimeoutDeadline_ = now + cfg_.nmTimeout; // SWS_ANM_00007..09: restarted on NM Tx as well as Rx
     if (immediateRemaining_ > 0) {
       --immediateRemaining_;
       txDeadline_ = now + cfg_.immediateNmCycleTime;

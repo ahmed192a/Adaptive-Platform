@@ -34,6 +34,8 @@ public:
 
 class NmErrorDomain final : public ara::core::ErrorDomain {
 public:
+  using Errc = NmErrc;             // SWS_ANM_01103
+  using Exception = NmException;   // SWS_ANM_01104
   static constexpr IdType kId = 0x8000000000000501; // implementation choice (tsync uses ...0502)
   constexpr NmErrorDomain() noexcept : ErrorDomain(kId) {}
   char const *Name() const noexcept override { return "Nm"; }

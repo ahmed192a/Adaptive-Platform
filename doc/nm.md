@@ -40,3 +40,5 @@ stateDiagram-v2
 ## Not implemented
 
 Real bus drivers (CAN/Ethernet), PN routing/aggregation between buses, the SWS `ara::nm` Adaptive facade (`NmChannel` naming from ara::com), NM coordinator, and wake-up/sleep indication towards `ara::exec`.
+
+> **Spec conformance:** see [spec-conformance/nm.md](spec-conformance/nm.md). The engine class is `NmChannel`; `ara::nm::NetworkHandle` is the SWS facade (`kNoCom`/`kFullCom`) bound with `NetworkManager::BindPort`.
