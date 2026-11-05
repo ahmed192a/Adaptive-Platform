@@ -487,7 +487,7 @@ void ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::
   switch (event_id) {
   case 0: /* Id of CurrentStatus Field   */
     if (message.Length() >
-        ara::com::SOMEIP_MESSAGE::Message::HeaderSize) /* if Message has payload
+        ara::com::SOMEIP_MESSAGE::Message::EmptyLength) /* if Message has payload
                                                           So it's Set request
                                                           with the new data  */
     {

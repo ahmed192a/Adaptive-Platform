@@ -34,14 +34,14 @@ public:
     int event_id = message.MessageId().method_id & 0x7FFF;
     switch (event_id) {
     case 0:
-      if (message.Length() > 16) {
+      if (message.Length() > ara::com::SOMEIP_MESSAGE::Message::EmptyLength) {
         Notifier.HandleGet(message, cserver);
       } else {
         Notifier.HandleSet(message, cserver);
       }
       break;
     case 1:
-      if (message.Length() > 16) {
+      if (message.Length() > ara::com::SOMEIP_MESSAGE::Message::EmptyLength) {
         Trigger.HandleGet(message, cserver);
       } else {
         Trigger.HandleSet(message, cserver);
