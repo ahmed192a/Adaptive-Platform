@@ -38,6 +38,51 @@ constexpr bool HasMode(LogMode set, LogMode flag) noexcept {
   return (static_cast<std::uint8_t>(set) & static_cast<std::uint8_t>(flag)) != 0;
 }
 
+/// Format specifiers for log arguments (SWS_LOG "Fmt", values as published for R25-11 tooling).
+enum class Fmt : std::uint16_t {
+  kDefault = 0,
+  kDec = 1,
+  kOct = 2,
+  kHex = 3,
+  kBin = 4,
+  kDecFloat = 5,
+  kEngFloat = 6,
+  kHexFloat = 7,
+  kAutoFloat = 8
+};
+
+/// Formatting hint attached to an argument via ara::log::Arg(value, Hex(4)).
+/// `precision` is the minimum number of digits for integers and the number of
+/// fractional digits for floating point values (0 = implementation default).
+struct Format {
+  Fmt fmt{Fmt::kDefault};
+  std::uint16_t precision{0};
+};
+
+constexpr Format Dflt() noexcept { return {Fmt::kDefault, 0}; }
+constexpr Format Dec() noexcept { return {Fmt::kDec, 0}; }
+constexpr Format Dec(std::uint16_t digits) noexcept { return {Fmt::kDec, digits}; }
+constexpr Format Oct() noexcept { return {Fmt::kOct, 0}; }
+constexpr Format Oct(std::uint16_t digits) noexcept { return {Fmt::kOct, digits}; }
+constexpr Format Hex() noexcept { return {Fmt::kHex, 0}; }
+constexpr Format Hex(std::uint16_t digits) noexcept { return {Fmt::kHex, digits}; }
+constexpr Format Bin() noexcept { return {Fmt::kBin, 0}; }
+constexpr Format Bin(std::uint16_t digits) noexcept { return {Fmt::kBin, digits}; }
+/// "...Max" variants request the maximal precision of a double (17 significant digits).
+inline constexpr std::uint16_t kMaxFloatPrecision = 17;
+constexpr Format DecFloat() noexcept { return {Fmt::kDecFloat, 0}; }
+constexpr Format DecFloat(std::uint16_t p) noexcept { return {Fmt::kDecFloat, p}; }
+constexpr Format DecFloatMax() noexcept { return {Fmt::kDecFloat, kMaxFloatPrecision}; }
+constexpr Format EngFloat() noexcept { return {Fmt::kEngFloat, 0}; }
+constexpr Format EngFloat(std::uint16_t p) noexcept { return {Fmt::kEngFloat, p}; }
+constexpr Format EngFloatMax() noexcept { return {Fmt::kEngFloat, kMaxFloatPrecision}; }
+constexpr Format HexFloat() noexcept { return {Fmt::kHexFloat, 0}; }
+constexpr Format HexFloat(std::uint16_t p) noexcept { return {Fmt::kHexFloat, p}; }
+constexpr Format HexFloatMax() noexcept { return {Fmt::kHexFloat, kMaxFloatPrecision}; }
+constexpr Format AutoFloat() noexcept { return {Fmt::kAutoFloat, 0}; }
+constexpr Format AutoFloat(std::uint16_t p) noexcept { return {Fmt::kAutoFloat, p}; }
+constexpr Format AutoFloatMax() noexcept { return {Fmt::kAutoFloat, kMaxFloatPrecision}; }
+
 enum class ClientState : std::int8_t { kUnknown = -1, kNotConnected = 0, kConnected = 1 };
 
 /// Textual form used by the console / file sinks ("FATL", "ERRO", ...).

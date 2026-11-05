@@ -8,6 +8,7 @@
 #include <atomic>
 #include <string>
 
+#include "ara/core/instance_specifier.h"
 #include "ara/log/log_stream.h"
 #include "ara/log/logging_types.h"
 
@@ -31,11 +32,14 @@ public:
   std::string const &ContextId() const noexcept { return contextId_; }
   std::string const &ContextDescription() const noexcept { return description_; }
   LogLevel GetLevel() const noexcept { return level_.load(); }
-  /// Implementation extension: runtime change of the context threshold.
-  void SetLevel(LogLevel l) noexcept { level_.store(l); }
+  /// SWS_LOG_00254: sets the severity threshold of this logger.
+  void SetThreshold(LogLevel threshold) noexcept { level_.store(threshold); }
+  /// Deprecated alias kept for older callers of this repository.
+  void SetLevel(LogLevel l) noexcept { SetThreshold(l); }
 
 private:
   friend Logger &CreateLogger(std::string_view, std::string_view, LogLevel);
+  friend Logger &CreateLogger(ara::core::InstanceSpecifier const &);
   Logger(std::string ctx, std::string desc, LogLevel level)
       : contextId_(std::move(ctx)), description_(std::move(desc)), level_(level) {}
 
