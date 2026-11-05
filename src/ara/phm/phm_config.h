@@ -44,7 +44,7 @@ struct GlobalSupervisionConfig {
   Duration expiredTolerance{Duration::zero()};
   bool platformCritical{false};         ///< SM/EM/OS supervision: EXPIRED -> STOPPED
   bool escalateToWatchdog{true};        ///< fire watchdog if recovery is impossible
-  std::uint32_t executionError{0};
+  std::uint32_t executionError{1}; ///< SWS_PHM_01361: 1 when none is configured
 };
 
 struct PhmConfig {

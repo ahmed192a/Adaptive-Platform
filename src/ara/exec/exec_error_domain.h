@@ -140,6 +140,11 @@ constexpr ara::core::ErrorDomain const &GetExecDomain() noexcept {
 }
 
 /// SWS_EM_02291 (free-function form used by ara::core::ErrorCode users).
+/// SWS_EM_02290 name of the domain accessor (GetExecDomain() is kept for existing callers).
+constexpr ara::core::ErrorDomain const &GetExecErrorDomain() noexcept {
+  return internal::kExecErrorDomain;
+}
+
 inline ara::core::ErrorCode MakeErrorCode(ExecErrc code,
                                           ara::core::ErrorDomain::SupportDataType data = 0) noexcept {
   return ara::core::ErrorCode(static_cast<ara::core::ErrorDomain::CodeType>(code), GetExecDomain(),

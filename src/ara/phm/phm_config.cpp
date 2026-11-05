@@ -81,7 +81,7 @@ Result<PhmConfig> PhmConfig::FromJson(std::string const &text) {
       c.expiredTolerance = Ms(g, "expiredToleranceMs", 0);
       c.platformCritical = g.value("platformCritical", false);
       c.escalateToWatchdog = g.value("escalateToWatchdog", true);
-      c.executionError = g.value("executionError", 0U);
+      c.executionError = g.value("executionError", 1U);
       cfg.globals.push_back(std::move(c));
     }
   } catch (json::exception const &) {

@@ -12,6 +12,7 @@
 #define ARA_EXEC_EXECUTION_CLIENT_H_
 
 #include "ara/exec/exec_error_domain.h"
+#include <atomic>
 #include <cstdint>
 #include <string>
 #include <variant>
@@ -40,6 +41,8 @@ private:
   std::string fifo_l{"execution_client_fifo"}; /*!< location of FIFO to
                                                 communicate between EM & SM */
   int fd{-1};                                  /*!< index of File descriptor */
+  /// SWS_EM_02243: kRunning is only valid while the process is in the Starting state.
+  mutable std::atomic<bool> mRunningReported{false};
 
 public:
   /**
