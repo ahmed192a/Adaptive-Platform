@@ -13,6 +13,7 @@ option(AP_BUILD_SHARED        "Build the ara:: functional clusters as shared lib
 option(AP_BUILD_TESTS         "Build the unit tests (GoogleTest)"                    ${AP_IS_TOP_LEVEL})
 option(AP_BUILD_APPS          "Build the platform processes (EM, SM, UCM, SD, OTA)"  ${AP_IS_TOP_LEVEL})
 option(AP_BUILD_TOOLS         "Build the C++ command line tools"                     ${AP_IS_TOP_LEVEL})
+option(AP_BUILD_CRYPTO        "Build ara::crypto (needs OpenSSL >= 1.1.1; skipped if not found)" ON)
 option(AP_BUILD_EXAMPLES      "Build examples and the partial-process test programs" ${AP_IS_TOP_LEVEL})
 option(AP_ENABLE_COVERAGE     "Instrument code for gcov/lcov coverage (needs Debug)" OFF)
 option(AP_ENABLE_SANITIZERS   "Build with AddressSanitizer + UBSan"                  OFF)

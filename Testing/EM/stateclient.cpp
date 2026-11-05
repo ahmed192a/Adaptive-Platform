@@ -56,7 +56,7 @@ namespace ara
             //std::cout<<"Received From SM : "<<msg<<std::endl;
             close(fd);
             unlink(FIFO_NAME);
-            EXPECT_TRUE(FG.get_FGname()+"/"+FG.get_states()[0] == msg.substr(0,n));
+            EXPECT_TRUE(FG.get_FGname()+"/"+FG.get_states()[0]+"\n" == msg.substr(0,n)); // requests are newline-terminated
 
         }
     } // namespace exec

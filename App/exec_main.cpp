@@ -137,26 +137,46 @@ int main(int argc, char ** argv){
 
     /****************************** Main Logic of EM ***********************************/
     // get FG name and new state from SM an change the state
+    // The FIFO is a byte stream: requests are newline-terminated ("<FG>/<state>\n") and may arrive
+    // glued together or split, so they are re-assembled here.
+    std::string pending;
     while(sys_FG["MachineFG"].current_FGS->get_states() != "off"){
-        // clear the message
-        msg.clear();
-        msg.resize(MAX_BUF);                // resize the message to MAX_BUF bytes
-        int n= read(fd, &msg[0], MAX_BUF); // read the state from SM
+        char buf[MAX_BUF];
+        ssize_t n = read(fd, buf, sizeof(buf));
         if (n < 0) {
+            if (errno == EINTR) continue;
             perror("EM: read");
-            // exit(1);
             change_state("MachineFG", "off");
             continue;
         }
-        cout << "-    EM: New State from SM " << n << " "<< msg.substr(0, n) << endl;
-        std::string FG_name = msg.substr(0, msg.find("/")); // get the FG name
-        std::string new_state = msg.substr(msg.find("/")+1, n-(msg.find('/')+1)); // get the new state
-        cout << "-    EM: FG: " << FG_name << " New State: " << new_state << endl;
-        change_state(FG_name, new_state); // change the state of FG
+        if (n == 0) {                       // every writer closed the FIFO: wait for the next one
+            close(fd);
+            fd = open(SM_FIFO, O_RDONLY);
+            if (fd < 0) { change_state("MachineFG", "off"); fd = -1; break; }
+            continue;
+        }
+        pending.append(buf, static_cast<size_t>(n));
+        size_t eol;
+        while ((eol = pending.find('\n')) != std::string::npos &&
+               sys_FG["MachineFG"].current_FGS->get_states() != "off") {
+            std::string line = pending.substr(0, eol);
+            pending.erase(0, eol + 1);
+            if (line.empty()) continue;
+            cout << "-    EM: New State from SM " << line.size() << " " << line << endl;
+            size_t slash = line.find('/');
+            if (slash == std::string::npos || sys_FG.find(line.substr(0, slash)) == sys_FG.end()) {
+                cout << "-    EM: ignoring invalid request \"" << line << "\"" << endl;
+                continue;
+            }
+            std::string FG_name = line.substr(0, slash);
+            std::string new_state = line.substr(slash + 1);
+            cout << "-    EM: FG: " << FG_name << " New State: " << new_state << endl;
+            change_state(FG_name, new_state);
+        }
     }
     /***********************************************************************************/
 
-    close(fd);                          // close the fifo
+    if (fd >= 0) close(fd);             // close the fifo
     unlink(SM_FIFO);                    // delete the fifo
     cout << "\n-    EM Terminated."<<endl;
 
