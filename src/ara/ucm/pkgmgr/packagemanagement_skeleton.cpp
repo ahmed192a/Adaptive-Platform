@@ -32,23 +32,6 @@ std::vector<char> ReadAllBytes2(char const *filename) {
   ifs.read(&result[0], pos);
   return result;
 }
-// function converts hex number string "0x01" to unint16_t 1
-uint8_t stringToUint8_t(string str) {
-  uint8_t result;
-  stringstream ss;
-  ss << std::hex << str;
-  ss >> result;
-  return result;
-}
-
-// function converts string to unint64_t
-uint64_t stringToUint64_t(string str) {
-  uint64_t result = 0;
-  for (int i = 0; i < str.length(); i++) {
-    result = result * 10 + (str[i] - '0');
-  }
-  return result;
-}
 std::future<ara::ucm::pkgmgr::PackageManagement::ActivateOutput>
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::Activate() {
   return std::async(std::launch::async, [this]() {
@@ -154,7 +137,7 @@ ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::GetSwClusterInfo() {
       ara::ucm::pkgmgr::PackageManagement::SwClusterInfoType sw_cluster_info = {
           .Name = sw_package["Name"],
           .Version = sw_package["Version"],
-          .State = stringToUint8_t(sw_package["State"])};
+          .State = core::ParseByte(sw_package["State"])};
       output.SwInfo.push_back(sw_cluster_info);
     }
   }
@@ -183,10 +166,10 @@ ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::GetSwPackages(
         .Version = sw_package["Version"],
         .TransferID = sw_package["TransferID"],
         .ConsecutiveBytesReceived =
-            stringToUint64_t(sw_package["ConsecutiveBytesReceived"]),
+            core::ParseU64(sw_package["ConsecutiveBytesReceived"]),
         .ConsecutiveBlocksReceived =
-            stringToUint64_t(sw_package["ConsecutiveBlocksReceived"]),
-        .State = stringToUint8_t(sw_package["State"])};
+            core::ParseU64(sw_package["ConsecutiveBlocksReceived"]),
+        .State = core::ParseByte(sw_package["State"])};
 
     Packages.push_back(sw_package_info);
   }

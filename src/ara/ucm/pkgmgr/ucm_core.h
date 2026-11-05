@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <cstdint>
+#include <cstdlib>
 #include <functional>
 #include <initializer_list>
 #include <iomanip>
@@ -76,6 +77,22 @@ struct PackageManagerLimits {
   std::uint64_t maxPackageBytes = 512ULL * 1024 * 1024;
   std::uint32_t blockSize = 1024;
 };
+
+/// Parses "0x01", "1" or "01" (as written in sw_packages.json) into a byte.
+/// Returns 0 for empty / malformed input and clamps values above 255.
+inline std::uint8_t ParseByte(std::string const &text) {
+  char *end = nullptr;
+  unsigned long v = std::strtoul(text.c_str(), &end, 0);
+  if (end == text.c_str()) return 0;
+  return static_cast<std::uint8_t>(v > 255UL ? 255UL : v);
+}
+
+/// Parses a non-negative decimal number; 0 for empty / malformed input.
+inline std::uint64_t ParseU64(std::string const &text) {
+  char *end = nullptr;
+  unsigned long long v = std::strtoull(text.c_str(), &end, 10);
+  return end == text.c_str() ? 0 : static_cast<std::uint64_t>(v);
+}
 
 class PackageManagerCore {
  public:
