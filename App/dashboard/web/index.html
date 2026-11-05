@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adaptive Platform Console</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 19l4-10 4 10M9.5 16h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="9" r="2" fill="currentColor"/></svg>
+    <div><h1>Adaptive Platform Console</h1><span class="sub">AUTOSAR Adaptive on Linux · live view of the running platform</span></div>
+  </div>
+  <div class="hdr-stats">
+    <div class="stat"><span class="k">boot count</span><span class="v" id="hBoot">–</span></div>
+    <div class="stat"><span class="k">UDS session</span><span class="v" id="hSession">default</span></div>
+    <div class="stat"><span class="k">node</span><span class="v"><i class="dot ok" id="hDot"></i><span id="hNode">connecting…</span></span></div>
+  </div>
+</header>
+
+<div id="wdBanner" class="banner hidden">
+  <strong>WATCHDOG RESET</strong> — Platform Health Management could not recover a failed function group.
+  <button class="btn danger" id="btnReset">Reset ECU</button>
+</div>
+
+<main>
+  <!-- Execution Management -->
+  <section class="card span2" id="cardEm">
+    <div class="card-h">
+      <h2>Execution Management</h2>
+      <span class="chip" id="emState">idle</span>
+      <div class="spacer"></div>
+      <button class="btn primary" id="btnEmStart">▶ Start platform</button>
+      <button class="btn" id="btnEmStop">■ Stop</button>
+    </div>
+    <div class="em-grid">
+      <div>
+        <h3>Function groups</h3>
+        <div id="fgList" class="fg-list"><span class="muted">start the platform to see state transitions</span></div>
+        <h3>Processes</h3>
+        <table class="tbl" id="procTable"><thead><tr><th>process</th><th>pid</th><th>state</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div>
+        <h3>Timeline</h3>
+        <ol id="emTimeline" class="timeline"><li class="muted">no events yet</li></ol>
+      </div>
+      <div>
+        <h3>Process output <select id="emFile"></select></h3>
+        <pre id="emLog" class="log-view"></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHM -->
+  <section class="card span2" id="cardPhm">
+    <div class="card-h">
+      <h2>Platform Health Management</h2>
+      <span class="chip" id="phmSummary">–</span>
+      <div class="spacer"></div>
+      <label class="switch"><input type="checkbox" id="autoRec" checked><span></span> auto recovery</label>
+    </div>
+    <div class="workers" id="workers"></div>
+    <h3>Supervision events</h3>
+    <ul id="phmEvents" class="events"><li class="muted">no status changes yet</li></ul>
+  </section>
+
+  <!-- Diagnostics -->
+  <section class="card" id="cardDiag">
+    <div class="card-h"><h2>Diagnostics (UDS)</h2><span class="chip" id="diagSess">default</span></div>
+    <div class="quick" id="diagQuick"></div>
+    <form id="diagForm" class="row"><input id="diagInput" placeholder="hex request, e.g. 22 F1 90" autocomplete="off" spellcheck="false"><button class="btn primary">Send</button></form>
+    <div id="diagConsole" class="console"></div>
+  </section>
+
+  <!-- Persistency -->
+  <section class="card" id="cardPer">
+    <div class="card-h"><h2>Persistency</h2><span class="chip">key-value · CRC-32 · atomic</span></div>
+    <table class="tbl" id="perTable"><thead><tr><th>key</th><th>value</th><th></th></tr></thead><tbody></tbody></table>
+    <form id="perForm" class="row"><input id="perKey" placeholder="key" autocomplete="off"><input id="perVal" placeholder="value" autocomplete="off"><button class="btn primary">Save</button></form>
+    <div id="perMsg" class="msg"></div>
+  </section>
+
+  <!-- Crypto -->
+  <section class="card" id="cardCrypto">
+    <div class="card-h"><h2>Cryptography</h2><span class="chip">OpenSSL · AES-GCM · Ed25519 · ECDSA</span></div>
+    <div class="tabs" id="cTabs"><button data-t="hash" class="on">Hash / MAC</button><button data-t="aead">AES-GCM</button><button data-t="sig">Signature</button></div>
+    <textarea id="cText" rows="2" placeholder="message">firmware v1.2.3</textarea>
+    <div id="cHash" class="cpane"><div class="row">
+      <select id="cAlg"><option>sha256</option><option>sha384</option><option>sha512</option></select>
+      <button class="btn" data-op="hash">Hash</button><button class="btn" data-op="hmac">HMAC-SHA256</button></div></div>
+    <div id="cAead" class="cpane hidden"><input id="cAad" placeholder="associated data (authenticated, not encrypted)" value="hdr">
+      <div class="row"><button class="btn" data-op="seal">Seal</button><button class="btn" id="cTamper">Flip a bit &amp; open</button><button class="btn" data-op="open">Open</button></div></div>
+    <div id="cSig" class="cpane hidden"><div class="row">
+      <select id="cSigAlg"><option value="ed25519">Ed25519</option><option value="ecdsa">ECDSA P-256</option></select>
+      <button class="btn" data-op="sign">Sign</button><button class="btn" id="cVerifyTampered">Verify (altered msg)</button><button class="btn" data-op="verify">Verify</button></div></div>
+    <pre id="cOut" class="out"></pre>
+  </section>
+
+  <!-- Log -->
+  <section class="card span2" id="cardLog">
+    <div class="card-h"><h2>Platform log</h2><span class="chip">ara::log</span><div class="spacer"></div><button class="btn" id="btnClearLog">Clear</button></div>
+    <div id="logView" class="logs"></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

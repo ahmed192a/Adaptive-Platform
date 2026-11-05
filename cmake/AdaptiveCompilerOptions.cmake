@@ -31,9 +31,9 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
   target_compile_options(ap_warnings INTERFACE
     -Wall -Wextra -Wpedantic -Wshadow -Wnon-virtual-dtor -Wcast-align
     -Woverloaded-virtual -Wconversion -Wsign-conversion -Wnull-dereference
-    -Wformat=2 -Wduplicated-cond)
+    -Wformat=2)
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    target_compile_options(ap_warnings INTERFACE -Wlogical-op -Wuseless-cast)
+    target_compile_options(ap_warnings INTERFACE -Wlogical-op -Wuseless-cast -Wduplicated-cond)
   endif()
   if(AP_WARNINGS_AS_ERRORS)
     target_compile_options(ap_warnings INTERFACE -Werror)
@@ -51,7 +51,7 @@ if(AP_ENABLE_COVERAGE)
   if(NOT AP_BUILD_TESTS)
     message(FATAL_ERROR "AP_ENABLE_COVERAGE needs AP_BUILD_TESTS=ON")
   endif()
-  target_compile_options(ap_coverage INTERFACE -O0 -g --coverage -fprofile-arcs -ftest-coverage)
+  target_compile_options(ap_coverage INTERFACE -O0 -g --coverage -fprofile-arcs -ftest-coverage -fprofile-update=atomic)
   target_link_options(ap_coverage INTERFACE --coverage)
   include(${CMAKE_CURRENT_LIST_DIR}/CodeCoverage.cmake)
   set(COVERAGE_EXCLUDES "/usr/include/*" "${CMAKE_BINARY_DIR}/_deps/*"
