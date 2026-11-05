@@ -25,10 +25,17 @@ namespace ara::log {
 void InitLogging(std::string_view appId, std::string_view appDescription, LogLevel appDefLogLevel,
                  LogMode logMode, std::string_view directoryPath = {});
 
-/// SWS_LOG_00002. Returns the logger of the context, creating it on first use.
+/// SWS_LOG_00251. Logger for the context named by the instance specifier
+/// (context id = last path element, description empty, threshold kWarn).
+Logger &CreateLogger(ara::core::InstanceSpecifier const &instanceSpec);
+
+/// SWS_LOG_00253. Threshold defaults to kWarn (no manifest DltLogSink here).
+Logger &CreateLogger(std::string_view ctxId, std::string_view ctxDescription);
+
+/// SWS_LOG_00006. Returns the logger of the context, creating it on first use.
 /// The returned reference stays valid until ara::core::Deinitialize().
 Logger &CreateLogger(std::string_view ctxId, std::string_view ctxDescription,
-                     LogLevel ctxDefLogLevel = LogLevel::kWarn);
+                     LogLevel ctxDefLogLevel);
 
 /// State of the remote (DLT-like) client; always kNotConnected until a remote sink exists.
 ClientState GetClientState() noexcept;

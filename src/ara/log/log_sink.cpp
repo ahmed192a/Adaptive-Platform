@@ -25,7 +25,19 @@ std::string FormatRecord(LogRecord const &r) {
   out += ' ';
   out += ToString(r.level);
   out += ' ';
+  if (!r.tag.empty()) {
+    out += '[';
+    out += r.tag;
+    out += "] ";
+  }
   out += r.message;
+  if (!r.file.empty()) {
+    out += " (";
+    out += r.file;
+    out += ':';
+    out += std::to_string(r.line);
+    out += ')';
+  }
   return out;
 }
 

@@ -9,29 +9,61 @@
 #include <string>
 #include <string_view>
 
+#include <chrono>
+#include <type_traits>
+#include <utility>
+
+#include "ara/core/error_code.h"
+#include "ara/core/instance_specifier.h"
 #include "ara/log/logging_types.h"
 
 namespace ara::log {
 
 class Logger;
 
-/// Wrapper requesting hexadecimal rendering of an integer.
+/// Fixed-width hexadecimal rendering of an integer ("0x" + 2*sizeof(T) digits).
 template <typename T> struct HexFormat { T value; };
-/// Wrapper requesting binary rendering of an integer.
+/// Fixed-width binary rendering of an integer ("0b" + 8*sizeof(T) digits).
 template <typename T> struct BinFormat { T value; };
 
-template <typename T> constexpr HexFormat<T> Hex(T v) noexcept {
-  static_assert(std::is_integral_v<T>, "Hex needs an integer");
-  return {v};
-}
-template <typename T> constexpr BinFormat<T> Bin(T v) noexcept {
-  static_assert(std::is_integral_v<T>, "Bin needs an integer");
-  return {v};
+using LogHex8 = HexFormat<std::uint8_t>;
+using LogHex16 = HexFormat<std::uint16_t>;
+using LogHex32 = HexFormat<std::uint32_t>;
+using LogHex64 = HexFormat<std::uint64_t>;
+using LogBin8 = BinFormat<std::uint8_t>;
+using LogBin16 = BinFormat<std::uint16_t>;
+using LogBin32 = BinFormat<std::uint32_t>;
+using LogBin64 = BinFormat<std::uint64_t>;
+
+/// A value together with a formatting hint; create with Arg().
+template <typename T> struct Argument {
+  T value;
+  Format format;
+};
+
+/// Attaches a formatting hint: stream << Arg(x, Hex(4)).
+template <typename T>
+Argument<std::decay_t<T>> Arg(T &&value, Format format = Dflt()) {
+  return {std::forward<T>(value), format};
 }
 
 namespace detail {
 std::string ToHex(std::uint64_t v, unsigned digits);
 std::string ToBin(std::uint64_t v, unsigned bits);
+std::string FormatInteger(std::uint64_t magnitude, bool negative, unsigned bytes, Format f);
+std::string FormatFloating(double v, Format f);
+std::string FormatPointer(void const *p);
+std::string FormatErrorCode(ara::core::ErrorCode const &ec);
+void Emit(LogLevel level, std::string const &ctx, std::string message, std::string tag,
+          std::string file, int line);
+
+template <typename T> constexpr std::uint64_t ToU64(T v) noexcept {
+  if constexpr (std::is_same_v<T, std::uint64_t>) {
+    return v;
+  } else {
+    return static_cast<std::uint64_t>(v);
+  }
+}
 } // namespace detail
 
 /**
@@ -81,6 +113,42 @@ public:
                                        static_cast<unsigned>(sizeof(T) * 8)));
   }
 
+  /// Attaches the source location to the record.
+  LogStream &WithLocation(std::string_view file, int line) noexcept;
+  /// Attaches a free-form tag to the record.
+  LogStream &WithTag(std::string_view tag) noexcept;
+
+  LogStream &operator<<(void const *p);
+  LogStream &operator<<(ara::core::ErrorCode const &ec);
+  LogStream &operator<<(ara::core::InstanceSpecifier const &is);
+  /// Durations are rendered as an integer number of nanoseconds followed by "ns".
+  template <typename Rep, typename Period>
+  LogStream &operator<<(std::chrono::duration<Rep, Period> d) {
+    if (!enabled_) return *this;
+    auto const ns = std::chrono::duration_cast<std::chrono::nanoseconds>(d).count();
+    return Append(std::to_string(ns) + "ns");
+  }
+
+  template <typename T> LogStream &operator<<(Argument<T> const &a) {
+    if (!enabled_) return *this;
+    if constexpr (std::is_same_v<T, bool> || std::is_same_v<T, char> ||
+                  !(std::is_integral_v<T> || std::is_floating_point_v<T>)) {
+      return *this << a.value;
+    } else if constexpr (std::is_integral_v<T>) {
+      bool negative = false;
+      std::uint64_t magnitude = detail::ToU64(a.value);
+      if constexpr (std::is_signed_v<T>) {
+        if (a.value < 0) {
+          negative = true;
+          magnitude = ~magnitude + 1U;
+        }
+      }
+      return Append(detail::FormatInteger(magnitude, negative, sizeof(T), a.format));
+    } else {
+      return Append(detail::FormatFloating(static_cast<double>(a.value), a.format));
+    }
+  }
+
   bool IsEnabled() const noexcept { return enabled_; }
 
 private:
@@ -95,6 +163,9 @@ private:
   LogLevel level_;
   bool enabled_;
   std::string buffer_;
+  std::string tag_;
+  std::string file_;
+  int line_{0};
 };
 
 } // namespace ara::log
