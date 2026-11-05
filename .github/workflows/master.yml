@@ -50,7 +50,10 @@ jobs:
 
   e2e-console:
     name: End-to-end console scenario
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      DEBIAN_FRONTEND: noninteractive
     steps:
       - uses: actions/checkout@v4
       - name: Install tools
