@@ -351,3 +351,21 @@ TEST(UcmThreading, OnlyOneCallerWinsProcessing) {
   for (auto &t : ts) t.join();
   EXPECT_EQ(won.load(), 1);
 }
+
+// ------------------------------------------------------------------ parsing
+TEST(UcmParsing, ParseByteHandlesHexDecimalAndGarbage) {
+  EXPECT_EQ(core::ParseByte("0x01"), 1);
+  EXPECT_EQ(core::ParseByte("0x03"), 3);
+  EXPECT_EQ(core::ParseByte("2"), 2);
+  EXPECT_EQ(core::ParseByte("0xFF"), 255);
+  EXPECT_EQ(core::ParseByte("0x1FF"), 255); // clamped
+  EXPECT_EQ(core::ParseByte(""), 0);
+  EXPECT_EQ(core::ParseByte("zz"), 0);
+}
+
+TEST(UcmParsing, ParseU64) {
+  EXPECT_EQ(core::ParseU64("1024"), 1024u);
+  EXPECT_EQ(core::ParseU64("18446744073709551615"), 18446744073709551615ULL);
+  EXPECT_EQ(core::ParseU64(""), 0u);
+  EXPECT_EQ(core::ParseU64("abc"), 0u);
+}
