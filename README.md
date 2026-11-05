@@ -102,10 +102,9 @@ Every cluster has a requirement-by-requirement report in [`doc/spec-conformance/
 ([core](doc/spec-conformance/core.md), [log](doc/spec-conformance/log.md), [per](doc/spec-conformance/per.md),
 [phm](doc/spec-conformance/phm.md), [exec](doc/spec-conformance/exec.md), [diag](doc/spec-conformance/diag.md),
 [crypto](doc/spec-conformance/crypto.md), [nm](doc/spec-conformance/nm.md), [tsync](doc/spec-conformance/tsync.md),
-[sm](doc/spec-conformance/sm.md), [ucm](doc/spec-conformance/ucm.md)). Each item is marked *Implemented*, *Partial*,
+[sm](doc/spec-conformance/sm.md), [ucm](doc/spec-conformance/ucm.md), [com](doc/spec-conformance/com.md)). Each item is marked *Implemented*, *Partial*,
 *Missing*, *Deviation* or *Unverified*. **Unverified** means the AUTOSAR text for that item (often the API-signature
-chapter or numeric error values) could not be read when the audit was done; it is not a claim of compliance. `ara::com`
-is being audited separately.
+chapter or numeric error values) could not be read when the audit was done; it is not a claim of compliance.
 
 The detailed gap analysis against AUTOSAR R25-11, known deviations and next steps are in
 **[doc/ROADMAP.md](doc/ROADMAP.md)**.

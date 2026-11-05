@@ -57,4 +57,4 @@ once `ara::diag` has it, and Remote persistency.
 
 ## Spec conformance
 
-Per-cluster audit reports (status per requirement, with *Unverified* where the spec text was unavailable) live in `doc/spec-conformance/`. Open gaps are listed at the end of each report; `ara::com` is pending its own audit.
+Per-cluster audit reports (status per requirement, with *Unverified* where the spec text was unavailable) live in `doc/spec-conformance/`. Open gaps are listed at the end of each report.
