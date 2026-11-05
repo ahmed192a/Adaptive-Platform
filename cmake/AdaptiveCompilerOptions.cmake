@@ -51,7 +51,7 @@ if(AP_ENABLE_COVERAGE)
   if(NOT AP_BUILD_TESTS)
     message(FATAL_ERROR "AP_ENABLE_COVERAGE needs AP_BUILD_TESTS=ON")
   endif()
-  target_compile_options(ap_coverage INTERFACE -O0 -g --coverage -fprofile-arcs -ftest-coverage)
+  target_compile_options(ap_coverage INTERFACE -O0 -g --coverage -fprofile-arcs -ftest-coverage -fprofile-update=atomic)
   target_link_options(ap_coverage INTERFACE --coverage)
   include(${CMAKE_CURRENT_LIST_DIR}/CodeCoverage.cmake)
   set(COVERAGE_EXCLUDES "/usr/include/*" "${CMAKE_BINARY_DIR}/_deps/*"
