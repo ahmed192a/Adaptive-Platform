@@ -106,7 +106,7 @@ public:
             this->m_proxy_handle.m_server_com.service_id,
             (uint16_t)(method_id & 0x7F)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::REQUEST);
 
@@ -169,7 +169,7 @@ public:
             this->m_proxy_handle.m_server_com.service_id,
             (uint16_t)method_id},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::REQUEST);
 
@@ -223,7 +223,7 @@ public:
             this->m_proxy_handle.m_server_com.service_id,
             (uint16_t)method_id},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::REQUEST);
 
@@ -275,7 +275,7 @@ public:
             this->m_proxy_handle.m_server_com.service_id,
             (uint16_t)method_id},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::REQUEST);
     R_msg.SetPayload(data);
@@ -380,7 +380,7 @@ public:
             this->m_proxy_handle.m_server_com.service_id,
             (uint16_t)method_id},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::REQUEST);
     ara::com::Serializer ser;
@@ -496,7 +496,7 @@ public:
     ara::com::SOMEIP_MESSAGE::Message get_msg(
         {(f_get.service_id), (uint16_t)(f_get.event_id | 0x8000)},
         {5, 6},
-        5, // protocol verion
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         6, // interface version
         ara::com::SOMEIP_MESSAGE::MessageType::REQUEST);
     std::vector<uint8_t> _payload = get_msg.Serializer();
@@ -538,7 +538,7 @@ public:
     ara::com::SOMEIP_MESSAGE::Message set_msg(
         {(uint16_t)f_set.service_id, (uint16_t)(f_set.event_id | 0x8000)},
         {5, 6},
-        5, // protocol verion
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         6, // interface version
         ara::com::SOMEIP_MESSAGE::MessageType::REQUEST);
     set_msg.SetPayload(data);

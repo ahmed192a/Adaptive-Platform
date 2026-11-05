@@ -113,9 +113,13 @@ public:
    * @brief Deserialize Method that deserializes vector of bytes into the SD
    * message
    *
-   * @param payload   vector of bytes to be deserialized into the SD message
+   * @param payload   vector of bytes (complete SOME/IP message) to be
+   *                  deserialized into the SD message
+   * @return true if the message is well formed; false otherwise (the message
+   *         object is left unchanged in that case)
+   * @note Deserialized entries are heap allocated and owned by the caller.
    */
-  void Deserialize(const std::vector<uint8_t> &payload);
+  bool Deserialize(const std::vector<uint8_t> &payload);
 };
 
 } // namespace ara::com::SOMEIP_MESSAGE::sd

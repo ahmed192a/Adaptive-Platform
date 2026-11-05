@@ -152,7 +152,8 @@ public:
     std::cout << "send event to client " << client_add.sin_port << std::endl;
     // Create Mesaage {, event_id | 0x8000}, NOTIFICATION
     ara::com::SOMEIP_MESSAGE::Message M1(
-        {this->m_service_id, (uint16_t)(event_id | 0x8000)}, {1, 2}, 3, 4,
+        {this->m_service_id, (uint16_t)(event_id | 0x8000)}, {1, 2},
+        ara::com::SOMEIP_MESSAGE::kProtocolVersion, 4,
         ara::com::SOMEIP_MESSAGE::MessageType::NOTIFICATION);
 
     M1.SetPayload(sermsg);
@@ -180,7 +181,7 @@ public:
         SOMEIP_MESSAGE::Request_ID{5, 6},
         SOMEIP_MESSAGE::Message_ID{S_msg.MessageId().serivce_id,
                                    S_msg.MessageId().method_id},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::ReturnCode::E_UNKNOWN_SERVICE,
         SOMEIP_MESSAGE::MessageType::ERROR);
@@ -225,7 +226,7 @@ protected:
         SOMEIP_MESSAGE::Message_ID{
             this->m_service_id, (uint16_t)(msg.MessageId().method_id & 0x7fff)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
     R_msg.SetPayload(payload);
@@ -264,7 +265,7 @@ protected:
         SOMEIP_MESSAGE::Message_ID{
             this->m_service_id, (uint16_t)(msg.MessageId().method_id & 0x7fff)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
     std::vector<uint8_t> _Payload = R_msg.Serializer();
@@ -300,7 +301,7 @@ protected:
              this->m_service_id,
             (uint16_t)(msg.MessageId().method_id & 0x7fff)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
     // Setpayload in message
@@ -333,7 +334,7 @@ protected:
         SOMEIP_MESSAGE::Message_ID{this->m_service_id,
                                    msg.MessageId().method_id},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
     std::future<void> f = (c.*method)();
@@ -369,7 +370,7 @@ protected:
         SOMEIP_MESSAGE::Message_ID{
             this->m_service_id, (uint16_t)(msg.MessageId().method_id & 0x7fff)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
     std::vector<uint8_t> _Payload = R_msg.Serializer();
@@ -403,7 +404,7 @@ protected:
     SOMEIP_MESSAGE::Message R_msg(
         SOMEIP_MESSAGE::Request_ID{5, 6},
         SOMEIP_MESSAGE::Message_ID{this->m_service_id, method_id},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::ReturnCode::E_UNKNOWN_METHOD,
         SOMEIP_MESSAGE::MessageType::ERROR);

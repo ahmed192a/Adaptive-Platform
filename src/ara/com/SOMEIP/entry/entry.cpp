@@ -107,12 +107,19 @@ std::vector<uint8_t> Entry::BasePayload(uint8_t &optionIndex) const {
   auto _type = static_cast<uint8_t>(Type());
   _result.push_back(_type);
 
-  _result.push_back(optionIndex);
+  // Each run holds at most 15 options (4 bit counters).
+  if (FirstOptions().size() > 15 || SecondOptions().size() > 15) {
+    throw std::length_error("an SD entry can reference at most 15 options per run");
+  }
   auto _firstOptionsSize = (uint8_t)FirstOptions().size();
+  auto _secondOptionsSize = (uint8_t)SecondOptions().size();
+
+  // An empty run must carry index 0 (option referencing rules,
+  // PRS_SOMEIPSD_00341-00343, 00833, 00834).
+  _result.push_back(_firstOptionsSize == 0 ? 0 : optionIndex);
   optionIndex += _firstOptionsSize;
 
-  _result.push_back(optionIndex);
-  auto _secondOptionsSize = (uint8_t)SecondOptions().size();
+  _result.push_back(_secondOptionsSize == 0 ? 0 : optionIndex);
   optionIndex += _secondOptionsSize;
 
   const uint8_t OptionSizeBitLength = 4;
