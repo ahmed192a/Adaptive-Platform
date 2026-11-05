@@ -275,7 +275,7 @@ void otaServer::handler() {
     /* Receive size of the message */
     server_udp_socket.UDPRecFrom((void *)&msg_size, sizeof(msg_size),
                                  (struct sockaddr *)&echoClntAddr, &clntLen);
-    msg.reserve(msg_size); /* Reserve memory for received message */
+    msg.resize(msg_size); /* Size the buffer that is received into */
     /* Receive the message */
     server_udp_socket.UDPRecFrom((void *)&msg[0], msg_size,
                                  (struct sockaddr *)&echoClntAddr, &clntLen);
