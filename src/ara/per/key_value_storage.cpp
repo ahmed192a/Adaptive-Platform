@@ -94,7 +94,7 @@ Result<void> KeyValueStorage::Load() {
   return Result<void>(MakeErrorCode(PerErrc::kIntegrityCorrupted));
 }
 
-Result<ara::core::Vector<ara::core::String>> KeyValueStorage::GetAllKeys() const {
+Result<ara::core::Vector<ara::core::String>> KeyValueStorage::GetAllKeys() const noexcept {
   std::lock_guard<std::mutex> lock(mMutex);
   ara::core::Vector<ara::core::String> keys;
   for (auto it = mData.begin(); it != mData.end(); ++it) {
@@ -103,12 +103,12 @@ Result<ara::core::Vector<ara::core::String>> KeyValueStorage::GetAllKeys() const
   return Result<ara::core::Vector<ara::core::String>>(std::move(keys));
 }
 
-Result<bool> KeyValueStorage::KeyExists(StringView key) const {
+Result<bool> KeyValueStorage::KeyExists(StringView key) const noexcept {
   std::lock_guard<std::mutex> lock(mMutex);
   return Result<bool>(mData.contains(std::string(key)));
 }
 
-Result<nlohmann::json> KeyValueStorage::GetJson(StringView key) const {
+Result<nlohmann::json> KeyValueStorage::GetJson(StringView key) const noexcept {
   std::lock_guard<std::mutex> lock(mMutex);
   auto it = mData.find(std::string(key));
   if (it == mData.end()) {
@@ -117,7 +117,7 @@ Result<nlohmann::json> KeyValueStorage::GetJson(StringView key) const {
   return Result<nlohmann::json>(*it);
 }
 
-Result<void> KeyValueStorage::SetJson(StringView key, nlohmann::json value) {
+Result<void> KeyValueStorage::SetJson(StringView key, nlohmann::json value) noexcept {
   if (key.empty()) {
     return Result<void>(MakeErrorCode(PerErrc::kUnsupported, 0, "empty key"));
   }
@@ -134,7 +134,7 @@ Result<void> KeyValueStorage::SetJson(StringView key, nlohmann::json value) {
   return Result<void>();
 }
 
-Result<void> KeyValueStorage::RemoveKey(StringView key) {
+Result<void> KeyValueStorage::RemoveKey(StringView key) noexcept {
   if (mConfig.readOnly) {
     return Result<void>(MakeErrorCode(PerErrc::kIllegalWriteAccess));
   }
@@ -145,7 +145,7 @@ Result<void> KeyValueStorage::RemoveKey(StringView key) {
   return Result<void>();
 }
 
-Result<void> KeyValueStorage::RemoveAllKeys() {
+Result<void> KeyValueStorage::RemoveAllKeys() noexcept {
   if (mConfig.readOnly) {
     return Result<void>(MakeErrorCode(PerErrc::kIllegalWriteAccess));
   }
@@ -154,7 +154,7 @@ Result<void> KeyValueStorage::RemoveAllKeys() {
   return Result<void>();
 }
 
-Result<void> KeyValueStorage::SyncToStorage() {
+Result<void> KeyValueStorage::SyncToStorage() noexcept {
   if (mConfig.readOnly) {
     return Result<void>(MakeErrorCode(PerErrc::kIllegalWriteAccess));
   }
@@ -170,13 +170,13 @@ Result<void> KeyValueStorage::SyncToStorage() {
   return Result<void>();
 }
 
-Result<void> KeyValueStorage::DiscardPendingChanges() {
+Result<void> KeyValueStorage::DiscardPendingChanges() noexcept {
   std::lock_guard<std::mutex> lock(mMutex);
   mData = mCommitted;
   return Result<void>();
 }
 
-Result<void> KeyValueStorage::ResetKey(StringView key) {
+Result<void> KeyValueStorage::ResetKey(StringView key) noexcept {
   if (mConfig.readOnly) {
     return Result<void>(MakeErrorCode(PerErrc::kIllegalWriteAccess));
   }
@@ -189,7 +189,7 @@ Result<void> KeyValueStorage::ResetKey(StringView key) {
   return Result<void>();
 }
 
-Result<void> KeyValueStorage::RecoverKey(StringView key) {
+Result<void> KeyValueStorage::RecoverKey(StringView key) noexcept {
   if (mConfig.readOnly) {
     return Result<void>(MakeErrorCode(PerErrc::kIllegalWriteAccess));
   }

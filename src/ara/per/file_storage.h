@@ -61,21 +61,22 @@ public:
   ReadAccessor &operator=(ReadAccessor const &) = delete;
   virtual ~ReadAccessor();
 
-  ara::core::Result<char> PeekChar() const;
-  ara::core::Result<ara::core::Byte> PeekByte() const;
-  ara::core::Result<char> GetChar();
-  ara::core::Result<ara::core::Byte> GetByte();
+  ara::core::Result<char> PeekChar() const noexcept;
+  ara::core::Result<ara::core::Byte> PeekByte() const noexcept;
+  ara::core::Result<char> GetChar() noexcept;
+  ara::core::Result<ara::core::Byte> GetByte() noexcept;
   /// Reads up to n bytes as text; kEof if already at the end.
-  ara::core::Result<ara::core::String> ReadText(std::uint64_t n = UINT64_MAX);
-  ara::core::Result<ara::core::Vector<ara::core::Byte>> ReadBinary(std::uint64_t n = UINT64_MAX);
+  ara::core::Result<ara::core::String> ReadText(std::uint64_t n = UINT64_MAX) noexcept;
+  ara::core::Result<ara::core::Vector<ara::core::Byte>> ReadBinary(std::uint64_t n = UINT64_MAX) noexcept;
   /// Reads up to (and consumes, but does not return) `delimiter`.
-  ara::core::Result<ara::core::String> ReadLine(char delimiter = '\n');
+  ara::core::Result<ara::core::String> ReadLine(char delimiter = '\n') noexcept;
 
   Position GetSize() const noexcept;
   Position GetPosition() const noexcept { return mPosition; }
   bool IsEof() const noexcept { return mPosition >= GetSize(); }
-  ara::core::Result<void> SetPosition(Position position);
-  ara::core::Result<void> MovePosition(Origin origin, Offset offset);
+  ara::core::Result<void> SetPosition(Position position) noexcept;
+  /// Returns the new position.
+  ara::core::Result<Position> MovePosition(Origin origin, Offset offset) noexcept;
 
 protected:
   friend class FileStorage;
@@ -118,11 +119,11 @@ public:
   FileStorage &operator=(FileStorage const &) = delete;
   ~FileStorage();
 
-  ara::core::Result<ara::core::Vector<ara::core::String>> GetAllFileNames() const;
-  ara::core::Result<bool> FileExists(ara::core::StringView fileName) const;
-  ara::core::Result<void> DeleteFile(ara::core::StringView fileName);
+  ara::core::Result<ara::core::Vector<ara::core::String>> GetAllFileNames() const noexcept;
+  ara::core::Result<bool> FileExists(ara::core::StringView fileName) const noexcept;
+  ara::core::Result<void> DeleteFile(ara::core::StringView fileName) noexcept;
   /// No redundancy is kept for files: always kValidationFailed.
-  ara::core::Result<void> RecoverFile(ara::core::StringView fileName);
+  ara::core::Result<void> RecoverFile(ara::core::StringView fileName) noexcept;
   /// Restores `<storage dir>/initial/<fileName>`; kInitValueNotAvailable if absent.
   ara::core::Result<void> ResetFile(ara::core::StringView fileName);
   ara::core::Result<std::uint64_t> GetCurrentFileSize(ara::core::StringView fileName) const;

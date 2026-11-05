@@ -26,6 +26,9 @@ struct Registry {
   std::optional<PersistencyConfig> config;
   std::map<std::string, std::weak_ptr<KeyValueStorage>> kvs;
   std::map<std::string, std::weak_ptr<FileStorage>> files;
+  std::mutex cbMutex;
+  RecoveryReportCallback recoveryCb;
+  ApplicationDataUpdateCallback appDataCb;
 
   bool AnyOpen() {
     for (auto &e : kvs) {
@@ -60,7 +63,45 @@ Result<StorageConfig> Lookup(Registry &r, InstanceSpecifier const &spec, Storage
 }
 
 std::string Key(InstanceSpecifier const &spec) { return std::string(spec.ToString()); }
+
+/// Invokes the recovery callback outside of any registry lock.
+void Report(InstanceSpecifier const &spec, RecoveryReportKind kind, std::string element) noexcept {
+  RecoveryReportCallback cb;
+  {
+    std::lock_guard<std::mutex> lock(Reg().cbMutex);
+    cb = Reg().recoveryCb;
+  }
+  if (!cb) return;
+  try {
+    ara::core::Vector<ara::core::String> elements;
+    elements.push_back(std::move(element));
+    cb(spec, kind, std::move(elements), {});
+  } catch (...) { // user callbacks must not break persistency
+  }
+}
 } // namespace
+
+void RegisterRecoveryReportCallback(RecoveryReportCallback cb) noexcept {
+  std::lock_guard<std::mutex> lock(Reg().cbMutex);
+  Reg().recoveryCb = std::move(cb);
+}
+
+void RegisterApplicationDataUpdateCallback(ApplicationDataUpdateCallback cb) noexcept {
+  std::lock_guard<std::mutex> lock(Reg().cbMutex);
+  Reg().appDataCb = std::move(cb);
+}
+
+Result<void> UpdatePersistency() noexcept {
+  auto &r = Reg();
+  std::lock_guard<std::mutex> lock(r.mutex);
+  if (!r.config.has_value()) {
+    return Result<void>(MakeErrorCode(PerErrc::kNotInitialized));
+  }
+  if (r.AnyOpen()) {
+    return Result<void>(MakeErrorCode(PerErrc::kResourceBusy));
+  }
+  return Result<void>();
+}
 
 Result<void> Configure(PersistencyConfig config) {
   auto &r = Reg();
@@ -90,7 +131,7 @@ Result<void> ConfigureFromEnvironment() {
   return ConfigureFromFile(env);
 }
 
-Result<SharedHandle<KeyValueStorage>> OpenKeyValueStorage(InstanceSpecifier const &spec) {
+Result<SharedHandle<KeyValueStorage>> OpenKeyValueStorage(InstanceSpecifier const &spec) noexcept {
   auto &r = Reg();
   std::lock_guard<std::mutex> lock(r.mutex);
   auto cfg = Lookup(r, spec, StorageConfig::Kind::kKeyValue);
@@ -107,7 +148,7 @@ Result<SharedHandle<KeyValueStorage>> OpenKeyValueStorage(InstanceSpecifier cons
   return opened;
 }
 
-Result<SharedHandle<FileStorage>> OpenFileStorage(InstanceSpecifier const &spec) {
+Result<SharedHandle<FileStorage>> OpenFileStorage(InstanceSpecifier const &spec) noexcept {
   auto &r = Reg();
   std::lock_guard<std::mutex> lock(r.mutex);
   auto cfg = Lookup(r, spec, StorageConfig::Kind::kFile);
@@ -124,9 +165,9 @@ Result<SharedHandle<FileStorage>> OpenFileStorage(InstanceSpecifier const &spec)
   return opened;
 }
 
-Result<void> RecoverKeyValueStorage(InstanceSpecifier const &spec) {
+Result<void> RecoverKeyValueStorage(InstanceSpecifier const &spec) noexcept {
   auto &r = Reg();
-  std::lock_guard<std::mutex> lock(r.mutex);
+  std::unique_lock<std::mutex> lock(r.mutex);
   auto cfg = Lookup(r, spec, StorageConfig::Kind::kKeyValue);
   if (!cfg.HasValue()) {
     return Result<void>(cfg.Error());
@@ -152,12 +193,14 @@ Result<void> RecoverKeyValueStorage(InstanceSpecifier const &spec) {
   if (!opened.HasValue()) {
     return Result<void>(MakeErrorCode(PerErrc::kValidationFailed));
   }
+  lock.unlock();
+  Report(spec, RecoveryReportKind::kRecovered, "kvs.json");
   return Result<void>();
 }
 
-Result<void> ResetKeyValueStorage(InstanceSpecifier const &spec) {
+Result<void> ResetKeyValueStorage(InstanceSpecifier const &spec) noexcept {
   auto &r = Reg();
-  std::lock_guard<std::mutex> lock(r.mutex);
+  std::unique_lock<std::mutex> lock(r.mutex);
   auto cfg = Lookup(r, spec, StorageConfig::Kind::kKeyValue);
   if (!cfg.HasValue()) {
     return Result<void>(cfg.Error());
@@ -174,10 +217,12 @@ Result<void> ResetKeyValueStorage(InstanceSpecifier const &spec) {
   backup += ".bak";
   fs::remove(primary, ec);
   fs::remove(backup, ec);
+  lock.unlock();
+  Report(spec, RecoveryReportKind::kReset, "kvs.json");
   return Result<void>();
 }
 
-Result<void> RecoverAllFiles(InstanceSpecifier const &spec) {
+Result<void> RecoverAllFiles(InstanceSpecifier const &spec) noexcept {
   auto &r = Reg();
   std::lock_guard<std::mutex> lock(r.mutex);
   auto cfg = Lookup(r, spec, StorageConfig::Kind::kFile);
@@ -190,9 +235,9 @@ Result<void> RecoverAllFiles(InstanceSpecifier const &spec) {
   return Result<void>(MakeErrorCode(PerErrc::kValidationFailed, 0, "no redundancy configured"));
 }
 
-Result<void> ResetAllFiles(InstanceSpecifier const &spec) {
+Result<void> ResetAllFiles(InstanceSpecifier const &spec) noexcept {
   auto &r = Reg();
-  std::lock_guard<std::mutex> lock(r.mutex);
+  std::unique_lock<std::mutex> lock(r.mutex);
   auto cfg = Lookup(r, spec, StorageConfig::Kind::kFile);
   if (!cfg.HasValue()) {
     return Result<void>(cfg.Error());
@@ -214,10 +259,12 @@ Result<void> ResetAllFiles(InstanceSpecifier const &spec) {
       return Result<void>(detail::ErrnoToError(ec.value()));
     }
   }
+  lock.unlock();
+  Report(spec, RecoveryReportKind::kReset, "files");
   return Result<void>();
 }
 
-Result<void> ResetPersistency() {
+Result<void> ResetPersistency() noexcept {
   std::vector<InstanceSpecifier> kvsSpecs;
   std::vector<InstanceSpecifier> fileSpecs;
   {
@@ -246,7 +293,7 @@ Result<void> ResetPersistency() {
   return Result<void>();
 }
 
-Result<std::uint64_t> GetCurrentKeyValueStorageSize(InstanceSpecifier const &spec) {
+Result<std::uint64_t> GetCurrentKeyValueStorageSize(InstanceSpecifier const &spec) noexcept {
   auto kvs = OpenKeyValueStorage(spec);
   if (!kvs.HasValue()) {
     return Result<std::uint64_t>(kvs.Error());
@@ -254,7 +301,7 @@ Result<std::uint64_t> GetCurrentKeyValueStorageSize(InstanceSpecifier const &spe
   return kvs.Value()->GetCurrentStorageSize();
 }
 
-Result<std::uint64_t> GetCurrentFileStorageSize(InstanceSpecifier const &spec) {
+Result<std::uint64_t> GetCurrentFileStorageSize(InstanceSpecifier const &spec) noexcept {
   auto st = OpenFileStorage(spec);
   if (!st.HasValue()) {
     return Result<std::uint64_t>(st.Error());
