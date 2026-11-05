@@ -14,9 +14,10 @@ Reference: AUTOSAR Adaptive Platform R25-11 (SWS documents at https://www.autosa
 | ara::com | legacy | SOME/IP + SD present; warnings and tests need work. |
 | ara::sm, ara::ucm | legacy | |
 | ara::diag | **UDS core (partial)** | Transport-independent `DiagnosticServer`: sessions + S3 timeout, 0x10/0x11/0x22/0x2E/0x3E, suppress-positive-response, DID registry, custom services. 12 tests. Missing: the SWS facade (Conversation, GenericUDSService, DataIdentifier classes), DTC/DEM (0x14/0x19), SecurityAccess (0x27), routines (0x31), DoIP/ISO-TP transport, Monitor/Event interfaces. |
-| Not started | | Crypto, Network Management, Time Sync, IDSM, Firewall, RawDataStream, OSI, Remote Persistency, VUCM |
+| ara::crypto | **primitive layer (new)** | OpenSSL-backed (optional, `AP_BUILD_CRYPTO`): RNG, SHA-2, HMAC, AES-GCM (random-nonce seal/open), Ed25519 + ECDSA-P256, usage-restricted zeroizing `SecretKey`, thread-safe `KeyStore`. Known-answer tests (SHA-256, RFC 4231 HMAC, NIST GCM). 14 tests. Missing: SWS object model (CryptoProvider, KeySlot, CryptoContext), persistence of key slots via ara::per, X.509/certificates, KDF/key agreement, RSA, CBC/CTR, hardware (HSM) back-ends. |
+| Not started | |  Network Management, Time Sync, IDSM, Firewall, RawDataStream, OSI, Remote Persistency, VUCM |
 
-Suggested order: exec (hardening) -> diag -> crypto -> nm/tsync -> idsm.
+Suggested order: crypto facade + key persistence -> nm/tsync -> idsm -> diag facade/DTC.
 
 ## Known deviations (new clusters)
 
