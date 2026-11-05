@@ -1,4 +1,6 @@
+#include <stdexcept>
 #include <thread>
+#include <vector>
 
 #include "per_fixture.h"
 
@@ -232,6 +234,117 @@ TEST_F(KvsTest, ResetPersistencyRestoresEverything) {
   }
   ASSERT_TRUE(ara::per::ResetPersistency().HasValue());
   EXPECT_EQ(Open().Value()->GetValue<int>("volume").Value(), 5);
+}
+
+TEST_F(KvsTest, GetValueOutParameterForm) {
+  auto kvs = Open().Value();
+  int volume = 0;
+  std::string name;
+  ASSERT_TRUE(kvs->GetValue("volume", volume).HasValue());
+  ASSERT_TRUE(kvs->GetValue("name", name).HasValue());
+  EXPECT_EQ(volume, 5);
+  EXPECT_EQ(name, "default");
+  EXPECT_TRUE(kvs->GetValue("missing", volume).CheckError(PerErrc::kKeyNotFound));
+  EXPECT_TRUE(kvs->GetValue("name", volume).CheckError(PerErrc::kDataTypeMismatch));
+  EXPECT_EQ(volume, 5) << "output parameter untouched on error";
+}
+
+TEST_F(KvsTest, SpecNoexceptGuarantees) {
+  ara::per::KeyValueStorage *k = nullptr;
+  static_assert(noexcept(k->GetAllKeys()));
+  static_assert(noexcept(k->KeyExists("a")));
+  static_assert(noexcept(k->GetValue<int>("a")));
+  static_assert(noexcept(k->SetValue("a", 1)));
+  static_assert(noexcept(k->RemoveKey("a")));
+  static_assert(noexcept(k->RemoveAllKeys()));
+  static_assert(noexcept(k->SyncToStorage()));
+  static_assert(noexcept(k->DiscardPendingChanges()));
+  static_assert(noexcept(k->RecoverKey("a")));
+  static_assert(noexcept(k->ResetKey("a")));
+  auto spec = ara::core::InstanceSpecifier("App/Kvs");
+  static_assert(noexcept(ara::per::OpenKeyValueStorage(spec)));
+  static_assert(noexcept(ara::per::OpenFileStorage(spec)));
+  static_assert(noexcept(ara::per::RecoverKeyValueStorage(spec)));
+  static_assert(noexcept(ara::per::ResetKeyValueStorage(spec)));
+  static_assert(noexcept(ara::per::RecoverAllFiles(spec)));
+  static_assert(noexcept(ara::per::ResetAllFiles(spec)));
+  static_assert(noexcept(ara::per::GetCurrentKeyValueStorageSize(spec)));
+  static_assert(noexcept(ara::per::GetCurrentFileStorageSize(spec)));
+  static_assert(noexcept(ara::per::ResetPersistency()));
+  static_assert(noexcept(ara::per::UpdatePersistency()));
+  SUCCEED();
+}
+
+TEST_F(KvsTest, SetValueAcceptsContainers) {
+  auto kvs = Open().Value();
+  EXPECT_TRUE(kvs->SetValue("v", std::vector<double>{1.5, 2.5}).HasValue());
+  EXPECT_EQ((kvs->GetValue<std::vector<double>>("v").Value()), (std::vector<double>{1.5, 2.5}));
+}
+
+TEST_F(KvsTest, RecoveryReportCallbackFiresOnRecoverAndReset) {
+  struct Seen {
+    std::string spec;
+    ara::per::RecoveryReportKind kind;
+    std::size_t elements;
+  };
+  std::vector<Seen> seen;
+  ara::per::RegisterRecoveryReportCallback(
+      [&seen](ara::core::InstanceSpecifier const &s, ara::per::RecoveryReportKind k,
+              ara::core::Vector<ara::core::String> e, ara::core::Vector<std::uint8_t>) {
+        seen.push_back({std::string(s.ToString()), k, e.size()});
+      });
+  {
+    auto kvs = Open().Value();
+    ASSERT_TRUE(kvs->SetValue("v", 1).HasValue());
+    ASSERT_TRUE(kvs->SyncToStorage().HasValue());
+    ASSERT_TRUE(kvs->SetValue("v", 2).HasValue());
+    ASSERT_TRUE(kvs->SyncToStorage().HasValue());
+  }
+  Overwrite(KvsFile(), "broken");
+  ASSERT_TRUE(ara::per::RecoverKeyValueStorage(Spec("App/Kvs")).HasValue());
+  ASSERT_TRUE(ara::per::ResetKeyValueStorage(Spec("App/Kvs")).HasValue());
+  ASSERT_TRUE(ara::per::ResetAllFiles(Spec("App/Files")).HasValue());
+  ASSERT_EQ(seen.size(), 3U);
+  EXPECT_EQ(seen[0].kind, ara::per::RecoveryReportKind::kRecovered);
+  EXPECT_EQ(seen[1].kind, ara::per::RecoveryReportKind::kReset);
+  EXPECT_EQ(seen[2].spec, "App/Files");
+  EXPECT_EQ(seen[2].elements, 1U);
+  ara::per::RegisterRecoveryReportCallback({}); // unregister
+  ASSERT_TRUE(ara::per::ResetKeyValueStorage(Spec("App/Kvs")).HasValue());
+  EXPECT_EQ(seen.size(), 3U);
+}
+
+TEST_F(KvsTest, ThrowingRecoveryCallbackDoesNotBreakPersistency) {
+  ara::per::RegisterRecoveryReportCallback(
+      [](ara::core::InstanceSpecifier const &, ara::per::RecoveryReportKind,
+         ara::core::Vector<ara::core::String>, ara::core::Vector<std::uint8_t>) {
+        throw std::runtime_error("boom");
+      });
+  EXPECT_TRUE(ara::per::ResetKeyValueStorage(Spec("App/Kvs")).HasValue());
+  ara::per::RegisterRecoveryReportCallback({});
+}
+
+TEST_F(KvsTest, RecoveryCallbackMayCallBackIntoPersistency) {
+  bool reopened = false;
+  ara::per::RegisterRecoveryReportCallback(
+      [&](ara::core::InstanceSpecifier const &s, ara::per::RecoveryReportKind,
+          ara::core::Vector<ara::core::String>, ara::core::Vector<std::uint8_t>) {
+        reopened = ara::per::OpenKeyValueStorage(s).HasValue(); // would deadlock if lock held
+      });
+  ASSERT_TRUE(ara::per::ResetKeyValueStorage(Spec("App/Kvs")).HasValue());
+  EXPECT_TRUE(reopened);
+  ara::per::RegisterRecoveryReportCallback({});
+}
+
+TEST_F(KvsTest, UpdatePersistencyRequiresConfigurationAndClosedStorages) {
+  {
+    auto kvs = Open().Value();
+    EXPECT_TRUE(ara::per::UpdatePersistency().CheckError(PerErrc::kResourceBusy));
+  }
+  EXPECT_TRUE(ara::per::UpdatePersistency().HasValue());
+  ara::per::RegisterApplicationDataUpdateCallback(
+      [](ara::core::InstanceSpecifier const &, ara::core::String) {}); // accepted, never invoked
+  EXPECT_TRUE(ara::per::UpdatePersistency().HasValue());
 }
 
 TEST(PersistencyConfig, RejectsInvalidDocuments) {

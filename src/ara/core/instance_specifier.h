@@ -49,6 +49,9 @@ private:
   std::string mId;
 };
 
+inline bool operator==(StringView lhs, InstanceSpecifier const &rhs) noexcept { return rhs == lhs; }
+inline bool operator!=(StringView lhs, InstanceSpecifier const &rhs) noexcept { return rhs != lhs; }
+
 } // namespace ara::core
 
 namespace std {

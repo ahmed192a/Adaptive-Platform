@@ -7,6 +7,9 @@ char const *TsyncErrorDomain::Message(CodeType errorCode) const noexcept {
   case TsyncErrc::kNotSynchronized: return "time base not synchronized";
   case TsyncErrc::kInvalidArgument: return "invalid argument";
   case TsyncErrc::kAlreadyExists: return "time base already exists";
+  case TsyncErrc::kDaemonConnectionLost: return "time sync daemon connection lost";
+  case TsyncErrc::kFunctionNotSupported: return "function not supported";
+  case TsyncErrc::kLimitsExceeded: return "limits exceeded";
   case TsyncErrc::kNotFound: return "time base not found";
   }
   return "unknown time-synchronization error";

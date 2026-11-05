@@ -1,6 +1,8 @@
 #ifndef ARA_SM_SM_ERROR_DOMAIN_H
 #define ARA_SM_SM_ERROR_DOMAIN_H
 
+#include <cstdint>
+
 #include "ara/core/error_code.h"
 #include "ara/core/error_domain.h"
 
@@ -12,8 +14,9 @@ using Error = ara::core::ErrorDomain;
 enum class errorDomains : uint16_t // shall be updated to ErrorCode or
                                    // ErrorDomain **
 {
-  kRejected = 5, // Requested operation was rejected due to State Managements
-                 // machines proxy_skeleton state.
+  kOperationRejected = 5, // [SWS_SM_00213] operation rejected (e.g. outside an
+                          // active update session). R25-11 name.
+  kRejected = kOperationRejected, // legacy name, same value
   kVerifyFailed = 6,   // Verification step of update failed.
   kPrepareFailed = 7,  // Preparation step of update failed.
   kRollbackFailed = 8, // Rollback step of update failed.
