@@ -15,6 +15,7 @@
 #include "ara/com/proxy_skeleton/definitions.h"
 #include "ara/com/proxy_skeleton/skeleton/field.h"
 #include "ara/ucm/pkgmgr/packet.h"
+#include "ara/ucm/pkgmgr/ucm_core.h"
 #include "ara/ucm/pkgmgr/ucm_error.h"
 #include "ara/ucm/pkgmgr/ucm_return_types.h"
 #include "ara/ucm/pkgmgr/ucm_types.h"
@@ -45,20 +46,9 @@ using CurrentStatus = ara::com::proxy_skeleton::skeleton::FieldType<
 class PackageManagementSkeleton
     : public ara::com::proxy_skeleton::skeleton::ServiceSkeleton {
 private:
-  struct TransferInfo {
-    uint8_t TransferExitFlag = 1; /* After calling TransferExit, can't call
-                                 TransferData again */
-    uint32_t BlockSize;       /* Block size generated from transfer start */
-    PackageManagement::TransferIdType
-        id; /* unique ID of Swpackage generated from transfer start */
-    uint64_t size;
-    uint64_t localBlockCounter = 0;
-    uint64_t lastBlockCounter = 0;
-  } TransferInfoData = {1, 0, {0}, 0,0,0};
-
-  // buffer to stor Sw package
-  std::vector<uint8_t> buffer;
-  // Service ID of UCM Package management service
+  /* All ordering / state rules of the SWS live in the core (unit tested);
+   * the skeleton only does file I/O and the SOME/IP plumbing. */
+  core::PackageManagerCore core_;
   ara::com::proxy_skeleton::ServiceId UCM_Service_id{45};
   // current software process progress
   ara::ucm::pkgmgr::PackageManagement::GetSwProcessProgressOutput
@@ -80,7 +70,11 @@ public:
           skeleton_handle)
       : ara::com::proxy_skeleton::skeleton::ServiceSkeleton(
             UCM_Service_id, instance, skeleton_handle),
-        CurrentStatus(this, "CurrentStatus", 0) {}
+        CurrentStatus(this, "CurrentStatus", 0) {
+    core_.OnStatusChange([this](PackageManagement::PackageManagerStatusType st) {
+      CurrentStatus.update(st);
+    });
+  }
 
   // *********** Methods
   /**

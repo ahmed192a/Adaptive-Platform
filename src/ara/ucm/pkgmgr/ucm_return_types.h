@@ -32,7 +32,7 @@ namespace ara
 
                 struct TransferDataOutput
                 {
-                    int aya;
+                    int error = 0; /* UCMErrorDomain value, 0 = success */
                 };
 
                 struct TransferExitOutput
