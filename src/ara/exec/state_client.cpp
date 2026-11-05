@@ -35,8 +35,10 @@ std::future<std::variant<std::monostate, ara::exec::ExecErrc>>
 StateClient::SetState(FunctionGroupState const &state) const noexcept {
   std::future<std::variant<std::monostate, ara::exec::ExecErrc>> _future;
 
+  // Messages are newline-terminated: a FIFO is a byte stream, so back-to-back requests would otherwise be
+  // read as one.
   // The request is copied: the caller's FunctionGroupState may be gone before the task runs.
-  _future = std::async(std::launch::async, [this, msg = state.get_FGname() + "/" + state.get_states()]() {
+  _future = std::async(std::launch::async, [this, msg = state.get_FGname() + "/" + state.get_states() + "\n"]() {
     std::variant<std::monostate, ara::exec::ExecErrc> _variant = std::monostate();
     if (fd < 0 || write(fd, msg.data(), msg.size()) != static_cast<ssize_t>(msg.size())) {
       _variant= ara::exec::ExecErrc::kCommunicationError;
