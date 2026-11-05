@@ -6,6 +6,7 @@
  * @copyright Copyright (c) 2022
  * 
  */
+#include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <unistd.h>
@@ -244,8 +245,14 @@ int main(){
             // Comment the next code in this if condition to disable system shutdown and to run the system normally
             cout<<"[SM] OTA_STATE_INITIALIZED"<<endl;
             SM_State = State::STATE_UPDATE;
-            // raise SIGUSER1 signal
-            std::raise (SIGUSR1);
+            // The update demo shuts the whole platform down (SIGUSR1 -> FG_1/MachineFG off). That is opt-in:
+            // by default the platform keeps running. Set AP_SM_SHUTDOWN_ON_OTA=1 to get the old behaviour.
+            const char *shutdownOnOta = std::getenv("AP_SM_SHUTDOWN_ON_OTA");
+            if (shutdownOnOta != nullptr && std::string(shutdownOnOta) == "1") {
+                std::raise (SIGUSR1);
+            } else {
+                cout<<"[SM] OTA initialized; platform keeps running (set AP_SM_SHUTDOWN_ON_OTA=1 to shut down)"<<endl;
+            }
             
         }
 
