@@ -41,7 +41,7 @@ RegisterSoftwarePackage, RevertProcessedSwPackages, Rollback, TransferData, Tran
 | Item | Status | Notes |
 |---|---|---|
 | Field `CurrentStatus` | Implemented | now updated (and notified) on every transition; before, it stayed at 0 forever |
-| Values kIdle 0, kReady 1, kProcessing 2, kActivating 3, kActivated 4, kRollingBack 5, kRolledBack 6, kCleaningUp 7, kVerifying 8 | Unverified | R22 text names all of these except kCleaningUp; the numeric values could not be checked. `kVerifying` is defined but never entered (no State Management hook) |
+| Values kIdle 0, kReady 1, kProcessing 2, kActivating 3, kActivated 4, kRollingBack 5, kRolledBack 6, kCleaningUp 7, kVerifying 8 | Unverified | the readable R22 text names kIdle, kReady, kProcessing, kActivating, kActivated, kRollingBack and kVerifying; kRolledBack and kCleaningUp come from the legacy headers and could not be confirmed. The numeric values could not be checked. `kVerifying` is defined but never entered (no State Management hook) |
 | `kCancelling` (campaign cancelled after repeated ServiceBusy / UpdateSessionRejected, 00297, 00298) | Missing | belongs to the campaign handling |
 | Package states kTransferring -> kTransferred -> kProcessing -> kProcessed | Implemented | 00088, 00010, 00391; `kProcessingFailed` (00392) is Missing (a failed package returns to kTransferred) |
 | Software Cluster states kPresent / kAdded / kUpdating / kRemoved | Partial | constants added (the legacy comment said *kUpdated*); the life cycle (Fig. 7.1, 00191-00197, 00286) is not driven - states are only read from `sw_packages.json` |
