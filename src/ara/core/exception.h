@@ -14,6 +14,8 @@
 #include <map>
 #include <sstream>
 #include <stdexcept>
+#include <string>
+#include <utility>
 
 
 #include "ara/core/error_code.h"
@@ -54,9 +56,12 @@ protected:
   ErrorCode const mErrorCode;
 
 public:
-  explicit Exception(ErrorCode &&err) : mErrorCode(std::move(err)) {}
+  explicit Exception(ErrorCode err) noexcept : mErrorCode(std::move(err)) {}
 
   ErrorCode const &Error() const noexcept { return mErrorCode; }
+
+  /// The message of the contained ErrorCode, as required by the SWS.
+  char const *what() const noexcept override { return Error().Message(); }
 
 
   std::string toString() const {

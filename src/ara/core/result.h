@@ -77,12 +77,21 @@ public:
   static Result FromValue(T const &t) { return Result(std::in_place_index<0>, t); }
   static Result FromValue(T &&t) { return Result(std::in_place_index<0>, std::move(t)); }
   template <typename... Args> static Result FromValue(Args &&...args) {
-    return Result(std::in_place_index<0>, T{std::forward<Args>(args)...});
+    // Direct-initialization (parentheses) as the SWS requires: FromValue(3, 1) on a vector is (3 x 1).
+    if constexpr (std::is_constructible_v<T, Args...>) {
+      return Result(std::in_place_index<0>, T(std::forward<Args>(args)...));
+    } else {
+      return Result(std::in_place_index<0>, T{std::forward<Args>(args)...}); // aggregates
+    }
   }
   static Result FromError(E const &e) { return Result(std::in_place_index<1>, e); }
   static Result FromError(E &&e) { return Result(std::in_place_index<1>, std::move(e)); }
   template <typename... Args> static Result FromError(Args &&...args) {
-    return Result(std::in_place_index<1>, E{std::forward<Args>(args)...});
+    if constexpr (std::is_constructible_v<E, Args...>) {
+      return Result(std::in_place_index<1>, E(std::forward<Args>(args)...));
+    } else {
+      return Result(std::in_place_index<1>, E{std::forward<Args>(args)...});
+    }
   }
 
   // SWS_CORE_00743 / 00744 / 00745
@@ -195,7 +204,11 @@ public:
   static Result FromError(E const &e) { return Result(e); }
   static Result FromError(E &&e) { return Result(std::move(e)); }
   template <typename... Args> static Result FromError(Args &&...args) {
-    return Result(E{std::forward<Args>(args)...});
+    if constexpr (std::is_constructible_v<E, Args...>) {
+      return Result(E(std::forward<Args>(args)...));
+    } else {
+      return Result(E{std::forward<Args>(args)...});
+    }
   }
 
   void EmplaceValue() noexcept { mError.reset(); }
