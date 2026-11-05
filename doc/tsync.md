@@ -34,3 +34,5 @@ auto now = tb->GetCurrentTime();           // Result<TimeBaseSnapshot>
 ```
 
 Tests: `ctest --preset debug -L tsync` (14 tests, deterministic via the injected clock).
+
+> **Spec conformance:** see [spec-conformance/tsync.md](spec-conformance/tsync.md). The SWS API is `SynchronizedTimeBaseConsumer/Provider/Status` (`synchronized_time_base.h`), bound with `TimeBaseRegistry::Bind`.

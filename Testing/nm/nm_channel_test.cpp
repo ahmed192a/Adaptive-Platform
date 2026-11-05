@@ -54,7 +54,7 @@ TEST_F(Fx, RequestEntersRepeatMessageAndSendsImmediately) {
   ASSERT_TRUE(h->Request().HasValue());
   EXPECT_EQ(h->GetState(), NmState::kRepeatMessage);
   ASSERT_EQ(sent.size(), 1U);
-  EXPECT_TRUE(sent[0].repeatMessageRequest);
+  EXPECT_FALSE(sent[0].repeatMessageRequest); // SWS_ANM_00037: transmitted RMR bit is always 0
   EXPECT_EQ(sent[0].sourceNodeId, 3);
   ASSERT_EQ(changes.size(), 1U);
   EXPECT_EQ(changes[0], std::make_pair(NmState::kBusSleep, NmState::kRepeatMessage));

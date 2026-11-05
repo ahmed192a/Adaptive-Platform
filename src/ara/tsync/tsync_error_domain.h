@@ -2,7 +2,10 @@
  * @file tsync_error_domain.h
  * @brief ara::tsync::TsyncErrc / TsyncErrorDomain.
  *
- * Numeric values and the domain id are implementation choices (verify against the SWS table).
+ * The SWS (R25-11) names kDaemonConnectionLost, kFunctionNotSupported and kLimitsExceeded; the
+ * retrievable SWS text gives neither their numeric values nor the domain id (it defers to
+ * SWS_CORE_90023), so values and id are implementation choices - see
+ * doc/spec-conformance/tsync.md. The domain id is distinct from ara::nm's (they used to collide).
  */
 #ifndef ARA_TSYNC_TSYNC_ERROR_DOMAIN_H_
 #define ARA_TSYNC_TSYNC_ERROR_DOMAIN_H_
@@ -18,6 +21,9 @@ enum class TsyncErrc : ara::core::ErrorDomain::CodeType {
   kInvalidArgument = 2, ///< e.g. non-finite rate deviation or zero timeout
   kAlreadyExists = 3,   ///< time base name already registered
   kNotFound = 4,        ///< unknown time base name
+  kDaemonConnectionLost = 5, ///< SWS: the time base is not bound / the sync daemon is unreachable
+  kFunctionNotSupported = 6, ///< SWS_TS_00061: rate correction not allowed for this time base
+  kLimitsExceeded = 7,       ///< SWS_TS_00063: value outside the configured limit
 };
 
 class TsyncException : public ara::core::Exception {
@@ -27,7 +33,7 @@ public:
 
 class TsyncErrorDomain final : public ara::core::ErrorDomain {
 public:
-  static constexpr IdType kId = 0x8000000000000501; // implementation choice
+  static constexpr IdType kId = 0x8000000000000502; // implementation choice (ara::nm uses ...0501)
   constexpr TsyncErrorDomain() noexcept : ErrorDomain(kId) {}
   char const *Name() const noexcept override { return "Tsync"; }
   char const *Message(CodeType errorCode) const noexcept override;
