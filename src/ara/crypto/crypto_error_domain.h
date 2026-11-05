@@ -31,6 +31,7 @@ enum class CryptoErrc : ara::core::ErrorDomain::CodeType {
   kRuntimeFault = 15,      ///< underlying crypto provider failed
   kInvalidKeyLength = 16,
   kBadObjectReference = 17,
+  kBusyResource = 18,      ///< resource is in use by another context (SWS name; value unverified)
 };
 
 class CryptoException : public ara::core::Exception {

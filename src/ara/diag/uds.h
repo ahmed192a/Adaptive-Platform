@@ -20,9 +20,14 @@ inline constexpr std::uint8_t kSuppressPositiveResponseBit = 0x80;
 enum Sid : std::uint8_t {
   kDiagnosticSessionControl = 0x10,
   kEcuReset = 0x11,
+  kClearDiagnosticInformation = 0x14,
+  kReadDtcInformation = 0x19,
   kReadDataByIdentifier = 0x22,
+  kSecurityAccess = 0x27,
   kWriteDataByIdentifier = 0x2E,
+  kRoutineControl = 0x31,
   kTesterPresent = 0x3E,
+  kControlDtcSetting = 0x85,
 };
 
 enum class Session : std::uint8_t { kDefault = 0x01, kProgramming = 0x02, kExtended = 0x03 };
@@ -39,6 +44,8 @@ enum class Nrc : std::uint8_t {
   kRequestOutOfRange = 0x31,
   kSecurityAccessDenied = 0x33,
   kInvalidKey = 0x35,
+  kExceededNumberOfAttempts = 0x36,
+  kRequiredTimeDelayNotExpired = 0x37,
   kGeneralProgrammingFailure = 0x72,
   kResponsePending = 0x78,
   kSubFunctionNotSupportedInActiveSession = 0x7E,
