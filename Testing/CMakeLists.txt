@@ -12,6 +12,7 @@ ap_add_test(
 
 # One test executable per functional cluster.
 add_subdirectory(core)
+add_subdirectory(COM)
 add_subdirectory(exec)
 add_subdirectory(diag)
 if(TARGET ap_dashboard_core)

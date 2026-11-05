@@ -599,7 +599,7 @@ void ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::method_dispatch(
             (uint16_t)this->UCM_Service_id,
             (uint16_t)(message.MessageId().method_id & 0x7fff)},
         ara::com::SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        ara::com::SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         ara::com::SOMEIP_MESSAGE::MessageType::RESPONSE);
     // create data vector
@@ -632,7 +632,7 @@ void ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::method_dispatch(
             (uint16_t)this->UCM_Service_id,
             (uint16_t)(message.MessageId().method_id & 0x7fff)},
         ara::com::SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        ara::com::SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         ara::com::SOMEIP_MESSAGE::MessageType::RESPONSE);
     // create data vector

@@ -86,8 +86,9 @@ namespace ara
             {
                 std::vector<uint8_t> _result = Entry::BasePayload(optionIndex);
 
-                // Enabled Inistal Data Request Flag without any counter
-                const uint16_t EventgroupFlag = 0x0080;
+                // Reserved (12 bit) = 0 and Counter (4 bit) = 0
+                // [PRS_SOMEIPSD_00270].
+                const uint16_t EventgroupFlag = 0x0000;
                 helper::Inject(_result, EventgroupFlag);
                 helper::Inject(_result, GBEventgroupId);
 

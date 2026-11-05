@@ -62,7 +62,7 @@ template <typename T> class Field : public Event<T> {
             (uint16_t)this->m_service->m_service_id,
             (uint16_t)(sd_msg.MessageId().method_id | 0x8000)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
 
@@ -92,7 +92,7 @@ template <typename T> class Field : public Event<T> {
             (uint16_t)this->m_service->m_service_id,
             (uint16_t)(sd_msg.MessageId().method_id | 0x8000)},
         SOMEIP_MESSAGE::Request_ID{5, 6},
-        2, // protocol version
+        SOMEIP_MESSAGE::kProtocolVersion, // protocol version
         7, // Interface Version
         SOMEIP_MESSAGE::MessageType::RESPONSE);
 
