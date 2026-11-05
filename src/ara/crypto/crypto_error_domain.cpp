@@ -21,6 +21,7 @@ char const *CryptoErrorDomain::Message(CodeType errorCode) const noexcept {
   case CryptoErrc::kRuntimeFault: return "crypto provider failure";
   case CryptoErrc::kInvalidKeyLength: return "invalid key length";
   case CryptoErrc::kBadObjectReference: return "bad object reference";
+  case CryptoErrc::kBusyResource: return "resource is busy";
   }
   return "unknown crypto error";
 }
