@@ -60,11 +60,16 @@ ServiceProxy::FindService(FindServiceHandle FSH) {
     Client_SD.ClientRead(&_payload_size, sizeof(_payload_size));
     _payload.resize(_payload_size);
     Client_SD.ClientRead(_payload.data(), _payload_size);
-    msg_info.Deserialize(_payload);
+    const bool well_formed = msg_info.Deserialize(_payload);
 
     Client_SD.CloseSocket();
 
     std::vector<entry::Entry *> entries = msg_info.Entries();
+    if (!well_formed || entries.empty()) {
+      // Malformed or empty answer: treat it as "service not found yet".
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+      continue;
+    }
 
     auto const &options = entries[0]->FirstOptions();
 
@@ -74,6 +79,9 @@ ServiceProxy::FindService(FindServiceHandle FSH) {
       // sp_handle -> service_id, instance_id<->process_id, port_id,
       std::shared_ptr<option::Ipv4EndpointOption> ipv4_endpoint =
           std::dynamic_pointer_cast<option::Ipv4EndpointOption>(option);
+      if (!ipv4_endpoint) {
+        continue;
+      }
 
       handle.m_server_com.port_number = ipv4_endpoint->Port();
       handle.m_server_com.service_id = FSH.service_id;
