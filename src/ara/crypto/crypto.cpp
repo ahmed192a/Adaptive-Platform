@@ -4,6 +4,8 @@
 #include <openssl/evp.h>
 #include <openssl/hmac.h>
 #include <openssl/rand.h>
+#include <openssl/ec.h>
+#include <openssl/pem.h>
 #include <openssl/x509.h>
 
 #include <limits>
@@ -324,6 +326,43 @@ Res<PrivateKey> PrivateKey::Generate(SignatureAlgorithm alg) {
   Pkey k(raw);
   if (!k) return Fail<PrivateKey>(CryptoErrc::kRuntimeFault);
   return PrivateKey(std::unique_ptr<Impl>(new Impl{std::move(k)}), alg);
+}
+
+Res<PrivateKey> PrivateKey::FromPkcs8Der(ByteView der) {
+  if (der.empty() || !FitsInt(der.size())) return Fail<PrivateKey>(CryptoErrc::kInvalidArgument);
+  unsigned char const *p = der.data();
+  Pkey k(d2i_AutoPrivateKey(nullptr, &p, static_cast<long>(der.size())));
+  if (!k) return Fail<PrivateKey>(CryptoErrc::kInvalidArgument);
+  SignatureAlgorithm alg;
+  if (EVP_PKEY_id(k.get()) == EVP_PKEY_ED25519) {
+    alg = SignatureAlgorithm::kEd25519;
+  } else if (EVP_PKEY_id(k.get()) == EVP_PKEY_EC) {
+    char name[32] = {};
+    std::size_t n = 0;
+    if (EVP_PKEY_get_utf8_string_param(k.get(), "group", name, sizeof(name), &n) != 1 ||
+        std::string(name, n) != "prime256v1")
+      return Fail<PrivateKey>(CryptoErrc::kUnsupported);
+    alg = SignatureAlgorithm::kEcdsaP256Sha256;
+  } else {
+    return Fail<PrivateKey>(CryptoErrc::kUnsupported);
+  }
+  return PrivateKey(std::unique_ptr<Impl>(new Impl{std::move(k)}), alg);
+}
+
+Res<ByteVector> PrivateKey::ToPkcs8Der() const {
+  if (!impl_) return Fail<ByteVector>(CryptoErrc::kUninitializedContext);
+  std::unique_ptr<PKCS8_PRIV_KEY_INFO, void (*)(PKCS8_PRIV_KEY_INFO *)> info(
+      EVP_PKEY2PKCS8(impl_->key.get()), PKCS8_PRIV_KEY_INFO_free);
+  if (!info) return Fail<ByteVector>(CryptoErrc::kRuntimeFault);
+  int const len = i2d_PKCS8_PRIV_KEY_INFO(info.get(), nullptr);
+  if (len <= 0) return Fail<ByteVector>(CryptoErrc::kRuntimeFault);
+  ByteVector der(static_cast<std::size_t>(len));
+  unsigned char *p = der.data();
+  if (i2d_PKCS8_PRIV_KEY_INFO(info.get(), &p) != len) {
+    SecureZero(der.data(), der.size());
+    return Fail<ByteVector>(CryptoErrc::kRuntimeFault);
+  }
+  return der;
 }
 
 Res<ByteVector> PrivateKey::Sign(ByteView message) const {

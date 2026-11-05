@@ -88,7 +88,7 @@ strict warnings (`-Werror`) and unit tests with every cluster.
 | `ara::per` | ✅ new | key-value + file storage, CRC-32, atomic persist with backup, quotas, JSON deployment config |
 | `ara::phm` | ✅ new | alive / deadline / logical supervision, global supervision, recovery actions, watchdog escalation |
 | `ara::diag` | 🟡 UDS core | session layer, S3 timer, `0x10 0x11 0x22 0x2E 0x3E`, DIDs, custom services |
-| `ara::crypto` | 🟡 primitives | RNG, SHA-2, HMAC, AES-GCM, Ed25519, ECDSA-P256, zeroizing keys, key store |
+| `ara::crypto` | 🟡 primitives + key slots | RNG, SHA-2, HMAC, AES-GCM, Ed25519, ECDSA-P256, zeroizing keys, usage-enforced key slots persisted (encrypted) via `ara::per` |
 | `ara::exec` | 🟡 hardened | safe manifest parsing, client error reporting; EM process uses it |
 | `ara::com` | 🟠 legacy | SOME/IP + service discovery |
 | `ara::sm`, `ara::ucm` | 🟠 legacy | state management, update & configuration management |
