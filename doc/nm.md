@@ -1,6 +1,6 @@
 # ara::nm - Network Management
 
-Transport-independent NM state machine in the style of AUTOSAR CAN-NM, one `NetworkHandle` per bus.
+Transport-independent NM state machine in the style of AUTOSAR CAN-NM, one `NmChannel` per bus.
 The handle never touches a bus: you feed it received NM messages and it hands back messages to send
 through a callback, so it runs unchanged on CAN, Ethernet or in tests.
 
@@ -24,7 +24,7 @@ stateDiagram-v2
 | Type | Purpose |
 |---|---|
 | `NetworkManager` | registry: `CreateNetwork(name, cfg)`, `GetNetwork(name)`, `ProcessAll()` |
-| `NetworkHandle` | `Request()/Release()`, `Request/ReleasePartialNetwork(id)`, `IsPartialNetworkRequested(id)`, `OnPduReceived()/OnBytesReceived()`, `Process()`, `SetStateChangeHandler()`, `SetTxHandler()` |
+| `NmChannel` | `Request()/Release()`, `Request/ReleasePartialNetwork(id)`, `IsPartialNetworkRequested(id)`, `OnPduReceived()/OnBytesReceived()`, `Process()`, `SetStateChangeHandler()`, `SetTxHandler()` |
 | `NmPdu` | 8 byte message: node id, control bits (RMR, PNI), 32 bit PN bitmap, 2 bytes user data |
 | `NmClock` | injectable time source: `SteadyNmClock` (production), `ManualClock` (tests) |
 | `NmErrc` | `kUnknownNetwork kNetworkExists kNotRequested kBadPdu kInvalidConfig` |
@@ -39,4 +39,4 @@ stateDiagram-v2
 
 ## Not implemented
 
-Real bus drivers (CAN/Ethernet), PN routing/aggregation between buses, the SWS `ara::nm` Adaptive facade (`NetworkHandle` naming from ara::com), NM coordinator, and wake-up/sleep indication towards `ara::exec`.
+Real bus drivers (CAN/Ethernet), PN routing/aggregation between buses, the SWS `ara::nm` Adaptive facade (`NmChannel` naming from ara::com), NM coordinator, and wake-up/sleep indication towards `ara::exec`.

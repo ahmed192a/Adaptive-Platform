@@ -2,31 +2,57 @@
 
 #include <vector>
 
+#include "ara/nm/network_handle.h"
 #include "ara/nm/nm_error_domain.h"
 
 namespace ara::nm {
 
 using ara::core::Result;
 
-Result<NetworkHandle *> NetworkManager::CreateNetwork(std::string const &name, NmConfig const &cfg) {
+Result<NmChannel *> NetworkManager::CreateNetwork(std::string const &name, NmConfig const &cfg) {
   std::lock_guard<std::mutex> l(mu_);
-  if (nets_.count(name) != 0) return Result<NetworkHandle *>::FromError(MakeErrorCode(NmErrc::kNetworkExists));
-  auto h = NetworkHandle::Create(name, cfg, clock_);
-  if (!h.HasValue()) return Result<NetworkHandle *>::FromError(h.Error());
-  NetworkHandle *raw = h.Value().get();
-  nets_.emplace(name, std::move(h).Value());
-  return Result<NetworkHandle *>::FromValue(raw);
+  if (nets_.count(name) != 0) return Result<NmChannel *>::FromError(MakeErrorCode(NmErrc::kNetworkExists));
+  auto h = NmChannel::Create(name, cfg, clock_);
+  if (!h.HasValue()) return Result<NmChannel *>::FromError(h.Error());
+  NmChannel *raw = h.Value().get();
+  nets_.emplace(name, std::shared_ptr<NmChannel>(std::move(h).Value()));
+  return Result<NmChannel *>::FromValue(raw);
 }
 
-Result<NetworkHandle *> NetworkManager::GetNetwork(std::string const &name) const {
+Result<NmChannel *> NetworkManager::GetNetwork(std::string const &name) const {
   std::lock_guard<std::mutex> l(mu_);
   auto it = nets_.find(name);
-  if (it == nets_.end()) return Result<NetworkHandle *>::FromError(MakeErrorCode(NmErrc::kUnknownNetwork));
-  return Result<NetworkHandle *>::FromValue(it->second.get());
+  if (it == nets_.end()) return Result<NmChannel *>::FromError(MakeErrorCode(NmErrc::kUnknownNetwork));
+  return Result<NmChannel *>::FromValue(it->second.get());
+}
+
+Result<void> NetworkManager::BindPort(std::string const &instanceSpecifier, std::string const &network) {
+  std::shared_ptr<NmChannel> ch;
+  {
+    std::lock_guard<std::mutex> l(mu_);
+    auto it = nets_.find(network);
+    if (it == nets_.end()) return Result<void>::FromError(MakeErrorCode(NmErrc::kUnknownNetwork));
+    ch = it->second;
+  }
+  internal::PortRegistry::Bind(instanceSpecifier, ch);
+  return Result<void>::FromValue();
+}
+
+void NetworkManager::UnbindPort(std::string const &instanceSpecifier) {
+  internal::PortRegistry::Unbind(instanceSpecifier);
+}
+
+void NetworkManager::WithdrawAll() {
+  std::vector<std::shared_ptr<NmChannel>> all;
+  {
+    std::lock_guard<std::mutex> l(mu_);
+    for (auto &kv : nets_) all.push_back(kv.second);
+  }
+  for (auto &c : all) c->Withdraw();
 }
 
 void NetworkManager::ProcessAll() {
-  std::vector<NetworkHandle *> all;
+  std::vector<NmChannel *> all;
   {
     std::lock_guard<std::mutex> l(mu_);
     for (auto &kv : nets_) all.push_back(kv.second.get());
