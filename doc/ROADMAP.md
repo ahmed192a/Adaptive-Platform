@@ -16,10 +16,12 @@ Reference: AUTOSAR Adaptive Platform R25-11 (SWS documents at https://www.autosa
 | ara::com | legacy | SOME/IP + SD present; warnings and tests need work. |
 | ara::sm, ara::ucm | legacy | |
 | ara::diag | **UDS core (partial)** | Transport-independent `DiagnosticServer`: sessions + S3 timeout, 0x10/0x11/0x22/0x2E/0x3E, suppress-positive-response, DID registry, custom services. 12 tests. Missing: the SWS facade (Conversation, GenericUDSService, DataIdentifier classes), DTC/DEM (0x14/0x19), SecurityAccess (0x27), routines (0x31), DoIP/ISO-TP transport, Monitor/Event interfaces. |
-| ara::crypto | **primitive layer (new)** | OpenSSL-backed (optional, `AP_BUILD_CRYPTO`): RNG, SHA-2, HMAC, AES-GCM (random-nonce seal/open), Ed25519 + ECDSA-P256, usage-restricted zeroizing `SecretKey`, thread-safe `KeyStore`. Known-answer tests (SHA-256, RFC 4231 HMAC, NIST GCM). 14 tests. Missing: SWS object model (CryptoProvider, KeySlot, CryptoContext), persistence of key slots via ara::per, X.509/certificates, KDF/key agreement, RSA, CBC/CTR, hardware (HSM) back-ends. |
-| Not started | |  Network Management, Time Sync, IDSM, Firewall, RawDataStream, OSI, Remote Persistency, VUCM |
+| ara::nm | **new** | NM state machine (BusSleep/PrepareBusSleep/ReadySleep/NormalOperation/RepeatMessage), injectable clock, partial networks, 8 byte NM PDU codec, network manager. 30 tests. No bus driver yet. |
+| ara::crypto | **primitive layer (new)** | OpenSSL-backed (optional, `AP_BUILD_CRYPTO`): RNG, SHA-2, HMAC, AES-GCM (random-nonce seal/open), Ed25519 + ECDSA-P256, usage-restricted zeroizing `SecretKey`, thread-safe `KeyStore`. Known-answer tests (SHA-256, RFC 4231 HMAC, NIST GCM). `KeyStorageProvider` key-slot facade (`key_slot.h`): slot prototypes (algorithm, usage, exportable, persistent), generate/import/export/clear, per-slot usage enforcement (a sign-only key cannot verify, an encrypt-only key cannot decrypt), persistence through ara::per as AES-256-GCM blobs bound to slot name + policy (tamper, copy-to-other-slot and policy change are detected -> slot `kCorrupted`). 37 tests. Missing: full SWS CryptoProvider/CryptoContext object model, wrapping-key provisioning from HSM/TPM, X.509/certificates, KDF/key agreement, RSA, CBC/CTR, hardware (HSM) back-ends. |
+| ara::tsync | **time base (new)** | `TimeBaseResource` (consumer: `GetCurrentTime`, `GetRateDeviation`, status flags SYNCHRONIZED/TIMEOUT/SYNC_TO_GATEWAY/TIME_LEAP/PENDING_RATE_CORR, user data), `TimeBaseProvider::Update`, injectable local clock, small offsets slewed over a window and large ones stepped, timeout detection, update callback. 14 tests. Missing: SWS facade (`SynchronizedTimeBaseConsumer`/`TimeSyncClient` naming, `OffsetTimeBase`), multiple time-base registry, real providers (gPTP/NTP/GNSS), OS clock discipline. Error-domain id 0x8000000000000501 is unverified. |
+| Not started | |  IDSM, Firewall, RawDataStream, OSI, Remote Persistency, VUCM |
 
-Suggested order: crypto facade + key persistence -> nm/tsync -> idsm -> diag facade/DTC.
+Suggested order: idsm -> diag facade/DTC -> dashboard panels for nm/tsync/key slots.
 
 ## Known deviations (new clusters)
 
