@@ -50,20 +50,24 @@ TEST(Future, WaitForTimesOutThenSucceeds) {
   t.join();
 }
 
-TEST(Future, SecondGetFutureIsInvalid) {
+TEST(Future, SecondGetFutureFailsWithFutureAlreadyRetrieved) {
   Promise<int> p;
   auto f1 = p.get_future();
-  auto f2 = p.get_future();
   EXPECT_TRUE(f1.valid());
-  EXPECT_FALSE(f2.valid());
+  try {
+    (void)p.get_future();
+    FAIL() << "expected FutureException";
+  } catch (FutureException const &e) {
+    EXPECT_EQ(e.Error(), MakeErrorCode(FutureErrc::future_already_retrieved));
+  }
 }
 
 TEST(Future, OnlyFirstSatisfactionWins) {
   Promise<int> p;
   auto f = p.get_future();
   p.set_value(1);
-  p.set_value(2);
-  p.SetError(MakeErrorCode(CoreErrc::kInvalidArgument));
+  EXPECT_THROW(p.set_value(2), FutureException);
+  EXPECT_THROW(p.SetError(MakeErrorCode(CoreErrc::kInvalidArgument)), FutureException);
   EXPECT_EQ(f.get(), 1);
 }
 

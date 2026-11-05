@@ -35,8 +35,16 @@ ExecutionClient::~ExecutionClient() noexcept{
 std::variant<std::monostate, ExecErrc> ExecutionClient::ReportExecutionState(
     ara::exec::ExecutionState state) const noexcept {
   std::variant<std::monostate, ExecErrc> result;
+  if (state == ara::exec::ExecutionState::kRunning &&
+      mRunningReported.load(std::memory_order_acquire)) {
+    // SWS_EM_02243: kRunning is only allowed once, from the Starting state.
+    result.emplace<ExecErrc>(ExecErrc::kInvalidTransition);
+    return result;
+  }
   if (fd < 0 || write(fd, &state, sizeof(state)) != static_cast<ssize_t>(sizeof(state))) {
     result.emplace<ExecErrc>(ExecErrc::kCommunicationError);
+  } else if (state == ara::exec::ExecutionState::kRunning) {
+    mRunningReported.store(true, std::memory_order_release);
   }
   return result;
 }

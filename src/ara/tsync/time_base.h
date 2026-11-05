@@ -20,6 +20,7 @@
 #include <memory>
 #include <mutex>
 #include <string>
+#include <vector>
 
 #include "ara/core/result.h"
 #include "ara/tsync/tsync_error_domain.h"
@@ -55,6 +56,20 @@ private:
 };
 constexpr StatusFlags operator|(StatusFlag a, StatusFlag b) noexcept { return StatusFlags(a) | StatusFlags(b); }
 
+/// SWS R25-11 (7.1.2, values as listed in R23-11 SWS_TS_01050): exclusive synchronization state.
+enum class SynchronizationStatus : std::uint32_t {
+  kNotSynchronizedUntilStartup = 0,
+  kTimeOut = 1,
+  kSynchronized = 2,
+  kSynchToGateway = 3,
+};
+
+/// SWS R25-11 (SWS_TS_01051): direction of the last time leap.
+enum class LeapJump : std::uint32_t { kTimeLeapNone = 0, kTimeLeapFuture = 1, kTimeLeapPast = 2 };
+
+/// Timestamp of a time base (the SWS struct layout in 8.9 is not retrievable; chrono is used).
+using Timestamp = SynchronizedTimePoint;
+
 /// Optional user data transported with a time base update (SWS: UserData, up to 3 bytes).
 struct UserData {
   std::uint8_t length{0};
@@ -67,7 +82,19 @@ struct TimeBaseSnapshot {
   double rateDeviation{0.0}; ///< dimensionless, +1e-6 == local clock runs 1 ppm fast
   StatusFlags status{};
   UserData userData{};
+  LeapJump leapJump{LeapJump::kTimeLeapNone};
+  std::chrono::steady_clock::time_point localTime{}; ///< local clock reading at sampling
 };
+
+/// Maps the internal flag mask to the exclusive SWS status.
+constexpr SynchronizationStatus ToSynchronizationStatus(StatusFlags f) noexcept {
+  if (f.Test(StatusFlag::kTimeout)) return SynchronizationStatus::kTimeOut;
+  if (f.Test(StatusFlag::kSynchronized)) {
+    return f.Test(StatusFlag::kSyncToGateway) ? SynchronizationStatus::kSynchToGateway
+                                              : SynchronizationStatus::kSynchronized;
+  }
+  return SynchronizationStatus::kNotSynchronizedUntilStartup;
+}
 
 struct TimeBaseConfig {
   std::string name{"default"};
@@ -75,6 +102,10 @@ struct TimeBaseConfig {
   Duration timeout{std::chrono::seconds(1)};         ///< max age of the last update
   Duration stepThreshold{std::chrono::milliseconds(10)}; ///< larger offsets step instead of slew
   Duration slewWindow{std::chrono::milliseconds(500)};   ///< time over which a small offset is applied
+  /// allowProviderRateCorrection: SetRateCorrection is kFunctionNotSupported unless true (SWS_TS_00061).
+  bool allowProviderRateCorrection{false};
+  /// Largest accepted |rate correction| (providerRateDeviationMax); larger -> kLimitsExceeded (00063).
+  double providerRateDeviationMax{0.0};
 };
 
 /// Notification reasons passed to the update callback.
@@ -103,12 +134,17 @@ public:
   /// Register a callback invoked on status changes, time steps and (if `notifyEveryUpdate`) updates.
   void SetUpdateCallback(UpdateCallback cb, bool notifyEveryUpdate = false);
 
+  /// Additional observers (used by the SWS facade classes). Returns an id for RemoveObserver.
+  std::size_t AddObserver(UpdateCallback cb, bool notifyEveryUpdate = false);
+  void RemoveObserver(std::size_t id);
+
   /// Evaluates timeout detection and delivers pending notifications. Call periodically
   /// (getters evaluate lazily but cannot deliver callbacks from const readers).
   void Poll();
 
 private:
   friend class TimeBaseProvider;
+  friend class SynchronizedTimeBaseProvider;
   explicit TimeBaseResource(TimeBaseConfig config);
 
   struct State {
@@ -121,6 +157,7 @@ private:
     std::chrono::steady_clock::time_point slewEnd{};
     bool gateway{false};
     bool leap{false};
+    int leapDir{0};       ///< +1 future, -1 past (valid while `leap`)
     bool timeout{false};
     UserData user{};
   };
@@ -131,7 +168,11 @@ private:
   TimeBaseSnapshot SnapshotLocked(std::chrono::steady_clock::time_point now) const;
 
   // provider entry point
-  ara::core::Result<void> Apply(SynchronizedTimePoint t, double rate, bool gateway, UserData user);
+  ara::core::Result<void> Apply(SynchronizedTimePoint t, double rate, bool gateway, UserData user,
+                                bool forceStep = false);
+  /// Provider: change the rate at which the time base runs (SWS_TS_00061..63).
+  ara::core::Result<void> SetRateCorrection(double correction);
+  ara::core::Result<void> SetUserDataOnly(UserData user);
 
   void Deliver(TimeBaseSnapshot const &snap, ChangeReason reason, bool statusChanged);
 
@@ -141,6 +182,13 @@ private:
   StatusFlags lastNotified_{};
   UpdateCallback callback_;
   bool notifyEvery_{false};
+  struct Observer {
+    std::size_t id;
+    UpdateCallback cb;
+    bool every;
+  };
+  std::vector<Observer> observers_;
+  std::size_t nextObserverId_{1};
 };
 
 /**

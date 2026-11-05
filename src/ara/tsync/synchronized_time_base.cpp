@@ -1,0 +1,221 @@
+#include "ara/tsync/synchronized_time_base.h"
+
+#include <cstring>
+#include <map>
+
+namespace ara::tsync {
+
+using ara::core::Result;
+
+namespace {
+std::mutex gMu;
+std::map<std::string, std::shared_ptr<TimeBaseResource>> &Reg() {
+  static std::map<std::string, std::shared_ptr<TimeBaseResource>> m;
+  return m;
+}
+Result<UserData> ToUserData(std::uint8_t const *p, std::size_t n) {
+  if (n > sizeof(UserData::bytes) || (n != 0 && p == nullptr)) {
+    return Result<UserData>::FromError(MakeErrorCode(TsyncErrc::kInvalidArgument));
+  }
+  UserData u;
+  u.length = static_cast<std::uint8_t>(n);
+  if (n != 0) std::memcpy(u.bytes, p, n);
+  return Result<UserData>::FromValue(u);
+}
+} // namespace
+
+void TimeBaseRegistry::Bind(std::string const &specifier, std::shared_ptr<TimeBaseResource> resource) {
+  std::lock_guard<std::mutex> l(gMu);
+  Reg()[specifier] = std::move(resource);
+}
+void TimeBaseRegistry::Unbind(std::string const &specifier) {
+  std::lock_guard<std::mutex> l(gMu);
+  Reg().erase(specifier);
+}
+std::shared_ptr<TimeBaseResource> TimeBaseRegistry::Lookup(std::string const &specifier) {
+  std::lock_guard<std::mutex> l(gMu);
+  auto it = Reg().find(specifier);
+  return it == Reg().end() ? nullptr : it->second;
+}
+
+// ------------------------------------------------------------------------------- consumer
+
+struct SynchronizedTimeBaseConsumer::Impl {
+  std::string specifier;
+  std::mutex mu;
+  StatusChangeNotifier onStatus;
+  SynchronizationStateChangeNotifier onSync;
+  TimeLeapNotifier onLeap;
+  std::weak_ptr<TimeBaseResource> observed;
+  std::size_t observerId{0};
+  StatusFlags lastFlags{};
+  bool lastEver{false};
+};
+
+SynchronizedTimeBaseConsumer::SynchronizedTimeBaseConsumer(ara::core::InstanceSpecifier const &s) noexcept
+    : impl_(std::make_shared<Impl>()) {
+  impl_->specifier = std::string(s.ToString());
+}
+SynchronizedTimeBaseConsumer::SynchronizedTimeBaseConsumer(SynchronizedTimeBaseConsumer &&) noexcept = default;
+SynchronizedTimeBaseConsumer &SynchronizedTimeBaseConsumer::operator=(SynchronizedTimeBaseConsumer &&) & noexcept = default;
+
+SynchronizedTimeBaseConsumer::~SynchronizedTimeBaseConsumer() noexcept {
+  if (!impl_) return;
+  if (auto r = impl_->observed.lock()) {
+    if (impl_->observerId != 0) r->RemoveObserver(impl_->observerId);
+  }
+}
+
+SynchronizedTimeBaseStatus SynchronizedTimeBaseConsumer::GetTimeWithStatus() const noexcept {
+  auto r = TimeBaseRegistry::Lookup(impl_->specifier);
+  if (!r) return SynchronizedTimeBaseStatus();
+  auto snap = r->GetCurrentTime(); // atomic sample of time, status, leap and user data
+  if (!snap.HasValue()) return SynchronizedTimeBaseStatus();
+  return SynchronizedTimeBaseStatus(snap.Value(), true);
+}
+
+double SynchronizedTimeBaseConsumer::GetRateDeviation() const noexcept {
+  auto r = TimeBaseRegistry::Lookup(impl_->specifier);
+  if (!r) return 0.0;
+  auto d = r->GetRateDeviation();
+  return d.HasValue() ? d.Value() : 0.0;
+}
+
+namespace {
+// Registers the single shared observer that fans out to the three notifier kinds.
+template <class ImplT> void EnsureObserver(std::shared_ptr<ImplT> const &impl, std::shared_ptr<TimeBaseResource> const &r) {
+  if (impl->observerId != 0) return;
+  std::weak_ptr<ImplT> weak = impl;
+  impl->observed = r;
+  impl->observerId = r->AddObserver(
+      [weak](TimeBaseSnapshot const &snap, ChangeReason reason) {
+        auto self = weak.lock();
+        if (!self) return;
+        std::function<void(SynchronizedTimeBaseStatus const &)> st;
+        std::function<void(SynchronizationStatus)> sy;
+        std::function<void(LeapJump)> lp;
+        bool statusChanged = false, syncChanged = false;
+        {
+          std::lock_guard<std::mutex> g(self->mu);
+          st = self->onStatus;
+          sy = self->onSync;
+          lp = self->onLeap;
+          statusChanged = snap.status != self->lastFlags;
+          syncChanged = ToSynchronizationStatus(snap.status) != ToSynchronizationStatus(self->lastFlags) ||
+                        !self->lastEver;
+          self->lastFlags = snap.status;
+          self->lastEver = true;
+        }
+        SynchronizedTimeBaseStatus status(snap, true);
+        if (st && statusChanged) st(status);
+        if (sy && syncChanged) sy(status.GetSynchronizationStatus());
+        if (lp && reason == ChangeReason::kTimeStep) lp(snap.leapJump);
+      },
+      /*notifyEveryUpdate=*/true);
+}
+} // namespace
+
+Result<void> SynchronizedTimeBaseConsumer::RegisterStatusChangeNotifier(StatusChangeNotifier n) noexcept {
+  if (!n) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kInvalidArgument));
+  auto r = TimeBaseRegistry::Lookup(impl_->specifier);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onStatus = std::move(n);
+  impl_->lastFlags = r->GetStatus();
+  EnsureObserver(impl_, r);
+  return Result<void>();
+}
+
+Result<void> SynchronizedTimeBaseConsumer::RegisterSynchronizationStateChangeNotifier(
+    SynchronizationStateChangeNotifier n) noexcept {
+  if (!n) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kInvalidArgument));
+  auto r = TimeBaseRegistry::Lookup(impl_->specifier);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onSync = std::move(n);
+  impl_->lastFlags = r->GetStatus();
+  impl_->lastEver = true;
+  EnsureObserver(impl_, r);
+  return Result<void>();
+}
+
+Result<void> SynchronizedTimeBaseConsumer::RegisterTimeLeapNotifier(TimeLeapNotifier n) noexcept {
+  if (!n) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kInvalidArgument));
+  auto r = TimeBaseRegistry::Lookup(impl_->specifier);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onLeap = std::move(n);
+  EnsureObserver(impl_, r);
+  return Result<void>();
+}
+
+void SynchronizedTimeBaseConsumer::UnregisterStatusChangeNotifier() noexcept {
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onStatus = nullptr;
+}
+void SynchronizedTimeBaseConsumer::UnregisterSynchronizationStateChangeNotifier() noexcept {
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onSync = nullptr;
+}
+void SynchronizedTimeBaseConsumer::UnregisterTimeLeapNotifier() noexcept {
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onLeap = nullptr;
+}
+
+// ------------------------------------------------------------------------------- provider
+
+SynchronizedTimeBaseProvider::SynchronizedTimeBaseProvider(ara::core::InstanceSpecifier const &s) noexcept
+    : specifier_(std::string(s.ToString())) {}
+
+Result<void> SynchronizedTimeBaseProvider::SetTime(Timestamp t, std::uint8_t const *u, std::size_t n) noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  auto ud = ToUserData(u, n);
+  if (!ud.HasValue()) return Result<void>::FromError(ud.Error());
+  return r->Apply(t, r->GetRateDeviation().ValueOr(0.0), false, ud.Value(), /*forceStep=*/true);
+}
+
+Result<void> SynchronizedTimeBaseProvider::UpdateTime(Timestamp t, std::uint8_t const *u, std::size_t n) noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  auto ud = ToUserData(u, n);
+  if (!ud.HasValue()) return Result<void>::FromError(ud.Error());
+  return r->Apply(t, r->GetRateDeviation().ValueOr(0.0), false, ud.Value(), /*forceStep=*/false);
+}
+
+Timestamp SynchronizedTimeBaseProvider::GetCurrentTime() const noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Timestamp{};
+  auto s = r->GetCurrentTime();
+  return s.HasValue() ? s.Value().time : Timestamp{};
+}
+
+Result<void> SynchronizedTimeBaseProvider::SetRateCorrection(double c) noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  return r->SetRateCorrection(c);
+}
+
+double SynchronizedTimeBaseProvider::GetRateDeviation() const noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return 0.0;
+  auto d = r->GetRateDeviation();
+  return d.HasValue() ? d.Value() : 0.0;
+}
+
+Result<void> SynchronizedTimeBaseProvider::SetUserData(std::uint8_t const *u, std::size_t n) noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  auto ud = ToUserData(u, n);
+  if (!ud.HasValue()) return Result<void>::FromError(ud.Error());
+  return r->SetUserDataOnly(ud.Value());
+}
+
+std::vector<std::uint8_t> SynchronizedTimeBaseProvider::GetUserData() const {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return {};
+  UserData u = r->GetUserData();
+  return std::vector<std::uint8_t>(u.bytes, u.bytes + u.length);
+}
+
+} // namespace ara::tsync

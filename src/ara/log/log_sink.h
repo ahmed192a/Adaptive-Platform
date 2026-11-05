@@ -22,6 +22,9 @@ struct LogRecord {
   std::string appId;
   std::string contextId;
   std::string message;
+  std::string tag;  ///< LogStream::WithTag(), empty if unset
+  std::string file; ///< LogStream::WithLocation(), empty if unset
+  int line{0};
   std::chrono::system_clock::time_point timestamp;
 };
 

@@ -54,3 +54,7 @@ Suggested order: idsm -> diag facade/DTC -> dashboard panels for nm/tsync/key sl
 Execution Management and serves the web console. It is a demo/test harness, not part of the AUTOSAR scope:
 no authentication, loopback only. Open items: show the SOME/IP service discovery traffic, a DTC/fault-memory view
 once `ara::diag` has it, and Remote persistency.
+
+## Spec conformance
+
+Per-cluster audit reports (status per requirement, with *Unverified* where the spec text was unavailable) live in `doc/spec-conformance/`. Open gaps are listed at the end of each report; `ara::com` is pending its own audit.

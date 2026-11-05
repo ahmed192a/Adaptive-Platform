@@ -23,7 +23,7 @@ enum class CoreErrc : ErrorDomain::CodeType {
 
 class CoreException : public Exception {
 public:
-  explicit CoreException(ErrorCode err) : Exception(std::move(err)) {}
+  explicit CoreException(ErrorCode err) noexcept : Exception(std::move(err)) {}
 };
 
 class CoreErrorDomain final : public ErrorDomain {

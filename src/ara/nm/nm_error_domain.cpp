@@ -4,6 +4,8 @@ namespace ara::nm {
 
 char const *NmErrorDomain::Message(CodeType errorCode) const noexcept {
   switch (static_cast<NmErrc>(errorCode)) {
+  case NmErrc::kServiceNotAvailable: return "NM service not available";
+  case NmErrc::kInvalidHandler: return "invalid notifier";
   case NmErrc::kUnknownNetwork: return "unknown network or partial network";
   case NmErrc::kNetworkExists: return "network already exists";
   case NmErrc::kNotRequested: return "network was not requested";
