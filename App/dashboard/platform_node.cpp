@@ -553,7 +553,15 @@ struct PlatformNode::Impl {
     fs::path p = opt.webRoot / path.substr(1);
     std::ifstream f(p, std::ios::binary);
     if (!f) return {404, "text/plain", "not found"};
-    std::string body((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
+    f.seekg(0, std::ios::end);
+    auto const len = f.tellg();
+    std::string body;
+    if (len > 0) {
+      body.resize(static_cast<std::size_t>(len));
+      f.seekg(0, std::ios::beg);
+      f.read(body.data(), static_cast<std::streamsize>(body.size()));
+      body.resize(static_cast<std::size_t>(f.gcount()));
+    }
     auto ext = p.extension().string();
     std::string ct = ext == ".html" ? "text/html; charset=utf-8" : ext == ".css" ? "text/css"
                      : ext == ".js" ? "application/javascript" : ext == ".svg" ? "image/svg+xml" : "application/octet-stream";
