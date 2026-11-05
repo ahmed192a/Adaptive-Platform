@@ -18,35 +18,35 @@ using namespace nlohmann;
 
 std::variant<ara::exec::ExecErrc, FunctionGroup::CtorToken> FunctionGroup::Preconstruct(std::string const& metaModelIdentifier) noexcept
 {
-    // metaModelIdentifier is the path to the manifest file and the last part of the path is the name of the function group
-    // we need to get the function group name from the path and then search for it in the manifest file
-    // if the function group is found, we need to return the function group as a CtorToken
-    // if the function group is not found, we need to return ExecErrc::kMetaModelError
-    std::string fg_name = metaModelIdentifier.substr(metaModelIdentifier.find_last_of("/") + 1);
-    std::string path = metaModelIdentifier.substr(0, metaModelIdentifier.find_last_of("/"));
     std::variant<ara::exec::ExecErrc, FunctionGroup::CtorToken> token;
-    std::ifstream ifs(path);
-    json manifest_json_full;
-    if (!ifs.good()) {
-      std::cerr << "File does not exist." << std::endl;
-      exit(1);
+    token.emplace<0>(ara::exec::ExecErrc::kMetaModelError);
+    // identifier format: "<manifest path>/<function group name>"
+    auto const slash = metaModelIdentifier.find_last_of('/');
+    if (slash == std::string::npos || slash + 1 >= metaModelIdentifier.size()) {
+        return token;
     }
-    ifs >> manifest_json_full;
-
-    json mode_declaration_groups = manifest_json_full["Machine_manifest"]["Mode_declaration_group"];
-
-
-        // find fg_name in mode_declaration_groups
-        for (auto &mode_declaration_group : mode_declaration_groups)
-        {
-            if (mode_declaration_group["Function_group_name"] == fg_name)
-            {
-                token.emplace<1>(mode_declaration_group);
+    std::string const fg_name = metaModelIdentifier.substr(slash + 1);
+    std::string const path = metaModelIdentifier.substr(0, slash);
+    try {
+        std::ifstream ifs(path);
+        if (!ifs.good()) {
+            return token; // manifest not readable
+        }
+        json const manifest = json::parse(ifs, nullptr, /*allow_exceptions=*/true);
+        auto const m = manifest.find("Machine_manifest");
+        if (m == manifest.end() || !m->is_object()) return token;
+        auto const g = m->find("Mode_declaration_group");
+        if (g == m->end() || !g->is_array()) return token;
+        for (auto const &group : *g) {
+            auto const n = group.find("Function_group_name");
+            if (n != group.end() && n->is_string() && n->get<std::string>() == fg_name) {
+                token.emplace<1>(group);
                 return token;
             }
-            
         }
-    
+    } catch (...) {
+        // malformed manifest: report as meta model error, never terminate
+    }
     token.emplace<0>(ara::exec::ExecErrc::kMetaModelError);
     return token;
 }
@@ -54,14 +54,15 @@ std::variant<ara::exec::ExecErrc, FunctionGroup::CtorToken> FunctionGroup::Preco
 FunctionGroup::FunctionGroup(FunctionGroup::CtorToken &&token) noexcept
 {
     FunctionGroup::CtorToken _token = std::move(token);
-    mFunction_group_name = _token["Function_group_name"];
-    auto mode_declarations = _token["Mode_declarations"];
-    for (auto const &mode_declaration : mode_declarations)
-    {
-        std::string mode = mode_declaration["Mode"];
-        mstates.push_back(mode);
+    try {
+        mFunction_group_name = _token.at("Function_group_name").get<std::string>();
+        for (auto const &mode_declaration : _token.at("Mode_declarations"))
+        {
+            mstates.push_back(mode_declaration.at("Mode").get<std::string>());
+        }
+    } catch (...) {
+        // leave the group with whatever was parsed; never terminate
     }
-    
 }
 
 

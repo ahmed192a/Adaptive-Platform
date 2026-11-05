@@ -129,6 +129,23 @@ public:
   [[noreturn]] void ThrowAsException(ara::core::ErrorCode const &errorCode) const noexcept(false) override;
 };
 
+namespace internal {
+/// Single domain instance.  Id taken from SWS_EM_02285 as recalled; verify against R25-11.
+inline constexpr ExecErrorDomain kExecErrorDomain{0x8000000000000202};
+} // namespace internal
+
+/// SWS_EM_02290: returns the Execution Management error domain.
+constexpr ara::core::ErrorDomain const &GetExecDomain() noexcept {
+  return internal::kExecErrorDomain;
+}
+
+/// SWS_EM_02291 (free-function form used by ara::core::ErrorCode users).
+inline ara::core::ErrorCode MakeErrorCode(ExecErrc code,
+                                          ara::core::ErrorDomain::SupportDataType data = 0) noexcept {
+  return ara::core::ErrorCode(static_cast<ara::core::ErrorDomain::CodeType>(code), GetExecDomain(),
+                              data);
+}
+
 } // namespace ara::exec
 
 #endif // ARA_EXEC_EXEC_ERROR_DOMAIN_H_
