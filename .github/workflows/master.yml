@@ -1,55 +1,56 @@
-name: CMake
+name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, 'feature/**' ]
   pull_request:
     branches: [ master ]
 
-env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  BUILD_TYPE: Debug
-
 jobs:
-  config:
-    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
-    # You can convert this to a matrix build if you need cross-platform coverage.
-    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    #  use ubuntu-20.04
-    runs-on: ubuntu-20.04
-
-
+  build-test:
+    name: ${{ matrix.compiler }} / ${{ matrix.preset }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { compiler: gcc,   cc: gcc,   cxx: g++,     preset: ci }
+          - { compiler: clang, cc: clang, cxx: clang++, preset: ci }
+          - { compiler: gcc,   cc: gcc,   cxx: g++,     preset: asan }
+    env:
+      CC: ${{ matrix.cc }}
+      CXX: ${{ matrix.cxx }}
     steps:
-    - name: Checkout the Repository Code
-      uses: actions/checkout@v3
-    - name: download lcov for code coverage
-      run: |
-        sudo apt-get install lcov -y
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: sudo apt-get update && sudo apt-get install -y ninja-build clang
+      - name: Configure
+        run: cmake --preset ${{ matrix.preset }}
+      - name: Build
+        run: cmake --build --preset ${{ matrix.preset }} -j
+      - name: Test
+        run: ctest --preset ${{ matrix.preset }} -j 2
 
-    - name: Configure CMake
-      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-
-    - name: Build
-      # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
-
-
-    # - name: Run
-    #   working-directory: ${{github.workspace}}/build/App 
-    #   run: ./Adaptive_Platform
-    
-
-    - name: Test
-      working-directory: ${{github.workspace}}/build/Testing
-      run: ./Adaptive_Platform-ut
-
-
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: sudo apt-get update && sudo apt-get install -y ninja-build lcov
+      - run: cmake --preset coverage
+      - run: cmake --build --preset coverage -j
+      - run: ctest --preset coverage -j 2
+      - name: Collect coverage
+        run: |
+          lcov --capture --directory build/coverage --output-file coverage.info --ignore-errors mismatch,gcov
+          lcov --remove coverage.info '/usr/*' '*/_deps/*' '*/Testing/*' --output-file coverage.info
+          lcov --list coverage.info | tail -5
+      - uses: actions/upload-artifact@v4
+        with: { name: coverage-info, path: coverage.info }
 
   web_generate:
     name: Generate The documentationon the website using Doxygen
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout the Repository Code
       uses: actions/checkout@v3
