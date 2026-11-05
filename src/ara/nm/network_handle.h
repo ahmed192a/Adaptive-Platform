@@ -1,103 +1,71 @@
 /**
  * @file network_handle.h
- * @brief One NM-managed network: state machine, timers, partial networks.
+ * @brief ara::nm::NetworkHandle - the State Management facing API of Network Management
+ *        (SWS_ANM_01000 ff., AUTOSAR AP R25-11).
  *
- * Time only moves when Process() (or any other public call) runs, so the
- * handle is deterministic with ManualClock. Callbacks are invoked without the
- * internal lock held and may call back into the handle.
+ * A handle is bound to a NetworkManagementPortInterface port by its InstanceSpecifier. In this
+ * implementation the binding is made with NetworkManager::BindPort(); an unbound handle reports
+ * kServiceNotAvailable like a handle whose NM daemon connection was lost.
  *
- * Transitions (simplified AUTOSAR NM):
- *   BusSleep/PrepareBusSleep --Request or NM msg--> RepeatMessage
- *   RepeatMessage --repeatMessageTime--> NormalOperation (requested) | ReadySleep
- *   NormalOperation --Release--> ReadySleep
- *   ReadySleep --Request--> NormalOperation
- *   NormalOperation/ReadySleep --msg with RMR--> RepeatMessage
- *   ReadySleep --nmTimeout without msgs--> PrepareBusSleep --waitBusSleepTime--> BusSleep
+ * Deviations (see doc/spec-conformance/nm.md): the template overloads taking an ExecutorT are not
+ * provided; notifiers run in the thread that drives NmChannel::Process()/Request()/....
  */
 #ifndef ARA_NM_NETWORK_HANDLE_H_
 #define ARA_NM_NETWORK_HANDLE_H_
 
-#include <array>
+#include <cstdint>
 #include <functional>
+#include <map>
 #include <memory>
 #include <mutex>
 #include <string>
-#include <vector>
 
+#include "ara/core/instance_specifier.h"
 #include "ara/core/result.h"
-#include "ara/nm/nm_pdu.h"
-#include "ara/nm/nm_types.h"
+#include "ara/nm/nm_channel.h"
 
 namespace ara::nm {
 
-class NetworkHandle {
+/// SWS_ANM_01358
+enum class NetworkStateType : std::uint32_t { kNoCom = 0, kFullCom = 1 };
+
+namespace internal {
+/// Process-wide port instance specifier -> NM channel binding.
+class PortRegistry {
 public:
-  using StateHandler = std::function<void(NmState from, NmState to)>;
-  using TxHandler = std::function<void(NmPdu const &)>;
+  static void Bind(std::string const &specifier, std::shared_ptr<NmChannel> const &channel);
+  static void Unbind(std::string const &specifier);
+  static std::shared_ptr<NmChannel> Lookup(std::string const &specifier);
+};
+} // namespace internal
 
-  /// Fails with kInvalidConfig when a timer is zero. Starts in BusSleep.
-  static ara::core::Result<std::unique_ptr<NetworkHandle>>
-  Create(std::string name, NmConfig cfg, std::shared_ptr<NmClock> clock);
+class NetworkHandle final {
+public:
+  using NetworkStateChangeNotifier = std::function<void(NetworkStateType const &)>; // SWS_ANM_01020
 
-  NetworkHandle(NetworkHandle const &) = delete;
-  NetworkHandle &operator=(NetworkHandle const &) = delete;
+  explicit NetworkHandle(ara::core::InstanceSpecifier const &specifier) noexcept; // SWS_ANM_01001
+  NetworkHandle(NetworkHandle const &) = delete;                                  // SWS_ANM_01005
+  NetworkHandle &operator=(NetworkHandle const &) = delete;                       // SWS_ANM_01006
+  NetworkHandle(NetworkHandle &&other) noexcept;                                  // SWS_ANM_01003
+  NetworkHandle &operator=(NetworkHandle &&other) & noexcept;                     // SWS_ANM_01004
+  ~NetworkHandle() noexcept;                                                      // SWS_ANM_01002
 
-  std::string const &Name() const noexcept { return name_; }
-  NmState GetState() const;
-  bool IsRequested() const;
+  /// kFullCom iff the network is in Network Mode (RepeatMessage/NormalOperation/ReadySleep),
+  /// kNoCom in Bus-Sleep / Prepare Bus-Sleep (SWS_ANM_00029, 00083).
+  ara::core::Result<NetworkStateType> GetNetworkState() const noexcept;          // SWS_ANM_01007
+  ara::core::Result<NetworkStateType> GetNetworkRequestedState() const noexcept; // SWS_ANM_01008
+  /// kFullCom requests the network, kNoCom releases it (SWS_ANM_00084). Idempotent.
+  ara::core::Result<void> SetNetworkRequestedState(NetworkStateType state) noexcept; // SWS_ANM_01009
 
-  /// Network request. Idempotent.
-  ara::core::Result<void> Request();
-  /// Network release; kNotRequested if there was no Request().
-  ara::core::Result<void> Release();
-
-  /// Partial network (0..31) request / release. Independent of Request().
-  ara::core::Result<void> RequestPartialNetwork(std::uint8_t pnId);
-  ara::core::Result<void> ReleasePartialNetwork(std::uint8_t pnId);
-  /// True if requested locally or by a remote node (and not yet expired).
-  ara::core::Result<bool> IsPartialNetworkRequested(std::uint8_t pnId);
-
-  /// Feed a received NM message (already decoded).
-  void OnPduReceived(NmPdu const &pdu);
-  /// Feed raw bytes; kBadPdu on a malformed message.
-  ara::core::Result<void> OnBytesReceived(std::uint8_t const *bytes, std::size_t size);
-
-  /// Advance timers to the clock's current time and transmit due messages.
-  void Process();
-
-  void SetStateChangeHandler(StateHandler h);
-  void SetTxHandler(TxHandler h);
+  /// One notifier per kind; registering again overwrites. Empty notifier -> kInvalidHandler.
+  ara::core::Result<void> RegisterNetworkStateChangeNotifier(NetworkStateChangeNotifier notifier) noexcept;          // 01010
+  ara::core::Result<void> RegisterNetworkRequestedStateChangeNotifier(NetworkStateChangeNotifier notifier) noexcept; // 01012
+  void UnregisterNetworkStateChangeNotifier() noexcept;          // SWS_ANM_01011
+  void UnregisterNetworkRequestedStateChangeNotifier() noexcept; // SWS_ANM_01013
 
 private:
-  NetworkHandle(std::string name, NmConfig cfg, std::shared_ptr<NmClock> clock);
-
-  struct Pending {
-    std::vector<std::pair<NmState, NmState>> changes;
-    std::vector<NmPdu> tx;
-  };
-
-  void Enter(NmState s, Millis t, Pending &p);
-  void Pump(Millis now, Pending &p);
-  bool Step(Millis now, Pending &p);
-  void Dispatch(Pending &p);
-  NmPdu MakePdu() const;
-
-  std::string const name_;
-  NmConfig const cfg_;
-  std::shared_ptr<NmClock> const clock_;
-
-  mutable std::mutex mu_;
-  NmState state_{NmState::kBusSleep};
-  bool requested_{false};
-  std::uint32_t localPn_{0};
-  std::uint32_t remotePn_{0};
-  std::array<Millis, kMaxPartialNetworks> remotePnExpiry_{};
-  Millis repeatDeadline_{0};
-  Millis nmTimeoutDeadline_{0};
-  Millis sleepDeadline_{0};
-  Millis txDeadline_{0};
-  StateHandler onState_;
-  TxHandler onTx_;
+  struct Impl;
+  std::shared_ptr<Impl> impl_;
 };
 
 } // namespace ara::nm

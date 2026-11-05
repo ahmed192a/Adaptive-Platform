@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "ara/nm/network_handle.h"
+#include "ara/nm/nm_channel.h"
 #include "ara/nm/network_manager.h"
 #include "ara/nm/nm_error_domain.h"
 
@@ -24,13 +24,13 @@ NmConfig Cfg() {
 
 struct Fx : ::testing::Test {
   std::shared_ptr<ManualClock> clk = std::make_shared<ManualClock>();
-  std::unique_ptr<NetworkHandle> h;
+  std::unique_ptr<NmChannel> h;
   std::vector<std::pair<NmState, NmState>> changes;
   std::vector<NmPdu> sent;
 
   void SetUp() override { Make(Cfg()); }
   void Make(NmConfig c) {
-    auto r = NetworkHandle::Create("can0", c, clk);
+    auto r = NmChannel::Create("can0", c, clk);
     ASSERT_TRUE(r.HasValue());
     h = std::move(r).Value();
     h->SetStateChangeHandler([this](NmState a, NmState b) { changes.emplace_back(a, b); });
@@ -250,10 +250,10 @@ TEST(NmConfigCheck, ZeroTimerRejected) {
   auto clk = std::make_shared<ManualClock>();
   auto c = Cfg();
   c.messageCycleTime = milliseconds(0);
-  auto r = NetworkHandle::Create("x", c, clk);
+  auto r = NmChannel::Create("x", c, clk);
   ASSERT_FALSE(r.HasValue());
   EXPECT_EQ(r.Error(), MakeErrorCode(NmErrc::kInvalidConfig));
-  EXPECT_FALSE(NetworkHandle::Create("x", Cfg(), nullptr).HasValue());
+  EXPECT_FALSE(NmChannel::Create("x", Cfg(), nullptr).HasValue());
 }
 
 TEST(NmStateNames, ToStringCoversAll) {
