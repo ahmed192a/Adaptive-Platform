@@ -29,16 +29,14 @@ ExecutionClient::ExecutionClient() noexcept {
 
 ExecutionClient::~ExecutionClient() noexcept{
   // close file descriptor
-  close(fd);
+  if (fd >= 0) close(fd);
 }
 
 std::variant<std::monostate, ExecErrc> ExecutionClient::ReportExecutionState(
     ara::exec::ExecutionState state) const noexcept {
   std::variant<std::monostate, ExecErrc> result;
-  std::string m = "run";
-  if (write(fd, &state, sizeof(state)) == -1) {
-    // TO DO
-    // Log Error : counldn't send the state to fifo
+  if (fd < 0 || write(fd, &state, sizeof(state)) != static_cast<ssize_t>(sizeof(state))) {
+    result.emplace<ExecErrc>(ExecErrc::kCommunicationError);
   }
   return result;
 }

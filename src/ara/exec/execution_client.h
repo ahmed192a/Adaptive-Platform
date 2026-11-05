@@ -39,7 +39,7 @@ class ExecutionClient final {
 private:
   std::string fifo_l{"execution_client_fifo"}; /*!< location of FIFO to
                                                 communicate between EM & SM */
-  int fd;                                    /*!< index of File descriptor */
+  int fd{-1};                                  /*!< index of File descriptor */
 
 public:
   /**

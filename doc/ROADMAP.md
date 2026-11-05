@@ -10,7 +10,7 @@ Reference: AUTOSAR Adaptive Platform R25-11 (SWS documents at https://www.autosa
 | ara::log | **new, spec-aligned API** | `InitLogging`, `CreateLogger`, `LogStream`, `Hex/Bin`; console/file sinks. No DLT remote transport. Old P7 based code kept as `ara_log_legacy_lib`. |
 | ara::per | **new** | Key-value + file storage, CRC-32 integrity, atomic persist with backup, quotas, JSON deployment config. CLI: `ap_per_tool`. 32 tests. |
 | ara::phm | **new** | Alive / deadline / logical supervision, global supervision, recovery action, watchdog interface. Demo: `phm_demo`. 32 tests. |
-| ara::exec | legacy | Fixed UB in `ExecErrorDomain`; still needs ExecutionClient/StateClient review against the SWS. |
+| ara::exec | **hardened** | Manifest parsing no longer calls exit()/throws under noexcept; clients report kCommunicationError; StateClient no longer dangles; FunctionGroupState compares group and state; added `GetExecDomain`/`MakeErrorCode`. 7 tests. Exec domain id 0x8000000000000202 is unverified. Still missing: StateClient transition results, DeterministicClient review. |
 | ara::com | legacy | SOME/IP + SD present; warnings and tests need work. |
 | ara::sm, ara::ucm | legacy | |
 | Not started | | Diagnostics, Crypto, Network Management, Time Sync, IDSM, Firewall, RawDataStream, OSI, Remote Persistency, VUCM |

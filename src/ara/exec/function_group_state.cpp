@@ -20,8 +20,9 @@ namespace ara
         std::variant<ara::exec::ExecErrc, FunctionGroupState::CtorToken> FunctionGroupState::Preconstruct(FunctionGroup const &functionGroup, std::string const& metaModelIdentifier) noexcept
         {
             std::variant<ara::exec::ExecErrc, FunctionGroupState::CtorToken> token;
-            unsigned long sl = metaModelIdentifier.find('/');
-            if (functionGroup.get_FGname() != metaModelIdentifier.substr(0, sl))
+            auto const sl = metaModelIdentifier.find('/');
+            if (sl == std::string::npos || sl + 1 >= metaModelIdentifier.size() ||
+                functionGroup.get_FGname() != metaModelIdentifier.substr(0, sl))
             {
                 token.emplace<0>(ara::exec::ExecErrc::kMetaModelError);
                 return token;
@@ -67,21 +68,14 @@ namespace ara
 
         bool FunctionGroupState::operator==(FunctionGroupState const &other) const noexcept
         {
-            if (this->mCtorToken.fg_name == other.mCtorToken.fg_name)
-            {
-                return true;
-            }
-            return false;
+            return mCtorToken.fg_name == other.mCtorToken.fg_name &&
+                   mCtorToken.c_state == other.mCtorToken.c_state;
         }
 
 
         bool FunctionGroupState::operator!=(FunctionGroupState const &other) const noexcept
         {
-            if (this->mCtorToken.fg_name == other.mCtorToken.fg_name)
-            {
-                return false;
-            }
-            return true;
+            return !(*this == other);
         }
     } // namespace exec
 
