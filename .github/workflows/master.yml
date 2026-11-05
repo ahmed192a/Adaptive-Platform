@@ -57,10 +57,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install tools
+        timeout-minutes: 20
         run: |
-          sudo apt-get update && sudo apt-get install -y ninja-build ffmpeg
-          pip install playwright
-          python3 -m playwright install --with-deps chromium ffmpeg
+          # Runner downloads occasionally hang: bound every attempt and retry.
+          retry() { for n in 1 2 3; do timeout 300 "$@" && return 0; echo "attempt $n failed or timed out: $*"; sleep 5; done; return 1; }
+          retry sudo apt-get update
+          retry sudo apt-get install -y ninja-build ffmpeg
+          retry pip install playwright
+          retry sudo -E env "PATH=$PATH" python3 -m playwright install-deps chromium
+          retry python3 -m playwright install chromium ffmpeg
       - run: cmake --preset release
       - run: cmake --build --preset release -j
       - name: Run the platform and the browser scenario
