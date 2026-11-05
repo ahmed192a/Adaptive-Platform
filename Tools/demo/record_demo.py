@@ -3,7 +3,7 @@
 
 Usage:
   ap_dashboard --port 8099 &
-  python3 Tools/demo/record_demo.py --url http://127.0.0.1:8099 --out docs/img [--video]
+  python3 Tools/demo/record_demo.py --url http://127.0.0.1:8099 --out doc/img [--video]
 
 Needs: playwright (pip install playwright) and a Chrome/Chromium binary; ffmpeg for the mp4.
 Every step waits on real platform state (no fixed sleeps for correctness), so the script
@@ -23,7 +23,7 @@ CAPTION_JS = """
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", default="http://127.0.0.1:8099")
-    ap.add_argument("--out", default="docs/img")
+    ap.add_argument("--out", default="doc/img")
     ap.add_argument("--video", action="store_true")
     ap.add_argument("--pace", type=float, default=1.0, help="multiplier for the pauses between steps (video)")
     a = ap.parse_args()
@@ -56,6 +56,7 @@ def main():
         focus("#cardEm")
         cap("Execution Management starts the platform processes from the manifests")
         page.click("#btnEmStart")
+        page.wait_for_function("document.querySelector('#emState').textContent === 'running'")
         page.wait_for_function("document.querySelectorAll('#procTable tbody tr').length >= 2")
         pause(1.2)
         shot("02-execution-management.png")

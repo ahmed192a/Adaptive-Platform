@@ -132,7 +132,7 @@ TEST_F(ExecTest, StateClientDeliversRequestOverFifo) {
   ssize_t n = ::read(rd, buf, sizeof buf - 1);
   ::close(rd);
   ASSERT_GT(n, 0);
-  EXPECT_EQ(std::string(buf, static_cast<size_t>(n)), "FG_1/On");
+  EXPECT_EQ(std::string(buf, static_cast<size_t>(n)), "FG_1/On\n");
 }
 
 } // namespace
