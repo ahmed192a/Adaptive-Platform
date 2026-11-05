@@ -275,7 +275,7 @@ void otaServer::handler() {
     /* Receive size of the message */
     server_udp_socket.UDPRecFrom((void *)&msg_size, sizeof(msg_size),
                                  (struct sockaddr *)&echoClntAddr, &clntLen);
-    msg.reserve(msg_size); /* Reserve memory for received message */
+    msg.resize(msg_size); /* Size the buffer that is received into */
     /* Receive the message */
     server_udp_socket.UDPRecFrom((void *)&msg[0], msg_size,
                                  (struct sockaddr *)&echoClntAddr, &clntLen);
@@ -288,12 +288,17 @@ void otaServer::handler() {
     cudp.addr =
         std::string(inet_ntoa(echoClntAddr.sin_addr)); /* Address of client */
 
-    // make sure that the message is SOMEIP
+    // make sure that the message is SOMEIP (a header is at least 16 bytes)
+    if (msg.size() < 16) {
+      continue; /* too short to be a SOME/IP message: ignore */
+    }
     if (msg[14] != 0x02) {
 
-      ara::com::SOMEIP_MESSAGE::Message Nmsg =
-          ara::com::SOMEIP_MESSAGE::Message::Deserialize(
-              msg);            /* Deserialize message */
+      auto parsed = ara::com::SOMEIP_MESSAGE::Message::TryDeserialize(msg);
+      if (!parsed) {
+        continue; /* malformed datagram: ignore */
+      }
+      ara::com::SOMEIP_MESSAGE::Message Nmsg = *parsed;
       msg = Nmsg.GetPayload(); /* Get payload */
 
       if (Nmsg.MessageId().serivce_id == pkg_proxy_ptr->GetServiceId()) {

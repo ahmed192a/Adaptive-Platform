@@ -35,6 +35,10 @@ serviceRegistry::serviceRegistry() {
 
 
 
+namespace {
+constexpr uint32_t MaxSdMessageSize = 64 * 1024; //!< upper bound for one SD message
+}
+
 void serviceRegistry::run() {
   threads.push_back(std::thread(&serviceRegistry::handler, this));
   CServer s1(SOCK_STREAM);   // create a server object
@@ -55,9 +59,17 @@ void serviceRegistry::run() {
 
     // read the message from the client
     soc.Receive(&_size, sizeof(_size)); // receive the size of the message
-    _msg.reserve(_size);                // reserve memory for the message
+    if (_size == 0 || _size > MaxSdMessageSize) { // refuse absurd sizes
+      soc.CloseSocket();
+      continue;
+    }
+    _msg.resize(_size);                 // size (not just reserve) the buffer
     soc.Receive(&_msg[0], _size);       // receive the message
-    sd_msg.Deserialize(_msg);           // deserialize the message
+    // deserialize the message; ignore malformed or empty requests
+    if (!sd_msg.Deserialize(_msg) || sd_msg.Entries().empty()) {
+      soc.CloseSocket();
+      continue;
+    }
 
     // Loop on entries
     auto entry = sd_msg.Entries()[0];        // get the first entry
@@ -128,12 +140,17 @@ void serviceRegistry::handler() {
 
     s1.UDPRecFrom(&_size, sizeof(_size), (struct sockaddr *)&cliaddr,
                   &len); // receive the size of the message
-    _msg.reserve(_size); // reserve memory for the message
+    if (_size == 0 || _size > MaxSdMessageSize) { // refuse absurd sizes
+      continue;
+    }
+    _msg.resize(_size); // size (not just reserve) the buffer
     s1.UDPRecFrom(&_msg[0], _size, (struct sockaddr *)&cliaddr,
                   &len); // receive the message
 
     cout << "       [SD(Thread 0)]: Receiving Offers" << endl;
-    sd_msg.Deserialize(_msg); // deserialize the message
+    if (!sd_msg.Deserialize(_msg)) { // ignore malformed messages
+      continue;
+    }
 
     // Loop on entries
     auto entrie = sd_msg.Entries(); // get the entries
@@ -141,12 +158,18 @@ void serviceRegistry::handler() {
       switch (entry->Type()) {
 
       case ara::com::entry::EntryType::Offering: {
+        if (entry->FirstOptions().empty()) {
+          break; // an offer without an endpoint carries nothing to register
+        }
         auto first_option =
             entry->FirstOptions()[0]; // get the first entry option
 
         std::shared_ptr<ara::com::option::Ipv4EndpointOption> ipv4_option =
             std::dynamic_pointer_cast<ara::com::option::Ipv4EndpointOption>(
                 first_option); // store first option as ipv4 option
+        if (!ipv4_option) {
+          break;
+        }
 
         // print the ipv4 address
         cout << "           IPv4: " << int(ipv4_option->IpAddress().Octets[0])

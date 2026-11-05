@@ -22,7 +22,9 @@ std::vector<uint8_t> Option::BasePayload() const {
   auto _type = static_cast<uint8_t>(GBType);
   _result.push_back(_type);
 
-  auto _discardableFlag = static_cast<uint8_t>(GBDiscardable);
+  // Discardable flag is the most significant bit; bits 1-7 are reserved (0)
+  // [PRS_SOMEIPSD_00273, PRS_SOMEIPSD_00275].
+  const uint8_t _discardableFlag = GBDiscardable ? 0x80 : 0x00;
   _result.push_back(_discardableFlag);
 
   return _result;
