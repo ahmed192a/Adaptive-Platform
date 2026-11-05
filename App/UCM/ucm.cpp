@@ -85,8 +85,12 @@ void UCM_Server::mainThread() {
     Sclient.Receive((void *)&msg[0], msg_size); /*  recieve the message  */
 
     /*         SOMEIP_MESSAGE Deserialize    */
-    ara::com::SOMEIP_MESSAGE::Message someip_msg =
-        ara::com::SOMEIP_MESSAGE::Message::Deserialize(msg);
+    auto parsed_msg = ara::com::SOMEIP_MESSAGE::Message::TryDeserialize(msg);
+    if (!parsed_msg) { /* malformed datagram: drop the request */
+      Sclient.CloseSocket();
+      continue;
+    }
+    ara::com::SOMEIP_MESSAGE::Message someip_msg = *parsed_msg;
     if (someip_msg.MessageId().serivce_id ==
         server_skeleton_ptr->GetServiceId()) {
       if (someip_msg.check_Methode_ID() == true) {
