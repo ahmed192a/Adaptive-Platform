@@ -333,7 +333,7 @@ public:
       service_proxy_tcp.ClientWrite(&data[0], msg_size);
       std::vector<uint8_t> msgser;
       service_proxy_tcp.ClientRead((void *)&msg_size, sizeof(msg_size));
-      msgser.reserve(msg_size);
+      msgser.resize(msg_size);
       service_proxy_tcp.ClientRead((void *)&msgser[0], msg_size);
       service_proxy_tcp.CloseSocket();
 
