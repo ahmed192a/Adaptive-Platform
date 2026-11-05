@@ -172,6 +172,10 @@ public:
   PrivateKey &operator=(PrivateKey &&) noexcept;
   ~PrivateKey();
   static Res<PrivateKey> Generate(SignatureAlgorithm alg);
+  /// Imports an unencrypted PKCS#8 PrivateKeyInfo (Ed25519 or EC P-256 only).
+  static Res<PrivateKey> FromPkcs8Der(ByteView der);
+  /// Serialises as unencrypted PKCS#8.  The caller must SecureZero the result.
+  Res<ByteVector> ToPkcs8Der() const;
   SignatureAlgorithm Algorithm() const noexcept { return alg_; }
   Res<ByteVector> Sign(ByteView message) const;
   Res<PublicKey> GetPublicKey() const;
