@@ -36,17 +36,12 @@ std::future<ara::ucm::pkgmgr::PackageManagement::ActivateOutput>
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::Activate() {
   return std::async(std::launch::async, [this]() {
     ara::ucm::pkgmgr::PackageManagement::ActivateOutput output;
-    /* [SWS_UCM_00241] only allowed in kReady; enters kActivating */
-    if (int e = core_.BeginActivate()) {
-      output.error = e;
-      return output;
-    }
-    /* The flashing-adapter hand-over (UART) is currently stubbed: activation
-     * always succeeds. Rejected update sessions ([SWS_UCM_00258]) are not
-     * modelled yet. */
-    std::cout << "\t\t\t\tActivate Success" << std::endl;
-    core_.EndActivate(true);
-    output.error = 0;
+    /* [SWS_UCM_00241] only allowed in kReady. The State Management hooks (PrepareUpdate ->
+     * [00258] / [00242], ResetMachine) are optional: without them activation succeeds. The
+     * flashing adapter hand-over (UART) is still stubbed. */
+    int const e = core_.Activate();
+    if (e == 0) std::cout << "\t\t\t\tActivate Success" << std::endl;
+    output.error = e;
     return output;
   });
 }
@@ -94,12 +89,24 @@ ara::ucm::pkgmgr::PackageManagement::GetHistoryOutput
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::GetHistory(
     uint64_t timestampGE, uint64_t timestampLT) {
   ara::ucm::pkgmgr::PackageManagement::GetHistoryOutput output;
+  for (auto const &h : core_.History()) {
+    std::uint64_t const ms = h.timeSeconds * 1000ULL;
+    if (ms < timestampGE || (timestampLT != 0 && ms >= timestampLT)) continue;
+    PackageManagement::GetHistoryType t;
+    t.Time = ms;
+    t.Name = h.action; /* the operation (Activate, Rollback, ...); cluster names are not tracked yet */
+    t.Version = "";
+    t.Action = 0;      /* kUpdate */
+    t.Resolution = h.result == 0 ? 0 : 1;
+    output.history.push_back(std::move(t));
+  }
   return output;
 }
 
 ara::ucm::pkgmgr::PackageManagement::GetIdOutput
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::GetId() {
   ara::ucm::pkgmgr::PackageManagement::GetIdOutput output;
+  output.id = core_.GetId();
   return output;
 }
 
@@ -236,7 +243,7 @@ ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::ProcessSwPackage(
           return result;
         }
         if (core_.CancelRequested(id)) { /* [SWS_UCM_00150] */
-          core_.EndProcess(id, false);
+          core_.EndProcessFailed(id, ara::ucm::pkgmgr::PackageManagement::ProcessSwPackageCancelled); /* 00003 */
           result.error = ara::ucm::pkgmgr::PackageManagement::ProcessSwPackageCancelled;
           return result;
         }
@@ -409,18 +416,15 @@ ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::ProcessSwPackage(
 ara::ucm::pkgmgr::PackageManagement::RevertProcessedSwPackagesOutput
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::RevertProcessedSwPackages() {
   ara::ucm::pkgmgr::PackageManagement::RevertProcessedSwPackagesOutput output;
-  output.error = core_.RevertProcessed(); /* 00237 */
+  output.error = core_.Revert(); /* 00237 / 00236 */
   return output;
 }
 ara::ucm::pkgmgr::PackageManagement::RollbackOutput
 ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::Rollback() {
   ara::ucm::pkgmgr::PackageManagement::RollbackOutput output;
-  if (int e = core_.BeginRollback()) { /* 00239 */
-    output.error = e;
-    return output;
-  }
-  /* No hardware rollback exists yet: the previous image is simply kept. */
-  core_.EndRollback(true);
+  /* 00239; State Management PrepareRollback / ResetMachine hooks are optional (00110). No hardware
+   * rollback exists yet: the previous image is simply kept. */
+  output.error = core_.Rollback();
   return output;
 }
 std::future<ara::ucm::pkgmgr::PackageManagement::TransferDataOutput>
