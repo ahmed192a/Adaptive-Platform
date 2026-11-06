@@ -59,7 +59,7 @@ difference), **Unverified** (cannot be judged without chapter 8).
 | Second `get_future()` | **Fixed** | Returned a silent invalid Future; now `FutureErrc::future_already_retrieved`. |
 | Second `set_value`/`SetError`/`SetResult` | **Fixed** | Was silently ignored; now `FutureErrc::promise_already_satisfied`. |
 | Broken promise | **Fixed (was Missing)** | A Promise destroyed (or move-assigned over) while unfulfilled now delivers `FutureErrc::broken_promise` to its Future, so waiters no longer block forever. Only available when `E` is constructible from `ErrorCode` (the default). |
-| `Promise`/`Future` `Swap`, `Promise::set_error` aliases | Unverified / Missing | Not implemented; could not confirm they exist in R25-11. |
+| `Promise::Swap`, free `swap(Promise&, Promise&)` | **Fixed (was Missing)** | Exchanges shared state without abandoning either side (test `PromiseTest.SwapExchangesSharedState`). `Future::Swap` and `Promise::set_error` alias: **Unverified** — not added until a readable SWS release confirms them. |
 | `Future::then` continuation thread | Deviation | Runs on the fulfilling thread (or inline); the SWS leaves the execution context unspecified. |
 
 ## Initialization
@@ -85,7 +85,7 @@ difference), **Unverified** (cannot be judged without chapter 8).
 | `Variant`, `monostate`, `get`, `get_if`, `holds_alternative`, `visit` | Implemented | |
 | `bad_variant_access`, `variant_npos`, `variant_size(_v)`, `variant_alternative(_t)` | **Fixed (was Missing)** | Added to `variant.h`. |
 | `Vector`, `Map`, `Array`, `String`, `StringView`, `Byte` | Implemented | Aliases of the `std` types (C++17). `BasicString`/`to_string` helpers are not exported (unverified). `Byte` is `std::byte`; the SWS specifies a class with the same operations. |
-| `Span`, `dynamic_extent` | Implemented | Own implementation in `span.h` (C++17 has no `std::span`). Not re-audited in detail. |
+| `Span`, `dynamic_extent`, `MakeSpan` | **Fixed (was non-functional)** | `span.h` previously only *declared* the interface and could not be compiled under `-Werror` (deprecated `std::iterator`); it is now a complete implementation with pointer iterators: ctors (pointer+count, range, C array, `std::array`, container, converting), `first/last/subspan` (static and dynamic), `size/size_bytes/empty`, `operator[]`, `data`, (c)(r)begin/end, `MakeSpan` overloads. Tests: `Testing/core/span_swap_test.cpp`. Exact SWS signatures: **Unverified** (chapter 8 not readable); behaviour follows the C++20 `std::span` model the SWS is based on. |
 | `SteadyClock` | Implemented | `now()`, `is_steady`, `time_point<SteadyClock>`. |
 | `in_place*`, `data`, `empty`, `size` | Implemented | |
 | `MemoryResource`, `GetDefaultResource`, `SetDefaultResource`, `NewDeleteResource`, `NullMemoryResource` | **Fixed (was Missing)** | New `memory_resource.h`, mapped to `std::pmr`. The SWS family has more members (monotonic/pool resources); only the above are provided. Signatures unverified. |
@@ -102,4 +102,8 @@ was updated where it encoded the old behaviour (second `get_future`, repeated `s
 1. Re-run this audit against the R25-11 PDF (chapter 8) and replace every "Unverified" with a
    requirement id.
 2. Decide whether to move `ErrorCode::Message()` to `StringView` (a breaking change for callers).
-3. Complete the `MemoryResource` family and `Promise`/`Future` `Swap` if the R25-11 text requires them.
+3. Complete the `MemoryResource` family (monotonic/pool resources) and `Future::Swap` if a readable SWS release requires them.
+
+### Spec sources
+
+R25-11 was tried first. Items that could not be read in R25-11 chapter 8 fall back to the closest earlier release (R24-11 → R23-11 → R22-11); the closest readable release for the new `Span`/`Swap` work was not retrievable in this session, so those rows are explicitly marked **Unverified** rather than claiming a release.
