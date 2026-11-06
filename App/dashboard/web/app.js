@@ -22,6 +22,7 @@ async function poll() {
     renderPhm(o.phm);
     renderPer(o.per);
     renderEmState(o.em);
+    if (typeof renderLab === "function") renderLab(o.lab);
     for (const l of o.logs) { logSeq = Math.max(logSeq, l.seq); addLog(l); }
   } catch (e) {
     $("#hDot").className = "dot bad"; $("#hNode").textContent = "offline";

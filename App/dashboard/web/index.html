@@ -97,6 +97,79 @@
     <pre id="cOut" class="out"></pre>
   </section>
 
+
+  <!-- Network Management -->
+  <section class="card" id="cardNm">
+    <div class="card-h"><h2>Network Management</h2><span class="chip" id="nmClock">t = 0 ms</span><span class="chip" id="nmPdus">0 PDUs</span>
+      <div class="spacer"></div><button class="btn" id="nmReset">Reset</button></div>
+    <div class="nm-ecus" id="nmEcus"></div>
+    <div class="row"><button class="btn primary" data-nm="200">+200 ms</button><button class="btn" data-nm="1000">+1 s</button><button class="btn" data-nm="6000">+6 s</button>
+      <span class="muted hint">virtual clock: time only moves when you advance it</span></div>
+    <h3>State timeline</h3>
+    <ol id="nmEvents" class="timeline small"><li class="muted">no state changes yet</li></ol>
+  </section>
+
+  <!-- Time sync -->
+  <section class="card" id="cardTs">
+    <div class="card-h"><h2>Time Synchronization</h2><span class="chip" id="tsStatus">–</span><span class="chip" id="tsFlags"></span></div>
+    <div class="ts-grid">
+      <div><span class="k">local clock</span><b id="tsLocal">–</b></div>
+      <div><span class="k">synchronized time</span><b id="tsTime">–</b></div>
+      <div><span class="k">master time</span><b id="tsMaster">–</b></div>
+      <div><span class="k">offset to master</span><b id="tsOffset">–</b></div>
+    </div>
+    <div class="row">
+      <button class="btn primary" data-ts="0">Sync (exact)</button>
+      <button class="btn" data-ts="20">+20 ms · slew</button>
+      <button class="btn" data-ts="2000">+2 s · step</button>
+      <button class="btn" data-ts="rate">Rate +500 ppm</button>
+      <button class="btn" data-ts="adv">Silent 2 s · timeout</button>
+      <button class="btn" data-ts="reset">Reset</button>
+    </div>
+    <h3>Events</h3>
+    <ul id="tsEvents" class="events"><li class="muted">no events yet</li></ul>
+  </section>
+
+  <!-- Extended diagnostics -->
+  <section class="card" id="cardUdsx">
+    <div class="card-h"><h2>Diagnostics lab</h2><span class="chip" id="udsxSess">default</span><span class="chip">demo ECU · DTC memory · security</span>
+      <div class="spacer"></div><button class="btn" id="udsxReset">Reset ECU</button></div>
+    <div class="quick" id="udsxQuick"></div>
+    <form id="udsxForm" class="row"><input id="udsxInput" placeholder="hex request, e.g. 19 02 FF" autocomplete="off" spellcheck="false"><button class="btn primary">Send</button></form>
+    <div id="udsxConsole" class="console"></div>
+  </section>
+
+  <!-- Software update -->
+  <section class="card" id="cardUpd">
+    <div class="card-h"><h2>Software Update</h2><span class="chip" id="updOutcome">idle</span><span class="chip">UCM · State Management</span></div>
+    <div class="row"><label class="muted">package size</label>
+      <select id="updSize"><option value="5000">5 KB</option><option value="20000" selected>20 KB</option><option value="100000">100 KB</option><option value="400000">400 KB</option></select>
+      <label class="muted">scenario</label>
+      <select id="updMode"><option value="">successful update</option><option value="tamper">tampered in transit</option><option value="failVerify">verification fails → rollback</option><option value="rejectSession">SM rejects session</option></select>
+      <button class="btn primary" id="updRun">▶ Run update</button></div>
+    <div class="upd-bar"><div id="updBar"></div></div>
+    <div class="upd-trails">
+      <div><h3>UCM status</h3><ol id="updStatus" class="trail"></ol></div>
+      <div><h3>Machine state</h3><ol id="updMachine" class="trail"></ol></div>
+    </div>
+    <div id="updMsg" class="msg"></div>
+  </section>
+
+  <!-- Key slots -->
+  <section class="card" id="cardKeys">
+    <div class="card-h"><h2>Key slots</h2><span class="chip">KeyStorageProvider · wrapped at rest</span><div class="spacer"></div><button class="btn" id="keyReload">Reload from storage</button></div>
+    <table class="tbl keytbl" id="keyTable"><thead><tr><th>slot</th><th>algorithm</th><th>usage</th><th>state</th><th></th></tr></thead><tbody></tbody></table>
+    <div class="row"><input id="keyText" value="engine calibration v7" aria-label="message"><select id="keyOp"><option value="seal">AES-GCM seal + open</option><option value="mac">HMAC</option><option value="sign">Ed25519 sign + verify</option></select><button class="btn primary" id="keyGo">Use slot</button></div>
+    <pre id="keyOut" class="out"></pre>
+  </section>
+
+  <!-- Demo apps -->
+  <section class="card span2" id="cardApps">
+    <div class="card-h"><h2>Demo applications</h2><span class="chip">runs the real binaries · output captured</span></div>
+    <div id="appList" class="app-list"></div>
+    <pre id="appOut" class="out app-out">pick an application to run it here</pre>
+  </section>
+
   <!-- Log -->
   <section class="card span2" id="cardLog">
     <div class="card-h"><h2>Platform log</h2><span class="chip">ara::log</span><div class="spacer"></div><button class="btn" id="btnClearLog">Clear</button></div>
@@ -104,5 +177,6 @@
   </section>
 </main>
 <script src="app.js"></script>
+<script src="lab.js"></script>
 </body>
 </html>
