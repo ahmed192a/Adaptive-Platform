@@ -3,5 +3,6 @@ ap_add_test(
   NAME      ara_com_ut
   SOURCES   someip_message_test.cpp
             someip_sd_test.cpp
+            com_api_test.cpp
   DEPENDS   ara_com_lib
   LABELS    com)
