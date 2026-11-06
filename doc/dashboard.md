@@ -20,7 +20,7 @@ changes function-group states and starts/terminates the SD, SM, UCM and OTA proc
 The console parses its log into function-group states, a process table and a timeline, and lets you browse each
 process' output.
 
-![Execution Management](img/03-execution-management-done.png)
+![Execution Management](img/02-execution-management.png)
 
 ### 2 · Platform Health Management
 Three supervised workers (`Brake`, `Infotainment`, `Telematics`) report alive checkpoints every 50 ms; each is
@@ -31,16 +31,16 @@ supervised by an alive supervision (4 ± 2 indications per 200 ms) inside its ow
 * With it off, the recovery action declines (`kSMCanNotHandleRecovery`) → PHM escalates to the **watchdog** and the
   console shows the reset banner. **Reset ECU** re-initialises the platform and increments the boot counter.
 
-| Fault detected | Expired | Watchdog |
-|---|---|---|
-| ![](img/04-phm-fault-detected.png) | ![](img/05-phm-expired.png) | ![](img/06-phm-watchdog.png) |
+| Recovered | Watchdog |
+|---|---|
+| ![](img/03-phm.png) | ![](img/03-phm-watchdog.png) |
 
 ### 3 · Diagnostics (UDS)
 A transport-independent UDS server: session control with S3 timeout, `ReadDataByIdentifier`, `WriteDataByIdentifier`,
 `TesterPresent`, `ECUReset` and a routine. Writing the vehicle name is rejected in the default session
 (`7F 2E 31`) and accepted in the extended session; the value is stored through `ara::per`.
 
-![Diagnostics](img/07-diagnostics.png)
+![Diagnostics](img/04-diagnostics.png)
 
 ### 4 · Persistency and Cryptography
 Edit the key-value store (CRC-protected, atomically persisted), or try AES-GCM sealing — flipping one bit of the
@@ -48,11 +48,11 @@ ciphertext is detected — and Ed25519 / ECDSA signatures.
 
 | Persistency | Cryptography |
 |---|---|
-| ![](img/08-persistency.png) | ![](img/09-crypto.png) |
+| ![](img/05-persistency.png) | ![](img/06-crypto.png) |
 
 ## Demo video
 
-`doc/img/platform-demo.mp4` (≈ 40 s) shows the whole scenario. Regenerate it with:
+`doc/img/platform-demo.mp4` (≈ 75 s) shows the whole scenario. Regenerate it with:
 
 ```bash
 ap_dashboard --port 8099 &
