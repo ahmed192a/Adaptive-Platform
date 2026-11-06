@@ -10,3 +10,5 @@ add_subdirectory(UCM)
 add_subdirectory(OTA)
 add_subdirectory(examples)
 add_subdirectory(dashboard)
+
+add_subdirectory(demo/uds_tester)
