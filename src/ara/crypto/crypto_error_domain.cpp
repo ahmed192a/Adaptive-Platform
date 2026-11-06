@@ -22,6 +22,7 @@ char const *CryptoErrorDomain::Message(CodeType errorCode) const noexcept {
   case CryptoErrc::kInvalidKeyLength: return "invalid key length";
   case CryptoErrc::kBadObjectReference: return "bad object reference";
   case CryptoErrc::kBusyResource: return "resource is busy";
+  case CryptoErrc::kAlgIdUndefined: return "algorithm id undefined";
   }
   return "unknown crypto error";
 }
