@@ -5,6 +5,10 @@
 # ---------------------------------------------------------------------------
 include(FetchContent)
 set(FETCHCONTENT_QUIET ON)
+# CMake 4 dropped compatibility with cmake_minimum_required < 3.5, which some pinned dependencies still declare
+if(NOT DEFINED CMAKE_POLICY_VERSION_MINIMUM)
+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+endif()
 
 macro(ap_dependency NAME TARGET)
   # usage: ap_dependency(<fetch-name> <imported-target> [FIND <pkg>] GIT_REPOSITORY .. GIT_TAG ..)
