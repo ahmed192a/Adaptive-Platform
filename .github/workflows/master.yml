@@ -9,7 +9,7 @@ on:
 jobs:
   build-test:
     name: ${{ matrix.compiler }} / ${{ matrix.preset }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -32,7 +32,7 @@ jobs:
         run: ctest --preset ${{ matrix.preset }} -j 2
 
   coverage:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - name: Install tools
