@@ -7,6 +7,12 @@ Source: [AUTOSAR_AP_SWS_PlatformHealthManagement.pdf (R25-11)](https://www.autos
 numeric values, `TypeOfSupervision` values) was **not retrievable** in this audit, so API-shape rows are
 marked *Unverified* instead of being guessed. Ids not listed here were not read and are not claimed.
 
+**Fallback release.** R22-11 (`AUTOSAR_SWS_PlatformHealthManagement.pdf`) was read as a fallback. Its Chapter 8 is also
+only headings in the extracted text, so signatures and numeric values stay *Unverified*; it additionally confirms
+SWS_PHM_00101 (the `supervision` parameter carries the `TypeOfSupervision` that caused kEXPIRED), SWS_PHM_01343
+(elementary statuses kOK, kDEACTIVATED, kEXPIRED, kFAILED) and SWS_PHM_00216 (global statuses kOK, kDEACTIVATED,
+kFAILED, kEXPIRED, kSTOPPED) - all matching the implementation.
+
 Status legend: **Implemented**, **Partial**, **Missing**, **Deviation** (known, intentional or forced),
 **Unverified** (could not be checked against the text).
 
@@ -25,7 +31,7 @@ Status legend: **Implemented**, **Partial**, **Missing**, **Deviation** (known, 
 | SWS_PHM_00107 | `kSMCanNotHandleRecovery` => stop alive notifications and fire watchdog reaction | Implemented | `UnhandledRecoveryStopsAliveNotificationsAndFiresWatchdog`; no handler offered also escalates (`escalateToWatchdog`) |
 | SWS_PHM_01147, SWS_PHM_01148 | `RecoveryAction::Offer` / `StopOffer` enable / disable handler calls | Implemented | `RecoveryActionOfferRules`; `Offer()` returns `Result<void>`, `kAlreadyOffered` on a second offer (implementation specific) |
 | SWS_PHM_01361 | Default execution error 1 when none is configured | **Fixed in this audit** | was 0; struct default and JSON default are now 1 (`DefaultExecutionErrorIsOne`, `MissingExecutionErrorParsesAsOne`) |
-| SWS_PHM_01363 | Production error `PHM_E_WATCHDOG_RESET` reported FAILED when the watchdog reaction fires | Missing | no `ara::diag` event reporting wired into PHM; the reaction is observable via `WatchdogInterface::FireWatchdogReaction` and `WatchdogReactionFired()`. Candidate once `ara::diag` has DTC/event reporting |
+| SWS_PHM_01363 | Production error `PHM_E_WATCHDOG_RESET` reported FAILED when the watchdog reaction fires | **Implemented** (sink-based) | `HealthMonitor::SetProductionErrorReporter(std::function<void(name, failed)>)`; reported once, *before* `FireWatchdogReaction()` (`WatchdogResetProductionErrorReportedBeforeReaction`, `NoProductionErrorWithoutEscalation`). PHM does not link `ara::diag`; the host forwards the callback to its event reporting. Id verified from the R25-11 text |
 | SWS_PHM_01364, 01365, 01366 | `Disable()` turns supervision off, checkpoints ignored while disabled, `Enable()` restarts the alive reference cycle | Implemented | `DisabledEntityIgnoresCheckpointsAndEnableRestartsCycle`, `HealthMonitorTest.DisableIgnoresCheckpointsAndSuspendsEvaluationEnableRestarts` |
 | SWS_PHM_01341 | Reports for checkpoints/entities with NoSupervision in the active mode are ignored | Partial | checkpoints not part of an *active* supervision are ignored; there is no explicit NoSupervision mode element in `PhmConfig` |
 | SWS_PHM_01229 | Reports from a process other than the configured one are ignored | Deviation | PHM is process-local (in-process `HealthMonitor` or a `CheckpointSink`); there is no process identity check. A multi-process transport would need to add it |
@@ -43,7 +49,6 @@ Status legend: **Implemented**, **Partial**, **Missing**, **Deviation** (known, 
 
 ## Still open
 
-1. `PHM_E_WATCHDOG_RESET` production error (SWS_PHM_01363).
-2. Verify chapter 8 signatures and `PhmErrc`/`TypeOfSupervision` numeric values once the formal API tables can be read.
-3. Process-identity check for incoming checkpoints (SWS_PHM_01229) when a cross-process transport exists.
-4. Explicit NoSupervision mode in the configuration model (SWS_PHM_01341).
+1. Verify chapter 8 signatures and `PhmErrc`/`TypeOfSupervision` numeric values once the formal API tables can be read.
+2. Process-identity check for incoming checkpoints (SWS_PHM_01229) when a cross-process transport exists.
+3. Explicit NoSupervision mode in the configuration model (SWS_PHM_01341).

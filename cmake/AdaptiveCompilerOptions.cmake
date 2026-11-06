@@ -37,6 +37,11 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
   endif()
   if(AP_WARNINGS_AS_ERRORS)
     target_compile_options(ap_warnings INTERFACE -Werror)
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+      # GCC's null-dereference analysis produces false positives inside inlined libstdc++ code
+      # (shared_ptr, streambuf, ...) that change with every compiler release: keep it a warning.
+      target_compile_options(ap_warnings INTERFACE -Wno-error=null-dereference)
+    endif()
   endif()
   target_compile_options(ap_legacy INTERFACE -Wall)
 elseif(MSVC)

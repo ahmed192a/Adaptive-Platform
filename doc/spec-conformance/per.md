@@ -20,7 +20,7 @@ listed are only those that appeared in the retrieved text. Status legend: **Impl
 | `OpenKeyValueStorage(InstanceSpecifier) noexcept` → `Result<SharedHandle<KeyValueStorage>>` | Implemented | `noexcept` added in this audit. Same specifier ⇒ same storage. |
 | `OpenFileStorage(InstanceSpecifier) noexcept` (SWS_PER_00116 in R19-03) | Implemented | `noexcept` added. |
 | `RecoverKeyValueStorage`, `ResetKeyValueStorage` | Implemented | Require the storage to be closed (`kResourceBusy`). `noexcept` added. |
-| `RecoverAllFiles`, `ResetAllFiles` | Partial | `RecoverAllFiles` always `kValidationFailed` (no redundancy kept for files). |
+| `RecoverAllFiles`, `ResetAllFiles` | **Fixed (was Partial)** | File storages now keep a **CRC-protected redundancy copy** of every written file in `<storage>/backup/<name>` + `<name>.crc`, refreshed by `SyncToFile()`, on closing a writable accessor, and after `ResetFile`; removed by `DeleteFile`/`ResetAllFiles`. `RecoverAllFiles` restores every file that is missing or whose CRC differs, reports each via the recovery callback (`kRecovered`), and returns `kValidationFailed` when no copy exists or a copy is corrupt. Redundancy layout is an implementation choice (**Unverified** vs SWS). Tests in `Testing/per/file_storage_test.cpp`. |
 | `GetCurrentKeyValueStorageSize`, `GetCurrentFileStorageSize` | Implemented | `noexcept` added. |
 | `ResetPersistency() noexcept` | Implemented | Resets every configured storage. |
 | `UpdatePersistency() noexcept` | **Partial** | Added. There is no manifest/update source: returns `kNotInitialized` if unconfigured, `kResourceBusy` while a storage is open, otherwise success. Update semantics **Unverified**. |
@@ -48,7 +48,7 @@ listed are only those that appeared in the retrieved text. Status legend: **Impl
 
 | API | Status | Notes |
 |---|---|---|
-| `GetAllFileNames`, `FileExists`, `DeleteFile`, `RecoverFile` `noexcept` (R19-03 SWS_PER_00110/00111/00112/00337) | Implemented | `noexcept` added. |
+| `GetAllFileNames`, `FileExists`, `DeleteFile`, `RecoverFile` `noexcept` (R19-03 SWS_PER_00110/00111/00112/00337) | Implemented | `noexcept` added. `RecoverFile` now restores from the redundancy copy (see `RecoverAllFiles`). |
 | `ResetFile`, `GetCurrentFileSize`, `GetFileInfo`, `GetCurrentStorageSize` | Implemented | |
 | `OpenFileReadOnly` / `OpenFileReadWrite` / `OpenFileWriteOnly` | Implemented | Spec signatures **Unverified** (not in retrieved text). One open handle per file (`kResourceBusy`). |
 | `ReadAccessor`: `PeekChar`, `PeekByte`, `GetChar`, `GetByte`, `ReadText(n)`, `ReadText()`, `ReadBinary(n)`, `ReadBinary()`, `ReadLine(char)`, `GetPosition`, `SetPosition`, `IsEof`, `GetSize` | Implemented | `noexcept` added to the `Result`-returning ones. `ReadText()/ReadBinary()` are the defaulted-argument forms. |
@@ -72,3 +72,9 @@ listed are only those that appeared in the retrieved text. Status legend: **Impl
 `Testing/per` — 39 tests (label `per`), including compile-time `noexcept` checks for the public API, the
 out-parameter `GetValue`, `MovePosition` return value, recovery-report callbacks (including
 re-entrancy and a throwing callback) and `UpdatePersistency`.
+
+## Demo
+
+`App/demo/persist_logger_app` (target `persist_logger_app`) exercises the key-value storage, file storage with
+redundancy and `RecoverAllFiles`, together with `ara::log` (levels, byte-span logging):
+`persist_logger_app --dir /tmp/pla [--corrupt]`.

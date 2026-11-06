@@ -26,6 +26,11 @@
 
 namespace ara::tsync {
 
+namespace internal {
+/// Validation-notification registration held by a provider (one notifier, a new one overwrites).
+struct ValidationRegistration;
+} // namespace internal
+
 /// Process-wide InstanceSpecifier -> time base binding.
 class TimeBaseRegistry {
 public:
@@ -51,6 +56,10 @@ public:
   }
   Timestamp GetCreationTime() const noexcept { return snap_.time; }
   std::chrono::steady_clock::time_point GetCreationLocalTime() const noexcept { return snap_.localTime; }
+  /// RATE_CORRECTED: a valid rate correction has been calculated (SWS_TS_14224).
+  bool GetRateCorrected() const noexcept { return snap_.rateCorrected; }
+  /// RATE_EXCEEDED: |rate deviation| exceeds rateCorrectionThreshold; 0 disables (SWS_TS_14228).
+  bool GetRateExceeded() const noexcept { return snap_.rateExceeded; }
 
 private:
   TimeBaseSnapshot snap_{};
@@ -62,6 +71,8 @@ public:
   using StatusChangeNotifier = std::function<void(SynchronizedTimeBaseStatus const &)>;           // unverified
   using SynchronizationStateChangeNotifier = std::function<void(SynchronizationStatus)>;          // unverified
   using TimeLeapNotifier = std::function<void(LeapJump)>;                                         // unverified
+  using PrecisionMeasurementNotifier = std::function<void(TimePrecisionMeasurement const &)>;     // 00800, unverified
+  using TimeValidationNotifier = std::function<void(TimeValidationData const &)>;                 // 01016, unverified
 
   explicit SynchronizedTimeBaseConsumer(ara::core::InstanceSpecifier const &specifier) noexcept;
   SynchronizedTimeBaseConsumer(SynchronizedTimeBaseConsumer const &) = delete;
@@ -81,9 +92,16 @@ public:
   ara::core::Result<void> RegisterStatusChangeNotifier(StatusChangeNotifier n) noexcept;                  // 00701
   ara::core::Result<void> RegisterSynchronizationStateChangeNotifier(SynchronizationStateChangeNotifier n) noexcept; // 00702
   ara::core::Result<void> RegisterTimeLeapNotifier(TimeLeapNotifier n) noexcept;                          // 00703
+  /// SWS_TS_00800/00803: kFunctionNotSupported for a system-wide global time master base,
+  /// kDaemonConnectionLost if unbound, kInvalidArgument for an empty notifier.
+  ara::core::Result<void> RegisterTimePrecisionMeasurementNotifier(PrecisionMeasurementNotifier n) noexcept;
+  /// SWS_TS_01016: receive master timing / pdelay responder data.
+  ara::core::Result<void> RegisterTimeValidationNotification(TimeValidationNotifier n) noexcept;
   void UnregisterStatusChangeNotifier() noexcept;
   void UnregisterSynchronizationStateChangeNotifier() noexcept;
   void UnregisterTimeLeapNotifier() noexcept;
+  void UnregisterTimePrecisionMeasurementNotifier() noexcept;
+  void UnregisterTimeValidationNotification() noexcept;
 
 private:
   struct Impl;
@@ -98,6 +116,14 @@ public:
   SynchronizedTimeBaseProvider(SynchronizedTimeBaseProvider &&) noexcept = default;
   SynchronizedTimeBaseProvider &operator=(SynchronizedTimeBaseProvider &&) & noexcept = default;
   ~SynchronizedTimeBaseProvider() noexcept = default;
+
+  using TimeValidationNotifier = SynchronizedTimeBaseConsumer::TimeValidationNotifier;
+  /// SWS_TS_01114/01115: one validation notifier, a new registration overwrites the previous one.
+  ara::core::Result<void> RegisterTimeValidationNotification(TimeValidationNotifier n) noexcept;
+  void UnregisterTimeValidationNotification() noexcept;
+  /// SWS_TS_00425/00427: hand master timing / pdelay responder data to the validation notifications.
+  ara::core::Result<void> SetMasterTimingData(TimeValidationData data) noexcept;
+  ara::core::Result<void> SetPdelayResponderData(TimeValidationData data) noexcept;
 
   /// Sets the time unconditionally (no slewing). kDaemonConnectionLost if unbound,
   /// kInvalidArgument for more than 3 user data bytes.
@@ -115,6 +141,41 @@ public:
 
 private:
   std::string specifier_;
+  std::shared_ptr<internal::ValidationRegistration> validation_;
+};
+
+/**
+ * Provider of an offset time base (SWS_TS_01201..01214, R22-11): the time is set by the application
+ * with SetOffsetTime. The bound time base must be configured with isOffsetTimeBase.
+ */
+class OffsetTimeBaseProvider final {
+public:
+  using TimeValidationNotifier = SynchronizedTimeBaseConsumer::TimeValidationNotifier;
+  explicit OffsetTimeBaseProvider(ara::core::InstanceSpecifier const &specifier) noexcept; // 01201
+  OffsetTimeBaseProvider(OffsetTimeBaseProvider const &) = delete;
+  OffsetTimeBaseProvider &operator=(OffsetTimeBaseProvider const &) = delete;                // 01205
+  OffsetTimeBaseProvider(OffsetTimeBaseProvider &&) noexcept = default;                      // 01202
+  OffsetTimeBaseProvider &operator=(OffsetTimeBaseProvider &&) & noexcept = default;         // 01203
+  ~OffsetTimeBaseProvider() noexcept = default;                                              // 01206
+
+  /// SWS_TS_01207: sets a new offset time (unconditional step). kTimeCannotSet if the bound time
+  /// base is not an offset time base, kDaemonConnectionLost if unbound, kInvalidArgument for more
+  /// than 3 user data bytes.
+  ara::core::Result<void> SetOffsetTime(Timestamp t, std::uint8_t const *userData = nullptr,
+                                        std::size_t userDataSize = 0) noexcept;
+  Timestamp GetCurrentTime() const noexcept;                                                 // 01208
+  ara::core::Result<void> SetRateCorrection(double rateCorrection) noexcept;                 // 01209
+  double GetRateDeviation() const noexcept;                                                  // 01210
+  ara::core::Result<void> SetUserData(std::uint8_t const *userData, std::size_t userDataSize) noexcept; // 01211
+  std::vector<std::uint8_t> GetUserData() const;                                             // 01212
+  ara::core::Result<void> RegisterTimeValidationNotification(TimeValidationNotifier n) noexcept; // 01213
+  void UnregisterTimeValidationNotification() noexcept;                                      // 01214
+  ara::core::Result<void> SetMasterTimingData(TimeValidationData data) noexcept;
+  ara::core::Result<void> SetPdelayResponderData(TimeValidationData data) noexcept;
+
+private:
+  std::string specifier_;
+  std::shared_ptr<internal::ValidationRegistration> validation_;
 };
 
 } // namespace ara::tsync

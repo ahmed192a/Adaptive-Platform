@@ -1,0 +1,10 @@
+# UDS tester demo: an in-process demo ECU on ara::diag plus a scripted tester session.
+add_library(uds_scenario STATIC uds_scenario.cpp)
+target_include_directories(uds_scenario PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(uds_scenario PUBLIC ara_diag_lib PRIVATE ap::warnings ap::sanitizers ap::coverage)
+add_executable(uds_tester main.cpp)
+target_link_libraries(uds_tester PRIVATE uds_scenario ap::warnings ap::sanitizers ap::coverage)
+set_target_properties(uds_scenario uds_tester PROPERTIES FOLDER "apps")
+if(AP_INSTALL)
+  install(TARGETS uds_tester RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+endif()

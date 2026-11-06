@@ -46,7 +46,7 @@ checked against the R25-11 text).
 | `operator<<` `core::ErrorCode` | — | Implemented | Rendered as `Domain:value (message)`. Added. |
 | `operator<<` `InstanceSpecifier` | — | Implemented | Added. |
 | `operator<<` `std::chrono::duration` | — | Partial | Rendered as integer nanoseconds + `ns`; the SWS wire format is **Unverified**. Added. |
-| `operator<<` `Span<const Byte>` | — | **Missing** | `ara::core::Span` currently does not compile under `-Werror` (deprecated `std::iterator`); add after Span is fixed. |
+| `operator<<` `Span<const Byte>` | — | **Fixed (was Missing)** | `ara::core::Span` now compiles and is complete; a byte span is rendered as space-separated two-digit lowercase hex (`0a ff 10`). The SWS wire format of a byte span is **Unverified**. Test `LogTest.ByteSpanIsLoggedAsHex`. |
 | `operator<<` `Argument<T>` / `Arg(value, Format)` | — | Implemented | Added. |
 
 ## Formatting modifiers

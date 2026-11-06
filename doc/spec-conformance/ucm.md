@@ -84,3 +84,27 @@ RegisterSoftwarePackage, RevertProcessedSwPackages, Rollback, TransferData, Tran
    `ResetMachine`) - the `UpdateSession` rules now exist on the SM side.
 3. Package validation (format, authentication, manifest, version) and persistence of the UCM state.
 4. Obtain the complete PDF to confirm chapter 9 (signatures, literal and error values).
+
+## Gap closure (feature/gap-com-sm-ucm)
+
+Source policy: requirement IDs below were checked against the R25-11 text where it was readable and against
+R22-11 / R24-11 otherwise (the change between releases is small for PackageManagement). The later chapters
+(enum values, error numerics, exact signatures) are unreadable in all three PDFs, so those stay *Unverified*.
+
+| Item | Status | Notes (tests: `Testing/ucm/ucm_core_hooks_test.cpp`, 28 tests) |
+|---|---|---|
+| Activate talks to State Management | Implemented | `UpdateHooks::prepareUpdate` then `resetMachine`; failure -> UpdateSessionRejected / PreActivationFailed (00258, 00242). R22-11 text |
+| Verify / `kVerifying` | Implemented | kActivated -> kVerifying -> hook; failure -> VerificationFailed, stays kVerifying (00280) |
+| Rollback with PrepareRollback + ResetMachine | Implemented | NotAbleToRollback on hook failure, state restored (00110) |
+| Revert with hook | Implemented | NotAbleToRevertPackages (00236) |
+| `kProcessingFailed` | Implemented | failed processing -> kProcessingFailed (00392); `BeginProcess` may retry from it. Numeric value Unverified |
+| Package validation at TransferExit | Implemented | consistency / authentication / version hook (00294, 00098, 00092, 00103); the package stays kTransferring so the client can delete or retry. Design decision, not spec-mandated |
+| GetHistory / GetId | Implemented | operation log (sequence, time, action, transfer id, result). Cluster names are not tracked |
+| Persisting UCM state | Implemented | `Save`/`Load` (00184, 00273) |
+| New error codes | Added, values Unverified | TransferFailed 34, PackageFormatUnsupported 35, SwclRemovalDenied 36, PersistencyAllocationFailed 37 - numbers are this implementation's choice |
+
+Still missing: GetSwClusterChangeInfo, GetSwClusterManifestInfo, RegisterSoftwarePackage, `kCancelling`
+campaign handling (00297/00298), delta/stream processing details.
+
+Demo: `App/demo/ota_updater` runs a whole update through this API (exit codes 0 updated, 2 rolled back,
+3 package rejected, 4 session rejected).
