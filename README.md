@@ -23,7 +23,7 @@ functional clusters (`ara::*`), platform processes, tools, and a live web consol
 
 [![Platform demo](doc/img/platform-demo.gif)](doc/img/platform-demo.mp4)
 
-*Click the animation for the full-quality [mp4](doc/img/platform-demo.mp4) (about 75 s, captioned). It is recorded by an
+*Click the animation for the full-quality [mp4](doc/img/platform-demo.mp4) (about 90 s, captioned). It is recorded by an
 end-to-end script against the real platform: [doc/demo.md](doc/demo.md) explains how to run and re-record it.*
 
 | Execution Management | Health Management | Diagnostics | Persistency |

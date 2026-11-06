@@ -37,7 +37,7 @@ pip install playwright imageio-ffmpeg          # plus a system Chrome/Chromium; 
 python3 Tools/demo/record_demo.py --url http://127.0.0.1:8099 --out doc/img --gif
 ```
 
-This regenerates the screenshots, `doc/img/platform-demo.mp4` (about 75 s with captions) and
+This regenerates the screenshots, `doc/img/platform-demo.mp4` (about 90 s with captions) and
 `doc/img/platform-demo.gif` (at most 8 MB). `--steps nm,tsync` runs a subset, `--list` shows the step names. The script
 asserts the behaviour of every step and exits non-zero if the platform misbehaves, so CI uses it as the end-to-end test.
 
