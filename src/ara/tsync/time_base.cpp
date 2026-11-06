@@ -54,6 +54,8 @@ TimeBaseSnapshot TimeBaseResource::SnapshotLocked(SteadyTp now) const {
   snap.status = StatusLocked(state_, now);
   snap.userData = state_.user;
   snap.localTime = now;
+  snap.rateCorrected = state_.rateCorrected;
+  snap.rateExceeded = config_.rateCorrectionThreshold > 0.0 && std::fabs(state_.rate) > config_.rateCorrectionThreshold;
   if (state_.leap) snap.leapJump = state_.leapDir >= 0 ? LeapJump::kTimeLeapFuture : LeapJump::kTimeLeapPast;
   return snap;
 }
@@ -132,6 +134,7 @@ ara::core::Result<void> TimeBaseResource::Apply(SynchronizedTimePoint t, double 
     state_.localAtSync = now;
     state_.lastUpdate = now;
     state_.rate = rate;
+    if (rate != 0.0) state_.rateCorrected = true;
     state_.gateway = gateway;
     state_.user = user;
     snap = SnapshotLocked(now);
@@ -211,6 +214,7 @@ ara::core::Result<void> TimeBaseResource::SetRateCorrection(double correction) {
     state_.pendingOffsetNs = remaining;
   }
   state_.rate = correction;
+  state_.rateCorrected = true;
   return ara::core::Result<void>();
 }
 
@@ -219,6 +223,75 @@ ara::core::Result<void> TimeBaseResource::SetUserDataOnly(UserData user) {
   std::lock_guard<std::mutex> lk(mutex_);
   state_.user = user;
   return ara::core::Result<void>();
+}
+
+std::size_t TimeBaseResource::AddPrecisionObserver(PrecisionCallback cb) {
+  std::lock_guard<std::mutex> lk(mutex_);
+  std::size_t const id = nextObserverId_++;
+  precisionObservers_.emplace_back(id, std::move(cb));
+  return id;
+}
+
+void TimeBaseResource::RemovePrecisionObserver(std::size_t id) {
+  std::lock_guard<std::mutex> lk(mutex_);
+  for (auto it = precisionObservers_.begin(); it != precisionObservers_.end(); ++it) {
+    if (it->first == id) { precisionObservers_.erase(it); return; }
+  }
+}
+
+std::size_t TimeBaseResource::AddValidationObserver(ValidationCallback cb) {
+  std::lock_guard<std::mutex> lk(mutex_);
+  std::size_t const id = nextObserverId_++;
+  validationObservers_.emplace_back(id, std::move(cb));
+  return id;
+}
+
+void TimeBaseResource::RemoveValidationObserver(std::size_t id) {
+  std::lock_guard<std::mutex> lk(mutex_);
+  for (auto it = validationObservers_.begin(); it != validationObservers_.end(); ++it) {
+    if (it->first == id) { validationObservers_.erase(it); return; }
+  }
+}
+
+ara::core::Result<void> TimeBaseResource::ReportPrecisionMeasurement(Duration pathDelay) {
+  auto const now = Now();
+  TimePrecisionMeasurement m;
+  std::vector<PrecisionCallback> cbs;
+  {
+    std::lock_guard<std::mutex> lk(mutex_);
+    if (!state_.everSynced) {
+      return ara::core::Result<void>::FromError(MakeErrorCode(TsyncErrc::kNotSynchronized));
+    }
+    std::int64_t const glb = TimeAtLocked(state_, now);
+    m.glbSeconds = static_cast<std::uint64_t>(glb / 1000000000LL);
+    m.glbNanoSeconds = static_cast<std::uint32_t>(glb % 1000000000LL);
+    m.timeBaseStatus = StatusLocked(state_, now).Bits();
+    if (!config_.isOffsetTimeBase) { // SWS_TS_00801: offset time bases record only the global time + status
+      std::int64_t const loc = std::chrono::duration_cast<Duration>(now.time_since_epoch()).count();
+      m.virtualLocalTimeLow = static_cast<std::uint32_t>(static_cast<std::uint64_t>(loc) & 0xFFFFFFFFULL);
+      m.rateDeviation = state_.rate;
+      m.locSeconds = static_cast<std::uint64_t>(loc / 1000000000LL);
+      m.locNanoSeconds = static_cast<std::uint32_t>(loc % 1000000000LL);
+      std::int64_t const pd = pathDelay.count();
+      m.pathDelay = pd < 0 ? 0U : static_cast<std::uint32_t>(pd > 0xFFFFFFFFLL ? 0xFFFFFFFFLL : pd);
+    }
+    for (auto const &o : precisionObservers_) cbs.push_back(o.second);
+  }
+  for (auto const &cb : cbs) {
+    if (cb) cb(m);
+  }
+  return ara::core::Result<void>();
+}
+
+void TimeBaseResource::PublishValidationData(TimeValidationData const &data) {
+  std::vector<ValidationCallback> cbs;
+  {
+    std::lock_guard<std::mutex> lk(mutex_);
+    for (auto const &o : validationObservers_) cbs.push_back(o.second);
+  }
+  for (auto const &cb : cbs) {
+    if (cb) cb(data);
+  }
 }
 
 void TimeBaseResource::Poll() {

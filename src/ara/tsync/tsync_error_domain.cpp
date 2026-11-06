@@ -11,6 +11,7 @@ char const *TsyncErrorDomain::Message(CodeType errorCode) const noexcept {
   case TsyncErrc::kFunctionNotSupported: return "function not supported";
   case TsyncErrc::kLimitsExceeded: return "limits exceeded";
   case TsyncErrc::kNotFound: return "time base not found";
+  case TsyncErrc::kTimeCannotSet: return "time cannot be set";
   }
   return "unknown time-synchronization error";
 }

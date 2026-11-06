@@ -34,6 +34,8 @@ macro(ap_dependency NAME TARGET)
   endif()
 endmacro()
 
+# CMake >= 4 rejects the old cmake_minimum_required of pinned third-party deps (json v3.9.1).
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "" FORCE)
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 set(JSON_Install    ${AP_INSTALL} CACHE INTERNAL "")
 ap_dependency(json nlohmann_json::nlohmann_json FIND nlohmann_json

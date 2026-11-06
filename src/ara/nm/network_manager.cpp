@@ -1,5 +1,6 @@
 #include "ara/nm/network_manager.h"
 
+#include <csignal>
 #include <vector>
 
 #include "ara/nm/network_handle.h"
@@ -51,7 +52,62 @@ void NetworkManager::WithdrawAll() {
   for (auto &c : all) c->Withdraw();
 }
 
+void NetworkManager::ShutdownAll() {
+  std::vector<std::shared_ptr<NmChannel>> all;
+  {
+    std::lock_guard<std::mutex> l(mu_);
+    for (auto &kv : nets_) all.push_back(kv.second);
+  }
+  for (auto &c : all) c->Shutdown();
+}
+
+namespace {
+volatile std::sig_atomic_t gSigterm = 0;
+struct sigaction gPrev {};
+bool gInstalled = false;
+std::mutex gHookMu;
+
+extern "C" void NmSigtermHandler(int sig) {
+  gSigterm = 1;
+  // Chain to a previously installed function handler (not SIG_DFL / SIG_IGN).
+  if ((gPrev.sa_flags & SA_SIGINFO) == 0 && gPrev.sa_handler != SIG_DFL && gPrev.sa_handler != SIG_IGN &&
+      gPrev.sa_handler != nullptr) {
+    gPrev.sa_handler(sig);
+  }
+}
+} // namespace
+
+Result<void> NetworkManager::InstallSigtermHook() {
+  std::lock_guard<std::mutex> l(gHookMu);
+  if (gInstalled) return Result<void>::FromValue();
+  struct sigaction sa {};
+  sa.sa_handler = NmSigtermHandler;
+  sigemptyset(&sa.sa_mask);
+  sa.sa_flags = 0;
+  if (sigaction(SIGTERM, &sa, &gPrev) != 0) return Result<void>::FromError(MakeErrorCode(NmErrc::kInvalidConfig));
+  gInstalled = true;
+  return Result<void>::FromValue();
+}
+
+void NetworkManager::UninstallSigtermHook() {
+  std::lock_guard<std::mutex> l(gHookMu);
+  if (!gInstalled) return;
+  sigaction(SIGTERM, &gPrev, nullptr);
+  gInstalled = false;
+  gSigterm = 0;
+}
+
+bool NetworkManager::SigtermPending() noexcept { return gSigterm != 0; }
+
+bool NetworkManager::ServiceSignals() {
+  if (gSigterm == 0) return false;
+  gSigterm = 0;
+  ShutdownAll();
+  return true;
+}
+
 void NetworkManager::ProcessAll() {
+  ServiceSignals();
   std::vector<NmChannel *> all;
   {
     std::lock_guard<std::mutex> l(mu_);
