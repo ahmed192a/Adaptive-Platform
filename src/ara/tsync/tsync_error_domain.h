@@ -24,6 +24,7 @@ enum class TsyncErrc : ara::core::ErrorDomain::CodeType {
   kDaemonConnectionLost = 5, ///< SWS: the time base is not bound / the sync daemon is unreachable
   kFunctionNotSupported = 6, ///< SWS_TS_00061: rate correction not allowed for this time base
   kLimitsExceeded = 7,       ///< SWS_TS_00063: value outside the configured limit
+  kTimeCannotSet = 8,        ///< SWS_TS_01107/01207: the time cannot be set (e.g. not an offset time base)
 };
 
 class TsyncException : public ara::core::Exception {
