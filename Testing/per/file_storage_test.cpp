@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "per_fixture.h"
 
 using ara::per::OpenMode;
@@ -174,7 +175,73 @@ TEST_F(FileTest, ResetFileFromInitialContent) {
   }
   ASSERT_TRUE(st->ResetFile("cfg").HasValue());
   EXPECT_EQ(st->OpenFileReadOnly("cfg").Value()->ReadText().Value(), "factory");
-  EXPECT_TRUE(st->RecoverFile("cfg").CheckError(PerErrc::kValidationFailed));
+  // The reset content is the new known-good state, so there is nothing to recover.
+  EXPECT_TRUE(st->RecoverFile("cfg").HasValue());
+  EXPECT_EQ(st->OpenFileReadOnly("cfg").Value()->ReadText().Value(), "factory");
+}
+
+TEST_F(FileTest, RecoverFileRestoresCorruptedAndDeletedFiles) {
+  auto st = Open().Value();
+  EXPECT_TRUE(st->RecoverFile("never").CheckError(PerErrc::kValidationFailed)); // no copy exists
+  {
+    auto w = st->OpenFileWriteOnly("data").Value();
+    ASSERT_TRUE(w->WriteText("good-content").HasValue());
+  } // closing stores the redundancy copy
+  auto const file = root / "App.Files" / "files" / "data";
+  EXPECT_TRUE(st->RecoverFile("data").HasValue()); // intact: no-op
+  std::ofstream(file, std::ios::trunc) << "bit-rot";
+  ASSERT_TRUE(st->RecoverFile("data").HasValue());
+  EXPECT_EQ(st->OpenFileReadOnly("data").Value()->ReadText().Value(), "good-content");
+  fs::remove(file);
+  ASSERT_TRUE(st->RecoverFile("data").HasValue());
+  EXPECT_EQ(st->OpenFileReadOnly("data").Value()->ReadText().Value(), "good-content");
+  // a corrupt redundancy copy cannot be used
+  std::ofstream(root / "App.Files" / "backup" / "data", std::ios::trunc) << "garbage";
+  std::ofstream(file, std::ios::trunc) << "other";
+  EXPECT_TRUE(st->RecoverFile("data").CheckError(PerErrc::kValidationFailed));
+}
+
+TEST_F(FileTest, SyncRefreshesCopyAndDeleteDropsIt) {
+  auto st = Open().Value();
+  {
+    auto w = st->OpenFileReadWrite("log").Value();
+    ASSERT_TRUE(w->WriteText("v1").HasValue());
+    ASSERT_TRUE(w->SyncToFile().HasValue());
+  }
+  EXPECT_TRUE(fs::exists(root / "App.Files" / "backup" / "log.crc"));
+  ASSERT_TRUE(st->DeleteFile("log").HasValue());
+  EXPECT_FALSE(fs::exists(root / "App.Files" / "backup" / "log"));
+  EXPECT_TRUE(st->RecoverFile("log").CheckError(PerErrc::kValidationFailed));
+}
+
+TEST_F(FileTest, RecoverAllFilesRestoresAndReports) {
+  std::vector<std::string> reported;
+  ara::per::RegisterRecoveryReportCallback(
+      [&](ara::core::InstanceSpecifier const &, ara::per::RecoveryReportKind kind,
+          ara::core::Vector<ara::core::String> elements, ara::core::Vector<std::uint8_t>) {
+        if (kind == ara::per::RecoveryReportKind::kRecovered) {
+          for (auto const &e : elements) reported.push_back(e);
+        }
+      });
+  EXPECT_TRUE(ara::per::RecoverAllFiles(Spec("App/Files")).CheckError(PerErrc::kValidationFailed)); // no copies
+  {
+    auto st = Open().Value();
+    for (char const *n : {"one", "two"}) {
+      auto w = st->OpenFileWriteOnly(n).Value();
+      ASSERT_TRUE(w->WriteText(std::string("data-") + n).HasValue());
+    }
+  }
+  EXPECT_TRUE(ara::per::RecoverAllFiles(Spec("App/Files")).HasValue()); // all intact
+  EXPECT_TRUE(reported.empty());
+  std::ofstream(root / "App.Files" / "files" / "one", std::ios::trunc) << "broken";
+  fs::remove(root / "App.Files" / "files" / "two");
+  ASSERT_TRUE(ara::per::RecoverAllFiles(Spec("App/Files")).HasValue());
+  std::sort(reported.begin(), reported.end());
+  EXPECT_EQ(reported, (std::vector<std::string>{"one", "two"}));
+  auto st = Open().Value();
+  EXPECT_EQ(st->OpenFileReadOnly("one").Value()->ReadText().Value(), "data-one");
+  EXPECT_EQ(st->OpenFileReadOnly("two").Value()->ReadText().Value(), "data-two");
+  ara::per::RegisterRecoveryReportCallback(nullptr);
 }
 
 TEST_F(FileTest, ResetAllFilesRestoresInitialSet) {
