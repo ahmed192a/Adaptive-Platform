@@ -5,6 +5,9 @@
 # ---------------------------------------------------------------------------
 include(FetchContent)
 set(FETCHCONTENT_QUIET ON)
+# CMake 4 dropped compatibility with cmake_minimum_required(< 3.5), which some pinned third-party
+# projects (e.g. nlohmann_json 3.9.1) still declare.  Harmless on older CMake versions.
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "Minimum policy version for third-party projects")
 
 macro(ap_dependency NAME TARGET)
   # usage: ap_dependency(<fetch-name> <imported-target> [FIND <pkg>] GIT_REPOSITORY .. GIT_TAG ..)
