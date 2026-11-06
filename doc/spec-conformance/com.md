@@ -94,3 +94,18 @@ These rows compare names and shapes only; signatures could not be read from the 
   chapter-8 API surface (sample queues, handlers, `ComErrc`, async `Future`s), and E2E.
 * To close the "Unverified" rows, the R25-11 AP communication-management PDF (chapter 8 text) and the SOME/IP
   return-code / serialization chapters need to be supplied.
+
+## Gap closure (feature/gap-com-sm-ucm)
+
+Verified against R25-11 where readable, otherwise R22-11 / R24-11. The SOME/IP wire format is unchanged
+(Length = 8 + payload). Tests: `Testing/COM/com_api_test.cpp`.
+
+| Item | Status | Notes |
+|---|---|---|
+| `ComErrc` / `ComErrorDomain` / `ComException` | Implemented | `ara/com/com_error_domain.h`, codes 1..21. Domain id 0x8000000000000503 is an implementation choice (Unverified) |
+| Proxy event sample queue | Implemented | `SamplePtr`, `ProxyEventBuffer`: Subscribe(maxSampleCount), GetNewSamples, GetFreeSampleCount, SubscriptionState. Overflow drops the oldest sample; re-subscribing is a no-op (design decisions) |
+| SOME/IP session IDs | Implemented | `SessionIdCounter` wrap rules, `RequestTracker` response matching (PRS_SOMEIP_00932, 00933, 00521, 00533, 00739) |
+| SD reboot detection | Implemented | `SdRebootDetector` (PRS_SOMEIPSD_00160, 00255, 00256, 00258) |
+
+Still missing: SOME/IP-TP, E2E, payload serialization format, wiring the queue and detector into the
+socket transport, async `Future` based method calls.
