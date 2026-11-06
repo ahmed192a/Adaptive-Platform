@@ -42,9 +42,9 @@ jobs:
       - run: ctest --preset coverage -j 2
       - name: Collect coverage
         run: |
-          lcov --capture --directory build/coverage --output-file coverage.info --ignore-errors mismatch,gcov
-          lcov --remove coverage.info '/usr/*' '*/_deps/*' '*/Testing/*' --output-file coverage.info
-          lcov --list coverage.info | tail -5
+          lcov --capture --directory build/coverage --output-file coverage.info --ignore-errors mismatch,gcov,inconsistent,negative,unused,empty
+          lcov --remove coverage.info '/usr/*' '*/_deps/*' '*/Testing/*' --output-file coverage.info --ignore-errors unused,inconsistent,empty
+          lcov --list coverage.info --ignore-errors inconsistent,empty | tail -5
       - uses: actions/upload-artifact@v4
         with: { name: coverage-info, path: coverage.info }
 
@@ -61,8 +61,8 @@ jobs:
         run: |
           # Runner downloads occasionally hang: bound every attempt and retry.
           retry() { for n in 1 2 3; do timeout 300 "$@" && return 0; echo "attempt $n failed or timed out: $*"; sleep 5; done; return 1; }
-          retry sudo apt-get update
-          retry sudo apt-get install -y ninja-build ffmpeg
+          retry sudo apt-get update -o Acquire::Retries=5 -o Acquire::http::Timeout=20
+          retry sudo apt-get install -y --no-install-recommends -o Acquire::Retries=5 -o Acquire::http::Timeout=20 ninja-build ffmpeg
           retry pip install playwright
           retry sudo -E env "PATH=$PATH" python3 -m playwright install-deps chromium
           retry python3 -m playwright install chromium ffmpeg
