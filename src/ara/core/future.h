@@ -259,7 +259,11 @@ public:
   void SetError(E const &e) { Set(Result<T, E>(e)); }
   void SetError(E &&e) { Set(Result<T, E>(std::move(e))); }
   void SetResult(Result<T, E> &&r) { Set(std::move(r)); }
+  /// Exchanges the shared state with another Promise (SWS_CORE_00340 family; no Abandon, nothing is lost).
+  void Swap(Promise &other) noexcept { mState.swap(other.mState); }
 };
+
+template <typename T, typename E> void swap(Promise<T, E> &a, Promise<T, E> &b) noexcept { a.Swap(b); }
 
 } // namespace ara::core
 

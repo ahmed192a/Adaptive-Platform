@@ -13,8 +13,10 @@
 #include <type_traits>
 #include <utility>
 
+#include "ara/core/byte.h"
 #include "ara/core/error_code.h"
 #include "ara/core/instance_specifier.h"
+#include "ara/core/span.h"
 #include "ara/log/logging_types.h"
 
 namespace ara::log {
@@ -121,6 +123,8 @@ public:
   LogStream &operator<<(void const *p);
   LogStream &operator<<(ara::core::ErrorCode const &ec);
   LogStream &operator<<(ara::core::InstanceSpecifier const &is);
+  /// A byte span is rendered as space-separated two-digit lowercase hex values ("0a ff 10").
+  LogStream &operator<<(ara::core::Span<const ara::core::Byte> bytes);
   /// Durations are rendered as an integer number of nanoseconds followed by "ns".
   template <typename Rep, typename Period>
   LogStream &operator<<(std::chrono::duration<Rep, Period> d) {

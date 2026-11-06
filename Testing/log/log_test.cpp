@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include <array>
 #include <mutex>
 #include <thread>
 #include <vector>
@@ -212,6 +213,16 @@ TEST_F(LogTest, DisabledStreamIgnoresArgumentsAndModifiers) {
   auto &l = CreateLogger("T15", "t", LogLevel::kOff);
   l.LogInfo().WithTag("x").WithLocation("f", 1) << Arg(1, Hex()) << std::chrono::seconds(1);
   EXPECT_TRUE(sink->records.empty());
+}
+
+TEST_F(LogTest, ByteSpanIsLoggedAsHex) {
+  using namespace ara::log;
+  auto &l = CreateLogger("T16", "t", LogLevel::kInfo);
+  std::array<ara::core::Byte, 4> const data{ara::core::Byte{0x0a}, ara::core::Byte{0xff}, ara::core::Byte{0x00}, ara::core::Byte{0x10}};
+  l.LogInfo() << ara::core::Span<const ara::core::Byte>(data);
+  EXPECT_EQ(sink->records.at(0).message, "0a ff 00 10");
+  l.LogInfo() << ara::core::Span<const ara::core::Byte>();
+  EXPECT_EQ(sink->records.at(1).message, "");
 }
 
 } // namespace
