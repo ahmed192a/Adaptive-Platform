@@ -62,8 +62,12 @@ jobs:
           # Runner downloads occasionally hang: bound every attempt and retry.
           retry() { for n in 1 2 3; do timeout 300 "$@" && return 0; echo "attempt $n failed or timed out: $*"; sleep 5; done; return 1; }
           retry sudo apt-get update
-          retry sudo apt-get install -y ninja-build ffmpeg
-          retry pip install playwright
+          retry sudo apt-get install -y ninja-build
+          retry pip install playwright imageio-ffmpeg
+          # static ffmpeg from the wheel (avoids a 100-package apt download that stalls on the runner mirror)
+          mkdir -p "$HOME/bin"
+          ln -sf "$(python3 -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" "$HOME/bin/ffmpeg"
+          echo "$HOME/bin" >> "$GITHUB_PATH"
           retry sudo -E env "PATH=$PATH" python3 -m playwright install-deps chromium
           retry python3 -m playwright install chromium ffmpeg
       - run: cmake --preset release
