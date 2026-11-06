@@ -23,6 +23,8 @@
 #include <fcntl.h>
 #include <utility>
 #include <sys/wait.h>
+#include <poll.h>
+#include "ara/exec/execution_error_wire.h"
 #include <filesystem>
 
 #include "ara/exec/function_group.h"
@@ -35,6 +37,7 @@
 #define MC_MF   "/Manifests/machine_manifest.json"
 #define EM_MF "/Manifests/execution_manifest.json"
 #define SM_FIFO "processes/sm_process/state_client_fifo"
+#define EM_ERR_FIFO "processes/sm_process/execution_error_fifo" // read by ara::exec::StateClient (SWS_EM_01309)
 #define MAX_BUF 1024
 
 /***************************************************************************
@@ -53,6 +56,9 @@ void change_state(std::string const&n_FG, std::string const&n_state);
 void view_out();
 void p_operate();
 void p_terminate();
+static int err_fd = -1;                  // write end of the execution-error FIFO (opened O_RDWR: never blocks)
+void publish_execution_error(std::string const &fg, std::uint32_t code);
+void monitor_children();
 void handle_sigterm(int sig){
     cout<<"EM: SIGTERM received"<<endl;
     change_state("MachineFG", "Shuttingdown");
@@ -133,6 +139,9 @@ int main(int argc, char ** argv){
     // change_state("MachineFG" , "Pre-Starting-up"); 
     change_state("MachineFG" , "Starting-up"); 
 
+    mkfifo(EM_ERR_FIFO, 0666);              // execution errors for the State Management StateClient
+    err_fd = open(EM_ERR_FIFO, O_RDWR | O_NONBLOCK);
+
     int fd = open(SM_FIFO, O_RDONLY);   // open the fifo to read the state from SM
 
     /****************************** Main Logic of EM ***********************************/
@@ -142,6 +151,12 @@ int main(int argc, char ** argv){
     std::string pending;
     while(sys_FG["MachineFG"].current_FGS->get_states() != "off"){
         char buf[MAX_BUF];
+        // Wake up regularly to notice processes that died without being asked to (SWS_EM_01309).
+        monitor_children();
+        struct pollfd pfd{fd, POLLIN, 0};
+        int const pr = poll(&pfd, 1, 250);
+        if (pr == 0) continue;
+        if (pr < 0) { if (errno == EINTR) continue; }
         ssize_t n = read(fd, buf, sizeof(buf));
         if (n < 0) {
             if (errno == EINTR) continue;
@@ -178,6 +193,8 @@ int main(int argc, char ** argv){
 
     if (fd >= 0) close(fd);             // close the fifo
     unlink(SM_FIFO);                    // delete the fifo
+    if (err_fd >= 0) close(err_fd);
+    unlink(EM_ERR_FIFO);
     cout << "\n-    EM Terminated."<<endl;
 
     cout.rdbuf(stream_buffer_cout);     // restore the cout stream buffer
@@ -185,6 +202,46 @@ int main(int argc, char ** argv){
     view_out();                         // view the output of all processe
     return 0;
 }
+/**
+ * @brief Publish an execution error for a function group to the State Management client.
+ * @note SWS_EM_01309/SWS_EM_02543: abnormal termination => execution error (default value 1).
+ */
+void publish_execution_error(std::string const &fg, std::uint32_t code)
+{
+    if (err_fd < 0) return;
+    std::string const msg = ara::exec::FormatExecutionErrorLine(fg, code);
+    ssize_t const r = write(err_fd, msg.data(), msg.size());
+    (void)r;
+}
+
+/**
+ * @brief Reap processes that terminated without an EM request and report them as execution errors.
+ *        A process that exits with status 0 on its own is treated as a normal termination.
+ */
+void monitor_children()
+{
+    for (auto &p : process_pool) {
+        if (!p.prun || p._pid <= 0) continue;
+        int status = 0;
+        if (waitpid(p._pid, &status, WNOHANG) != p._pid) continue;
+        std::string fg = "MachineFG";
+        if (p.current_config && !p.current_config->machine_instance_refs.empty())
+            fg = p.current_config->machine_instance_refs.front().function_group;
+        bool const clean = !ara::exec::IsAbnormalTermination(status);
+        if (clean)
+            cout << "-    EM: process " << p.name << " exited on its own (status 0)" << endl;
+        else
+            cout << "-    EM: ERROR: process " << p.name << " terminated unexpectedly (status " << status
+                 << ") in function group " << fg << endl;
+        close(p.exec_clinet_fd);
+        unlink(("processes/" + p.name + "/execution_client_fifo").c_str());
+        p.prun = false;
+        p.current_config = nullptr;
+        p._pid = 0;
+        if (!clean) publish_execution_error(fg, ara::exec::kDefaultExecutionError);
+    }
+}
+
 /**
  * @brief initialize the system and parse the manifest files
  * 

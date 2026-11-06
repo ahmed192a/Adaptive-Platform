@@ -128,6 +128,56 @@ TEST_F(SpecFixture, UnhandledRecoveryStopsAliveNotificationsAndFiresWatchdog) {
   EXPECT_EQ(wd->fired, 1);
 }
 
+// SWS_PHM_01363: PHM_E_WATCHDOG_RESET is reported FAILED when the watchdog reaction fires, exactly once,
+// and before the reaction itself is triggered.
+TEST_F(SpecFixture, WatchdogResetProductionErrorReportedBeforeReaction) {
+  std::vector<std::string> events;
+  int firedWhenReported = -1;
+  mon->SetProductionErrorReporter([&](std::string const &name, bool failed) {
+    events.push_back(name + (failed ? ":FAILED" : ":PASSED"));
+    firedWhenReported = wd->fired;
+  });
+  ASSERT_TRUE(mon->AddSupervision(MakeAlive("Alive", 2)).HasValue());
+  GlobalSupervisionConfig g;
+  g.name = "G";
+  g.members = {"Alive"};
+  g.recoveryAction = "App/R";
+  ASSERT_TRUE(mon->AddGlobalSupervision(g).HasValue());
+  RecoveryAction ra(ara::core::InstanceSpecifier("App/R"),
+                    [](ExpiredSupervision const &) {
+                      ara::core::Promise<void> p;
+                      p.SetError(MakeErrorCode(PhmErrc::kSMCanNotHandleRecovery));
+                      return p.get_future();
+                    },
+                    *mon);
+  ASSERT_TRUE(ra.Offer().HasValue());
+  mon->Start(T(0));
+  mon->Evaluate(T(100));
+  mon->Evaluate(T(200));
+  mon->Evaluate(T(300));
+  ASSERT_EQ(events.size(), 1u);
+  EXPECT_EQ(events[0], "PHM_E_WATCHDOG_RESET:FAILED");
+  EXPECT_EQ(firedWhenReported, 0);
+  EXPECT_EQ(wd->fired, 1);
+}
+
+// No watchdog escalation => no production error.
+TEST_F(SpecFixture, NoProductionErrorWithoutEscalation) {
+  int calls = 0;
+  mon->SetProductionErrorReporter([&](std::string const &, bool) { ++calls; });
+  ASSERT_TRUE(mon->AddSupervision(MakeAlive("Alive", 2)).HasValue());
+  GlobalSupervisionConfig g;
+  g.name = "G";
+  g.members = {"Alive"};
+  ASSERT_TRUE(mon->AddGlobalSupervision(g).HasValue());
+  mon->Start(T(0));
+  mon->ReportCheckpoint("E", 1, T(10));
+  mon->ReportCheckpoint("E", 1, T(20)); // healthy: the expected 2 alive indications per cycle
+  mon->Evaluate(T(100));
+  EXPECT_EQ(calls, 0);
+  EXPECT_EQ(wd->fired, 0);
+}
+
 // SWS_PHM_01364/01365/01366: Disable() ignores checkpoints, Enable() restarts the alive cycle.
 TEST_F(SpecFixture, DisabledEntityIgnoresCheckpointsAndEnableRestartsCycle) {
   ASSERT_TRUE(mon->AddSupervision(MakeAlive("Alive", 2)).HasValue());
