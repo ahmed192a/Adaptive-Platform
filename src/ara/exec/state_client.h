@@ -11,9 +11,18 @@
 #ifndef ARA_EXEC_STATE_CLIENT_H
 #define ARA_EXEC_STATE_CLIENT_H
 
+#include "ara/core/future.h"
+#include "ara/core/promise.h"
+#include "ara/core/result.h"
 #include "ara/exec/exec_error_domain.h"
+#include "ara/exec/execution_error_event.h"
 #include "ara/exec/function_group_state.h"
+#include <atomic>
+#include <functional>
 #include <future>
+#include <map>
+#include <mutex>
+#include <thread>
 #include <variant>
 
 namespace ara::exec {
@@ -31,12 +40,31 @@ private:
   const std::string fifo_l{"state_client_fifo"}; /*!< location of FIFO to communicate
                                             between EM & SM */
   int fd{-1};                              /*!< index of File descriptor */
+
+  // ---- execution error reception (SWS_EM_01309) ----------------------------------------
+  std::function<void(ExecutionErrorEvent const &)> mUndefinedStateCallback;
+  mutable std::mutex mErrMutex;
+  std::map<std::string, ExecutionError> mErrors; /*!< last execution error per function group */
+  std::atomic<bool> mStop{false};
+  std::thread mErrThread;
+  void ErrorListener() noexcept;
+
 public:
   /**
    * @brief Constructor that creates StateClient instance
    * @note SWS_EM_02276
    */
   StateClient() noexcept;
+
+  /**
+   * @brief Constructor with the undefinedStateCallback (SWS_EM_01309). Execution Management reports an
+   *        abnormal termination outside a transition through the "execution_error_fifo"; the callback is
+   *        invoked from a background thread with the affected Function Group and the execution error.
+   * @note The exact spec signature is Unverified (see doc/spec-conformance/exec.md).
+   */
+  explicit StateClient(std::function<void(ExecutionErrorEvent const &)> undefinedStateCallback) noexcept;
+  StateClient(StateClient const &) = delete;
+  StateClient &operator=(StateClient const &) = delete;
 
   /**
    * @brief Destructor of the StateClient instance
@@ -101,6 +129,17 @@ public:
    */
   std::future<std::variant<std::monostate, ara::exec::ExecErrc>>
   GetInitialMachineStateTransitionResult() const noexcept;
+
+  /// Spec-shaped variants returning ara::core::Future<void> (the legacy std::future overloads remain).
+  ara::core::Future<void> SetStateFuture(FunctionGroupState const &state) const noexcept;
+  ara::core::Future<void> GetInitialMachineStateTransitionFuture() const noexcept;
+
+  /**
+   * @brief Execution error last reported for @p functionGroup (SWS_EM_01309). Only available on a client
+   *        built with the undefinedStateCallback constructor.
+   * @return the event, or ExecErrc::kGeneralError when no error was reported for that group.
+   */
+  ara::core::Result<ExecutionErrorEvent> GetExecutionError(FunctionGroup const &functionGroup) const noexcept;
 };
 
 } // namespace ara::exec

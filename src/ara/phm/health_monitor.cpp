@@ -72,6 +72,11 @@ void HealthMonitor::SetWatchdog(std::shared_ptr<apext::phm::WatchdogInterface> w
   std::lock_guard<std::mutex> lock(mMutex);
   mWatchdog = std::move(w);
 }
+void HealthMonitor::SetProductionErrorReporter(ProductionErrorReporter reporter) {
+  std::lock_guard<std::mutex> lock(mMutex);
+  mErrorReporter = std::move(reporter);
+}
+
 void HealthMonitor::SetStatusListener(StatusListener l) {
   std::lock_guard<std::mutex> lock(mMutex);
   mListener = std::move(l);
@@ -195,7 +200,13 @@ void HealthMonitor::Escalate(std::vector<std::function<void()>> &deferred) {
   mWatchdogFired = true;
   if (mWatchdog) {
     auto wd = mWatchdog;
-    deferred.emplace_back([wd] { wd->FireWatchdogReaction(); });
+    auto reporter = mErrorReporter;
+    deferred.emplace_back([wd, reporter] {
+      if (reporter) {
+        reporter(kWatchdogResetEvent, true); // SWS_PHM_01363: report before the reset takes effect
+      }
+      wd->FireWatchdogReaction();
+    });
   }
 }
 

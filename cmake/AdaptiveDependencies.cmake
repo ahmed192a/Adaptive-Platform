@@ -9,6 +9,13 @@ set(FETCHCONTENT_QUIET ON)
 # projects (e.g. nlohmann_json 3.9.1) still declare.  Harmless on older CMake versions.
 set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "Minimum policy version for third-party projects")
 
+# CMake >= 4 removed compatibility with cmake_minimum_required(VERSION < 3.5), which some of the pinned
+# third-party versions below still declare. This variable (CMake >= 3.31) lets them configure; older CMake
+# versions simply ignore it. A user-supplied value wins.
+if(NOT DEFINED CMAKE_POLICY_VERSION_MINIMUM)
+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+endif()
+
 macro(ap_dependency NAME TARGET)
   # usage: ap_dependency(<fetch-name> <imported-target> [FIND <pkg>] GIT_REPOSITORY .. GIT_TAG ..)
   cmake_parse_arguments(_D "" "FIND" "" ${ARGN})
@@ -30,7 +37,7 @@ endmacro()
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 set(JSON_Install    ${AP_INSTALL} CACHE INTERNAL "")
 ap_dependency(json nlohmann_json::nlohmann_json FIND nlohmann_json
-  GIT_REPOSITORY https://github.com/nlohmann/json GIT_TAG v3.9.1)
+  GIT_REPOSITORY https://github.com/nlohmann/json GIT_TAG v3.11.3)
 
 set(SPDLOG_BUILD_EXAMPLE OFF CACHE INTERNAL "")
 set(SPDLOG_BUILD_TESTS   OFF CACHE INTERNAL "")
