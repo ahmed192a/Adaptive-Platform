@@ -46,7 +46,13 @@ namespace ara
                     TransferInterrupted = 26,
                     UpdateSessionRejected = 33,
                     PreActivationFailed = 19,
-                    VerificationFailed = 27
+                    VerificationFailed = 27,
+                    // Added in the gap-closing pass. Names follow the SWS requirement text (R22-11); the numeric
+                    // values are NOT from the specification (it could not be read) - Unverified.
+                    TransferFailed = 34,
+                    PackageFormatUnsupported = 35,
+                    SwclRemovalDenied = 36,
+                    PersistencyAllocationFailed = 37
                 };
             }
         }
