@@ -8,8 +8,10 @@
 #include <cerrno>
 #include <filesystem>
 #include <mutex>
+#include <optional>
 #include <set>
 
+#include "ara/per/crc32.h"
 #include "ara/per/fs_util.h"
 
 namespace ara::per {
@@ -40,6 +42,75 @@ struct FileStorageState {
 };
 } // namespace detail
 
+namespace detail {
+namespace {
+fs::path BackupDirOf(fs::path const &storageDir) { return storageDir / "backup"; }
+
+/// Reads a whole file; nullopt if it does not exist / cannot be read.
+std::optional<std::string> Slurp(fs::path const &f) {
+  auto r = ReadWholeFile(f);
+  if (!r.HasValue()) return std::nullopt;
+  return std::move(r).Value();
+}
+
+std::optional<std::uint32_t> ReadCrc(fs::path const &f) {
+  auto t = Slurp(f);
+  if (!t || t->empty()) return std::nullopt;
+  try {
+    return static_cast<std::uint32_t>(std::stoul(*t));
+  } catch (...) {
+    return std::nullopt;
+  }
+}
+
+/// Stores a CRC-protected redundancy copy of `<dir>/files/<name>` (best effort).
+void SnapshotFile(fs::path const &storageDir, std::string const &name) {
+  auto content = Slurp(storageDir / "files" / name);
+  if (!content) return;
+  std::error_code ec;
+  fs::create_directories(BackupDirOf(storageDir), ec);
+  auto const bak = BackupDirOf(storageDir) / name;
+  if (!WriteFileAtomic(bak, *content, false).HasValue()) return;
+  (void)WriteFileAtomic(BackupDirOf(storageDir) / (name + ".crc"), std::to_string(Crc32(*content)), false);
+}
+
+void DropSnapshot(fs::path const &storageDir, std::string const &name) {
+  std::error_code ec;
+  fs::remove(BackupDirOf(storageDir) / name, ec);
+  fs::remove(BackupDirOf(storageDir) / (name + ".crc"), ec);
+}
+} // namespace
+
+FileRecovery RecoverOneFile(fs::path const &storageDir, std::string const &name) {
+  auto const bak = BackupDirOf(storageDir) / name;
+  auto const crc = ReadCrc(BackupDirOf(storageDir) / (name + ".crc"));
+  auto const copy = Slurp(bak);
+  if (!crc || !copy) return FileRecovery::kNoRedundancy;
+  if (Crc32(*copy) != *crc) return FileRecovery::kRedundancyCorrupt;
+  auto const current = Slurp(storageDir / "files" / name);
+  if (current && Crc32(*current) == *crc) return FileRecovery::kIntact;
+  std::error_code ec;
+  fs::create_directories(storageDir / "files", ec);
+  if (!WriteFileAtomic(storageDir / "files" / name, *copy, false).HasValue()) {
+    return FileRecovery::kRedundancyCorrupt;
+  }
+  return FileRecovery::kRecovered;
+}
+
+std::vector<std::string> FilesWithRedundancy(fs::path const &storageDir) {
+  std::vector<std::string> names;
+  std::error_code ec;
+  for (auto const &e : fs::directory_iterator(BackupDirOf(storageDir), ec)) {
+    auto n = e.path().filename().string();
+    if (n.size() > 4 && n.compare(n.size() - 4, 4, ".crc") == 0) {
+      names.push_back(n.substr(0, n.size() - 4));
+    }
+  }
+  std::sort(names.begin(), names.end());
+  return names;
+}
+} // namespace detail
+
 namespace {
 bool ValidName(StringView n) {
   return !n.empty() && n.size() <= 255 && n != "." && n != ".." &&
@@ -64,6 +135,9 @@ ReadAccessor::~ReadAccessor() {
   }
   if (mState) {
     std::lock_guard<std::mutex> lock(mState->mutex);
+    if (mCanWrite && !mState->cfg.readOnly) {
+      detail::SnapshotFile(mState->cfg.directory, mName); // redundancy copy of the closed file
+    }
     mState->openFiles.erase(mName);
   }
 }
@@ -202,6 +276,10 @@ Result<void> ReadWriteAccessor::SyncToFile() {
   if (::fsync(mFd) != 0) {
     return Result<void>(detail::ErrnoToError(errno));
   }
+  {
+    std::lock_guard<std::mutex> lock(mState->mutex);
+    detail::SnapshotFile(mState->cfg.directory, mName); // keep the redundancy copy in step with a sync
+  }
   return Result<void>();
 }
 
@@ -324,11 +402,30 @@ Result<void> FileStorage::DeleteFile(StringView fileName) noexcept {
   if (!fs::remove(mState->FilesDir() / std::string(fileName), ec)) {
     return Result<void>(MakeErrorCode(PerErrc::kFileNotFound));
   }
+  detail::DropSnapshot(mState->cfg.directory, std::string(fileName));
   return Result<void>();
 }
 
-Result<void> FileStorage::RecoverFile(StringView) noexcept {
-  return Result<void>(MakeErrorCode(PerErrc::kValidationFailed, 0, "no redundancy configured"));
+Result<void> FileStorage::RecoverFile(StringView fileName) noexcept {
+  if (!ValidName(fileName)) {
+    return BadName();
+  }
+  if (mState->cfg.readOnly) {
+    return Result<void>(MakeErrorCode(PerErrc::kIllegalWriteAccess));
+  }
+  std::lock_guard<std::mutex> lock(mState->mutex);
+  std::string const name(fileName);
+  if (mState->openFiles.count(name) != 0) {
+    return Result<void>(MakeErrorCode(PerErrc::kResourceBusy));
+  }
+  switch (detail::RecoverOneFile(mState->cfg.directory, name)) {
+  case detail::FileRecovery::kIntact:
+  case detail::FileRecovery::kRecovered: return Result<void>();
+  case detail::FileRecovery::kNoRedundancy:
+    return Result<void>(MakeErrorCode(PerErrc::kValidationFailed, 0, "no redundancy copy for this file"));
+  case detail::FileRecovery::kRedundancyCorrupt: break;
+  }
+  return Result<void>(MakeErrorCode(PerErrc::kValidationFailed, 0, "redundancy copy is corrupt"));
 }
 
 Result<void> FileStorage::ResetFile(StringView fileName) {
@@ -352,6 +449,7 @@ Result<void> FileStorage::ResetFile(StringView fileName) {
   if (ec) {
     return Result<void>(detail::ErrnoToError(ec.value()));
   }
+  detail::SnapshotFile(mState->cfg.directory, name); // the reset content is the new known-good state
   return Result<void>();
 }
 

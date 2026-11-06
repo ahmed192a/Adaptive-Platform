@@ -23,7 +23,7 @@ Status values: Implemented, Partial, Missing, Deviation, Unverified.
 | `LeapJump` (SWS_TS_01051, R23-11): `kTimeLeapNone=0, kTimeLeapFuture=1, kTimeLeapPast=2` | Implemented | **Fixed.** Previously only a TIME_LEAP flag without direction. |
 | Initial status `kNotSynchronizedUntilStartup` (SWS_TS_00032), initial leap none (00064) | Implemented | |
 | `Timestamp` (8.9) | Deviation / Unverified | `std::chrono` time point (ns). The SWS struct layout is not retrievable. |
-| `TimeBase` struct (8.9), `TimePrecisionMeasurement` struct | **Missing** | Fields listed in the SWS (glbSeconds, rateDeviation, pathDelay, ...) not implemented. |
+| `TimeBase` struct (8.9), `TimePrecisionMeasurement` | Partial | `TimePrecisionMeasurement` and `TimeValidationData` structs exist with glb time, status, rate deviation and path delay (clamped to uint32); exact SWS field names/types **Unverified** (section 8.9 not retrievable in R25-11 or R22-11). |
 | `UserData` | Deviation | Max 3 bytes, passed as pointer+length / returned as `std::vector<uint8_t>` (the SWS uses `ara::core::Span<const Byte>`, which does not compile under `-Werror` here). `kMaxUserDataSize` value Unverified. |
 
 ## SynchronizedTimeBaseStatus (SWS 8.6.2)
@@ -34,7 +34,7 @@ Status values: Implemented, Partial, Missing, Deviation, Unverified.
 | `GetLeapJump` | Implemented | |
 | `GetUserData` | Implemented | Empty when none (SWS_TS_00120). |
 | `GetCreationTime`, `GetCreationLocalTime` | Implemented | Return types Unverified. |
-| `GetRateCorrected`, `GetRateExceeded` | **Missing** | Semantics not retrievable. |
+| `GetRateCorrected`, `GetRateExceeded` | Implemented | SWS_TS_14224 (RATE_CORRECTED sticky once a rate is calculated), SWS_TS_14228 (RATE_EXCEEDED when abs(rate) > `rateCorrectionThreshold`, 0 disables). Verified in R22-11 and R25-11. Tests `RateCorrected*`, `RateExceeded*`. |
 
 ## SynchronizedTimeBaseConsumer (SWS 8.4.2)
 
@@ -47,8 +47,8 @@ Status values: Implemented, Partial, Missing, Deviation, Unverified.
 | `RegisterSynchronizationStateChangeNotifier` (00702) | Implemented | Same; callback gets the new `SynchronizationStatus`. |
 | `RegisterTimeLeapNotifier` (00703) | Implemented | Callback gets the `LeapJump`. |
 | `Unregister*Notifier` x3 | Implemented | |
-| `RegisterTimePrecisionMeasurementNotifier` (00800) and its Unregister | **Missing** | Needs `TimePrecisionMeasurement`. |
-| `RegisterTimeValidationNotification` / validation notification classes (00424-00427) | **Missing** | |
+| `RegisterTimePrecisionMeasurementNotifier` (00800) and its Unregister | Implemented | Rejected with `kFunctionNotSupported` on a system-wide-global-time-master base (00803); offset bases fill only glb time and status (00801). Verified R25-11/R22-11 text; callback type Unverified. |
+| `RegisterTimeValidationNotification` / validation notification classes (00424-00427) | Implemented | Consumer-side (01016). One notifier per consumer; delivers master timing data and Pdelay responder data (`TimeValidationData::Kind`). Layout of the SWS data Unverified. |
 
 ## SynchronizedTimeBaseProvider (SWS 8.5.1, SWS_TS_01100-01115, R23-11)
 
@@ -61,8 +61,8 @@ Status values: Implemented, Partial, Missing, Deviation, Unverified.
 | `SetRateCorrection(double)` (00061-00063, 14225) | Implemented | `kFunctionNotSupported` unless `TimeBaseConfig::allowProviderRateCorrection` (00061); `kLimitsExceeded` beyond `providerRateDeviationMax` (00063; the spec also calls it `MasterRateDeviationMax` in 00061 - inconsistency). The time base runs at `1+correction`. |
 | `GetRateDeviation()` | Implemented | |
 | `SetUserData`, `GetUserData` | Implemented | |
-| `OffsetTimeBaseProvider` (`SetOffsetTime`, SWS_TS_012xx) | **Missing** | Offset time bases are not modelled. |
-| `RegisterTimeValidationNotification` / `Unregister...` | **Missing** | |
+| `OffsetTimeBaseProvider` (`SetOffsetTime`, SWS_TS_012xx) | Implemented | Ids 01201-01214 (R22-11/R25-11): `SetOffsetTime` (`kTimeCannotSet` 01107/01207 on a non-offset base), `GetCurrentTime`, `SetRateCorrection`, `GetRateDeviation`, `SetUserData`/`GetUserData`, validation register/unregister, `SetMasterTimingData`, `SetPdelayResponderData`. Config `isOffsetTimeBase`. |
+| `RegisterTimeValidationNotification` / `Unregister...` (provider, 01114/01115) | Implemented | A new registration overwrites the previous notifier. |
 
 ## Error domain
 
@@ -83,3 +83,12 @@ Status values: Implemented, Partial, Missing, Deviation, Unverified.
 | Time base as a continuous synchronized time with rate deviation | Implemented | |
 | Security events (7.4.1), diagnostics, StbM-to-AP mapping (Table 7.1) | **Missing** | |
 | `GetCurrentTime` on the consumer (Table 7.1 maps AP `GetTimeWithStatus` to `StbM_GetCurrentTime`) | n/a | Consumer exposes `GetTimeWithStatus` only, as in the SWS. |
+
+## Gap-closing pass
+
+New: `TsyncErrc::kTimeCannotSet = 8` (the numeric value is **Unverified**; the name and requirement ids
+01107/01207 come from R22-11/R25-11). The error-domain id remains `0x8000000000000502`, an
+implementation choice, because the normative id is not retrievable. Still open: security events,
+diagnostics and the StbM mapping (rows above). Where R25-11 text was unavailable, R22-11 was used; the
+two releases agree on the cited requirements.
+Demo: `App/demo/time_sync_clock` (provider/consumer, slew vs step, rate flags, timeout).

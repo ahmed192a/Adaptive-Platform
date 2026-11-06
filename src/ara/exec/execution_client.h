@@ -11,8 +11,10 @@
 #ifndef ARA_EXEC_EXECUTION_CLIENT_H_
 #define ARA_EXEC_EXECUTION_CLIENT_H_
 
+#include "ara/core/result.h"
 #include "ara/exec/exec_error_domain.h"
 #include <atomic>
+#include <functional>
 #include <cstdint>
 #include <string>
 #include <variant>
@@ -43,6 +45,8 @@ private:
   int fd{-1};                                  /*!< index of File descriptor */
   /// SWS_EM_02243: kRunning is only valid while the process is in the Starting state.
   mutable std::atomic<bool> mRunningReported{false};
+  /// True for instances made by Create(): they own the per-process slot (SWS_EM_02582).
+  bool mOwnsSlot{false};
 
 public:
   /**
@@ -50,6 +54,22 @@ public:
    * @note SWS_EM_02030
    */
   ExecutionClient() noexcept;
+
+  /**
+   * @brief Spec-shaped factory (SWS_EM_02577): creates the one ExecutionClient of this process and
+   *        installs a SIGTERM handler that runs @p terminationHandler on a background thread.
+   * @return the client, or an error when a Create()d client already exists in this process
+   *         (ExecErrc::kGeneralError, SWS_EM_02582) or the handler is empty (kInvalidArguments).
+   * @note The legacy default constructor stays available and unrestricted: several platform processes
+   *       still hold more than one client. Only Create()d clients are subject to the single-instance rule.
+   *       The exact signature of the spec's Create is Unverified (see doc/spec-conformance/exec.md).
+   */
+  static ara::core::Result<ExecutionClient> Create(std::function<void()> terminationHandler) noexcept;
+
+  ExecutionClient(ExecutionClient &&other) noexcept;
+  ExecutionClient &operator=(ExecutionClient &&other) noexcept;
+  ExecutionClient(ExecutionClient const &) = delete;
+  ExecutionClient &operator=(ExecutionClient const &) = delete;
 
   /**
    * @brief Destructor of the Execution Client instance.
@@ -72,6 +92,11 @@ public:
    */
   std::variant<std::monostate, ExecErrc>
   ReportExecutionState(ExecutionState state) const noexcept;
+
+  /**
+   * @brief Same behaviour as ReportExecutionState but with the spec's ara::core::Result<void> return type.
+   */
+  ara::core::Result<void> ReportExecutionStateResult(ExecutionState state) const noexcept;
 };
 } // namespace ara::exec
 

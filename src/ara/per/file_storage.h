@@ -11,7 +11,10 @@
 
 #include <chrono>
 #include <cstdint>
+#include <filesystem>
 #include <memory>
+#include <string>
+#include <vector>
 #include <string>
 
 #include "ara/core/StringView.h"
@@ -49,6 +52,14 @@ struct FileInfo {
 
 namespace detail {
 struct FileStorageState;
+
+/// Result of checking one file against its redundancy copy (`<storage>/backup/<name>` + `<name>.crc`).
+enum class FileRecovery { kIntact, kRecovered, kNoRedundancy, kRedundancyCorrupt };
+/// Verifies `<dir>/files/<name>` against `<dir>/backup/<name>`; restores it from the copy when it is
+/// missing or its CRC differs from the one recorded at the last Sync/close.
+FileRecovery RecoverOneFile(std::filesystem::path const &storageDir, std::string const &name);
+/// Names of all files that have a redundancy copy.
+std::vector<std::string> FilesWithRedundancy(std::filesystem::path const &storageDir);
 }
 
 class ReadAccessor {

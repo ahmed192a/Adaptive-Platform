@@ -307,6 +307,20 @@ LogStream &LogStream::operator<<(ara::core::ErrorCode const &ec) {
   return enabled_ ? Append(detail::FormatErrorCode(ec)) : *this;
 }
 LogStream &LogStream::operator<<(ara::core::InstanceSpecifier const &is) { return Append(is.ToString()); }
+
+LogStream &LogStream::operator<<(ara::core::Span<const ara::core::Byte> bytes) {
+  if (!enabled_) return *this;
+  static constexpr char kDigits[] = "0123456789abcdef";
+  std::string out;
+  out.reserve(bytes.size() * 3);
+  for (auto const b : bytes) {
+    auto const v = static_cast<unsigned>(b);
+    if (!out.empty()) out.push_back(' ');
+    out.push_back(kDigits[v >> 4]);
+    out.push_back(kDigits[v & 0xF]);
+  }
+  return Append(out);
+}
 LogStream &LogStream::operator<<(float v) { return enabled_ ? Append(std::to_string(v)) : *this; }
 LogStream &LogStream::operator<<(double v) { return enabled_ ? Append(std::to_string(v)) : *this; }
 

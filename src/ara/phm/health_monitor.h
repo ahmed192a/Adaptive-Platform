@@ -48,6 +48,11 @@ using StatusListener = std::function<void(std::string const &globalSupervision,
                                           GlobalSupervisionStatus newStatus)>;
 
 /// Transport used by SupervisedEntity to deliver checkpoints.
+/// SWS_PHM_01363: name of the production error reported FAILED when the watchdog reaction fires.
+inline constexpr char const *kWatchdogResetEvent = "PHM_E_WATCHDOG_RESET";
+/// Sink for production errors (typically forwarding to ara::diag event reporting): (event name, failed).
+using ProductionErrorReporter = std::function<void(std::string const &eventName, bool failed)>;
+
 class CheckpointSink {
 public:
   virtual ~CheckpointSink() = default;
@@ -73,6 +78,8 @@ public:
   ara::core::Result<void> AddGlobalSupervision(GlobalSupervisionConfig config);
   void SetWatchdog(std::shared_ptr<apext::phm::WatchdogInterface> watchdog);
   void SetStatusListener(StatusListener listener);
+  /// Registers the production-error sink used for PHM_E_WATCHDOG_RESET (SWS_PHM_01363).
+  void SetProductionErrorReporter(ProductionErrorReporter reporter);
   /// Removes all configuration and state.
   void Clear();
 
@@ -126,6 +133,7 @@ private:
   std::set<std::string> mKnownEntities;
   std::shared_ptr<apext::phm::WatchdogInterface> mWatchdog;
   StatusListener mListener;
+  ProductionErrorReporter mErrorReporter;
   bool mWatchdogFired{false};
 
   std::thread mThread;
