@@ -63,6 +63,8 @@ public:
   /// Feed raw bytes; kBadPdu on a malformed message.
   ara::core::Result<void> OnBytesReceived(std::uint8_t const *bytes, std::size_t size);
 
+  /// Encode a transmitted NmPdu (as handed to the Tx handler) with this channel's PDU layout.
+  ara::core::Result<std::vector<std::uint8_t>> EncodeTx(NmPdu const &pdu) const;
   /// Advance timers to the clock's current time and transmit due messages.
   void Process();
 
@@ -78,6 +80,9 @@ public:
   /// SWS_ANM_00090: withdraw the network request and all local partial network requests
   /// (shutdown / SIGTERM). Never fails.
   void Withdraw();
+  /// SWS_ANM_00090 on SIGTERM: Withdraw() plus an immediate move to Prepare Bus-Sleep, so the
+  /// network state (ara::nm::NetworkHandle::GetNetworkState) reads kNoCom at once.
+  void Shutdown();
 
 private:
   NmChannel(std::string name, NmConfig cfg, std::shared_ptr<NmClock> clock);

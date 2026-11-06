@@ -8,6 +8,7 @@
 #include <atomic>
 #include <chrono>
 #include <cstdint>
+#include "ara/nm/nm_pdu.h"
 
 namespace ara::nm {
 
@@ -64,6 +65,11 @@ struct NmConfig {
   /// carrying PNI=1 but no bit of a PN this node serves is dropped unless this is true
   /// (SWS_ANM_00081 / 00089).
   bool allNmMessagesKeepAwake{false};
+  /// nmMsgCycleOffset: delay of the first NM message after entering Repeat Message
+  /// (SWS_ANM Sec. 7.6.1). Ignored when immediateNmTransmissions > 0 (those start at once).
+  Millis messageCycleOffset{0};
+  /// Layout of the NM PDU on the wire (used by NmChannel::EncodeTx / OnBytesReceived).
+  NmPduLayout pduLayout{};
 };
 
 constexpr std::uint8_t kMaxPartialNetworks = 32;

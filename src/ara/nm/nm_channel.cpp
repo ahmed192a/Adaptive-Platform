@@ -27,6 +27,15 @@ Result<std::unique_ptr<NmChannel>> NmChannel::Create(std::string name, NmConfig 
   if (cfg.immediateNmTransmissions != 0 && cfg.immediateNmCycleTime.count() <= 0) {
     return R::FromError(MakeErrorCode(NmErrc::kInvalidConfig));
   }
+  if (cfg.messageCycleOffset.count() < 0) return R::FromError(MakeErrorCode(NmErrc::kInvalidConfig));
+  // The PDU layout must be consistent and able to carry the served partial networks.
+  if (!cfg.pduLayout.IsValid()) return R::FromError(MakeErrorCode(NmErrc::kInvalidConfig));
+  if (cfg.pnFilterMask != 0) {
+    std::size_t const bits = 8U * cfg.pduLayout.pnVectorLength;
+    if (bits == 0 || (bits < 32 && (cfg.pnFilterMask >> bits) != 0)) {
+      return R::FromError(MakeErrorCode(NmErrc::kInvalidConfig));
+    }
+  }
   return R::FromValue(
       std::unique_ptr<NmChannel>(new NmChannel(std::move(name), cfg, std::move(clock))));
 }
@@ -62,7 +71,8 @@ void NmChannel::Enter(NmState s, Millis t, Pending &p) {
   case NmState::kRepeatMessage:
     repeatDeadline_ = t + cfg_.repeatMessageTime;
     nmTimeoutDeadline_ = t + cfg_.nmTimeout;
-    txDeadline_ = t; // send immediately
+    // nmMsgCycleOffset delays the first message; immediate transmissions start at once.
+    txDeadline_ = cfg_.immediateNmTransmissions > 0 ? t : t + cfg_.messageCycleOffset;
     immediateRemaining_ = cfg_.immediateNmTransmissions;
     break;
   case NmState::kNormalOperation:
@@ -255,10 +265,14 @@ void NmChannel::OnPduReceived(NmPdu const &pdu) {
 }
 
 Result<void> NmChannel::OnBytesReceived(std::uint8_t const *bytes, std::size_t size) {
-  auto pdu = NmPdu::Decode(bytes, size);
+  auto pdu = NmPdu::Decode(bytes, size, cfg_.pduLayout);
   if (!pdu.HasValue()) return Result<void>::FromError(pdu.Error());
   OnPduReceived(pdu.Value());
   return Result<void>::FromValue();
+}
+
+Result<std::vector<std::uint8_t>> NmChannel::EncodeTx(NmPdu const &pdu) const {
+  return pdu.Encode(cfg_.pduLayout);
 }
 
 void NmChannel::Process() {
@@ -266,6 +280,27 @@ void NmChannel::Process() {
   {
     std::lock_guard<std::mutex> l(mu_);
     Pump(clock_->Now(), p);
+  }
+  Dispatch(p);
+}
+
+void NmChannel::Shutdown() {
+  Pending p;
+  {
+    std::lock_guard<std::mutex> l(mu_);
+    Millis const now = clock_->Now();
+    Pump(now, p);
+    localPn_ = 0;
+    if (requested_) {
+      requested_ = false;
+      p.requestedChanges.push_back(false);
+    }
+    // SWS_ANM_00090: afterwards the network state reads kNoCom; the remaining timers run down
+    // from Prepare Bus-Sleep to Bus-Sleep.
+    if (state_ == NmState::kRepeatMessage || state_ == NmState::kNormalOperation ||
+        state_ == NmState::kReadySleep) {
+      Enter(NmState::kPrepareBusSleep, now, p);
+    }
   }
   Dispatch(p);
 }
