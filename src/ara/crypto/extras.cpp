@@ -85,11 +85,14 @@ Res<ByteVector> RunKdf(char const *name, OSSL_PARAM *params, std::size_t length)
 Res<ByteVector> Hkdf(HashAlgorithm alg, ByteView ikm, ByteView salt, ByteView info, std::size_t length) {
   if (ikm.empty()) return Fail<ByteVector>(CryptoErrc::kEmptyContainer);
   if (length == 0 || length > 255 * DigestSize(alg)) return Fail<ByteVector>(CryptoErrc::kInvalidArgument);
+  // OpenSSL rejects a NULL data pointer even for a zero-length octet string: point empties at a dummy byte.
+  static std::uint8_t dummy = 0;
+  auto ptr = [](ByteView v) { return const_cast<std::uint8_t *>(v.empty() ? &dummy : v.data()); };
   OSSL_PARAM params[] = {
       OSSL_PARAM_construct_utf8_string(OSSL_KDF_PARAM_DIGEST, const_cast<char *>(MdName(alg)), 0),
-      OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_KEY, const_cast<std::uint8_t *>(ikm.data()), ikm.size()),
-      OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_SALT, const_cast<std::uint8_t *>(salt.data()), salt.size()),
-      OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_INFO, const_cast<std::uint8_t *>(info.data()), info.size()),
+      OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_KEY, ptr(ikm), ikm.size()),
+      OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_SALT, ptr(salt), salt.size()),
+      OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_INFO, ptr(info), info.size()),
       OSSL_PARAM_construct_end()};
   return RunKdf("HKDF", params, length);
 }
