@@ -42,9 +42,9 @@ jobs:
       - run: ctest --preset coverage -j 2
       - name: Collect coverage
         run: |
-          lcov --capture --directory build/coverage --output-file coverage.info --ignore-errors mismatch,gcov
-          lcov --remove coverage.info '/usr/*' '*/_deps/*' '*/Testing/*' --output-file coverage.info
-          lcov --list coverage.info | tail -5
+          lcov --capture --directory build/coverage --output-file coverage.info --ignore-errors mismatch,gcov,inconsistent,negative,unused,empty
+          lcov --remove coverage.info '/usr/*' '*/_deps/*' '*/Testing/*' --output-file coverage.info --ignore-errors unused,inconsistent,empty
+          lcov --list coverage.info --ignore-errors inconsistent,empty | tail -5
       - uses: actions/upload-artifact@v4
         with: { name: coverage-info, path: coverage.info }
 
