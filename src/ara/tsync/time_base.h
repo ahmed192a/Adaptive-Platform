@@ -20,6 +20,7 @@
 #include <memory>
 #include <mutex>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "ara/core/result.h"
@@ -76,6 +77,36 @@ struct UserData {
   std::uint8_t bytes[3]{0, 0, 0};
 };
 
+/**
+ * Measurement record for the time precision measurement table (SWS_TS_00800 / 00801 lists the
+ * fields; their exact types are Unverified). For offset time bases only glbSeconds, glbNanoSeconds
+ * and timeBaseStatus are filled (SWS_TS_00801), the other fields are 0.
+ */
+struct TimePrecisionMeasurement {
+  std::uint64_t glbSeconds{0};
+  std::uint32_t glbNanoSeconds{0};
+  std::uint32_t timeBaseStatus{0};       ///< StatusFlags bits at the sampling instant
+  std::uint32_t virtualLocalTimeLow{0};  ///< low 32 bit of the local clock in ns
+  double rateDeviation{0.0};
+  std::uint64_t locSeconds{0};
+  std::uint32_t locNanoSeconds{0};
+  std::uint32_t pathDelay{0};            ///< ns
+};
+
+/**
+ * Time validation data handed to validation notifications (SWS_TS_00424..00427, master timing data
+ * and pdelay responder data). The field layout is implementation-defined (Unverified).
+ */
+struct TimeValidationData {
+  enum class Kind : std::uint8_t { kMasterTimingData = 0, kPdelayResponderData = 1 };
+  Kind kind{Kind::kMasterTimingData};
+  std::uint16_t sequenceId{0};
+  std::int64_t originTimestampNs{0};
+  std::int64_t ingressTimestampNs{0};
+  std::int64_t egressTimestampNs{0};
+  std::int64_t pathDelayNs{0};
+};
+
 /// One consistent reading of the time base.
 struct TimeBaseSnapshot {
   SynchronizedTimePoint time{};
@@ -83,6 +114,8 @@ struct TimeBaseSnapshot {
   StatusFlags status{};
   UserData userData{};
   LeapJump leapJump{LeapJump::kTimeLeapNone};
+  bool rateCorrected{false};  ///< RATE_CORRECTED: a valid rate correction was calculated (SWS_TS_14224)
+  bool rateExceeded{false};   ///< RATE_EXCEEDED: |rate| > rateCorrectionThreshold (SWS_TS_14228)
   std::chrono::steady_clock::time_point localTime{}; ///< local clock reading at sampling
 };
 
@@ -106,6 +139,14 @@ struct TimeBaseConfig {
   bool allowProviderRateCorrection{false};
   /// Largest accepted |rate correction| (providerRateDeviationMax); larger -> kLimitsExceeded (00063).
   double providerRateDeviationMax{0.0};
+  /// GlobalTimeCorrectionProps.rateCorrectionThreshold: |rate deviation| above it sets RATE_EXCEEDED;
+  /// 0 disables the check (SWS_TS_14228).
+  double rateCorrectionThreshold{0.0};
+  /// isSystemWideGlobalTimeMaster: such a time base cannot register precision measurement
+  /// notifiers (SWS_TS_00803).
+  bool isSystemWideGlobalTimeMaster{false};
+  /// Offset time base: its time is set by OffsetTimeBaseProvider::SetOffsetTime (SWS_TS_012xx).
+  bool isOffsetTimeBase{false};
 };
 
 /// Notification reasons passed to the update callback.
@@ -138,6 +179,18 @@ public:
   std::size_t AddObserver(UpdateCallback cb, bool notifyEveryUpdate = false);
   void RemoveObserver(std::size_t id);
 
+  TimeBaseConfig const &Config() const noexcept { return config_; }
+  /// Deliver master timing / pdelay responder data to the validation observers.
+  void PublishValidationData(TimeValidationData const &data);
+
+  using PrecisionCallback = std::function<void(TimePrecisionMeasurement const &)>;
+  using ValidationCallback = std::function<void(TimeValidationData const &)>;
+  /// Observers for time precision measurements / time validation data. Return an id.
+  std::size_t AddPrecisionObserver(PrecisionCallback cb);
+  void RemovePrecisionObserver(std::size_t id);
+  std::size_t AddValidationObserver(ValidationCallback cb);
+  void RemoveValidationObserver(std::size_t id);
+
   /// Evaluates timeout detection and delivers pending notifications. Call periodically
   /// (getters evaluate lazily but cannot deliver callbacks from const readers).
   void Poll();
@@ -145,6 +198,7 @@ public:
 private:
   friend class TimeBaseProvider;
   friend class SynchronizedTimeBaseProvider;
+  friend class OffsetTimeBaseProvider;
   explicit TimeBaseResource(TimeBaseConfig config);
 
   struct State {
@@ -159,6 +213,7 @@ private:
     bool leap{false};
     int leapDir{0};       ///< +1 future, -1 past (valid while `leap`)
     bool timeout{false};
+    bool rateCorrected{false};
     UserData user{};
   };
 
@@ -175,6 +230,10 @@ private:
   ara::core::Result<void> SetUserDataOnly(UserData user);
 
   void Deliver(TimeBaseSnapshot const &snap, ChangeReason reason, bool statusChanged);
+  /// Builds a measurement record from the current state and notifies the precision observers.
+  /// kNotSynchronized if the base was never synchronized.
+  ara::core::Result<void> ReportPrecisionMeasurement(Duration pathDelay);
+
 
   TimeBaseConfig config_;
   mutable std::mutex mutex_;
@@ -189,6 +248,8 @@ private:
   };
   std::vector<Observer> observers_;
   std::size_t nextObserverId_{1};
+  std::vector<std::pair<std::size_t, PrecisionCallback>> precisionObservers_;
+  std::vector<std::pair<std::size_t, ValidationCallback>> validationObservers_;
 };
 
 /**
@@ -204,6 +265,13 @@ public:
                                  bool syncToGateway = false, UserData userData = {}) {
     return resource_->Apply(t, rateDeviation, syncToGateway, userData);
   }
+  /// Simulates the sync daemon: record a precision measurement with the given path delay and
+  /// deliver it to the registered precision measurement notifiers.
+  ara::core::Result<void> ReportPrecisionMeasurement(Duration pathDelay) {
+    return resource_->ReportPrecisionMeasurement(pathDelay);
+  }
+  /// Deliver master timing / pdelay responder data to the validation notifications.
+  void PublishValidationData(TimeValidationData const &data) { resource_->PublishValidationData(data); }
 
 private:
   std::shared_ptr<TimeBaseResource> resource_;

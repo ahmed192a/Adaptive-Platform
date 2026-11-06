@@ -26,7 +26,7 @@ An unbound handle reports `kServiceNotAvailable`, like a lost daemon connection.
 | SWS_ANM_01009 `SetNetworkRequestedState(NetworkStateType)` | Implemented | `kNoCom` without a prior request is a no-op (idempotent). |
 | SWS_ANM_01010, 01012 `Register...ChangeNotifier(notifier)` | Implemented | One notifier per kind, overwrite on re-register, empty -> `kInvalidHandler`. |
 | SWS_ANM_01011, 01013 `Unregister...` | Implemented | |
-| SWS_ANM_01014, 01015 overloads with `ExecutorT&&` | **Missing** | Needs the ara::core executor concept; notifiers run in the thread driving the channel. SWS_ANM_00086 is therefore also Missing. |
+| SWS_ANM_01014, 01015 overloads with `ExecutorT&&` | Implemented | Template overloads; the executor receives each notification as a `std::function<void()>` (`Wrap`). 00086 covered the same way. Executor concept itself is not in the retrievable text - callable-with-`std::function` is the assumed contract (**Unverified**). Tests `Executor*`. |
 | SWS_ANM_01020 `NetworkStateChangeNotifier` | Implemented | `std::function<void(const NetworkStateType&)>`. |
 | SWS_ANM_01358 `NetworkStateType {kNoCom=0, kFullCom=1}` | Implemented | |
 | SWS_ANM_01100 `NmException` | Implemented | |
@@ -41,11 +41,11 @@ An unbound handle reports `kServiceNotAvailable`, like a lost daemon connection.
 
 | Requirement | Status | Notes |
 |---|---|---|
-| SWS_ANM_00083 `GetNetworkState` lowest-wins over PNCs/VLANs/channels | Partial | One channel per port; no aggregation over several channels/PNCs. |
-| SWS_ANM_00084 `SetNetworkRequestedState(kFullCom)` highest-wins | Partial | Same limitation. |
+| SWS_ANM_00083 `GetNetworkState` lowest-wins over PNCs/VLANs/channels | Implemented | A port maps to several channels; `kNoCom` if any channel is NoCom. Notifiers fire only when the aggregate changes. PNC aggregation is by channel only. |
+| SWS_ANM_00084 `SetNetworkRequestedState(kFullCom)` highest-wins | Implemented | Applied to every channel of the port; requested state is `kFullCom` if any channel requests. |
 | SWS_ANM_00029 Bus-Sleep reports `kNoCom` | Implemented | Prepare Bus-Sleep also maps to `kNoCom`. |
 | SWS_ANM_00088 default state after start is NO_COM | Implemented | |
-| SWS_ANM_00090 on SIGTERM withdraw requests, `GetNetworkState` -> `kNoCom` | Partial | `NetworkManager::WithdrawAll()` / `NmChannel::Withdraw()` withdraw all requests; no signal hook and the state follows the normal timers (Ready Sleep -> ... -> Bus-Sleep) instead of jumping to `kNoCom`. |
+| SWS_ANM_00090 on SIGTERM withdraw requests, `GetNetworkState` -> `kNoCom` | Implemented | `NetworkManager::InstallSigtermHook()` (async-signal-safe flag, previous handler chained); the next `ProcessAll()` runs `ShutdownAll()` which withdraws and enters Prepare Bus-Sleep (`kNoCom`) at once. Tests `Sigterm*`. |
 
 ## Operational state machine (per channel)
 
@@ -65,7 +65,7 @@ An unbound handle reports `kServiceNotAvailable`, like a lost daemon connection.
 | SWS_ANM_00025 NM message in Prepare Bus-Sleep -> Network Mode | Implemented | |
 | SWS_ANM_00062 / 91002 operational state machine | Implemented | Flattened into one enum (`NmState`). |
 | `nmMsgCycleTime` | Implemented | |
-| `nmMsgCycleOffset` | **Missing** | First message is sent immediately on entering Repeat Message. |
+| `nmMsgCycleOffset` | Implemented | `NmConfig::messageCycleOffset`: first Repeat Message transmission is delayed by it; ignored when `immediateNmTransmissions > 0`. Config is validated. Semantics from SWS_ANM section 7.6.1 as cited in the original audit (R25-11 text for the exact requirement id not retrievable). |
 | `nmImmediateNmCycleTime`, `nmImmediateNmTransmissions` | Implemented | New: `NmConfig::immediateNmCycleTime` / `immediateNmTransmissions` (default 0 = disabled). |
 
 ## Partial networking
@@ -76,22 +76,28 @@ An unbound handle reports `kServiceNotAvailable`, like a lost daemon connection.
 | SWS_ANM_00052 PNI=0 messages still processed | Implemented | |
 | SWS_ANM_00053, 00056 PN reset timer, must exceed `nmMsgCycleTime` | Implemented | `NmChannel::Create` -> `kInvalidConfig` otherwise (when PN is active). |
 | SWS_ANM_00054 PNI transmitted when participating | Implemented | |
-| SWS_ANM_00055 PN bit vector located by `pncVectorOffset`/`pncVectorLength` | Deviation | Fixed layout: bytes 2..5, little endian, 32 PNs. |
+| SWS_ANM_00055 PN bit vector located by `pncVectorOffset`/`pncVectorLength` | Implemented | `NmPduLayout::pnVectorOffset/pnVectorLength` (0..4 bytes), little endian; `Create` rejects a `pnFilterMask` that does not fit. Default layout equals the former fixed one. |
 | SWS_ANM_00081, 00089 drop messages with no served PN bit unless `allNmMessagesKeepAwake` | Implemented | New: `NmConfig::allNmMessagesKeepAwake` (default false). Dropped messages neither wake the node nor restart the timer. |
 
 ## Message format and Control Bit Vector
 
 | Requirement | Status | Notes |
 |---|---|---|
-| SWS_ANM_00033, 00034 `nmNidPosition`, `nmNodeId` | Deviation | Node id is always byte 0. |
-| SWS_ANM_00035 `nmCbvPosition` | Deviation | CBV is always byte 1. |
+| SWS_ANM_00033, 00034 `nmNidPosition`, `nmNodeId` | Implemented | `NmPduLayout::nidPosition` (0, 1 or absent). |
+| SWS_ANM_00035 `nmCbvPosition` | Implemented | `NmPduLayout::cbvPosition` (0, 1 or absent; PNI requires a CBV). |
 | SWS_ANM_00037 transmitted Repeat Message Request bit always 0 | Implemented | **Fixed**: the engine used to set RMR while in Repeat Message. |
 | SWS_ANM_00038, 00071, 00091 Active Wakeup / NM Coordinator Sleep Ready / PNL bits always 0 on Tx | Implemented | Those bits are reserved (written 0, ignored on Rx). |
-| SWS_ANM_00040, 00095 `nmUserDataLength` | Deviation | Fixed 2 user-data bytes (8 byte PDU). |
+| SWS_ANM_00040, 00095 `nmUserDataLength` | Implemented | Derived from `pduLength` (2..64) minus header/PN bytes; first 2 bytes in `NmPdu::userData`, rest in `moreUserData`. Wire encoding via `NmChannel::EncodeTx` / `OnBytesReceived`; the fixed 8-byte `Encode()/Decode()` remain. |
 | CBV bit positions (RMR bit 0, PNI bit 4 here) | **Unverified** | The AP text defers to the classic NM layout; classic CanNm is believed to use bit 6 for PNI, but that is not confirmed by the retrieved text. |
 
 ## Known gaps (not implemented)
 
-Executor overloads (01014/01015, 00086); multi-channel/PNC aggregation (00083/00084); signal-driven
-shutdown (00090); `nmMsgCycleOffset`; configurable PDU layout (00033-00035, 00040, 00055);
-NM coordinator functions; bus drivers (the engine only produces/consumes PDU objects).
+NM coordinator functions; bus drivers (the engine only produces/consumes PDU objects); the exact CBV
+bit positions and the ara::core executor concept stay **Unverified** (see above). Nothing else is open.
+
+## Release notes for this gap-closing pass
+
+R25-11 text was tried first; where a requirement id could not be retrieved the earlier-release
+extract used by the original audit applies (the NM state machine and PDU rules are unchanged between
+releases per the project owner's guidance). No requirement id above was invented.
+Demo: `App/demo/nm_bus_monitor` (3 ECUs, partial networks, state timeline).

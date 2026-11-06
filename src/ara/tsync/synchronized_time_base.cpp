@@ -50,6 +50,10 @@ struct SynchronizedTimeBaseConsumer::Impl {
   std::size_t observerId{0};
   StatusFlags lastFlags{};
   bool lastEver{false};
+  PrecisionMeasurementNotifier onPrecision;
+  TimeValidationNotifier onValidation;
+  std::weak_ptr<TimeBaseResource> precRes, valRes;
+  std::size_t precObs{0}, valObs{0};
 };
 
 SynchronizedTimeBaseConsumer::SynchronizedTimeBaseConsumer(ara::core::InstanceSpecifier const &s) noexcept
@@ -63,6 +67,12 @@ SynchronizedTimeBaseConsumer::~SynchronizedTimeBaseConsumer() noexcept {
   if (!impl_) return;
   if (auto r = impl_->observed.lock()) {
     if (impl_->observerId != 0) r->RemoveObserver(impl_->observerId);
+  }
+  if (auto r = impl_->precRes.lock()) {
+    if (impl_->precObs != 0) r->RemovePrecisionObserver(impl_->precObs);
+  }
+  if (auto r = impl_->valRes.lock()) {
+    if (impl_->valObs != 0) r->RemoveValidationObserver(impl_->valObs);
   }
 }
 
@@ -149,6 +159,67 @@ Result<void> SynchronizedTimeBaseConsumer::RegisterTimeLeapNotifier(TimeLeapNoti
   return Result<void>();
 }
 
+Result<void> SynchronizedTimeBaseConsumer::RegisterTimePrecisionMeasurementNotifier(
+    PrecisionMeasurementNotifier n) noexcept {
+  if (!n) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kInvalidArgument));
+  auto r = TimeBaseRegistry::Lookup(impl_->specifier);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  // SWS_TS_00803: not allowed for a system-wide global time master time base.
+  if (r->Config().isSystemWideGlobalTimeMaster) {
+    return Result<void>::FromError(MakeErrorCode(TsyncErrc::kFunctionNotSupported));
+  }
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onPrecision = std::move(n);
+  if (impl_->precObs == 0) {
+    std::weak_ptr<Impl> weak = impl_;
+    impl_->precRes = r;
+    impl_->precObs = r->AddPrecisionObserver([weak](TimePrecisionMeasurement const &m) {
+      auto self = weak.lock();
+      if (!self) return;
+      PrecisionMeasurementNotifier cb;
+      {
+        std::lock_guard<std::mutex> lk(self->mu);
+        cb = self->onPrecision;
+      }
+      if (cb) cb(m);
+    });
+  }
+  return Result<void>();
+}
+
+Result<void> SynchronizedTimeBaseConsumer::RegisterTimeValidationNotification(TimeValidationNotifier n) noexcept {
+  if (!n) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kInvalidArgument));
+  auto r = TimeBaseRegistry::Lookup(impl_->specifier);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onValidation = std::move(n);
+  if (impl_->valObs == 0) {
+    std::weak_ptr<Impl> weak = impl_;
+    impl_->valRes = r;
+    impl_->valObs = r->AddValidationObserver([weak](TimeValidationData const &d) {
+      auto self = weak.lock();
+      if (!self) return;
+      TimeValidationNotifier cb;
+      {
+        std::lock_guard<std::mutex> lk(self->mu);
+        cb = self->onValidation;
+      }
+      if (cb) cb(d);
+    });
+  }
+  return Result<void>();
+}
+
+void SynchronizedTimeBaseConsumer::UnregisterTimePrecisionMeasurementNotifier() noexcept {
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onPrecision = nullptr;
+}
+
+void SynchronizedTimeBaseConsumer::UnregisterTimeValidationNotification() noexcept {
+  std::lock_guard<std::mutex> g(impl_->mu);
+  impl_->onValidation = nullptr;
+}
+
 void SynchronizedTimeBaseConsumer::UnregisterStatusChangeNotifier() noexcept {
   std::lock_guard<std::mutex> g(impl_->mu);
   impl_->onStatus = nullptr;
@@ -216,6 +287,134 @@ std::vector<std::uint8_t> SynchronizedTimeBaseProvider::GetUserData() const {
   if (!r) return {};
   UserData u = r->GetUserData();
   return std::vector<std::uint8_t>(u.bytes, u.bytes + u.length);
+}
+
+// ------------------------------------------------------------------ provider validation helper
+
+namespace internal {
+struct ValidationRegistration {
+  std::mutex mu;
+  std::weak_ptr<TimeBaseResource> resource;
+  std::size_t id{0};
+  SynchronizedTimeBaseConsumer::TimeValidationNotifier notifier;
+  ~ValidationRegistration() {
+    if (auto r = resource.lock()) {
+      if (id != 0) r->RemoveValidationObserver(id);
+    }
+  }
+};
+} // namespace internal
+
+namespace {
+Result<void> RegisterValidation(std::shared_ptr<internal::ValidationRegistration> &reg, std::string const &spec,
+                                SynchronizedTimeBaseConsumer::TimeValidationNotifier n) {
+  if (!n) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kInvalidArgument));
+  auto r = TimeBaseRegistry::Lookup(spec);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  if (!reg) reg = std::make_shared<internal::ValidationRegistration>();
+  std::lock_guard<std::mutex> g(reg->mu);
+  reg->notifier = std::move(n); // SWS_TS_01114/01115: a new registration overwrites the old one
+  if (reg->id == 0) {
+    std::weak_ptr<internal::ValidationRegistration> weak = reg;
+    reg->resource = r;
+    reg->id = r->AddValidationObserver([weak](TimeValidationData const &d) {
+      auto self = weak.lock();
+      if (!self) return;
+      SynchronizedTimeBaseConsumer::TimeValidationNotifier cb;
+      {
+        std::lock_guard<std::mutex> lk(self->mu);
+        cb = self->notifier;
+      }
+      if (cb) cb(d);
+    });
+  }
+  return Result<void>();
+}
+
+void UnregisterValidation(std::shared_ptr<internal::ValidationRegistration> const &reg) {
+  if (!reg) return;
+  std::lock_guard<std::mutex> g(reg->mu);
+  reg->notifier = nullptr;
+}
+
+Result<void> PublishValidation(std::string const &spec, TimeValidationData data, TimeValidationData::Kind kind) {
+  auto r = TimeBaseRegistry::Lookup(spec);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  data.kind = kind;
+  r->PublishValidationData(data);
+  return Result<void>();
+}
+} // namespace
+
+Result<void> SynchronizedTimeBaseProvider::RegisterTimeValidationNotification(TimeValidationNotifier n) noexcept {
+  return RegisterValidation(validation_, specifier_, std::move(n));
+}
+void SynchronizedTimeBaseProvider::UnregisterTimeValidationNotification() noexcept { UnregisterValidation(validation_); }
+Result<void> SynchronizedTimeBaseProvider::SetMasterTimingData(TimeValidationData d) noexcept {
+  return PublishValidation(specifier_, d, TimeValidationData::Kind::kMasterTimingData);
+}
+Result<void> SynchronizedTimeBaseProvider::SetPdelayResponderData(TimeValidationData d) noexcept {
+  return PublishValidation(specifier_, d, TimeValidationData::Kind::kPdelayResponderData);
+}
+
+// ---------------------------------------------------------------------- offset time base provider
+
+OffsetTimeBaseProvider::OffsetTimeBaseProvider(ara::core::InstanceSpecifier const &s) noexcept
+    : specifier_(std::string(s.ToString())) {}
+
+Result<void> OffsetTimeBaseProvider::SetOffsetTime(Timestamp t, std::uint8_t const *u, std::size_t n) noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  if (!r->Config().isOffsetTimeBase) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kTimeCannotSet));
+  auto ud = ToUserData(u, n);
+  if (!ud.HasValue()) return Result<void>::FromError(ud.Error());
+  return r->Apply(t, r->GetRateDeviation().ValueOr(0.0), false, ud.Value(), /*forceStep=*/true);
+}
+
+Timestamp OffsetTimeBaseProvider::GetCurrentTime() const noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Timestamp{};
+  auto s = r->GetCurrentTime();
+  return s.HasValue() ? s.Value().time : Timestamp{};
+}
+
+Result<void> OffsetTimeBaseProvider::SetRateCorrection(double c) noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  return r->SetRateCorrection(c);
+}
+
+double OffsetTimeBaseProvider::GetRateDeviation() const noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return 0.0;
+  auto d = r->GetRateDeviation();
+  return d.HasValue() ? d.Value() : 0.0;
+}
+
+Result<void> OffsetTimeBaseProvider::SetUserData(std::uint8_t const *u, std::size_t n) noexcept {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return Result<void>::FromError(MakeErrorCode(TsyncErrc::kDaemonConnectionLost));
+  auto ud = ToUserData(u, n);
+  if (!ud.HasValue()) return Result<void>::FromError(ud.Error());
+  return r->SetUserDataOnly(ud.Value());
+}
+
+std::vector<std::uint8_t> OffsetTimeBaseProvider::GetUserData() const {
+  auto r = TimeBaseRegistry::Lookup(specifier_);
+  if (!r) return {};
+  UserData u = r->GetUserData();
+  return std::vector<std::uint8_t>(u.bytes, u.bytes + u.length);
+}
+
+Result<void> OffsetTimeBaseProvider::RegisterTimeValidationNotification(TimeValidationNotifier n) noexcept {
+  return RegisterValidation(validation_, specifier_, std::move(n));
+}
+void OffsetTimeBaseProvider::UnregisterTimeValidationNotification() noexcept { UnregisterValidation(validation_); }
+Result<void> OffsetTimeBaseProvider::SetMasterTimingData(TimeValidationData d) noexcept {
+  return PublishValidation(specifier_, d, TimeValidationData::Kind::kMasterTimingData);
+}
+Result<void> OffsetTimeBaseProvider::SetPdelayResponderData(TimeValidationData d) noexcept {
+  return PublishValidation(specifier_, d, TimeValidationData::Kind::kPdelayResponderData);
 }
 
 } // namespace ara::tsync
