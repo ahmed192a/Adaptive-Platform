@@ -110,16 +110,16 @@ TEST_F(Fixture, EcuReset) {
 }
 
 TEST_F(Fixture, CustomServiceHonoursSessionsAndNrc) {
-  auto r = server.RegisterService(0x23, uds::SessionBit(Session::kExtended),
+  auto r = server.RegisterService(0x3C, uds::SessionBit(Session::kExtended),
                                   [](ByteVector const &d) -> ServiceResult {
                                     if (d.empty()) return ServiceResult::FromError(Nrc::kIncorrectMessageLengthOrInvalidFormat);
                                     return ByteVector{d[0], 0x55};
                                   });
   ASSERT_TRUE(r.HasValue());
-  EXPECT_EQ(Req({0x23, 0x01}), (ByteVector{0x7F, 0x23, 0x7F}));
+  EXPECT_EQ(Req({0x3C, 0x01}), (ByteVector{0x7F, 0x3C, 0x7F}));
   Req({0x10, 0x03});
-  EXPECT_EQ(Req({0x23, 0x01}), (ByteVector{0x63, 0x01, 0x55}));
-  EXPECT_EQ(Req({0x23}), (ByteVector{0x7F, 0x23, 0x13}));
+  EXPECT_EQ(Req({0x3C, 0x01}), (ByteVector{0x7C, 0x01, 0x55}));
+  EXPECT_EQ(Req({0x3C}), (ByteVector{0x7F, 0x3C, 0x13}));
 }
 
 TEST_F(Fixture, ThrowingHandlerBecomesGeneralReject) {
@@ -132,12 +132,12 @@ TEST_F(Fixture, ThrowingHandlerBecomesGeneralReject) {
 TEST_F(Fixture, RegistrationErrors) {
   auto h = [](ByteVector const &) -> ServiceResult { return ByteVector{}; };
   EXPECT_EQ(server.RegisterService(0x22, kAllSessions, h).Error(), MakeErrorCode(DiagErrc::kAlreadyOffered));
-  EXPECT_EQ(server.RegisterService(0x23, 0, h).Error(), MakeErrorCode(DiagErrc::kInvalidArgument));
+  EXPECT_EQ(server.RegisterService(0x3C, 0, h).Error(), MakeErrorCode(DiagErrc::kInvalidArgument));
   EXPECT_EQ(server.RegisterService(0x7F, kAllSessions, h).Error(), MakeErrorCode(DiagErrc::kInvalidArgument));
   EXPECT_EQ(server.RegisterService(0xC0, kAllSessions, h).Error(), MakeErrorCode(DiagErrc::kInvalidArgument));
   EXPECT_EQ(server.RegisterService(0x50, kAllSessions, h).Error(), MakeErrorCode(DiagErrc::kInvalidArgument));
-  ASSERT_TRUE(server.RegisterService(0x23, kAllSessions, h).HasValue());
-  EXPECT_EQ(server.RegisterService(0x23, kAllSessions, h).Error(), MakeErrorCode(DiagErrc::kAlreadyOffered));
+  ASSERT_TRUE(server.RegisterService(0x3C, kAllSessions, h).HasValue());
+  EXPECT_EQ(server.RegisterService(0x3C, kAllSessions, h).Error(), MakeErrorCode(DiagErrc::kAlreadyOffered));
   DataIdentifier d;
   EXPECT_EQ(server.RegisterDataIdentifier(1, d).Error(), MakeErrorCode(DiagErrc::kInvalidArgument));
   d.read = []() -> Result<ByteVector, Nrc> { return ByteVector{}; };
