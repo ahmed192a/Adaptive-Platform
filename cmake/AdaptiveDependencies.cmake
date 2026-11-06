@@ -6,6 +6,13 @@
 include(FetchContent)
 set(FETCHCONTENT_QUIET ON)
 
+# CMake >= 4 removed compatibility with cmake_minimum_required(VERSION < 3.5), which some of the pinned
+# third-party versions below still declare. This variable (CMake >= 3.31) lets them configure; older CMake
+# versions simply ignore it. A user-supplied value wins.
+if(NOT DEFINED CMAKE_POLICY_VERSION_MINIMUM)
+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+endif()
+
 macro(ap_dependency NAME TARGET)
   # usage: ap_dependency(<fetch-name> <imported-target> [FIND <pkg>] GIT_REPOSITORY .. GIT_TAG ..)
   cmake_parse_arguments(_D "" "FIND" "" ${ARGN})
