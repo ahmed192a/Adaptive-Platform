@@ -72,3 +72,19 @@ the readable text).
 1. Instantiate the UpdateRequest skeleton in `App/SM`, install a reset handler, call `Save/Load` at start-up.
 2. Replace the hard-coded FSM by a configurable StateMachine model and `RequestTransition`.
 3. Read chapters 8/9 of the PDF (needs a full copy of the document) to confirm signatures and error values.
+
+## Gap closure (feature/gap-com-sm-ucm)
+
+Verified against R25-11 where readable, otherwise R22-11 / R24-11. Numeric values and signatures remain
+*Unverified*. Tests: `Testing/sm/state_machine_test.cpp` (24 tests; 36 in the cluster).
+
+| Item | Status | Notes |
+|---|---|---|
+| Configurable StateMachine model, `RequestTransition` | Implemented | `ara/sm/state_machine/state_machine.h`; errors kTransitionNotAllowed, kInvalidValue, kRecoveryTransitionOngoing, kOperationCanceled, kTransitionFailed (00600, 00603-00607, 00650). Superseded requests are cancelled by a generation counter |
+| Initial state + `GetInitialMachineStateTransitionResult` | Implemented | `StateManager::Start` |
+| RecoveryHandler | Implemented | register/handle per function group, kSMCanNotHandleRecovery (00030, 00031) |
+| NetworkHandle integration | Implemented | `NetworkHandleBridge` maps machine states to kNoCom/kFullCom (00620, 00621) |
+| UpdateRequest <-> UCM | Implemented | UCM `UpdateHooks` drive `UpdateSession`; used by the `ota_updater` demo |
+
+Still missing: instantiating the UpdateRequest skeleton in `App/SM` as a SOME/IP service, ResetMachineNotifier,
+suspend-to-RAM (S2R). Shutdown after an OTA reset stays opt-in via `AP_SM_SHUTDOWN_ON_OTA=1`.
