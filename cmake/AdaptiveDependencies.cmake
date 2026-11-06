@@ -34,7 +34,7 @@ endmacro()
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 set(JSON_Install    ${AP_INSTALL} CACHE INTERNAL "")
 ap_dependency(json nlohmann_json::nlohmann_json FIND nlohmann_json
-  GIT_REPOSITORY https://github.com/nlohmann/json GIT_TAG v3.9.1)
+  GIT_REPOSITORY https://github.com/nlohmann/json GIT_TAG v3.11.3)
 
 set(SPDLOG_BUILD_EXAMPLE OFF CACHE INTERNAL "")
 set(SPDLOG_BUILD_TESTS   OFF CACHE INTERNAL "")
