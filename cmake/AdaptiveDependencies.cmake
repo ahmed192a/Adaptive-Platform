@@ -6,6 +6,12 @@
 include(FetchContent)
 set(FETCHCONTENT_QUIET ON)
 
+# CMake >= 4 rejects dependencies that still declare cmake_minimum_required(< 3.5)
+# (nlohmann_json 3.9.1, googletest). Let them configure with the 3.5 policy set.
+if(NOT DEFINED CMAKE_POLICY_VERSION_MINIMUM)
+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+endif()
+
 macro(ap_dependency NAME TARGET)
   # usage: ap_dependency(<fetch-name> <imported-target> [FIND <pkg>] GIT_REPOSITORY .. GIT_TAG ..)
   cmake_parse_arguments(_D "" "FIND" "" ${ARGN})
