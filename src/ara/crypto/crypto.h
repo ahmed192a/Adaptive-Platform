@@ -83,6 +83,8 @@ enum KeyUsage : std::uint32_t {
   kUsageAll = 0x7,
 };
 
+struct KeyAccess; ///< internal accessor used by extras.cpp
+
 /// Symmetric key material with a usage whitelist.  Zeroized on destruction.
 class SecretKey {
 public:
@@ -105,6 +107,7 @@ public:
 
 private:
   friend class MessageAuthnCode;
+  friend struct KeyAccess;
   friend Res<ByteVector> AeadSeal(SecretKey const &, ByteView, ByteView);
   friend Res<ByteVector> AeadOpen(SecretKey const &, ByteView, ByteView);
   friend Res<ByteVector> AeadEncrypt(SecretKey const &, ByteView, ByteView, ByteView);
