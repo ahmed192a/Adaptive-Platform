@@ -19,6 +19,7 @@ struct NodeOptions {
   std::filesystem::path dataDir;      ///< writable state (persistency)
   std::filesystem::path platformDir;  ///< folder with Adaptive_Platform, Manifests/, processes/
   std::filesystem::path webRoot;      ///< static dashboard files
+  std::filesystem::path demoDir;      ///< folder holding the demo apps (<demoDir>/<name>/<name>); default platformDir/demo
 };
 
 class PlatformNode {

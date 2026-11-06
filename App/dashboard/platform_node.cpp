@@ -21,6 +21,7 @@
 #include "ara/diag/diagnostic_server.h"
 #include "ara/log/logging.h"
 #include "ara/per/persistency.h"
+#include "dash_features.h"
 #include "ara/phm/health_monitor.h"
 #include "ara/phm/phm_config.h"
 #include "ara/phm/phm_error_domain.h"
@@ -129,6 +130,8 @@ struct PlatformNode::Impl {
 
   // persistency
   ara::per::SharedHandle<ara::per::KeyValueStorage> kvs;
+  ara::per::SharedHandle<ara::per::KeyValueStorage> keyVault;
+  std::unique_ptr<Features> features;
 
   // diagnostics
   std::unique_ptr<ara::diag::DiagnosticServer> diag;
@@ -158,6 +161,13 @@ struct PlatformNode::Impl {
     IncrementBootCount();
     InitDiag();
     InitCrypto();
+    {
+      Features::Options fo;
+      fo.dataDir = opt.dataDir;
+      fo.demoDir = opt.demoDir.empty() ? opt.platformDir / "demo" : opt.demoDir;
+      fo.keyStorage = keyVault;
+      features = std::make_unique<Features>(std::move(fo));
+    }
     if (auto e = SetupPhm(); !e.empty()) return e;
     for (auto const *n : {"Brake", "Infotainment", "Telematics"}) {
       auto w = std::make_unique<Worker>();
@@ -181,6 +191,8 @@ struct PlatformNode::Impl {
     ara::phm::HealthMonitor::Instance().StopBackgroundEvaluation();
     ara::phm::HealthMonitor::Instance().Clear();
     StopEm();
+    features.reset();
+    keyVault.reset();
     (void)ara::core::Deinitialize();
   }
 
@@ -189,7 +201,8 @@ struct PlatformNode::Impl {
     json cfg = {
         {"storageRoot", (opt.dataDir / "per").string()},
         {"storages", json::array({{{"specifier", "Node/Kvs"}, {"type", "kvs"}, {"maxSize", 65536},
-                                   {"initialValues", {{"bootCount", 0}, {"vehicleName", "Demo Car"}}}}})}};
+                                   {"initialValues", {{"bootCount", 0}, {"vehicleName", "Demo Car"}}}},
+                                  {{"specifier", "Node/KeyVault"}, {"type", "kvs"}, {"maxSize", 65536}}})}};
     auto pc = ara::per::PersistencyConfig::FromJson(cfg.dump());
     if (!pc.HasValue()) return std::string("persistency config: ") + pc.Error().Message();
     if (auto r = ara::per::Configure(std::move(pc).Value()); !r.HasValue())
@@ -197,6 +210,7 @@ struct PlatformNode::Impl {
     auto h = ara::per::OpenKeyValueStorage(ara::core::InstanceSpecifier("Node/Kvs"));
     if (!h.HasValue()) return std::string("open kvs: ") + h.Error().Message();
     kvs = h.Value();
+    if (auto v = ara::per::OpenKeyValueStorage(ara::core::InstanceSpecifier("Node/KeyVault")); v.HasValue()) keyVault = v.Value();
     return {};
   }
   std::uint32_t BootCount() {
@@ -577,6 +591,10 @@ struct PlatformNode::Impl {
     }
     std::string const &p = req.path;
 
+    if (features && Features::Owns(p)) {
+      if (req.method != "POST") return {405, "text/plain", "method not allowed"};
+      return features->Handle(p, in);
+    }
     if (p == "/api/overview") {
       auto since = req.query.count("since") ? std::strtoull(req.query.at("since").c_str(), nullptr, 10) : 0ULL;
       json j = {{"time", NowMs()},
@@ -592,6 +610,7 @@ struct PlatformNode::Impl {
 #endif
                 },
                 {"logs", logs->Since(since)}};
+      if (features) j["lab"] = features->Snapshot();
       return Json(j);
     }
     if (p == "/api/phm/hang" || p == "/api/phm/heal") {

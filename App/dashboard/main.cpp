@@ -2,7 +2,7 @@
  * ap_dashboard - run the Adaptive Platform demo node and its web dashboard.
  *
  *   ap_dashboard [--port 8080] [--bind 127.0.0.1] [--data-dir DIR]
- *                [--platform-dir DIR] [--web-root DIR]
+ *                [--platform-dir DIR] [--web-root DIR] [--demo-dir DIR]
  */
 #include <csignal>
 #include <cstdlib>
@@ -34,8 +34,9 @@ int main(int argc, char **argv) {
     else if (a == "--data-dir") opt.dataDir = next();
     else if (a == "--platform-dir") opt.platformDir = next();
     else if (a == "--web-root") opt.webRoot = next();
+    else if (a == "--demo-dir") opt.demoDir = next();
     else {
-      std::cerr << "usage: ap_dashboard [--port N] [--bind ADDR] [--data-dir D] [--platform-dir D] [--web-root D]\n";
+      std::cerr << "usage: ap_dashboard [--port N] [--bind ADDR] [--data-dir D] [--platform-dir D] [--web-root D] [--demo-dir D]\n";
       return a == "--help" ? 0 : 2;
     }
   }
