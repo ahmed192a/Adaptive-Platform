@@ -27,7 +27,20 @@ public:
   static void UnbindPort(std::string const &instanceSpecifier);
   /// SWS_ANM_00090: withdraw every network and partial network request (SIGTERM / shutdown).
   void WithdrawAll();
-  /// Process() every network.
+  /// SWS_ANM_00090: SIGTERM behaviour. Withdraws every request and moves every network to
+  /// kNoCom (NmChannel::Shutdown()).
+  void ShutdownAll();
+  /// Install a SIGTERM handler that only sets a flag (async-signal-safe). The next ProcessAll()
+  /// or ServiceSignals() then runs ShutdownAll(). A previously installed handler is chained.
+  /// Idempotent; kInvalidConfig if sigaction fails.
+  static ara::core::Result<void> InstallSigtermHook();
+  /// Restore the previous SIGTERM disposition (no-op if the hook is not installed).
+  static void UninstallSigtermHook();
+  /// True if SIGTERM was received since the last ServiceSignals()/ProcessAll().
+  static bool SigtermPending() noexcept;
+  /// Runs ShutdownAll() if a SIGTERM is pending; returns true if it did.
+  bool ServiceSignals();
+  /// Process() every network (first ServiceSignals()).
   void ProcessAll();
   std::size_t Size() const;
 
