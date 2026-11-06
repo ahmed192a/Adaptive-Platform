@@ -6,6 +6,8 @@
 #include <chrono>
 #include <filesystem>
 #include <fstream>
+#include <sys/stat.h>
+#include <map>
 #include <thread>
 
 #include <nlohmann/json.hpp>
@@ -76,6 +78,13 @@ protected:
     o.dataDir = dir / "data";
     o.platformDir = dir / "platform"; // intentionally empty: EM start must fail gracefully
     o.webRoot = dir / "web";
+    o.demoDir = dir / "demo";
+    fs::create_directories(o.demoDir / "nm_bus_monitor");
+    {
+      auto exe = o.demoDir / "nm_bus_monitor" / "nm_bus_monitor";
+      std::ofstream(exe) << "#!/bin/sh\necho hello-from-demo \"$@\"\necho on-stderr >&2\nexit 3\n";
+      ::chmod(exe.c_str(), 0755);
+    }
     node = std::make_unique<PlatformNode>(o);
     ASSERT_EQ(node->Init(), "");
   }
@@ -222,6 +231,179 @@ TEST_F(NodeTest, EmStartFailsGracefullyWithoutPlatformBinary) {
   bad.path = "/api/em/log";
   bad.query["name"] = "../../etc/passwd";
   EXPECT_EQ(node->Handle(bad).status, 403);
+}
+
+// ------------------------------------------------------------------ dashboard v2: lab cards
+TEST_F(NodeTest, OverviewCarriesTheLabSnapshot) {
+  auto lab = Call("/api/overview", nullptr, "GET")["lab"];
+  EXPECT_EQ(lab["nm"]["ecus"].size(), 3u);
+  EXPECT_TRUE(lab["tsync"]["available"].get<bool>());
+  EXPECT_EQ(lab["udsx"]["session"], 1);
+  EXPECT_EQ(lab["apps"].size(), 6u);
+  Call("/api/nm/reset", nullptr, "GET"); // a GET is a 405, never a command
+  EXPECT_EQ(last_status, 405);
+}
+
+TEST_F(NodeTest, NetworkManagementLifecycleAndPartialNetworks) {
+  auto states = [&] {
+    std::map<std::string, std::string> m;
+    auto ov = Call("/api/overview", nullptr, "GET");
+    for (auto const &e : ov["lab"]["nm"]["ecus"]) m[e["name"].get<std::string>()] = e["state"].get<std::string>();
+    return m;
+  };
+  EXPECT_EQ(states()["Gateway"], "BusSleep");
+  EXPECT_TRUE(Call("/api/nm/request", {{"ecu", "Gateway"}})["ok"].get<bool>());
+  EXPECT_EQ(states()["Gateway"], "RepeatMessage");
+  Call("/api/nm/advance", {{"ms", 300}});
+  EXPECT_EQ(states()["Door"], "BusSleep"); // PN filter: the PDU carries no partial network Door serves
+  EXPECT_TRUE(Call("/api/nm/request", {{"ecu", "Gateway"}, {"pn", 0}})["ok"].get<bool>());
+  Call("/api/nm/advance", {{"ms", 300}});
+  EXPECT_EQ(states()["Door"], "RepeatMessage"); // woken: PN0 requested on the bus
+  Call("/api/nm/release", {{"ecu", "Gateway"}, {"pn", 0}});
+  Call("/api/nm/advance", {{"ms", 1000}});
+  EXPECT_EQ(states()["Gateway"], "NormalOperation");
+  EXPECT_GT(Call("/api/overview", nullptr, "GET")["lab"]["nm"]["pdus"].get<int>(), 0);
+  // partial network request / release
+  EXPECT_TRUE(Call("/api/nm/request", {{"ecu", "Door"}, {"pn", 0}})["ok"].get<bool>());
+  bool pn0 = false;
+  auto ovPn = Call("/api/overview", nullptr, "GET");
+  for (auto const &e : ovPn["lab"]["nm"]["ecus"])
+    if (e["name"] == "Door") pn0 = e["pn"][0].get<bool>();
+  EXPECT_TRUE(pn0);
+  // release everything; the bus must go to sleep again
+  for (char const *n : {"Gateway", "Door", "Camera"}) {
+    Call("/api/nm/release", {{"ecu", n}, {"pn", 0}});
+    Call("/api/nm/release", {{"ecu", n}});
+  }
+  Call("/api/nm/advance", {{"ms", 6000}});
+  EXPECT_EQ(states()["Gateway"], "BusSleep");
+  EXPECT_FALSE(Call("/api/nm/request", {{"ecu", "Nope"}})["ok"].get<bool>());
+  EXPECT_EQ(Call("/api/nm/bogus", json::object())["ok"], false);
+  EXPECT_EQ(last_status, 404);
+  Call("/api/nm/reset", json::object());
+  EXPECT_TRUE(Call("/api/overview", nullptr, "GET")["lab"]["nm"]["events"].empty());
+}
+
+TEST_F(NodeTest, TimeSyncSlewStepTimeoutAndReset) {
+  auto ts = [&] { return Call("/api/overview", nullptr, "GET")["lab"]["tsync"]; };
+  EXPECT_EQ(ts()["status"], "NotSynchronized");
+  EXPECT_TRUE(Call("/api/tsync/sync", {{"offsetMs", 0}})["ok"].get<bool>());
+  EXPECT_EQ(ts()["status"], "Synchronized");
+  // small offset: slewed (no leap); big offset: stepped (leap reported)
+  Call("/api/tsync/advance", {{"ms", 100}});
+  Call("/api/tsync/sync", {{"offsetMs", 20}});
+  EXPECT_EQ(ts()["leap"], "none");
+  Call("/api/tsync/advance", {{"ms", 100}});
+  Call("/api/tsync/sync", {{"offsetMs", 2000}});
+  EXPECT_EQ(ts()["leap"], "future");
+  EXPECT_NEAR(ts()["offsetMs"].get<double>(), 0.0, 5.0);
+  // no further update -> timeout
+  Call("/api/tsync/advance", {{"ms", 5000}});
+  EXPECT_EQ(ts()["status"], "TimeOut");
+  EXPECT_FALSE(ts()["events"].empty());
+  Call("/api/tsync/reset", json::object());
+  EXPECT_EQ(ts()["status"], "NotSynchronized");
+  EXPECT_EQ(Call("/api/tsync/bogus", json::object())["ok"], false);
+  EXPECT_EQ(last_status, 404);
+}
+
+TEST_F(NodeTest, ExtendedDiagnosticsFaultsSecurityAndClear) {
+  auto uds = [&](char const *hex) {
+    auto r = Call("/api/udsx/request", {{"request", hex}});
+    EXPECT_TRUE(r["ok"].get<bool>());
+    auto tr = Call("/api/overview", nullptr, "GET")["lab"]["udsx"]["trace"];
+    return tr.back();
+  };
+  EXPECT_EQ(uds("22 F1 90")["resp"].get<std::string>().substr(0, 8), "62 F1 90");
+  EXPECT_TRUE(uds("31 01 FF 00")["neg"].get<bool>()); // needs extended session + security
+  EXPECT_FALSE(uds("10 03")["neg"].get<bool>());
+  EXPECT_TRUE(Call("/api/udsx/unlock", json::object())["ok"].get<bool>());
+  EXPECT_FALSE(uds("31 01 FF 00")["neg"].get<bool>());
+  Call("/api/udsx/fault", {{"dtc", 0xC10100}, {"active", true}});
+  auto dtc = uds("19 02 FF");
+  EXPECT_FALSE(dtc["neg"].get<bool>());
+  EXPECT_NE(dtc["resp"].get<std::string>().find("C1 01 00"), std::string::npos);
+  EXPECT_FALSE(uds("14 FF FF FF")["neg"].get<bool>());
+  EXPECT_EQ(uds("19 02 FF")["resp"].get<std::string>().find("C1 01 00"), std::string::npos);
+  EXPECT_EQ(Call("/api/udsx/request", {{"request", "zz"}})["ok"], false);
+  EXPECT_EQ(Call("/api/udsx/advance", {{"ms", 10000}})["ok"], true); // S3 timeout drops the session
+  EXPECT_EQ(Call("/api/overview", nullptr, "GET")["lab"]["udsx"]["session"], 1);
+  Call("/api/udsx/reset", json::object());
+  EXPECT_TRUE(Call("/api/overview", nullptr, "GET")["lab"]["udsx"]["trace"].empty());
+}
+
+TEST_F(NodeTest, SoftwareUpdateOutcomes) {
+  auto run = [&](json body) { return Call("/api/update/run", body)["report"]; };
+  EXPECT_EQ(run({{"size", 30000}})["outcome"], "updated");
+  EXPECT_GT(run({{"size", 30000}})["blocks"].get<int>(), 1);
+  EXPECT_EQ(run({{"tamper", true}})["outcome"], "package-rejected");
+  EXPECT_EQ(run({{"failVerify", true}})["outcome"], "rolled-back");
+  EXPECT_EQ(run({{"rejectSession", true}})["outcome"], "session-rejected");
+  EXPECT_EQ(Call("/api/overview", nullptr, "GET")["lab"]["update"]["outcome"], "session-rejected");
+  EXPECT_EQ(run({{"size", 99999999999.0}})["size"], 1 << 20); // clamped
+  EXPECT_EQ(Call("/api/update/other", json::object())["ok"], false);
+}
+
+#ifdef AP_NODE_CRYPTO
+TEST_F(NodeTest, KeySlotsGenerateUseTamperAndPersist) {
+  auto slot = [&](std::string const &name) {
+    auto ov = Call("/api/overview", nullptr, "GET");
+    for (auto const &s : ov["lab"]["keys"]["slots"])
+      if (s["name"] == name) return s;
+    return json(nullptr);
+  };
+  ASSERT_TRUE(Call("/api/overview", nullptr, "GET")["lab"]["keys"]["enabled"].get<bool>());
+  EXPECT_EQ(slot("vault-aes")["state"], "empty");
+  EXPECT_FALSE(Call("/api/keys/seal", {{"name", "vault-aes"}, {"text", "x"}})["ok"].get<bool>());
+  EXPECT_TRUE(Call("/api/keys/generate", {{"name", "vault-aes"}})["ok"].get<bool>());
+  EXPECT_EQ(slot("vault-aes")["state"], "occupied");
+  auto sealed = Call("/api/keys/seal", {{"name", "vault-aes"}, {"text", "hello"}, {"aad", "a"}});
+  ASSERT_TRUE(sealed["ok"].get<bool>());
+  EXPECT_EQ(Call("/api/keys/open", {{"name", "vault-aes"}, {"hex", sealed["hex"]}, {"aad", "a"}})["text"], "hello");
+  EXPECT_TRUE(Call("/api/keys/open", {{"name", "vault-aes"}, {"hex", sealed["hex"]}, {"aad", "b"}})["authFailed"].get<bool>());
+  // survives a reload from storage
+  EXPECT_TRUE(Call("/api/keys/reload", json::object())["ok"].get<bool>());
+  EXPECT_EQ(slot("vault-aes")["state"], "occupied");
+  // MAC and signature slots
+  Call("/api/keys/generate", {{"name", "vault-hmac"}});
+  EXPECT_TRUE(Call("/api/keys/mac", {{"name", "vault-hmac"}, {"text", "m"}})["ok"].get<bool>());
+  Call("/api/keys/generate", {{"name", "vault-ed25519"}});
+  auto sig = Call("/api/keys/sign", {{"name", "vault-ed25519"}, {"text", "m"}});
+  EXPECT_TRUE(Call("/api/keys/verify", {{"name", "vault-ed25519"}, {"text", "m"}, {"hex", sig["hex"]}})["valid"].get<bool>());
+  EXPECT_FALSE(Call("/api/keys/verify", {{"name", "vault-ed25519"}, {"text", "n"}, {"hex", sig["hex"]}})["valid"].get<bool>());
+  // wrong usage is refused; non-exportable key cannot leave
+  EXPECT_FALSE(Call("/api/keys/mac", {{"name", "vault-aes"}, {"text", "m"}})["ok"].get<bool>());
+  EXPECT_FALSE(Call("/api/keys/export", {{"name", "vault-aes"}})["ok"].get<bool>());
+  // storage tampering is detected, regenerating repairs
+  EXPECT_TRUE(Call("/api/keys/tamper", {{"name", "vault-aes"}})["ok"].get<bool>());
+  EXPECT_EQ(slot("vault-aes")["state"], "corrupted");
+  EXPECT_FALSE(Call("/api/keys/seal", {{"name", "vault-aes"}, {"text", "x"}})["ok"].get<bool>());
+  EXPECT_TRUE(Call("/api/keys/generate", {{"name", "vault-aes"}})["ok"].get<bool>());
+  EXPECT_EQ(slot("vault-aes")["state"], "occupied");
+  EXPECT_TRUE(Call("/api/keys/clear", {{"name", "vault-aes"}})["ok"].get<bool>());
+  EXPECT_EQ(slot("vault-aes")["state"], "empty");
+  EXPECT_FALSE(Call("/api/keys/tamper", {{"name", "session-aes"}})["ok"].get<bool>()); // volatile slot
+  EXPECT_FALSE(Call("/api/keys/generate", {{"name", "nope"}})["ok"].get<bool>());
+}
+#endif
+
+TEST_F(NodeTest, DemoAppLauncherIsWhitelistedAndCapturesOutput) {
+  auto r = Call("/api/apps/run", {{"name", "nm_bus_monitor"}, {"mode", "run"}});
+  EXPECT_TRUE(r["ok"].get<bool>());
+  EXPECT_EQ(r["exit"], 3);
+  EXPECT_NE(r["output"].get<std::string>().find("hello-from-demo"), std::string::npos);
+  EXPECT_NE(r["output"].get<std::string>().find("on-stderr"), std::string::npos);
+  EXPECT_FALSE(r["timedOut"].get<bool>());
+  EXPECT_EQ(Call("/api/overview", nullptr, "GET")["lab"]["lastApp"]["name"], "nm_bus_monitor");
+  // not whitelisted / path tricks / unknown mode / unbuilt binary
+  EXPECT_EQ(Call("/api/apps/run", {{"name", "../../bin/sh"}, {"mode", "run"}})["ok"], false);
+  EXPECT_EQ(last_status, 404);
+  EXPECT_EQ(Call("/api/apps/run", {{"name", "nm_bus_monitor"}, {"mode", "--evil"}})["ok"], false);
+  EXPECT_EQ(last_status, 404);
+  auto missing = Call("/api/apps/run", {{"name", "uds_tester"}, {"mode", "run"}});
+  EXPECT_FALSE(missing["ok"].get<bool>());
+  EXPECT_NE(missing["error"].get<std::string>().find("not built"), std::string::npos);
+  EXPECT_EQ(Call("/api/apps/other", json::object())["ok"], false);
 }
 
 } // namespace
