@@ -224,7 +224,7 @@ Result<void> ResetKeyValueStorage(InstanceSpecifier const &spec) noexcept {
 
 Result<void> RecoverAllFiles(InstanceSpecifier const &spec) noexcept {
   auto &r = Reg();
-  std::lock_guard<std::mutex> lock(r.mutex);
+  std::unique_lock<std::mutex> lock(r.mutex);
   auto cfg = Lookup(r, spec, StorageConfig::Kind::kFile);
   if (!cfg.HasValue()) {
     return Result<void>(cfg.Error());
@@ -232,7 +232,28 @@ Result<void> RecoverAllFiles(InstanceSpecifier const &spec) noexcept {
   if (!r.files[Key(spec)].expired()) {
     return Result<void>(MakeErrorCode(PerErrc::kResourceBusy));
   }
-  return Result<void>(MakeErrorCode(PerErrc::kValidationFailed, 0, "no redundancy configured"));
+  auto const dir = cfg.Value().directory;
+  auto const names = detail::FilesWithRedundancy(dir);
+  if (names.empty()) {
+    return Result<void>(MakeErrorCode(PerErrc::kValidationFailed, 0, "no redundancy copies exist"));
+  }
+  std::vector<std::string> recovered;
+  bool failed = false;
+  for (auto const &n : names) {
+    switch (detail::RecoverOneFile(dir, n)) {
+    case detail::FileRecovery::kRecovered: recovered.push_back(n); break;
+    case detail::FileRecovery::kIntact: break;
+    default: failed = true; break;
+    }
+  }
+  lock.unlock();
+  for (auto const &n : recovered) {
+    Report(spec, RecoveryReportKind::kRecovered, n);
+  }
+  if (failed) {
+    return Result<void>(MakeErrorCode(PerErrc::kValidationFailed, 0, "a redundancy copy is corrupt"));
+  }
+  return Result<void>();
 }
 
 Result<void> ResetAllFiles(InstanceSpecifier const &spec) noexcept {
@@ -252,6 +273,7 @@ Result<void> ResetAllFiles(InstanceSpecifier const &spec) noexcept {
   auto const files = cfg.Value().directory / "files";
   auto const initial = cfg.Value().directory / "initial";
   fs::remove_all(files, ec);
+  fs::remove_all(cfg.Value().directory / "backup", ec); // redundancy copies belong to the removed files
   fs::create_directories(files, ec);
   if (fs::is_directory(initial, ec)) {
     fs::copy(initial, files, fs::copy_options::recursive, ec);
