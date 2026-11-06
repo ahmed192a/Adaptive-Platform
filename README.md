@@ -10,14 +10,47 @@ functional clusters (`ara::*`), platform processes, tools, and a live web consol
 ![CMake](https://img.shields.io/badge/CMake-%E2%89%A5%203.16-green)
 ![AUTOSAR](https://img.shields.io/badge/AUTOSAR%20AP-R25--11%20(partial)-orange)
 
-<img src="doc/img/03-execution-management-done.png" alt="Adaptive Platform Console" width="900">
+<img src="doc/img/01-overview.png" alt="Adaptive Platform Console" width="900">
 
 </div>
 
 ## Contents
 
-[Quick start](#quick-start) · [The console](#the-console) · [Architecture](#architecture) · [Cluster status](#cluster-status) ·
+[Demo](#demo) · [Quick start](#quick-start) · [The console](#the-console) · [Architecture](#architecture) · [Cluster status](#cluster-status) ·
 [Building](#building) · [Testing](#testing) · [Repository layout](#repository-layout) · [Legacy scripts](#legacy-quick-test-scripts)
+
+## Demo
+
+[![Platform demo](doc/img/platform-demo.gif)](doc/img/platform-demo.mp4)
+
+*Click the animation for the full-quality [mp4](doc/img/platform-demo.mp4) (about 90 s, captioned). It is recorded by an
+end-to-end script against the real platform: [doc/demo.md](doc/demo.md) explains how to run and re-record it.*
+
+| Execution Management | Health Management | Diagnostics | Persistency |
+|---|---|---|---|
+| <img src="doc/img/02-execution-management.png" width="230"> | <img src="doc/img/03-phm.png" width="230"> | <img src="doc/img/04-diagnostics.png" width="230"> | <img src="doc/img/05-persistency.png" width="230"> |
+
+| Cryptography | Network Management | Time Synchronization | Diagnostics lab |
+|---|---|---|---|
+| <img src="doc/img/06-crypto.png" width="230"> | <img src="doc/img/07-network-management.png" width="230"> | <img src="doc/img/08-time-sync.png" width="230"> | <img src="doc/img/09-diagnostics-lab.png" width="230"> |
+
+| Software Update | Key slots | Demo apps | |
+|---|---|---|---|
+| <img src="doc/img/10-software-update.png" width="230"> | <img src="doc/img/11-key-slots.png" width="230"> | <img src="doc/img/12-demo-apps.png" width="230"> | |
+
+### Demo applications
+
+Each app is a small stand-alone program on top of the real clusters; all of them can also be started from the console's
+*Demo applications* card. Build directory shown for the `release` preset.
+
+| App | Shows | Run |
+|---|---|---|
+| `supervised_service` | alive supervision, hang, expiry, recovery (`phm`, `exec`) | `build/release/App/demo/supervised_service/supervised_service --scenario` |
+| `uds_tester` | scripted diagnostic session against a demo ECU (`diag`) | `build/release/App/demo/uds_tester/uds_tester` |
+| `nm_bus_monitor` | 3 ECUs, partial networks, state timeline (`nm`) | `build/release/App/demo/nm_bus_monitor/nm_bus_monitor` |
+| `time_sync_clock` | slew vs step, rate correction, timeout (`tsync`) | `build/release/App/demo/time_sync_clock/time_sync_clock` |
+| `ota_updater` | package update with rollback (`ucm`, `sm`); `--tamper`, `--fail-verify`, `--reject-session` | `build/release/App/demo/ota_updater/ota_updater` |
+| `persist_logger_app` | logging levels, boot counter, file recovery (`log`, `per`) | `build/release/App/demo/persist_logger_app/persist_logger_app --dir /tmp/pla` |
 
 ## Quick start
 
@@ -41,16 +74,9 @@ CLI11 are fetched automatically (`-DAP_USE_SYSTEM_DEPS=ON` prefers installed cop
 SD / SM / UCM / OTA processes from the manifests) and serves a single-page console.
 See **[doc/dashboard.md](doc/dashboard.md)** for the walkthrough, screenshots and the demo video.
 
-| Execution Management | Health Management | Diagnostics |
-|---|---|---|
-| <img src="doc/img/02-execution-management.png" width="300"> | <img src="doc/img/05-phm-expired.png" width="300"> | <img src="doc/img/07-diagnostics.png" width="300"> |
-
-Record your own demo (it doubles as an end-to-end test of the platform):
-
-```bash
-./build/debug/App/dashboard/ap_dashboard --port 8099 &
-pip install playwright && python3 Tools/demo/record_demo.py --out doc/img --video
-```
+Cards: Execution Management, Health Management, Diagnostics, Persistency, Cryptography, Network Management, Time
+Synchronization, a diagnostics lab (security access, DTC memory), Software Update, Key slots and the demo-app launcher.
+Run and record instructions: **[doc/demo.md](doc/demo.md)**.
 
 ## Architecture
 
@@ -80,6 +106,9 @@ tests, no global state beyond what the spec requires (lifecycle hooks run in `ar
 strict warnings (`-Werror`) and unit tests with every cluster.
 
 ## Cluster status
+
+The *State* column describes implementation maturity only. Whether individual requirements are met is decided per item
+in the [spec-conformance reports](#spec-conformance); *Unverified* items there are not claims of compliance.
 
 | Cluster | State | Highlights |
 |---|---|---|
