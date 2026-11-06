@@ -6,6 +6,12 @@
 include(FetchContent)
 set(FETCHCONTENT_QUIET ON)
 
+# CMake >= 4.0 rejects the old cmake_minimum_required() (< 3.5) of pinned third-party projects such as
+# nlohmann_json 3.9.1.  This variable is inherited by the FetchContent sub-projects and ignored by older CMake.
+if(NOT DEFINED CMAKE_POLICY_VERSION_MINIMUM)
+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+endif()
+
 macro(ap_dependency NAME TARGET)
   # usage: ap_dependency(<fetch-name> <imported-target> [FIND <pkg>] GIT_REPOSITORY .. GIT_TAG ..)
   cmake_parse_arguments(_D "" "FIND" "" ${ARGN})
