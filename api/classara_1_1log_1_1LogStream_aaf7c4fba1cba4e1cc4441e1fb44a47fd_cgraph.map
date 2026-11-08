@@ -1,0 +1,11 @@
+<map id="ara::log::LogStream::~LogStream" name="ara::log::LogStream::~LogStream">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,155,63"/>
+<area shape="rect" id="Node000002" href="$classara_1_1log_1_1LogStream.html#a0498262e381d31148f5f49cc4e051a85" title="Emits the record now; subsequent insertions start a new record." alt="" coords="203,23,352,63"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,41,189,41,189,46,155,46"/>
+<area shape="rect" id="Node000003" href="$classara_1_1log_1_1Logger.html#a850962d5e7764e98c73eb58fa7f4a48f" title=" " alt="" coords="400,5,595,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="352,32,386,28,387,33,353,37"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1log_1_1detail.html#a04552d74cab6431b4722b61dcdbbfaba" title=" " alt="" coords="420,55,575,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="353,49,407,55,406,60,352,54"/>
+<area shape="rect" id="Node000005" href="$Testing_2core_2CMakeLists_8txt.html#a8d67571c23f96a5a08cb3ec4c8b75b44" title=" " alt="" coords="643,55,685,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="575,65,629,65,629,70,575,70"/>
+</map>

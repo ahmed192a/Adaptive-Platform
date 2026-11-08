@@ -1,0 +1,18 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,99,75,124"/>
+<area shape="rect" id="Node000002" href="$classanonymous__namespace_02key__slot__test_8cpp_03_1_1KeySlotTest.html#a53cbbba9afe0d96347d8e4ac263bbed9" title=" " alt="" coords="123,5,327,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,96,122,69,136,63,138,68,124,74,67,101"/>
+<area shape="rect" id="Node000003" href="$classanonymous__namespace_02key__slot__test_8cpp_03_1_1KeySlotTest.html#abf9514c7cea6de316259007fe80a3eeb" title="Simulates a reboot: drops the provider and storage handle and opens them again." alt="" coords="135,84,315,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="75,109,121,109,121,114,75,114"/>
+<area shape="rect" id="Node000008" href="$namespaceanonymous__namespace_02key__slot__test_8cpp_03.html#a16f89db659e9e4e9477d45de2866703f" title=" " alt="" coords="135,187,315,241"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="65,122,164,178,162,182,63,126"/>
+<area shape="rect" id="Node000004" href="$classara_1_1per_1_1PersistencyConfig.html#a9dc8b5081acad03050421159d5a38ec2" title="Parses a JSON document (see file comment)." alt="" coords="375,91,571,131"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="315,109,361,109,361,114,315,114"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1InstanceSpecifier.html#a587c1f9313e327df7b11aa7bbc7c4472" title="Validating factory (SWS_CORE_08032)." alt="" coords="619,91,817,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="571,109,605,109,605,114,571,114"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1InstanceSpecifier.html#a84c7f9c1710724dc9fec6551d05f46cc" title=" " alt="" coords="865,91,1064,131"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="818,109,851,109,851,114,818,114"/>
+<area shape="rect" id="Node000007" href="$classara_1_1core_1_1Span.html#a224112dc4480cdf4136499a740f277f9" title=" " alt="" coords="1112,99,1281,124"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1065,109,1098,109,1098,114,1065,114"/>
+<area shape="poly" id="edge8_Node000008_Node000008" title=" " alt="" coords="188,187,188,177,195,168,207,162,225,160,245,163,257,171,255,175,244,168,225,165,209,167,198,172,193,178,194,187"/>
+</map>

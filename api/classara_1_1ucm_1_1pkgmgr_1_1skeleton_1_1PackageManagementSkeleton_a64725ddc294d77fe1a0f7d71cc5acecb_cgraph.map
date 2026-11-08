@@ -1,0 +1,5 @@
+<map id="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::PackageManagementSkeleton" name="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::PackageManagementSkeleton">
+<area shape="rect" id="Node000001" title="Construct a new Package Management Skeleton object Ctor taking instance identifier as parameter and h..." alt="" coords="5,5,231,60"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#afcc9c9b1a3a6d2d32682f679ab92f558" title="Register a callback invoked (outside the lock) after every status change." alt="" coords="279,5,457,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,30,265,30,265,35,231,35"/>
+</map>

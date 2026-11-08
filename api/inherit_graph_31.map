@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classapext_1_1phm_1_1WatchdogInterface.html" title=" " alt="" coords="5,109,232,134"/>
+<area shape="rect" id="Node000001" href="$structanonymous__namespace_02main_8cpp_03_1_1ConsoleWatchdog.html" title=" " alt="" coords="286,5,509,45"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="161,101,279,55,317,43,319,48,281,60,163,106"/>
+<area shape="rect" id="Node000002" href="$structanonymous__namespace_02main_8cpp_03_1_1DemoWatchdog.html" title=" " alt="" coords="293,69,502,109"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="242,104,292,99,293,104,243,110"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1anonymous__namespace_02platform__node_8cpp_03_1_1Watchdog.html" title=" " alt="" coords="280,133,515,173"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="243,133,280,137,280,143,242,138"/>
+<area shape="rect" id="Node000004" href="$structphmtest_1_1FakeWatchdog.html" title=" " alt="" coords="309,198,486,223"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="161,137,217,160,281,183,329,195,328,201,279,188,215,165,159,142"/>
+</map>

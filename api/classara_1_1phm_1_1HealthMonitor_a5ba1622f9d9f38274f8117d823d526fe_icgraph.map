@@ -1,0 +1,9 @@
+<map id="ara::phm::HealthMonitor::StopOfferRecoveryAction" name="ara::phm::HealthMonitor::StopOfferRecoveryAction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="483,27,676,67"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1RecoveryAction.html#a17b17c3ec64da64af756f3238856f634" title=" " alt="" coords="244,27,435,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="469,50,435,50,435,45,469,45"/>
+<area shape="rect" id="Node000003" href="$health__monitor__test_8cpp.html#a6855747c883d19140e54814ffd5da5c7" title=" " alt="" coords="66,5,135,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="230,37,135,25,136,20,230,31"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1RecoveryAction.html#a7d7c5f31acf2dda775ac45dcd2e5424f" title=" " alt="" coords="5,55,196,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="231,63,196,67,196,62,230,57"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="ara::diag::Conversation::GetActiveSession" name="ara::diag::Conversation::GetActiveSession">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,179,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1DiagnosticServer.html#abe8532db6c456596d3b4952044c6ab90" title=" " alt="" coords="227,5,425,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
+<area shape="rect" id="Node000003" href="$classara_1_1diag_1_1DiagnosticServer.html#aa031ca63a48923619e561a4df4cd397f" title=" " alt="" coords="473,5,672,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,23,459,23,459,28,426,28"/>
+<area shape="rect" id="Node000004" href="$classara_1_1diag_1_1DiagnosticServer.html#adcfb440c2e23584361689157d81fcff1" title=" " alt="" coords="720,5,919,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="672,23,706,23,706,28,672,28"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="ara::per::RegisterRecoveryReportCallback" name="ara::per::RegisterRecoveryReportCallback">
+<area shape="rect" id="Node000001" title="Registers the callback invoked after a successful Recover*‍/Reset* of a storage." alt="" coords="123,73,317,113"/>
+<area shape="rect" id="Node000002" href="$file__storage__test_8cpp.html#aa063685f2bc9aa42f55b082530a6896d" title=" " alt="" coords="5,5,75,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,70,71,33,73,28,160,65"/>
+<area shape="rect" id="Node000003" href="$key__value__storage__test_8cpp.html#a7a3bdf659065692a9eef7570cffc8844" title=" " alt="" coords="5,55,75,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="108,80,74,75,75,69,109,74"/>
+<area shape="rect" id="Node000004" href="$key__value__storage__test_8cpp.html#afe7bea4fccf4d54ca5c6cf5a1b0391de" title=" " alt="" coords="5,104,75,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="109,110,75,115,74,110,108,105"/>
+<area shape="rect" id="Node000005" href="$key__value__storage__test_8cpp.html#a726371f24a7a333ce568ac9b86ba71db" title=" " alt="" coords="5,153,75,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="159,120,73,156,71,151,157,115"/>
+</map>

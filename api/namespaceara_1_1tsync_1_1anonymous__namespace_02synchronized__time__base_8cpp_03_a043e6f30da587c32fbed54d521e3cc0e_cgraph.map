@@ -1,0 +1,8 @@
+<map id="ara::tsync::anonymous_namespace{synchronized_time_base::cpp}::PublishValidation" name="ara::tsync::anonymous_namespace{synchronized_time_base::cpp}::PublishValidation">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,30,261,85"/>
+<area shape="poly" id="edge3_Node000001_Node000001" title=" " alt="" coords="79,30,79,20,89,11,107,5,133,3,165,6,183,14,181,19,164,12,133,9,108,11,91,15,84,22,84,30"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="348,5,484,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="261,40,334,32,334,37,262,45"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="309,69,523,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="262,69,296,73,295,78,261,74"/>
+</map>

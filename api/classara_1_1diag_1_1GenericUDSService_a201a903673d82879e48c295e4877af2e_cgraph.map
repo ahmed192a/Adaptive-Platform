@@ -1,0 +1,9 @@
+<map id="ara::diag::GenericUDSService::Offer" name="ara::diag::GenericUDSService::Offer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,219,77"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1GenericUDSService.html#a91f395d189432af169e4e046904a2bc4" title="requestAfterSid is the request without the SID; return the response bytes after SID+0x40 or an NRC." alt="" coords="267,5,480,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,42,253,37,253,43,219,47"/>
+<area shape="rect" id="Node000003" href="$classara_1_1diag_1_1DiagnosticServer.html#ade90daf4ed166653aaeef2b24f501f99" title=" " alt="" coords="274,69,473,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,68,261,73,260,78,219,73"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="528,69,664,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="473,87,514,87,514,92,473,92"/>
+</map>

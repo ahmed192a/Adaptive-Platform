@@ -1,0 +1,17 @@
+<map id="ara::com::proxy_skeleton::proxy::Field&lt; T &gt;" name="ara::com::proxy_skeleton::proxy::Field&lt; T &gt;">
+<area shape="rect" id="Node000001" title="Field Base class for all fields." alt="" coords="241,165,428,205"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoGetter.html" title="FieldNoGetter Class for field with no getter." alt="" coords="563,5,766,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="369,155,439,104,482,77,527,55,562,42,564,47,529,60,485,82,442,108,372,159"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoGetterAndSetter.html" title="FieldNoGetterAndSetter Class for field with no getter and no setter." alt="" coords="531,69,798,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="404,158,527,119,573,107,574,112,529,124,406,163"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoNotifier.html" title="FieldNoNotifier Class for field with no getter and no setter." alt="" coords="560,133,769,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="442,172,560,161,560,166,442,178"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoNotifierAndSetter.html" title="FieldNoNotifierAndSetter Class for field with no getter and no setter." alt="" coords="528,197,801,237"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="442,193,528,201,528,207,441,198"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoSetter.html" title="FieldNoSetter Class for field with no setter." alt="" coords="565,261,765,301"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="406,207,529,247,574,259,573,264,527,252,404,212"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Field.html" title=" " alt="" coords="571,325,758,365"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="372,212,442,263,485,289,529,311,572,326,570,331,527,316,482,293,439,267,369,216"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html" title="Event Base class for all events." alt="" coords="5,165,192,205"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,183,241,183,241,188,206,188"/>
+</map>

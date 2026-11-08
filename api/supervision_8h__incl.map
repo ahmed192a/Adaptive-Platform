@@ -1,0 +1,26 @@
+<map id="src/ara/phm/supervision.h" name="src/ara/phm/supervision.h">
+<area shape="rect" id="Node000001" title="Elementary supervisions (alive, deadline, logical) of PHM." alt="" coords="281,5,471,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,152,72,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,24,235,30,187,41,140,57,96,81,69,109,51,141,46,138,65,106,93,77,137,52,185,36,234,25,280,19"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="308,79,359,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="371,32,349,68,345,66,367,30"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="383,79,457,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="386,30,408,66,403,68,381,32"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="481,79,524,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="398,28,471,69,469,74,395,33"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="100,152,159,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="281,30,177,49,135,63,109,80,103,94,103,109,116,139,111,141,98,110,98,93,105,77,132,58,176,44,280,25"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="549,79,609,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="409,28,536,72,535,77,408,33"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="633,79,695,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="425,28,620,76,619,81,424,33"/>
+<area shape="rect" id="Node000009" href="$phm__types_8h.html" title="Basic types of ara::phm (Platform Health Management)" alt="" coords="119,79,283,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="349,33,244,76,242,71,347,28"/>
+<area shape="poly" id="edge10_Node000009_Node000002" title=" " alt="" coords="176,106,79,149,77,144,174,102"/>
+<area shape="poly" id="edge11_Node000009_Node000006" title=" " alt="" coords="191,106,153,144,149,140,188,102"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="228,225,295,251"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="206,104,213,137,226,176,247,212,242,215,222,178,208,139,201,105"/>
+<area shape="rect" id="Node000011" href="$steady__clock_8h.html" title="ara::core::SteadyClock (SWS_CORE_06401)" alt="" coords="236,152,412,177"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="222,102,294,143,291,147,220,106"/>
+<area shape="poly" id="edge13_Node000011_Node000010" title=" " alt="" coords="316,179,283,217,279,213,312,176"/>
+</map>

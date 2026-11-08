@@ -1,0 +1,13 @@
+<map id="ara::core::Deinitialize" name="ara::core::Deinitialize">
+<area shape="rect" id="Node000001" title="Tear the runtime down (reverse order of Initialize())." alt="" coords="233,141,395,167"/>
+<area shape="rect" id="Node000002" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="68,5,123,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,133,245,88,215,64,184,44,153,32,122,24,123,19,154,27,187,40,219,60,248,84,295,129"/>
+<area shape="rect" id="Node000003" href="$classanonymous__namespace_02log__test_8cpp_03_1_1LogTest.html#a24bb6bff4f2f803a25431ee5a34d7f6b" title=" " alt="" coords="5,55,185,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="261,140,178,112,180,107,263,135"/>
+<area shape="rect" id="Node000004" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2654c632043219fe1a9a9ad254da40f3" title=" " alt="" coords="12,134,179,174"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="219,157,179,157,179,151,219,151"/>
+<area shape="rect" id="Node000005" href="$classanonymous__namespace_02log__test_8cpp_03_1_1LogTest.html#a1f26bc694ef7b49043c000027d3f07f5" title=" " alt="" coords="5,199,185,253"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="263,173,180,201,178,196,261,168"/>
+<area shape="rect" id="Node000006" href="$core__types__test_8cpp.html#a112f779479db5b17336cdeb04473ff12" title=" " alt="" coords="68,277,123,303"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="294,179,248,224,218,247,187,267,155,280,124,288,122,283,153,275,184,262,215,243,244,220,290,175"/>
+</map>

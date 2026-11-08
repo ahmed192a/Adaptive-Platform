@@ -1,0 +1,14 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,110,60,135"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1KeyStorageProvider.html#afe54a3af279be8348ae53f66777bee2c" title="Persistent provider. wrappingKey must be 32 bytes." alt="" coords="108,103,336,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,120,94,120,94,125,60,125"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="384,72,549,112"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,106,370,101,371,107,337,111"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="597,133,760,173"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="336,128,584,144,584,150,336,133"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="597,5,760,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="530,69,600,47,602,52,532,75"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="597,69,760,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="549,88,583,88,583,93,550,94"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="537,110,596,127,595,132,536,115"/>
+</map>

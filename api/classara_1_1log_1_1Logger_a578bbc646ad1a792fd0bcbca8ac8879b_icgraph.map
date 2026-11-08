@@ -1,0 +1,18 @@
+<map id="ara::log::Logger::LogInfo" name="ara::log::Logger::LogInfo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="435,127,613,153"/>
+<area shape="rect" id="Node000002" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="5,60,172,100"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="462,127,386,111,275,96,172,87,172,82,275,91,387,105,463,121"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,213,172,253"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="502,165,453,205,421,224,387,239,333,251,276,255,222,255,172,250,173,245,222,249,276,250,332,246,386,233,419,219,450,200,499,160"/>
+<area shape="rect" id="Node000004" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad0033341236167451f81b059a96c2eb0" title=" " alt="" coords="220,184,387,224"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="467,159,374,186,372,181,465,154"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1PlatformNode_1_1Impl.html#aebfd0be9942bc400bee3828b05b277d1" title=" " alt="" coords="220,5,387,45"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="488,123,385,66,348,48,350,43,388,62,490,118"/>
+<area shape="rect" id="Node000006" href="$structapdash_1_1PlatformNode_1_1Impl.html#ac19a8ca5c7299de2aa7b063a25f79e13" title=" " alt="" coords="220,120,387,160"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="421,143,387,143,387,137,421,137"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="206,220,173,225,172,219,206,215"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="212,51,168,63,167,57,210,46"/>
+<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="217,119,160,103,162,98,219,114"/>
+<area shape="rect" id="Node000007" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2654c632043219fe1a9a9ad254da40f3" title=" " alt="" coords="5,124,172,164"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="206,144,172,145,172,140,206,139"/>
+</map>

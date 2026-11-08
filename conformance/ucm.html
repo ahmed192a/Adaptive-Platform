@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::ucm - conformance to AUTOSAR AP R25-11 (SWS Update and Configuration Management)</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="araucm-conformance-to-autosar-ap-r25-11-sws-update-and-configuration-management">ara::ucm - conformance to AUTOSAR AP R25-11 (SWS Update and Configuration Management)</h1>
+<p>Audited against
+<a href="https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_SWS_UpdateAndConfigurationManagement.pdf">AUTOSAR_AP_SWS_UpdateAndConfigurationManagement.pdf (R25-11)</a>
+and, for requirement text that the R25-11 extract did not contain, the
+<a href="https://www.autosar.org/fileadmin/standards/R22-11/AP/AUTOSAR_SWS_UpdateAndConfigurationManagement.pdf">R22-11 edition</a>.</p>
+<p><strong>Verification limits.</strong> The readable part of each PDF stops before chapter 9, so the formal interface block
+(argument names/types, return types), the enum literal <em>values</em> and the numeric <code>UCMErrorDomain</code> values were
+not available - they are <em>Unverified</em>. Method names, the per-method error lists, the check order and the
+requirement ids are copied from the readable text. R22-11 ids are marked (R22).</p>
+<p>Status legend as in <a href="sm.md">sm.md</a>.</p>
+<h2 id="packagemanagement-methods">PackageManagement methods</h2>
+<p>R25-11 lists: Activate, Cancel, DeleteTransfer, Finish, GetHistory, GetId, GetProgress,
+GetSwClusterChangeInfo, GetSwClusterInfo, GetSwClusterManifestInfo, GetSwPackages, ProcessSwPackage,
+RegisterSoftwarePackage, RevertProcessedSwPackages, Rollback, TransferData, TransferExit, TransferStart.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TransferStart</td>
+<td>Partial</td>
+<td>creates the transfer id and returns block size 1024; <code>InsufficientMemory</code> (00140) for size 0 or &gt; 512 MiB. The wire format has no error channel, so a failure is reported as <code>BlockSize == 0</code> (<strong>Deviation</strong>)</td>
+</tr>
+<tr>
+<td>TransferData</td>
+<td>Partial</td>
+<td>checks in spec order: 00203 InvalidTransferId, 00208 OperationNotPermitted (transfer already closed), 00204 IncorrectBlock, 00243 IncorrectBlockSize, 00205 IncorrectSize. Missing: 00206 (disk), 00289 TransferFailed, 00207 BlockInconsistent, 00294 / 00098 / 00092 / 00245 / 00103 (package format, authentication, consistency, removal, version)</td>
+</tr>
+<tr>
+<td>TransferExit</td>
+<td>Partial</td>
+<td>00148 OperationNotPermitted, 00212 InvalidTransferId, 00087 InsufficientData; sets <em>kTransferred</em> (00010). Missing: 00294, 00098, 00092, 00161, 00213, 00245, 00103</td>
+</tr>
+<tr>
+<td>DeleteTransfer</td>
+<td>Implemented</td>
+<td>00214, 00215; also removes the stored files</td>
+</tr>
+<tr>
+<td>ProcessSwPackage</td>
+<td>Partial</td>
+<td>00218 InvalidTransferId, 00017 ServiceBusy, 00219 OperationNotPermitted; manifest problems map to <code>InvalidPackageManifest</code> (00029); cancellation checked at one point (00150). Missing: 00098, 00161, 00285, 00231, 00217, 00267, 00104, 00245, 00103. Unzipping still shells out to <code>unzip</code> (the path is the 32-hex id, so no injection)</td>
+</tr>
+<tr>
+<td>Cancel</td>
+<td>Partial</td>
+<td>00234, 00235; sets a flag that <code>ProcessSwPackage</code> honours at one checkpoint (spec: processing moves to <em>kProcessingFailed</em>, 00003)</td>
+</tr>
+<tr>
+<td>RevertProcessedSwPackages</td>
+<td>Partial</td>
+<td>00237 (only in kReady / kProcessing); processed packages become plain transfers again, UCM goes to kIdle. Missing: 00236 NotAbleToRevertPackages</td>
+</tr>
+<tr>
+<td>Activate</td>
+<td>Partial</td>
+<td>00241 (only in kReady) and the kActivating -&gt; kActivated transition. Missing: 00026 MissingDependencies, 00258 UpdateSessionRejected, 00242 PrepareUpdateFailed, 00280 VerificationFailed - Activate does not talk to State Management; the flashing-adapter hand-over is stubbed and always succeeds</td>
+</tr>
+<tr>
+<td>Rollback</td>
+<td>Partial</td>
+<td>00239 (only in kActivated / kVerifying). Missing: 00110 (PrepareRollback + ResetMachine on State Management)</td>
+</tr>
+<tr>
+<td>Finish</td>
+<td>Partial</td>
+<td>allowed after activation or rollback, runs kCleaningUp -&gt; kIdle, forgets processed packages. The valid source states are <em>Unverified</em></td>
+</tr>
+<tr>
+<td>GetProgress (code name <code>GetSwProcessProgress</code>)</td>
+<td>Partial</td>
+<td>R25-11 renamed it (the TOC still shows the old name); returns the last progress value. 00220 InvalidTransferId is implemented in the core but the output struct has no error field, so it is not reported</td>
+</tr>
+<tr>
+<td>GetSwPackages</td>
+<td>Partial</td>
+<td>reads <code>sw_packages.json</code></td>
+</tr>
+<tr>
+<td>GetSwClusterInfo</td>
+<td>Partial</td>
+<td>reads <code>sw_packages.json</code>; the <code>State</code> string ("0x01") is now parsed correctly (it used to be read as the single character <code>'0'</code> = 48)</td>
+</tr>
+<tr>
+<td>GetHistory, GetId, GetSwClusterChangeInfo, GetSwClusterDescription</td>
+<td>Missing</td>
+<td>stubs returning empty structures</td>
+</tr>
+<tr>
+<td>GetSwClusterManifestInfo, RegisterSoftwarePackage</td>
+<td>Missing</td>
+<td>not present</td>
+</tr>
+</tbody>
+</table>
+<h2 id="currentstatus-field-and-state-machine">CurrentStatus field and state machine</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field <code>CurrentStatus</code></td>
+<td>Implemented</td>
+<td>now updated (and notified) on every transition; before, it stayed at 0 forever</td>
+</tr>
+<tr>
+<td>Values kIdle 0, kReady 1, kProcessing 2, kActivating 3, kActivated 4, kRollingBack 5, kRolledBack 6, kCleaningUp 7, kVerifying 8</td>
+<td>Unverified</td>
+<td>the readable R22 text names kIdle, kReady, kProcessing, kActivating, kActivated, kRollingBack and kVerifying; kRolledBack and kCleaningUp come from the legacy headers and could not be confirmed. The numeric values could not be checked. <code>kVerifying</code> is defined but never entered (no State Management hook)</td>
+</tr>
+<tr>
+<td><code>kCancelling</code> (campaign cancelled after repeated ServiceBusy / UpdateSessionRejected, 00297, 00298)</td>
+<td>Missing</td>
+<td>belongs to the campaign handling</td>
+</tr>
+<tr>
+<td>Package states kTransferring -&gt; kTransferred -&gt; kProcessing -&gt; kProcessed</td>
+<td>Implemented</td>
+<td>00088, 00010, 00391; <code>kProcessingFailed</code> (00392) is Missing (a failed package returns to kTransferred)</td>
+</tr>
+<tr>
+<td>Software Cluster states kPresent / kAdded / kUpdating / kRemoved</td>
+<td>Partial</td>
+<td>constants added (the legacy comment said <em>kUpdated</em>); the life cycle (Fig. 7.1, 00191-00197, 00286) is not driven - states are only read from <code>sw_packages.json</code></td>
+</tr>
+<tr>
+<td>Persisting UCM state across a reboot</td>
+<td>Missing</td>
+<td>00184, 00273, 00305, 00306, 00329</td>
+</tr>
+</tbody>
+</table>
+<h2 id="error-domain">Error domain</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Names</td>
+<td>Deviation</td>
+<td>the code uses the R22 spelling (<code>InsufficientMemory</code>, <code>InvalidTransferId</code>, <code>IncorrectBlock</code>...). R25-11 uses <code>kMemoryInsufficient</code>, <code>kTransferIdInvalid</code>, <code>kBlockIncorrect</code>, ... Renaming would break the OTA client; not done</td>
+</tr>
+<tr>
+<td>Numeric values</td>
+<td>Unverified</td>
+<td></td>
+</tr>
+<tr>
+<td>Errors on the wire</td>
+<td>Deviation</td>
+<td>outputs carry <code>int error</code>, not an ApplicationError</td>
+</tr>
+<tr>
+<td>Missing codes</td>
+<td>Missing</td>
+<td><code>kTransferFailed</code>, <code>kPackageFormatUnsupported</code>, <code>kPackageManifestInvalid</code>, <code>kPackageVersionIncompatible</code>, <code>kSwclRemovalDenied</code>, <code>kPersistencyAllocationFailed</code>, <code>kPackageInconsistent</code> (partly), ...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="out-of-scope">Out of scope</h2>
+<ul>
+<li>UCM Master / Vehicle UCM - split into a separate specification in R23-11
+  (<code>SWS_VehicleUpdateAndConfigurationManagement</code>); the R25-11 UCM text contains no master API.</li>
+</ul>
+<h2 id="what-changed-in-this-audit">What changed in this audit</h2>
+<ul>
+<li><code>ucm_core.h</code> (new, header-only): the CurrentStatus state machine and the transfer bookkeeping with the SWS
+  guards and error codes; thread-safe; 33 tests in <code>Testing/ucm</code>. The skeleton delegates to it.</li>
+<li>Bugs fixed on the way:</li>
+<li>the last block was silently dropped when the package size is a multiple of the block size;</li>
+<li><code>TransferData</code> never returned an error (and <code>TransferDataOutput</code> was uninitialised);</li>
+<li><code>TransferExit</code>, <code>ProcessSwPackage</code> and <code>Finish</code> built the package file name three different ways, so
+    <code>Finish</code> never found the file - all now use the 32-hex transfer id; transfers no longer share one global
+    buffer, so parallel transfers do not corrupt each other;</li>
+<li><code>CurrentStatus</code> never changed;</li>
+<li><code>ActionType</code>, <code>ResultType</code>, <code>SoftwarePackageStepType</code>, <code>CampaignFailureType</code>, <code>CampaignStateType</code>,
+    <code>TransferStateType</code> were aliases to <code>uint8_t &amp;</code>, which made the structs that use them unusable;</li>
+<li>missing/garbled <code>sw.conf</code>, a missing binary or one shorter than the 52-byte header could crash
+    <code>ProcessSwPackage</code>; they now return <code>InvalidPackageManifest</code> / <code>ProcessedSoftwarePackageInconsistent</code>.</li>
+</ul>
+<h2 id="suggested-next-steps">Suggested next steps</h2>
+<ol>
+<li>Add an error channel to the service outputs (or switch to <code>ara::core::Result</code> with the R25-11 names).</li>
+<li>Connect Activate / Rollback to State Management's UpdateRequest (<code>PrepareUpdate</code>, <code>VerifyUpdate</code>,
+   <code>ResetMachine</code>) - the <code>UpdateSession</code> rules now exist on the SM side.</li>
+<li>Package validation (format, authentication, manifest, version) and persistence of the UCM state.</li>
+<li>Obtain the complete PDF to confirm chapter 9 (signatures, literal and error values).</li>
+</ol>
+<h2 id="gap-closure-featuregap-com-sm-ucm">Gap closure (feature/gap-com-sm-ucm)</h2>
+<p>Source policy: requirement IDs below were checked against the R25-11 text where it was readable and against
+R22-11 / R24-11 otherwise (the change between releases is small for PackageManagement). The later chapters
+(enum values, error numerics, exact signatures) are unreadable in all three PDFs, so those stay <em>Unverified</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes (tests: <code>Testing/ucm/ucm_core_hooks_test.cpp</code>, 28 tests)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activate talks to State Management</td>
+<td>Implemented</td>
+<td><code>UpdateHooks::prepareUpdate</code> then <code>resetMachine</code>; failure -&gt; UpdateSessionRejected / PreActivationFailed (00258, 00242). R22-11 text</td>
+</tr>
+<tr>
+<td>Verify / <code>kVerifying</code></td>
+<td>Implemented</td>
+<td>kActivated -&gt; kVerifying -&gt; hook; failure -&gt; VerificationFailed, stays kVerifying (00280)</td>
+</tr>
+<tr>
+<td>Rollback with PrepareRollback + ResetMachine</td>
+<td>Implemented</td>
+<td>NotAbleToRollback on hook failure, state restored (00110)</td>
+</tr>
+<tr>
+<td>Revert with hook</td>
+<td>Implemented</td>
+<td>NotAbleToRevertPackages (00236)</td>
+</tr>
+<tr>
+<td><code>kProcessingFailed</code></td>
+<td>Implemented</td>
+<td>failed processing -&gt; kProcessingFailed (00392); <code>BeginProcess</code> may retry from it. Numeric value Unverified</td>
+</tr>
+<tr>
+<td>Package validation at TransferExit</td>
+<td>Implemented</td>
+<td>consistency / authentication / version hook (00294, 00098, 00092, 00103); the package stays kTransferring so the client can delete or retry. Design decision, not spec-mandated</td>
+</tr>
+<tr>
+<td>GetHistory / GetId</td>
+<td>Implemented</td>
+<td>operation log (sequence, time, action, transfer id, result). Cluster names are not tracked</td>
+</tr>
+<tr>
+<td>Persisting UCM state</td>
+<td>Implemented</td>
+<td><code>Save</code>/<code>Load</code> (00184, 00273)</td>
+</tr>
+<tr>
+<td>New error codes</td>
+<td>Added, values Unverified</td>
+<td>TransferFailed 34, PackageFormatUnsupported 35, SwclRemovalDenied 36, PersistencyAllocationFailed 37 - numbers are this implementation's choice</td>
+</tr>
+</tbody>
+</table>
+<p>Still missing: GetSwClusterChangeInfo, GetSwClusterManifestInfo, RegisterSoftwarePackage, <code>kCancelling</code>
+campaign handling (00297/00298), delta/stream processing details.</p>
+<p>Demo: <code>App/demo/ota_updater</code> runs a whole update through this API (exit codes 0 updated, 2 rolled back,
+3 package rejected, 4 session rejected).</p></div><footer>Adaptive Platform</footer></body></html>

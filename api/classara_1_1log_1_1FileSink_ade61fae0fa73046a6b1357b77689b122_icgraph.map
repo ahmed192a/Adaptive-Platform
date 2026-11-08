@@ -1,0 +1,7 @@
+<map id="ara::log::FileSink::Open" name="ara::log::FileSink::Open">
+<area shape="rect" id="Node000001" title="Returns nullptr when the file cannot be opened." alt="" coords="307,5,437,45"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1log.html#ac867eb6c1621d55310b6c26240c0b9c0" title="SWS_LOG_00001. Idempotent; the first call wins. Console is the default sink." alt="" coords="108,13,259,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,28,259,28,259,23,293,23"/>
+<area shape="rect" id="Node000003" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

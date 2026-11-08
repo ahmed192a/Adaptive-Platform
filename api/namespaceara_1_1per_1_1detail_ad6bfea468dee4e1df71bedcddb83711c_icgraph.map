@@ -1,0 +1,13 @@
+<map id="ara::per::detail::RecoverOneFile" name="ara::per::detail::RecoverOneFile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="351,77,529,117"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#add5b908d0ebfa6ceaf58ab4ce2a86abb" title=" " alt="" coords="123,55,303,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="337,86,303,82,303,76,338,81"/>
+<area shape="rect" id="Node000006" href="$classara_1_1per_1_1FileStorage.html#aac9ab9c92599b22e0fb10b18b32d2bd5" title="No redundancy is kept for files: always kValidationFailed." alt="" coords="136,105,289,145"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="337,112,290,118,289,113,337,107"/>
+<area shape="rect" id="Node000003" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="13,5,67,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,53,67,28,68,23,155,48"/>
+<area shape="rect" id="Node000004" href="$file__storage__test_8cpp.html#aa063685f2bc9aa42f55b082530a6896d" title=" " alt="" coords="5,55,75,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="109,70,75,70,75,65,109,65"/>
+<area shape="rect" id="Node000005" href="$key__value__storage__test_8cpp.html#a7e0f694222682ea78a993b1b98ed4367" title=" " alt="" coords="5,104,75,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="155,86,123,95,76,109,74,104,122,90,153,81"/>
+</map>

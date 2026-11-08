@@ -1,0 +1,18 @@
+<map id="ara::sm::update_request::UpdateSession::VerifyUpdate" name="ara::sm::update_request::UpdateSession::VerifyUpdate">
+<area shape="rect" id="Node000001" title="[SWS_SM_00207]" alt="" coords="537,119,756,159"/>
+<area shape="rect" id="Node000002" href="$namespaceap_1_1demo.html#aa008d60b80abe3ff12d61fa359adf852" title="Run one update; progress is printed to out unless options.quiet." alt="" coords="311,52,473,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="573,118,489,91,446,80,448,75,490,86,575,112"/>
+<area shape="rect" id="Node000005" href="$update__session__test_8cpp.html#abe25709cefa951ccd5d670df78761187" title=" " alt="" coords="365,101,419,127"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="523,130,419,119,420,114,524,124"/>
+<area shape="rect" id="Node000006" href="$update__session__test_8cpp.html#accc773c32c9d1e9d66f38370855d2157" title=" " alt="" coords="365,151,419,176"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="524,154,420,163,419,158,523,148"/>
+<area shape="rect" id="Node000007" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a537ab3bc094f44f14210c10b3502a421" title="[SWS_SM_00207]" alt="" coords="295,200,489,255"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="576,167,473,202,471,197,574,161"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="437,43,434,38,426,34,392,31,365,33,350,38,347,43,355,50,351,54,342,44,347,34,364,28,392,25,428,29,438,34,442,40"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1anonymous__namespace_02dash__features_8cpp_03_1_1UpdateSim.html#a3dee4fb23da01d66811fadeb671984ef" title=" " alt="" coords="5,5,247,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="297,56,247,50,247,45,297,51"/>
+<area shape="rect" id="Node000004" href="$demo_2ota__updater_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="99,84,153,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="297,79,154,96,153,91,297,73"/>
+<area shape="rect" id="Node000008" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a49ae6571a4e635ae85ad4dffd346c1c0" title=" " alt="" coords="23,200,229,255"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="281,230,229,230,229,225,281,225"/>
+</map>

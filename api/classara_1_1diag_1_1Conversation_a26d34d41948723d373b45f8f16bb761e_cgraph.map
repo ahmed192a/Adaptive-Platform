@@ -1,0 +1,5 @@
+<map id="ara::diag::Conversation::GetCommunicationState" name="ara::diag::Conversation::GetCommunicationState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,196,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1DiagnosticServer.html#a8b0bf1a66ea7544b46cb8aec36e1cd60" title=" " alt="" coords="244,5,443,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,23,230,23,230,28,196,28"/>
+</map>

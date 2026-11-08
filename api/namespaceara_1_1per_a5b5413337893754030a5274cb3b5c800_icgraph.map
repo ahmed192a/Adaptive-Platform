@@ -1,0 +1,11 @@
+<map id="ara::per::Has" name="ara::per::Has">
+<area shape="rect" id="Node000001" title=" " alt="" coords="409,45,515,70"/>
+<area shape="rect" id="Node000002" href="$classara_1_1per_1_1FileStorage.html#a2a71bd3d19ac59177109c30b2f08c284" title=" " alt="" coords="208,5,361,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="395,48,361,42,362,37,396,43"/>
+<area shape="rect" id="Node000003" href="$classara_1_1per_1_1FileStorage.html#a971ed47f8f27a51f9f2661b9c7f9417d" title=" " alt="" coords="208,69,361,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="396,72,362,78,361,73,395,67"/>
+<area shape="rect" id="Node000004" href="$classara_1_1per_1_1FileStorage.html#af00e23e2d076e0f181985ffca9e0d4f5" title=" " alt="" coords="5,37,160,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="194,78,160,72,161,67,195,72"/>
+<area shape="rect" id="Node000005" href="$classara_1_1per_1_1FileStorage.html#a1455b93c896f0cee233a8c4855b13d46" title=" " alt="" coords="6,101,159,141"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="195,106,160,112,159,107,194,101"/>
+</map>

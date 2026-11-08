@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::exec — conformance with AUTOSAR AP R25-11 (SWS Execution Management)</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="araexec-conformance-with-autosar-ap-r25-11-sws-execution-management">ara::exec — conformance with AUTOSAR AP R25-11 (SWS Execution Management)</h1>
+<p>Source: <a href="https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_SWS_ExecutionManagement.pdf">AUTOSAR_AP_SWS_ExecutionManagement.pdf (R25-11)</a>.</p>
+<p><strong>Method and limits.</strong> Only requirement ids readable in the R25-11 text (chapters 5 and 7) are cited.
+Chapter 8 (formal API tables: signatures, <code>ExecErrc</code> numeric values, <code>ExecutionState</code> enumerators) could
+<strong>not be retrieved</strong>, so those rows are <em>Unverified</em> rather than guessed. The deterministic-execution
+requirements were set obsolete in R23-11 and removed in R24-11 (change history), see below.</p>
+<p><strong>Fallback release.</strong> R22-11 (<code>AUTOSAR_SWS_ExecutionManagement.pdf</code>) was read as a fallback: it confirms the ids and
+behaviour of SWS_EM_01309, SWS_EM_02241, SWS_EM_02275 and SWS_EM_02547, but its extracted text also lacks the
+Chapter 8 signature tables, so exact parameter lists stay <em>Unverified</em>. Rows below say which release backs them.</p>
+<p>Status legend: <strong>Implemented</strong>, <strong>Partial</strong>, <strong>Missing</strong>, <strong>Deviation</strong>, <strong>Unverified</strong>.</p>
+<h2 id="behaviour">Behaviour</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Topic</th>
+<th>Status</th>
+<th>Notes / test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWS_EM_02003</td>
+<td><code>ExecutionClient::ReportExecutionState</code></td>
+<td>Partial</td>
+<td>legacy form returns <code>std::variant&lt;std::monostate, ExecErrc&gt;</code> (used by every platform process); <strong>added</strong> <code>ReportExecutionStateResult</code> returning <code>ara::core::Result&lt;void&gt;</code> (<code>ReportExecutionStateResultMirrorsTheLegacyApi</code>, <code>...ReportsCommunicationErrors</code>). Exact spec name/signature Unverified (R22-11 and R25-11 name the method, not the signature)</td>
+</tr>
+<tr>
+<td>SWS_EM_02243</td>
+<td><code>ReportExecutionState(kRunning)</code> outside the Starting state returns <code>kInvalidTransition</code></td>
+<td><strong>Fixed in this audit</strong></td>
+<td>second <code>kRunning</code> from the same client is rejected and not sent; a failed transport does not consume the Starting state (<code>SpecExec.*</code>)</td>
+</tr>
+<tr>
+<td>SWS_EM_02582</td>
+<td>Only one <code>ExecutionClient</code> instance per process</td>
+<td><strong>Implemented for <code>Create()</code></strong></td>
+<td>a second <code>Create()</code> returns <code>kGeneralError</code>, the slot is freed when the created client is destroyed or moved-from (<code>CreateEnforcesSingleInstanceAndReleasesTheSlot</code>). The legacy default constructor stays unrestricted because several platform processes (e.g. SM) hold more than one client</td>
+</tr>
+<tr>
+<td>SWS_EM_02577</td>
+<td><code>ExecutionClient::Create</code> takes a termination handler invoked on SIGTERM from a background thread</td>
+<td><strong>Implemented</strong></td>
+<td><code>ExecutionClient::Create(std::function&lt;void()&gt;)</code> -&gt; <code>Result&lt;ExecutionClient&gt;</code>; SIGTERM only writes to a self-pipe, a background thread runs the handler (<code>SigtermRunsTheTerminationHandlerOnABackgroundThread</code>, <code>DestroyingTheClientDoesNotInvokeTheHandler</code>); empty handler =&gt; <code>kInvalidArguments</code>. Signature Unverified; demo: <code>supervised_service</code></td>
+</tr>
+<tr>
+<td>SWS_EM_01403</td>
+<td>Reporting from a non-reporting process is a violation</td>
+<td>Missing</td>
+<td>EM side does not know which processes are "reporting"</td>
+</tr>
+<tr>
+<td>SWS_EM_02000</td>
+<td><code>ExecutionState</code> enumeration</td>
+<td>Unverified</td>
+<td><code>kRunning</code>, <code>kTerminating</code> implemented. The R25-11 text read shows the process states Initializing/Running/Terminating, but not the enumerators of the type</td>
+</tr>
+<tr>
+<td>SWS_EM_02281–02291</td>
+<td><code>ExecErrc</code>, <code>ExecException</code>, <code>ExecErrorDomain</code>, <code>GetExecErrorDomain</code>, <code>MakeErrorCode</code></td>
+<td>Partial</td>
+<td>all present; <code>GetExecErrorDomain()</code> free function <strong>added in this audit</strong> (the older name <code>GetExecDomain()</code> is kept); <code>ExecErrc</code> numeric values and domain id <code>0x8000000000000202</code> unverified; <code>ExecException</code> has extra member functions not in the spec</td>
+</tr>
+<tr>
+<td>SWS_EM_02543</td>
+<td>Default <code>ExecutionError</code> value 1 for abnormal terminations</td>
+<td><strong>Implemented</strong></td>
+<td><code>kDefaultExecutionError = 1</code>; EM publishes it for unexpectedly dead processes (<code>DefaultExecutionErrorIsOne</code>, <code>AbnormalTerminationDecision</code>)</td>
+</tr>
+<tr>
+<td>SWS_EM_01309</td>
+<td>Abnormal termination outside a transition: Undefined Function Group State + <code>undefinedStateCallback(ExecutionErrorEvent)</code></td>
+<td><strong>Partial</strong> (verified against R22-11 behaviour text)</td>
+<td>EM now polls its children (250 ms), treats exit status 0 as normal and anything else as abnormal, and writes <code>"&lt;FG&gt;/&lt;error&gt;\n"</code> to <code>processes/sm_process/execution_error_fifo</code>; <code>StateClient(undefinedStateCallback)</code> delivers it from a background thread and keeps the last error per group (<code>StateClientDeliversExecutionErrorsToCallbackAndGetExecutionError</code>). Not done: the <em>Undefined Function Group State</em> itself (EM keeps its FG state), and the group of a process is its first configured function-group reference</td>
+</tr>
+</tbody>
+</table>
+<h2 id="api-shape">API shape</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>StateClient::SetState</code></td>
+<td>Partial</td>
+<td>legacy form returns <code>std::future&lt;std::variant&lt;...&gt;&gt;</code>; <strong>added</strong> <code>SetStateFuture</code> returning <code>ara::core::Future&lt;void&gt;</code> (<code>StateClientFutureVariantsReportErrorsAndSuccess</code>). FIFO transport is newline framed and EM validates <code>&lt;FG&gt;/&lt;state&gt;</code></td>
+</tr>
+<tr>
+<td><code>StateClient::GetInitialMachineStateTransitionResult</code></td>
+<td>Partial</td>
+<td>present; <strong>added</strong> <code>GetInitialMachineStateTransitionFuture</code> (<code>ara::core::Future&lt;void&gt;</code>). R22-11 (SWS_EM_02241) says a cancelled startup transition yields <code>kCancelled</code>: not produced, the transition result is not tracked</td>
+</tr>
+<tr>
+<td><code>StateClient::GetExecutionError</code>, <code>undefinedStateCallback</code></td>
+<td><strong>Implemented</strong> (signature Unverified)</td>
+<td>constructor takes the callback, <code>GetExecutionError(FunctionGroup const&amp;)</code> returns the last event or <code>kGeneralError</code>; see SWS_EM_01309</td>
+</tr>
+<tr>
+<td><code>FunctionGroup</code> (<code>Preconstruct</code>, <code>CtorToken</code>, <code>==</code>, <code>!=</code>)</td>
+<td>Implemented / Unverified</td>
+<td>unknown meta-model id =&gt; <code>kMetaModelError</code> (tested). Extra setters/getters (<code>set_FGname</code>, <code>get_states</code>) are non-standard. Spec-level <code>Create()</code> shown in chapter 5 is not provided</td>
+</tr>
+<tr>
+<td><code>FunctionGroupState</code> (<code>Preconstruct</code>, <code>CtorToken</code>, <code>==</code>, <code>!=</code>)</td>
+<td>Implemented / Unverified</td>
+<td>invalid ids =&gt; <code>kMetaModelError</code> (tested)</td>
+</tr>
+<tr>
+<td><code>ExecutionErrorEvent</code></td>
+<td>Implemented</td>
+<td>fields <code>executionError</code>, <code>functionGroup</code> (SWS_EM_02547 names <code>executionError</code>); now produced by EM (see SWS_EM_01309); header got an include guard</td>
+</tr>
+<tr>
+<td><code>DeterministicClient</code></td>
+<td>N/A</td>
+<td>present as legacy code (<code>WaitForNextActivation</code>, <code>RunWorkerPool</code>, <code>GetRandom</code>, ...); the standard obsoleted these requirements in R23-11 and removed them in R24-11. Kept for existing users, not conformance relevant</td>
+</tr>
+</tbody>
+</table>
+<h2 id="still-open">Still open</h2>
+<ol>
+<li><code>ara::core::Result</code> / <code>Future</code> as the <em>only</em> return types: the legacy forms stay for the platform processes; migrate them, then retire the variant/std::future overloads.</li>
+<li>The <em>Undefined Function Group State</em> in EM and the cancelled-transition result (SWS_EM_01309, SWS_EM_02241).</li>
+<li>Non-reporting process violations (SWS_EM_01403): the EM does not know which processes are reporting processes.</li>
+<li>Verify chapter 8 signatures, <code>ExecErrc</code> numeric values and the <code>ExecutionState</code> enumerators (not in the R25-11 or R22-11 text that could be read).</li>
+</ol></div><footer>Adaptive Platform</footer></body></html>

@@ -1,0 +1,13 @@
+<map id="ara::tsync::TimeBaseResource::GetCurrentTime" name="ara::tsync::TimeBaseResource::GetCurrentTime">
+<area shape="rect" id="Node000001" title="Synchronized time now; kNotSynchronized if no update was ever received." alt="" coords="5,63,224,103"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="332,5,468,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,60,318,39,319,44,215,65"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1TimeBaseResource.html#ac1e5ae06af03471e4655cc9cae9849ee" title=" " alt="" coords="272,70,528,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,80,258,80,258,85,224,85"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1TimeBaseResource.html#a80f3ee4ec19ed4fc306c87c72d9699b9" title=" " alt="" coords="291,120,509,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="215,100,287,115,286,120,214,105"/>
+<area shape="rect" id="Node000005" href="$classara_1_1tsync_1_1TimeBaseResource.html#abc7bbf8fd1161af2e5ed424b0a9748c6" title=" " alt="" coords="576,88,795,128"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="509,125,562,119,563,124,510,130"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1TimeBaseResource.html#a2d8a2980c8a4ed2cc7f827eb1f445e9a" title=" " alt="" coords="576,152,795,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="510,150,563,156,562,161,509,155"/>
+</map>

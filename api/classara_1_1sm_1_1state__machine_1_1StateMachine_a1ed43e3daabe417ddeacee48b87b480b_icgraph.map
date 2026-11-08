@@ -1,0 +1,14 @@
+<map id="ara::sm::state_machine::StateMachine::AddTransition" name="ara::sm::state_machine::StateMachine::AddTransition">
+<area shape="rect" id="Node000001" title="Allow from &#45;&gt; to (from == &quot;*&quot; allows it from any state) and run actions for it." alt="" coords="505,94,720,134"/>
+<area shape="rect" id="Node000002" href="$namespaceap_1_1demo.html#aa008d60b80abe3ff12d61fa359adf852" title="Run one update; progress is printed to out unless options.quiet." alt="" coords="295,52,457,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="502,94,437,80,438,75,504,89"/>
+<area shape="rect" id="Node000005" href="$state__machine__test_8cpp.html#aed3225eb2115fe12e162527064c9ca17" title=" " alt="" coords="349,101,403,127"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="492,117,403,117,403,111,492,111"/>
+<area shape="rect" id="Node000006" href="$state__machine__test_8cpp.html#aa0d1a0e52668c6607a5c6c331331d49f" title=" " alt="" coords="349,151,403,176"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="503,140,404,160,403,155,502,134"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="418,43,407,34,376,31,351,33,337,38,335,43,342,50,338,54,330,44,334,34,350,28,376,25,409,29,422,39"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1anonymous__namespace_02dash__features_8cpp_03_1_1UpdateSim.html#a3dee4fb23da01d66811fadeb671984ef" title=" " alt="" coords="5,5,247,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,55,246,51,247,45,281,50"/>
+<area shape="rect" id="Node000004" href="$demo_2ota__updater_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="99,84,153,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="281,79,154,96,153,91,281,74"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="src/ara/sm/diagnostic_reset/diagnostic_reset_return_types.h" name="src/ara/sm/diagnostic_reset/diagnostic_reset_return_types.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="104,5,277,60"/>
+<area shape="rect" id="Node000002" href="$diagnostic__reset__common_8h.html" title=" " alt="" coords="5,108,179,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,72,120,110,116,106,153,68"/>
+<area shape="rect" id="Node000004" href="$diagnostic__reset__skeleton_8h.html" title=" " alt="" coords="203,108,376,163"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="228,68,265,106,262,110,224,72"/>
+<area shape="rect" id="Node000003" href="$diagnostic__reset__proxy_8h.html" title=" " alt="" coords="5,211,179,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,176,95,211,89,211,89,176"/>
+</map>

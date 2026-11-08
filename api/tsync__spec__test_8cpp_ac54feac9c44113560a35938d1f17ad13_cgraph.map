@@ -1,0 +1,10 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,75,74"/>
+<area shape="rect" id="Node000002" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a6b8aba9a4fa1ffb342b67423ab699d69" title="SWS_TS_00202 / 00070: 0.0 if no rate deviation has been calculated." alt="" coords="123,5,400,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,53,124,45,125,50,75,58"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a14a65d129949695e442cb17f6d56f290" title="SWS_TS_14218: samples time + status atomically." alt="" coords="138,70,385,125"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="75,64,125,72,124,78,75,70"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="448,41,661,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="401,40,435,44,434,49,400,45"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="384,80,434,73,435,79,385,85"/>
+</map>

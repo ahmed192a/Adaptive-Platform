@@ -1,0 +1,11 @@
+<map id="ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SendEvent" name="ara::com::proxy_skeleton::skeleton::ServiceSkeleton::SendEvent">
+<area shape="rect" id="Node000001" title="SendEvent send an event update to clients." alt="" coords="705,30,903,85"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a11870951b3cefd83b6b41b4ee507f572" title=" " alt="" coords="471,37,657,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="692,60,658,60,658,55,692,55"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Field.html#aed5fb99ae95ec01c936d560d9dd333ad" title="Handle set method." alt="" coords="224,5,423,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="457,46,422,41,423,36,458,41"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a2f4887439a0e3d2b6bcc3f81d1a516f1" title="update event and notify" alt="" coords="230,69,417,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="458,74,417,80,416,74,457,69"/>
+<area shape="rect" id="Node000004" href="$classskeleton.html#ae2dc7c3be1a5325ca85f1895e42e9847" title=" " alt="" coords="5,5,176,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="210,28,176,28,176,23,210,23"/>
+</map>

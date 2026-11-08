@@ -1,0 +1,7 @@
+<map id="ara::phm::LogicalSupervision" name="ara::phm::LogicalSupervision">
+<area shape="rect" id="Node000001" title=" " alt="" coords="143,108,354,133"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1ElementarySupervision.html" title=" " alt="" coords="5,13,244,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,44,235,106,232,110,149,48"/>
+<area shape="rect" id="Node000003" href="$structara_1_1phm_1_1LogicalSupervision_1_1Config.html" title=" " alt="" coords="269,5,479,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="339,56,266,110,263,106,336,52"/>
+</map>

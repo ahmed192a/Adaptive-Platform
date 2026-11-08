@@ -1,0 +1,7 @@
+<map id="ara::core::Promise::Abandon" name="ara::core::Promise::Abandon">
+<area shape="rect" id="Node000001" title="Delivers broken_promise to a Future still waiting on an unfulfilled state." alt="" coords="193,37,333,77"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Promise.html#ae8af454c0616499ef9f928d8db6229d0" title=" " alt="" coords="5,5,145,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,46,145,40,146,35,180,41"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Promise.html#ac555257061bfda95b5d5bee73454fa93" title=" " alt="" coords="5,69,145,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,74,146,80,145,75,179,69"/>
+</map>

@@ -1,0 +1,27 @@
+<map id="anonymous_namespace{crypto_test::cpp}::TEST" name="anonymous_namespace{crypto_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,119,188,159"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a4ea4b377692218936d9a296d18e79381" title="Generates a random nonce: output = nonce(12) || ciphertext || tag." alt="" coords="238,5,399,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,117,171,79,235,41,254,33,256,38,237,46,174,83,124,121"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1KeyStore.html#ae41bdb17a2d024d92402d65b6add1723" title=" " alt="" coords="239,55,398,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,117,235,97,236,102,168,122"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1SecretKey.html#a8a778d61b17062c585c9cb1cda69f6a6" title=" " alt="" coords="236,119,401,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,137,222,137,222,142,188,142"/>
+<area shape="rect" id="Node000011" href="$classara_1_1crypto_1_1KeyStore.html#ae300b9132bdc99ad5e3c1ef3b737761a" title=" " alt="" coords="239,183,398,223"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="168,157,236,177,235,182,166,162"/>
+<area shape="rect" id="Node000013" href="$classara_1_1crypto_1_1KeyStore.html#a0c245f4f195696d8cdc0d189ef928f0c" title="Runs fn(key) while the slot is locked." alt="" coords="239,247,398,287"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="125,157,176,195,237,233,250,239,247,244,235,238,173,199,122,162"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1crypto.html#ae0bd797acf0d62500a3cdc76d104d79c" title=" " alt="" coords="449,44,664,69"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="373,117,400,105,424,92,448,80,477,70,478,75,450,84,426,96,403,110,375,122"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="474,94,639,134"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="401,128,460,122,461,127,402,133"/>
+<area shape="rect" id="Node000010" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="469,159,644,184"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="402,148,456,155,455,160,401,153"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="712,30,875,70"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="631,91,705,71,707,76,632,96"/>
+<area shape="rect" id="Node000008" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="712,94,875,134"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="640,111,698,111,698,117,640,117"/>
+<area shape="rect" id="Node000009" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="712,158,875,198"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="632,132,707,152,705,157,631,137"/>
+<area shape="rect" id="Node000012" href="$classara_1_1crypto_1_1SecretKey.html#afb9389db2598bb29d5b8769997a4d3ae" title=" " alt="" coords="474,209,639,249"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="399,209,461,216,460,221,398,214"/>
+</map>

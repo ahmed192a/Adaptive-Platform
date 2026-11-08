@@ -1,0 +1,42 @@
+<map id="ara::nm::NmChannel::Create" name="ara::nm::NmChannel::Create">
+<area shape="rect" id="Node000001" title="Fails with kInvalidConfig when a timer is zero. Starts in BusSleep." alt="" coords="363,413,519,453"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NetworkManager.html#a1f01eafed33418bc3ea6c409e873e63b" title="kNetworkExists for a duplicate name, kInvalidConfig for a bad config." alt="" coords="123,123,315,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="422,401,377,319,347,271,313,226,280,193,246,165,249,161,283,189,317,223,351,268,382,316,426,399"/>
+<area shape="rect" id="Node000004" href="$nm__gap__test_8cpp.html#a9f46843a1dda2005b296fc4da132d4ba" title=" " alt="" coords="13,5,67,31"/>
+<area shape="poly" id="edge18_Node000001_Node000004" title=" " alt="" coords="433,400,422,339,401,262,385,222,365,182,341,146,313,113,284,90,253,71,184,44,118,29,67,22,68,17,119,24,185,39,255,67,287,86,317,109,346,142,370,180,390,220,406,260,427,338,438,399"/>
+<area shape="rect" id="Node000008" href="$structanonymous__namespace_02nm__channel__test_8cpp_03_1_1Fx.html#aeb4c94e3b2b110fc2758dc0e7e808bca" title=" " alt="" coords="129,237,309,292"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="414,404,370,354,343,328,313,306,294,294,297,290,316,301,346,324,374,350,418,400"/>
+<area shape="rect" id="Node000010" href="$structanonymous__namespace_02nm__spec__test_8cpp_03_1_1Eng.html#ae570d1d84779c94ff5fbfe65f9dde5d6" title=" " alt="" coords="129,316,309,371"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="377,410,286,373,288,368,379,405"/>
+<area shape="rect" id="Node000015" href="$nm__channel__test_8cpp.html#a3eed74389aaa7d6d671d8d30b6405e43" title=" " alt="" coords="191,395,246,420"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="349,425,246,413,247,408,349,420"/>
+<area shape="rect" id="Node000016" href="$nm__gap__test_8cpp.html#a584aaceff53b10e04a27fe36a424b4cb" title=" " alt="" coords="191,444,246,469"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="349,445,247,456,246,451,349,440"/>
+<area shape="rect" id="Node000017" href="$nm__gap__test_8cpp.html#adf1cb41c61e31ab2a028d5a6b1217a6f" title=" " alt="" coords="191,493,246,519"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="381,460,315,485,247,503,246,498,314,479,379,455"/>
+<area shape="rect" id="Node000018" href="$nm__gap__test_8cpp.html#ad5f868938c85235be1395c3395d07d43" title=" " alt="" coords="191,543,246,568"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="411,464,368,501,316,534,280,547,247,554,246,549,279,542,313,529,365,496,408,460"/>
+<area shape="rect" id="Node000019" href="$nm__gap__test_8cpp.html#a86c17f0db646dcc3ad7aac1403c17d4a" title=" " alt="" coords="191,592,246,617"/>
+<area shape="poly" id="edge19_Node000001_Node000019" title=" " alt="" coords="423,466,379,526,350,557,316,583,281,598,247,605,246,600,279,593,313,578,346,553,375,523,419,463"/>
+<area shape="rect" id="Node000020" href="$nm__spec__test_8cpp.html#a1e386a51ec3da841cb02d23ea0cc54ba" title=" " alt="" coords="184,641,253,667"/>
+<area shape="poly" id="edge20_Node000001_Node000020" title=" " alt="" coords="430,467,413,505,389,550,356,595,316,632,286,647,254,654,253,649,284,642,313,628,352,591,384,547,408,503,425,465"/>
+<area shape="rect" id="Node000003" href="$nm__channel__test_8cpp.html#abc25808cfbb153c88c21a997c487cf36" title=" " alt="" coords="13,55,67,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="157,120,66,81,69,76,159,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="177,118,58,33,61,29,180,113"/>
+<area shape="rect" id="Node000005" href="$nm__gap__test_8cpp.html#a07dc6647147aad943b5f4c069d023f9a" title=" " alt="" coords="13,104,67,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="109,130,67,123,68,118,110,124"/>
+<area shape="rect" id="Node000006" href="$nm__gap__test_8cpp.html#a4daece7231cf6583c596ce08f4c4dfb8" title=" " alt="" coords="13,153,67,179"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="110,160,68,165,67,160,109,155"/>
+<area shape="rect" id="Node000007" href="$nm__gap__test_8cpp.html#ae347f5a37e9f03978b8ccd42e9dde6ed" title=" " alt="" coords="13,203,67,228"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="157,171,69,207,67,202,155,166"/>
+<area shape="rect" id="Node000009" href="$nm__channel__test_8cpp.html#ab6f3a80e6a82ea07f9b54c63f90481f8" title=" " alt="" coords="5,252,75,277"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="115,267,75,267,75,262,115,262"/>
+<area shape="rect" id="Node000011" href="$nm__spec__test_8cpp.html#aed17e7d1a2f7bc898581de00390b899b" title=" " alt="" coords="5,301,75,327"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="114,329,74,322,75,317,115,324"/>
+<area shape="rect" id="Node000012" href="$nm__spec__test_8cpp.html#a9678cae7ec234c6cc30d95f7e05abf50" title=" " alt="" coords="5,351,75,376"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="115,358,75,362,74,357,115,352"/>
+<area shape="rect" id="Node000013" href="$nm__spec__test_8cpp.html#a1f31041446db56dd9d75c81e943db83d" title=" " alt="" coords="5,400,75,425"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="136,378,75,402,73,397,134,373"/>
+<area shape="rect" id="Node000014" href="$nm__spec__test_8cpp.html#ad0868c234daf8da5a6ae12cca6dc980b" title=" " alt="" coords="5,449,75,475"/>
+<area shape="poly" id="edge13_Node000010_Node000014" title=" " alt="" coords="131,380,124,384,109,398,100,410,77,440,62,451,59,447,73,436,96,407,105,394,121,380,128,375"/>
+</map>

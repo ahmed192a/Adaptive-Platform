@@ -1,0 +1,29 @@
+<map id="ara::ucm::pkgmgr::DeleteTransfer::operator()" name="ara::ucm::pkgmgr::DeleteTransfer::operator()">
+<area shape="rect" id="Node000001" title="PackageManagement DeleteTransferOutput operator." alt="" coords="5,267,193,307"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#aedc0251ddb173c44bf14c534c8b3b1b6" title="SendRequest." alt="" coords="241,260,428,315"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,285,228,285,228,290,194,290"/>
+<area shape="rect" id="Node000003" href="$classCClient.html#a67468dd8b511b9fcfd563523c754e6df" title="Close the socket." alt="" coords="496,5,664,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,259,358,211,385,152,423,91,447,64,474,40,482,35,485,39,478,44,451,67,428,94,390,154,363,213,346,261"/>
+<area shape="rect" id="Node000004" href="$classCClient.html#ad3c60545478a84a46d3987fb31cd3581" title="Client read data TCP." alt="" coords="506,55,654,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="345,258,365,220,393,174,430,128,474,89,492,80,494,84,478,94,434,131,398,177,370,223,350,261"/>
+<area shape="rect" id="Node000005" href="$classCClient.html#aea09fc559b59a5afb62cb376031341ae" title="Client send data TCP." alt="" coords="505,104,655,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="353,258,403,197,437,165,475,138,490,131,493,136,477,143,440,169,407,201,357,261"/>
+<area shape="rect" id="Node000006" href="$classCClient.html#adbcb2f41e689144cbb6e8cf0b8b2f276" title="Close the socket." alt="" coords="502,153,658,179"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="367,257,416,222,475,189,498,180,500,185,477,194,419,226,371,262"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a316e71549eb7797f04b86f6819feacb5" title="Deserialize a complete SOME/IP message (header + payload)" alt="" coords="476,203,684,243"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="427,260,489,244,491,249,429,266"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1Deserializer.html#a03fc838db428148be027c71ec2f02548" title="Deserialize the vector of bytes into the required data type." alt="" coords="497,267,663,307"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="428,285,483,285,483,290,428,290"/>
+<area shape="rect" id="Node000010" href="$classCClient.html#a1c1626a25eebb091ae824646f860d97d" title="Get the Host name and port number." alt="" coords="515,332,645,357"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="429,306,512,326,511,331,427,312"/>
+<area shape="rect" id="Node000011" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#ae1494c3a94fce086c6f68ab31785c490" title="Get message data payload." alt="" coords="476,382,684,422"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="379,312,425,340,477,366,498,375,496,380,475,371,423,345,376,317"/>
+<area shape="rect" id="Node000012" href="$classCClient.html#aa4c93a772ac973df945ffc9480c95fd1" title="Open the socket." alt="" coords="503,447,657,472"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="357,313,407,374,440,405,477,432,493,440,491,444,475,436,437,409,403,378,353,317"/>
+<area shape="rect" id="Node000013" href="$classara_1_1com_1_1Serializer.html#a6c5ec394bb39cb758b2590b8d1ac16fb" title="Get the Payload object of the serializer." alt="" coords="506,497,654,537"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="351,313,371,351,399,396,435,442,478,481,494,491,492,496,474,485,431,446,395,399,366,354,346,316"/>
+<area shape="rect" id="Node000014" href="$classara_1_1com_1_1Serializer.html#af9f0e3e083c607e2e8a5fb3fae6bf793" title="serialize the data into the vector of bytes" alt="" coords="506,561,654,601"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="346,314,362,364,389,427,427,491,451,521,478,547,495,558,492,562,474,551,447,524,423,494,384,429,357,366,341,316"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#afa9f023803bab52032714b4e9b73710c" title="Non&#45;throwing variant of Deserialize()" alt="" coords="732,203,940,243"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="684,221,718,221,718,226,684,226"/>
+</map>

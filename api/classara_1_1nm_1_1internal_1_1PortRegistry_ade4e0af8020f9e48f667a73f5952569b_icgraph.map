@@ -1,0 +1,11 @@
+<map id="ara::nm::internal::PortRegistry::Unbind" name="ara::nm::internal::PortRegistry::Unbind">
+<area shape="rect" id="Node000001" title=" " alt="" coords="473,91,628,131"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NetworkManager.html#a8b752375f051c79ed43a509d66b352f6" title="Remove a port binding made with BindPort (no&#45;op if absent)." alt="" coords="233,91,425,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="459,114,426,114,426,109,459,109"/>
+<area shape="rect" id="Node000003" href="$structanonymous__namespace_02nm__gap__test_8cpp_03_1_1Multi.html#ad1c75a6ce31edf642413d910f81d8075" title=" " alt="" coords="5,5,185,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="255,89,176,63,178,58,257,84"/>
+<area shape="rect" id="Node000004" href="$structanonymous__namespace_02nm__spec__test_8cpp_03_1_1Spec.html#a101e5fa8b6b14106afd551b67873bd22" title=" " alt="" coords="5,84,185,139"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="220,114,186,114,186,109,220,109"/>
+<area shape="rect" id="Node000005" href="$nm__gap__test_8cpp.html#ae347f5a37e9f03978b8ccd42e9dde6ed" title=" " alt="" coords="68,163,123,188"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="243,138,124,171,122,165,242,132"/>
+</map>

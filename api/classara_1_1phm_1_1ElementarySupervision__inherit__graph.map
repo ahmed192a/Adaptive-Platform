@@ -1,0 +1,9 @@
+<map id="ara::phm::ElementarySupervision" name="ara::phm::ElementarySupervision">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,244,80"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1AliveSupervision.html" title=" " alt="" coords="305,5,502,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,50,330,28,331,33,211,55"/>
+<area shape="rect" id="Node000003" href="$classara_1_1phm_1_1DeadlineSupervision.html" title=" " alt="" coords="292,55,515,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,65,292,65,292,70,258,70"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1LogicalSupervision.html" title=" " alt="" coords="298,104,509,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="211,80,331,101,330,107,210,85"/>
+</map>

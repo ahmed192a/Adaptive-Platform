@@ -1,0 +1,11 @@
+<map id="src/ara/com/ipc/server/socket_Server.h" name="src/ara/com/ipc/server/socket_Server.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="94,5,261,45"/>
+<area shape="rect" id="Node000002" href="$socket_8h.html" title=" " alt="" coords="106,93,249,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,46,180,79,175,79,175,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,181,101,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="149,136,85,176,82,172,146,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="126,181,229,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="180,134,180,167,175,167,175,134"/>
+<area shape="rect" id="Node000005" href="$ipc__errors_8h.html" title=" " alt="" coords="253,181,432,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="218,131,307,173,305,178,216,136"/>
+</map>

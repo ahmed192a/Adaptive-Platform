@@ -1,0 +1,32 @@
+<map id="ara::phm::HealthMonitor::Instance" name="ara::phm::HealthMonitor::Instance">
+<area shape="rect" id="Node000001" title="Process wide instance used by the default SupervisedEntity transport." alt="" coords="887,281,1068,321"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1phm_1_1anonymous__namespace_02supervised__entity_8cpp_03.html#a79079eee5102f80641ec38deb4867947" title=" " alt="" coords="649,29,839,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="959,269,939,231,912,185,877,139,837,99,819,86,822,82,840,95,881,136,916,182,944,228,964,267"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02main_8cpp_03.html#ad5b45c9678f249e2a731682adc1e1518" title=" " alt="" coords="653,109,835,149"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="949,272,900,221,870,194,837,170,802,151,805,146,840,165,873,190,904,217,953,269"/>
+<area shape="rect" id="Node000004" href="$demo_2supervised__service_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="491,120,545,145"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="938,275,892,243,838,214,708,179,545,141,546,136,709,174,840,209,894,238,941,270"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad0033341236167451f81b059a96c2eb0" title=" " alt="" coords="220,223,387,263"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="873,304,669,299,551,291,434,278,375,266,376,261,435,273,552,286,670,294,873,299"/>
+<area shape="rect" id="Node000007" href="$examples_2phm__demo_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="717,389,771,415"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="929,330,840,372,772,397,771,392,838,368,926,325"/>
+<area shape="rect" id="Node000008" href="$structapdash_1_1PlatformNode_1_1Impl.html#acf1dd0d0fcf607557a8c3b35f68dc481" title=" " alt="" coords="435,338,601,378"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="873,317,839,322,602,351,601,346,838,317,873,312"/>
+<area shape="rect" id="Node000010" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad26c558c988c8d8fdc582c9271f78a7c" title=" " alt="" coords="661,223,827,263"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="881,280,825,266,827,261,883,275"/>
+<area shape="rect" id="Node000012" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2654c632043219fe1a9a9ad254da40f3" title=" " alt="" coords="661,439,827,479"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="952,333,903,382,872,407,840,430,816,442,813,437,837,425,869,403,899,378,948,329"/>
+<area shape="rect" id="Node000013" href="$health__monitor__test_8cpp.html#ab77e27a7523cee939579c81756b57755" title=" " alt="" coords="717,504,771,529"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="964,334,944,371,916,414,882,457,840,494,806,509,772,517,771,512,804,504,837,489,878,454,912,411,939,369,959,332"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="781,18,768,11,744,8,724,10,711,15,705,21,705,29,700,29,700,19,708,10,723,5,744,3,769,6,784,14"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="639,133,546,135,546,130,639,128"/>
+<area shape="rect" id="Node000006" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,195,172,235"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="206,233,172,229,173,224,206,228"/>
+<area shape="rect" id="Node000009" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="220,313,387,353"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="420,349,387,345,387,340,421,344"/>
+<area shape="poly" id="edge12_Node000010_Node000006" title=" " alt="" coords="655,223,601,214,485,206,368,204,172,211,172,206,368,198,485,200,602,209,656,218"/>
+<area shape="rect" id="Node000011" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2b31526623d8f784530296aa9d7b19de" title=" " alt="" coords="435,223,601,263"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="647,246,602,246,602,241,647,241"/>
+<area shape="poly" id="edge15_Node000011_Node000005" title=" " alt="" coords="421,246,387,246,387,241,421,241"/>
+<area shape="poly" id="edge14_Node000011_Node000009" title=" " alt="" coords="457,271,353,315,351,310,455,266"/>
+</map>

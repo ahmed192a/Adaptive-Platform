@@ -1,0 +1,15 @@
+<map id="src/ara/ucm/pkgmgr/ucm_return_types.h" name="src/ara/ucm/pkgmgr/ucm_return_types.h">
+<area shape="rect" id="Node000001" title="UCM Return Types Definitions." alt="" coords="153,5,308,45"/>
+<area shape="rect" id="Node000002" href="$ucm__types_8h.html" title="UCM Types Definitions." alt="" coords="115,93,221,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,47,188,84,184,81,213,44"/>
+<area shape="rect" id="Node000007" href="$ucm__error_8h.html" title="UCM Error Domain." alt="" coords="245,93,344,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="248,44,278,81,274,84,244,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,72,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="148,121,73,162,71,157,146,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="96,167,155,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="163,120,141,156,137,154,159,118"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="179,167,242,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="177,118,199,154,195,156,173,120"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="267,167,323,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="190,116,263,157,261,162,187,121"/>
+</map>

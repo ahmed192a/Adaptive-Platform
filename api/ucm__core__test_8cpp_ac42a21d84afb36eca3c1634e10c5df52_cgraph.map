@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,60,74"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1ucm_1_1pkgmgr_1_1core.html#af7a11871be65ddb9170cda8b99e95d8c" title="Stable, filesystem&#45;safe textual form of a TransferId (32 lower&#45;case hex digits)." alt="" coords="111,5,285,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,53,97,45,98,50,61,58"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02ucm__core__test_8cpp_03.html#aac3aedb55df5161171eb0fd4de26e2f2" title=" " alt="" coords="108,70,288,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,65,95,72,94,77,60,70"/>
+</map>

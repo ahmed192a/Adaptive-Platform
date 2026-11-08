@@ -1,0 +1,38 @@
+<map id="src/ara/nm/nm_pdu.h" name="src/ara/nm/nm_pdu.h">
+<area shape="rect" id="Node000001" title="8 byte NM message (CAN&#45;NM like layout)." alt="" coords="462,5,621,31"/>
+<area shape="rect" id="Node000002" href="$nm__pdu__test_8cpp.html" title=" " alt="" coords="235,79,443,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="497,38,372,81,371,76,495,33"/>
+<area shape="rect" id="Node000003" href="$nm__channel_8h.html" title="One NM&#45;managed network: state machine, timers, partial networks." alt="" coords="387,152,573,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="528,43,508,80,494,119,485,152,480,151,489,117,503,78,523,41"/>
+<area shape="rect" id="Node000014" href="$nm__pdu_8cpp.html" title=" " alt="" coords="713,79,887,104"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="597,32,759,76,757,81,595,37"/>
+<area shape="rect" id="Node000015" href="$nm__types_8h.html" title="NM states, configuration and the injectable clock." alt="" coords="517,79,688,104"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="562,40,595,77,591,80,558,43"/>
+<area shape="rect" id="Node000004" href="$dash__features_8cpp.html" title=" " alt="" coords="5,225,160,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="406,183,173,228,161,230,160,225,171,223,405,177"/>
+<area shape="rect" id="Node000005" href="$demo_2nm__bus__monitor_2main_8cpp.html" title=" " alt="" coords="185,225,386,265"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="440,185,333,228,331,223,438,180"/>
+<area shape="rect" id="Node000006" href="$nm__channel__test_8cpp.html" title=" " alt="" coords="199,313,375,353"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="467,190,438,228,400,267,364,294,327,315,324,311,361,290,397,263,434,225,463,187"/>
+<area shape="rect" id="Node000007" href="$network__handle_8h.html" title="ara::nm::NetworkHandle &#45; the State Management facing API of Network Management (SWS_ANM_01000 ff...." alt="" coords="634,225,782,265"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="527,179,654,223,652,228,525,184"/>
+<area shape="rect" id="Node000012" href="$network__manager_8h.html" title="Registry of NM networks (one per bus / channel)." alt="" coords="462,225,610,265"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="498,187,525,224,520,227,494,190"/>
+<area shape="rect" id="Node000013" href="$nm__channel_8cpp.html" title=" " alt="" coords="806,233,1007,258"/>
+<area shape="poly" id="edge16_Node000003_Node000013" title=" " alt="" coords="556,177,845,230,844,235,555,182"/>
+<area shape="rect" id="Node000008" href="$nm__gap__test_8cpp.html" title=" " alt="" coords="399,321,607,346"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="652,273,531,323,529,318,650,268"/>
+<area shape="rect" id="Node000009" href="$nm__spec__test_8cpp.html" title=" " alt="" coords="631,313,785,353"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="711,279,711,313,705,313,705,279"/>
+<area shape="rect" id="Node000010" href="$network__handle_8cpp.html" title=" " alt="" coords="982,313,1130,353"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="796,265,983,311,981,316,795,271"/>
+<area shape="rect" id="Node000011" href="$network__manager_8cpp.html" title=" " alt="" coords="810,313,958,353"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="760,269,847,311,844,316,758,274"/>
+<area shape="poly" id="edge12_Node000012_Node000006" title=" " alt="" coords="469,272,342,316,340,311,467,267"/>
+<area shape="poly" id="edge13_Node000012_Node000008" title=" " alt="" coords="526,279,510,321,505,319,521,277"/>
+<area shape="poly" id="edge14_Node000012_Node000009" title=" " alt="" coords="587,269,672,311,669,316,585,274"/>
+<area shape="poly" id="edge15_Node000012_Node000011" title=" " alt="" coords="624,265,811,311,809,316,623,271"/>
+<area shape="poly" id="edge19_Node000015_Node000003" title=" " alt="" coords="573,113,501,154,499,149,570,108"/>
+<area shape="rect" id="Node000016" href="$nm__types_8cpp.html" title=" " alt="" coords="597,152,784,177"/>
+<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="629,110,678,150,675,154,626,115"/>
+</map>

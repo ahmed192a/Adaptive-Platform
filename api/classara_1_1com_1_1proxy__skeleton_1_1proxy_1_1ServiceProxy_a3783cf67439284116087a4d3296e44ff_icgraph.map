@@ -1,0 +1,5 @@
+<map id="ara::com::proxy_skeleton::proxy::ServiceProxy::EventUnsubscribe" name="ara::com::proxy_skeleton::proxy::ServiceProxy::EventUnsubscribe">
+<area shape="rect" id="Node000001" title="EventUnsubscribe." alt="" coords="253,5,440,60"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html#a11f1e9d3b03f243ccedc5c3becaddf1c" title="Unsubscribe from event." alt="" coords="5,13,205,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,35,205,35,205,30,239,30"/>
+</map>

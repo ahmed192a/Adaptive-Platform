@@ -1,0 +1,9 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,99,60,124"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02ucm__core__test_8cpp_03.html#aac3aedb55df5161171eb0fd4de26e2f2" title=" " alt="" coords="108,5,288,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,96,107,69,119,63,121,68,109,74,58,101"/>
+<area shape="rect" id="Node000003" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ad576575f6ec3a029459a5540a8dc9a97" title="Checks in the order of the SWS (00208, 00203, 00204, 00243, 00205)." alt="" coords="109,84,287,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,109,95,109,95,114,60,114"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a14f004a851d15b2c23406ae99b889850" title="[SWS_UCM_00140] InsufficientMemory when the package cannot be stored." alt="" coords="109,163,287,217"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="59,122,109,148,123,154,121,159,107,152,57,127"/>
+</map>

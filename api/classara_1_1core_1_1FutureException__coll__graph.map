@@ -1,0 +1,11 @@
+<map id="ara::core::FutureException" name="ara::core::FutureException">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,256,197,281"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Exception.html" title=" " alt="" coords="26,181,177,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,221,104,256,99,256,99,221"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="23,93,137,119"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="89,131,101,180,96,181,84,133"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1ErrorCode.html" title=" " alt="" coords="162,93,313,119"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="209,128,121,183,118,179,206,124"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1ErrorDomain.html" title=" " alt="" coords="153,5,322,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="240,45,240,93,235,93,235,45"/>
+</map>

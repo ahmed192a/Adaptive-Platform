@@ -1,0 +1,33 @@
+<map id="anonymous_namespace{extras_test::cpp}::TEST" name="anonymous_namespace{extras_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,155,188,195"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1SecretKey.html#a8a778d61b17062c585c9cb1cda69f6a6" title=" " alt="" coords="243,47,409,87"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,153,235,97,252,90,254,95,237,102,133,157"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="489,105,654,145"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="188,167,416,146,475,138,476,143,416,151,189,172"/>
+<area shape="rect" id="Node000009" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a1eea06f48bd3eee220ae2c10e999c325" title=" " alt="" coords="236,263,416,303"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="133,193,237,248,256,256,254,261,235,252,131,198"/>
+<area shape="rect" id="Node000010" href="$namespaceara_1_1crypto.html#ab9724c5e7f26e7ac7e1d43165d83b3a8" title=" " alt="" coords="239,112,413,137"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="187,153,254,138,255,143,188,158"/>
+<area shape="rect" id="Node000012" href="$namespaceara_1_1crypto.html#a807b8982d6e5ef1493f00f000a63bea6" title="RFC 3394." alt="" coords="247,213,405,239"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="188,193,255,208,254,213,187,198"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#ae0bd797acf0d62500a3cdc76d104d79c" title=" " alt="" coords="464,5,679,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="408,48,494,31,495,36,409,53"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="409,84,476,100,474,105,408,89"/>
+<area shape="rect" id="Node000008" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="484,55,659,80"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="409,65,470,65,470,70,409,70"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="727,41,889,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="645,102,720,82,721,87,647,107"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="727,105,889,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="655,122,713,122,713,127,655,127"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="727,169,889,209"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="647,142,721,163,720,168,645,147"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="414,122,475,122,475,127,414,127"/>
+<area shape="poly" id="edge12_Node000010_Node000008" title=" " alt="" coords="381,109,503,81,504,86,382,115"/>
+<area shape="rect" id="Node000011" href="$classara_1_1crypto_1_1SecretKey.html#a730875eeb7b62dde79c743dc5678b6e5" title=" " alt="" coords="489,169,654,209"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="377,135,481,162,480,168,375,140"/>
+<area shape="poly" id="edge17_Node000012_Node000011" title=" " alt="" coords="405,211,474,201,475,206,406,217"/>
+<area shape="rect" id="Node000013" href="$structara_1_1crypto_1_1KeyAccess.html#a9a811db06bcea043ad20fa9debe17522" title=" " alt="" coords="487,233,656,273"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="406,232,473,239,473,245,405,237"/>
+<area shape="rect" id="Node000014" href="$classara_1_1crypto_1_1SecretKey.html#a28000741ac51d93a4177224afc85c401" title=" " alt="" coords="489,297,654,337"/>
+<area shape="poly" id="edge16_Node000012_Node000014" title=" " alt="" coords="384,236,417,249,442,266,465,282,482,289,479,294,463,287,439,270,415,254,382,241"/>
+</map>

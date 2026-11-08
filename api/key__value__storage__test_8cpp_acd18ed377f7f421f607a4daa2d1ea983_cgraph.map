@@ -1,0 +1,20 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,99,75,124"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02key__value__storage__test_8cpp_03.html#ae1ba3a931a48b331cc9ee860a4afcb6a" title=" " alt="" coords="127,5,311,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,96,122,69,135,63,137,68,124,74,67,101"/>
+<area shape="rect" id="Node000007" href="$namespaceanonymous__namespace_02key__value__storage__test_8cpp_03.html#a4300c7dc3b02f40e5431d36b22a885a2" title=" " alt="" coords="127,84,311,139"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="75,109,114,109,114,114,75,114"/>
+<area shape="rect" id="Node000008" href="$namespaceara_1_1per.html#a9d1a0890d062ae509433d8063738c596" title="The following only succeed while the storage is not open (kResourceBusy)." alt="" coords="123,163,316,203"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="66,122,124,149,143,156,141,161,122,154,64,127"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per.html#a0629a9c4fda9f58138d47a9ae469b475" title="Opening the same specifier twice returns the same underlying storage." alt="" coords="364,31,588,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,34,350,35,350,41,312,39"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per.html#a3230707f204bbd8e76b28167a3e6303a" title=" " alt="" coords="636,61,889,87"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="589,53,631,57,630,63,588,58"/>
+<area shape="rect" id="Node000005" href="$structara_1_1per_1_1KvsAccess.html#a64af718f07aaeed336e09fc7eefda741" title=" " alt="" coords="937,54,1087,94"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="890,71,923,71,923,77,890,77"/>
+<area shape="rect" id="Node000006" href="$classara_1_1per_1_1KeyValueStorage.html#aeb179de630774d53853d8f4971126417" title=" " alt="" coords="1135,54,1325,94"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1087,71,1121,71,1121,77,1087,77"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="308,161,363,149,679,87,680,92,365,154,309,166"/>
+<area shape="rect" id="Node000009" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="389,163,563,203"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="316,181,376,181,376,186,316,186"/>
+</map>

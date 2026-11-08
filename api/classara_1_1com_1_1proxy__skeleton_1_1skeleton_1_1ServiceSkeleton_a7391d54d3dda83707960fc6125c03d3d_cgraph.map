@@ -1,0 +1,11 @@
+<map id="ara::com::proxy_skeleton::skeleton::ServiceSkeleton::HandleCall" name="ara::com::proxy_skeleton::skeleton::ServiceSkeleton::HandleCall">
+<area shape="rect" id="Node000001" title="2&#45; HandleCall future&lt;void&gt; ARGS" alt="" coords="5,30,203,85"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1Marshal.html#a88e63db5dd754649f0f6dfa7bde66073" title=" " alt="" coords="281,5,428,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,42,267,34,268,39,203,47"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#add68ba38d899785288237fe71eb399b0" title="Get message payload." alt="" coords="251,69,459,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="203,67,237,72,237,77,203,73"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1Deserializer.html#a03fc838db428148be027c71ec2f02548" title="Deserialize the vector of bytes into the required data type." alt="" coords="510,5,675,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="429,23,496,23,496,28,429,28"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1com_1_1helper.html#a5a2498fade7c5196c42e3023252eb941" title="Inject a short value into a byte vector." alt="" coords="507,77,679,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="459,87,493,87,493,92,459,92"/>
+</map>

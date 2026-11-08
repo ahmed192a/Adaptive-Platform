@@ -1,0 +1,23 @@
+<map id="ara::phm::ElementarySupervision::Checkpoints" name="ara::phm::ElementarySupervision::Checkpoints">
+<area shape="rect" id="Node000001" title="All checkpoints that influence this supervision." alt="" coords="1295,37,1533,77"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1HealthMonitor.html#aa06fd992d20a0e9b3f6157dd64d1d889" title=" " alt="" coords="1065,37,1247,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1281,60,1247,60,1247,55,1281,55"/>
+<area shape="rect" id="Node000003" href="$classara_1_1phm_1_1HealthMonitor.html#a2e32d92676d50bdb324e0b9f9d331908" title=" " alt="" coords="836,5,1017,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1051,45,1017,41,1018,35,1052,40"/>
+<area shape="rect" id="Node000005" href="$classara_1_1phm_1_1HealthMonitor.html#a0dc02b78c4000406092b84281a3dee03" title=" " alt="" coords="836,69,1017,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1052,74,1018,79,1017,74,1051,69"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1HealthMonitor.html#a3737046ea31f0c3b73bbba5319c7f8e5" title=" " alt="" coords="607,5,788,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="822,28,788,28,788,23,822,23"/>
+<area shape="rect" id="Node000006" href="$classara_1_1phm_1_1HealthMonitor.html#ad4894c71d5aa4c351dad465098335329" title=" " alt="" coords="607,69,788,109"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="822,92,788,92,788,87,822,87"/>
+<area shape="rect" id="Node000007" href="$classara_1_1phm_1_1HealthMonitor.html#afa332a7c6046e5033f4d6025ab0856c0" title=" " alt="" coords="377,69,559,109"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="593,92,559,92,559,87,593,87"/>
+<area shape="rect" id="Node000008" href="$namespaceanonymous__namespace_02health__monitor__test_8cpp_03.html#aa715c1c36d709f7f6e81e7691f1645f6" title="Feeds a healthy alive pattern (2 indications per 100 ms cycle)." alt="" coords="136,26,316,81"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="364,77,316,69,317,64,364,71"/>
+<area shape="rect" id="Node000011" href="$classara_1_1phm_1_1HealthMonitor.html#a2a7ae97de4cdec1b0f6497232e6f702d" title="Starts a thread calling Evaluate(now) every period." alt="" coords="123,105,329,145"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="364,107,330,113,329,107,364,102"/>
+<area shape="rect" id="Node000009" href="$health__monitor__test_8cpp.html#aad74e4e21913fb18286ec3d989bd6316" title=" " alt="" coords="5,17,75,42"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="122,43,74,36,75,31,122,37"/>
+<area shape="rect" id="Node000010" href="$health__monitor__test_8cpp.html#a04ea4505094fd5a84ee75609476f478f" title=" " alt="" coords="5,66,75,91"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="123,70,75,77,74,71,122,65"/>
+</map>

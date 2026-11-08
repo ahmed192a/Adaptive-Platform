@@ -1,0 +1,15 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,60,102"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1Marshal.html#a88e63db5dd754649f0f6dfa7bde66073" title=" " alt="" coords="108,5,255,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,75,121,48,123,53,61,80"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1Marshal.html#af246fa233aa8fa209e31a92bf411884c" title=" " alt="" coords="108,69,255,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="60,87,94,87,94,92,60,92"/>
+<area shape="rect" id="Node000007" href="$marshal__test_8cpp.html#a47e0d8e00d61f7f2477b8495cc663c32" title=" " alt="" coords="154,134,209,159"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="61,99,109,119,142,131,140,136,107,124,59,104"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1Deserializer.html#a03fc838db428148be027c71ec2f02548" title="Deserialize the vector of bytes into the required data type." alt="" coords="303,5,468,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="255,23,289,23,289,28,255,28"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1Serializer.html#a6c5ec394bb39cb758b2590b8d1ac16fb" title="Get the Payload object of the serializer." alt="" coords="311,69,459,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="255,87,298,87,298,92,255,92"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1Serializer.html#af9f0e3e083c607e2e8a5fb3fae6bf793" title="serialize the data into the vector of bytes" alt="" coords="311,133,459,173"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="247,107,309,127,307,132,245,112"/>
+</map>

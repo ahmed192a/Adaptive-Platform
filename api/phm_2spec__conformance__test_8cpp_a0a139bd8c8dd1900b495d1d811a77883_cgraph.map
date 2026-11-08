@@ -1,0 +1,30 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,201,60,226"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1ElementarySupervision.html#aa404f6e7f298eb10a81a7c34aac0e2f4" title="(Re&#45;)start supervising at now; status becomes kOK." alt="" coords="108,5,347,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="34,200,56,135,77,96,106,62,124,50,127,54,110,66,82,99,61,137,39,201"/>
+<area shape="rect" id="Node000004" href="$namespacephmtest.html#acd85b21ea142070ea69c9ac50dd0d568" title=" " alt="" coords="463,95,565,121"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="36,199,60,151,80,126,107,106,151,87,197,76,245,70,292,69,382,76,455,90,454,95,381,81,292,74,245,75,198,81,152,92,109,110,84,129,65,154,41,202"/>
+<area shape="rect" id="Node000005" href="$classara_1_1phm_1_1ElementarySupervision.html#aa7140e17ba2e4c7925adf923d37628b7" title="Time progressed to now (evaluates cycles / timeouts)." alt="" coords="108,221,347,261"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="61,215,95,220,94,225,60,220"/>
+<area shape="rect" id="Node000008" href="$namespacephmtest.html#abd92b86bc7b6c12ec3ec838310760e74" title=" " alt="" coords="151,121,303,146"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="49,198,76,180,107,163,151,147,153,152,109,168,78,185,52,202"/>
+<area shape="rect" id="Node000009" href="$namespacephmtest.html#a296c31ed366f3fa2be3e0a13f08740cb" title=" " alt="" coords="463,158,565,183"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="60,208,448,174,449,179,60,214"/>
+<area shape="rect" id="Node000010" href="$classara_1_1phm_1_1ElementarySupervision.html#ab293932f9283ed85af27d24ceb08e42c" title="A checkpoint of one of Checkpoints() was reported at now." alt="" coords="108,285,347,325"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="48,224,75,248,109,271,125,278,122,283,107,276,72,252,45,228"/>
+<area shape="rect" id="Node000012" href="$classara_1_1phm_1_1ElementarySupervision.html#a0f39218ec3f484442171b9ffdf22b60c" title=" " alt="" coords="108,349,347,389"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="40,225,64,279,84,309,110,335,117,340,114,345,106,339,80,313,59,281,36,227"/>
+<area shape="rect" id="Node000013" href="$namespacephmtest.html#af0570ce0f68aa65941a8cfb3acdcb00b" title=" " alt="" coords="181,414,273,439"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="38,226,43,261,55,308,76,358,91,380,110,399,137,415,168,423,167,428,135,420,106,403,87,383,71,360,49,310,37,262,32,227"/>
+<area shape="rect" id="Node000003" href="$classara_1_1phm_1_1ElementarySupervision.html#ada09f230335153d56d119da8ace3905c" title=" " alt="" coords="395,5,633,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="347,23,381,23,381,28,347,28"/>
+<area shape="rect" id="Node000006" href="$classara_1_1phm_1_1ElementarySupervision.html#ab6552f17daabf7c673227e34eea35172" title=" " alt="" coords="395,208,633,248"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="347,233,381,232,381,237,347,238"/>
+<area shape="rect" id="Node000007" href="$classara_1_1phm_1_1ElementarySupervision.html#ae0b264c32571ff86cfab91a339d1b999" title=" " alt="" coords="395,272,633,312"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="341,259,387,267,386,272,340,264"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="303,124,450,111,450,116,304,129"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="304,141,449,160,449,165,303,146"/>
+<area shape="poly" id="edge13_Node000010_Node000007" title=" " alt="" coords="347,297,381,296,381,301,347,302"/>
+<area shape="rect" id="Node000011" href="$classara_1_1phm_1_1ElementarySupervision.html#ae31f2d8b2f08af437056fda601691271" title=" " alt="" coords="395,336,633,376"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="341,323,387,331,386,336,340,328"/>
+</map>

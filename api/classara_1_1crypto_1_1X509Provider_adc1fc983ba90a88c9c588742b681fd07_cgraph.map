@@ -1,0 +1,5 @@
+<map id="ara::crypto::X509Provider::AddTrustAnchor" name="ara::crypto::X509Provider::AddTrustAnchor">
+<area shape="rect" id="Node000001" title="Anchors must be CA certificates." alt="" coords="5,5,192,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1X509Certificate.html#adbf28a78b7c38888fdbfc234db3b2309" title=" " alt="" coords="240,5,440,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,23,227,23,227,28,192,28"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ara::core::Future::GetResult" name="ara::core::Future::GetResult">
+<area shape="rect" id="Node000001" title="Blocks until ready and returns the Result; the Future becomes invalid." alt="" coords="211,5,347,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Future.html#aa7cc5cacdb9bd68edbbe697247e71e84" title="Blocks; returns the value or throws (terminates without exceptions)." alt="" coords="5,13,163,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,28,163,28,163,23,197,23"/>
+</map>

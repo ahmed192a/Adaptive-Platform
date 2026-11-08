@@ -1,0 +1,190 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::phm — conformance with AUTOSAR AP R25-11 (SWS Platform Health Management)</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="araphm-conformance-with-autosar-ap-r25-11-sws-platform-health-management">ara::phm — conformance with AUTOSAR AP R25-11 (SWS Platform Health Management)</h1>
+<p>Source: <a href="https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_SWS_PlatformHealthManagement.pdf">AUTOSAR_AP_SWS_PlatformHealthManagement.pdf (R25-11)</a>.</p>
+<p><strong>Method and limits.</strong> The requirement ids below are the ones that could be read from the R25-11 text
+(chapters 5 and 7: functional behaviour). Chapter 8 (the formal C++ API tables: exact signatures, <code>PhmErrc</code>
+numeric values, <code>TypeOfSupervision</code> values) was <strong>not retrievable</strong> in this audit, so API-shape rows are
+marked <em>Unverified</em> instead of being guessed. Ids not listed here were not read and are not claimed.</p>
+<p><strong>Fallback release.</strong> R22-11 (<code>AUTOSAR_SWS_PlatformHealthManagement.pdf</code>) was read as a fallback. Its Chapter 8 is also
+only headings in the extracted text, so signatures and numeric values stay <em>Unverified</em>; it additionally confirms
+SWS_PHM_00101 (the <code>supervision</code> parameter carries the <code>TypeOfSupervision</code> that caused kEXPIRED), SWS_PHM_01343
+(elementary statuses kOK, kDEACTIVATED, kEXPIRED, kFAILED) and SWS_PHM_00216 (global statuses kOK, kDEACTIVATED,
+kFAILED, kEXPIRED, kSTOPPED) - all matching the implementation.</p>
+<p>Status legend: <strong>Implemented</strong>, <strong>Partial</strong>, <strong>Missing</strong>, <strong>Deviation</strong> (known, intentional or forced),
+<strong>Unverified</strong> (could not be checked against the text).</p>
+<h2 id="behaviour">Behaviour</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Topic</th>
+<th>Status</th>
+<th>Notes / test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWS_PHM_00216</td>
+<td>Global supervision statuses kOK, kDEACTIVATED, kFAILED, kEXPIRED, kSTOPPED</td>
+<td>Implemented</td>
+<td><code>GlobalSupervisionStatus</code>; <code>SpecFixture.StoppedOnlyForPlatformCriticalSupervisions</code></td>
+</tr>
+<tr>
+<td>SWS_PHM_00218</td>
+<td>Global status starts kDEACTIVATED</td>
+<td>Implemented</td>
+<td><code>StatusesStartDeactivatedUntilActivated</code></td>
+</tr>
+<tr>
+<td>SWS_PHM_01343</td>
+<td>Elementary statuses kOK, kDEACTIVATED, kEXPIRED, kFAILED (kFAILED alive only)</td>
+<td>Implemented</td>
+<td><code>ElementarySupervisionStatus</code>; only <code>AliveSupervision</code> produces kFAILED</td>
+</tr>
+<tr>
+<td>SWS_PHM_01344</td>
+<td>Elementary status starts kDEACTIVATED</td>
+<td>Implemented</td>
+<td><code>StatusesStartDeactivatedUntilActivated</code>, <code>AliveSupervision.StartsDeactivatedAndIgnoresInput</code></td>
+</tr>
+<tr>
+<td>SWS_PHM_01346, SWS_PHM_01347</td>
+<td>Alive: kFAILED within <code>failedReferenceCyclesTolerance</code>, kEXPIRED beyond; deadline/logical go straight to kEXPIRED</td>
+<td>Implemented</td>
+<td><code>SpecSupervision.FailedThenExpiredForAliveDirectExpiredForOthers</code>. Good cycles decrement the failed-cycle counter (debounce); the exact debounce rule in the SWS text beyond the above was not verified</td>
+</tr>
+<tr>
+<td>SWS_PHM_01357</td>
+<td>Logical supervision: first report that is not a valid start expires</td>
+<td>Implemented</td>
+<td>same test; <code>LogicalSupervision.WrongStartTransitionAndSkippedStepExpire</code></td>
+</tr>
+<tr>
+<td>SWS_PHM_00105</td>
+<td>kSTOPPED only for State Management / Execution Management / OS supervisions and triggers the watchdog reaction</td>
+<td>Implemented</td>
+<td><code>GlobalSupervisionConfig::platformCritical</code> + <code>expiredToleranceMs</code>; <code>HealthMonitorTest.PlatformCriticalSupervisionStopsAfterTolerance</code>. Which supervisions are platform-critical is configuration, not hard-wired</td>
+</tr>
+<tr>
+<td>SWS_PHM_00101</td>
+<td><code>RecoveryHandler</code> receives the execution error (function group + application error) and the <code>TypeOfSupervision</code></td>
+<td>Deviation</td>
+<td>Delivered as one struct <code>ExpiredSupervision{globalSupervision, supervision, functionGroup, type, executionError}</code> instead of the spec parameters; <code>ara::exec::ExecutionErrorEvent</code> is not used because PHM must not depend on a manifest-backed <code>FunctionGroup</code></td>
+</tr>
+<tr>
+<td>SWS_PHM_00107</td>
+<td><code>kSMCanNotHandleRecovery</code> =&gt; stop alive notifications and fire watchdog reaction</td>
+<td>Implemented</td>
+<td><code>UnhandledRecoveryStopsAliveNotificationsAndFiresWatchdog</code>; no handler offered also escalates (<code>escalateToWatchdog</code>)</td>
+</tr>
+<tr>
+<td>SWS_PHM_01147, SWS_PHM_01148</td>
+<td><code>RecoveryAction::Offer</code> / <code>StopOffer</code> enable / disable handler calls</td>
+<td>Implemented</td>
+<td><code>RecoveryActionOfferRules</code>; <code>Offer()</code> returns <code>Result&lt;void&gt;</code>, <code>kAlreadyOffered</code> on a second offer (implementation specific)</td>
+</tr>
+<tr>
+<td>SWS_PHM_01361</td>
+<td>Default execution error 1 when none is configured</td>
+<td><strong>Fixed in this audit</strong></td>
+<td>was 0; struct default and JSON default are now 1 (<code>DefaultExecutionErrorIsOne</code>, <code>MissingExecutionErrorParsesAsOne</code>)</td>
+</tr>
+<tr>
+<td>SWS_PHM_01363</td>
+<td>Production error <code>PHM_E_WATCHDOG_RESET</code> reported FAILED when the watchdog reaction fires</td>
+<td><strong>Implemented</strong> (sink-based)</td>
+<td><code>HealthMonitor::SetProductionErrorReporter(std::function&lt;void(name, failed)&gt;)</code>; reported once, <em>before</em> <code>FireWatchdogReaction()</code> (<code>WatchdogResetProductionErrorReportedBeforeReaction</code>, <code>NoProductionErrorWithoutEscalation</code>). PHM does not link <code>ara::diag</code>; the host forwards the callback to its event reporting. Id verified from the R25-11 text</td>
+</tr>
+<tr>
+<td>SWS_PHM_01364, 01365, 01366</td>
+<td><code>Disable()</code> turns supervision off, checkpoints ignored while disabled, <code>Enable()</code> restarts the alive reference cycle</td>
+<td>Implemented</td>
+<td><code>DisabledEntityIgnoresCheckpointsAndEnableRestartsCycle</code>, <code>HealthMonitorTest.DisableIgnoresCheckpointsAndSuspendsEvaluationEnableRestarts</code></td>
+</tr>
+<tr>
+<td>SWS_PHM_01341</td>
+<td>Reports for checkpoints/entities with NoSupervision in the active mode are ignored</td>
+<td>Partial</td>
+<td>checkpoints not part of an <em>active</em> supervision are ignored; there is no explicit NoSupervision mode element in <code>PhmConfig</code></td>
+</tr>
+<tr>
+<td>SWS_PHM_01229</td>
+<td>Reports from a process other than the configured one are ignored</td>
+<td>Deviation</td>
+<td>PHM is process-local (in-process <code>HealthMonitor</code> or a <code>CheckpointSink</code>); there is no process identity check. A multi-process transport would need to add it</td>
+</tr>
+</tbody>
+</table>
+<h2 id="api-shape">API shape</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SupervisedEntity</code> (<code>Create</code>/constructor, <code>ReportCheckpoint</code>, <code>Enable</code>, <code>Disable</code>)</td>
+<td>Partial / Unverified</td>
+<td>all four behaviours exist; constructor throws or <code>Create()</code> returns <code>Result</code>; exact spec signature (<code>ReportCheckpoint</code> return type, noexcept) unverified</td>
+</tr>
+<tr>
+<td><code>RecoveryAction</code> (constructor with handler, <code>Offer</code>, <code>StopOffer</code>)</td>
+<td>Partial / Unverified</td>
+<td>handler returns <code>ara::core::Future&lt;void&gt;</code> (matches the R24-11 change note "RecoveryHandler returns Future"); handler parameter list differs (see SWS_PHM_00101)</td>
+</tr>
+<tr>
+<td><code>TypeOfSupervision</code></td>
+<td>Partial / Unverified</td>
+<td>enumerators <code>kAliveSupervision</code>, <code>kDeadlineSupervision</code>, <code>kLogicalSupervision</code>; numeric values and any extra enumerators unverified</td>
+</tr>
+<tr>
+<td><code>PhmErrc</code> / <code>PhmErrorDomain</code></td>
+<td>Partial / Unverified</td>
+<td><code>kSMCanNotHandleRecovery = 1</code> plus implementation-specific codes 2–5; domain id <code>0x8000000000000407</code> is an implementation choice (documented in the header); numeric values and <code>ThrowAsException</code> shape unverified</td>
+</tr>
+<tr>
+<td><code>HealthChannel</code>, <code>HealthStatus</code></td>
+<td>N/A</td>
+<td>removed from the standard in R24-11 (change history: "Removed Health Channels"); intentionally not implemented</td>
+</tr>
+<tr>
+<td>Watchdog interface</td>
+<td>Deviation (extension)</td>
+<td><code>apext::phm::WatchdogInterface</code> (<code>AliveNotification</code>, <code>FireWatchdogReaction</code>) is a platform extension; R25-11 describes watchdog behaviour but not a C++ interface in the part read</td>
+</tr>
+</tbody>
+</table>
+<h2 id="still-open">Still open</h2>
+<ol>
+<li>Verify chapter 8 signatures and <code>PhmErrc</code>/<code>TypeOfSupervision</code> numeric values once the formal API tables can be read.</li>
+<li>Process-identity check for incoming checkpoints (SWS_PHM_01229) when a cross-process transport exists.</li>
+<li>Explicit NoSupervision mode in the configuration model (SWS_PHM_01341).</li>
+</ol></div><footer>Adaptive Platform</footer></body></html>

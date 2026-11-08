@@ -1,0 +1,32 @@
+<map id="src/ara/com/ipc/client/socket_Client.cpp" name="src/ara/com/ipc/client/socket_Client.cpp">
+<area shape="rect" id="Node000001" title="CClient class for any tcp or udp client sockets." alt="" coords="405,5,566,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,101,80,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="405,38,258,60,175,76,93,96,83,99,82,94,91,91,174,71,258,55,404,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="104,101,184,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="405,45,305,68,197,96,188,99,186,94,195,91,304,62,404,40"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="209,101,287,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="434,48,293,99,291,94,432,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="312,101,379,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="456,48,377,96,375,91,453,43"/>
+<area shape="rect" id="Node000006" href="$string_8h.html" title="ara::core::String (SWS_CORE_03000) &#45;&gt; std::string" alt="" coords="403,101,474,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="477,47,454,90,449,87,473,44"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="498,101,566,126"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="498,44,521,87,517,90,493,47"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="590,101,682,126"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="520,43,605,92,603,96,517,48"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="706,101,769,126"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="550,43,694,91,700,93,698,98,692,96,548,48"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="793,101,866,126"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="567,39,669,61,781,91,790,94,788,99,779,96,668,67,566,44"/>
+<area shape="rect" id="Node000012" href="$socket__Client_8h.html" title=" " alt="" coords="891,93,1029,133"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="567,36,878,90,877,96,566,42"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="565,181,624,207"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="463,124,561,173,559,178,460,128"/>
+<area shape="poly" id="edge14_Node000012_Node000007" title=" " alt="" coords="891,133,879,136,638,187,637,181,878,131,890,128"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="804,181,900,207"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="935,136,881,175,878,171,932,131"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="925,181,995,207"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="963,134,963,167,957,167,957,134"/>
+<area shape="rect" id="Node000015" href="$ipc__errors_8h.html" title=" " alt="" coords="1020,181,1199,207"/>
+<area shape="poly" id="edge15_Node000012_Node000015" title=" " alt="" coords="997,131,1076,172,1074,177,995,136"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ara::diag::DiagnosticServer::SetResponsePendingSink" name="ara::diag::DiagnosticServer::SetResponsePendingSink">
+<area shape="rect" id="Node000001" title="Receives the intermediate &quot;7F sid 78&quot; responses sent while a handler keeps answering responsePending." alt="" coords="123,5,321,45"/>
+<area shape="rect" id="Node000002" href="$diag__gap__test_8cpp.html#aaaca2868d4eaadf97c7dee84aacabff6" title=" " alt="" coords="5,13,75,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,28,75,28,75,23,109,23"/>
+</map>

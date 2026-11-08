@@ -1,0 +1,18 @@
+<map id="ara::per::ConfigureFromFile" name="ara::per::ConfigureFromFile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,204,81"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#a69e4c21efc58a410864c56295bb7fc0f" title="Installs the deployment configuration (replaces a previous one; only allowed while no storage is open..." alt="" coords="279,5,421,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,53,274,31,275,36,168,58"/>
+<area shape="rect" id="Node000003" href="$Testing_2core_2CMakeLists_8txt.html#a8d67571c23f96a5a08cb3ec4c8b75b44" title=" " alt="" coords="573,56,615,81"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,66,559,66,559,71,204,71"/>
+<area shape="rect" id="Node000004" href="$classara_1_1per_1_1PersistencyConfig.html#a592951d3418d5c4f242e7678c08f6c9e" title=" " alt="" coords="252,106,448,146"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="160,79,251,100,250,105,159,84"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="435,103,558,74,560,79,436,109"/>
+<area shape="rect" id="Node000005" href="$classara_1_1per_1_1PersistencyConfig.html#a9dc8b5081acad03050421159d5a38ec2" title="Parses a JSON document (see file comment)." alt="" coords="496,106,692,146"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="448,123,482,123,482,129,448,129"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1InstanceSpecifier.html#a587c1f9313e327df7b11aa7bbc7c4472" title="Validating factory (SWS_CORE_08032)." alt="" coords="740,106,939,146"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="692,123,726,123,726,129,692,129"/>
+<area shape="rect" id="Node000007" href="$classara_1_1core_1_1InstanceSpecifier.html#a84c7f9c1710724dc9fec6551d05f46cc" title=" " alt="" coords="987,106,1185,146"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="939,123,973,123,973,129,939,129"/>
+<area shape="rect" id="Node000008" href="$classara_1_1core_1_1Span.html#a224112dc4480cdf4136499a740f277f9" title=" " alt="" coords="1233,113,1403,139"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="1186,123,1220,123,1220,129,1186,129"/>
+</map>

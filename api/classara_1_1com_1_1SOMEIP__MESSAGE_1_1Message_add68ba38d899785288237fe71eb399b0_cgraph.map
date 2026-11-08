@@ -1,0 +1,5 @@
+<map id="ara::com::SOMEIP_MESSAGE::Message::Serializer" name="ara::com::SOMEIP_MESSAGE::Message::Serializer">
+<area shape="rect" id="Node000001" title="Get message payload." alt="" coords="5,5,213,45"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1com_1_1helper.html#a5a2498fade7c5196c42e3023252eb941" title="Inject a short value into a byte vector." alt="" coords="261,13,433,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,23,248,23,248,28,214,28"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="ara::ucm::pkgmgr::core::PackageManagerCore" name="ara::ucm::pkgmgr::core::PackageManagerCore">
+<area shape="rect" id="Node000001" title=" " alt="" coords="109,108,282,148"/>
+<area shape="rect" id="Node000002" href="$structara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerLimits.html" title=" " alt="" coords="5,5,185,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,53,178,106,175,110,122,57"/>
+<area shape="rect" id="Node000003" href="$structara_1_1ucm_1_1pkgmgr_1_1core_1_1UpdateHooks.html" title="Calls UCM makes into State Management&#39;s UpdateRequest interface and into the package validation (flas..." alt="" coords="210,5,383,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="270,57,216,110,212,106,266,53"/>
+</map>

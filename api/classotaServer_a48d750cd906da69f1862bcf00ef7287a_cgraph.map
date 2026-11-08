@@ -1,0 +1,33 @@
+<map id="otaServer::run" name="otaServer::run">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,230,120,255"/>
+<area shape="rect" id="Node000002" href="$classOTA_1_1Client.html#ada9e764ded8b80954cf0eaad29abb40c" title="Connects the OTA application to the cloud server." alt="" coords="179,42,370,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,229,78,197,99,156,128,113,166,77,175,71,178,75,170,81,132,116,104,158,83,199,71,231"/>
+<area shape="rect" id="Node000003" href="$classOTA_1_1Client.html#a9d1018400afd872735c9fa6a9fc399a0" title="Disconnects the OTA application to the cloud server." alt="" coords="170,91,379,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="70,228,107,178,135,149,167,126,179,119,182,124,169,130,138,153,111,181,74,231"/>
+<area shape="rect" id="Node000004" href="$classotaServer.html#aff43ab653e0a4b374e6743355c0957b9" title=" " alt="" coords="203,141,346,166"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="80,228,118,202,167,176,193,167,195,172,169,181,121,206,83,232"/>
+<area shape="rect" id="Node000009" href="$classOTA_1_1MetaDataStorage.html#af28eae455d769970d696095dbbe40007" title="Loads all the stored meta&#45;data objects from the file system." alt="" coords="189,191,360,231"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="120,231,175,223,176,228,121,237"/>
+<area shape="rect" id="Node000011" href="$classara_1_1exec_1_1ExecutionClient.html#a9e38e2714f64eaf7a0ff8d5feb988cd3" title="Interface for a Process to report its proxy_skeleton state to Execution Management." alt="" coords="179,255,370,295"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="121,249,166,256,165,261,120,254"/>
+<area shape="rect" id="Node000012" href="$classOTA_1_1Client.html#a20aafadc64b2cb3fa11972b69bedf977" title="Requests the package metadata from the cloud server." alt="" coords="168,319,381,345"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="83,253,121,279,169,304,195,313,193,318,167,309,118,284,80,258"/>
+<area shape="rect" id="Node000013" href="$classOTA_1_1Client.html#a972453ec360269d9e30a5f6e0c81d86f" title="Requests the package from the cloud server." alt="" coords="173,369,377,394"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="74,254,111,304,138,332,169,355,182,361,179,366,167,360,135,336,107,308,70,257"/>
+<area shape="rect" id="Node000016" href="$classOTA_1_1MetaDataStorage.html#a0343f818f5db1c0ac85e664bf5ec7183" title="Saves a single meta&#45;data object in the file system." alt="" coords="189,419,360,459"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="71,254,84,285,104,326,133,368,170,405,178,410,175,415,166,409,129,372,100,328,79,287,66,257"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#ae1494c3a94fce086c6f68ab31785c490" title="Get message data payload." alt="" coords="429,5,637,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="345,142,380,126,396,110,403,92,411,73,428,55,436,50,439,54,431,59,416,76,408,94,400,113,383,130,348,146"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a90c6210a76dd8551fd4c93cc79cfde0d" title="Get message ID." alt="" coords="429,69,637,109"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="329,138,381,125,441,110,442,115,382,131,330,143"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#afa9f023803bab52032714b4e9b73710c" title="Non&#45;throwing variant of Deserialize()" alt="" coords="429,133,637,173"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="346,151,415,151,415,156,346,156"/>
+<area shape="rect" id="Node000008" href="$classCServer.html#a14b71193a2197b4a700934f264de949e" title="Recieve data from the (UDP) socket." alt="" coords="450,198,617,223"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="333,163,463,192,461,198,332,169"/>
+<area shape="rect" id="Node000010" href="$classOTA_1_1MetaDataStorage.html#a4e046beb51905b39b26b2e7d47407d9f" title="gets the number of apps in the file system" alt="" coords="448,248,619,288"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="361,227,435,244,434,249,360,232"/>
+<area shape="rect" id="Node000014" href="$classMetaData.html#a8821027b6ccc00c56f65084b92c5a950" title=" " alt="" coords="438,369,629,394"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="377,379,424,379,424,384,377,384"/>
+<area shape="rect" id="Node000015" href="$classUpdateVersion.html#a119816f7a24ddc95efa08eb148d93d52" title="Getting version of the update." alt="" coords="685,361,832,401"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="629,379,671,379,671,384,629,384"/>
+</map>

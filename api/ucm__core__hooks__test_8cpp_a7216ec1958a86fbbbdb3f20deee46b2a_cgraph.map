@@ -1,0 +1,43 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,477,60,503"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#abe88175f1d53c5ab9142e68134479a8a" title="Package state, or &#45;1 when the transfer id is unknown." alt="" coords="109,203,287,257"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,477,37,438,49,383,71,323,86,294,106,268,110,264,114,268,110,272,91,297,75,325,54,384,42,439,37,478"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02ucm__core__hooks__test_8cpp_03.html#aa95cfd0abf7b29e8b51d638e77cfd066" title=" " alt="" coords="108,305,288,360"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="45,475,157,368,160,372,49,479"/>
+<area shape="rect" id="Node000013" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a8411375e3928d699cf3fb39b4e425d70" title="[SWS_UCM_00236] NotAbleToRevertPackages when the revert hook fails; the packages then stay processed." alt="" coords="109,463,287,517"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="60,487,95,487,95,493,60,493"/>
+<area shape="rect" id="Node000017" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a65fff8d120a966fa5094ce459bf621bb" title=" " alt="" coords="337,580,515,635"/>
+<area shape="poly" id="edge23_Node000001_Node000017" title=" " alt="" coords="55,500,109,528,219,562,324,587,323,592,217,568,107,532,53,505"/>
+<area shape="rect" id="Node000018" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a8fa3219c399961818a7bea2c4e28dc34" title="Install the State&#45;Management / validation hooks." alt="" coords="109,593,287,648"/>
+<area shape="poly" id="edge22_Node000001_Node000018" title=" " alt="" coords="45,501,72,535,110,572,127,584,124,588,106,576,68,539,41,504"/>
+<area shape="poly" id="edge8_Node000003_Node000003" title=" " alt="" coords="165,305,165,295,171,287,182,281,198,279,217,282,228,289,225,294,215,287,198,284,184,286,175,290,170,297,170,305"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#aa144335cdee6596c14c198951b1a469a" title="ProcessSwPackage entry checks: [00218] InvalidTransferId, [00017] ServiceBusy, [00219] OperationNotPe..." alt="" coords="337,344,515,399"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="289,345,324,351,323,357,288,351"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a2fc52715b862f7ca25fee10690ac8886" title="Finish ProcessSwPackage." alt="" coords="337,265,515,320"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="288,314,323,308,324,313,289,319"/>
+<area shape="rect" id="Node000008" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a193b8a198cde01925f64b9366d52c149" title="[SWS_UCM_00148] OperationNotPermitted, [00212] InvalidTransferId, [00087] InsufficientData; success s..." alt="" coords="337,187,515,241"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="243,303,335,252,348,245,351,250,337,256,246,308"/>
+<area shape="rect" id="Node000009" href="$namespaceanonymous__namespace_02ucm__core__hooks__test_8cpp_03.html#abca063fd9eab3d651d000a200ae4376d" title=" " alt="" coords="336,108,516,163"/>
+<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="245,303,286,268,301,244,308,221,316,198,334,174,339,169,343,173,338,177,321,200,313,222,306,246,290,272,249,307"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a9900209d243b182bccef73a1608a045c" title=" " alt="" coords="565,344,743,399"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="516,369,551,369,551,374,516,374"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="507,318,562,337,560,342,505,323"/>
+<area shape="rect" id="Node000007" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a75549e1711302ece0887c2d84add59c7" title=" " alt="" coords="565,265,743,320"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="516,290,551,290,551,295,516,295"/>
+<area shape="poly" id="edge15_Node000009_Node000009" title=" " alt="" coords="382,108,382,98,390,89,405,83,426,81,452,84,466,92,464,97,450,90,426,87,406,89,393,93,387,100,387,108"/>
+<area shape="rect" id="Node000010" href="$namespaceanonymous__namespace_02ucm__core__hooks__test_8cpp_03.html#a64489e4afbcc54ae732768069aec40cf" title=" " alt="" coords="564,29,744,84"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="505,105,560,86,562,91,507,110"/>
+<area shape="rect" id="Node000011" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ad576575f6ec3a029459a5540a8dc9a97" title="Checks in the order of the SWS (00208, 00203, 00204, 00243, 00205)." alt="" coords="565,108,743,163"/>
+<area shape="poly" id="edge13_Node000009_Node000011" title=" " alt="" coords="516,133,551,133,551,138,516,138"/>
+<area shape="rect" id="Node000012" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a14f004a851d15b2c23406ae99b889850" title="[SWS_UCM_00140] InsufficientMemory when the package cannot be stored." alt="" coords="565,187,743,241"/>
+<area shape="poly" id="edge14_Node000009_Node000012" title=" " alt="" coords="507,160,562,180,560,185,505,165"/>
+<area shape="poly" id="edge12_Node000010_Node000010" title=" " alt="" coords="610,29,610,19,618,10,633,5,654,3,680,6,694,14,692,18,678,11,654,8,634,10,621,15,615,21,615,29"/>
+<area shape="rect" id="Node000014" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a5cf71c7418222b33dbdb999100a9d603" title=" " alt="" coords="337,501,515,556"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="288,503,324,509,323,514,287,508"/>
+<area shape="rect" id="Node000016" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ac6d0b22fcc5f6614bf0ff5f4483a983e" title="[SWS_UCM_00237] OperationNotPermitted once activated, i.e." alt="" coords="337,423,515,477"/>
+<area shape="poly" id="edge19_Node000013_Node000016" title=" " alt="" coords="287,472,323,465,324,471,288,477"/>
+<area shape="poly" id="edge21_Node000013_Node000017" title=" " alt="" coords="255,515,289,534,337,566,347,572,345,576,335,571,287,539,252,520"/>
+<area shape="rect" id="Node000015" href="$namespaceara_1_1ucm_1_1pkgmgr_1_1core.html#af7a11871be65ddb9170cda8b99e95d8c" title="Stable, filesystem&#45;safe textual form of a TransferId (32 lower&#45;case hex digits)." alt="" coords="567,509,741,549"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="516,526,554,526,554,531,516,531"/>
+<area shape="poly" id="edge20_Node000016_Node000005" title=" " alt="" coords="505,420,560,401,562,406,507,425"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="ara::phm::MakeErrorCode" name="ara::phm::MakeErrorCode">
+<area shape="rect" id="Node000001" title=" " alt="" coords="864,35,1051,60"/>
+<area shape="rect" id="Node000002" href="$examples_2phm__demo_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="705,5,760,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="850,36,760,24,761,19,851,31"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad26c558c988c8d8fdc582c9271f78a7c" title=" " alt="" coords="649,55,816,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="851,63,816,68,816,62,850,58"/>
+<area shape="rect" id="Node000004" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,87,172,127"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="635,69,547,64,443,61,331,64,220,74,150,90,149,85,220,69,331,59,443,56,547,59,636,64"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2b31526623d8f784530296aa9d7b19de" title=" " alt="" coords="435,83,601,123"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="636,91,602,95,601,90,635,85"/>
+<area shape="rect" id="Node000006" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="220,83,387,123"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="421,106,387,106,387,101,421,101"/>
+<area shape="rect" id="Node000007" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad0033341236167451f81b059a96c2eb0" title=" " alt="" coords="220,147,387,187"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="438,130,372,150,370,145,436,125"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="217,146,160,130,162,125,219,141"/>
+</map>

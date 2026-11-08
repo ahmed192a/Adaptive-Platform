@@ -1,0 +1,5 @@
+<map id="ara::tsync::TimeBaseResource::State" name="ara::tsync::TimeBaseResource::State">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,224,133"/>
+<area shape="rect" id="Node000002" href="$structara_1_1tsync_1_1UserData.html" title="Optional user data transported with a time base update (SWS: UserData, up to 3 bytes)." alt="" coords="37,5,192,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,44,117,93,112,93,112,44"/>
+</map>

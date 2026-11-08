@@ -1,0 +1,332 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::core — conformance to AUTOSAR Adaptive Platform R25-11 (SWS_Core)</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="aracore-conformance-to-autosar-adaptive-platform-r25-11-sws_core">ara::core — conformance to AUTOSAR Adaptive Platform R25-11 (SWS_Core)</h1>
+<p>Audit of <code>src/ara/core</code> against <code>AUTOSAR_AP_SWS_Core</code>.</p>
+<h2 id="source-of-truth-and-its-limits">Source of truth and its limits</h2>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R25-11 <code>AUTOSAR_AP_SWS_Core.pdf</code></td>
+<td><strong>Not reachable</strong> from the audit environment (host not on the fetch allowlist).</td>
+</tr>
+<tr>
+<td>R23-11 <code>AUTOSAR_AP_SWS_Core.pdf</code></td>
+<td>Reachable, but only the text up to chapter 7 (section 7.2.5) was returned. <strong>Chapter 8 (the API signatures and the <code>CoreErrc</code>/<code>future_errc</code> tables) was not available.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Therefore:</p>
+<ul>
+<li><strong>Verified</strong> below means the fact is stated in the R23-11 chapter 7 text that was read:
+  the domain ids <code>0x8000'0000'0000'0014</code> (Core, SWS_CORE_00014) and <code>0x8000'0000'0000'0013</code>
+  (Future, SWS_CORE_00013), <code>ErrorDomain::IdType</code> is 64 bit (SWS_CORE_10303), the shape of
+  <code>MakeErrorCode(&lt;SN&gt;Errc, SupportDataType)</code> (SWS_CORE_10991) and the existence/section of the
+  type families (e.g. Optional 11000, Variant 11600, Vector 11300, Map 11400, Array 11200,
+  Span 11900, String 12000, StringView 12200, SteadyClock 11800, MemoryResource 11950-11952,
+  Abort 12402-12407, InstanceSpecifier 10200-10203, Initialize/Deinitialize 90021/90022).</li>
+<li><strong>Unverified</strong> means the item was compared against the author's knowledge of the SWS, not
+  against the R25-11 text. No requirement id is claimed for such items. They should be
+  re-checked once the R25-11 PDF is available.</li>
+<li>The <code>SWS_CORE_xxxxx</code> numbers in older header comments (e.g. <code>SWS_CORE_01901</code> on both <code>Vector</code>
+  and <code>Span</code>, <code>SWS_CORE_00701 ff.</code> in <code>result.h</code>) come from an earlier, older numbering and are
+  <strong>stale/unreliable</strong>. They were not changed.</li>
+</ul>
+<p>Status legend: <strong>Implemented</strong>, <strong>Partial</strong>, <strong>Missing</strong>, <strong>Deviation</strong> (intentional or accepted
+difference), <strong>Unverified</strong> (cannot be judged without chapter 8).</p>
+<h2 id="error-handling">Error handling</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ErrorDomain</code> (<code>IdType</code> = <code>uint64_t</code>, <code>CodeType</code>, <code>SupportDataType</code>, <code>Name()</code>, <code>Message()</code>, <code>ThrowAsException()</code>, <code>Id()</code>, <code>==</code>/<code>!=</code>, deleted copy/move, protected ctor/dtor)</td>
+<td>Implemented</td>
+<td><code>IdType</code> width verified (SWS_CORE_10303).</td>
+</tr>
+<tr>
+<td><code>ErrorCode</code> (<code>Value()</code>, <code>Domain()</code>, <code>SupportData()</code>, <code>Message()</code>, <code>UserMessage()</code>, <code>ThrowAsException()</code>, <code>==</code>/<code>!=</code>, enum and <code>(value, domain)</code> constructors)</td>
+<td>Implemented</td>
+<td><code>==</code> compares domain and value only (as the SWS).</td>
+</tr>
+<tr>
+<td><code>ErrorCode::Message()</code> / <code>UserMessage()</code> return type</td>
+<td><strong>Deviation</strong></td>
+<td>Return <code>char const *</code>; the SWS uses <code>StringView</code>. Kept: ~25 call sites (<code>std::string + Message()</code>, <code>EXPECT_STREQ</code>) rely on C strings, and <code>StringView</code> converts from <code>char const *</code> at every spec-style use site. Unverified against chapter 8.</td>
+</tr>
+<tr>
+<td><code>ErrorCode::UserMessage</code> constructor argument, <code>operator&lt;&lt;</code></td>
+<td>Deviation (extension)</td>
+<td>Not in the SWS. Harmless additions.</td>
+</tr>
+<tr>
+<td><code>MakeErrorCode(CoreErrc, SupportDataType)</code></td>
+<td>Implemented</td>
+<td>Superset of the verified shape (SWS_CORE_10991): <code>data</code> and <code>message</code> have defaults.</td>
+</tr>
+<tr>
+<td><code>Get&lt;SN&gt;ErrorDomain()</code> accessor</td>
+<td><strong>Deviation</strong></td>
+<td>Named <code>GetCoreErrorDomain()</code> and <code>GetFutureDomain()</code>; the SWS example form is <code>Get&lt;SN&gt;ErrorDomain()</code> (SWS_CORE_10980-10982). <code>GetFutureDomain</code> is the name used by the SWS for the Future domain (unverified).</td>
+</tr>
+<tr>
+<td><code>CoreErrorDomain</code> id</td>
+<td>Implemented (verified)</td>
+<td><code>0x8000'0000'0000'0014</code>.</td>
+</tr>
+<tr>
+<td><code>CoreErrc</code> values 22 / 137 / 138</td>
+<td>Unverified</td>
+<td>Match the SWS as recalled. Extensions 256-258 (<code>kAlreadyInitialized</code>, <code>kNotInitialized</code>, <code>kInitializationFailed</code>) are not in the SWS and are documented as such in the header.</td>
+</tr>
+<tr>
+<td><code>Exception</code></td>
+<td><strong>Fixed</strong></td>
+<td>Constructor now takes <code>ErrorCode</code> by value (<code>noexcept</code>), and <code>what()</code> returns <code>Error().Message()</code>. Before, <code>what()</code> returned the generic <code>std::exception</code> text. <code>toString()</code> and <code>operator&lt;&lt;</code> are non-SWS extensions.</td>
+</tr>
+<tr>
+<td><code>CoreException</code></td>
+<td>Implemented</td>
+<td>Constructor made <code>noexcept</code>.</td>
+</tr>
+<tr>
+<td><code>FutureErrorDomain</code>, <code>FutureErrc</code>, <code>FutureException</code></td>
+<td><strong>Fixed (was Missing)</strong></td>
+<td>New <code>future_error_domain.h/.cpp</code>. Id <code>0x8000'0000'0000'0013</code> verified; numeric values 101-104 (<code>broken_promise</code>, <code>future_already_retrieved</code>, <code>promise_already_satisfied</code>, <code>no_state</code>) are <strong>unverified</strong>.</td>
+</tr>
+<tr>
+<td><code>ApplicationError</code> enum in <code>exception.h</code></td>
+<td>Deviation (non-SWS)</td>
+<td>Not part of ara::core; left untouched.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="result-future-promise">Result / Future / Promise</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Result&lt;T,E&gt;</code>, <code>Result&lt;void,E&gt;</code>: ctors, <code>FromValue</code>, <code>FromError</code>, <code>EmplaceValue/Error</code>, <code>Swap</code>, <code>HasValue</code>, <code>operator bool</code>, <code>operator*</code>, <code>-&gt;</code>, <code>Value</code>, <code>Error</code>, <code>Ok</code>, <code>Err</code>, <code>ValueOr</code>, <code>ErrorOr</code>, <code>CheckError</code>, <code>ValueOrThrow</code>, <code>Resolve</code>, <code>Bind</code>, comparison operators, free <code>swap</code></td>
+<td>Implemented</td>
+<td>Unverified in detail (chapter 8).</td>
+</tr>
+<tr>
+<td><code>Result::FromValue(Args...)</code> / <code>FromError(Args...)</code></td>
+<td><strong>Fixed</strong></td>
+<td>Used brace-initialisation (<code>T{args...}</code>), so <code>Result&lt;vector&lt;int&gt;&gt;::FromValue(3, 7)</code> produced <code>{3, 7}</code> instead of three sevens. Now direct-initialises (<code>T(args...)</code>) and falls back to braces only for aggregates.</td>
+</tr>
+<tr>
+<td><code>Result::Value()</code> on an error</td>
+<td>Deviation</td>
+<td>Throws <code>std::bad_variant_access</code> (via <code>std::get</code>) instead of being a pure precondition violation. Safe superset.</td>
+</tr>
+<tr>
+<td>Mutable <code>Value()</code>/<code>operator*</code></td>
+<td>Deviation (extension)</td>
+<td>Not in the SWS; convenient and harmless.</td>
+</tr>
+<tr>
+<td><code>Future&lt;T,E&gt;</code>: <code>get</code>, <code>GetResult</code>, <code>valid</code>, <code>wait</code>, <code>wait_for</code>, <code>wait_until</code>, <code>then</code>, <code>is_ready</code>, <code>future_status</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Future</code> operations on an empty Future</td>
+<td><strong>Fixed</strong></td>
+<td><code>wait*</code>, <code>then</code>, <code>get</code>, <code>GetResult</code> dereferenced a null state (undefined behaviour). They now fail with <code>FutureErrc::no_state</code>.</td>
+</tr>
+<tr>
+<td><code>Promise&lt;T,E&gt;</code>: <code>get_future</code>, <code>set_value</code>, <code>SetError</code>, <code>SetResult</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Second <code>get_future()</code></td>
+<td><strong>Fixed</strong></td>
+<td>Returned a silent invalid Future; now <code>FutureErrc::future_already_retrieved</code>.</td>
+</tr>
+<tr>
+<td>Second <code>set_value</code>/<code>SetError</code>/<code>SetResult</code></td>
+<td><strong>Fixed</strong></td>
+<td>Was silently ignored; now <code>FutureErrc::promise_already_satisfied</code>.</td>
+</tr>
+<tr>
+<td>Broken promise</td>
+<td><strong>Fixed (was Missing)</strong></td>
+<td>A Promise destroyed (or move-assigned over) while unfulfilled now delivers <code>FutureErrc::broken_promise</code> to its Future, so waiters no longer block forever. Only available when <code>E</code> is constructible from <code>ErrorCode</code> (the default).</td>
+</tr>
+<tr>
+<td><code>Promise::Swap</code>, free <code>swap(Promise&amp;, Promise&amp;)</code></td>
+<td><strong>Fixed (was Missing)</strong></td>
+<td>Exchanges shared state without abandoning either side (test <code>PromiseTest.SwapExchangesSharedState</code>). <code>Future::Swap</code> and <code>Promise::set_error</code> alias: <strong>Unverified</strong> — not added until a readable SWS release confirms them.</td>
+</tr>
+<tr>
+<td><code>Future::then</code> continuation thread</td>
+<td>Deviation</td>
+<td>Runs on the fulfilling thread (or inline); the SWS leaves the execution context unspecified.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="initialization">Initialization</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Initialize()</code>, <code>Deinitialize()</code> returning <code>Result&lt;void&gt;</code></td>
+<td>Implemented</td>
+<td>Presence and sections verified (SWS_CORE_90021/90022, SWS_CORE_15002 listed in chapter 7). Error codes returned (<code>kAlreadyInitialized</code>, <code>kNotInitialized</code>, <code>kInitializationFailed</code>) are implementation specific.</td>
+</tr>
+<tr>
+<td><code>IsInitialized()</code>, <code>ARA_REGISTER_LIFECYCLE_HOOK</code></td>
+<td>Deviation (extension)</td>
+<td>Not in the SWS.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instancespecifier">InstanceSpecifier</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Create(StringView)</code>, explicit constructor (throws), <code>ToString()</code>, <code>==</code>/<code>!=</code> vs <code>InstanceSpecifier</code> and <code>StringView</code>, <code>&lt;</code>, <code>std::hash</code></td>
+<td>Implemented</td>
+<td>Presence verified (SWS_CORE_10200-10203).</td>
+</tr>
+<tr>
+<td><code>operator==</code>/<code>!=(StringView, InstanceSpecifier)</code></td>
+<td><strong>Fixed (was Missing)</strong></td>
+<td>Only the <code>InstanceSpecifier == StringView</code> direction existed.</td>
+</tr>
+<tr>
+<td>Accepted syntax</td>
+<td>Unverified</td>
+<td>Non-empty <code>/</code>-separated shortnames <code>[A-Za-z][A-Za-z0-9_]*</code>; errors <code>kInvalidMetaModelShortname</code> / <code>kInvalidMetaModelPath</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="type-aliases-and-utilities">Type aliases and utilities</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Optional</code> (+ <code>nullopt</code>, <code>nullopt_t</code>, <code>bad_optional_access</code>)</td>
+<td>Implemented</td>
+<td>Alias of <code>std::optional</code>. <code>make_optional</code> etc. not exported (unverified whether required).</td>
+</tr>
+<tr>
+<td><code>Variant</code>, <code>monostate</code>, <code>get</code>, <code>get_if</code>, <code>holds_alternative</code>, <code>visit</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bad_variant_access</code>, <code>variant_npos</code>, <code>variant_size(_v)</code>, <code>variant_alternative(_t)</code></td>
+<td><strong>Fixed (was Missing)</strong></td>
+<td>Added to <code>variant.h</code>.</td>
+</tr>
+<tr>
+<td><code>Vector</code>, <code>Map</code>, <code>Array</code>, <code>String</code>, <code>StringView</code>, <code>Byte</code></td>
+<td>Implemented</td>
+<td>Aliases of the <code>std</code> types (C++17). <code>BasicString</code>/<code>to_string</code> helpers are not exported (unverified). <code>Byte</code> is <code>std::byte</code>; the SWS specifies a class with the same operations.</td>
+</tr>
+<tr>
+<td><code>Span</code>, <code>dynamic_extent</code>, <code>MakeSpan</code></td>
+<td><strong>Fixed (was non-functional)</strong></td>
+<td><code>span.h</code> previously only <em>declared</em> the interface and could not be compiled under <code>-Werror</code> (deprecated <code>std::iterator</code>); it is now a complete implementation with pointer iterators: ctors (pointer+count, range, C array, <code>std::array</code>, container, converting), <code>first/last/subspan</code> (static and dynamic), <code>size/size_bytes/empty</code>, <code>operator[]</code>, <code>data</code>, (c)(r)begin/end, <code>MakeSpan</code> overloads. Tests: <code>Testing/core/span_swap_test.cpp</code>. Exact SWS signatures: <strong>Unverified</strong> (chapter 8 not readable); behaviour follows the C++20 <code>std::span</code> model the SWS is based on.</td>
+</tr>
+<tr>
+<td><code>SteadyClock</code></td>
+<td>Implemented</td>
+<td><code>now()</code>, <code>is_steady</code>, <code>time_point&lt;SteadyClock&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>in_place*</code>, <code>data</code>, <code>empty</code>, <code>size</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MemoryResource</code>, <code>GetDefaultResource</code>, <code>SetDefaultResource</code>, <code>NewDeleteResource</code>, <code>NullMemoryResource</code></td>
+<td><strong>Fixed (was Missing)</strong></td>
+<td>New <code>memory_resource.h</code>, mapped to <code>std::pmr</code>. The SWS family has more members (monotonic/pool resources); only the above are provided. Signatures unverified.</td>
+</tr>
+<tr>
+<td><code>Abort</code>, <code>AbortHandler</code>, <code>SetAbortHandler</code></td>
+<td><strong>Fixed (was Missing)</strong></td>
+<td>New <code>abort.h/.cpp</code>. Existence verified (SWS_CORE_12402-12407); signatures unverified.</td>
+</tr>
+<tr>
+<td><code>SetTerminateHandler</code>/other process-level helpers</td>
+<td>Missing</td>
+<td>Not implemented; not confirmed required.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tests">Tests</h2>
+<p>New tests are in <code>Testing/core/spec_conformance_test.cpp</code> (label <code>core</code>). <code>Testing/core/future_test.cpp</code>
+was updated where it encoded the old behaviour (second <code>get_future</code>, repeated <code>set_value</code>).</p>
+<h2 id="open-items">Open items</h2>
+<ol>
+<li>Re-run this audit against the R25-11 PDF (chapter 8) and replace every "Unverified" with a
+   requirement id.</li>
+<li>Decide whether to move <code>ErrorCode::Message()</code> to <code>StringView</code> (a breaking change for callers).</li>
+<li>Complete the <code>MemoryResource</code> family (monotonic/pool resources) and <code>Future::Swap</code> if a readable SWS release requires them.</li>
+</ol>
+<h3 id="spec-sources">Spec sources</h3>
+<p>R25-11 was tried first. Items that could not be read in R25-11 chapter 8 fall back to the closest earlier release (R24-11 → R23-11 → R22-11); the closest readable release for the new <code>Span</code>/<code>Swap</code> work was not retrievable in this session, so those rows are explicitly marked <strong>Unverified</strong> rather than claiming a release.</p></div><footer>Adaptive Platform</footer></body></html>

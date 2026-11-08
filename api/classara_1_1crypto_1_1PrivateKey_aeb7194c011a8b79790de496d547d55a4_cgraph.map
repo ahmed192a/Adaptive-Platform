@@ -1,0 +1,5 @@
+<map id="ara::crypto::PrivateKey::ToPkcs8Der" name="ara::crypto::PrivateKey::ToPkcs8Der">
+<area shape="rect" id="Node000001" title="Serialises as unencrypted PKCS#8. The caller must SecureZero the result." alt="" coords="5,5,176,45"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="224,13,399,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,23,210,23,210,28,176,28"/>
+</map>

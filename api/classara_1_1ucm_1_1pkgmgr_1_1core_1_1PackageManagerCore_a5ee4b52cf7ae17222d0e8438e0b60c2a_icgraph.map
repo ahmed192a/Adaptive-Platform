@@ -1,0 +1,5 @@
+<map id="ara::ucm::pkgmgr::core::PackageManagerCore::SetClock" name="ara::ucm::pkgmgr::core::PackageManagerCore::SetClock">
+<area shape="rect" id="Node000001" title="Time source for the history (seconds); defaults to the steady clock." alt="" coords="108,5,287,60"/>
+<area shape="rect" id="Node000002" href="$ucm__core__hooks__test_8cpp.html#a8c434d634e43a0f7fa6e5d62f2c2142f" title=" " alt="" coords="5,20,60,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,35,60,35,60,30,94,30"/>
+</map>

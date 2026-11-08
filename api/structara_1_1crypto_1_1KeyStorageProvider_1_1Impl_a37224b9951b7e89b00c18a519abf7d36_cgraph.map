@@ -1,0 +1,17 @@
+<map id="ara::crypto::KeyStorageProvider::Impl::Install" name="ara::crypto::KeyStorageProvider::Impl::Install">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,76,233,116"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1PrivateKey.html#a407f07d0ae90e47455f7c78343b66d58" title="Imports an unencrypted PKCS#8 PrivateKeyInfo (Ed25519 or EC P&#45;256 only)." alt="" coords="281,76,452,116"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,93,268,93,268,99,234,99"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="500,133,663,173"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="213,113,282,125,388,138,487,145,486,151,387,143,281,131,212,119"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="284,12,449,52"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="197,73,275,53,276,58,198,79"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="500,69,663,109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="452,91,486,90,486,95,452,96"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="500,5,663,45"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="427,73,506,47,508,52,429,78"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="443,113,493,127,492,132,441,119"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="443,49,493,63,492,68,441,55"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="449,27,486,26,487,31,449,32"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="433,50,454,62,469,77,478,91,487,105,502,119,509,124,506,129,498,123,483,109,474,94,465,80,450,66,430,54"/>
+</map>

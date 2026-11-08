@@ -1,0 +1,9 @@
+<map id="src/ara/com/ipc/sockets/sockets.h" name="src/ara/com/ipc/sockets/sockets.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="204,5,379,45"/>
+<area shape="rect" id="Node000002" href="$FIFO_8h.html" title=" " alt="" coords="5,93,180,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,53,137,96,135,91,234,48"/>
+<area shape="rect" id="Node000003" href="$TCP__sockets_8h.html" title=" " alt="" coords="204,93,379,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="294,59,294,93,289,93,289,59"/>
+<area shape="rect" id="Node000004" href="$UDP__scokets_8h.html" title=" " alt="" coords="403,93,577,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="349,48,448,91,445,96,346,53"/>
+</map>

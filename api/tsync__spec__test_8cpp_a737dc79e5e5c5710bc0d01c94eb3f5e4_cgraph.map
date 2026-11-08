@@ -1,0 +1,33 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,300,75,325"/>
+<area shape="rect" id="Node000002" href="$structanonymous__namespace_02tsync__spec__test_8cpp_03_1_1Spec.html#aac84d288203a79bed0f65541cb879778" title=" " alt="" coords="192,5,372,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="39,299,43,255,55,194,65,161,79,128,97,97,121,71,147,52,178,40,179,45,150,57,124,75,102,101,84,130,70,163,60,195,48,256,44,300"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="214,85,350,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="41,299,48,266,62,221,86,174,102,153,121,135,159,114,200,104,201,109,161,119,124,139,106,156,90,177,67,223,53,267,46,300"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a0689e0b54ed127cc48d06bd3f983dd40" title="One notifier per kind, a new registration overwrites." alt="" coords="154,357,410,412"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="72,323,124,342,153,351,152,356,122,347,70,328"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a0dea6111d0cc791b437b9d6a8896bdd5" title=" " alt="" coords="123,436,441,491"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="49,324,77,373,98,400,124,423,132,427,129,432,121,427,94,403,72,376,45,327"/>
+<area shape="rect" id="Node000008" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a7e12029c0c4ffb5edc2ecbdcb36214e7" title=" " alt="" coords="158,149,406,204"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="46,298,75,257,96,234,121,214,144,202,146,207,124,219,100,238,79,260,51,301"/>
+<area shape="rect" id="Node000009" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a7736d7a013ba7c2db28f82edb3d99929" title="Sets the time unconditionally (no slewing)." alt="" coords="181,229,383,269"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="69,297,122,278,167,267,168,272,123,283,71,302"/>
+<area shape="rect" id="Node000010" href="$namespaceanonymous__namespace_02tsync__spec__test_8cpp_03.html#a38895b8ec19741869aec021e5e475dec" title=" " alt="" coords="187,515,377,555"/>
+<area shape="poly" id="edge15_Node000001_Node000010" title=" " alt="" coords="45,325,52,361,65,409,89,459,105,482,124,501,148,516,175,526,173,531,146,521,121,505,101,485,84,462,60,411,46,362,40,326"/>
+<area shape="rect" id="Node000011" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#ad89bb57946c3b090d18da4ce3a9b5333" title=" " alt="" coords="167,580,397,635"/>
+<area shape="poly" id="edge16_Node000001_Node000011" title=" " alt="" coords="44,325,47,371,58,436,68,471,82,506,101,538,124,565,156,586,153,591,121,569,96,541,77,508,63,473,53,437,42,372,39,326"/>
+<area shape="rect" id="Node000012" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a4b233528672dd34c3a9e2d5f9f2cdf0d" title="Updates the time; small offsets are slewed in, large ones step the time." alt="" coords="167,293,397,333"/>
+<area shape="poly" id="edge17_Node000001_Node000012" title=" " alt="" coords="75,310,154,310,154,315,75,315"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="528,261,664,301"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="408,355,440,342,464,327,488,310,514,300,516,305,491,315,467,331,443,347,409,360"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="489,325,703,365"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="410,366,475,357,475,363,411,371"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="424,434,440,423,451,410,458,397,463,369,468,340,475,325,488,311,513,294,516,299,491,315,480,328,473,341,468,370,463,398,456,413,443,427,427,438"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="407,433,440,422,498,397,549,369,551,374,500,402,442,427,408,438"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="401,202,442,214,540,253,538,257,440,219,399,207"/>
+<area shape="poly" id="edge11_Node000008_Node000006" title=" " alt="" coords="408,194,443,215,455,227,462,239,468,264,474,288,480,299,491,311,497,315,494,320,488,315,476,303,469,290,463,265,457,241,450,230,440,219,405,199"/>
+<area shape="poly" id="edge13_Node000009_Node000005" title=" " alt="" coords="384,256,514,270,514,275,383,262"/>
+<area shape="poly" id="edge14_Node000009_Node000006" title=" " alt="" coords="384,260,442,278,467,294,491,310,507,317,505,322,488,315,464,298,440,283,383,265"/>
+<area shape="poly" id="edge18_Node000012_Node000005" title=" " alt="" coords="397,298,514,286,515,292,397,304"/>
+<area shape="poly" id="edge19_Node000012_Node000006" title=" " alt="" coords="397,322,476,330,475,335,397,327"/>
+</map>

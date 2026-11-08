@@ -1,0 +1,23 @@
+<map id="ara::crypto::DigestSize" name="ara::crypto::DigestSize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="771,121,940,147"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1cryp_1_1HashFunctionCtx.html#acf67f20cf456800968ae4db2271efb12" title=" " alt="" coords="491,57,723,97"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="786,121,693,99,694,94,787,116"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#a405318e66e19c0ac0669aa0553deba7b" title="HKDF (RFC 5869). length &lt;= 255 * digest size." alt="" coords="541,121,672,147"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="757,137,672,137,672,131,757,131"/>
+<area shape="rect" id="Node000011" href="$namespaceanonymous__namespace_02crypto__test_8cpp_03.html#a8c21dcba5439f03a25546106f4cd98cf" title=" " alt="" coords="515,171,698,211"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="787,152,694,174,693,169,786,147"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1cryp_1_1KeyDerivationFunctionCtx.html#aa4b2f43aefafc8829ecf497711366dbf" title=" " alt="" coords="248,9,439,64"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="527,123,490,111,465,97,441,82,410,67,412,62,444,77,468,93,492,106,529,118"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1crypto.html#a62a93e1baa6b28bda256640f241b0ebd" title="Convenience: HKDF output wrapped as a SecretKey with the given usage." alt="" coords="244,92,443,117"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="527,128,443,118,443,113,528,123"/>
+<area shape="rect" id="Node000009" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a33c4f57a6ec20ad48e8c94ea34a04312" title=" " alt="" coords="252,142,435,182"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="528,145,435,155,435,150,527,140"/>
+<area shape="rect" id="Node000010" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a77dbf9ff333416bcc8909b2fbc8e2170" title=" " alt="" coords="252,206,435,246"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="529,149,492,162,468,178,444,196,416,208,414,203,441,192,465,174,489,157,527,144"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1cryp_1_1KeyDerivationFunctionCtx.html#ae0a67fb7fda37c914ae7049fe8a0e764" title=" " alt="" coords="5,5,196,60"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="234,38,196,37,196,32,234,32"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1SecretSeed.html#a84f2ee17bd27b45c2a16a726e67acb71" title="Derives a key of keySize bytes via HKDF&#45;SHA256 using info." alt="" coords="14,85,187,125"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="230,107,187,107,187,102,230,102"/>
+<area shape="rect" id="Node000008" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a7dcace97b24d057d0801756d104df8da" title=" " alt="" coords="9,149,192,189"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="280,123,245,133,176,151,174,146,243,127,278,118"/>
+</map>

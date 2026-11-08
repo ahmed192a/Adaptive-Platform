@@ -1,0 +1,7 @@
+<map id="ara::diag::DiagnosticServer::CurrentSecurityLevel" name="ara::diag::DiagnosticServer::CurrentSecurityLevel">
+<area shape="rect" id="Node000001" title="Current unlocked security level (0 = locked). Reset on every session change." alt="" coords="353,5,552,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1Conversation.html#acc108ac2121b41feb09f1226705a02e1" title=" " alt="" coords="123,5,305,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="340,28,306,28,306,23,340,23"/>
+<area shape="rect" id="Node000003" href="$diag__gap__test_8cpp.html#a53f76dc6467c04b308af7342f765a934" title=" " alt="" coords="5,13,75,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,28,75,28,75,23,109,23"/>
+</map>

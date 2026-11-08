@@ -1,0 +1,22 @@
+<map id="ara::com::entry::EventgroupEntry::Payload" name="ara::com::entry::EventgroupEntry::Payload">
+<area shape="rect" id="Node000001" title="Get entity payload." alt="" coords="5,155,208,195"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1entry_1_1Entry.html#ae2fae1dcf9a502ae4cc9383fa940a008" title="Get baseentity payload." alt="" coords="256,183,419,223"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,185,243,189,242,195,208,190"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1com_1_1helper.html#a5a2498fade7c5196c42e3023252eb941" title="Inject a short value into a byte vector." alt="" coords="477,5,649,31"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="157,153,295,100,466,41,497,32,498,37,467,46,297,105,159,158"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1entry_1_1Entry.html#a85e5f1abd837569c4ebd3b1a4a966c7d" title="Get first (general) options." alt="" coords="481,55,644,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="359,181,406,143,465,105,479,98,482,103,468,110,409,147,362,185"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="352,182,418,98,465,41,479,34,481,38,468,45,422,101,356,185"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1entry_1_1Entry.html#a4566ea830dd123a7a53e3bb0fa5fcc57" title="Get instance ID." alt="" coords="481,119,644,159"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="408,181,478,161,479,166,409,186"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1entry_1_1Entry.html#a520938c3807fff98feeac5e7e8bfae15" title="Get major version." alt="" coords="481,183,644,223"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="419,201,468,201,468,206,419,206"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1entry_1_1Entry.html#a4689b80b37280f3660024a10a094e5be" title="Get second (specific) options." alt="" coords="481,247,644,287"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="409,221,479,241,478,246,408,226"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1entry_1_1Entry.html#a498a02847eb03549cb49c3986b075c59" title="Get service ID." alt="" coords="481,311,644,351"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="362,221,409,259,468,297,482,304,479,308,465,302,406,264,359,225"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1entry_1_1Entry.html#a075705f87c458a532adf96d644290c27" title="Get TTL." alt="" coords="467,376,659,401"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="351,222,396,291,429,329,468,361,481,368,479,373,465,366,425,333,392,294,347,225"/>
+<area shape="rect" id="Node000010" href="$classara_1_1com_1_1entry_1_1Entry.html#a04cbc058f079ae37e873db0e8aeee376" title="Get entry type." alt="" coords="481,426,644,466"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="348,222,364,262,389,313,424,366,445,391,468,412,475,417,472,421,465,416,441,394,420,369,385,316,359,264,343,224"/>
+</map>

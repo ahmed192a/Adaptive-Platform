@@ -1,0 +1,35 @@
+<map id="if" name="if">
+<area shape="rect" id="Node000001" title=" " alt="" coords="587,377,625,403"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NetworkHandle.html#abb6c87b1aeaf6b31d1435775586a5766" title=" " alt="" coords="296,144,539,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="583,368,440,200,444,197,587,365"/>
+<area shape="rect" id="Node000008" href="$classara_1_1nm_1_1NetworkHandle.html#a846d5427999a3770b5929f72dd07fde3" title="One notifier per kind; registering again overwrites. Empty notifier &#45;&gt; kInvalidHandler." alt="" coords="306,363,529,417"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="573,393,529,393,529,387,573,387"/>
+<area shape="rect" id="Node000016" href="$ucm__core__test_8cpp.html#a16d01978924cae07dc042ea2c72de120" title=" " alt="" coords="390,441,445,467"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="576,413,540,431,490,446,446,454,445,448,489,440,538,426,574,408"/>
+<area shape="rect" id="Node000003" href="$classara_1_1nm_1_1NetworkHandle.html#ac16bf2f13dfe9f46579c715049b2583a" title=" " alt="" coords="5,5,248,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,139,308,105,247,74,220,63,222,58,249,69,311,101,366,134"/>
+<area shape="rect" id="Node000004" href="$nm__gap__test_8cpp.html#aa97e54bffc4ea0164126df662c276642" title=" " alt="" coords="92,183,161,208"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="282,185,162,195,161,190,282,180"/>
+<area shape="rect" id="Node000005" href="$nm__gap__test_8cpp.html#a31557ca25c68bd35cbefe0e37464dbf5" title=" " alt="" coords="92,84,161,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="317,143,247,123,161,105,162,100,249,118,318,137"/>
+<area shape="rect" id="Node000006" href="$nm__spec__test_8cpp.html#a5ef708341c4f78e6ac72b51a16a70e79" title=" " alt="" coords="92,232,161,257"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="312,205,249,222,162,241,161,236,247,217,311,200"/>
+<area shape="rect" id="Node000007" href="$nm__spec__test_8cpp.html#aee1a985f139bda16f4d95b33cca4b22d" title=" " alt="" coords="92,133,161,159"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="282,162,161,152,162,146,282,157"/>
+<area shape="poly" id="edge12_Node000008_Node000004" title=" " alt="" coords="387,353,328,284,289,250,247,222,203,206,161,199,162,194,205,201,249,217,293,246,332,281,391,350"/>
+<area shape="poly" id="edge14_Node000008_Node000006" title=" " alt="" coords="374,356,316,311,282,289,247,271,203,257,161,250,162,245,204,252,249,266,285,285,319,306,378,351"/>
+<area shape="rect" id="Node000009" href="$classara_1_1nm_1_1NetworkHandle.html#a8de22e13d41ef3254d51f8464ad104b7" title="Overloads with an executor (SWS_ANM_01014, 01015)." alt="" coords="15,331,238,385"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="292,379,238,373,238,368,293,374"/>
+<area shape="rect" id="Node000010" href="$nm__gap__test_8cpp.html#ae347f5a37e9f03978b8ccd42e9dde6ed" title=" " alt="" coords="99,409,154,435"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="292,406,154,422,154,416,292,401"/>
+<area shape="rect" id="Node000011" href="$nm__spec__test_8cpp.html#a5abe0d01101f1d681cb872c72d2f581b" title=" " alt="" coords="99,459,154,484"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="317,424,297,431,249,450,155,470,154,465,247,445,295,426,315,419"/>
+<area shape="rect" id="Node000012" href="$nm__gap__test_8cpp.html#abacf50daf77653e13d93e8b472a78c26" title=" " alt="" coords="92,508,161,533"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="304,426,298,431,283,447,275,464,267,482,250,499,228,510,205,517,162,523,161,518,204,512,226,505,246,495,262,479,270,462,278,444,294,427,301,422"/>
+<area shape="rect" id="Node000013" href="$nm__gap__test_8cpp.html#a061b421b727d3aaf79b4d6e81664c0db" title=" " alt="" coords="92,557,161,583"/>
+<area shape="poly" id="edge13_Node000008_Node000013" title=" " alt="" coords="301,428,298,431,286,445,280,459,275,489,271,519,263,534,250,548,229,561,206,569,162,574,161,569,205,563,227,556,246,544,259,531,265,517,270,488,275,457,282,442,294,427,298,424"/>
+<area shape="rect" id="Node000014" href="$nm__spec__test_8cpp.html#a88744ea31cc1fab65d34777faf493cef" title=" " alt="" coords="92,607,161,632"/>
+<area shape="poly" id="edge15_Node000008_Node000014" title=" " alt="" coords="301,428,298,430,283,451,276,471,276,513,275,556,266,577,250,597,230,611,207,619,162,624,161,619,206,614,227,606,246,593,262,574,269,555,270,513,271,470,278,448,294,427,297,424"/>
+<area shape="rect" id="Node000015" href="$nm__spec__test_8cpp.html#a88b7123a23b19dd2851bffa22ad3ea1c" title=" " alt="" coords="92,281,161,307"/>
+<area shape="poly" id="edge16_Node000008_Node000015" title=" " alt="" coords="347,359,247,321,161,301,162,296,249,315,348,354"/>
+</map>

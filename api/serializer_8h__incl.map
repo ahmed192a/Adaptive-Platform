@@ -1,0 +1,17 @@
+<map id="src/ara/com/serializer.h" name="src/ara/com/serializer.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="229,5,403,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,72,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,33,86,81,85,76,271,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,79,163,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="287,33,173,76,172,71,285,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="187,79,267,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="303,33,254,72,250,68,300,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="291,79,341,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="319,31,319,65,313,65,313,31"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="365,79,443,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="332,29,381,68,377,72,328,33"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="467,79,525,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="346,28,455,71,453,76,344,33"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="550,79,613,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="359,28,537,75,536,81,358,33"/>
+</map>

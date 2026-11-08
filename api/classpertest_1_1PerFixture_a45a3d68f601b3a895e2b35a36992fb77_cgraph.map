@@ -1,0 +1,13 @@
+<map id="pertest::PerFixture::Install" name="pertest::PerFixture::Install">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,148,67"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#a69e4c21efc58a410864c56295bb7fc0f" title="Installs the deployment configuration (replaces a previous one; only allowed while no storage is open..." alt="" coords="223,5,365,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,35,209,27,209,32,149,40"/>
+<area shape="rect" id="Node000003" href="$classara_1_1per_1_1PersistencyConfig.html#a9dc8b5081acad03050421159d5a38ec2" title="Parses a JSON document (see file comment)." alt="" coords="196,55,392,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,54,183,58,182,64,148,59"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1InstanceSpecifier.html#a587c1f9313e327df7b11aa7bbc7c4472" title="Validating factory (SWS_CORE_08032)." alt="" coords="440,55,639,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="392,73,426,73,426,78,392,78"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1InstanceSpecifier.html#a84c7f9c1710724dc9fec6551d05f46cc" title=" " alt="" coords="687,55,885,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="639,73,673,73,673,78,639,78"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1Span.html#a224112dc4480cdf4136499a740f277f9" title=" " alt="" coords="933,63,1103,88"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="886,73,920,73,920,78,886,78"/>
+</map>

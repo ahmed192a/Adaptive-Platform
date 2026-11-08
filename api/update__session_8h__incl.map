@@ -1,0 +1,27 @@
+<map id="src/ara/sm/update_request/update_session.h" name="src/ara/sm/update_request/update_session.h">
+<area shape="rect" id="Node000001" title="Transport&#45;independent update&#45;session rules of the State Management UpdateRequest service interface." alt="" coords="371,5,565,45"/>
+<area shape="rect" id="Node000002" href="$sm__error__domain_8h.html" title=" " alt="" coords="88,93,285,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="401,48,241,92,240,87,400,43"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="349,313,408,339"/>
+<area shape="poly" id="edge14_Node000001_Node000007" title=" " alt="" coords="453,47,436,69,422,94,404,150,392,207,382,300,377,299,387,206,399,148,418,92,432,66,449,44"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="431,93,505,119"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="471,46,471,79,465,79,465,46"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="529,93,593,119"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="492,44,538,82,535,86,489,48"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="617,93,692,119"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="514,43,616,85,614,90,512,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,313,72,339"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,121,65,139,47,152,33,168,20,200,18,236,23,270,31,299,26,301,18,271,12,236,15,199,28,165,44,148,63,134,105,116"/>
+<area shape="rect" id="Node000004" href="$error__code_8h.html" title=" " alt="" coords="43,167,203,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="178,121,144,158,140,155,174,117"/>
+<area shape="rect" id="Node000005" href="$error__domain_8h.html" title=" " alt="" coords="177,240,356,265"/>
+<area shape="poly" id="edge10_Node000002_Node000005" title=" " alt="" coords="196,118,256,227,251,229,191,120"/>
+<area shape="poly" id="edge9_Node000004_Node000003" title=" " alt="" coords="109,194,87,215,66,241,53,271,45,300,40,299,48,269,62,239,83,211,106,190"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="147,190,232,231,230,236,145,194"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="77,240,153,265"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="124,193,120,227,115,226,119,192"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="231,268,86,313,85,308,229,263"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="223,313,310,339"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="269,266,269,300,264,300,264,266"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="286,263,350,303,347,308,283,268"/>
+</map>

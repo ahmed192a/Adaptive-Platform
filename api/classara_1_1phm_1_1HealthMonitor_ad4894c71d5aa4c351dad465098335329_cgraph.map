@@ -1,0 +1,15 @@
+<map id="ara::phm::HealthMonitor::EvaluateLocked" name="ara::phm::HealthMonitor::EvaluateLocked">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,187,141"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1HealthMonitor.html#aaa56873f35d6a032e44fcbfb96bec3f0" title=" " alt="" coords="263,5,445,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,99,234,55,258,47,259,52,236,60,137,104"/>
+<area shape="rect" id="Node000003" href="$classara_1_1phm_1_1ElementarySupervision.html#a015ac8117e6a39edd8ece7be53968c38" title=" " alt="" coords="235,69,473,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,107,221,103,221,108,187,113"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1HealthMonitor.html#a0dc02b78c4000406092b84281a3dee03" title=" " alt="" coords="263,133,445,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="187,130,250,138,249,143,187,135"/>
+<area shape="rect" id="Node000007" href="$classara_1_1phm_1_1ElementarySupervision.html#a15dc881ab171024f34cb7dc269056053" title=" " alt="" coords="235,197,473,237"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="137,139,236,183,259,191,258,196,234,188,135,144"/>
+<area shape="rect" id="Node000005" href="$classara_1_1phm_1_1HealthMonitor.html#aa06fd992d20a0e9b3f6157dd64d1d889" title=" " alt="" coords="521,133,703,173"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="445,151,508,151,508,156,445,156"/>
+<area shape="rect" id="Node000006" href="$classara_1_1phm_1_1ElementarySupervision.html#ae9d2cb2042cab02e6892f0854bfde76c" title="All checkpoints that influence this supervision." alt="" coords="751,133,989,173"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="703,151,737,151,737,156,703,156"/>
+</map>

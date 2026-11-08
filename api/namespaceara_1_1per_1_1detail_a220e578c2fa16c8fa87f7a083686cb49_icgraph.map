@@ -1,0 +1,27 @@
+<map id="ara::per::detail::Crc32" name="ara::per::detail::Crc32">
+<area shape="rect" id="Node000001" title="CRC&#45;32 (IEEE 802.3, reflected, poly 0xEDB88320)." alt="" coords="600,164,763,189"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1anonymous__namespace_02key__value__storage_8cpp_03.html#a5b0bba37306a847d9a345bb92aa31bc6" title="Returns the validated data object, or kIntegrityCorrupted." alt="" coords="362,29,541,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="649,159,604,129,551,99,524,86,526,82,553,94,607,125,652,154"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per_1_1detail.html#ad6bfea468dee4e1df71bedcddb83711c" title=" " alt="" coords="362,109,541,149"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="606,164,540,150,541,145,607,158"/>
+<area shape="rect" id="Node000010" href="$namespaceara_1_1per_1_1anonymous__namespace_02key__value__storage_8cpp_03.html#a4a49986c55076ab88b2a174c88dde4b7" title=" " alt="" coords="361,197,542,252"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="607,195,543,208,542,203,606,190"/>
+<area shape="rect" id="Node000011" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#ac0cc79f726def291dd635b1b7d26b3b5" title="Stores a CRC&#45;protected redundancy copy of &lt;dir&gt;/files/&lt;name&gt; (best effort)." alt="" coords="351,300,552,355"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="652,199,553,267,498,302,495,298,551,262,649,195"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="490,18,476,11,451,8,431,10,418,15,412,21,412,29,407,29,407,19,415,10,430,5,451,3,477,6,492,14"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per_1_1anonymous__namespace_02key__value__storage_8cpp_03.html#afb927b8bcffcb201ac01961b2978427a" title=" " alt="" coords="123,29,302,84"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="348,59,302,59,302,54,348,54"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="240,18,230,11,213,8,198,10,188,15,184,21,184,29,179,29,179,19,185,10,196,5,213,3,232,6,243,13"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1per.html#add5b908d0ebfa6ceaf58ab4ce2a86abb" title=" " alt="" coords="123,112,303,137"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="348,130,303,129,303,124,348,124"/>
+<area shape="rect" id="Node000009" href="$classara_1_1per_1_1FileStorage.html#aac9ab9c92599b22e0fb10b18b32d2bd5" title="No redundancy is kept for files: always kValidationFailed." alt="" coords="136,162,289,202"/>
+<area shape="poly" id="edge10_Node000004_Node000009" title=" " alt="" coords="349,154,290,168,289,162,348,149"/>
+<area shape="rect" id="Node000006" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="13,63,67,88"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="154,111,67,85,68,80,155,106"/>
+<area shape="rect" id="Node000007" href="$file__storage__test_8cpp.html#aa063685f2bc9aa42f55b082530a6896d" title=" " alt="" coords="5,112,75,137"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="109,127,75,127,75,122,109,122"/>
+<area shape="rect" id="Node000008" href="$key__value__storage__test_8cpp.html#a7e0f694222682ea78a993b1b98ed4367" title=" " alt="" coords="5,161,75,187"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="155,144,123,153,76,167,74,161,122,147,153,138"/>
+<area shape="poly" id="edge12_Node000010_Node000010" title=" " alt="" coords="490,186,476,179,451,176,431,178,418,183,412,189,412,197,407,197,407,187,415,178,430,173,451,171,477,174,492,182"/>
+<area shape="poly" id="edge14_Node000011_Node000011" title=" " alt="" coords="490,289,476,282,451,279,431,281,418,285,412,292,412,300,407,300,407,290,415,281,430,275,451,273,477,276,492,284"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="ara::per::detail::anonymous_namespace{file_storage::cpp}::ReadCrc" name="ara::per::detail::anonymous_namespace{file_storage::cpp}::ReadCrc">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,207,84"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="58,29,58,19,67,10,83,5,106,3,134,6,150,14,147,18,132,11,106,8,84,10,69,15,63,21,63,29"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#af4432e337535004ea64b3fc87f12e58a" title="Reads a whole file; nullopt if it does not exist / cannot be read." alt="" coords="255,29,456,84"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="207,54,241,54,241,59,207,59"/>
+<area shape="poly" id="edge5_Node000002_Node000002" title=" " alt="" coords="307,29,307,19,316,10,332,5,355,3,383,6,399,14,397,18,382,11,355,8,333,10,319,15,312,21,312,29"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per_1_1detail.html#a4623b81f6032ac7ee4f007e48d04575c" title=" " alt="" coords="504,44,727,69"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="456,54,490,54,490,59,456,59"/>
+<area shape="rect" id="Node000004" href="$Testing_2core_2CMakeLists_8txt.html#a8d67571c23f96a5a08cb3ec4c8b75b44" title=" " alt="" coords="775,44,817,69"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="727,54,761,54,761,59,727,59"/>
+</map>

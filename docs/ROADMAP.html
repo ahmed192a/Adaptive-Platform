@@ -1,0 +1,139 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Roadmap and gap analysis</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / docs</div><h1 id="roadmap-and-gap-analysis">Roadmap and gap analysis</h1>
+<blockquote>
+<p>Status page for the whole platform. User-facing overview: <a href="../README.md">README</a> · demo console: <a href="dashboard.md">dashboard.md</a>.</p>
+</blockquote>
+<p>Reference: AUTOSAR Adaptive Platform R25-11 (SWS documents at https://www.autosar.org/standards/adaptive-platform).</p>
+<h2 id="cluster-status">Cluster status</h2>
+<table>
+<thead>
+<tr>
+<th>Cluster</th>
+<th>State</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ara::core</td>
+<td><strong>rewritten</strong></td>
+<td><code>Result</code> (variant based, was empty), <code>Future/Promise</code>, <code>InstanceSpecifier</code>, <code>ErrorCode/Domain</code>, <code>Initialize/Deinitialize</code> with lifecycle hooks. 34 tests.</td>
+</tr>
+<tr>
+<td>ara::log</td>
+<td><strong>new, spec-aligned API</strong></td>
+<td><code>InitLogging</code>, <code>CreateLogger</code>, <code>LogStream</code>, <code>Hex/Bin</code>; console/file sinks. No DLT remote transport. Old P7 based code kept as <code>ara_log_legacy_lib</code>.</td>
+</tr>
+<tr>
+<td>ara::per</td>
+<td><strong>new</strong></td>
+<td>Key-value + file storage, CRC-32 integrity, atomic persist with backup, quotas, JSON deployment config. CLI: <code>ap_per_tool</code>. 32 tests.</td>
+</tr>
+<tr>
+<td>ara::phm</td>
+<td><strong>new</strong></td>
+<td>Alive / deadline / logical supervision, global supervision, recovery action, watchdog interface. Demo: <code>phm_demo</code>. 32 tests.</td>
+</tr>
+<tr>
+<td>ara::exec</td>
+<td><strong>hardened</strong></td>
+<td>Manifest parsing no longer calls exit()/throws under noexcept; clients report kCommunicationError; StateClient no longer dangles; FunctionGroupState compares group and state; added <code>GetExecDomain</code>/<code>MakeErrorCode</code>. 7 tests. Exec domain id 0x8000000000000202 is unverified. Still missing: StateClient transition results, DeterministicClient review.</td>
+</tr>
+<tr>
+<td>ara::com</td>
+<td>legacy</td>
+<td>SOME/IP + SD present; warnings and tests need work.</td>
+</tr>
+<tr>
+<td>ara::sm, ara::ucm</td>
+<td>legacy</td>
+<td></td>
+</tr>
+<tr>
+<td>ara::diag</td>
+<td><strong>UDS core (partial)</strong></td>
+<td>Transport-independent <code>DiagnosticServer</code>: sessions + S3 timeout, 0x10/0x11/0x22/0x2E/0x3E, suppress-positive-response, DID registry, custom services. 12 tests. Missing: the SWS facade (Conversation, GenericUDSService, DataIdentifier classes), DTC/DEM (0x14/0x19), SecurityAccess (0x27), routines (0x31), DoIP/ISO-TP transport, Monitor/Event interfaces.</td>
+</tr>
+<tr>
+<td>ara::nm</td>
+<td><strong>new</strong></td>
+<td>NM state machine (BusSleep/PrepareBusSleep/ReadySleep/NormalOperation/RepeatMessage), injectable clock, partial networks, 8 byte NM PDU codec, network manager. 30 tests. No bus driver yet.</td>
+</tr>
+<tr>
+<td>ara::crypto</td>
+<td><strong>primitive layer (new)</strong></td>
+<td>OpenSSL-backed (optional, <code>AP_BUILD_CRYPTO</code>): RNG, SHA-2, HMAC, AES-GCM (random-nonce seal/open), Ed25519 + ECDSA-P256, usage-restricted zeroizing <code>SecretKey</code>, thread-safe <code>KeyStore</code>. Known-answer tests (SHA-256, RFC 4231 HMAC, NIST GCM). <code>KeyStorageProvider</code> key-slot facade (<code>key_slot.h</code>): slot prototypes (algorithm, usage, exportable, persistent), generate/import/export/clear, per-slot usage enforcement (a sign-only key cannot verify, an encrypt-only key cannot decrypt), persistence through ara::per as AES-256-GCM blobs bound to slot name + policy (tamper, copy-to-other-slot and policy change are detected -&gt; slot <code>kCorrupted</code>). 37 tests. Missing: full SWS CryptoProvider/CryptoContext object model, wrapping-key provisioning from HSM/TPM, X.509/certificates, KDF/key agreement, RSA, CBC/CTR, hardware (HSM) back-ends.</td>
+</tr>
+<tr>
+<td>ara::tsync</td>
+<td><strong>time base (new)</strong></td>
+<td><code>TimeBaseResource</code> (consumer: <code>GetCurrentTime</code>, <code>GetRateDeviation</code>, status flags SYNCHRONIZED/TIMEOUT/SYNC_TO_GATEWAY/TIME_LEAP/PENDING_RATE_CORR, user data), <code>TimeBaseProvider::Update</code>, injectable local clock, small offsets slewed over a window and large ones stepped, timeout detection, update callback. 14 tests. Missing: SWS facade (<code>SynchronizedTimeBaseConsumer</code>/<code>TimeSyncClient</code> naming, <code>OffsetTimeBase</code>), multiple time-base registry, real providers (gPTP/NTP/GNSS), OS clock discipline. Error-domain id 0x8000000000000501 is unverified.</td>
+</tr>
+<tr>
+<td>Not started</td>
+<td></td>
+<td>IDSM, Firewall, RawDataStream, OSI, Remote Persistency, VUCM</td>
+</tr>
+</tbody>
+</table>
+<p>Suggested order: idsm -&gt; diag facade/DTC -&gt; dashboard panels for nm/tsync/key slots.</p>
+<h2 id="known-deviations-new-clusters">Known deviations (new clusters)</h2>
+<ul>
+<li>Numeric values of <code>PerErrc</code>/<code>PhmErrc</code>/<code>LogErrc</code> and the error-domain ids are implementation choices and <strong>must be checked against the SWS tables</strong>.</li>
+<li>PHM reports expiry through <code>ExpiredSupervision</code> (not <code>ara::exec::ExecutionErrorEvent</code>) until exec provides that type.</li>
+<li><code>ara::core::Result</code> has extra non-const <code>Value()&amp;</code> / <code>operator*()&amp;</code> overloads.</li>
+<li>A <code>Promise</code> destroyed unfulfilled leaves its <code>Future</code> pending (no broken-promise error yet).</li>
+<li><code>ara::log</code> has no remote (DLT) sink; <code>LogMode::kRemote</code> is accepted and ignored.</li>
+</ul>
+<h2 id="fixed-legacy-defects">Fixed legacy defects</h2>
+<ul>
+<li><strong>EM/StateClient FIFO framing</strong> — requests were written without a delimiter, so two quick requests (<code>FG_1/off</code> then
+  <code>MachineFG/off</code>) were read as one (<code>FG_1/offMachineFG/off</code>) and the platform hung. Requests are now newline
+  terminated and Execution Management re-assembles them, ignores malformed ones and survives writers closing the FIFO.</li>
+<li>Missing <code>&lt;cstdint&gt;</code> in the log headers (build break), <code>exit()</code> on a missing manifest, a dangling reference in
+  <code>StateClient::SetState</code>, an empty <code>ara::core::Result</code>.</li>
+</ul>
+<h2 id="findings-in-legacy-code-not-yet-fixed">Findings in legacy code (not yet fixed)</h2>
+<ul>
+<li>
+<p><code>EM: ERROR: coundn't Terminate the process …</code> appears during shutdown for processes that already exited (process
+  bookkeeping in <code>Process::terminate()</code>); harmless but noisy.</p>
+</li>
+<li>
+<p>Warnings: <code>OTA/client.cpp:120</code>, <code>SomeipSDMessage.cpp</code> (range-for copies), <code>socket_Server.cpp:135</code>, <code>packagemanagement_skeleton.cpp</code> (unused variables), <code>deserializer.h:84</code> (memcpy into a vector), <code>exec_main.cpp:205</code>, <code>service_skeleton.h:148</code>, <code>deterministic_client.cpp:65</code> (ignored <code>read</code> result).</p>
+</li>
+<li>Legacy tests rely on the working directory (manifests are copied to the build dir).</li>
+<li>Legacy targets use <code>ap::legacy</code> (<code>-Wall</code>) instead of the strict <code>ap::warnings</code>; migrate cluster by cluster.</li>
+</ul>
+<h2 id="platform-demo-node">Platform demo node</h2>
+<p><code>ap_dashboard</code> (App/dashboard) hosts PHM, diag, per, crypto and log in one process, controls the legacy
+Execution Management and serves the web console. It is a demo/test harness, not part of the AUTOSAR scope:
+no authentication, loopback only. Open items: show the SOME/IP service discovery traffic, a DTC/fault-memory view
+once <code>ara::diag</code> has it, and Remote persistency.</p>
+<h2 id="spec-conformance">Spec conformance</h2>
+<p>Per-cluster audit reports (status per requirement, with <em>Unverified</em> where the spec text was unavailable) live in <code>doc/spec-conformance/</code>. Open gaps are listed at the end of each report.</p></div><footer>Adaptive Platform</footer></body></html>

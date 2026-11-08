@@ -1,0 +1,12 @@
+<map id="apdash::PlatformNode::Impl::IncrementBootCount" name="apdash::PlatformNode::Impl::IncrementBootCount">
+<area shape="rect" id="Node000001" title=" " alt="" coords="649,5,851,45"/>
+<area shape="rect" id="Node000002" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,37,172,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="636,18,441,11,330,14,220,24,150,40,149,35,220,19,330,9,441,6,636,13"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2b31526623d8f784530296aa9d7b19de" title=" " alt="" coords="435,33,601,73"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="636,42,602,46,601,41,635,36"/>
+<area shape="rect" id="Node000004" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="220,33,387,73"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="421,56,387,56,387,51,421,51"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad0033341236167451f81b059a96c2eb0" title=" " alt="" coords="220,97,387,137"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="438,80,372,100,370,95,436,75"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="217,96,160,80,162,75,219,91"/>
+</map>

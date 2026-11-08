@@ -1,0 +1,7 @@
+<map id="ara::tsync::OffsetTimeBaseProvider::SetOffsetTime" name="ara::tsync::OffsetTimeBaseProvider::SetOffsetTime">
+<area shape="rect" id="Node000001" title="SWS_TS_01207: sets a new offset time (unconditional step)." alt="" coords="5,37,204,77"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="291,5,427,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,42,277,33,278,38,205,47"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="252,69,465,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,67,239,72,238,77,204,72"/>
+</map>

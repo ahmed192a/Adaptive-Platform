@@ -1,0 +1,16 @@
+<map id="anonymous_namespace{main::cpp}::EnsureKeys" name="anonymous_namespace{main::cpp}::EnsureKeys">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,191,141"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="51,102,48,92,56,82,72,77,98,75,127,78,143,85,141,90,126,83,98,80,73,82,59,87,53,93,56,100"/>
+<area shape="rect" id="Node000002" href="$structanonymous__namespace_02main_8cpp_03_1_1Trace.html#a0b624b765a8da39305f9fbc39c263cf0" title=" " alt="" coords="257,5,449,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,99,238,55,261,47,262,52,240,60,140,104"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1KeyStorageProvider.html#a54ade1974420c9a3a1c3819cd8bb0fa8" title="Generates a fresh key into the slot (replaces any content, also repairs kCorrupted)." alt="" coords="239,69,467,109"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="190,107,225,103,225,108,191,112"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1KeyStorageProvider.html#a4cc6734637f04e2b69957f4b8c487b71" title=" " alt="" coords="239,133,467,173"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="191,130,225,135,225,140,190,136"/>
+<area shape="rect" id="Node000007" href="$structanonymous__namespace_02main_8cpp_03_1_1Trace.html#aa3b15a82c6ad17cf56f48c024cdb66c1" title=" " alt="" coords="263,197,443,237"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="140,139,240,183,262,191,261,196,238,188,138,144"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1crypto.html#ae0bd797acf0d62500a3cdc76d104d79c" title=" " alt="" coords="515,53,729,78"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="466,77,501,73,501,79,467,82"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="535,102,709,127"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="467,97,522,103,521,108,466,103"/>
+</map>

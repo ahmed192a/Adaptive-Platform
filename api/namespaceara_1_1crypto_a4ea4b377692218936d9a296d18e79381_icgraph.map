@@ -1,0 +1,11 @@
+<map id="ara::crypto::AeadSeal" name="ara::crypto::AeadSeal">
+<area shape="rect" id="Node000001" title="Generates a random nonce: output = nonce(12) || ciphertext || tag." alt="" coords="281,109,443,134"/>
+<area shape="rect" id="Node000002" href="$structara_1_1crypto_1_1KeyStorageProvider_1_1Impl.html#a9980ddb0077fd58c7479cd86c951a175" title=" " alt="" coords="5,5,233,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="325,104,232,60,198,48,200,43,234,55,328,99"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1KeyStorageProvider.html#ae45a4017b54c60100ea0dccb297eb0ee" title=" " alt="" coords="5,69,233,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,112,233,107,234,102,268,106"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02crypto__test_8cpp_03.html#a0b151d2ddc07a36758159a67aadbeaf6" title=" " alt="" coords="28,133,211,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="268,136,211,144,211,139,267,131"/>
+<area shape="rect" id="Node000005" href="$namespaceanonymous__namespace_02crypto__test_8cpp_03.html#a44b0a7565cc8fd911f729bc6183515d6" title=" " alt="" coords="28,197,211,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="328,143,234,188,200,200,198,195,232,183,325,138"/>
+</map>

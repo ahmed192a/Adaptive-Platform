@@ -1,0 +1,21 @@
+<map id="src/ara/core/promise.h" name="src/ara/core/promise.h">
+<area shape="rect" id="Node000001" title="ara::core::Promise (SWS_CORE_00340); implemented together with Future." alt="" coords="430,5,597,31"/>
+<area shape="rect" id="Node000002" href="$demo_2supervised__service_2main_8cpp.html" title=" " alt="" coords="345,79,508,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="492,42,449,80,446,77,489,38"/>
+<area shape="rect" id="Node000003" href="$state__client_8h.html" title=" " alt="" coords="533,79,670,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="538,38,582,77,578,81,535,42"/>
+<area shape="rect" id="Node000004" href="$sm__main_8cpp.html" title=" " alt="" coords="5,174,168,199"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="520,121,349,146,182,169,142,177,141,171,181,164,348,141,519,116"/>
+<area shape="rect" id="Node000005" href="$state__manage_8h.html" title=" " alt="" coords="193,174,373,199"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="520,124,326,176,325,171,519,119"/>
+<area shape="rect" id="Node000007" href="$stateclient_8cpp.html" title=" " alt="" coords="397,174,589,199"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="569,129,510,176,507,171,565,125"/>
+<area shape="rect" id="Node000008" href="$exec__test_8cpp.html" title=" " alt="" coords="613,174,808,199"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="638,125,697,171,694,176,635,129"/>
+<area shape="rect" id="Node000009" href="$gap__closure__test_8cpp.html" title=" " alt="" coords="832,167,1016,207"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="684,119,854,164,852,169,682,124"/>
+<area shape="rect" id="Node000010" href="$state__client_8cpp.html" title="Implementation of the StateClient class." alt="" coords="1041,167,1178,207"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="684,108,844,132,1028,164,1041,167,1040,172,1028,169,843,137,683,114"/>
+<area shape="rect" id="Node000006" href="$state__manage_8cpp.html" title=" " alt="" coords="185,255,380,280"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="285,213,285,254,280,254,280,213"/>
+</map>

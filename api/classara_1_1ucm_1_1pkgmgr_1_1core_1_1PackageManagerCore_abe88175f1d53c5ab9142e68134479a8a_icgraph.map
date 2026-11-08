@@ -1,0 +1,37 @@
+<map id="ara::ucm::pkgmgr::core::PackageManagerCore::PackageState" name="ara::ucm::pkgmgr::core::PackageManagerCore::PackageState">
+<area shape="rect" id="Node000001" title="Package state, or &#45;1 when the transfer id is unknown." alt="" coords="108,385,287,440"/>
+<area shape="rect" id="Node000002" href="$ucm__core__test_8cpp.html#a371b57385797fba3c0cb29a073c7524d" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,372,169,306,142,221,106,130,83,85,58,44,49,33,53,29,62,40,88,83,110,128,147,220,174,305,190,371"/>
+<area shape="rect" id="Node000003" href="$ucm__core__test_8cpp.html#a14dce4fca8a09a2320354186becdc18a" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,373,164,315,137,243,102,166,58,93,48,82,52,78,62,90,106,164,142,241,169,314,188,372"/>
+<area shape="rect" id="Node000004" href="$ucm__core__hooks__test_8cpp.html#a28d76dac1dd84793f3746fa4141f495d" title=" " alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="179,373,131,265,97,202,58,142,48,131,52,128,62,139,102,199,136,262,184,371"/>
+<area shape="rect" id="Node000005" href="$ucm__core__hooks__test_8cpp.html#a2c0e52a25098bf1ef7682b0ffc0e6e0e" title=" " alt="" coords="5,153,60,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="174,374,125,288,93,238,58,192,48,181,51,177,62,188,97,235,129,285,178,372"/>
+<area shape="rect" id="Node000006" href="$ucm__core__test_8cpp.html#ad4ea516666cc18afc35ae19b4c592307" title=" " alt="" coords="5,203,60,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="166,376,117,311,58,241,47,230,51,226,62,238,122,308,171,373"/>
+<area shape="rect" id="Node000007" href="$ucm__core__test_8cpp.html#abab33141a314f358607ef07aa97cbf09" title=" " alt="" coords="5,252,60,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="154,378,46,279,50,276,158,374"/>
+<area shape="rect" id="Node000008" href="$ucm__core__hooks__test_8cpp.html#ab6428f3680e211d5fdb0d4ec1abad665" title=" " alt="" coords="5,301,60,327"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="138,380,54,329,57,325,141,376"/>
+<area shape="rect" id="Node000009" href="$ucm__core__hooks__test_8cpp.html#aaba6ddd0c3b706dd57f5b76922bb40b7" title=" " alt="" coords="5,351,60,376"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="94,384,60,374,61,369,96,379"/>
+<area shape="rect" id="Node000010" href="$ucm__core__hooks__test_8cpp.html#a7216ec1958a86fbbbdb3f20deee46b2a" title=" " alt="" coords="5,400,60,425"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="94,415,60,415,60,410,94,410"/>
+<area shape="rect" id="Node000011" href="$ucm__core__hooks__test_8cpp.html#a5fb9d13954ccc4cd4b53a2c1c1dae737" title=" " alt="" coords="5,449,60,475"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="96,446,61,457,60,451,94,441"/>
+<area shape="rect" id="Node000012" href="$ucm__core__test_8cpp.html#a29019b1db6ada90802cf7dcb66faf8f1" title=" " alt="" coords="5,499,60,524"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="141,450,57,501,54,496,138,445"/>
+<area shape="rect" id="Node000013" href="$ucm__core__test_8cpp.html#ab359ffc889eed4635f0fade635587c00" title=" " alt="" coords="5,548,60,573"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="158,451,50,550,46,546,154,447"/>
+<area shape="rect" id="Node000014" href="$ucm__core__test_8cpp.html#a9b0352ba003f66b22b75c46772eb942b" title=" " alt="" coords="5,597,60,623"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="170,453,121,517,62,586,50,599,46,595,58,583,117,513,166,450"/>
+<area shape="rect" id="Node000015" href="$ucm__core__test_8cpp.html#a709d7359c962845599ee8ffb87db8579" title=" " alt="" coords="5,647,60,672"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="178,454,129,540,62,636,50,648,46,645,58,632,124,537,173,451"/>
+<area shape="rect" id="Node000016" href="$ucm__core__test_8cpp.html#a1ca99dd3d7401b357676fc765c0cf219" title=" " alt="" coords="5,696,60,721"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="183,454,135,562,101,625,62,685,51,697,47,694,58,682,97,622,130,559,178,452"/>
+<area shape="rect" id="Node000017" href="$ucm__core__test_8cpp.html#acda0e2b4c2428dd722863053e38bc852" title=" " alt="" coords="5,745,60,771"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="187,454,168,512,141,583,106,661,62,734,51,747,47,743,58,731,101,658,136,581,163,510,182,452"/>
+<area shape="rect" id="Node000018" href="$ucm__core__hooks__test_8cpp.html#a9647214d1af0c450f55e67599b9001fe" title=" " alt="" coords="5,795,60,820"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="190,454,173,520,146,604,110,696,62,784,52,796,47,793,58,780,105,694,141,603,168,519,185,453"/>
+</map>

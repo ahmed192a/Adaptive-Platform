@@ -1,0 +1,5 @@
+<map id="ara::diag::DiagnosticServer::SetDtcStorage" name="ara::diag::DiagnosticServer::SetDtcStorage">
+<area shape="rect" id="Node000001" title="Loads the event memory from storage and writes it back after every change." alt="" coords="123,5,321,45"/>
+<area shape="rect" id="Node000002" href="$diag__gap__test_8cpp.html#ac7adffc0ac2a3d0bf3ae5031cf77a123" title=" " alt="" coords="5,13,75,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,28,75,28,75,23,109,23"/>
+</map>

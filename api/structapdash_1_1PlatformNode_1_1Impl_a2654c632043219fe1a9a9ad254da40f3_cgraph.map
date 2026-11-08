@@ -1,0 +1,20 @@
+<map id="apdash::PlatformNode::Impl::Shutdown" name="apdash::PlatformNode::Impl::Shutdown">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,113,172,153"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1HealthMonitor.html#a9595a115fa56c11677c0cc46d1584456" title="Removes all configuration and state." alt="" coords="220,5,401,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,111,219,62,247,49,249,53,221,66,127,115"/>
+<area shape="rect" id="Node000003" href="$classara_1_1phm_1_1HealthMonitor.html#ad120e3fd6da959d833e5f6e89b933c30" title=" " alt="" coords="449,31,655,71"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="172,114,220,105,435,67,436,73,220,111,173,120"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1core.html#aa955d443c5af12d3664c7c911e382a1f" title="Tear the runtime down (reverse order of Initialize())." alt="" coords="230,121,391,146"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,131,217,131,217,136,172,136"/>
+<area shape="rect" id="Node000006" href="$classara_1_1phm_1_1HealthMonitor.html#a61212990572cc05161d2457f4475fbc5" title="Process wide instance used by the default SupervisedEntity transport." alt="" coords="220,171,401,211"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="167,151,220,165,219,170,166,156"/>
+<area shape="rect" id="Node000007" href="$structapdash_1_1PlatformNode_1_1Impl.html#ac19a8ca5c7299de2aa7b063a25f79e13" title=" " alt="" coords="227,235,394,275"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="117,151,164,186,221,220,236,227,233,232,219,225,161,190,114,156"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,32,436,36,435,41,401,37"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Span.html#a260334aa0d529250e49339699d09fdda" title=" " alt="" coords="475,121,629,146"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="391,131,462,131,462,136,391,136"/>
+<area shape="rect" id="Node000008" href="$classara_1_1log_1_1Logger.html#a578bbc646ad1a792fd0bcbca8ac8879b" title=" " alt="" coords="463,242,641,267"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="394,252,449,252,449,257,394,257"/>
+<area shape="rect" id="Node000009" href="$classara_1_1log_1_1Logger.html#adbadc165b5959ea0241367f488a11212" title=" " alt="" coords="703,242,899,267"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="641,252,689,252,689,257,641,257"/>
+</map>

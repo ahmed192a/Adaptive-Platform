@@ -1,0 +1,17 @@
+<map id="ara::com::proxy_skeleton::proxy::ServiceProxy::SendFireAndForgetRequest" name="ara::com::proxy_skeleton::proxy::ServiceProxy::SendFireAndForgetRequest">
+<area shape="rect" id="Node000001" title="SendRequest." alt="" coords="5,139,203,193"/>
+<area shape="rect" id="Node000002" href="$classCClient.html#a67468dd8b511b9fcfd563523c754e6df" title="Close the socket." alt="" coords="251,5,419,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,136,181,87,214,62,249,40,263,33,266,38,252,44,217,66,185,91,132,140"/>
+<area shape="rect" id="Node000003" href="$classCClient.html#aea09fc559b59a5afb62cb376031341ae" title="Client send data TCP." alt="" coords="259,55,410,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,136,250,89,270,82,272,87,252,94,155,141"/>
+<area shape="rect" id="Node000004" href="$classCClient.html#adbcb2f41e689144cbb6e8cf0b8b2f276" title="Close the socket." alt="" coords="257,104,413,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="202,142,261,130,262,135,203,148"/>
+<area shape="rect" id="Node000005" href="$classCClient.html#a1c1626a25eebb091ae824646f860d97d" title="Get the Host name and port number." alt="" coords="269,153,400,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="203,163,256,163,256,169,203,169"/>
+<area shape="rect" id="Node000006" href="$classCClient.html#aa4c93a772ac973df945ffc9480c95fd1" title="Open the socket." alt="" coords="257,203,412,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="203,184,262,197,261,202,202,190"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1Serializer.html#a6c5ec394bb39cb758b2590b8d1ac16fb" title="Get the Payload object of the serializer." alt="" coords="261,253,409,293"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="158,191,252,237,270,245,268,250,250,242,156,196"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1Serializer.html#af9f0e3e083c607e2e8a5fb3fae6bf793" title="serialize the data into the vector of bytes" alt="" coords="261,317,409,357"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="130,192,183,247,216,276,252,302,262,308,260,313,249,307,213,281,179,251,127,196"/>
+</map>

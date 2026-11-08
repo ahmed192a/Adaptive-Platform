@@ -1,0 +1,23 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,221,60,246"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1SupervisedEntity.html#a4e93f55a67d2de9b04f76c0bb1b0b4ec" title="Validating factory; kUnknownEntity if the entity is not configured in PHM." alt="" coords="110,5,309,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="33,220,39,187,52,143,74,96,89,75,106,55,112,51,115,55,110,59,93,78,79,99,57,145,45,189,38,221"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1log.html#abc73a5eae1c236833d302de2cc6bab52" title="SWS_LOG_00006." alt="" coords="126,70,293,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="35,219,59,164,80,133,106,106,117,99,120,103,110,110,84,136,64,167,40,221"/>
+<area shape="rect" id="Node000004" href="$structara_1_1phm_1_1PhmConfig.html#af1a97dbdad3438574b86f56ddbfa0765" title=" " alt="" coords="130,120,289,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="45,218,72,194,107,170,120,163,123,168,109,174,75,198,48,222"/>
+<area shape="rect" id="Node000005" href="$classara_1_1phm_1_1HealthMonitor.html#a61212990572cc05161d2457f4475fbc5" title="Process wide instance used by the default SupervisedEntity transport." alt="" coords="119,184,300,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="60,226,105,219,106,224,60,232"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1phm.html#abb6fe3f0751d3be45a6915242e9f2723" title=" " alt="" coords="116,249,303,274"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="60,235,116,244,115,249,60,240"/>
+<area shape="rect" id="Node000008" href="$classara_1_1core_1_1SteadyClock.html#a30932f525e6cd0ea71c7258f57478d73" title=" " alt="" coords="108,298,311,323"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="50,244,77,264,109,283,131,292,129,296,107,288,74,269,47,248"/>
+<area shape="rect" id="Node000009" href="$classara_1_1phm_1_1RecoveryAction.html#ab5fbb0b5d60df11828f9113e1cc9e27f" title="Starts receiving recovery requests (kAlreadyOffered if already offered)." alt="" coords="114,348,305,388"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="42,245,68,289,87,313,110,334,118,339,115,344,106,338,83,317,63,292,38,247"/>
+<area shape="rect" id="Node000011" href="$namespaceara_1_1phm.html#ae2d06d66f0747af41e570783abbc785e" title=" " alt="" coords="139,413,279,438"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="38,245,45,277,58,318,79,361,93,381,110,398,127,409,125,414,106,402,89,384,74,364,53,320,40,278,33,247"/>
+<area shape="rect" id="Node000007" href="$namespaceara_1_1phm.html#a5780501656f47b73d802ef7ab495a142" title=" " alt="" coords="359,249,549,274"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="303,259,345,259,345,264,303,264"/>
+<area shape="rect" id="Node000010" href="$classara_1_1phm_1_1HealthMonitor.html#a486fa197cd707b5245765a748a17b8d5" title=" " alt="" coords="363,348,545,388"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="305,365,350,365,350,371,305,371"/>
+</map>

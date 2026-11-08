@@ -1,0 +1,9 @@
+<map id="ara::per::RecoverAllFiles" name="ara::per::RecoverAllFiles">
+<area shape="rect" id="Node000001" title=" " alt="" coords="123,55,303,80"/>
+<area shape="rect" id="Node000002" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="13,5,67,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,53,67,28,68,23,155,48"/>
+<area shape="rect" id="Node000003" href="$file__storage__test_8cpp.html#aa063685f2bc9aa42f55b082530a6896d" title=" " alt="" coords="5,55,75,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,70,75,70,75,65,109,65"/>
+<area shape="rect" id="Node000004" href="$key__value__storage__test_8cpp.html#a7e0f694222682ea78a993b1b98ed4367" title=" " alt="" coords="5,104,75,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="155,86,76,110,74,104,154,81"/>
+</map>

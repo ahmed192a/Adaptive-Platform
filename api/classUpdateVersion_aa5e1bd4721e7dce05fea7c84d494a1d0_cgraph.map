@@ -1,0 +1,5 @@
+<map id="UpdateVersion::set_versionNo" name="UpdateVersion::set_versionNo">
+<area shape="rect" id="Node000001" title="Getting version of the update." alt="" coords="5,5,151,45"/>
+<area shape="rect" id="Node000002" href="$classUpdateVersion.html#a7d897fb8af5bebc8569f64d863f83dec" title="Setting version major, minor and patch of the update." alt="" coords="199,13,423,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,23,185,23,185,28,151,28"/>
+</map>

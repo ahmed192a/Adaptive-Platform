@@ -1,0 +1,15 @@
+<map id="ara::crypto::MessageAuthnCode::Verify" name="ara::crypto::MessageAuthnCode::Verify">
+<area shape="rect" id="Node000001" title="Convenience: computes the tag over data and compares in constant time." alt="" coords="5,69,201,109"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a3d5530c497ba6c198622a4b11991e172" title="Constant&#45;time comparison." alt="" coords="252,5,443,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,67,257,46,258,51,181,72"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1MessageAuthnCode.html#a10826afb45b7b5a57e963f7153064d18" title="Returns the tag; the context is reset to the same key." alt="" coords="249,69,445,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,87,236,87,236,92,201,92"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1MessageAuthnCode.html#adbb54199a6bb93725f93ac8dd6793bff" title=" " alt="" coords="249,133,445,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="181,107,258,127,257,132,180,112"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="493,69,656,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="418,131,489,111,490,116,420,136"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="493,133,656,173"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="446,151,480,151,480,156,446,156"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="493,197,656,237"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="420,171,490,191,489,196,418,176"/>
+</map>

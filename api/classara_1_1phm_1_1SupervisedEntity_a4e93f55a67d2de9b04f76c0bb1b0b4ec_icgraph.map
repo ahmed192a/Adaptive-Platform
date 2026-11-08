@@ -1,0 +1,17 @@
+<map id="ara::phm::SupervisedEntity::Create" name="ara::phm::SupervisedEntity::Create">
+<area shape="rect" id="Node000001" title="Validating factory; kUnknownEntity if the entity is not configured in PHM." alt="" coords="448,97,647,137"/>
+<area shape="rect" id="Node000002" href="$examples_2phm__demo_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="283,5,337,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="498,92,451,67,399,45,337,26,338,21,401,39,453,63,501,87"/>
+<area shape="rect" id="Node000003" href="$health__monitor__test_8cpp.html#ab77e27a7523cee939579c81756b57755" title=" " alt="" coords="283,55,337,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="436,96,337,75,338,70,438,91"/>
+<area shape="rect" id="Node000004" href="$health__monitor__test_8cpp.html#a3000545880a0208973a55358e0d240fc" title=" " alt="" coords="283,104,337,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="434,119,338,119,338,114,434,114"/>
+<area shape="rect" id="Node000005" href="$namespaceanonymous__namespace_02main_8cpp_03.html#a89b753861c6edc6e6a63eec0ca7f9da3" title=" " alt="" coords="220,154,400,194"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="452,142,394,157,393,151,450,137"/>
+<area shape="rect" id="Node000007" href="$structapdash_1_1PlatformNode_1_1Impl.html#a8f5901c17d620aa24fd01b3a603474e3" title=" " alt="" coords="227,218,393,258"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="507,147,457,178,401,208,373,220,371,215,399,204,455,173,504,142"/>
+<area shape="rect" id="Node000006" href="$demo_2supervised__service_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="61,161,116,187"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="206,177,116,177,116,171,206,171"/>
+<area shape="rect" id="Node000008" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,218,172,258"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="213,241,172,241,172,235,213,235"/>
+</map>

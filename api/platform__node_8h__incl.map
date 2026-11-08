@@ -1,0 +1,19 @@
+<map id="App/dashboard/platform_node.h" name="App/dashboard/platform_node.h">
+<area shape="rect" id="Node000001" title="&quot;ap_dashboard&quot;: a runnable demo node that hosts the new clusters (ara::phm, ara::per,..." alt="" coords="69,5,248,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,96,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,48,80,87,77,83,131,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="120,93,197,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,46,161,79,156,79,156,46"/>
+<area shape="rect" id="Node000004" href="$http__server_8h.html" title="Minimal dependency&#45;free HTTP/1.1 server (loopback by default) for the platform dashboard." alt="" coords="221,93,328,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,43,248,83,245,88,185,48"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="47,167,113,192"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="244,121,125,164,124,159,242,116"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="138,167,225,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="261,121,209,160,206,156,258,117"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="249,167,300,192"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="277,119,277,153,272,153,272,119"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="324,167,383,192"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="289,117,332,156,329,159,286,121"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="407,167,471,192"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="302,116,401,159,398,164,300,121"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ara::per::KeyValueStorage::SetValue" name="ara::per::KeyValueStorage::SetValue">
+<area shape="rect" id="Node000001" title="Stores value under key (in memory until SyncToStorage())." alt="" coords="123,5,313,45"/>
+<area shape="rect" id="Node000002" href="$key__value__storage__test_8cpp.html#a7e0f694222682ea78a993b1b98ed4367" title=" " alt="" coords="5,13,75,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,28,75,28,75,23,109,23"/>
+</map>

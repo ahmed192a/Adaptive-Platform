@@ -1,0 +1,16 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,60,102"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02result__test_8cpp_03.html#a534bf42d05a8b2a0d14a7de51a585f49" title=" " alt="" coords="108,5,288,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,75,107,55,125,48,127,53,109,60,61,80"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#a69bd676ab46ca4fe447bfc48e635f1cb" title=" " alt="" coords="130,69,266,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,87,117,87,117,92,60,92"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1Result.html#a425fe4293f35288267a083eac9df7b34" title=" " alt="" coords="130,133,266,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="61,99,109,119,127,126,125,131,107,124,59,104"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="336,37,472,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="266,76,322,67,323,73,267,81"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="336,101,472,141"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="267,97,323,106,322,111,266,103"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="266,140,322,131,323,137,267,145"/>
+<area shape="rect" id="Node000007" href="$classara_1_1core_1_1Result.html#a035d79b1e06e79e9c2d09b6d38b4b5e3" title=" " alt="" coords="336,165,472,205"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="267,161,323,170,322,175,266,167"/>
+</map>

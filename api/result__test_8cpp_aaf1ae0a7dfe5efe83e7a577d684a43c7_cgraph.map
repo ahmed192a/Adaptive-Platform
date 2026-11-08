@@ -1,0 +1,13 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,60,70"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02result__test_8cpp_03.html#a534bf42d05a8b2a0d14a7de51a585f49" title=" " alt="" coords="108,5,288,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,50,94,43,95,48,61,55"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#a60fde32930cb8ad251f6501fe6b23d6d" title="Value, or the result of f(error) when *this holds an error." alt="" coords="130,69,266,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,60,117,71,116,76,60,65"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="336,5,472,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="262,67,326,47,327,52,264,72"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="336,69,472,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="266,87,322,87,322,92,266,92"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1Result.html#a035d79b1e06e79e9c2d09b6d38b4b5e3" title=" " alt="" coords="336,133,472,173"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="264,107,327,127,326,132,262,112"/>
+</map>

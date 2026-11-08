@@ -1,0 +1,15 @@
+<map id="ara::phm::HealthMonitor::Escalate" name="ara::phm::HealthMonitor::Escalate">
+<area shape="rect" id="Node000001" title=" " alt="" coords="836,58,1017,98"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1HealthMonitor.html#ad4894c71d5aa4c351dad465098335329" title=" " alt="" coords="607,58,788,98"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="822,81,788,81,788,75,822,75"/>
+<area shape="rect" id="Node000003" href="$classara_1_1phm_1_1HealthMonitor.html#afa332a7c6046e5033f4d6025ab0856c0" title=" " alt="" coords="377,58,559,98"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="593,81,559,81,559,75,593,75"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02health__monitor__test_8cpp_03.html#aa715c1c36d709f7f6e81e7691f1645f6" title="Feeds a healthy alive pattern (2 indications per 100 ms cycle)." alt="" coords="136,15,316,69"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="364,65,316,58,317,53,364,60"/>
+<area shape="rect" id="Node000007" href="$classara_1_1phm_1_1HealthMonitor.html#a2a7ae97de4cdec1b0f6497232e6f702d" title="Starts a thread calling Evaluate(now) every period." alt="" coords="123,94,329,134"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="364,96,330,101,329,96,364,91"/>
+<area shape="rect" id="Node000005" href="$health__monitor__test_8cpp.html#aad74e4e21913fb18286ec3d989bd6316" title=" " alt="" coords="5,5,75,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="122,31,74,25,75,20,122,26"/>
+<area shape="rect" id="Node000006" href="$health__monitor__test_8cpp.html#a04ea4505094fd5a84ee75609476f478f" title=" " alt="" coords="5,55,75,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="123,59,75,65,74,60,122,53"/>
+</map>

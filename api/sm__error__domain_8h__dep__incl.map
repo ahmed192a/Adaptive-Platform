@@ -1,0 +1,19 @@
+<map id="src/ara/sm/sm_error_domain.h" name="src/ara/sm/sm_error_domain.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="279,5,431,45"/>
+<area shape="rect" id="Node000002" href="$update__request__return__types_8h.html" title=" " alt="" coords="148,93,343,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="324,56,278,95,274,91,320,52"/>
+<area shape="rect" id="Node000007" href="$update__session_8h.html" title="Transport&#45;independent update&#45;session rules of the State Management UpdateRequest service interface." alt="" coords="367,101,561,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="389,52,444,99,440,103,385,56"/>
+<area shape="rect" id="Node000003" href="$update__request__common_8h.html" title=" " alt="" coords="5,196,208,236"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="196,158,136,198,133,194,193,154"/>
+<area shape="rect" id="Node000005" href="$updaterequest__skeleton_8h.html" title=" " alt="" coords="232,196,427,236"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="280,157,314,194,310,198,276,160"/>
+<area shape="rect" id="Node000004" href="$updaterequest__proxy_8h.html" title=" " alt="" coords="9,284,204,324"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="109,250,109,284,104,284,104,250"/>
+<area shape="rect" id="Node000006" href="$update__session__test_8cpp.html" title=" " alt="" coords="297,284,495,324"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="355,245,383,282,379,285,350,249"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="427,151,358,198,355,194,424,146"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="463,155,455,195,441,237,413,285,408,282,436,235,449,193,457,154"/>
+<area shape="rect" id="Node000008" href="$ota__updater_8cpp.html" title=" " alt="" coords="501,196,672,236"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="502,147,563,194,560,198,498,151"/>
+</map>

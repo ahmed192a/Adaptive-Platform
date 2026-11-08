@@ -1,0 +1,22 @@
+<map id="ara::per::detail::anonymous_namespace{file_storage::cpp}::SnapshotFile" name="ara::per::detail::anonymous_namespace{file_storage::cpp}::SnapshotFile">
+<area shape="rect" id="Node000001" title="Stores a CRC&#45;protected redundancy copy of &lt;dir&gt;/files/&lt;name&gt; (best effort)." alt="" coords="5,137,207,192"/>
+<area shape="poly" id="edge8_Node000001_Node000001" title=" " alt="" coords="58,137,58,127,67,118,83,113,106,111,134,114,150,122,147,126,132,119,106,116,84,118,69,123,63,129,63,137"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#a9dd41418b400bf83d053df52d18b3c82" title=" " alt="" coords="255,29,456,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,135,254,93,268,87,270,92,256,98,164,140"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per_1_1detail.html#a220e578c2fa16c8fa87f7a083686cb49" title="CRC&#45;32 (IEEE 802.3, reflected, poly 0xEDB88320)." alt="" coords="274,108,437,133"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="206,144,269,133,270,138,207,150"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#af4432e337535004ea64b3fc87f12e58a" title="Reads a whole file; nullopt if it does not exist / cannot be read." alt="" coords="255,181,456,236"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="207,180,242,186,241,191,206,185"/>
+<area shape="rect" id="Node000007" href="$namespaceara_1_1per_1_1detail.html#a388f856de773c83911d7a162b5ae336a" title="Writes content to &lt;target&gt;.tmp, fsync()s it, optionally keeps the previous version as &lt;target&gt;...." alt="" coords="264,261,447,301"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="151,190,201,219,256,246,274,254,272,258,254,251,198,223,149,194"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="307,29,307,19,316,10,332,5,355,3,383,6,399,14,397,18,382,11,355,8,333,10,319,15,312,21,312,29"/>
+<area shape="poly" id="edge7_Node000004_Node000004" title=" " alt="" coords="307,181,307,171,316,162,332,157,355,155,383,158,399,166,397,170,382,163,355,160,333,162,319,167,312,173,312,181"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1per_1_1detail.html#a4623b81f6032ac7ee4f007e48d04575c" title=" " alt="" coords="504,196,727,221"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="456,206,490,206,490,211,456,211"/>
+<area shape="rect" id="Node000006" href="$Testing_2core_2CMakeLists_8txt.html#a8d67571c23f96a5a08cb3ec4c8b75b44" title=" " alt="" coords="775,196,817,221"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="727,206,761,206,761,211,727,211"/>
+<area shape="rect" id="Node000008" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="529,253,702,293"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="447,275,515,273,515,278,447,281"/>
+<area shape="rect" id="Node000009" href="$namespaceara_1_1per_1_1detail.html#add0905aec8ff1071c2b2589416c9d467" title="fsync() of a directory so that renames are durable." alt="" coords="507,317,723,343"/>
+<area shape="poly" id="edge11_Node000007_Node000009" title=" " alt="" coords="447,295,535,312,534,317,446,301"/>
+</map>

@@ -1,0 +1,27 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,264,75,289"/>
+<area shape="rect" id="Node000002" href="$structanonymous__namespace_02tsync__spec__test_8cpp_03_1_1Spec.html#aac84d288203a79bed0f65541cb879778" title=" " alt="" coords="164,5,344,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="40,263,46,226,60,174,84,119,101,93,121,71,150,51,153,56,124,75,105,96,89,121,65,176,51,227,45,264"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1SynchronizedTimeBaseStatus.html#a2be85b5697e3f950c9fca15a4b1120b7" title=" " alt="" coords="131,85,377,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="43,263,68,201,91,165,121,135,129,129,132,134,124,139,95,168,73,204,47,265"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a03eb0b3788da4b20e1fd7d0c35ac6ffa" title="Current time of the base (epoch if it was never set)." alt="" coords="127,149,381,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="49,262,79,230,121,198,136,191,138,196,124,203,83,234,53,266"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1SynchronizedTimeBaseStatus.html#afc85dccfb05a1648f3adc5fbf910e5c2" title=" " alt="" coords="123,357,385,412"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="55,288,85,315,124,342,138,350,136,354,121,347,82,319,52,291"/>
+<area shape="rect" id="Node000008" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a14a65d129949695e442cb17f6d56f290" title="SWS_TS_14218: samples time + status atomically." alt="" coords="131,213,377,268"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="74,268,117,261,118,266,75,274"/>
+<area shape="rect" id="Node000009" href="$namespaceanonymous__namespace_02tsync__spec__test_8cpp_03.html#a2ef8ed9adff67665531677ce5790e936" title=" " alt="" coords="154,437,354,477"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="47,289,56,317,72,353,94,391,124,423,142,434,139,438,121,427,90,394,67,356,51,319,42,290"/>
+<area shape="rect" id="Node000010" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a7736d7a013ba7c2db28f82edb3d99929" title="Sets the time unconditionally (no slewing)." alt="" coords="153,293,355,333"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="75,280,140,291,139,296,74,285"/>
+<area shape="rect" id="Node000012" href="$namespaceanonymous__namespace_02tsync__spec__test_8cpp_03.html#a38895b8ec19741869aec021e5e475dec" title=" " alt="" coords="159,501,349,541"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="45,289,50,328,63,382,87,438,104,464,124,487,148,502,145,506,121,491,99,468,82,441,58,383,45,329,40,290"/>
+<area shape="rect" id="Node000005" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="433,221,647,261"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="338,186,386,198,450,215,449,220,385,203,337,191"/>
+<area shape="rect" id="Node000007" href="$namespaceara_1_1tsync.html#aec8356265e026be72eea717fe5770013" title="Maps the internal flag mask to the exclusive SWS status." alt="" coords="434,365,646,405"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="385,382,420,382,420,387,385,387"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="378,238,420,238,420,243,378,243"/>
+<area shape="poly" id="edge12_Node000010_Node000005" title=" " alt="" coords="334,290,446,261,447,267,335,295"/>
+<area shape="rect" id="Node000011" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="472,293,608,333"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="356,310,458,310,458,315,356,315"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="serviceRegistry::serviceRegistry" name="serviceRegistry::serviceRegistry">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,183,67"/>
+<area shape="rect" id="Node000002" href="$classCSV.html#a848f6b0e43715711b9d7350aeab1efd6" title="Function to clear the CSV file." alt="" coords="283,5,369,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,34,269,22,269,28,183,39"/>
+<area shape="rect" id="Node000003" href="$classara_1_1exec_1_1ExecutionClient.html#a9e38e2714f64eaf7a0ff8d5feb988cd3" title="Interface for a Process to report its proxy_skeleton state to Execution Management." alt="" coords="231,55,421,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,55,217,60,217,65,182,61"/>
+</map>

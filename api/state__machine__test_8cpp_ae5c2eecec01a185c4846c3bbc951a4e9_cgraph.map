@@ -1,0 +1,5 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,20,60,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1state__machine_1_1StateManager.html#a34a16258134aac6e48622d94cdef460d" title="nullopt (as outer value) until Start() ran; then the transition outcome." alt="" coords="108,5,352,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,30,94,30,94,35,60,35"/>
+</map>

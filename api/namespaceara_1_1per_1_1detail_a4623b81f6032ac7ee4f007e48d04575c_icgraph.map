@@ -1,0 +1,15 @@
+<map id="ara::per::detail::ReadWholeFile" name="ara::per::detail::ReadWholeFile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="504,96,727,121"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1anonymous__namespace_02key__value__storage_8cpp_03.html#afb927b8bcffcb201ac01961b2978427a" title=" " alt="" coords="266,29,445,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="537,96,444,77,445,72,538,91"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#af4432e337535004ea64b3fc87f12e58a" title="Reads a whole file; nullopt if it does not exist / cannot be read." alt="" coords="255,132,456,187"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="536,127,457,142,456,137,535,121"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="397,18,382,11,355,8,333,10,319,15,312,21,312,29,307,29,307,19,316,10,332,5,355,3,383,6,399,14"/>
+<area shape="poly" id="edge6_Node000003_Node000003" title=" " alt="" coords="397,121,382,114,355,111,333,113,319,117,312,124,312,132,307,132,307,122,316,113,332,107,355,105,383,108,399,116"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#a31f0c1b250dc5fe1550546ee1c6e65c3" title=" " alt="" coords="5,80,207,135"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="241,138,206,131,207,126,242,133"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#ac0cc79f726def291dd635b1b7d26b3b5" title="Stores a CRC&#45;protected redundancy copy of &lt;dir&gt;/files/&lt;name&gt; (best effort)." alt="" coords="5,183,207,237"/>
+<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="242,185,207,192,206,187,241,180"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="147,69,132,62,106,59,84,61,69,65,63,72,63,80,58,80,58,70,67,61,83,55,106,53,134,56,150,64"/>
+<area shape="poly" id="edge8_Node000005_Node000005" title=" " alt="" coords="147,172,132,164,106,161,84,163,69,168,63,174,63,183,58,183,58,172,67,164,83,158,106,156,134,159,150,167"/>
+</map>

@@ -1,0 +1,22 @@
+<map id="ara::com::proxy_skeleton::proxy::Event&lt; T &gt;" name="ara::com::proxy_skeleton::proxy::Event&lt; T &gt;">
+<area shape="rect" id="Node000001" title="Event Base class for all events." alt="" coords="5,165,192,205"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Field.html" title=" " alt="" coords="710,5,897,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,158,291,119,439,76,590,44,709,29,710,34,591,49,441,81,293,124,170,163"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Field.html" title="Field Base class for all fields." alt="" coords="336,133,523,173"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,172,336,160,336,165,206,178"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoNotifierAndGetter.html" title="FieldNoNotifierAndGetter Class for field with no getter and no setter." alt="" coords="292,197,567,237"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="206,193,292,201,292,207,206,198"/>
+<area shape="rect" id="Node000010" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html" title=" " alt="" coords="336,261,523,301"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="170,207,293,247,338,259,337,264,291,252,168,213"/>
+<area shape="poly" id="edge8_Node000003_Node000002" title=" " alt="" coords="486,125,570,90,666,55,709,43,710,48,667,60,572,95,488,130"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoGetter.html" title="FieldNoGetter Class for field with no getter." alt="" coords="702,69,905,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="536,132,701,104,702,109,537,138"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoGetterAndSetter.html" title="FieldNoGetterAndSetter Class for field with no getter and no setter." alt="" coords="670,133,937,173"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="537,151,670,151,670,156,537,156"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoNotifier.html" title="FieldNoNotifier Class for field with no getter and no setter." alt="" coords="699,197,908,237"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="537,169,699,197,698,202,536,174"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoNotifierAndSetter.html" title="FieldNoNotifierAndSetter Class for field with no getter and no setter." alt="" coords="667,261,940,301"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="537,172,568,183,597,199,618,215,639,231,668,247,701,259,699,264,666,252,636,236,615,219,595,203,566,188,535,177"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldNoSetter.html" title="FieldNoSetter Class for field with no setter." alt="" coords="703,325,903,365"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="537,165,568,183,579,197,583,212,586,226,593,241,625,282,668,311,704,326,702,331,665,316,621,286,588,244,581,227,578,213,575,200,565,187,534,169"/>
+</map>

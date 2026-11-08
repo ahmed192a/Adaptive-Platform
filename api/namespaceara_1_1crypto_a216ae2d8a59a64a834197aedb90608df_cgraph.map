@@ -1,0 +1,8 @@
+<map id="ara::crypto::IssueCertificate" name="ara::crypto::IssueCertificate">
+<area shape="rect" id="Node000001" title="Issues a certificate signed by issuerKey." alt="" coords="5,5,207,31"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="473,5,648,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,12,255,11,425,11,460,12,460,17,425,17,255,17,207,18"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1PrivateKey.html#aeb7194c011a8b79790de496d547d55a4" title="Serialises as unencrypted PKCS#8. The caller must SecureZero the result." alt="" coords="255,26,425,66"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,27,242,32,241,37,206,33"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="425,33,459,28,460,33,426,38"/>
+</map>

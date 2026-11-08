@@ -1,0 +1,11 @@
+<map id="ara::ucm::pkgmgr::GetSwClusterInfo" name="ara::ucm::pkgmgr::GetSwClusterInfo">
+<area shape="rect" id="Node000001" title="class GetSwClusterInfo for the UCM" alt="" coords="5,343,264,368"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html" title="ServiceProxy is the main class for the proxy skeleton." alt="" coords="41,240,228,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,294,137,342,132,342,132,294"/>
+<area shape="rect" id="Node000003" href="$classCClient.html" title="CClient class for any tcp or udp client sockets." alt="" coords="24,123,93,148"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="56,162,55,189,62,215,73,227,86,238,83,242,69,231,58,217,49,189,50,162"/>
+<area shape="rect" id="Node000004" href="$structara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy_1_1SP__Handle.html" title="SP_Handle struct for SP_Handle (ServiceProxyHandle)" alt="" coords="119,108,305,163"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="204,177,185,217,162,242,158,238,180,215,199,175"/>
+<area shape="rect" id="Node000005" href="$structara_1_1com_1_1proxy__skeleton_1_1SD__data.html" title=" " alt="" coords="119,5,305,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="215,59,215,108,209,108,209,59"/>
+</map>

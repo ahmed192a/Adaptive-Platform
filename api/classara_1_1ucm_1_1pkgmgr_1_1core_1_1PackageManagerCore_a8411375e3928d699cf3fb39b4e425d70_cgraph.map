@@ -1,0 +1,13 @@
+<map id="ara::ucm::pkgmgr::core::PackageManagerCore::Revert" name="ara::ucm::pkgmgr::core::PackageManagerCore::Revert">
+<area shape="rect" id="Node000001" title="[SWS_UCM_00236] NotAbleToRevertPackages when the revert hook fails; the packages then stay processed." alt="" coords="5,84,184,139"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a5cf71c7418222b33dbdb999100a9d603" title=" " alt="" coords="232,5,411,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,81,228,62,230,67,175,86"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ac6d0b22fcc5f6614bf0ff5f4483a983e" title="[SWS_UCM_00237] OperationNotPermitted once activated, i.e." alt="" coords="232,84,411,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="185,109,218,109,218,114,185,114"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a65fff8d120a966fa5094ce459bf621bb" title=" " alt="" coords="232,163,411,217"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="175,136,230,156,228,161,173,141"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1ucm_1_1pkgmgr_1_1core.html#af7a11871be65ddb9170cda8b99e95d8c" title="Stable, filesystem&#45;safe textual form of a TransferId (32 lower&#45;case hex digits)." alt="" coords="461,13,635,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="411,30,447,30,447,35,411,35"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a9900209d243b182bccef73a1608a045c" title=" " alt="" coords="459,84,637,139"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="411,109,445,109,445,114,411,114"/>
+</map>

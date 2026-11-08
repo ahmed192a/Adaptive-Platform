@@ -1,0 +1,7 @@
+<map id="ara::com::proxy_skeleton::skeleton::FieldNoNotifier&lt; T &gt;" name="ara::com::proxy_skeleton::skeleton::FieldNoNotifier&lt; T &gt;">
+<area shape="rect" id="Node000001" title="class Field No Notifier &#45;&#45;&gt; update event" alt="" coords="5,181,233,221"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Field.html" title="template &lt;typename T&gt; using FieldSetHandler = std::function&lt;T(const T &amp;data)&gt;;" alt="" coords="26,93,213,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,147,122,181,117,181,117,147"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html" title=" " alt="" coords="26,5,213,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="122,59,122,93,117,93,117,59"/>
+</map>

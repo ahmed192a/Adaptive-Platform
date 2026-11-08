@@ -1,0 +1,5 @@
+<map id="ara::com::someip::RequestTracker::Cancel" name="ara::com::someip::RequestTracker::Cancel">
+<area shape="rect" id="Node000001" title="Drop one request (e.g. on timeout). Its future yields a cancelled response." alt="" coords="108,5,304,45"/>
+<area shape="rect" id="Node000002" href="$com__api__test_8cpp.html#ad7b81058bf488916067b7fb69dfd4aa8" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

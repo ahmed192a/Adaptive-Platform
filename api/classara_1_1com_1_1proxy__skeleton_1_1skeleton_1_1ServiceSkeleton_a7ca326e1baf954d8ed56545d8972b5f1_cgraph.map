@@ -1,0 +1,7 @@
+<map id="ara::com::proxy_skeleton::skeleton::ServiceSkeleton::HandleCall" name="ara::com::proxy_skeleton::skeleton::ServiceSkeleton::HandleCall">
+<area shape="rect" id="Node000001" title="3&#45; HandleCall R" alt="" coords="5,30,203,85"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1Serializer.html#a6c5ec394bb39cb758b2590b8d1ac16fb" title="Get the Payload object of the serializer." alt="" coords="251,5,399,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,40,236,35,237,41,203,46"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1Serializer.html#af9f0e3e083c607e2e8a5fb3fae6bf793" title="serialize the data into the vector of bytes" alt="" coords="251,69,399,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,69,237,74,236,79,202,74"/>
+</map>

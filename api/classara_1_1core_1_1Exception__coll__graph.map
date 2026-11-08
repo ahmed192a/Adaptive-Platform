@@ -1,0 +1,9 @@
+<map id="ara::core::Exception" name="ara::core::Exception">
+<area shape="rect" id="Node000001" title=" " alt="" coords="9,181,159,207"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,120,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,131,84,180,78,181,66,133"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1ErrorCode.html" title=" " alt="" coords="145,93,295,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,128,104,183,101,179,189,124"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1ErrorDomain.html" title=" " alt="" coords="135,5,305,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="223,45,223,93,217,93,217,45"/>
+</map>

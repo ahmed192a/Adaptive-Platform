@@ -1,0 +1,28 @@
+var classara_1_1tsync_1_1SynchronizedTimeBaseConsumer =
+[
+    [ "Impl", "structara_1_1tsync_1_1SynchronizedTimeBaseConsumer_1_1Impl.html", "structara_1_1tsync_1_1SynchronizedTimeBaseConsumer_1_1Impl" ],
+    [ "PrecisionMeasurementNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a1405fb70fa93a27cb0cc385be978d36c", null ],
+    [ "StatusChangeNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#afdbcaf83b98cfa901938183b09a0f186", null ],
+    [ "SynchronizationStateChangeNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a071e5ed6f95a29e2baabb28fac43389e", null ],
+    [ "TimeLeapNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#aecba8cc26ea9a22d4f267814bf50b59a", null ],
+    [ "TimeValidationNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#ae5c14db42252690f118335e2842ea39e", null ],
+    [ "SynchronizedTimeBaseConsumer", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a27534d02a00ebed4b9a292d40c600548", null ],
+    [ "SynchronizedTimeBaseConsumer", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#abfdc8ea819c4a02e090e2a528d8ef4ac", null ],
+    [ "SynchronizedTimeBaseConsumer", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#aa9955795b9bb3d4c967d5dabe882b906", null ],
+    [ "~SynchronizedTimeBaseConsumer", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#aea53af5f823692ac043f50c824602db5", null ],
+    [ "GetRateDeviation", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a6b8aba9a4fa1ffb342b67423ab699d69", null ],
+    [ "GetTimeWithStatus", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a14a65d129949695e442cb17f6d56f290", null ],
+    [ "operator=", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a925412634815329102492cdaf906d241", null ],
+    [ "operator=", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#abd38961adcc418d8c0fa6d9f7181b35f", null ],
+    [ "RegisterStatusChangeNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a0689e0b54ed127cc48d06bd3f983dd40", null ],
+    [ "RegisterSynchronizationStateChangeNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a0dea6111d0cc791b437b9d6a8896bdd5", null ],
+    [ "RegisterTimeLeapNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a7e12029c0c4ffb5edc2ecbdcb36214e7", null ],
+    [ "RegisterTimePrecisionMeasurementNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#ab79639ba60e01930a3d9340ad43f1391", null ],
+    [ "RegisterTimeValidationNotification", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a17ac74a7d30187bba19348b4e931d8db", null ],
+    [ "UnregisterStatusChangeNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a72fd7219a78bfb8a2b8e3afd92d1644e", null ],
+    [ "UnregisterSynchronizationStateChangeNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#aa1a2bb041d8b435bbfac0f8a661fc24f", null ],
+    [ "UnregisterTimeLeapNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#ad89bb57946c3b090d18da4ce3a9b5333", null ],
+    [ "UnregisterTimePrecisionMeasurementNotifier", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a55a80e06c7ec24970ce289a3dfed9344", null ],
+    [ "UnregisterTimeValidationNotification", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#aeec4c0c536abbc44194fdfe6b2c95e66", null ],
+    [ "impl_", "classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#ad2117410c0697e0989f7ffd3585dd044", null ]
+];

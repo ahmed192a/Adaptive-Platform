@@ -1,0 +1,27 @@
+var persistency_8cpp =
+[
+    [ "ara::per::anonymous_namespace{persistency.cpp}::Registry", "structara_1_1per_1_1anonymous__namespace_02persistency_8cpp_03_1_1Registry.html", "structara_1_1per_1_1anonymous__namespace_02persistency_8cpp_03_1_1Registry" ],
+    [ "Configure", "persistency_8cpp.html#a69e4c21efc58a410864c56295bb7fc0f", null ],
+    [ "ConfigureFromEnvironment", "persistency_8cpp.html#a679da96a60174122a7e76ec82bd05e3e", null ],
+    [ "ConfigureFromFile", "persistency_8cpp.html#a39edf274d9c966320ca48ad6d578eb0c", null ],
+    [ "DeinitPer", "persistency_8cpp.html#ab35cb2ec977bdf593b90b4c1c652a0a7", null ],
+    [ "GetCurrentFileStorageSize", "persistency_8cpp.html#a067cc9a6245c50c73dd29990e8be1cf1", null ],
+    [ "GetCurrentKeyValueStorageSize", "persistency_8cpp.html#a479f716ec8310976a7cb96edd5e35445", null ],
+    [ "InitPer", "persistency_8cpp.html#ab06412eca5f76fa3e6bfd55be9bb4493", null ],
+    [ "Key", "persistency_8cpp.html#acaa0ccb8770a014cfc787c3a0c623b52", null ],
+    [ "Lookup", "persistency_8cpp.html#aeaad1db1e874e3a499f0146a84ce5c4a", null ],
+    [ "OpenFileStorage", "persistency_8cpp.html#ad3f51da2a13c28fc7c70f23954d3c8fe", null ],
+    [ "OpenFileStorageImpl", "persistency_8cpp.html#ad085258bd3d47ca7b9926bc81dbb2f1c", null ],
+    [ "OpenKeyValueStorage", "persistency_8cpp.html#a0629a9c4fda9f58138d47a9ae469b475", null ],
+    [ "OpenKeyValueStorageImpl", "persistency_8cpp.html#a3230707f204bbd8e76b28167a3e6303a", null ],
+    [ "RecoverAllFiles", "persistency_8cpp.html#add5b908d0ebfa6ceaf58ab4ce2a86abb", null ],
+    [ "RecoverKeyValueStorage", "persistency_8cpp.html#a9d1a0890d062ae509433d8063738c596", null ],
+    [ "Reg", "persistency_8cpp.html#a63c15f149c13fa8e55b49a80ee0583f0", null ],
+    [ "RegisterApplicationDataUpdateCallback", "persistency_8cpp.html#aca12f91cb18dbf72fc7c038ea4da5b45", null ],
+    [ "RegisterRecoveryReportCallback", "persistency_8cpp.html#a8208d7daeaaa2ff33ac97aa6f53cc92b", null ],
+    [ "Report", "persistency_8cpp.html#a05a64753052b7c9cbd0315d4b8c40b34", null ],
+    [ "ResetAllFiles", "persistency_8cpp.html#a416f3f5994a26c398b0ea9e9ab406081", null ],
+    [ "ResetKeyValueStorage", "persistency_8cpp.html#ad7e7a8c7aebf26d59e830724ca6116a4", null ],
+    [ "ResetPersistency", "persistency_8cpp.html#a427ee71a5e8e74de98a31b37fffe1f86", null ],
+    [ "UpdatePersistency", "persistency_8cpp.html#ab157b1d87000aec13df4424cd16abcf1", null ]
+];

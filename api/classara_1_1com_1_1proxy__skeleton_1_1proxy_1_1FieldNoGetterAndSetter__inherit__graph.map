@@ -1,0 +1,7 @@
+<map id="ara::com::proxy_skeleton::proxy::FieldNoGetterAndSetter&lt; T &gt;" name="ara::com::proxy_skeleton::proxy::FieldNoGetterAndSetter&lt; T &gt;">
+<area shape="rect" id="Node000001" title="FieldNoGetterAndSetter Class for field with no getter and no setter." alt="" coords="5,181,272,221"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Field.html" title="Field Base class for all fields." alt="" coords="45,93,232,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,147,141,181,136,181,136,147"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html" title="Event Base class for all events." alt="" coords="45,5,232,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="141,59,141,93,136,93,136,59"/>
+</map>

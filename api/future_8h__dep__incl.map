@@ -1,0 +1,62 @@
+<map id="src/ara/core/future.h" name="src/ara/core/future.h">
+<area shape="rect" id="Node000001" title="ara::core::Future&lt;T,E&gt; and ara::core::Promise&lt;T,E&gt; (SWS_CORE_00321 ff.)" alt="" coords="554,5,707,31"/>
+<area shape="rect" id="Node000002" href="$future__test_8cpp.html" title=" " alt="" coords="46,79,189,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="541,32,382,53,202,81,189,84,188,78,201,76,382,48,540,27"/>
+<area shape="rect" id="Node000003" href="$span__swap__test_8cpp.html" title=" " alt="" coords="213,79,389,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="570,36,381,81,380,76,569,31"/>
+<area shape="rect" id="Node000004" href="$core_2spec__conformance__test_8cpp.html" title=" " alt="" coords="413,79,640,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="606,41,553,81,550,76,603,37"/>
+<area shape="rect" id="Node000005" href="$promise_8h.html" title="ara::core::Promise (SWS_CORE_00340); implemented together with Future." alt="" coords="833,86,999,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="686,32,875,83,874,89,684,37"/>
+<area shape="rect" id="Node000007" href="$state__client_8h.html" title=" " alt="" coords="1973,167,2110,207"/>
+<area shape="poly" id="edge14_Node000001_Node000007" title=" " alt="" coords="721,27,1973,175,1972,180,721,33"/>
+<area shape="rect" id="Node000015" href="$health__monitor_8h.html" title="PHM engine: owns the supervisions, aggregates global supervision status and dispatches recovery." alt="" coords="664,79,808,119"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="659,37,712,76,709,81,656,41"/>
+<area shape="rect" id="Node000006" href="$demo_2supervised__service_2main_8cpp.html" title=" " alt="" coords="408,255,571,295"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="904,125,870,168,847,191,821,209,571,260,570,254,819,204,844,186,866,165,900,121"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="1013,105,1973,177,1972,183,1013,110"/>
+<area shape="rect" id="Node000008" href="$sm__main_8cpp.html" title=" " alt="" coords="2427,262,2589,287"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="2124,200,2414,252,2451,259,2450,265,2413,257,2123,205"/>
+<area shape="rect" id="Node000009" href="$state__manage_8h.html" title=" " alt="" coords="2614,262,2794,287"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="2124,194,2340,217,2602,252,2645,259,2644,265,2601,257,2340,223,2123,199"/>
+<area shape="rect" id="Node000011" href="$stateclient_8cpp.html" title=" " alt="" coords="1621,262,1813,287"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="1960,212,1761,265,1760,259,1959,207"/>
+<area shape="rect" id="Node000012" href="$exec__test_8cpp.html" title=" " alt="" coords="1837,262,2032,287"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="2008,218,1951,264,1948,259,2005,214"/>
+<area shape="rect" id="Node000013" href="$gap__closure__test_8cpp.html" title=" " alt="" coords="2056,255,2240,295"/>
+<area shape="poly" id="edge12_Node000007_Node000013" title=" " alt="" coords="2077,213,2126,252,2123,257,2074,217"/>
+<area shape="rect" id="Node000014" href="$state__client_8cpp.html" title="Implementation of the StateClient class." alt="" coords="2265,255,2402,295"/>
+<area shape="poly" id="edge13_Node000007_Node000014" title=" " alt="" coords="2119,208,2270,252,2269,257,2118,213"/>
+<area shape="rect" id="Node000010" href="$state__manage_8cpp.html" title=" " alt="" coords="2607,343,2801,368"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="2707,301,2707,342,2701,342,2701,301"/>
+<area shape="poly" id="edge17_Node000015_Node000006" title=" " alt="" coords="651,122,454,169,447,189,450,211,461,234,475,253,471,256,457,236,445,213,441,188,450,165,650,117"/>
+<area shape="rect" id="Node000016" href="$platform__node_8cpp.html" title=" " alt="" coords="5,255,184,295"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="651,122,439,169,282,215,151,257,149,252,281,210,438,164,650,116"/>
+<area shape="rect" id="Node000017" href="$phm__test__util_8h.html" title=" " alt="" coords="1163,167,1330,207"/>
+<area shape="poly" id="edge18_Node000015_Node000017" title=" " alt="" coords="822,116,1009,148,1163,171,1163,177,1008,153,821,122"/>
+<area shape="rect" id="Node000021" href="$health__monitor_8cpp.html" title=" " alt="" coords="664,167,808,207"/>
+<area shape="poly" id="edge22_Node000015_Node000021" title=" " alt="" coords="739,133,739,166,733,166,733,133"/>
+<area shape="rect" id="Node000022" href="$recovery__action_8h.html" title="ara::phm::RecoveryAction (SWS_PHM) &#45; State Management&#39;s recovery callback." alt="" coords="883,167,1043,207"/>
+<area shape="poly" id="edge23_Node000015_Node000022" title=" " alt="" coords="800,121,914,164,912,169,798,126"/>
+<area shape="rect" id="Node000025" href="$supervised__entity_8h.html" title="ara::phm::SupervisedEntity (SWS_PHM) &#45; checkpoint reporting API for applications." alt="" coords="465,167,639,207"/>
+<area shape="poly" id="edge29_Node000015_Node000025" title=" " alt="" coords="684,127,593,169,591,164,682,122"/>
+<area shape="rect" id="Node000018" href="$health__monitor__test_8cpp.html" title=" " alt="" coords="811,255,957,295"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="1155,212,958,259,957,253,1153,207"/>
+<area shape="rect" id="Node000019" href="$phm_2spec__conformance__test_8cpp.html" title=" " alt="" coords="1165,255,1392,295"/>
+<area shape="poly" id="edge20_Node000017_Node000019" title=" " alt="" coords="1261,219,1274,254,1269,255,1256,220"/>
+<area shape="rect" id="Node000020" href="$supervision__test_8cpp.html" title=" " alt="" coords="1417,255,1597,295"/>
+<area shape="poly" id="edge21_Node000017_Node000020" title=" " alt="" coords="1318,209,1451,252,1449,257,1316,214"/>
+<area shape="poly" id="edge24_Node000022_Node000006" title=" " alt="" coords="870,208,864,209,583,257,571,260,570,254,582,252,864,204,869,203"/>
+<area shape="poly" id="edge26_Node000022_Node000018" title=" " alt="" coords="938,219,903,256,899,253,934,215"/>
+<area shape="poly" id="edge27_Node000022_Node000019" title=" " alt="" coords="1046,208,1210,252,1209,257,1045,213"/>
+<area shape="rect" id="Node000023" href="$examples_2phm__demo_2main_8cpp.html" title=" " alt="" coords="595,255,787,295"/>
+<area shape="poly" id="edge25_Node000022_Node000023" title=" " alt="" coords="891,213,751,257,749,252,889,208"/>
+<area shape="rect" id="Node000024" href="$recovery__action_8cpp.html" title=" " alt="" coords="981,255,1141,295"/>
+<area shape="poly" id="edge28_Node000022_Node000024" title=" " alt="" coords="996,214,1041,252,1038,256,993,218"/>
+<area shape="poly" id="edge31_Node000025_Node000006" title=" " alt="" coords="532,220,505,256,501,253,528,216"/>
+<area shape="poly" id="edge30_Node000025_Node000016" title=" " alt="" coords="451,209,185,259,184,254,450,204"/>
+<area shape="poly" id="edge33_Node000025_Node000018" title=" " alt="" coords="639,207,812,252,811,257,637,213"/>
+<area shape="poly" id="edge32_Node000025_Node000023" title=" " alt="" coords="595,211,662,252,659,257,592,216"/>
+<area shape="rect" id="Node000026" href="$supervised__entity_8cpp.html" title=" " alt="" coords="209,255,383,295"/>
+<area shape="poly" id="edge34_Node000025_Node000026" title=" " alt="" coords="484,214,353,257,351,252,482,209"/>
+</map>

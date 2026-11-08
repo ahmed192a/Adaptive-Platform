@@ -1,0 +1,21 @@
+<map id="src/OTA/meta_data_storage.cpp" name="src/OTA/meta_data_storage.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="109,5,337,31"/>
+<area shape="rect" id="Node000002" href="$meta__data__storage_8h.html" title=" " alt="" coords="143,79,303,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,31,226,65,221,65,221,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,79,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,107,85,149,83,144,193,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="103,152,165,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="211,106,161,145,158,141,207,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="190,152,257,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="226,104,226,138,221,138,221,104"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="281,152,361,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="241,102,295,141,292,146,237,106"/>
+<area shape="rect" id="Node000007" href="$src_2OTA_2metadata_8h.html" title=" " alt="" coords="385,152,483,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="258,101,388,145,386,150,256,107"/>
+<area shape="rect" id="Node000008" href="$updateversion_8h.html" title=" " alt="" coords="289,225,416,251"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="423,179,378,218,374,214,419,175"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="441,225,587,251"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="449,175,493,214,489,218,445,179"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="323,299,382,324"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="355,251,355,285,350,285,350,251"/>
+</map>

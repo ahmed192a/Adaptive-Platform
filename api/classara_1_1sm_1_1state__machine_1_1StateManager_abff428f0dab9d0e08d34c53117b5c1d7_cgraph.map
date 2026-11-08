@@ -1,0 +1,5 @@
+<map id="ara::sm::state_machine::StateManager::Start" name="ara::sm::state_machine::StateManager::Start">
+<area shape="rect" id="Node000001" title="Request the start&#45;up state of machine, remember the outcome and start offering the service." alt="" coords="5,5,180,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1state__machine_1_1StateManager.html#a381554936148c940af4e30e282e7fb73" title=" " alt="" coords="228,5,403,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,23,214,23,214,28,180,28"/>
+</map>

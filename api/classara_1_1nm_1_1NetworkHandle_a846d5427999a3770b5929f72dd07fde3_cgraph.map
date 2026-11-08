@@ -1,0 +1,9 @@
+<map id="ara::nm::NetworkHandle::RegisterNetworkStateChangeNotifier" name="ara::nm::NetworkHandle::RegisterNetworkStateChangeNotifier">
+<area shape="rect" id="Node000001" title="One notifier per kind; registering again overwrites. Empty notifier &#45;&gt; kInvalidHandler." alt="" coords="5,55,228,110"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="294,5,430,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,54,280,42,281,47,229,59"/>
+<area shape="rect" id="Node000003" href="$Testing_2crypto_2CMakeLists_8txt.html#a8c8f99e75122d6d25dc50972856ea684" title=" " alt="" coords="343,70,381,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,80,329,80,329,85,228,85"/>
+<area shape="rect" id="Node000004" href="$classara_1_1nm_1_1internal_1_1PortRegistry.html#a652e55f9a0fa4d3f31459793f12c3853" title="All live channels bound to the port (several channels are aggregated, SWS_ANM_00083/00084)." alt="" coords="276,120,448,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="229,106,263,114,262,119,228,111"/>
+</map>

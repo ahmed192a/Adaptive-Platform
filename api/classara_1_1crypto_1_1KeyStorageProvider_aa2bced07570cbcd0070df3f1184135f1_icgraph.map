@@ -1,0 +1,9 @@
+<map id="ara::crypto::KeyStorageProvider::CreateVolatile" name="ara::crypto::KeyStorageProvider::CreateVolatile">
+<area shape="rect" id="Node000001" title="Volatile provider: only non&#45;persistent slots." alt="" coords="465,35,693,75"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto_1_1cryp.html#ae8c7d7d73daddcd1304f8173fec735eb" title="SWS factory: a shared volatile key storage provider (persistent slots need KeyStorageProvider::Create..." alt="" coords="236,5,417,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="451,42,417,38,418,33,452,37"/>
+<area shape="rect" id="Node000004" href="$key__slot__test_8cpp.html#acb4af63b6bbe2450e3b193be086dc311" title=" " alt="" coords="299,70,354,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="452,71,355,82,354,77,451,66"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a96dec03fe75bb0fbc0a168bc15b78660" title=" " alt="" coords="5,5,188,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="222,28,188,28,188,23,222,23"/>
+</map>

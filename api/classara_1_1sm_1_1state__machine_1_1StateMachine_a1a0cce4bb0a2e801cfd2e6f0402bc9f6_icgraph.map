@@ -1,0 +1,18 @@
+<map id="ara::sm::state_machine::StateMachine::RequestTransition" name="ara::sm::state_machine::StateMachine::RequestTransition">
+<area shape="rect" id="Node000001" title="[SWS_SM_00600] RequestTransition." alt="" coords="517,117,760,157"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1state__machine_1_1NetworkHandleBridge.html#a733e53393c0a471bea79a03ff9db698a" title="Called by Network Management when the handle changed state." alt="" coords="295,53,469,108"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="533,116,469,102,470,97,534,111"/>
+<area shape="rect" id="Node000006" href="$namespaceap_1_1demo.html#aa008d60b80abe3ff12d61fa359adf852" title="Run one update; progress is printed to out unless options.quiet." alt="" coords="301,168,463,193"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="509,162,457,171,456,165,508,156"/>
+<area shape="rect" id="Node000003" href="$state__machine__test_8cpp.html#a97ff955659bd9d47619dec8dedb7432a" title=" " alt="" coords="99,5,153,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,54,246,45,153,25,154,20,247,39,282,48"/>
+<area shape="rect" id="Node000004" href="$state__machine__test_8cpp.html#aeaa2a5f1db1bdcb02fcac77375d53aaa" title=" " alt="" coords="99,55,153,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="281,78,153,71,154,66,281,73"/>
+<area shape="rect" id="Node000005" href="$state__machine__test_8cpp.html#ae99f2bd5771bd14b71d3034a5f960c05" title=" " alt="" coords="99,104,153,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="281,97,154,116,153,110,281,92"/>
+<area shape="poly" id="edge8_Node000006_Node000006" title=" " alt="" coords="428,159,425,154,417,150,382,147,354,149,340,154,337,159,344,166,341,170,332,160,336,150,353,143,382,141,418,145,428,150,432,156"/>
+<area shape="rect" id="Node000007" href="$structapdash_1_1anonymous__namespace_02dash__features_8cpp_03_1_1UpdateSim.html#a3dee4fb23da01d66811fadeb671984ef" title=" " alt="" coords="5,153,247,208"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="287,183,247,183,247,178,287,178"/>
+<area shape="rect" id="Node000008" href="$demo_2ota__updater_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="99,232,153,257"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="327,200,247,222,154,242,153,237,246,217,326,195"/>
+</map>

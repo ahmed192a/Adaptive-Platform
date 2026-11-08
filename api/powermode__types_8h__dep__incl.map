@@ -1,0 +1,12 @@
+<map id="src/ara/sm/powermode/powermode_types.h" name="src/ara/sm/powermode/powermode_types.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="141,5,312,45"/>
+<area shape="rect" id="Node000002" href="$powermode__return__types_8h.html" title=" " alt="" coords="55,93,259,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,58,175,95,171,91,201,55"/>
+<area shape="rect" id="Node000005" href="$powermode__skeleton_8h.html" title=" " alt="" coords="209,181,386,221"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="252,55,274,92,290,139,298,181,292,182,285,141,270,94,248,58"/>
+<area shape="rect" id="Node000003" href="$powermode__common_8h.html" title=" " alt="" coords="5,181,184,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="137,146,111,183,106,180,133,143"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="201,138,268,179,265,184,198,143"/>
+<area shape="rect" id="Node000004" href="$powermode__proxy_8h.html" title=" " alt="" coords="9,269,180,309"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="97,235,97,269,92,269,92,235"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,20,60,45"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02someip__sd__test_8cpp_03.html#ab75a96371f346f71ad2b6047a1b26923" title=" " alt="" coords="108,5,288,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,30,95,30,95,35,60,35"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02someip__sd__test_8cpp_03.html#a8847b2b88705289851f1d8a771247b5a" title=" " alt="" coords="336,13,548,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,30,322,30,322,35,288,35"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="ara::sm::state_machine::NetworkHandleBridge::Map" name="ara::sm::state_machine::NetworkHandleBridge::Map">
+<area shape="rect" id="Node000001" title="When handle reaches state, request targetState on the state machine." alt="" coords="108,23,317,63"/>
+<area shape="rect" id="Node000002" href="$state__machine__test_8cpp.html#a97ff955659bd9d47619dec8dedb7432a" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,29,60,24,61,19,95,24"/>
+<area shape="rect" id="Node000003" href="$state__machine__test_8cpp.html#aeaa2a5f1db1bdcb02fcac77375d53aaa" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,62,61,66,60,61,94,57"/>
+</map>

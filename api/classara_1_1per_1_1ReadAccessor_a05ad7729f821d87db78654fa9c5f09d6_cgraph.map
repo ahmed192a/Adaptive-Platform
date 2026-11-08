@@ -1,0 +1,7 @@
+<map id="ara::per::ReadAccessor::ReadRaw" name="ara::per::ReadAccessor::ReadRaw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,176,77"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="224,5,397,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,42,210,37,211,43,176,48"/>
+<area shape="rect" id="Node000003" href="$classara_1_1per_1_1ReadAccessor.html#ac3ea93def9b173e1862a2f3ea0db0947" title=" " alt="" coords="225,69,396,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,67,212,72,211,78,176,72"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,75,102"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NetworkHandle.html#a9c1c358cb07b86f4ee8a3605147d2ee6" title="kFullCom iff the network is in Network Mode (RepeatMessage/NormalOperation/ReadySleep),..." alt="" coords="123,69,304,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,87,109,87,109,92,75,92"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="370,5,506,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="284,67,356,46,358,51,285,72"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="370,69,506,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="304,87,357,87,357,92,304,92"/>
+<area shape="rect" id="Node000005" href="$classara_1_1nm_1_1internal_1_1PortRegistry.html#a652e55f9a0fa4d3f31459793f12c3853" title="All live channels bound to the port (several channels are aggregated, SWS_ANM_00083/00084)." alt="" coords="352,133,524,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="285,107,355,127,353,132,284,112"/>
+</map>

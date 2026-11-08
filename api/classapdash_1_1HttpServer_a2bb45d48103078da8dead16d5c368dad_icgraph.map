@@ -1,0 +1,7 @@
+<map id="apdash::HttpServer::Serve" name="apdash::HttpServer::Serve">
+<area shape="rect" id="Node000001" title=" " alt="" coords="395,5,541,45"/>
+<area shape="rect" id="Node000002" href="$classapdash_1_1HttpServer.html#ab11a65b3af35acb1354e0982a3ff82f4" title=" " alt="" coords="200,5,347,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,28,347,28,347,23,381,23"/>
+<area shape="rect" id="Node000003" href="$classapdash_1_1HttpServer.html#af9f1196454d07e15f83d98ae5433ce98" title="port 0 picks a free port. Returns false on failure." alt="" coords="5,5,152,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="186,28,152,28,152,23,186,23"/>
+</map>

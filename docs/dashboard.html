@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Adaptive Platform Console</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / docs</div><h1 id="adaptive-platform-console">Adaptive Platform Console</h1>
+<p><code>ap_dashboard</code> is a self-contained demo node: it hosts the new clusters (<code>ara::phm</code>, <code>ara::diag</code>, <code>ara::per</code>,
+<code>ara::crypto</code>, <code>ara::log</code>) and controls the legacy <strong>Execution Management</strong> process, then serves a web UI
+and a small JSON API. It is meant for local demos and for end-to-end testing — it binds to <code>127.0.0.1</code> by default
+and has no authentication, so do not expose it to a network.</p>
+<pre><code class="language-bash">ap_dashboard [--port 8080] [--bind 127.0.0.1] [--data-dir DIR] [--platform-dir DIR] [--web-root DIR]
+</code></pre>
+<p><code>--platform-dir</code> must contain <code>Adaptive_Platform</code>, <code>Manifests/</code> and <code>processes/</code> (the build tree's <code>App/</code> folder, which is
+the default when the binary is run from the build tree).</p>
+<h2 id="walkthrough">Walkthrough</h2>
+<h3 id="1-execution-management">1 · Execution Management</h3>
+<p><strong>Start platform</strong> launches the real Execution Management process. It reads the machine and execution manifests,
+changes function-group states and starts/terminates the SD, SM, UCM and OTA processes as the State Manager requests.
+The console parses its log into function-group states, a process table and a timeline, and lets you browse each
+process' output.</p>
+<p><img alt="Execution Management" src="img/02-execution-management.png" /></p>
+<h3 id="2-platform-health-management">2 · Platform Health Management</h3>
+<p>Three supervised workers (<code>Brake</code>, <code>Infotainment</code>, <code>Telematics</code>) report alive checkpoints every 50 ms; each is
+supervised by an alive supervision (4 ± 2 indications per 200 ms) inside its own function group.</p>
+<ul>
+<li><strong>Inject fault</strong> stops a worker's heartbeat → supervision <code>OK → FAILED → EXPIRED</code>.</li>
+<li>With <strong>auto recovery</strong> on, the recovery action restarts the function group (off → on) and the worker returns to <code>OK</code>.</li>
+<li>With it off, the recovery action declines (<code>kSMCanNotHandleRecovery</code>) → PHM escalates to the <strong>watchdog</strong> and the
+  console shows the reset banner. <strong>Reset ECU</strong> re-initialises the platform and increments the boot counter.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Recovered</th>
+<th>Watchdog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="img/03-phm.png" /></td>
+<td><img alt="" src="img/03-phm-watchdog.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-diagnostics-uds">3 · Diagnostics (UDS)</h3>
+<p>A transport-independent UDS server: session control with S3 timeout, <code>ReadDataByIdentifier</code>, <code>WriteDataByIdentifier</code>,
+<code>TesterPresent</code>, <code>ECUReset</code> and a routine. Writing the vehicle name is rejected in the default session
+(<code>7F 2E 31</code>) and accepted in the extended session; the value is stored through <code>ara::per</code>.</p>
+<p><img alt="Diagnostics" src="img/04-diagnostics.png" /></p>
+<h3 id="4-persistency-and-cryptography">4 · Persistency and Cryptography</h3>
+<p>Edit the key-value store (CRC-protected, atomically persisted), or try AES-GCM sealing — flipping one bit of the
+ciphertext is detected — and Ed25519 / ECDSA signatures.</p>
+<table>
+<thead>
+<tr>
+<th>Persistency</th>
+<th>Cryptography</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="img/05-persistency.png" /></td>
+<td><img alt="" src="img/06-crypto.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="demo-video">Demo video</h2>
+<p><code>doc/img/platform-demo.mp4</code> (≈ 75 s) shows the whole scenario. Regenerate it with:</p>
+<pre><code class="language-bash">ap_dashboard --port 8099 &amp;
+python3 Tools/demo/record_demo.py --out doc/img --video
+</code></pre>
+<p>The script waits on real platform state instead of fixed delays and exits non-zero if something misbehaves
+(a fault is not detected, a write is not read back, tampering is not caught), so it also runs in CI.</p>
+<h2 id="json-api">JSON API</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /api/overview?since=&lt;seq&gt;</code></td>
+<td>state of PHM, UDS session, persistency, EM, plus new log lines</td>
+</tr>
+<tr>
+<td><code>POST /api/phm/hang</code> · <code>/api/phm/heal</code> <code>{"name":"Brake"}</code></td>
+<td>inject / clear a fault</td>
+</tr>
+<tr>
+<td><code>POST /api/phm/auto-recovery</code> <code>{"enabled":false}</code></td>
+<td>choose the recovery behaviour</td>
+</tr>
+<tr>
+<td><code>POST /api/system/reset</code></td>
+<td>simulate the watchdog / ECU reset</td>
+</tr>
+<tr>
+<td><code>POST /api/diag</code> <code>{"request":"22 F1 90"}</code></td>
+<td>send a UDS request</td>
+</tr>
+<tr>
+<td><code>POST /api/per/set</code> · <code>/api/per/delete</code></td>
+<td>edit the key-value store</td>
+</tr>
+<tr>
+<td><code>POST /api/crypto/{hash,hmac,seal,open,sign,verify}</code></td>
+<td>crypto playground</td>
+</tr>
+<tr>
+<td><code>POST /api/em/start</code> · <code>/api/em/stop</code>, <code>GET /api/em/log?name=EM.txt</code></td>
+<td>control and observe Execution Management</td>
+</tr>
+</tbody>
+</table></div><footer>Adaptive Platform</footer></body></html>

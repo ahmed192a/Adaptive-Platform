@@ -1,0 +1,5 @@
+<map id="ara::phm::SetCheckpointSink" name="ara::phm::SetCheckpointSink">
+<area shape="rect" id="Node000001" title="Replaces the transport used by all SupervisedEntity objects created afterwards (default: the in&#45;proce..." alt="" coords="108,5,319,31"/>
+<area shape="rect" id="Node000002" href="$health__monitor__test_8cpp.html#a3000545880a0208973a55358e0d240fc" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,21,60,21,60,15,95,15"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ara::nm::NmChannel::Create" name="ara::nm::NmChannel::Create">
+<area shape="rect" id="Node000001" title="Fails with kInvalidConfig when a timer is zero. Starts in BusSleep." alt="" coords="5,5,161,45"/>
+<area shape="rect" id="Node000002" href="$structara_1_1nm_1_1NmPduLayout.html#aaff681d2cba1e8d2098fd90acaf971cc" title="True if the layout is consistent (positions in range, no overlap, PNI needs a CBV)." alt="" coords="209,5,380,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,23,196,23,196,28,162,28"/>
+</map>

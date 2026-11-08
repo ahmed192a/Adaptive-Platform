@@ -1,0 +1,30 @@
+<map id="Socket::Send" name="Socket::Send">
+<area shape="rect" id="Node000001" title="Send the data to the client TCP." alt="" coords="677,189,783,214"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Field.html#a0eaf94e13ba7680dca566c947f421edd" title="Handle Get method." alt="" coords="416,5,617,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="716,177,682,118,657,86,628,59,607,48,610,43,631,55,661,83,686,115,720,175"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Field.html#aed5fb99ae95ec01c936d560d9dd333ad" title="Handle set method." alt="" coords="417,69,616,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="705,181,670,151,628,124,600,112,603,107,631,119,673,147,708,177"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html#a996affe419e30f36887b4f6cef45849e" title="Dispatch the requested methods from package management server." alt="" coords="404,134,629,189"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="663,192,629,185,630,180,664,186"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a3092b11c8f112c9e7cbea2972f2e2dbd" title="No Handler &#45;&#45;&gt; handle error." alt="" coords="418,213,615,267"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="664,216,616,225,615,219,663,211"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a9fb5c015b920bfc8b7aab330d138fba8" title="NoServiceHandler &#45;&#45;&gt; handle error." alt="" coords="418,291,615,346"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="706,226,672,254,631,281,604,294,602,289,628,276,669,250,703,221"/>
+<area shape="rect" id="Node000013" href="$classserviceRegistry.html#a4edf9a057a5fbcd4f1a9bfaf57680142" title=" " alt="" coords="441,387,592,413"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="721,228,687,294,662,329,631,361,604,378,574,390,572,385,601,373,628,357,658,326,683,291,716,226"/>
+<area shape="rect" id="Node000003" href="$classskeleton.html#ae2dc7c3be1a5325ca85f1895e42e9847" title=" " alt="" coords="147,37,317,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="403,41,318,50,317,45,402,35"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="403,79,317,70,318,64,404,74"/>
+<area shape="rect" id="Node000007" href="$classara_1_1sm_1_1triggerin_1_1skeleton_1_1Trigger__In__skeleton.html#ac4016d5febe5f740e7e343db0a5fe636" title=" " alt="" coords="134,163,330,232"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="404,226,330,215,331,209,405,221"/>
+<area shape="rect" id="Node000009" href="$sm__main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main code for State management." alt="" coords="205,257,259,282"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="404,302,259,277,260,271,405,297"/>
+<area shape="rect" id="Node000010" href="$classUCM__Server.html#a6660c287bb2d56a35155ca6bfcc63665" title=" " alt="" coords="138,306,326,331"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="404,321,326,321,326,316,404,316"/>
+<area shape="rect" id="Node000012" href="$classara_1_1sm_1_1server_1_1StateManager.html#aef239b4032ea73422b1f44b9696e7e1e" title=" " alt="" coords="108,355,356,381"/>
+<area shape="poly" id="edge12_Node000008_Node000012" title=" " alt="" coords="405,341,306,358,305,353,404,335"/>
+<area shape="rect" id="Node000011" href="$ucm__server_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main Function." alt="" coords="5,306,60,331"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="124,321,60,321,60,316,124,316"/>
+<area shape="rect" id="Node000014" href="$service__descovery_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main function of service discovery" alt="" coords="205,405,259,430"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="428,408,260,418,259,413,427,403"/>
+</map>

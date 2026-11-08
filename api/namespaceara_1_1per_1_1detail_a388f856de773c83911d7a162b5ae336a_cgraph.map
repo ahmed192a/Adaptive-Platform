@@ -1,0 +1,7 @@
+<map id="ara::per::detail::WriteFileAtomic" name="ara::per::detail::WriteFileAtomic">
+<area shape="rect" id="Node000001" title="Writes content to &lt;target&gt;.tmp, fsync()s it, optionally keeps the previous version as &lt;target&gt;...." alt="" coords="5,35,188,75"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="257,5,431,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,41,244,35,244,40,188,47"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per_1_1detail.html#add0905aec8ff1071c2b2589416c9d467" title="fsync() of a directory so that renames are durable." alt="" coords="236,70,452,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,62,223,66,222,72,188,68"/>
+</map>

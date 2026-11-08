@@ -1,0 +1,13 @@
+<map id="ara::diag::DiagnosticServer::SetDtcSnapshot" name="ara::diag::DiagnosticServer::SetDtcSnapshot">
+<area shape="rect" id="Node000001" title="Attaches a snapshot record (freeze frame): the DIDs are encoded as 0x19 sub 0x04 expects them." alt="" coords="328,73,527,113"/>
+<area shape="rect" id="Node000002" href="$namespaceap_1_1demo.html#a40b08d7ec94e9f0672c982eb6b2cd5d7" title="Runs the scripted session; when out is given a readable trace is printed as it goes." alt="" coords="108,55,280,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,83,280,79,281,74,315,78"/>
+<area shape="rect" id="Node000006" href="$diag__gap__test_8cpp.html#ac7adffc0ac2a3d0bf3ae5031cf77a123" title=" " alt="" coords="159,104,229,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="315,107,229,116,229,111,314,102"/>
+<area shape="rect" id="Node000003" href="$demo_2uds__tester_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="138,53,60,29,61,24,140,48"/>
+<area shape="rect" id="Node000004" href="$uds__scenario__test_8cpp.html#a7c89ea12399a9926fe4db513afc9d185" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+<area shape="rect" id="Node000005" href="$uds__scenario__test_8cpp.html#a8ce2aefd7bac208eb40170a350bfa28c" title=" " alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="134,86,109,94,61,110,59,105,107,89,132,81"/>
+</map>

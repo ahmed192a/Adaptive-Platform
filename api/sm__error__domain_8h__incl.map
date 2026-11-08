@@ -1,0 +1,18 @@
+<map id="src/ara/sm/sm_error_domain.h" name="src/ara/sm/sm_error_domain.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="39,5,191,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,240,72,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,48,47,68,25,95,15,128,15,164,22,198,31,227,26,228,17,199,10,165,10,128,20,92,43,64,71,43"/>
+<area shape="rect" id="Node000003" href="$error__code_8h.html" title=" " alt="" coords="35,93,195,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,46,117,79,112,79,112,46"/>
+<area shape="rect" id="Node000004" href="$error__domain_8h.html" title=" " alt="" coords="177,167,356,192"/>
+<area shape="poly" id="edge9_Node000001_Node000004" title=" " alt="" coords="147,43,178,65,209,91,235,123,255,153,251,156,230,126,205,95,175,69,144,48"/>
+<area shape="poly" id="edge8_Node000003_Node000002" title=" " alt="" coords="104,121,85,142,66,168,54,198,46,227,41,226,49,196,62,165,80,138,100,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="140,116,231,158,229,163,138,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="77,167,153,192"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="117,119,117,153,112,153,112,119"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="231,195,86,239,85,234,229,189"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="174,240,261,265"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="261,194,235,230,231,227,256,191"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="285,240,344,265"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="277,191,302,227,297,230,272,194"/>
+</map>

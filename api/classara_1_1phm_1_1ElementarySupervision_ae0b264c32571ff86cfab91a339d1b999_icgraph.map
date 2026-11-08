@@ -1,0 +1,10 @@
+<map id="ara::phm::ElementarySupervision::IsActive" name="ara::phm::ElementarySupervision::IsActive">
+<area shape="rect" id="Node000001" title=" " alt="" coords="395,37,633,77"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1ElementarySupervision.html#aa7140e17ba2e4c7925adf923d37628b7" title="Time progressed to now (evaluates cycles / timeouts)." alt="" coords="108,5,347,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,45,347,41,347,36,381,40"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1ElementarySupervision.html#ab293932f9283ed85af27d24ceb08e42c" title="A checkpoint of one of Checkpoints() was reported at now." alt="" coords="108,69,347,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="381,75,347,79,347,73,381,70"/>
+<area shape="rect" id="Node000003" href="$phm_2spec__conformance__test_8cpp.html#a0a139bd8c8dd1900b495d1d811a77883" title=" " alt="" coords="5,45,60,70"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,50,61,56,60,50,94,45"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="94,70,60,64,61,59,95,65"/>
+</map>

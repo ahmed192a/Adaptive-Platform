@@ -1,0 +1,21 @@
+<map id="ara::nm::NetworkHandle::RegisterNetworkStateChangeNotifier" name="ara::nm::NetworkHandle::RegisterNetworkStateChangeNotifier">
+<area shape="rect" id="Node000001" title="One notifier per kind; registering again overwrites. Empty notifier &#45;&gt; kInvalidHandler." alt="" coords="276,217,499,272"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NetworkHandle.html#a8de22e13d41ef3254d51f8464ad104b7" title="Overloads with an executor (SWS_ANM_01014, 01015)." alt="" coords="5,5,228,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="357,207,302,139,266,104,227,74,207,62,209,58,229,69,269,100,306,136,362,204"/>
+<area shape="rect" id="Node000003" href="$nm__gap__test_8cpp.html#ae347f5a37e9f03978b8ccd42e9dde6ed" title=" " alt="" coords="89,84,144,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="347,210,293,164,261,142,227,123,184,109,144,102,145,96,185,104,229,118,263,137,296,160,351,206"/>
+<area shape="rect" id="Node000004" href="$nm__spec__test_8cpp.html#a5abe0d01101f1d681cb872c72d2f581b" title=" " alt="" coords="89,133,144,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="322,213,276,192,227,173,183,160,144,153,145,147,185,155,229,167,278,187,325,209"/>
+<area shape="rect" id="Node000005" href="$nm__gap__test_8cpp.html#abacf50daf77653e13d93e8b472a78c26" title=" " alt="" coords="82,183,151,208"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="262,225,151,204,152,199,263,219"/>
+<area shape="rect" id="Node000006" href="$nm__gap__test_8cpp.html#aa97e54bffc4ea0164126df662c276642" title=" " alt="" coords="82,232,151,257"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="262,247,151,247,151,242,262,242"/>
+<area shape="rect" id="Node000007" href="$nm__gap__test_8cpp.html#a061b421b727d3aaf79b4d6e81664c0db" title=" " alt="" coords="82,281,151,307"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="263,270,152,290,151,285,262,265"/>
+<area shape="rect" id="Node000008" href="$nm__spec__test_8cpp.html#a5ef708341c4f78e6ac72b51a16a70e79" title=" " alt="" coords="82,331,151,356"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="323,281,229,321,152,340,151,335,227,315,321,276"/>
+<area shape="rect" id="Node000009" href="$nm__spec__test_8cpp.html#a88744ea31cc1fab65d34777faf493cef" title=" " alt="" coords="82,380,151,405"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="350,284,295,329,263,351,229,370,190,384,152,391,151,386,188,379,227,365,260,346,292,325,347,280"/>
+<area shape="rect" id="Node000010" href="$nm__spec__test_8cpp.html#a88b7123a23b19dd2851bffa22ad3ea1c" title=" " alt="" coords="82,429,151,455"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="363,285,308,354,271,389,229,419,190,435,152,442,151,437,189,430,227,414,267,385,304,351,359,281"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="ara::log::detail::Emit" name="ara::log::detail::Emit">
+<area shape="rect" id="Node000001" title=" " alt="" coords="400,13,555,38"/>
+<area shape="rect" id="Node000002" href="$classara_1_1log_1_1LogStream.html#a0498262e381d31148f5f49cc4e051a85" title="Emits the record now; subsequent insertions start a new record." alt="" coords="203,5,352,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="386,28,352,28,352,23,386,23"/>
+<area shape="rect" id="Node000003" href="$classara_1_1log_1_1LogStream.html#aaf7c4fba1cba4e1cc4441e1fb44a47fd" title=" " alt="" coords="5,5,155,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="189,28,155,28,155,23,189,23"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Subscriber::check" name="Subscriber::check">
+<area shape="rect" id="Node000001" title=" " alt="" coords="695,20,831,45"/>
+<area shape="rect" id="Node000002" href="$classSubscriber.html#a2d1df203e9328d3743d9b70cf0098d4f" title=" " alt="" coords="516,20,647,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="681,35,647,35,647,30,681,30"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a35407265ab81fb511c2fcda31637f200" title="Set the subscriber object." alt="" coords="281,5,468,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="502,35,468,35,468,30,502,30"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a6a38e18c5f2beb7df994eeb80582d201" title="subhandlecall to get entry and option of some ip" alt="" coords="5,13,233,53"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="267,35,233,35,233,30,267,30"/>
+</map>

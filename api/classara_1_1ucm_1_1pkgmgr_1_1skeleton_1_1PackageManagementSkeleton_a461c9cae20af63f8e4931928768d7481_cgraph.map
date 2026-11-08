@@ -1,0 +1,10 @@
+<map id="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::TransferStart" name="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::TransferStart">
+<area shape="rect" id="Node000001" title="Request Trasfer start." alt="" coords="5,72,231,127"/>
+<area shape="rect" id="Node000002" href="$classUUIDv4_1_1UUID.html#abc557ab3feaab0d63076847636180109" title=" " alt="" coords="289,29,447,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,71,298,55,299,60,231,76"/>
+<area shape="rect" id="Node000003" href="$classUUIDv4_1_1UUIDGenerator.html#aecd2386a4d700720119ba1354c32abb9" title=" " alt="" coords="279,79,457,119"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="231,97,265,97,265,102,231,102"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1ucm_1_1pkgmgr_1_1core.html#af7a11871be65ddb9170cda8b99e95d8c" title="Stable, filesystem&#45;safe textual form of a TransferId (32 lower&#45;case hex digits)." alt="" coords="281,143,455,183"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="226,124,277,137,276,143,225,129"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="328,31,319,21,324,11,340,5,368,3,403,7,413,11,417,17,412,20,409,15,402,12,368,8,341,10,327,15,324,20,332,27"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="ara::sm::triggerinout::proxy::Trigger_InOut_Proxy&lt; T &gt;" name="ara::sm::triggerinout::proxy::Trigger_InOut_Proxy&lt; T &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1077,95,1237,149"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html" title="ServiceProxy is the main class for the proxy skeleton." alt="" coords="789,62,976,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="990,95,1078,108,1077,113,989,100"/>
+<area shape="rect" id="Node000003" href="$classCClient.html" title="CClient class for any tcp or udp client sockets." alt="" coords="434,5,503,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="518,22,766,59,789,63,788,69,765,65,517,27"/>
+<area shape="rect" id="Node000004" href="$structara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy_1_1SP__Handle.html" title="SP_Handle struct for SP_Handle (ServiceProxyHandle)" alt="" coords="375,55,562,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="576,79,789,79,789,85,576,85"/>
+<area shape="rect" id="Node000005" href="$structara_1_1com_1_1proxy__skeleton_1_1SD__data.html" title=" " alt="" coords="5,62,192,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="206,79,375,79,375,85,206,85"/>
+<area shape="rect" id="Node000006" href="$structara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldType.html" title=" " alt="" coords="789,129,976,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="990,144,1053,137,1077,133,1077,139,1054,142,990,150"/>
+<area shape="rect" id="Node000007" href="$structara_1_1com_1_1proxy__skeleton_1_1proxy_1_1FieldType.html" title="FieldType Class for field." alt="" coords="341,133,596,188"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="610,157,789,155,789,160,610,162"/>
+</map>

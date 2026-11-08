@@ -1,0 +1,315 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::tsync - conformance to AUTOSAR AP R25-11 (SWS_TimeSynchronization)</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="aratsync-conformance-to-autosar-ap-r25-11-sws_timesynchronization">ara::tsync - conformance to AUTOSAR AP R25-11 (SWS_TimeSynchronization)</h1>
+<p>Source: <em>AUTOSAR_AP_SWS_TimeSynchronization.pdf</em>, R25-11 (prefix <code>SWS_TS_</code>).
+<strong>Important limitation:</strong> the retrievable R25-11 text contains the functional specification and
+the class/method <em>names</em>, but not the section 8 API tables. Signatures, callback types and numeric
+error values below come from the R23-11 text where it was readable (marked R23-11) and are
+otherwise <strong>Unverified</strong>. Nothing is invented.
+Status values: Implemented, Partial, Missing, Deviation, Unverified.</p>
+<h2 id="layering">Layering</h2>
+<ul>
+<li><code>TimeBaseResource</code> / <code>TimeBaseProvider</code> (<code>time_base.h</code>) - the time base engine (clock extrapolation,
+  slew/step, timeout). Not part of the SWS.</li>
+<li><code>SynchronizedTimeBaseConsumer</code>, <code>SynchronizedTimeBaseProvider</code>, <code>SynchronizedTimeBaseStatus</code>
+  (<code>synchronized_time_base.h</code>) - the SWS API. Bound to a time base by <code>InstanceSpecifier</code> through
+  <code>TimeBaseRegistry::Bind</code>. Unbound -&gt; <code>kDaemonConnectionLost</code> / neutral values.</li>
+</ul>
+<h2 id="types">Types</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement / API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SynchronizationStatus</code> (SWS_TS_01050, R23-11): <code>kNotSynchronizedUntilStartup=0, kTimeOut=1, kSynchronized=2, kSynchToGateway=3</code></td>
+<td>Implemented</td>
+<td><strong>Fixed.</strong> The engine used bit-mask flags (<code>SYNCHRONIZED=1, TIMEOUT=2, SYNC_TO_GATEWAY=4</code>); they remain internal (<code>StatusFlags</code>) and are mapped by <code>ToSynchronizationStatus()</code>.</td>
+</tr>
+<tr>
+<td><code>LeapJump</code> (SWS_TS_01051, R23-11): <code>kTimeLeapNone=0, kTimeLeapFuture=1, kTimeLeapPast=2</code></td>
+<td>Implemented</td>
+<td><strong>Fixed.</strong> Previously only a TIME_LEAP flag without direction.</td>
+</tr>
+<tr>
+<td>Initial status <code>kNotSynchronizedUntilStartup</code> (SWS_TS_00032), initial leap none (00064)</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Timestamp</code> (8.9)</td>
+<td>Deviation / Unverified</td>
+<td><code>std::chrono</code> time point (ns). The SWS struct layout is not retrievable.</td>
+</tr>
+<tr>
+<td><code>TimeBase</code> struct (8.9), <code>TimePrecisionMeasurement</code></td>
+<td>Partial</td>
+<td><code>TimePrecisionMeasurement</code> and <code>TimeValidationData</code> structs exist with glb time, status, rate deviation and path delay (clamped to uint32); exact SWS field names/types <strong>Unverified</strong> (section 8.9 not retrievable in R25-11 or R22-11).</td>
+</tr>
+<tr>
+<td><code>UserData</code></td>
+<td>Deviation</td>
+<td>Max 3 bytes, passed as pointer+length / returned as <code>std::vector&lt;uint8_t&gt;</code> (the SWS uses <code>ara::core::Span&lt;const Byte&gt;</code>, which does not compile under <code>-Werror</code> here). <code>kMaxUserDataSize</code> value Unverified.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="synchronizedtimebasestatus-sws-862">SynchronizedTimeBaseStatus (SWS 8.6.2)</h2>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetSynchronizationStatus</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>GetLeapJump</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>GetUserData</code></td>
+<td>Implemented</td>
+<td>Empty when none (SWS_TS_00120).</td>
+</tr>
+<tr>
+<td><code>GetCreationTime</code>, <code>GetCreationLocalTime</code></td>
+<td>Implemented</td>
+<td>Return types Unverified.</td>
+</tr>
+<tr>
+<td><code>GetRateCorrected</code>, <code>GetRateExceeded</code></td>
+<td>Implemented</td>
+<td>SWS_TS_14224 (RATE_CORRECTED sticky once a rate is calculated), SWS_TS_14228 (RATE_EXCEEDED when abs(rate) &gt; <code>rateCorrectionThreshold</code>, 0 disables). Verified in R22-11 and R25-11. Tests <code>RateCorrected*</code>, <code>RateExceeded*</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="synchronizedtimebaseconsumer-sws-842">SynchronizedTimeBaseConsumer (SWS 8.4.2)</h2>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctor(<code>InstanceSpecifier</code>), move-only</td>
+<td>Implemented</td>
+<td>Signature Unverified.</td>
+</tr>
+<tr>
+<td><code>GetTimeWithStatus</code> (SWS_TS_14218, 00127)</td>
+<td>Implemented</td>
+<td>Returns <code>SynchronizedTimeBaseStatus</code> (per Figure 5.1 / 00127; 14218 text says "GetSynchronizationStatus object" - a spec inconsistency).</td>
+</tr>
+<tr>
+<td><code>GetRateDeviation</code> (SWS_TS_00202, 00053, 00070)</td>
+<td>Implemented</td>
+<td><code>0.0</code> if none calculated (00070).</td>
+</tr>
+<tr>
+<td><code>RegisterStatusChangeNotifier</code> (00701)</td>
+<td>Implemented</td>
+<td>Callback and return type Unverified (here <code>Result&lt;void&gt;</code>, <code>kDaemonConnectionLost</code> if unbound).</td>
+</tr>
+<tr>
+<td><code>RegisterSynchronizationStateChangeNotifier</code> (00702)</td>
+<td>Implemented</td>
+<td>Same; callback gets the new <code>SynchronizationStatus</code>.</td>
+</tr>
+<tr>
+<td><code>RegisterTimeLeapNotifier</code> (00703)</td>
+<td>Implemented</td>
+<td>Callback gets the <code>LeapJump</code>.</td>
+</tr>
+<tr>
+<td><code>Unregister*Notifier</code> x3</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>RegisterTimePrecisionMeasurementNotifier</code> (00800) and its Unregister</td>
+<td>Implemented</td>
+<td>Rejected with <code>kFunctionNotSupported</code> on a system-wide-global-time-master base (00803); offset bases fill only glb time and status (00801). Verified R25-11/R22-11 text; callback type Unverified.</td>
+</tr>
+<tr>
+<td><code>RegisterTimeValidationNotification</code> / validation notification classes (00424-00427)</td>
+<td>Implemented</td>
+<td>Consumer-side (01016). One notifier per consumer; delivers master timing data and Pdelay responder data (<code>TimeValidationData::Kind</code>). Layout of the SWS data Unverified.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="synchronizedtimebaseprovider-sws-851-sws_ts_01100-01115-r23-11">SynchronizedTimeBaseProvider (SWS 8.5.1, SWS_TS_01100-01115, R23-11)</h2>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctor(<code>InstanceSpecifier</code>), move-only, dtor</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SetTime(Timestamp, userData)</code></td>
+<td>Implemented</td>
+<td>Steps the time unconditionally. <code>Span</code> parameter replaced by pointer+length.</td>
+</tr>
+<tr>
+<td><code>UpdateTime(Timestamp, userData)</code></td>
+<td>Implemented</td>
+<td>Slews small offsets, steps large ones (<code>stepThreshold</code>).</td>
+</tr>
+<tr>
+<td><code>GetCurrentTime()</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SetRateCorrection(double)</code> (00061-00063, 14225)</td>
+<td>Implemented</td>
+<td><code>kFunctionNotSupported</code> unless <code>TimeBaseConfig::allowProviderRateCorrection</code> (00061); <code>kLimitsExceeded</code> beyond <code>providerRateDeviationMax</code> (00063; the spec also calls it <code>MasterRateDeviationMax</code> in 00061 - inconsistency). The time base runs at <code>1+correction</code>.</td>
+</tr>
+<tr>
+<td><code>GetRateDeviation()</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SetUserData</code>, <code>GetUserData</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OffsetTimeBaseProvider</code> (<code>SetOffsetTime</code>, SWS_TS_012xx)</td>
+<td>Implemented</td>
+<td>Ids 01201-01214 (R22-11/R25-11): <code>SetOffsetTime</code> (<code>kTimeCannotSet</code> 01107/01207 on a non-offset base), <code>GetCurrentTime</code>, <code>SetRateCorrection</code>, <code>GetRateDeviation</code>, <code>SetUserData</code>/<code>GetUserData</code>, validation register/unregister, <code>SetMasterTimingData</code>, <code>SetPdelayResponderData</code>. Config <code>isOffsetTimeBase</code>.</td>
+</tr>
+<tr>
+<td><code>RegisterTimeValidationNotification</code> / <code>Unregister...</code> (provider, 01114/01115)</td>
+<td>Implemented</td>
+<td>A new registration overwrites the previous notifier.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="error-domain">Error domain</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TsyncErrorDomain</code>, <code>GetTsyncErrorDomain</code>/<code>MakeErrorCode</code> (8.10)</td>
+<td>Partial</td>
+<td>Implemented as <code>TsyncErrorDomain</code>, <code>GetTsyncDomain()</code>, <code>MakeErrorCode</code>. The function name differs from the SWS (<code>GetTsyncErrorDomain</code> vs <code>GetTsyncDomain</code>) - Deviation, kept for consistency with the other clusters.</td>
+</tr>
+<tr>
+<td>Codes <code>kDaemonConnectionLost</code>, <code>kFunctionNotSupported</code>, <code>kLimitsExceeded</code></td>
+<td>Implemented</td>
+<td>Names from the SWS; <strong>numeric values Unverified</strong> (5, 6, 7 here).</td>
+</tr>
+<tr>
+<td>Codes <code>kNotSynchronized</code>, <code>kInvalidArgument</code>, <code>kAlreadyExists</code>, <code>kNotFound</code></td>
+<td>Deviation</td>
+<td>Implementation extensions of the engine API.</td>
+</tr>
+<tr>
+<td>Domain id</td>
+<td><strong>Unverified -&gt; resolved as distinct</strong></td>
+<td>The old id <code>0x8000000000000501</code> was identical to ara::nm's. tsync now uses <code>0x8000000000000502</code>; the normative id cannot be obtained from the retrievable text (SWS_CORE_90023 not available).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functional-behaviour">Functional behaviour</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timeout detection -&gt; <code>kTimeOut</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Gateway synchronization -&gt; <code>kSynchToGateway</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Time leap detection and direction (SWS_TS_00027)</td>
+<td>Implemented</td>
+<td>Leap if an update differs by more than <code>stepThreshold</code>.</td>
+</tr>
+<tr>
+<td>Time base as a continuous synchronized time with rate deviation</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Security events (7.4.1), diagnostics, StbM-to-AP mapping (Table 7.1)</td>
+<td><strong>Missing</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>GetCurrentTime</code> on the consumer (Table 7.1 maps AP <code>GetTimeWithStatus</code> to <code>StbM_GetCurrentTime</code>)</td>
+<td>n/a</td>
+<td>Consumer exposes <code>GetTimeWithStatus</code> only, as in the SWS.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gap-closing-pass">Gap-closing pass</h2>
+<p>New: <code>TsyncErrc::kTimeCannotSet = 8</code> (the numeric value is <strong>Unverified</strong>; the name and requirement ids
+01107/01207 come from R22-11/R25-11). The error-domain id remains <code>0x8000000000000502</code>, an
+implementation choice, because the normative id is not retrievable. Still open: security events,
+diagnostics and the StbM mapping (rows above). Where R25-11 text was unavailable, R22-11 was used; the
+two releases agree on the cited requirements.
+Demo: <code>App/demo/time_sync_clock</code> (provider/consumer, slew vs step, rate flags, timeout).</p></div><footer>Adaptive Platform</footer></body></html>

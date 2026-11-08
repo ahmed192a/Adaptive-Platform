@@ -1,0 +1,24 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,237,60,263"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a11d561ff67988c5b9c941a5dcc3a489d" title="Rollback with State Management ([00110]): PrepareRollback + ResetMachine." alt="" coords="108,183,287,237"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,241,94,232,96,238,61,246"/>
+<area shape="rect" id="Node000010" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a65fff8d120a966fa5094ce459bf621bb" title=" " alt="" coords="335,293,513,348"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="61,252,322,300,321,305,60,257"/>
+<area shape="rect" id="Node000003" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a1639e432ccceb8238664b56866eb6ea3" title="[SWS_UCM_00239] OperationNotPermitted unless kActivated or kVerifying." alt="" coords="335,5,513,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="218,181,268,126,299,96,333,69,340,65,343,69,336,74,303,100,271,129,222,184"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a3d41187d19b4dde07410ef042dc50cab" title=" " alt="" coords="335,84,513,139"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="260,180,347,142,349,147,262,185"/>
+<area shape="rect" id="Node000007" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a1d4daca029b4b1965aa16e5ae379e1ad" title=" " alt="" coords="561,91,760,131"/>
+<area shape="poly" id="edge10_Node000002_Node000007" title=" " alt="" coords="286,192,513,147,574,132,575,137,514,153,287,198"/>
+<area shape="rect" id="Node000008" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a5cf71c7418222b33dbdb999100a9d603" title=" " alt="" coords="335,215,513,269"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="288,220,322,225,321,230,287,225"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="250,235,336,280,347,285,345,290,333,284,247,240"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a473e91a8fc068cc50119c8ce2cd4a2f5" title=" " alt="" coords="571,9,750,64"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="514,32,558,32,558,38,514,37"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a9900209d243b182bccef73a1608a045c" title=" " alt="" coords="808,47,987,101"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="751,48,795,55,794,60,750,53"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="514,109,547,109,547,114,514,114"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="760,93,794,88,795,93,761,98"/>
+<area shape="rect" id="Node000009" href="$namespaceara_1_1ucm_1_1pkgmgr_1_1core.html#af7a11871be65ddb9170cda8b99e95d8c" title="Stable, filesystem&#45;safe textual form of a TransferId (32 lower&#45;case hex digits)." alt="" coords="574,222,747,262"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="514,239,560,239,560,245,514,245"/>
+</map>

@@ -1,0 +1,29 @@
+<map id="ara::com::SOMEIP_MESSAGE::Message::SetPayload" name="ara::com::SOMEIP_MESSAGE::Message::SetPayload">
+<area shape="rect" id="Node000001" title="Set message payload." alt="" coords="1008,215,1216,255"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a185a4103c4edf8f2cf040633ed8c984f" title="Field_set." alt="" coords="768,29,955,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1070,209,899,86,902,81,1073,204"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#aa346a9135cc9bc860cb16868c7064f1d" title="1&#45; HandleCall R ARGS" alt="" coords="763,167,960,222"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="994,219,960,213,961,208,995,213"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a3a95fa49b72ea5bd4fe6b4f632cbd6f1" title="SendEvent send an event update to clients." alt="" coords="763,246,960,301"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="995,255,961,261,960,255,994,250"/>
+<area shape="rect" id="Node000014" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a42c15604e2cdbac4552003ec7d8d6552" title="SendRequest." alt="" coords="768,325,955,379"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1063,264,961,314,933,327,931,322,959,310,1060,259"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Field.html#a0f19cf9fb7bbe435a279214cedad93da" title="Set the value of the field." alt="" coords="499,5,686,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="754,46,686,39,686,33,754,41"/>
+<area shape="rect" id="Node000005" href="$classara_1_1sm_1_1diagnostic__reset_1_1skeleton_1_1diagnostic__reset__skeleton.html#ab3d42eb692496e3ef109d696574ad895" title=" " alt="" coords="471,70,715,125"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="781,165,714,139,681,127,683,122,716,133,783,160"/>
+<area shape="rect" id="Node000006" href="$classskeleton.html#a917c59464ea1dfa646a29dd652ab9314" title=" " alt="" coords="494,149,691,174"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="748,183,691,176,692,171,749,178"/>
+<area shape="rect" id="Node000007" href="$classara_1_1sm_1_1powermode_1_1skeleton_1_1PowerMode__Skeleton.html#a8219ad10bac9dc9bfd503652b8dcb711" title=" " alt="" coords="490,198,695,253"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="749,210,696,216,695,211,749,205"/>
+<area shape="rect" id="Node000008" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a49ae6571a4e635ae85ad4dffd346c1c0" title=" " alt="" coords="490,277,695,331"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="775,230,764,236,740,251,716,266,686,279,684,274,713,262,737,247,761,231,773,225"/>
+<area shape="rect" id="Node000010" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a11870951b3cefd83b6b41b4ee507f572" title=" " alt="" coords="499,356,686,396"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="775,309,764,314,740,330,716,345,680,358,679,353,713,340,737,326,761,310,773,304"/>
+<area shape="rect" id="Node000011" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Field.html#aed5fb99ae95ec01c936d560d9dd333ad" title="Handle set method." alt="" coords="224,324,423,364"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="485,366,422,358,423,353,486,361"/>
+<area shape="rect" id="Node000013" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a2f4887439a0e3d2b6bcc3f81d1a516f1" title="update event and notify" alt="" coords="230,388,417,428"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="486,391,417,400,416,394,486,386"/>
+<area shape="rect" id="Node000012" href="$classskeleton.html#ae2dc7c3be1a5325ca85f1895e42e9847" title=" " alt="" coords="5,324,176,364"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="210,347,176,347,176,341,210,341"/>
+</map>

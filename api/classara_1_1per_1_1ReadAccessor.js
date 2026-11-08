@@ -1,0 +1,35 @@
+var classara_1_1per_1_1ReadAccessor =
+[
+    [ "Offset", "classara_1_1per_1_1ReadAccessor.html#a73ecbb19fc9ee3194cbb162b7ad55a1f", null ],
+    [ "Position", "classara_1_1per_1_1ReadAccessor.html#abb5517be885bf00455b867d505c77500", null ],
+    [ "Origin", "classara_1_1per_1_1ReadAccessor.html#aa439e72e4c6cb32b6112436b880fdf77", [
+      [ "kBeginning", "classara_1_1per_1_1ReadAccessor.html#aa439e72e4c6cb32b6112436b880fdf77ab4a651e47aec9e7a3db91ad75c9e3556", null ],
+      [ "kCurrent", "classara_1_1per_1_1ReadAccessor.html#aa439e72e4c6cb32b6112436b880fdf77aa1f14acc9c84a430477914441ad13a97", null ],
+      [ "kEnd", "classara_1_1per_1_1ReadAccessor.html#aa439e72e4c6cb32b6112436b880fdf77a374bf9ba57a441a600d65b212cf9d13c", null ]
+    ] ],
+    [ "ReadAccessor", "classara_1_1per_1_1ReadAccessor.html#a59ac531e55ae0fee44bfa1b695ab8521", null ],
+    [ "~ReadAccessor", "classara_1_1per_1_1ReadAccessor.html#aae28f2da011678e1100e9582abea945e", null ],
+    [ "ReadAccessor", "classara_1_1per_1_1ReadAccessor.html#a001dfeaf7d4cf13f27d8d0d606ea9136", null ],
+    [ "GetByte", "classara_1_1per_1_1ReadAccessor.html#a70bc59d962f5f5132a7195dbbbedcca9", null ],
+    [ "GetChar", "classara_1_1per_1_1ReadAccessor.html#a5bd39cf30ce5173fd6edfab683ab7a73", null ],
+    [ "GetPosition", "classara_1_1per_1_1ReadAccessor.html#aea10bf68be5512301740d4d1fa2d25f5", null ],
+    [ "GetSize", "classara_1_1per_1_1ReadAccessor.html#ac3ea93def9b173e1862a2f3ea0db0947", null ],
+    [ "IsEof", "classara_1_1per_1_1ReadAccessor.html#ab357d579e97c56f9b7d16a5d43872241", null ],
+    [ "MovePosition", "classara_1_1per_1_1ReadAccessor.html#a20be204c2bde2811cb43c36bbdf22442", null ],
+    [ "operator=", "classara_1_1per_1_1ReadAccessor.html#a82b9efe43e86b2f7bb8e13129c22d8bf", null ],
+    [ "PeekByte", "classara_1_1per_1_1ReadAccessor.html#a238049c37a6427d4b7bb531c5e508a74", null ],
+    [ "PeekChar", "classara_1_1per_1_1ReadAccessor.html#ab4f856fc169b14ac6dff6f80eb5cc6bd", null ],
+    [ "ReadBinary", "classara_1_1per_1_1ReadAccessor.html#a9729be083ae6bd17c9f5554c9da2486e", null ],
+    [ "ReadLine", "classara_1_1per_1_1ReadAccessor.html#ae33ff14fccbafb34178cf5b0976484d8", null ],
+    [ "ReadRaw", "classara_1_1per_1_1ReadAccessor.html#a05ad7729f821d87db78654fa9c5f09d6", null ],
+    [ "ReadText", "classara_1_1per_1_1ReadAccessor.html#a9a3c7d2f077ad039da3ba3c434833af5", null ],
+    [ "SetPosition", "classara_1_1per_1_1ReadAccessor.html#a3e22f23660264b0b5f39d94295933c43", null ],
+    [ "FileStorage", "classara_1_1per_1_1ReadAccessor.html#afe42483811e1f0714347294c25a6b365", null ],
+    [ "mAppend", "classara_1_1per_1_1ReadAccessor.html#ad43bd486390f35e0e6aab1edcc936fd0", null ],
+    [ "mCanRead", "classara_1_1per_1_1ReadAccessor.html#ac4bc7e90cec263287fc288f20eaab751", null ],
+    [ "mCanWrite", "classara_1_1per_1_1ReadAccessor.html#aa7b3043298418781fb57935be7f7d156", null ],
+    [ "mFd", "classara_1_1per_1_1ReadAccessor.html#a6df07530f435e552f339dbe1d131a688", null ],
+    [ "mName", "classara_1_1per_1_1ReadAccessor.html#ab63002fe47e6360e649ed0ba2cd45a64", null ],
+    [ "mPosition", "classara_1_1per_1_1ReadAccessor.html#ad56628c8447268738eed1f191df11f24", null ],
+    [ "mState", "classara_1_1per_1_1ReadAccessor.html#a6b6113a8797b1ff5936ee3923ce2c086", null ]
+];

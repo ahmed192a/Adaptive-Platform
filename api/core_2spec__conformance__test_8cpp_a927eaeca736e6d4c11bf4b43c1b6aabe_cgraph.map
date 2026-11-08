@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,52,60,77"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02spec__conformance__test_8cpp_03.html#a9fe1d7611d908146b97790458473f5e1" title=" " alt="" coords="113,5,297,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,57,99,50,100,55,61,62"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1core.html#ae7ba4c4f43f5b318edb237f9de634da7" title="Installs a handler (nullptr restores the default); returns the previous one. Thread&#45;safe." alt="" coords="108,84,303,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,67,124,79,123,84,60,72"/>
+</map>

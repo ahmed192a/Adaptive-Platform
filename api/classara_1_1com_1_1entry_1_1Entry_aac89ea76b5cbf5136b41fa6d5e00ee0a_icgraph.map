@@ -1,0 +1,7 @@
+<map id="ara::com::entry::Entry::ValidateOption" name="ara::com::entry::Entry::ValidateOption">
+<area shape="rect" id="Node000001" title="Validate an option for adding." alt="" coords="256,37,419,77"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1entry_1_1EventgroupEntry.html#a03552101b49cab3a8ae88c262077ae3e" title="ValidateOption checks if the entry is valid." alt="" coords="5,5,208,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,47,208,42,208,37,242,42"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1entry_1_1ServiceEntry.html#a763af5bb14f24534589583a993532c13" title="ValidateOption checks if the entry is valid." alt="" coords="19,69,195,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,73,195,80,195,74,242,68"/>
+</map>

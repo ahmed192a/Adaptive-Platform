@@ -1,0 +1,24 @@
+<map id="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton" name="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton">
+<area shape="rect" id="Node000001" title="implementation of PackageManagementSkeleton interface" alt="" coords="959,271,1184,311"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html" title="class ServiceSkeleton" alt="" coords="488,137,685,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="695,177,811,205,935,239,1020,269,1018,274,934,245,810,210,694,182"/>
+<area shape="rect" id="Node000003" href="$structara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton_1_1SK__Handle.html" title=" " alt="" coords="7,5,204,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="218,59,508,134,507,139,217,64"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1InstanceIdentifier.html" title=" " alt="" coords="5,123,205,148"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,138,488,150,488,155,219,143"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="63,109,75,100,105,96,130,98,144,104,148,114,141,124,137,121,143,114,141,108,128,103,105,101,77,105,67,113"/>
+<area shape="rect" id="Node000005" href="$classCClient.html" title="CClient class for any tcp or udp client sockets." alt="" coords="71,172,140,197"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="154,180,415,166,488,161,488,166,415,171,154,185"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html" title=" " alt="" coords="500,222,673,262"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="687,249,959,277,958,283,687,255"/>
+<area shape="rect" id="Node000007" href="$structara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerLimits.html" title=" " alt="" coords="15,222,195,262"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="209,239,500,239,500,245,209,245"/>
+<area shape="rect" id="Node000008" href="$structara_1_1ucm_1_1pkgmgr_1_1core_1_1UpdateHooks.html" title="Calls UCM makes into State Management&#39;s UpdateRequest interface and into the package validation (flas..." alt="" coords="19,286,192,326"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="205,290,499,251,500,256,206,295"/>
+<area shape="rect" id="Node000009" href="$structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwProcessProgressOutput.html" title=" " alt="" coords="455,287,719,341"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="732,306,935,297,958,295,959,301,935,302,733,311"/>
+<area shape="rect" id="Node000010" href="$structara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1FieldType.html" title=" " alt="" coords="439,365,735,449"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="748,369,934,325,996,309,997,314,935,330,749,374"/>
+<area shape="rect" id="Node000011" href="$structara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1FieldType.html" title="Interface for creating field opject ddepending on the input (getter/notifier/setter)" alt="" coords="12,373,199,442"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="212,405,438,405,438,410,212,410"/>
+</map>

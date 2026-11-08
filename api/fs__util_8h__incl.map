@@ -1,0 +1,32 @@
+<map id="src/ara/per/fs_util.h" name="src/ara/per/fs_util.h">
+<area shape="rect" id="Node000001" title="Internal POSIX helpers for crash&#45;safe file persistence." alt="" coords="60,5,207,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,96,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,33,76,72,73,67,118,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="279,299,337,324"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,31,138,96,146,137,161,176,186,212,216,243,278,289,275,293,213,247,182,215,156,179,140,138,132,96,130,31"/>
+<area shape="rect" id="Node000004" href="$result_8h.html" title="ara::core::Result&lt;T, E&gt; and Result&lt;void, E&gt; (SWS_CORE_00701 ff.)" alt="" coords="396,79,524,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,28,394,73,393,78,185,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="671,299,758,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="525,95,585,102,648,113,702,128,723,138,737,150,746,166,752,184,751,221,742,257,730,287,725,285,737,256,746,221,746,185,742,169,733,154,720,143,700,133,647,118,584,107,524,100"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="798,152,885,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="522,101,784,150,784,155,521,107"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="171,152,245,177"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="420,107,260,152,258,147,419,101"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="270,152,362,177"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="438,106,353,148,351,143,436,102"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="386,152,446,177"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="455,106,433,142,428,139,450,103"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="470,152,538,177"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="470,103,492,139,487,142,465,106"/>
+<area shape="rect" id="Node000011" href="$error__code_8h.html" title=" " alt="" coords="563,152,723,177"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="490,102,601,144,599,149,488,107"/>
+<area shape="rect" id="Node000012" href="$error__domain_8h.html" title=" " alt="" coords="392,225,571,251"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="618,180,521,222,519,217,616,175"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="492,299,559,324"/>
+<area shape="poly" id="edge16_Node000011_Node000013" title=" " alt="" coords="658,176,671,191,684,210,691,231,685,252,662,276,633,292,602,303,573,309,572,304,601,298,631,287,659,271,680,249,685,232,679,213,667,194,654,179"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="595,225,671,251"/>
+<area shape="poly" id="edge15_Node000011_Node000014" title=" " alt="" coords="644,178,639,212,634,211,638,177"/>
+<area shape="poly" id="edge14_Node000012_Node000003" title=" " alt="" coords="454,253,350,296,348,291,452,248"/>
+<area shape="poly" id="edge13_Node000012_Node000005" title=" " alt="" coords="520,248,665,292,663,297,518,253"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="491,250,513,286,509,288,486,252"/>
+</map>

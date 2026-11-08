@@ -1,0 +1,11 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,92,60,117"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02state__machine__test_8cpp_03.html#a463d41a74d764a465f0784449934dbff" title=" " alt="" coords="123,5,303,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,91,107,70,126,63,128,67,109,75,61,95"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1state__machine_1_1NetworkHandleBridge.html#a4a36d82058fa0dbeb85926ff2cef8ac4" title="When handle reaches state, request targetState on the state machine." alt="" coords="108,85,317,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,102,94,102,94,107,60,107"/>
+<area shape="rect" id="Node000004" href="$classara_1_1sm_1_1state__machine_1_1NetworkHandleBridge.html#a733e53393c0a471bea79a03ff9db698a" title="Called by Network Management when the handle changed state." alt="" coords="125,149,300,204"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="61,114,109,134,128,142,126,147,107,139,59,119"/>
+<area shape="rect" id="Node000005" href="$classara_1_1sm_1_1state__machine_1_1StateMachine.html#a1a0cce4bb0a2e801cfd2e6f0402bc9f6" title="[SWS_SM_00600] RequestTransition." alt="" coords="365,157,608,197"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="300,174,352,174,352,179,300,179"/>
+</map>

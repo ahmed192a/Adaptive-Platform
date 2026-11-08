@@ -1,0 +1,5 @@
+<map id="ara::com::SOMEIP_MESSAGE::sd::SomeIpSDMessage" name="ara::com::SOMEIP_MESSAGE::sd::SomeIpSDMessage">
+<area shape="rect" id="Node000001" title="Class for SOME/IP SD Message." alt="" coords="5,93,213,133"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html" title="Class SOME IP Message." alt="" coords="5,5,213,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,59,112,93,107,93,107,59"/>
+</map>

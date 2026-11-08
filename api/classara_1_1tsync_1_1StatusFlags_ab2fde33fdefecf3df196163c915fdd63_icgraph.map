@@ -1,0 +1,13 @@
+<map id="ara::tsync::StatusFlags::Bits" name="ara::tsync::StatusFlags::Bits">
+<area shape="rect" id="Node000001" title=" " alt="" coords="504,127,675,167"/>
+<area shape="rect" id="Node000002" href="$structanonymous__namespace_02time__base__test_8cpp_03_1_1TimeBaseTest.html#adf39a30c1f7883683fb53934d3ae94ca" title=" " alt="" coords="255,84,435,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="490,135,435,127,435,122,491,130"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1TimeBaseResource.html#ac5419d322ea99a134028427f9e20dfcb" title="Builds a measurement record from the current state and notifies the precision observers." alt="" coords="233,163,456,203"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="491,165,457,170,456,164,490,159"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02time__base__test_8cpp_03.html#a0a22d45940b4eabf6e09bb1369c37a54" title=" " alt="" coords="5,5,185,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="243,82,182,63,184,58,245,77"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02time__base__test_8cpp_03.html#a130f221ecdf80dc8fb2c94ffcb705876" title=" " alt="" coords="5,84,185,139"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="241,114,185,114,185,109,241,109"/>
+<area shape="rect" id="Node000005" href="$namespaceanonymous__namespace_02time__base__test_8cpp_03.html#acd7b4a979452743208f6044963cdf826" title=" " alt="" coords="5,163,185,217"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="245,145,184,165,182,160,243,140"/>
+</map>

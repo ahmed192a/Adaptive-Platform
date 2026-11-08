@@ -1,0 +1,11 @@
+<map id="ara::core::Future::get" name="ara::core::Future::get">
+<area shape="rect" id="Node000001" title="Blocks; returns the value or throws (terminates without exceptions)." alt="" coords="5,13,163,38"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Future.html#a9c2b0a2b5da5ee6ad453fa3f853d13a1" title="Blocks until ready and returns the Result; the Future becomes invalid." alt="" coords="211,5,347,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,23,197,23,197,28,163,28"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Future.html#a503dee2297817c593d11b39387220db3" title=" " alt="" coords="395,13,559,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="347,23,381,23,381,28,347,28"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Future.html#a6bacbcaf24218c7e1e7a5d8f6d9b65b4" title=" " alt="" coords="607,5,743,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="559,23,593,23,593,28,559,28"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1core_1_1detail.html#aa0d6888e1da01601881236a1258230a4" title=" " alt="" coords="791,5,923,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="743,23,777,23,777,28,743,28"/>
+</map>

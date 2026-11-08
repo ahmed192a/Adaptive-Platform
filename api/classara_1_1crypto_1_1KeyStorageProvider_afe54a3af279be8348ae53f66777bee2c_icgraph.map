@@ -1,0 +1,13 @@
+<map id="ara::crypto::KeyStorageProvider::Create" name="ara::crypto::KeyStorageProvider::Create">
+<area shape="rect" id="Node000001" title="Persistent provider. wrappingKey must be 32 bytes." alt="" coords="569,35,797,75"/>
+<area shape="rect" id="Node000002" href="$classanonymous__namespace_02main_8cpp_03_1_1Vault.html#a0a1680abce6ed1a1424a37569c6d1bb2" title=" " alt="" coords="336,6,521,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="555,43,521,39,522,34,556,38"/>
+<area shape="rect" id="Node000005" href="$key__slot__test_8cpp.html#a7e8c099e37c5646ff6631a52ce8e649f" title=" " alt="" coords="401,71,456,96"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="556,72,457,83,456,78,556,67"/>
+<area shape="rect" id="Node000003" href="$demo_2secure__vault_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,13,60,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="322,15,219,9,108,13,61,22,60,16,108,7,219,4,323,10"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02main_8cpp_03.html#abf7b03395a702152d98c82c313e04b24" title=" " alt="" coords="108,46,288,86"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="323,47,289,53,288,48,322,42"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="102,45,59,35,61,30,103,40"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="225,34,216,27,198,25,182,27,173,31,170,37,172,45,166,46,164,36,170,27,181,21,198,19,218,22,228,30"/>
+</map>

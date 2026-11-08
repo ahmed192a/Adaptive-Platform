@@ -1,0 +1,15 @@
+<map id="anonymous_namespace{crypto_test::cpp}::TEST" name="anonymous_namespace{crypto_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,188,87"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a81163d120b4e5700a531671d417d110d" title="Input = ciphertext || tag. kAuthTagNotValid on any tampering." alt="" coords="236,5,420,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,45,254,31,255,36,189,50"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#a8d9080bc7ca332f16c20f70095d86e41" title="Output = ciphertext || tag(16). Nonce must be 12 bytes and never reused with a key." alt="" coords="237,55,419,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,65,223,65,223,70,188,70"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="245,105,411,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="179,85,234,99,233,104,177,90"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="468,41,631,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="397,102,466,82,467,87,399,107"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="468,105,631,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="411,122,454,122,454,127,411,127"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="468,169,631,209"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="399,142,467,162,466,167,397,147"/>
+</map>

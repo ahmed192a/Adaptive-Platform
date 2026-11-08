@@ -1,0 +1,14 @@
+<map id="ara::core::Promise::set_value" name="ara::core::Promise::set_value">
+<area shape="rect" id="Node000001" title=" " alt="" coords="864,5,1004,45"/>
+<area shape="rect" id="Node000002" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad26c558c988c8d8fdc582c9271f78a7c" title=" " alt="" coords="649,5,816,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="850,28,816,28,816,23,850,23"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,37,172,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="635,19,547,14,443,11,331,14,220,24,150,40,149,35,220,19,331,9,443,6,547,9,636,14"/>
+<area shape="rect" id="Node000004" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2b31526623d8f784530296aa9d7b19de" title=" " alt="" coords="435,33,601,73"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="636,41,602,45,601,40,635,35"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="220,33,387,73"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="421,56,387,56,387,51,421,51"/>
+<area shape="rect" id="Node000006" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad0033341236167451f81b059a96c2eb0" title=" " alt="" coords="220,97,387,137"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="438,80,372,100,370,95,436,75"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="217,96,160,80,162,75,219,91"/>
+</map>

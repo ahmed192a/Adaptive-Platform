@@ -1,0 +1,7 @@
+<map id="ara::diag::MakePerDtcStorage" name="ara::diag::MakePerDtcStorage">
+<area shape="rect" id="Node000001" title="Stores the event memory as one string value under key and syncs after every change." alt="" coords="5,31,220,56"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1diag.html#ab0bcafac0d0a24f80323ebcd05454741" title=" " alt="" coords="268,5,480,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,30,254,27,254,32,221,36"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1diag.html#a02de429cd05e7fe7ac8773594be55039" title="Text codec used for the stored value (exposed for tests): one line per DTC." alt="" coords="269,55,479,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,51,255,54,255,59,220,56"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="src/ara/nm/network_manager.h" name="src/ara/nm/network_manager.h">
+<area shape="rect" id="Node000001" title="Registry of NM networks (one per bus / channel)." alt="" coords="338,5,486,45"/>
+<area shape="rect" id="Node000002" href="$nm__channel__test_8cpp.html" title=" " alt="" coords="5,93,181,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="329,52,164,96,162,91,328,46"/>
+<area shape="rect" id="Node000003" href="$nm__gap__test_8cpp.html" title=" " alt="" coords="205,101,413,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="380,56,325,102,322,98,377,52"/>
+<area shape="rect" id="Node000004" href="$nm__spec__test_8cpp.html" title=" " alt="" coords="437,93,592,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="447,52,494,91,490,95,444,56"/>
+<area shape="rect" id="Node000005" href="$network__manager_8cpp.html" title=" " alt="" coords="617,93,765,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="487,47,630,91,629,96,485,52"/>
+</map>

@@ -1,0 +1,38 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,269,60,295"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#abdffa0361b13a41de07dd8cf27e1ed75" title="[SWS_UCM_00241] OperationNotPermitted unless kReady; enters kActivating." alt="" coords="109,5,287,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,269,37,231,50,178,71,121,87,94,106,70,109,67,113,71,110,73,91,97,76,123,55,180,43,232,38,270"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#af2ed712e16f138d6eabfa9c510ff1e6f" title="Finish: only after activation or rollback; runs through kCleaningUp back to kIdle and forgets every p..." alt="" coords="109,84,287,139"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="36,268,62,216,82,184,106,156,121,144,124,148,110,160,86,188,66,218,41,270"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#aa144335cdee6596c14c198951b1a469a" title="ProcessSwPackage entry checks: [00218] InvalidTransferId, [00017] ServiceBusy, [00219] OperationNotPe..." alt="" coords="346,156,525,211"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="39,267,66,233,85,215,107,201,162,181,221,171,279,167,333,168,332,173,279,172,222,176,164,186,109,206,88,219,70,236,44,271"/>
+<area shape="rect" id="Node000007" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#afc8b9c63073236a73e871d0570b0fdcc" title="Success: kActivated ([00107])." alt="" coords="109,215,287,269"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="59,273,95,264,96,269,61,278"/>
+<area shape="rect" id="Node000009" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#af98a9bdf5de7ab5fd4c83c753df814bc" title=" " alt="" coords="109,293,287,348"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="61,286,96,294,95,299,60,291"/>
+<area shape="rect" id="Node000010" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a2fc52715b862f7ca25fee10690ac8886" title="Finish ProcessSwPackage." alt="" coords="109,372,287,427"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="45,293,72,325,110,359,116,363,113,367,106,363,68,329,41,296"/>
+<area shape="rect" id="Node000012" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#afcc9c9b1a3a6d2d32682f679ab92f558" title="Register a callback invoked (outside the lock) after every status change." alt="" coords="109,451,287,505"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="39,294,61,361,82,402,110,438,113,440,109,444,106,441,77,404,56,363,34,296"/>
+<area shape="rect" id="Node000013" href="$namespaceanonymous__namespace_02ucm__core__test_8cpp_03.html#a4f5f2c7aeac458a8e70b0ed8daa894de" title=" " alt="" coords="108,529,288,584"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="37,295,41,336,52,395,74,459,90,489,110,516,112,518,108,522,106,520,85,492,69,461,47,397,36,337,32,295"/>
+<area shape="rect" id="Node000003" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a473e91a8fc068cc50119c8ce2cd4a2f5" title=" " alt="" coords="346,77,525,132"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,57,333,71,332,76,287,62"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a9900209d243b182bccef73a1608a045c" title=" " alt="" coords="583,192,761,247"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="510,130,536,141,614,182,612,187,533,146,508,135"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="287,106,332,105,332,110,287,111"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="526,194,570,201,569,206,525,200"/>
+<area shape="rect" id="Node000008" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a1d4daca029b4b1965aa16e5ae379e1ad" title=" " alt="" coords="336,235,535,275"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="288,244,322,246,322,252,287,250"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="534,238,569,232,570,238,535,243"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="287,294,348,276,350,282,288,299"/>
+<area shape="poly" id="edge15_Node000010_Node000004" title=" " alt="" coords="287,371,405,333,534,285,606,251,609,256,536,290,407,338,288,376"/>
+<area shape="rect" id="Node000011" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a75549e1711302ece0887c2d84add59c7" title=" " alt="" coords="346,372,525,427"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="287,397,332,397,332,402,287,402"/>
+<area shape="rect" id="Node000014" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ad576575f6ec3a029459a5540a8dc9a97" title="Checks in the order of the SWS (00208, 00203, 00204, 00243, 00205)." alt="" coords="346,451,525,505"/>
+<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="281,527,338,507,340,512,282,532"/>
+<area shape="rect" id="Node000015" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a193b8a198cde01925f64b9366d52c149" title="[SWS_UCM_00148] OperationNotPermitted, [00212] InvalidTransferId, [00087] InsufficientData; success s..." alt="" coords="346,529,525,584"/>
+<area shape="poly" id="edge19_Node000013_Node000015" title=" " alt="" coords="288,554,332,554,332,559,288,559"/>
+<area shape="rect" id="Node000016" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a14f004a851d15b2c23406ae99b889850" title="[SWS_UCM_00140] InsufficientMemory when the package cannot be stored." alt="" coords="346,608,525,663"/>
+<area shape="poly" id="edge20_Node000013_Node000016" title=" " alt="" coords="282,582,340,601,338,606,281,587"/>
+</map>

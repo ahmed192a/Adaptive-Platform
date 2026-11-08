@@ -1,0 +1,5 @@
+<map id="ara::crypto::cryp::AuthCipherCtx::Encrypt" name="ara::crypto::cryp::AuthCipherCtx::Encrypt">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,179,45"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a8d9080bc7ca332f16c20f70095d86e41" title="Output = ciphertext || tag(16). Nonce must be 12 bytes and never reused with a key." alt="" coords="227,13,409,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
+</map>

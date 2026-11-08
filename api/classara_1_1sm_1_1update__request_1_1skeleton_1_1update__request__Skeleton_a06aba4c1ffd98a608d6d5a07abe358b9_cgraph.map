@@ -1,0 +1,7 @@
+<map id="ara::sm::update_request::skeleton::update_request_Skeleton::ResetMachine" name="ara::sm::update_request::skeleton::update_request_Skeleton::ResetMachine">
+<area shape="rect" id="Node000001" title="Requests a reset of the machine [SWS_SM_00202]." alt="" coords="5,41,200,96"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a614f7291fed90459eb4524b58ce510ab" title=" " alt="" coords="264,5,459,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,53,250,45,251,51,200,58"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a39dbd15a8fd50e18a09010db590cb37f" title="[SWS_SM_00202] The machine restart itself is done by the caller; this only decides whether the reques..." alt="" coords="248,85,475,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,80,235,84,234,90,200,85"/>
+</map>

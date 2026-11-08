@@ -1,0 +1,62 @@
+<map id="src/ara/per/persistency_config.h" name="src/ara/per/persistency_config.h">
+<area shape="rect" id="Node000001" title="Deployment configuration of the persistency storages." alt="" coords="883,5,1053,45"/>
+<area shape="rect" id="Node000002" href="$file__storage_8h.html" title="ara::per::FileStorage, ReadAccessor, ReadWriteAccessor, OpenMode (SWS_PER)" alt="" coords="689,189,871,214"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="937,57,892,95,793,190,790,187,889,91,933,53"/>
+<area shape="rect" id="Node000004" href="$persistency_8h.html" title="Free functions of the Persistency functional cluster (ara::per)." alt="" coords="793,277,973,302"/>
+<area shape="poly" id="edge32_Node000001_Node000004" title=" " alt="" coords="960,59,889,277,884,276,955,57"/>
+<area shape="rect" id="Node000016" href="$key__value__storage_8h.html" title="ara::per::KeyValueStorage (SWS_PER, chapter &quot;Key&#45;Value Storage&quot;)" alt="" coords="970,93,1131,133"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="998,54,1034,91,1030,95,994,57"/>
+<area shape="rect" id="Node000027" href="$persistency__config_8cpp.html" title=" " alt="" coords="1156,93,1327,133"/>
+<area shape="poly" id="edge33_Node000001_Node000027" title=" " alt="" coords="1042,47,1182,91,1181,96,1040,52"/>
+<area shape="rect" id="Node000003" href="$file__storage_8cpp.html" title=" " alt="" coords="570,277,769,302"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="756,225,686,279,683,274,752,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="806,221,870,274,867,278,803,225"/>
+<area shape="rect" id="Node000005" href="$platform__node_8cpp.html" title=" " alt="" coords="999,357,1177,397"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="924,305,1044,355,1042,360,922,310"/>
+<area shape="rect" id="Node000006" href="$demo_2persist__logger__app_2main_8cpp.html" title=" " alt="" coords="791,357,975,397"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="885,316,885,357,880,357,880,316"/>
+<area shape="rect" id="Node000007" href="$demo_2secure__vault_2main_8cpp.html" title=" " alt="" coords="1366,357,1541,397"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="956,302,986,307,1170,330,1355,355,1366,357,1365,362,1354,360,1170,336,985,312,955,307"/>
+<area shape="rect" id="Node000008" href="$key__slot__test_8cpp.html" title=" " alt="" coords="1202,357,1342,397"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="950,302,1190,355,1202,357,1201,363,1189,360,948,308"/>
+<area shape="rect" id="Node000009" href="$per__fixture_8h.html" title=" " alt="" coords="193,365,372,390"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="811,307,780,312,582,336,495,345,384,360,341,367,341,362,384,355,495,340,582,331,780,307,810,302"/>
+<area shape="rect" id="Node000012" href="$per__dtc__storage_8h.html" title="Persistent DTC event memory on top of ara::per (see DiagnosticServer::SetDtcStorage)." alt="" coords="397,357,547,397"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="814,307,561,360,548,363,547,357,559,355,813,302"/>
+<area shape="rect" id="Node000015" href="$persistency_8cpp.html" title=" " alt="" coords="572,365,767,390"/>
+<area shape="poly" id="edge14_Node000004_Node000015" title=" " alt="" coords="842,310,699,367,697,362,840,305"/>
+<area shape="rect" id="Node000010" href="$file__storage__test_8cpp.html" title=" " alt="" coords="5,445,179,485"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="246,398,135,448,133,443,244,393"/>
+<area shape="rect" id="Node000011" href="$key__value__storage__test_8cpp.html" title=" " alt="" coords="203,445,365,485"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="286,403,286,445,281,445,280,404"/>
+<area shape="rect" id="Node000013" href="$diag__gap__test_8cpp.html" title=" " alt="" coords="391,445,553,485"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="475,411,475,445,469,445,469,411"/>
+<area shape="rect" id="Node000014" href="$per__dtc__storage_8cpp.html" title=" " alt="" coords="578,445,729,485"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="525,401,615,443,612,448,523,406"/>
+<area shape="poly" id="edge29_Node000016_Node000002" title=" " alt="" coords="979,140,817,191,815,186,978,135"/>
+<area shape="poly" id="edge31_Node000016_Node000004" title=" " alt="" coords="1024,145,987,183,896,278,892,274,983,179,1020,142"/>
+<area shape="poly" id="edge19_Node000016_Node000007" title=" " alt="" coords="1145,132,1352,179,1367,194,1376,210,1385,240,1390,272,1404,308,1438,356,1434,359,1399,311,1385,273,1379,241,1372,212,1363,198,1349,184,1144,137"/>
+<area shape="rect" id="Node000017" href="$dash__features_8h.html" title=" " alt="" coords="997,181,1152,221"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="1062,146,1072,180,1067,182,1057,147"/>
+<area shape="rect" id="Node000019" href="$key__slot_8h.html" title="ara::crypto key&#45;slot facade: KeySlotPrototype / KeyStorageProvider." alt="" coords="1413,269,1552,309"/>
+<area shape="poly" id="edge20_Node000016_Node000019" title=" " alt="" coords="1145,131,1219,139,1277,141,1333,151,1363,162,1396,179,1422,199,1444,222,1475,268,1470,271,1440,226,1418,203,1393,184,1361,167,1331,156,1277,146,1218,144,1145,136"/>
+<area shape="rect" id="Node000026" href="$key__value__storage_8cpp.html" title=" " alt="" coords="1177,181,1338,221"/>
+<area shape="poly" id="edge30_Node000016_Node000026" title=" " alt="" coords="1110,136,1213,179,1211,184,1108,141"/>
+<area shape="poly" id="edge18_Node000017_Node000005" title=" " alt="" coords="1128,227,1150,245,1166,268,1172,289,1166,310,1147,338,1122,359,1119,355,1143,335,1162,308,1167,289,1162,271,1146,249,1124,231"/>
+<area shape="rect" id="Node000018" href="$dash__features_8cpp.html" title=" " alt="" coords="997,269,1152,309"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="1077,235,1077,269,1072,269,1072,235"/>
+<area shape="poly" id="edge21_Node000019_Node000007" title=" " alt="" coords="1474,323,1462,358,1457,356,1469,322"/>
+<area shape="poly" id="edge22_Node000019_Node000008" title=" " alt="" coords="1425,317,1319,360,1317,355,1423,312"/>
+<area shape="rect" id="Node000020" href="$key__slot_8cpp.html" title=" " alt="" coords="1565,357,1704,397"/>
+<area shape="poly" id="edge23_Node000019_Node000020" title=" " alt="" coords="1529,314,1603,355,1600,360,1527,318"/>
+<area shape="rect" id="Node000021" href="$provider_8h.html" title="SWS&#45;shaped facade (ara::crypto::cryp): CryptoProvider and the Ctx classes." alt="" coords="1729,365,1909,390"/>
+<area shape="poly" id="edge24_Node000019_Node000021" title=" " alt="" coords="1566,309,1774,362,1773,367,1565,314"/>
+<area shape="rect" id="Node000022" href="$extras__test_8cpp.html" title=" " alt="" coords="1446,445,1605,485"/>
+<area shape="poly" id="edge25_Node000021_Node000022" title=" " alt="" coords="1767,397,1591,448,1589,443,1765,391"/>
+<area shape="rect" id="Node000023" href="$provider__test_8cpp.html" title=" " alt="" coords="1629,445,1800,485"/>
+<area shape="poly" id="edge26_Node000021_Node000023" title=" " alt="" coords="1796,401,1739,447,1736,443,1793,397"/>
+<area shape="rect" id="Node000024" href="$provider_8cpp.html" title=" " alt="" coords="1824,453,2019,478"/>
+<area shape="poly" id="edge27_Node000021_Node000024" title=" " alt="" coords="1845,397,1909,450,1905,454,1842,401"/>
+<area shape="rect" id="Node000025" href="$provider__ext_8cpp.html" title=" " alt="" coords="2043,445,2213,485"/>
+<area shape="poly" id="edge28_Node000021_Node000025" title=" " alt="" coords="1874,391,2060,443,2059,448,1873,396"/>
+</map>

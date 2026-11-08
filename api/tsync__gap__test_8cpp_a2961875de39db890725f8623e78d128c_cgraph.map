@@ -1,0 +1,32 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,341,75,366"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="180,5,316,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="38,340,39,288,48,212,58,170,72,128,93,89,121,55,142,40,166,31,168,35,144,45,124,59,98,92,77,130,63,171,53,213,44,289,43,340"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#a435c6e84ebb3f98aebd5184f40b734d8" title=" " alt="" coords="148,69,348,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="39,340,43,298,56,239,80,175,98,145,121,119,134,109,137,114,124,123,102,148,85,177,61,240,49,299,44,341"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="180,261,316,301"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="64,338,122,312,166,298,168,303,124,317,66,343"/>
+<area shape="rect" id="Node000006" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html#ac6b62853343b6b60a12142c48244e2bd" title=" " alt="" coords="158,326,338,381"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="75,351,144,351,144,356,75,356"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#a79677001aeacb6a4a76f736d29271e2d" title=" " alt="" coords="130,405,366,459"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="66,364,124,391,142,398,140,403,122,396,64,368"/>
+<area shape="rect" id="Node000008" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#ab2fe840fac01451375bc75de7bc6c749" title=" " alt="" coords="135,484,361,524"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="49,365,76,417,98,445,124,470,133,475,130,480,121,474,94,449,71,419,44,368"/>
+<area shape="rect" id="Node000009" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#a58f85ae243bd23ec4a12a1a4a1346813" title="SWS_TS_01207: sets a new offset time (unconditional step)." alt="" coords="149,197,347,237"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="45,339,74,294,95,269,121,247,135,239,137,244,124,252,99,272,78,297,50,342"/>
+<area shape="rect" id="Node000011" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#a843ccbd3d3fb3e2da6518c8b76d315c4" title=" " alt="" coords="123,548,373,588"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="46,366,53,400,67,445,90,493,106,515,124,534,131,539,127,543,121,538,102,519,86,496,62,447,48,401,41,367"/>
+<area shape="rect" id="Node000012" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#afde85b2e1a708f426d7037b6866b5725" title=" " alt="" coords="147,133,349,173"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="41,340,49,308,64,266,87,221,103,201,121,183,133,175,136,179,124,187,107,204,92,224,69,268,54,310,46,341"/>
+<area shape="rect" id="Node000013" href="$namespaceanonymous__namespace_02tsync__gap__test_8cpp_03.html#a92784b631788a06672efee80ab002ad7" title=" " alt="" coords="157,612,339,652"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="44,366,48,411,59,473,69,507,83,540,101,571,124,598,145,612,142,617,121,602,97,574,78,543,64,509,54,474,42,411,39,367"/>
+<area shape="rect" id="Node000014" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#ad6d18a8026382754e6d631c9cd43df1c" title=" " alt="" coords="123,677,373,731"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="43,367,44,421,52,500,62,543,77,586,97,627,125,662,128,666,125,670,121,666,93,629,72,588,57,544,47,501,38,421,38,367"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="421,133,635,173"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="337,107,427,128,426,133,336,112"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="336,195,426,174,427,179,337,200"/>
+<area shape="rect" id="Node000010" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="460,197,596,237"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="348,215,447,215,447,220,348,220"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="349,151,408,151,408,156,349,156"/>
+<area shape="poly" id="edge13_Node000012_Node000010" title=" " alt="" coords="337,171,447,196,446,201,336,176"/>
+</map>

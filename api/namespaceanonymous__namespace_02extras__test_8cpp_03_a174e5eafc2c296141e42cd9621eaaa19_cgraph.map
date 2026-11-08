@@ -1,0 +1,21 @@
+<map id="anonymous_namespace{extras_test::cpp}::TEST" name="anonymous_namespace{extras_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,188,87"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#acf83bc7e9c94d6af3b96123a87400099" title="Requires kUsageDecrypt. Bad padding &#45;&gt; kInvalidInputSize / kAuthTagNotValid (never an oracle detail)." alt="" coords="236,5,429,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,46,257,31,258,36,189,51"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#af385396a1ff0d5736b133a997c6845ba" title="Key must be 16/24/32 bytes and carry kUsageEncrypt; IV must be 16 bytes." alt="" coords="237,55,428,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,65,224,65,224,70,188,70"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1SecretKey.html#a8a778d61b17062c585c9cb1cda69f6a6" title=" " alt="" coords="250,105,415,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,85,237,99,236,104,179,90"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1crypto.html#ae0bd797acf0d62500a3cdc76d104d79c" title=" " alt="" coords="477,55,692,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="415,103,514,81,515,86,416,108"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="502,105,667,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="416,122,488,122,488,127,416,127"/>
+<area shape="rect" id="Node000010" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="497,169,672,195"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="416,141,515,164,514,169,415,146"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="740,41,903,81"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="659,102,733,82,735,87,660,107"/>
+<area shape="rect" id="Node000008" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="740,105,903,145"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="668,122,726,122,726,127,668,127"/>
+<area shape="rect" id="Node000009" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="740,169,903,209"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="660,142,735,163,733,168,659,147"/>
+</map>

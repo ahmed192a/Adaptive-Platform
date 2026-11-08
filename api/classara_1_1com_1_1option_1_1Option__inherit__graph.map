@@ -1,0 +1,7 @@
+<map id="ara::com::option::Option" name="ara::com::option::Option">
+<area shape="rect" id="Node000001" title="Communication message entry abstract option." alt="" coords="152,5,331,31"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1option_1_1Ipv4EndpointOption.html" title="IPv4 endpoint option for both generic and service discovery purposes." alt="" coords="5,79,227,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,40,148,81,145,76,210,36"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1option_1_1LoadBalancingOption.html" title="Service load balancing option." alt="" coords="251,79,482,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="273,36,338,76,335,81,270,40"/>
+</map>

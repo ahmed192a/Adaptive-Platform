@@ -1,0 +1,12 @@
+<map id="src/ara/com/ipc" name="src/ara/com/ipc">
+<area shape="rect" id="node2" href="dir_a908f2680f7b58c1cbd9de46eb1509a5.html" title="client" alt="" coords="220,63,279,88"/>
+<area shape="rect" id="node5" href="dir_5aa6213a6d528339e9f677bb76ee4bd2.html" title="core" alt="" coords="181,136,232,161"/>
+<area shape="poly" id="edge1" href="dir_000002_000006.html" alt="" coords="245,90,223,126,218,123,240,87"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000002_000006.html" title="1" alt="" coords="226,117,235,132"/>
+<area shape="rect" id="node3" href="dir_4d112805d88ec456a8a5ebb52962ce22.html" title="server" alt="" coords="133,63,195,88"/>
+<area shape="poly" id="edge2" href="dir_000049_000006.html" alt="" coords="173,87,195,123,191,126,169,90"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000049_000006.html" title="1" alt="" coords="193,109,202,123"/>
+<area shape="rect" id="node4" href="dir_ae643b30f92d7009a47e1129c52f273d.html" title="sockets" alt="" coords="38,63,109,88"/>
+<area shape="rect" id="clust2" href="dir_85cae31a5f808c1cfc4eb018df256415.html" alt="" coords="27,52,356,99"/>
+<area shape="rect" id="clust1" href="dir_4f44575164cb190e105d4146032f0362.html" title="com" alt="" coords="16,16,367,109"/>
+</map>

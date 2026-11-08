@@ -1,0 +1,5 @@
+<map id="ara::tsync::TimeBaseProvider::PublishValidationData" name="ara::tsync::TimeBaseProvider::PublishValidationData">
+<area shape="rect" id="Node000001" title="Deliver master timing / pdelay responder data to the validation notifications." alt="" coords="123,5,336,45"/>
+<area shape="rect" id="Node000002" href="$tsync__gap__test_8cpp.html#ab06678fbf31b318366e3743d7638afbf" title=" " alt="" coords="5,13,75,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,28,75,28,75,23,109,23"/>
+</map>

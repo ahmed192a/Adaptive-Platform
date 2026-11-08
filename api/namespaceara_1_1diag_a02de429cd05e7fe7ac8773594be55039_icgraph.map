@@ -1,0 +1,9 @@
+<map id="ara::diag::EncodeDtcMemory" name="ara::diag::EncodeDtcMemory">
+<area shape="rect" id="Node000001" title="Text codec used for the stored value (exposed for tests): one line per DTC." alt="" coords="385,31,596,56"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1diag.html#adad091e36b374b3cf384d8a47c783878" title="Stores the event memory as one string value under key and syncs after every change." alt="" coords="123,5,337,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="372,34,337,31,338,26,372,29"/>
+<area shape="rect" id="Node000004" href="$diag__gap__test_8cpp.html#a6b2900359fa7b98018cd9f5c18fb8d59" title=" " alt="" coords="203,55,257,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="372,57,258,68,258,62,371,52"/>
+<area shape="rect" id="Node000003" href="$diag__gap__test_8cpp.html#ac7adffc0ac2a3d0bf3ae5031cf77a123" title=" " alt="" coords="5,5,75,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,21,75,21,75,15,109,15"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="OTA::MetaDataStorage::load_MetaData" name="OTA::MetaDataStorage::load_MetaData">
+<area shape="rect" id="Node000001" title="Loads all the stored meta&#45;data objects from the file system." alt="" coords="5,5,176,45"/>
+<area shape="rect" id="Node000002" href="$classOTA_1_1MetaDataStorage.html#a4e046beb51905b39b26b2e7d47407d9f" title="gets the number of apps in the file system" alt="" coords="224,5,395,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,23,210,23,210,28,176,28"/>
+</map>

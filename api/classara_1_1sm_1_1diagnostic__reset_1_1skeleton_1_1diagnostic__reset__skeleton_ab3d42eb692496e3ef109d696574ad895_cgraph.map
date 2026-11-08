@@ -1,0 +1,19 @@
+<map id="ara::sm::diagnostic_reset::skeleton::diagnostic_reset_skeleton::method_dispatch" name="ara::sm::diagnostic_reset::skeleton::diagnostic_reset_skeleton::method_dispatch">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,94,249,149"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1diagnostic__reset_1_1skeleton_1_1diagnostic__reset__skeleton.html#a589c7f6aec86938297bff2dd4628ed82" title="All Processes which got a DiagnosticReset request sends this as answer to State Management." alt="" coords="297,15,497,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,91,289,71,290,77,223,96"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#aa346a9135cc9bc860cb16868c7064f1d" title="1&#45; HandleCall R ARGS" alt="" coords="299,94,496,149"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="249,119,285,119,285,124,249,124"/>
+<area shape="rect" id="Node000009" href="$classara_1_1sm_1_1diagnostic__reset_1_1skeleton_1_1diagnostic__reset__skeleton.html#a0e9f8ef78091ea5e3c1f6d9c80c9b01b" title="sends DiagnosticResetMsg defined in 9.1 Type definition to all Processes in a SoftwareCluster." alt="" coords="297,173,497,227"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="223,146,290,166,289,171,221,151"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1Marshal.html#a88e63db5dd754649f0f6dfa7bde66073" title=" " alt="" coords="576,5,723,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="467,91,496,79,544,55,564,47,566,52,546,60,498,84,470,96"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1Serializer.html#a6c5ec394bb39cb758b2590b8d1ac16fb" title="Get the Payload object of the serializer." alt="" coords="575,69,723,109"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="496,106,561,98,562,103,496,111"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1Serializer.html#af9f0e3e083c607e2e8a5fb3fae6bf793" title="serialize the data into the vector of bytes" alt="" coords="575,133,723,173"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="496,131,562,140,561,145,496,136"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a18ebdf47d3f6ce89bf537a61a3be18f6" title="Set message payload." alt="" coords="545,197,753,237"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="472,146,498,158,546,183,566,190,564,195,544,188,496,162,470,151"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1Deserializer.html#a03fc838db428148be027c71ec2f02548" title="Deserialize the vector of bytes into the required data type." alt="" coords="801,5,967,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="723,23,788,23,788,28,723,28"/>
+</map>

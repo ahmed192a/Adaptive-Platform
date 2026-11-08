@@ -1,0 +1,25 @@
+<map id="CClient::UDPSendTo" name="CClient::UDPSendTo">
+<area shape="rect" id="Node000001" title="Client send data UDP." alt="" coords="964,177,1115,203"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a206ed919173e8c0b6b1a108be3fd71df" title="EventSubscribe." alt="" coords="724,5,911,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1017,169,973,121,945,96,915,74,895,62,897,58,917,69,948,92,977,117,1021,165"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a3783cf67439284116087a4d3296e44ff" title="EventUnsubscribe." alt="" coords="724,84,911,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="988,175,894,141,896,136,990,170"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a0a913114d49ea82357872896c02d862c" title="Offer Service." alt="" coords="719,163,916,217"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="950,193,916,193,916,187,950,187"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a3a95fa49b72ea5bd4fe6b4f632cbd6f1" title="SendEvent send an event update to clients." alt="" coords="719,241,916,296"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="990,210,896,244,894,239,988,205"/>
+<area shape="rect" id="Node000012" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a0cdcb2dcb86ff315bda38bb3cc8a6b8a" title="StopOfferService." alt="" coords="719,320,916,375"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1021,215,977,263,948,288,917,311,897,322,895,318,915,306,945,284,973,259,1017,211"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html#aaba2a38e3539af13a6cf07ff124e8426" title="Subscribe to event." alt="" coords="477,13,664,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="710,35,664,35,664,30,710,30"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html#a11f1e9d3b03f243ccedc5c3becaddf1c" title="Unsubscribe from event." alt="" coords="471,91,671,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="710,114,671,114,671,109,710,109"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a11870951b3cefd83b6b41b4ee507f572" title=" " alt="" coords="477,249,664,289"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="705,271,664,271,664,266,705,266"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Field.html#aed5fb99ae95ec01c936d560d9dd333ad" title="Handle set method." alt="" coords="224,217,423,257"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="463,257,423,252,423,247,464,252"/>
+<area shape="rect" id="Node000011" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a2f4887439a0e3d2b6bcc3f81d1a516f1" title="update event and notify" alt="" coords="230,281,417,321"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="464,285,417,291,416,286,463,280"/>
+<area shape="rect" id="Node000010" href="$classskeleton.html#ae2dc7c3be1a5325ca85f1895e42e9847" title=" " alt="" coords="5,217,176,257"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="210,239,176,239,176,234,210,234"/>
+</map>

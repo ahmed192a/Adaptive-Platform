@@ -1,0 +1,9 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,60,102"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1someip_1_1SessionIdCounter.html#a84b65a3319d4d0e2cb0c25cb6fa41c6e" title=" " alt="" coords="108,5,301,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,75,107,55,127,47,129,52,109,60,61,80"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1someip_1_1SessionIdCounter.html#a0c88d3a056abcef05bde3f71443862e1" title=" " alt="" coords="108,69,301,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,87,94,87,94,92,60,92"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1someip_1_1SessionIdCounter.html#a1884475e3c24b34f8b06baa8a066c14b" title="Start over (e.g. after the SD instance restarted): next id is 1 and the Reboot flag is set again." alt="" coords="108,133,301,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="61,99,109,119,129,126,127,131,107,124,59,104"/>
+</map>

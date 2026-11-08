@@ -1,0 +1,9 @@
+<map id="ara::ucm::pkgmgr::PackageManagement::CampaignHistoryType" name="ara::ucm::pkgmgr::PackageManagement::CampaignHistoryType">
+<area shape="rect" id="Node000001" title="Campaign history." alt="" coords="779,47,1037,87"/>
+<area shape="rect" id="Node000002" href="$structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1CampaignErrorType.html" title="Campaign Error." alt="" coords="387,5,629,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="643,37,779,51,778,56,643,42"/>
+<area shape="rect" id="Node000003" href="$structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1UCMStepErrorType.html" title="UCM Error." alt="" coords="5,5,243,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="256,23,386,23,386,28,256,28"/>
+<area shape="rect" id="Node000004" href="$structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1HistoryVectorType.html" title="History of an UCM." alt="" coords="391,69,625,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="639,82,755,76,778,74,779,80,755,81,639,87"/>
+</map>

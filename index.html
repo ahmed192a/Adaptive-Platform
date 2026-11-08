@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Adaptive Platform</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body>
+<header><h1>Adaptive Platform</h1>
+<p>An implementation of the AUTOSAR Adaptive Platform on Linux: functional clusters (<code>ara::*</code>),
+platform processes, a live web console and runnable demo applications.</p>
+<nav><a href="#demo">Demo</a><a href="#status">Conformance</a><a href="docs/demo.html">Run it</a><a href="api/index.html">API reference</a></nav></header>
+<main>
+<h2 id="demo">Live demo</h2><div class="demo"><a href="img/platform-demo.mp4"><img src="img/platform-demo.gif" alt="Platform demo"></a></div><p class="mut">Click the animation for the full-quality video (<a href="img/platform-demo.mp4">mp4</a>).</p>
+<p>The web console drives the real in-process libraries and the demo binaries; nothing on screen is mocked.
+See <a href="docs/demo.html">how to run and re-record it</a>.</p>
+<h2>Screenshots</h2><div class="gallery"><figure style="margin:0"><a href="img/01-overview.png"><img loading="lazy" src="img/01-overview.png" alt="Overview"></a><figcaption>Overview</figcaption></figure><figure style="margin:0"><a href="img/02-execution-management.png"><img loading="lazy" src="img/02-execution-management.png" alt="Execution Management"></a><figcaption>Execution Management</figcaption></figure><figure style="margin:0"><a href="img/03-phm.png"><img loading="lazy" src="img/03-phm.png" alt="Health monitoring"></a><figcaption>Health monitoring</figcaption></figure><figure style="margin:0"><a href="img/04-diagnostics.png"><img loading="lazy" src="img/04-diagnostics.png" alt="Diagnostics"></a><figcaption>Diagnostics</figcaption></figure><figure style="margin:0"><a href="img/05-persistency.png"><img loading="lazy" src="img/05-persistency.png" alt="Persistency"></a><figcaption>Persistency</figcaption></figure><figure style="margin:0"><a href="img/06-crypto.png"><img loading="lazy" src="img/06-crypto.png" alt="Crypto"></a><figcaption>Crypto</figcaption></figure><figure style="margin:0"><a href="img/07-network-management.png"><img loading="lazy" src="img/07-network-management.png" alt="Network Management"></a><figcaption>Network Management</figcaption></figure><figure style="margin:0"><a href="img/08-time-sync.png"><img loading="lazy" src="img/08-time-sync.png" alt="Time synchronization"></a><figcaption>Time synchronization</figcaption></figure><figure style="margin:0"><a href="img/09-diagnostics-lab.png"><img loading="lazy" src="img/09-diagnostics-lab.png" alt="Diagnostics lab"></a><figcaption>Diagnostics lab</figcaption></figure><figure style="margin:0"><a href="img/10-software-update.png"><img loading="lazy" src="img/10-software-update.png" alt="Software update"></a><figcaption>Software update</figcaption></figure><figure style="margin:0"><a href="img/11-key-slots.png"><img loading="lazy" src="img/11-key-slots.png" alt="Key slots"></a><figcaption>Key slots</figcaption></figure><figure style="margin:0"><a href="img/12-demo-apps.png"><img loading="lazy" src="img/12-demo-apps.png" alt="Demo applications"></a><figcaption>Demo applications</figcaption></figure></div>
+<h2 id="status">Specification conformance</h2>
+<p>Per-requirement reports against AUTOSAR Adaptive Platform R25-11, falling back to the closest earlier release where a
+chapter was unavailable (the release is recorded per requirement). <b>Unverified</b> means the specification text for that
+item could not be read; it is not a claim of compliance.</p>
+<div class="card"><table><thead><tr><th>Cluster</th><th class="n">Implemented</th><th class="n">Partial</th><th class="n">Missing</th><th class="n">Deviation</th><th class="n">Unverified</th></tr></thead>
+<tbody><tr><td><a href="conformance/com.html"><code>ara::com</code></a></td><td class="n ok">12</td><td class="n warn">7</td><td class="n bad">7</td><td class="n bad">9</td><td class="n mut">1</td></tr><tr><td><a href="conformance/core.html"><code>ara::core</code></a></td><td class="n ok">15</td><td class="n warn">0</td><td class="n bad">1</td><td class="n bad">8</td><td class="n mut">2</td></tr><tr><td><a href="conformance/crypto.html"><code>ara::crypto</code></a></td><td class="n ok">11</td><td class="n warn">9</td><td class="n bad">2</td><td class="n bad">0</td><td class="n mut">1</td></tr><tr><td><a href="conformance/diag.html"><code>ara::diag</code></a></td><td class="n ok">20</td><td class="n warn">8</td><td class="n bad">1</td><td class="n bad">0</td><td class="n mut">0</td></tr><tr><td><a href="conformance/exec.html"><code>ara::exec</code></a></td><td class="n ok">6</td><td class="n warn">4</td><td class="n bad">1</td><td class="n bad">0</td><td class="n mut">1</td></tr><tr><td><a href="conformance/log.html"><code>ara::log</code></a></td><td class="n ok">23</td><td class="n warn">2</td><td class="n bad">3</td><td class="n bad">0</td><td class="n mut">1</td></tr><tr><td><a href="conformance/nm.html"><code>ara::nm</code></a></td><td class="n ok">46</td><td class="n warn">1</td><td class="n bad">0</td><td class="n bad">1</td><td class="n mut">2</td></tr><tr><td><a href="conformance/per.html"><code>ara::per</code></a></td><td class="n ok">21</td><td class="n warn">5</td><td class="n bad">0</td><td class="n bad">1</td><td class="n mut">3</td></tr><tr><td><a href="conformance/phm.html"><code>ara::phm</code></a></td><td class="n ok">10</td><td class="n warn">5</td><td class="n bad">0</td><td class="n bad">3</td><td class="n mut">0</td></tr><tr><td><a href="conformance/sm.html"><code>ara::sm</code></a></td><td class="n ok">10</td><td class="n warn">7</td><td class="n bad">12</td><td class="n bad">5</td><td class="n mut">1</td></tr><tr><td><a href="conformance/tsync.html"><code>ara::tsync</code></a></td><td class="n ok">31</td><td class="n warn">2</td><td class="n bad">1</td><td class="n bad">3</td><td class="n mut">1</td></tr><tr><td><a href="conformance/ucm.html"><code>ara::ucm</code></a></td><td class="n ok">11</td><td class="n warn">13</td><td class="n bad">5</td><td class="n bad">2</td><td class="n mut">2</td></tr></tbody></table></div>
+<h2>Guides</h2><p><a href="docs/demo.html">Demo: the Platform Console and the demo applications</a> &middot; <a href="docs/dashboard.html">Adaptive Platform Console</a> &middot; <a href="docs/ROADMAP.html">Roadmap and gap analysis</a> &middot; <a href="docs/nm.html">ara::nm - Network Management</a> &middot; <a href="docs/tsync.html">ara::tsync – Time Synchronization</a> &middot; <a href="docs/crypto-keyslots.html">Crypto key slots</a></p>
+<h2>API reference</h2><p><a href="api/index.html">Doxygen documentation</a> generated from the sources on every push to <code>master</code>.</p>
+</main><footer>Adaptive Platform</footer></body></html>

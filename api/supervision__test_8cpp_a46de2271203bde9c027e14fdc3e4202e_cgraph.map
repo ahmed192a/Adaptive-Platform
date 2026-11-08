@@ -1,0 +1,12 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,60,88"/>
+<area shape="rect" id="Node000002" href="$namespacephmtest.html#acd85b21ea142070ea69c9ac50dd0d568" title=" " alt="" coords="337,5,438,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,60,77,46,107,34,163,22,221,15,323,12,323,18,221,20,164,27,109,39,80,51,54,65"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02supervision__test_8cpp_03.html#a284766651fd56a7848e1954258e3878e" title=" " alt="" coords="108,48,288,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,73,95,73,95,78,60,78"/>
+<area shape="rect" id="Node000005" href="$namespacephmtest.html#af0570ce0f68aa65941a8cfb3acdcb00b" title=" " alt="" coords="152,127,244,152"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="56,86,109,113,140,123,138,128,107,118,54,91"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="288,45,331,32,332,37,289,51"/>
+<area shape="rect" id="Node000004" href="$namespacephmtest.html#a296c31ed366f3fa2be3e0a13f08740cb" title=" " alt="" coords="336,63,439,88"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="288,73,322,73,322,78,288,78"/>
+</map>

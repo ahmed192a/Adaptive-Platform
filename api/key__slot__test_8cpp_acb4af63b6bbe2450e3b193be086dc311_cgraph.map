@@ -1,0 +1,10 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,92,60,117"/>
+<area shape="rect" id="Node000002" href="$classanonymous__namespace_02key__slot__test_8cpp_03_1_1KeySlotTest.html#a53cbbba9afe0d96347d8e4ac263bbed9" title=" " alt="" coords="120,5,324,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,90,107,70,128,62,129,67,109,75,61,95"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1KeyStorageProvider.html#aa2bced07570cbcd0070df3f1184135f1" title="Volatile provider: only non&#45;persistent slots." alt="" coords="108,85,336,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,102,94,102,94,107,60,107"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02key__slot__test_8cpp_03.html#a16f89db659e9e4e9477d45de2866703f" title=" " alt="" coords="132,173,312,228"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="60,115,157,165,154,169,58,120"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="185,173,185,163,191,154,204,149,222,147,244,150,256,158,253,162,242,155,222,152,205,154,195,159,190,165,190,173"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ara::diag::DiagnosticServer::DtcStatus" name="ara::diag::DiagnosticServer::DtcStatus">
+<area shape="rect" id="Node000001" title="Status byte of dtc, or nullopt when unknown." alt="" coords="123,5,321,45"/>
+<area shape="rect" id="Node000002" href="$diag__gap__test_8cpp.html#ac7adffc0ac2a3d0bf3ae5031cf77a123" title=" " alt="" coords="5,13,75,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,28,75,28,75,23,109,23"/>
+</map>

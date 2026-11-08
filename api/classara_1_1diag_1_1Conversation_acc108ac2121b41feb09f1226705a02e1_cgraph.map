@@ -1,0 +1,9 @@
+<map id="ara::diag::Conversation::GetActiveSecurityLevel" name="ara::diag::Conversation::GetActiveSecurityLevel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,188,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1DiagnosticServer.html#a31039d310fee665033618cc4c2464f05" title="Current unlocked security level (0 = locked). Reset on every session change." alt="" coords="236,5,435,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,23,223,23,223,28,188,28"/>
+<area shape="rect" id="Node000003" href="$classara_1_1diag_1_1DiagnosticServer.html#aa031ca63a48923619e561a4df4cd397f" title=" " alt="" coords="483,5,681,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="435,23,469,23,469,28,435,28"/>
+<area shape="rect" id="Node000004" href="$classara_1_1diag_1_1DiagnosticServer.html#adcfb440c2e23584361689157d81fcff1" title=" " alt="" coords="729,5,928,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="682,23,715,23,715,28,682,28"/>
+</map>

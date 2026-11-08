@@ -1,0 +1,35 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,316,75,341"/>
+<area shape="rect" id="Node000002" href="$structanonymous__namespace_02tsync__spec__test_8cpp_03_1_1Spec.html#aac84d288203a79bed0f65541cb879778" title=" " alt="" coords="166,5,346,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="39,316,42,270,53,204,64,169,78,133,97,100,121,71,152,50,155,54,124,75,101,103,83,136,69,170,58,206,47,271,44,316"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="188,85,324,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="40,315,47,279,61,230,84,179,101,155,121,135,146,119,173,109,175,114,148,124,124,139,105,159,89,182,66,232,52,280,45,316"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a03eb0b3788da4b20e1fd7d0c35ac6ffa" title="Current time of the base (epoch if it was never set)." alt="" coords="129,149,383,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="43,315,70,258,92,226,121,199,129,193,132,198,124,203,96,229,74,261,48,317"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a2dd19047636a820d140cd410f93a5deb" title=" " alt="" coords="123,213,389,253"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="52,314,82,288,121,262,139,255,141,260,124,267,85,292,56,318"/>
+<area shape="rect" id="Node000007" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="188,405,324,445"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="56,339,85,365,124,390,176,409,174,414,121,395,82,370,52,343"/>
+<area shape="rect" id="Node000008" href="$structanonymous__namespace_02tsync__spec__test_8cpp_03_1_1Spec.html#a49f53218bd5e554223bc956755f24347" title=" " alt="" coords="166,469,346,524"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="48,341,75,396,97,428,124,455,155,472,152,477,121,459,93,431,70,399,44,343"/>
+<area shape="rect" id="Node000011" href="$namespaceanonymous__namespace_02tsync__spec__test_8cpp_03.html#a2ef8ed9adff67665531677ce5790e936" title=" " alt="" coords="156,549,356,589"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="45,341,51,380,64,432,87,488,104,513,124,535,145,548,142,553,121,539,100,516,83,490,58,434,45,381,40,342"/>
+<area shape="rect" id="Node000012" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#aaea00b1accf246b8e3ee446333a98a13" title="SWS_TS_00061..63: kFunctionNotSupported unless allowProviderRateCorrection, kLimitsExceeded beyond pr..." alt="" coords="123,277,389,317"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="75,321,109,316,110,321,76,326"/>
+<area shape="rect" id="Node000014" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a7736d7a013ba7c2db28f82edb3d99929" title="Sets the time unconditionally (no slewing)." alt="" coords="155,341,357,381"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="76,331,142,341,141,346,75,336"/>
+<area shape="rect" id="Node000015" href="$namespaceanonymous__namespace_02tsync__spec__test_8cpp_03.html#a38895b8ec19741869aec021e5e475dec" title=" " alt="" coords="161,613,351,653"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="44,342,45,390,55,460,65,497,80,534,99,569,124,599,150,616,147,620,121,603,95,572,75,537,60,499,50,461,40,391,38,342"/>
+<area shape="rect" id="Node000005" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="440,245,653,285"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="349,186,390,198,490,237,488,242,388,203,347,191"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="389,245,427,249,426,254,388,250"/>
+<area shape="rect" id="Node000009" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#af50bbb68e7bae435e3f1cff7965db96c" title=" " alt="" coords="440,445,653,485"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="346,484,426,475,426,481,346,489"/>
+<area shape="rect" id="Node000010" href="$classara_1_1tsync_1_1TimeBaseResource.html#a81fb2b3d04fdd4fd9766c3cb4f22d8e1" title=" " alt="" coords="437,509,656,549"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="346,504,424,512,423,518,346,509"/>
+<area shape="poly" id="edge14_Node000012_Node000005" title=" " alt="" coords="389,279,426,275,427,281,390,285"/>
+<area shape="rect" id="Node000013" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="479,325,615,365"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="378,314,466,329,465,334,377,319"/>
+<area shape="poly" id="edge17_Node000014_Node000005" title=" " alt="" coords="347,338,388,326,488,288,490,293,390,331,349,343"/>
+<area shape="poly" id="edge16_Node000014_Node000013" title=" " alt="" coords="358,352,465,346,465,352,358,358"/>
+</map>

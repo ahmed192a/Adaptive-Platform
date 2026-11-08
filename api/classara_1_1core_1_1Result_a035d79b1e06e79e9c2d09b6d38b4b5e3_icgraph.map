@@ -1,0 +1,30 @@
+<map id="ara::core::Result::Value" name="ara::core::Result::Value">
+<area shape="rect" id="Node000001" title=" " alt="" coords="321,205,457,245"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a2d6641c9a63b80a924cd8485740f40f4" title="Monadic chaining: f(value) returns either a Result&lt;U,E&gt; or a plain U." alt="" coords="108,55,273,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,195,327,142,301,116,272,94,249,82,251,78,275,89,304,112,331,139,371,191"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#a24536def6338166a2781e413e63f3c41" title=" " alt="" coords="113,104,268,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="348,199,272,151,228,132,230,127,275,146,351,194"/>
+<area shape="rect" id="Node000007" href="$result__test_8cpp.html#ad68a15ce860a232b364764f60bbb28b6" title=" " alt="" coords="5,155,60,180"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="310,204,273,195,154,179,60,171,60,166,155,173,274,190,311,199"/>
+<area shape="rect" id="Node000008" href="$classara_1_1core_1_1Result.html#a60fde32930cb8ad251f6501fe6b23d6d" title="Value, or the result of f(error) when *this holds an error." alt="" coords="123,205,259,245"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="308,227,259,227,259,222,308,222"/>
+<area shape="rect" id="Node000010" href="$result__test_8cpp.html#ae583294fc6e6514afea95deb1ae3c066" title=" " alt="" coords="163,269,218,295"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="309,251,219,277,218,272,307,245"/>
+<area shape="rect" id="Node000011" href="$classara_1_1core_1_1Result.html#a425fe4293f35288267a083eac9df7b34" title=" " alt="" coords="123,319,259,359"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="354,255,317,282,275,308,247,322,245,317,272,304,314,278,351,251"/>
+<area shape="rect" id="Node000013" href="$classara_1_1core_1_1Result.html#a82bd33aae67fd01aece68196ffb4e013" title=" " alt="" coords="123,383,259,423"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="372,258,332,316,305,347,275,373,255,386,252,381,272,369,301,343,328,313,368,255"/>
+<area shape="rect" id="Node000003" href="$result__test_8cpp.html#a44bb54608c459bd2562ae6cbb0c206b9" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,53,59,29,61,24,137,48"/>
+<area shape="rect" id="Node000004" href="$result__test_8cpp.html#ab424717402aff8f94dfe12aa4e0d6dae" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+<area shape="rect" id="Node000006" href="$result__test_8cpp.html#af86793ea26dcf623f23aed2b564a5070" title=" " alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="100,119,60,119,60,114,100,114"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="138,136,61,161,59,156,137,131"/>
+<area shape="rect" id="Node000009" href="$result__test_8cpp.html#aaf1ae0a7dfe5efe83e7a577d684a43c7" title=" " alt="" coords="5,212,60,237"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="109,227,60,227,60,222,109,222"/>
+<area shape="rect" id="Node000012" href="$result__test_8cpp.html#ab1a2b2479c9fdd1c77db05aeda7e5217" title=" " alt="" coords="5,327,60,352"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="109,342,60,342,60,337,109,337"/>
+<area shape="rect" id="Node000014" href="$result__test_8cpp.html#ac33dbaf2f33aa911199f8518880cf3a8" title=" " alt="" coords="5,391,60,416"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="109,406,60,406,60,401,109,401"/>
+</map>

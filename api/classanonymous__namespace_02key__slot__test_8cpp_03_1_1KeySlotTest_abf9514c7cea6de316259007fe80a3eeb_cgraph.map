@@ -1,0 +1,11 @@
+<map id="anonymous_namespace{key_slot_test::cpp}::KeySlotTest::Boot" name="anonymous_namespace{key_slot_test::cpp}::KeySlotTest::Boot">
+<area shape="rect" id="Node000001" title="Simulates a reboot: drops the provider and storage handle and opens them again." alt="" coords="5,5,185,60"/>
+<area shape="rect" id="Node000002" href="$classara_1_1per_1_1PersistencyConfig.html#a9dc8b5081acad03050421159d5a38ec2" title="Parses a JSON document (see file comment)." alt="" coords="233,13,429,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,30,220,30,220,35,186,35"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1InstanceSpecifier.html#a587c1f9313e327df7b11aa7bbc7c4472" title="Validating factory (SWS_CORE_08032)." alt="" coords="477,13,676,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="430,30,463,30,463,35,430,35"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1InstanceSpecifier.html#a84c7f9c1710724dc9fec6551d05f46cc" title=" " alt="" coords="724,13,923,53"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="676,30,710,30,710,35,676,35"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Span.html#a224112dc4480cdf4136499a740f277f9" title=" " alt="" coords="971,20,1140,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="923,30,957,30,957,35,923,35"/>
+</map>

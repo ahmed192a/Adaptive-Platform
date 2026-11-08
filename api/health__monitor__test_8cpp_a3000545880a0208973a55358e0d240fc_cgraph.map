@@ -1,0 +1,13 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,141,60,166"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1SupervisedEntity.html#a4e93f55a67d2de9b04f76c0bb1b0b4ec" title="Validating factory; kUnknownEntity if the entity is not configured in PHM." alt="" coords="114,5,313,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="38,139,64,98,84,75,106,55,115,49,118,54,110,59,88,79,69,101,43,141"/>
+<area shape="rect" id="Node000003" href="$classara_1_1phm_1_1CheckpointSink.html#a3f39b540f73907bfe118338482ec0dee" title=" " alt="" coords="119,69,308,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="59,139,107,119,129,111,130,116,109,124,61,144"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1CheckpointSink.html#a9a7c2a4e6760c49543e7786f90a2d864" title=" " alt="" coords="119,133,308,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="60,151,105,151,105,156,60,156"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1phm.html#a7b34ce37a55f7070a31fde470904e21a" title="Replaces the transport used by all SupervisedEntity objects created afterwards (default: the in&#45;proce..." alt="" coords="108,198,319,223"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="61,164,109,183,140,192,138,197,107,188,59,168"/>
+<area shape="rect" id="Node000006" href="$classara_1_1phm_1_1CheckpointSink.html#af83c2beddbe3623aebc7e1402f89b243" title=" " alt="" coords="119,248,308,288"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="45,165,71,198,110,232,123,240,120,245,106,237,67,202,40,168"/>
+</map>

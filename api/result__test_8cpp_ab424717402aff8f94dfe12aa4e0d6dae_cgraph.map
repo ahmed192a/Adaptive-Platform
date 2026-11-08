@@ -1,0 +1,19 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,134,60,159"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a2d6641c9a63b80a924cd8485740f40f4" title="Monadic chaining: f(value) returns either a Result&lt;U,E&gt; or a plain U." alt="" coords="115,77,281,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,132,107,112,134,103,136,108,109,117,61,137"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="336,69,472,109"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="39,132,65,95,84,76,107,62,135,51,165,45,226,43,284,50,335,63,334,68,283,56,225,49,166,51,137,57,109,66,87,80,69,99,43,135"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="336,133,472,173"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="58,157,82,168,109,176,158,184,197,185,288,176,322,171,323,176,288,181,198,191,158,189,107,181,80,173,56,162"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1Result.html#a4561d1c6fd989b38a44e338cb6e09bb0" title=" " alt="" coords="130,127,266,167"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="60,144,117,144,117,149,60,149"/>
+<area shape="rect" id="Node000007" href="$namespaceanonymous__namespace_02result__test_8cpp_03.html#a534bf42d05a8b2a0d14a7de51a585f49" title=" " alt="" coords="108,241,288,281"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="46,158,73,188,110,221,130,233,128,237,106,225,69,192,42,161"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,87,322,87,322,92,281,92"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="246,100,289,112,333,127,332,132,287,117,245,105"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#a035d79b1e06e79e9c2d09b6d38b4b5e3" title=" " alt="" coords="336,5,472,45"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="239,74,325,47,327,52,241,79"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="266,125,322,109,323,114,267,130"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="267,146,322,148,322,153,266,152"/>
+</map>

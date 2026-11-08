@@ -1,0 +1,9 @@
+<map id="ara::core::Initialize" name="ara::core::Initialize">
+<area shape="rect" id="Node000001" title="Initialize the runtime. Must be the first ara:: call of the process." alt="" coords="220,70,363,95"/>
+<area shape="rect" id="Node000002" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,5,172,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,69,159,48,161,43,233,64"/>
+<area shape="rect" id="Node000003" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="61,70,116,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,85,116,85,116,80,206,80"/>
+<area shape="rect" id="Node000004" href="$core__types__test_8cpp.html#add2fed9caa611d8b48616250157ec6a1" title=" " alt="" coords="61,119,116,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="226,101,117,128,116,123,225,96"/>
+</map>

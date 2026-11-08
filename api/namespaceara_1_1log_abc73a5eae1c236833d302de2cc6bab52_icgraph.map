@@ -1,0 +1,35 @@
+<map id="ara::log::CreateLogger" name="ara::log::CreateLogger">
+<area shape="rect" id="Node000001" title="SWS_LOG_00006." alt="" coords="233,451,400,476"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1log.html#a2b2b7831887807c492b8026b5a047e73" title="SWS_LOG_00253. Threshold defaults to kWarn (no manifest DltLogSink here)." alt="" coords="12,5,179,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="313,437,308,360,290,255,274,198,251,143,221,91,184,45,166,33,169,29,187,41,226,88,256,140,279,197,295,254,313,360,318,437"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="12,55,179,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="311,437,301,372,280,284,263,237,242,191,216,148,183,109,168,97,171,93,187,105,220,144,247,188,268,235,285,283,306,371,316,437"/>
+<area shape="rect" id="Node000004" href="$examples_2phm__demo_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="68,120,123,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="309,438,298,380,276,304,259,264,238,226,213,190,184,159,154,143,122,136,123,131,156,138,187,155,218,186,243,223,264,262,281,302,303,378,315,437"/>
+<area shape="rect" id="Node000005" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="68,169,123,195"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="307,438,293,389,268,327,232,263,210,235,184,209,154,194,122,187,124,181,156,189,187,205,214,231,237,260,273,325,298,387,312,436"/>
+<area shape="rect" id="Node000006" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#abc78b7ec2d9b5ca699115ed1c02f326a" title=" " alt="" coords="5,219,185,259"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="302,439,284,402,258,358,224,313,184,273,165,262,168,257,187,269,228,309,262,355,289,400,307,437"/>
+<area shape="rect" id="Node000007" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#ac14d4f0a2c6f8fb90ce504aa31ad2c7e" title=" " alt="" coords="5,283,185,323"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="295,442,248,390,217,362,184,338,161,326,164,321,187,333,221,358,252,386,299,438"/>
+<area shape="rect" id="Node000008" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#ab2c6d5954632c6dc991e4017d57911c7" title=" " alt="" coords="5,347,185,387"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="278,447,184,402,154,390,156,385,186,397,280,442"/>
+<area shape="rect" id="Node000009" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#ae1c8920bd35e6f0bf4f2d7ec9407ff56" title=" " alt="" coords="5,411,185,451"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="220,452,185,447,186,442,220,447"/>
+<area shape="rect" id="Node000010" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#acdff939548523bd8b2bf577655b903e9" title=" " alt="" coords="5,475,185,515"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="220,480,186,485,185,480,220,475"/>
+<area shape="rect" id="Node000011" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#a415e6d7a5681efcb515deb9d86280022" title=" " alt="" coords="5,539,185,579"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="280,485,186,530,156,542,154,537,184,525,278,480"/>
+<area shape="rect" id="Node000012" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#a469e7ce5a40d2157e66278b07dddc53d" title=" " alt="" coords="5,603,185,643"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="299,488,252,541,221,569,187,594,164,606,161,601,184,589,217,565,248,537,295,485"/>
+<area shape="rect" id="Node000013" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#a89002e1cd744baa9df7a769b326cb903" title=" " alt="" coords="5,667,185,707"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="307,490,289,527,262,572,228,617,187,657,168,669,165,665,184,653,224,614,258,569,284,524,302,488"/>
+<area shape="rect" id="Node000014" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#ae918f33e8b6536548dcb91a682421a99" title=" " alt="" coords="5,731,185,771"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="312,490,297,539,272,601,236,665,213,695,187,721,170,733,167,729,184,717,209,691,231,662,267,598,292,537,307,488"/>
+<area shape="rect" id="Node000015" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#aa3a1c489b0eb27ff77bcfd333a24b285" title=" " alt="" coords="5,795,185,835"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="315,490,303,550,280,629,264,671,243,712,217,751,187,785,171,797,168,793,184,781,213,748,238,709,259,669,275,627,298,549,309,489"/>
+<area shape="rect" id="Node000016" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#adea871cc763b31ff13279a815c7077fb" title=" " alt="" coords="5,859,185,899"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="317,490,309,560,288,656,272,708,250,759,222,807,187,849,172,861,169,857,183,845,218,804,245,756,267,706,283,655,303,560,311,489"/>
+<area shape="rect" id="Node000017" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#acf6c487f3971f1c07edbd3b5684d4fb7" title=" " alt="" coords="5,923,185,963"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="318,490,314,571,296,683,280,745,257,805,226,862,187,913,172,925,169,921,183,909,222,859,252,803,275,743,291,682,308,570,313,490"/>
+</map>

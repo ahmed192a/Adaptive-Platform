@@ -1,0 +1,11 @@
+<map id="ara::per::GetCurrentKeyValueStorageSize" name="ara::per::GetCurrentKeyValueStorageSize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,216,45"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#a0629a9c4fda9f58138d47a9ae469b475" title="Opening the same specifier twice returns the same underlying storage." alt="" coords="264,13,488,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,23,250,23,250,28,216,28"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per.html#a3230707f204bbd8e76b28167a3e6303a" title=" " alt="" coords="536,13,789,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="488,23,522,23,522,28,488,28"/>
+<area shape="rect" id="Node000004" href="$structara_1_1per_1_1KvsAccess.html#a64af718f07aaeed336e09fc7eefda741" title=" " alt="" coords="837,5,987,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="790,23,823,23,823,28,790,28"/>
+<area shape="rect" id="Node000005" href="$classara_1_1per_1_1KeyValueStorage.html#aeb179de630774d53853d8f4971126417" title=" " alt="" coords="1035,5,1225,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="987,23,1021,23,1021,28,987,28"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,60,134"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1someip_1_1RequestTracker.html#a20e0f8614f7ace7898efc9e3b2ff23bd" title="Drop one request (e.g. on timeout). Its future yields a cancelled response." alt="" coords="108,5,304,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="44,106,71,81,107,55,119,48,122,53,109,60,75,85,48,110"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1someip_1_1RequestTracker.html#a0e5a350d430cdc6448bde675d857caa5" title="Cancel everything (shutdown / lost connection)." alt="" coords="108,69,304,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,114,94,107,95,113,61,119"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1someip_1_1RequestTracker.html#a93b82afb5738b0cd6fdda55bed303cbc" title=" " alt="" coords="108,133,304,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="61,124,95,130,94,135,60,129"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1someip_1_1RequestTracker.html#af24baa54f661ff6b596387877949ad43" title="Register an outgoing request; the future becomes ready when Complete() sees the response." alt="" coords="108,197,304,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="48,132,75,158,109,183,122,189,119,194,107,188,71,162,44,136"/>
+</map>

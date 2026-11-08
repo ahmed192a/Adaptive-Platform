@@ -1,0 +1,7 @@
+<map id="ara::crypto::PrivateKey::FromPkcs8Der" name="ara::crypto::PrivateKey::FromPkcs8Der">
+<area shape="rect" id="Node000001" title="Imports an unencrypted PKCS#8 PrivateKeyInfo (Ed25519 or EC P&#45;256 only)." alt="" coords="557,5,728,45"/>
+<area shape="rect" id="Node000002" href="$structara_1_1crypto_1_1KeyStorageProvider_1_1Impl.html#a37224b9951b7e89b00c18a519abf7d36" title=" " alt="" coords="281,5,509,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
+<area shape="rect" id="Node000003" href="$structara_1_1crypto_1_1KeyStorageProvider_1_1Impl.html#a6dd5c2746d46675676e6c0ca60284900" title=" " alt="" coords="5,5,233,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="268,28,234,28,234,23,268,23"/>
+</map>

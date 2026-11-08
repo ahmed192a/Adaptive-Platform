@@ -1,0 +1,9 @@
+<map id="ara::nm::NetworkManager::BindPort" name="ara::nm::NetworkManager::BindPort">
+<area shape="rect" id="Node000001" title="Bind the port instance specifier (as used by ara::nm::NetworkHandle) to a created network." alt="" coords="5,69,197,109"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1internal_1_1PortRegistry.html#a0f2de0e90d9546be03ab98945e563345" title=" " alt="" coords="245,5,384,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,67,234,47,235,52,170,72"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="247,69,383,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,87,232,87,232,92,198,92"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="247,133,383,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,107,235,127,234,132,168,112"/>
+</map>

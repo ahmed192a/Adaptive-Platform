@@ -1,0 +1,7 @@
+<map id="ara::per::ReadWriteAccessor::WriteBinary" name="ara::per::ReadWriteAccessor::WriteBinary">
+<area shape="rect" id="Node000001" title=" " alt="" coords="515,5,721,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1per_1_1ReadWriteAccessor.html#af39748803a420d18c26faf4237ef885d" title=" " alt="" coords="260,5,467,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="501,28,467,28,467,23,501,23"/>
+<area shape="rect" id="Node000003" href="$classara_1_1per_1_1ReadWriteAccessor.html#a085250d4c2c0390e635950e403bf6f07" title="Stream&#45;style write; failures set the fail flag (see Good())." alt="" coords="5,5,212,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,28,212,28,212,23,247,23"/>
+</map>

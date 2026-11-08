@@ -1,0 +1,12 @@
+<map id="anonymous_namespace{file_storage_test::cpp}::Open" name="anonymous_namespace{file_storage_test::cpp}::Open">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,185,84"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="51,29,51,19,59,10,74,5,95,3,121,6,136,14,134,18,120,11,95,8,75,10,62,15,56,21,56,29"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#ad3f51da2a13c28fc7c70f23954d3c8fe" title=" " alt="" coords="233,44,420,69"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="186,54,219,54,219,59,186,59"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per.html#ad085258bd3d47ca7b9926bc81dbb2f1c" title=" " alt="" coords="468,44,684,69"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="420,54,454,54,454,59,420,59"/>
+<area shape="rect" id="Node000004" href="$structara_1_1per_1_1FsAccess.html#af88b38dd45b644b62c1b30421d8d7bef" title=" " alt="" coords="732,37,872,77"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="684,54,718,54,718,59,684,59"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="920,37,1093,77"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="872,54,906,54,906,59,872,59"/>
+</map>

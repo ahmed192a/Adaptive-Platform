@@ -1,0 +1,5 @@
+<map id="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::TransferStart" name="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::TransferStart">
+<area shape="rect" id="Node000001" title="Request Trasfer start." alt="" coords="279,5,504,60"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html#a996affe419e30f36887b4f6cef45849e" title="Dispatch the requested methods from package management server." alt="" coords="5,5,231,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,35,231,35,231,30,265,30"/>
+</map>

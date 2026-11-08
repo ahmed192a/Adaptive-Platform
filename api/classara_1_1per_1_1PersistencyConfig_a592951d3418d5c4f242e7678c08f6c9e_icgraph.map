@@ -1,0 +1,13 @@
+<map id="ara::per::PersistencyConfig::FromFile" name="ara::per::PersistencyConfig::FromFile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="793,81,989,121"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#a39edf274d9c966320ca48ad6d578eb0c" title=" " alt="" coords="547,44,745,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="779,83,717,72,718,67,780,78"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1per_1_1anonymous__namespace_02persistency_8cpp_03.html#aeaad1db1e874e3a499f0146a84ce5c4a" title="Looks up the config; loads $ARA_PER_CONFIG lazily. Caller holds the lock." alt="" coords="553,117,739,172"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="780,123,740,131,739,125,779,118"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per.html#a679da96a60174122a7e76ec82bd05e3e" title="Reads the file named by $ARA_PER_CONFIG (kNotInitialized if unset)." alt="" coords="240,44,499,69"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="533,59,499,59,499,54,533,54"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per_1_1anonymous__namespace_02persistency_8cpp_03.html#ab06412eca5f76fa3e6bfd55be9bb4493" title=" " alt="" coords="5,29,192,84"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,59,192,59,192,54,226,54"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="144,18,128,11,99,8,74,10,59,15,52,21,52,29,46,29,47,19,56,10,73,5,99,3,129,6,146,14"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="687,106,672,99,646,96,624,98,610,103,603,109,604,117,598,117,598,107,607,98,623,93,646,91,674,94,689,102"/>
+</map>

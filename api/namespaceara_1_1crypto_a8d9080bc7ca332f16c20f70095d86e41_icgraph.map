@@ -1,0 +1,9 @@
+<map id="ara::crypto::AeadEncrypt" name="ara::crypto::AeadEncrypt">
+<area shape="rect" id="Node000001" title="Output = ciphertext || tag(16). Nonce must be 12 bytes and never reused with a key." alt="" coords="236,77,419,102"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1cryp_1_1AuthCipherCtx.html#a15575b0100c9fab79824cb4fd2a3b6b3" title=" " alt="" coords="10,5,183,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,75,169,48,170,43,268,70"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02crypto__test_8cpp_03.html#a7e350f30bf5057a81df2266bdeed1ea0" title=" " alt="" coords="5,69,188,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,92,188,92,188,87,223,87"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02crypto__test_8cpp_03.html#af2f6ba426056f36720dc630ac3fa783c" title=" " alt="" coords="5,133,188,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="268,108,170,136,169,131,267,103"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="ara::phm::RecoveryAction::Offer" name="ara::phm::RecoveryAction::Offer">
+<area shape="rect" id="Node000001" title="Starts receiving recovery requests (kAlreadyOffered if already offered)." alt="" coords="123,23,313,63"/>
+<area shape="rect" id="Node000002" href="$examples_2phm__demo_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="13,5,67,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,30,67,24,68,19,109,25"/>
+<area shape="rect" id="Node000003" href="$health__monitor__test_8cpp.html#a6855747c883d19140e54814ffd5da5c7" title=" " alt="" coords="5,55,75,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,61,75,65,75,60,109,55"/>
+</map>

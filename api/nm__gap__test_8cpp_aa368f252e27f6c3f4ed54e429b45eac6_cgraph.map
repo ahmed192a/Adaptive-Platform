@@ -1,0 +1,9 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,60,88"/>
+<area shape="rect" id="Node000002" href="$structara_1_1nm_1_1NmPdu.html#a4a769d6318885daec504d4dc8bbfcccd" title=" " alt="" coords="108,5,291,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,61,107,41,134,32,136,37,109,46,61,66"/>
+<area shape="rect" id="Node000003" href="$structara_1_1nm_1_1NmPduLayout.html#aaff681d2cba1e8d2098fd90acaf971cc" title="True if the layout is consistent (positions in range, no overlap, PNI needs a CBV)." alt="" coords="114,55,285,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,73,100,73,100,78,60,78"/>
+<area shape="rect" id="Node000004" href="$structara_1_1nm_1_1NmPduLayout.html#aed9870ca0d31a52cd477720339d66e6d" title="Number of user&#45;data bytes of this layout." alt="" coords="114,119,285,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="61,85,109,105,128,112,126,117,107,110,59,90"/>
+</map>

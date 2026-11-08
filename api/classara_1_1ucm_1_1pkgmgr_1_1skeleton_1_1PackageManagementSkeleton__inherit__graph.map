@@ -1,0 +1,5 @@
+<map id="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton" name="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton">
+<area shape="rect" id="Node000001" title="implementation of PackageManagementSkeleton interface" alt="" coords="5,93,231,133"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html" title="class ServiceSkeleton" alt="" coords="19,5,217,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,59,121,93,115,93,115,59"/>
+</map>

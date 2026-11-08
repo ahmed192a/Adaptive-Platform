@@ -1,0 +1,25 @@
+<map id="ara::com::GetComDomain" name="ara::com::GetComDomain">
+<area shape="rect" id="Node000001" title=" " alt="" coords="591,184,781,209"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1com.html#ab8ba850aab7f0df8ffd3d3d682055946" title=" " alt="" coords="356,184,543,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="577,199,543,199,543,194,577,194"/>
+<area shape="rect" id="Node000006" href="$com__api__test_8cpp.html#a04ba3011dcf910eaf97a92ad5ab3b99d" title=" " alt="" coords="181,5,235,31"/>
+<area shape="poly" id="edge12_Node000001_Node000006" title=" " alt="" coords="644,181,497,117,403,80,307,46,235,26,236,21,309,41,405,75,499,112,646,176"/>
+<area shape="rect" id="Node000008" href="$com__api__test_8cpp.html#a6be7acbbd092909c49f2829f10b1926b" title=" " alt="" coords="181,332,235,357"/>
+<area shape="poly" id="edge13_Node000001_Node000008" title=" " alt="" coords="637,217,491,267,309,323,236,341,235,336,307,318,489,261,635,211"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="492,175,480,166,449,163,424,165,411,170,408,175,415,182,411,186,403,176,407,166,423,160,449,157,482,161,495,171"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1ProxyEventBuffer.html#ab068a2b15a42482644fa19b1c514059f" title="Hand every new sample (oldest first), at most maxNumberOfSamples, to f(SamplePtr&lt;T&gt;)." alt="" coords="108,55,308,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="419,178,368,144,307,110,278,98,280,93,309,105,371,139,422,174"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1ProxyEventBuffer.html#af011d02134839f1d0c64bd8d465d52c8" title="Subscribe with room for maxSampleCount samples (queued + held by the application)." alt="" coords="108,119,308,159"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="381,183,292,162,293,157,383,178"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="426,175,358,98,307,46,270,31,235,23,236,18,272,26,309,41,362,94,430,171"/>
+<area shape="rect" id="Node000007" href="$com__api__test_8cpp.html#acd89a1e46819cca849830be74c9fe770" title=" " alt="" coords="181,184,235,209"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="342,199,236,199,236,194,342,194"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="424,221,358,279,335,303,309,323,272,337,236,345,235,339,270,332,307,318,332,299,354,275,421,217"/>
+<area shape="rect" id="Node000009" href="$com__api__test_8cpp.html#a2aec2523fe03984eba8c271b9654f22f" title=" " alt="" coords="181,233,235,259"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="374,215,236,243,235,238,372,210"/>
+<area shape="rect" id="Node000010" href="$com__api__test_8cpp.html#aecc6394f5798ee253518a0bf28d92ba6" title=" " alt="" coords="181,283,235,308"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="418,219,367,247,309,274,236,293,235,288,307,269,365,242,415,214"/>
+<area shape="rect" id="Node000004" href="$com__api__test_8cpp.html#a23b16220dff5d10147c9ccc978dee765" title=" " alt="" coords="5,95,60,120"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="95,99,60,105,60,100,94,94"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="94,121,60,115,60,110,95,116"/>
+</map>

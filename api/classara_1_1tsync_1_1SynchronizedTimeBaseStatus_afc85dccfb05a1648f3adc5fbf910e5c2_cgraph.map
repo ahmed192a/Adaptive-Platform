@@ -1,0 +1,5 @@
+<map id="ara::tsync::SynchronizedTimeBaseStatus::GetSynchronizationStatus" name="ara::tsync::SynchronizedTimeBaseStatus::GetSynchronizationStatus">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,268,60"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1tsync.html#aec8356265e026be72eea717fe5770013" title="Maps the internal flag mask to the exclusive SWS status." alt="" coords="316,13,528,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="268,30,302,30,302,35,268,35"/>
+</map>

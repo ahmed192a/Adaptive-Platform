@@ -1,0 +1,32 @@
+<map id="CServer::CloseSocket" name="CServer::CloseSocket">
+<area shape="rect" id="Node000001" title="Close the socket." alt="" coords="640,183,800,208"/>
+<area shape="rect" id="Node000002" href="$sm__main_8cpp.html#af560355a03f80cd8de8ef8df7198e868" title="Signal handler for SIGTERM." alt="" coords="407,5,529,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="702,173,657,112,626,79,591,52,561,38,529,29,530,24,563,33,593,48,630,75,661,108,706,169"/>
+<area shape="rect" id="Node000003" href="$sm__main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main code for State management." alt="" coords="175,31,229,56"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="696,174,650,133,622,113,591,96,542,79,490,65,387,49,295,44,230,45,230,39,296,39,387,44,491,60,543,74,593,92,625,108,654,129,700,170"/>
+<area shape="rect" id="Node000004" href="$classserviceRegistry.html#a39846e51aa35740f3d148dd24ff9b86e" title=" " alt="" coords="379,107,557,132"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="671,181,591,154,521,135,523,130,593,149,673,176"/>
+<area shape="rect" id="Node000005" href="$classserviceRegistry.html#a4edf9a057a5fbcd4f1a9bfaf57680142" title=" " alt="" coords="127,132,277,157"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="626,189,277,155,278,149,626,184"/>
+<area shape="rect" id="Node000007" href="$classUCM__Server.html#a6660c287bb2d56a35155ca6bfcc63665" title=" " alt="" coords="108,308,296,333"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="700,220,654,262,625,282,593,298,517,319,439,331,363,334,296,332,296,327,363,329,438,325,516,314,591,293,622,277,651,257,696,216"/>
+<area shape="rect" id="Node000009" href="$classara_1_1sm_1_1server_1_1StateManager.html#aef239b4032ea73422b1f44b9696e7e1e" title=" " alt="" coords="344,257,592,283"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="680,216,593,249,547,260,546,255,591,243,678,211"/>
+<area shape="rect" id="Node000010" href="$classotaServer.html#a7e601d9b0686ec148e0140bf41221f94" title=" " alt="" coords="407,208,529,233"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="627,207,529,217,528,212,626,202"/>
+<area shape="rect" id="Node000013" href="$classUCM__Server.html#aa84b81e53bdf06e5c0a1342fe9b3b995" title=" " alt="" coords="399,359,537,384"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="706,221,661,282,629,314,593,342,567,355,539,364,537,359,565,350,591,337,626,310,657,279,702,218"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="393,28,230,43,229,38,393,22"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="365,132,278,140,277,135,365,126"/>
+<area shape="rect" id="Node000006" href="$service__descovery_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main function of service discovery" alt="" coords="5,132,60,157"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="113,147,60,147,60,142,113,142"/>
+<area shape="rect" id="Node000008" href="$ucm__server_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main Function." alt="" coords="5,332,60,357"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="100,338,61,344,60,338,99,333"/>
+<area shape="rect" id="Node000011" href="$ota__main_8cpp.html#af560355a03f80cd8de8ef8df7198e868" title="Signal handler for SIGTERM." alt="" coords="141,208,263,233"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="393,223,264,223,264,218,393,218"/>
+<area shape="rect" id="Node000012" href="$ota__main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,208,60,233"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="127,223,60,223,60,218,127,218"/>
+<area shape="rect" id="Node000014" href="$ucm__server_8cpp.html#a966c032851888758c8a04acd3344cf94" title="********** INCLUDES ***********************************" alt="" coords="141,357,263,383"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="385,374,264,373,264,368,385,368"/>
+<area shape="poly" id="edge16_Node000014_Node000008" title=" " alt="" coords="127,361,60,351,61,346,127,356"/>
+</map>

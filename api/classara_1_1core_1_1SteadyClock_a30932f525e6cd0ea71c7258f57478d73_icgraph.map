@@ -1,0 +1,28 @@
+<map id="ara::core::SteadyClock::now" name="ara::core::SteadyClock::now">
+<area shape="rect" id="Node000001" title=" " alt="" coords="904,208,1107,233"/>
+<area shape="rect" id="Node000002" href="$examples_2phm__demo_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="725,5,780,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="989,198,967,163,937,121,899,79,855,44,817,29,780,22,781,17,818,24,857,40,902,75,941,118,971,160,993,195"/>
+<area shape="rect" id="Node000003" href="$demo_2supervised__service_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="725,55,780,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="982,200,928,147,893,119,855,95,816,81,780,73,781,68,818,76,857,90,896,114,932,143,986,196"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1HealthMonitor.html#a0ee25287e79bde5e3b2cc9e2c1117be2" title=" " alt="" coords="662,105,843,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="963,205,855,159,820,147,822,142,857,154,965,200"/>
+<area shape="rect" id="Node000005" href="$classara_1_1phm_1_1HealthMonitor.html#a3737046ea31f0c3b73bbba5319c7f8e5" title=" " alt="" coords="662,169,843,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="891,209,843,203,844,198,892,204"/>
+<area shape="rect" id="Node000006" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad26c558c988c8d8fdc582c9271f78a7c" title=" " alt="" coords="669,233,836,273"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="892,238,836,245,836,240,891,232"/>
+<area shape="rect" id="Node000011" href="$classara_1_1phm_1_1HealthMonitor.html#a2a7ae97de4cdec1b0f6497232e6f702d" title="Starts a thread calling Evaluate(now) every period." alt="" coords="649,297,856,337"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="965,242,857,287,822,299,820,294,855,282,963,237"/>
+<area shape="rect" id="Node000012" href="$core__types__test_8cpp.html#a610198e197f932367c0247f3915bcb37" title=" " alt="" coords="725,361,780,387"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="986,245,932,299,896,327,857,351,818,366,781,374,780,368,816,361,855,346,893,323,928,295,982,241"/>
+<area shape="rect" id="Node000013" href="$health__monitor__test_8cpp.html#ab77e27a7523cee939579c81756b57755" title=" " alt="" coords="725,411,780,436"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="993,247,971,282,941,324,902,366,857,402,818,418,781,424,780,419,817,413,855,397,899,362,937,320,967,279,989,244"/>
+<area shape="rect" id="Node000007" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,266,172,306"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="655,247,564,242,454,239,337,242,220,253,150,268,149,263,220,247,337,237,454,234,564,236,656,242"/>
+<area shape="rect" id="Node000008" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2b31526623d8f784530296aa9d7b19de" title=" " alt="" coords="435,262,601,302"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="656,267,602,274,601,269,655,262"/>
+<area shape="rect" id="Node000009" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="220,262,387,302"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="421,285,387,285,387,279,421,279"/>
+<area shape="rect" id="Node000010" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad0033341236167451f81b059a96c2eb0" title=" " alt="" coords="220,326,387,366"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="438,309,372,329,370,323,436,304"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="217,325,160,309,162,304,219,320"/>
+</map>

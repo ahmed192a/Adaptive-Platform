@@ -1,0 +1,8 @@
+<map id="anonymous_namespace{dashboard_test::cpp}::HttpCall" name="anonymous_namespace{dashboard_test::cpp}::HttpCall">
+<area shape="rect" id="Node000001" title="Blocking HTTP client over a raw socket: returns &quot;&lt;status&gt;\n&lt;body&gt;&quot;." alt="" coords="263,30,443,85"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="393,19,379,12,353,9,331,11,317,15,311,22,311,30,305,30,306,20,314,11,330,5,353,3,380,6,396,14"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02dashboard__test_8cpp_03.html#a422f740f9abe5472690492465227285a" title=" " alt="" coords="5,5,215,45"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="249,46,215,42,215,37,250,41"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02dashboard__test_8cpp_03.html#a9c6a6cfec7c6de1e42e853ca4de5fa00" title=" " alt="" coords="5,69,215,109"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="250,74,215,78,215,73,249,68"/>
+</map>

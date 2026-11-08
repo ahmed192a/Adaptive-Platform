@@ -1,0 +1,5 @@
+<map id="ara::com::proxy_skeleton::proxy::Event::handlecall" name="ara::com::proxy_skeleton::proxy::Event::handlecall">
+<area shape="rect" id="Node000001" title="Get the Event Data object." alt="" coords="5,5,192,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1Deserializer.html#a03fc838db428148be027c71ec2f02548" title="Deserialize the vector of bytes into the required data type." alt="" coords="240,5,405,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,23,226,23,226,28,193,28"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="anonymous_namespace{extras_test::cpp}::TEST" name="anonymous_namespace{extras_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,118,188,158"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a62a93e1baa6b28bda256640f241b0ebd" title="Convenience: HKDF output wrapped as a SecretKey with the given usage." alt="" coords="236,125,435,151"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,135,223,135,223,141,188,141"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#a405318e66e19c0ac0669aa0553deba7b" title="HKDF (RFC 5869). length &lt;= 255 * digest size." alt="" coords="505,65,635,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="385,123,506,91,507,97,387,128"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="487,118,653,158"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="435,135,473,135,473,141,435,141"/>
+<area shape="rect" id="Node000009" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="483,183,657,208"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="389,148,505,177,504,182,388,153"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1crypto.html#aca41ed8c96566a73971c6056a0311eee" title=" " alt="" coords="705,5,875,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="617,63,729,32,730,37,618,68"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="709,55,871,95"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="635,75,695,74,695,79,635,80"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="709,119,871,159"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="617,88,705,113,704,118,616,93"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="640,115,705,97,707,102,641,121"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="653,136,695,136,695,141,653,141"/>
+<area shape="rect" id="Node000008" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="709,183,871,223"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="639,156,709,177,708,182,638,161"/>
+</map>

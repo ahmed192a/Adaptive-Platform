@@ -1,0 +1,9 @@
+<map id="anonymous_namespace{ucm_core_test::cpp}::Upload" name="anonymous_namespace{ucm_core_test::cpp}::Upload">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,84,185,139"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ad576575f6ec3a029459a5540a8dc9a97" title="Checks in the order of the SWS (00208, 00203, 00204, 00243, 00205)." alt="" coords="233,5,412,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,81,229,62,231,67,176,86"/>
+<area shape="rect" id="Node000003" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a193b8a198cde01925f64b9366d52c149" title="[SWS_UCM_00148] OperationNotPermitted, [00212] InvalidTransferId, [00087] InsufficientData; success s..." alt="" coords="233,84,412,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,109,220,109,220,114,185,114"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a14f004a851d15b2c23406ae99b889850" title="[SWS_UCM_00140] InsufficientMemory when the package cannot be stored." alt="" coords="233,163,412,217"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="176,136,231,156,229,161,174,141"/>
+</map>

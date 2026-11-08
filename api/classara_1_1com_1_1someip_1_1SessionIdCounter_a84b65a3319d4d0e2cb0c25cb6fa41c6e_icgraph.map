@@ -1,0 +1,9 @@
+<map id="ara::com::someip::SessionIdCounter::Next" name="ara::com::someip::SessionIdCounter::Next">
+<area shape="rect" id="Node000001" title=" " alt="" coords="108,47,301,87"/>
+<area shape="rect" id="Node000002" href="$com__api__test_8cpp.html#ad026e23b41982228bb49fad2d1ba49b5" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,46,59,28,61,23,122,41"/>
+<area shape="rect" id="Node000003" href="$com__api__test_8cpp.html#ad181848daed3e2130503dcf53fa4ce8a" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+<area shape="rect" id="Node000004" href="$com__api__test_8cpp.html#a0a74af593a61d90fdbdd98b681bfcbe9" title=" " alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="122,94,61,112,59,106,121,89"/>
+</map>

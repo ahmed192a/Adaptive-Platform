@@ -1,0 +1,21 @@
+<map id="ara::tsync::TimeBaseProvider::Update" name="ara::tsync::TimeBaseProvider::Update">
+<area shape="rect" id="Node000001" title="Provide a new synchronized time. rateDeviation of the local clock vs. the master." alt="" coords="263,211,476,251"/>
+<area shape="rect" id="Node000002" href="$demo_2time__sync__clock_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="83,5,137,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,201,326,164,295,122,257,80,213,46,175,30,137,22,138,17,176,24,216,41,261,76,299,119,330,161,353,198"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02time__base__test_8cpp_03.html#a5ecbae35ad45735b8b3727d295914d7e" title=" " alt="" coords="5,55,215,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="336,203,282,155,248,131,213,110,187,98,189,93,216,105,251,127,285,151,340,199"/>
+<area shape="rect" id="Node000004" href="$tsync__gap__test_8cpp.html#ab06678fbf31b318366e3743d7638afbf" title=" " alt="" coords="75,120,145,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="319,207,269,182,214,159,144,141,146,136,216,154,271,177,322,202"/>
+<area shape="rect" id="Node000005" href="$tsync__gap__test_8cpp.html#aefab9bbebb1cb372b44a92d284aea7cf" title=" " alt="" coords="75,169,145,195"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="250,211,144,191,145,186,251,206"/>
+<area shape="rect" id="Node000006" href="$tsync__gap__test_8cpp.html#a2a283169ae4aff662b9946fbdc511971" title=" " alt="" coords="75,219,145,244"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="249,234,145,234,145,229,249,229"/>
+<area shape="rect" id="Node000007" href="$tsync__gap__test_8cpp.html#ae0a20a75bc3ad7dd1fb5dcaae8396e06" title=" " alt="" coords="75,268,145,293"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="251,257,145,277,144,272,250,251"/>
+<area shape="rect" id="Node000008" href="$tsync__gap__test_8cpp.html#aff0ad3dd401e54be5c33ec6e4635be51" title=" " alt="" coords="75,317,145,343"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="320,260,270,285,216,307,146,326,144,321,214,302,268,280,318,256"/>
+<area shape="rect" id="Node000009" href="$tsync__gap__test_8cpp.html#af88400ab3f7b39bc23b20fed72794ded" title=" " alt="" coords="75,367,145,392"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="341,263,286,311,252,336,216,356,180,370,145,378,144,372,178,365,214,352,249,331,282,307,337,259"/>
+<area shape="rect" id="Node000010" href="$tsync__spec__test_8cpp.html#a73133841814065d6bdcf675ad9618ec0" title=" " alt="" coords="75,416,145,441"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="351,265,296,336,259,374,216,406,181,421,145,428,144,423,179,416,213,401,255,370,292,333,346,261"/>
+</map>

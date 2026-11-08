@@ -1,0 +1,17 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,163,75,189"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="179,5,315,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="44,162,71,110,94,80,121,55,142,43,164,35,166,40,144,48,124,59,98,84,76,113,49,164"/>
+<area shape="rect" id="Node000003" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html#ac6b62853343b6b60a12142c48244e2bd" title=" " alt="" coords="157,70,337,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="64,161,122,134,143,126,144,131,124,138,66,166"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#ab79639ba60e01930a3d9340ad43f1391" title="SWS_TS_00800/00803: kFunctionNotSupported for a system&#45;wide global time master base,..." alt="" coords="123,149,371,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="75,173,109,173,109,179,75,179"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1TimeBaseProvider.html#a69547d803da789905d717d80249694be" title="Simulates the sync daemon: record a precision measurement with the given path delay and deliver it to..." alt="" coords="135,228,358,268"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="65,186,124,214,147,222,146,227,122,218,63,191"/>
+<area shape="rect" id="Node000008" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#a7a76b4dba08ae1e9eaf2b86202a9bfe3" title=" " alt="" coords="140,292,353,332"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="50,187,78,232,99,257,124,278,134,284,132,288,121,282,95,261,74,235,45,190"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="457,124,593,164"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="371,159,443,151,444,156,371,164"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="419,188,632,228"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="371,188,405,192,405,197,371,193"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="ara::per::detail::anonymous_namespace{file_storage::cpp}::Slurp" name="ara::per::detail::anonymous_namespace{file_storage::cpp}::Slurp">
+<area shape="rect" id="Node000001" title="Reads a whole file; nullopt if it does not exist / cannot be read." alt="" coords="255,81,456,136"/>
+<area shape="poly" id="edge3_Node000001_Node000001" title=" " alt="" coords="397,70,382,63,355,60,333,62,319,67,312,73,312,81,307,81,307,71,316,62,332,57,355,55,383,58,399,66"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#a31f0c1b250dc5fe1550546ee1c6e65c3" title=" " alt="" coords="5,29,207,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="241,87,206,80,207,75,242,82"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per_1_1detail_1_1anonymous__namespace_02file__storage_8cpp_03.html#ac0cc79f726def291dd635b1b7d26b3b5" title="Stores a CRC&#45;protected redundancy copy of &lt;dir&gt;/files/&lt;name&gt; (best effort)." alt="" coords="5,132,207,187"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="242,134,207,141,206,136,241,129"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="147,18,132,11,106,8,84,10,69,15,63,21,63,29,58,29,58,19,67,10,83,5,106,3,134,6,150,14"/>
+<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="147,121,132,114,106,111,84,113,69,117,63,124,63,132,58,132,58,122,67,113,83,107,106,105,134,108,150,116"/>
+</map>

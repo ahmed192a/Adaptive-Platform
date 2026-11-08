@@ -1,0 +1,18 @@
+<map id="ara::sm::update_request::UpdateSession::PrepareRollback" name="ara::sm::update_request::UpdateSession::PrepareRollback">
+<area shape="rect" id="Node000001" title="[SWS_SM_00208]" alt="" coords="541,126,783,166"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a564d4216b97cb021277344f3b8331c12" title="[SWS_SM_00208]" alt="" coords="295,5,493,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="604,123,492,74,465,63,467,58,494,69,606,118"/>
+<area shape="rect" id="Node000004" href="$namespaceap_1_1demo.html#aa008d60b80abe3ff12d61fa359adf852" title="Run one update; progress is printed to out unless options.quiet." alt="" coords="313,108,475,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="527,136,475,131,476,126,528,131"/>
+<area shape="rect" id="Node000007" href="$update__session__test_8cpp.html#abe25709cefa951ccd5d670df78761187" title=" " alt="" coords="367,157,421,183"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="528,161,422,170,421,165,527,155"/>
+<area shape="rect" id="Node000008" href="$update__session__test_8cpp.html#a5fa835d84c7fe63203541776e804bca7" title=" " alt="" coords="367,207,421,232"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="580,172,494,197,422,215,421,210,493,191,579,167"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a49ae6571a4e635ae85ad4dffd346c1c0" title=" " alt="" coords="23,5,229,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,35,229,35,229,30,281,30"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="442,99,439,94,431,91,394,87,365,89,350,94,347,99,355,106,351,110,342,100,346,90,364,83,394,81,432,85,443,90,446,96"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1anonymous__namespace_02dash__features_8cpp_03_1_1UpdateSim.html#a3dee4fb23da01d66811fadeb671984ef" title=" " alt="" coords="5,88,247,143"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="299,121,247,120,247,115,299,116"/>
+<area shape="rect" id="Node000006" href="$demo_2ota__updater_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="99,167,153,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="325,139,247,157,154,177,153,171,246,151,324,134"/>
+</map>

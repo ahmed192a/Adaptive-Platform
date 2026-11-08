@@ -1,0 +1,9 @@
+<map id="ara::core::Result::Bind" name="ara::core::Result::Bind">
+<area shape="rect" id="Node000001" title="Monadic chaining: f(value) returns either a Result&lt;U,E&gt; or a plain U." alt="" coords="5,77,171,102"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="219,5,355,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,74,210,47,212,52,129,79"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="219,69,355,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="171,87,205,87,205,92,171,92"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#a035d79b1e06e79e9c2d09b6d38b4b5e3" title=" " alt="" coords="219,133,355,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,100,212,127,210,132,128,105"/>
+</map>

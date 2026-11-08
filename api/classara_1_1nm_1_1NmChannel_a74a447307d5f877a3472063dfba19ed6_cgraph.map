@@ -1,0 +1,24 @@
+<map id="ara::nm::NmChannel::OnBytesReceived" name="ara::nm::NmChannel::OnBytesReceived">
+<area shape="rect" id="Node000001" title="Feed raw bytes; kBadPdu on a malformed message." alt="" coords="5,95,161,135"/>
+<area shape="rect" id="Node000002" href="$structara_1_1nm_1_1NmPdu.html#a53654206d6b75f3427ff53a4bb4d8c92" title="Decode with a configurable layout (size must equal layout.pduLength)." alt="" coords="209,13,393,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,92,161,70,208,48,233,39,235,44,210,53,163,74,120,97"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="233,63,369,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="161,101,219,92,220,97,162,106"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="233,127,369,167"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="162,123,220,132,219,137,161,129"/>
+<area shape="rect" id="Node000006" href="$classara_1_1nm_1_1NmChannel.html#aa13e4fe42dcb7ba9a692db6cf3873903" title="Feed a received NM message (already decoded)." alt="" coords="223,191,379,231"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="122,132,210,176,228,183,226,188,208,181,119,137"/>
+<area shape="rect" id="Node000003" href="$structara_1_1nm_1_1NmPduLayout.html#aaff681d2cba1e8d2098fd90acaf971cc" title="True if the layout is consistent (positions in range, no overlap, PNI needs a CBV)." alt="" coords="441,5,612,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,23,428,23,428,28,394,28"/>
+<area shape="rect" id="Node000007" href="$classara_1_1nm_1_1NmChannel.html#a3e7c8035808e00acaeca753b5e49ab49" title=" " alt="" coords="449,133,605,173"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="379,188,435,174,436,179,381,193"/>
+<area shape="rect" id="Node000008" href="$classara_1_1nm_1_1NmChannel.html#a9a4146eda5b7b143b721097e2c8c3802" title=" " alt="" coords="864,252,1020,292"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="379,206,578,210,698,218,816,233,869,246,868,251,816,239,697,223,578,215,379,212"/>
+<area shape="rect" id="Node000009" href="$classara_1_1nm_1_1NmChannel.html#a5083082f6bc8dd3db72f69eb61d99bd3" title=" " alt="" coords="449,248,605,288"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="381,228,436,242,435,247,379,233"/>
+<area shape="rect" id="Node000010" href="$classara_1_1nm_1_1NmChannel.html#afdacc58d1cdcca50ee3d45acf5c071ea" title=" " alt="" coords="660,248,816,288"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="605,265,646,265,646,271,605,271"/>
+<area shape="rect" id="Node000011" href="$classara_1_1nm_1_1NmChannel.html#ae6c0a6d76eb81f297558c773c114afdc" title=" " alt="" coords="660,312,816,352"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="594,286,659,305,658,311,593,291"/>
+<area shape="poly" id="edge11_Node000011_Node000008" title=" " alt="" coords="806,309,859,293,861,299,808,314"/>
+</map>

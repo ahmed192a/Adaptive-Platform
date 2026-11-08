@@ -1,0 +1,21 @@
+<map id="ara::com::proxy_skeleton::skeleton::Event::update" name="ara::com::proxy_skeleton::skeleton::Event::update">
+<area shape="rect" id="Node000001" title="update event and notify" alt="" coords="5,105,192,145"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a11870951b3cefd83b6b41b4ee507f572" title=" " alt="" coords="240,105,427,145"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,122,226,122,226,127,192,127"/>
+<area shape="rect" id="Node000003" href="$classSubscriber.html#a3f10ebb159b43926e54ce7d1e4713b64" title=" " alt="" coords="498,80,649,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,110,484,102,485,107,427,115"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a3a95fa49b72ea5bd4fe6b4f632cbd6f1" title="SendEvent send an event update to clients." alt="" coords="475,129,672,184"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="427,134,461,139,461,144,426,140"/>
+<area shape="rect" id="Node000005" href="$classCClient.html#adbcb2f41e689144cbb6e8cf0b8b2f276" title="Close the socket." alt="" coords="746,5,902,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="652,127,670,115,685,96,693,77,701,58,718,40,732,32,735,37,722,44,705,61,698,79,690,99,674,119,655,131"/>
+<area shape="rect" id="Node000006" href="$classCClient.html#aa4c93a772ac973df945ffc9480c95fd1" title="Open the socket." alt="" coords="747,55,901,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="642,127,671,114,719,90,748,81,749,86,721,95,673,119,644,132"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1Serializer.html#a6c5ec394bb39cb758b2590b8d1ac16fb" title="Get the Payload object of the serializer." alt="" coords="750,105,898,145"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="672,141,736,133,737,138,673,147"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1Serializer.html#af9f0e3e083c607e2e8a5fb3fae6bf793" title="serialize the data into the vector of bytes" alt="" coords="750,169,898,209"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="673,167,737,175,736,180,672,172"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a18ebdf47d3f6ce89bf537a61a3be18f6" title="Set message payload." alt="" coords="720,233,928,273"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="634,182,721,218,742,226,740,231,719,223,632,186"/>
+<area shape="rect" id="Node000010" href="$classCClient.html#a6865947408e961e760d9d3989cf3c063" title="Client send data UDP." alt="" coords="749,297,899,323"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="600,183,653,234,686,260,721,282,740,291,738,295,719,287,683,265,649,238,597,186"/>
+</map>

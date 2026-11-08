@@ -1,0 +1,9 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,60,38"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1InstanceSpecifier.html#a587c1f9313e327df7b11aa7bbc7c4472" title="Validating factory (SWS_CORE_08032)." alt="" coords="108,5,307,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,23,94,23,94,28,60,28"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1InstanceSpecifier.html#a84c7f9c1710724dc9fec6551d05f46cc" title=" " alt="" coords="355,5,553,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,23,341,23,341,28,307,28"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Span.html#a224112dc4480cdf4136499a740f277f9" title=" " alt="" coords="601,13,771,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="554,23,588,23,588,28,554,28"/>
+</map>

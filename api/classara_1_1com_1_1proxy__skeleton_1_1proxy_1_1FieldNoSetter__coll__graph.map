@@ -1,0 +1,16 @@
+<map id="ara::com::proxy_skeleton::proxy::FieldNoSetter&lt; T &gt;" name="ara::com::proxy_skeleton::proxy::FieldNoSetter&lt; T &gt;">
+<area shape="rect" id="Node000001" title="FieldNoSetter Class for field with no setter." alt="" coords="1477,36,1677,76"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Field.html" title="Field Base class for all fields." alt="" coords="1241,36,1428,76"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1442,53,1477,53,1477,59,1442,59"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html" title="Event Base class for all events." alt="" coords="1005,69,1192,109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1205,72,1241,67,1241,72,1206,77"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html" title="ServiceProxy is the main class for the proxy skeleton." alt="" coords="699,35,885,75"/>
+<area shape="poly" id="edge7_Node000002_Node000004" title=" " alt="" coords="899,47,909,47,1086,46,1241,50,1241,55,1086,52,909,52,899,52"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="899,64,1005,76,1005,81,899,69"/>
+<area shape="rect" id="Node000005" href="$classCClient.html" title="CClient class for any tcp or udp client sockets." alt="" coords="400,10,469,35"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="483,24,699,44,698,49,483,30"/>
+<area shape="rect" id="Node000006" href="$structara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy_1_1SP__Handle.html" title="SP_Handle struct for SP_Handle (ServiceProxyHandle)" alt="" coords="341,59,528,114"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="542,74,698,60,698,66,542,80"/>
+<area shape="rect" id="Node000007" href="$structara_1_1com_1_1proxy__skeleton_1_1SD__data.html" title=" " alt="" coords="5,67,192,107"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="206,84,341,84,341,89,206,89"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="UpdateVersion::get_versionNo" name="UpdateVersion::get_versionNo">
+<area shape="rect" id="Node000001" title="Getting version of the update." alt="" coords="761,23,908,63"/>
+<area shape="rect" id="Node000002" href="$classMetaData.html#a8821027b6ccc00c56f65084b92c5a950" title=" " alt="" coords="523,31,713,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="748,46,714,46,714,41,748,41"/>
+<area shape="rect" id="Node000003" href="$server_8cpp.html#abf9e6b7e6f15df4b525a2e7705ba3089" title="main" alt="" coords="138,5,193,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="545,31,474,21,394,16,315,15,193,19,193,14,315,10,394,11,475,15,546,25"/>
+<area shape="rect" id="Node000004" href="$server_8cpp.html#a5ae2d8836a5a7a2a8c4269ad0d7bf942" title=" " alt="" coords="306,31,439,56"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="509,46,440,46,440,41,509,41"/>
+<area shape="rect" id="Node000005" href="$classOTA_1_1Client.html#a972453ec360269d9e30a5f6e0c81d86f" title="Requests the package from the cloud server." alt="" coords="271,80,475,105"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="541,61,437,83,436,77,540,56"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="292,36,192,24,193,19,292,31"/>
+<area shape="rect" id="Node000006" href="$classotaServer.html#a48d750cd906da69f1862bcf00ef7287a" title=" " alt="" coords="108,80,223,105"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="257,95,223,95,223,90,257,90"/>
+<area shape="rect" id="Node000007" href="$ota__main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,80,60,105"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="94,95,60,95,60,90,94,90"/>
+</map>

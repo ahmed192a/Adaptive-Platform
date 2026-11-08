@@ -1,0 +1,24 @@
+<map id="ara::diag::Monitor" name="ara::diag::Monitor">
+<area shape="rect" id="Node000001" title="A monitor reports test results for one DTC and debounces pre&#45;passed / pre&#45;failed (SWS: Monitor)." alt="" coords="873,213,1011,238"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1DiagnosticServer.html" title=" " alt="" coords="573,178,772,203"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="786,203,874,214,873,219,785,208"/>
+<area shape="rect" id="Node000003" href="$structara_1_1diag_1_1DiagnosticServer_1_1Config.html" title=" " alt="" coords="234,15,433,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="442,56,497,73,551,96,613,137,660,176,656,180,610,141,548,101,495,78,440,61"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,51,109,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="123,54,234,43,234,48,123,60"/>
+<area shape="rect" id="Node000006" href="$structara_1_1diag_1_1SecurityProvider.html" title="Seed/key callbacks for SecurityAccess (0x27)." alt="" coords="236,79,431,105"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="117,77,134,80,236,89,235,94,133,85,116,82"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="297,129,369,154"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="383,145,550,168,596,175,595,181,549,173,383,150"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="420,105,484,119,550,137,645,175,643,180,548,143,483,124,419,110"/>
+<area shape="rect" id="Node000007" href="$structara_1_1diag_1_1DtcStorage.html" title="Persistence hooks for the event memory (see per_dtc_storage.h for an ara::per backed implementation)." alt="" coords="254,178,413,203"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="427,188,573,188,573,193,427,193"/>
+<area shape="rect" id="Node000008" href="$structara_1_1diag_1_1CommControlState.html" title="State set by CommunicationControl (0x28)." alt="" coords="228,227,439,253"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="445,223,549,208,595,201,596,206,550,213,445,228"/>
+<area shape="rect" id="Node000009" href="$structara_1_1diag_1_1TransferHandler.html" title="Handler for the data&#45;transfer services 0x34 (download), 0x35 (upload), 0x36 and 0x37." alt="" coords="238,277,429,302"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="442,277,496,263,548,240,559,228,572,214,600,201,602,206,575,218,563,231,551,245,498,268,443,282"/>
+<area shape="rect" id="Node000010" href="$structara_1_1diag_1_1DiagnosticServer_1_1TransferState.html" title=" " alt="" coords="234,327,433,367"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="446,338,500,322,525,309,547,292,558,274,559,255,560,234,571,214,590,201,593,206,575,218,565,236,564,255,563,275,551,295,528,313,502,327,447,343"/>
+<area shape="rect" id="Node000011" href="$structara_1_1diag_1_1Monitor_1_1Debounce.html" title=" " alt="" coords="604,228,741,268"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="755,245,849,239,874,235,875,241,850,244,755,250"/>
+</map>

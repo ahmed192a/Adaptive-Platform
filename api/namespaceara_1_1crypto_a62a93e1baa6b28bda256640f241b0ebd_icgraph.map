@@ -1,0 +1,7 @@
+<map id="ara::crypto::HkdfDeriveKey" name="ara::crypto::HkdfDeriveKey">
+<area shape="rect" id="Node000001" title="Convenience: HKDF output wrapped as a SecretKey with the given usage." alt="" coords="236,45,435,70"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1SecretSeed.html#a84f2ee17bd27b45c2a16a726e67acb71" title="Derives a key of keySize bytes via HKDF&#45;SHA256 using info." alt="" coords="10,5,183,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,45,183,40,184,34,227,40"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a7dcace97b24d057d0801756d104df8da" title=" " alt="" coords="5,69,188,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,74,188,80,188,74,227,69"/>
+</map>

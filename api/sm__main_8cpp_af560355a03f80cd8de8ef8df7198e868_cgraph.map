@@ -1,0 +1,7 @@
+<map id="handle_sigterm" name="handle_sigterm">
+<area shape="rect" id="Node000001" title="Signal handler for SIGTERM." alt="" coords="5,35,128,60"/>
+<area shape="rect" id="Node000002" href="$classCServer.html#a6f0c61349b89255c1289ed10438d8c35" title="Close the socket." alt="" coords="191,5,351,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,36,177,29,178,34,128,41"/>
+<area shape="rect" id="Node000003" href="$classara_1_1exec_1_1ExecutionClient.html#a9e38e2714f64eaf7a0ff8d5feb988cd3" title="Interface for a Process to report its proxy_skeleton state to Execution Management." alt="" coords="176,55,367,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,53,163,58,162,63,128,58"/>
+</map>

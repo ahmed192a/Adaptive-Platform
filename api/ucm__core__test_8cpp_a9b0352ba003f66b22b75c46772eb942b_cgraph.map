@@ -1,0 +1,13 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,60,60,85"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#abe88175f1d53c5ab9142e68134479a8a" title="Package state, or &#45;1 when the transfer id is unknown." alt="" coords="109,5,287,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,64,95,55,96,60,61,69"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02ucm__core__test_8cpp_03.html#a4f5f2c7aeac458a8e70b0ed8daa894de" title=" " alt="" coords="108,84,288,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,76,95,84,94,90,60,81"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ad576575f6ec3a029459a5540a8dc9a97" title="Checks in the order of the SWS (00208, 00203, 00204, 00243, 00205)." alt="" coords="336,5,515,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="277,81,332,62,334,67,279,86"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a193b8a198cde01925f64b9366d52c149" title="[SWS_UCM_00148] OperationNotPermitted, [00212] InvalidTransferId, [00087] InsufficientData; success s..." alt="" coords="336,84,515,139"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="288,109,322,109,322,114,288,114"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a14f004a851d15b2c23406ae99b889850" title="[SWS_UCM_00140] InsufficientMemory when the package cannot be stored." alt="" coords="336,163,515,217"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="279,136,334,156,332,161,277,141"/>
+</map>

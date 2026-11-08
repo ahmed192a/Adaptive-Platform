@@ -1,0 +1,35 @@
+<map id="ara::com::SOMEIP_MESSAGE::sd::SomeIpSDMessage::AddEntry" name="ara::com::SOMEIP_MESSAGE::sd::SomeIpSDMessage::AddEntry">
+<area shape="rect" id="Node000001" title="AddEntry Method that adds an entry to the SD message." alt="" coords="499,369,707,424"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a206ed919173e8c0b6b1a108be3fd71df" title="EventSubscribe." alt="" coords="259,5,445,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="590,357,573,295,545,219,504,141,478,105,449,73,435,62,438,58,452,69,482,102,509,139,550,217,578,293,595,355"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a3783cf67439284116087a4d3296e44ff" title="EventUnsubscribe." alt="" coords="259,84,445,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="584,358,563,311,533,256,495,200,449,152,433,141,436,137,452,148,499,197,538,253,568,308,589,355"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a66fe1efad4069b8940a7fc6323908d4b" title="FindService." alt="" coords="259,163,445,217"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="573,360,520,295,486,261,449,231,431,220,433,215,452,226,490,257,524,291,577,357"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a0a913114d49ea82357872896c02d862c" title="Offer Service." alt="" coords="253,241,451,296"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="545,364,449,311,422,299,425,294,452,306,548,360"/>
+<area shape="rect" id="Node000010" href="$classserviceRegistry.html#a4edf9a057a5fbcd4f1a9bfaf57680142" title=" " alt="" coords="277,320,427,345"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="484,369,402,348,404,343,486,364"/>
+<area shape="rect" id="Node000012" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a0cdcb2dcb86ff315bda38bb3cc8a6b8a" title="StopOfferService." alt="" coords="253,369,451,424"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="485,399,451,399,451,394,485,394"/>
+<area shape="rect" id="Node000013" href="$someip__sd__test_8cpp.html#a7f8e3006e724b3cf2e7dd835a8944fcf" title=" " alt="" coords="325,448,379,473"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="487,430,451,439,380,457,379,452,450,434,486,425"/>
+<area shape="rect" id="Node000014" href="$someip__sd__test_8cpp.html#a0079afcd9823f7c73ed1abb2b07e3c1f" title=" " alt="" coords="325,497,379,523"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="552,434,505,463,452,488,415,501,380,508,379,503,413,495,450,484,502,458,549,429"/>
+<area shape="rect" id="Node000015" href="$someip__sd__test_8cpp.html#a0194ec2a18a287df036eb71188cc3723" title=" " alt="" coords="325,547,379,572"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="572,437,519,489,487,516,452,538,415,552,380,559,379,554,414,547,449,533,484,511,516,485,568,433"/>
+<area shape="rect" id="Node000016" href="$someip__sd__test_8cpp.html#a7137614cf4f51a185070c66f56cc20da" title=" " alt="" coords="325,596,379,621"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="583,438,560,474,530,514,494,554,452,587,416,603,380,609,379,604,414,597,449,582,490,550,526,511,555,471,578,435"/>
+<area shape="rect" id="Node000017" href="$someip__sd__test_8cpp.html#a901c9c788000371457ab6fa3c1f7d705" title=" " alt="" coords="325,645,379,671"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="589,438,569,484,539,538,500,591,477,615,452,636,416,653,380,659,379,654,414,648,449,632,474,611,496,588,535,535,564,482,584,436"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html#aaba2a38e3539af13a6cf07ff124e8426" title="Subscribe to event." alt="" coords="12,13,199,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="245,35,199,35,199,30,245,30"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html#a11f1e9d3b03f243ccedc5c3becaddf1c" title="Unsubscribe from event." alt="" coords="5,91,205,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="245,114,206,114,206,109,245,109"/>
+<area shape="rect" id="Node000007" href="$classotaServer.html#a5109d67e39acaea1a251fb5608c95f3e" title=" " alt="" coords="27,167,183,192"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="245,188,183,185,184,180,245,183"/>
+<area shape="rect" id="Node000008" href="$classUCM__Server.html#ad139b03077161224dc80ac9ca7a9d1b6" title=" " alt="" coords="10,216,201,241"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="245,209,187,219,186,213,245,204"/>
+<area shape="rect" id="Node000011" href="$service__descovery_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main function of service discovery" alt="" coords="78,320,133,345"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="263,335,133,335,133,330,263,330"/>
+</map>

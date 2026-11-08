@@ -1,0 +1,30 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,141,60,166"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NetworkHandle.html#acdfbd6988e9bec7800074064e2387f95" title=" " alt="" coords="114,69,325,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,139,107,119,130,111,132,116,109,124,61,144"/>
+<area shape="rect" id="Node000006" href="$classara_1_1nm_1_1NetworkHandle.html#a9c1c358cb07b86f4ee8a3605147d2ee6" title="kFullCom iff the network is in Network Mode (RepeatMessage/NormalOperation/ReadySleep),..." alt="" coords="129,5,310,45"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="38,139,64,97,84,75,106,55,116,49,119,54,110,59,87,78,69,101,43,141"/>
+<area shape="rect" id="Node000007" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="397,197,533,237"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="41,165,64,215,84,241,109,262,140,276,166,283,191,286,215,285,266,275,330,261,395,240,397,245,331,267,268,280,216,290,191,292,165,289,138,281,107,266,80,245,59,218,36,167"/>
+<area shape="rect" id="Node000008" href="$classara_1_1nm_1_1NetworkHandle.html#a846d5427999a3770b5929f72dd07fde3" title="One notifier per kind; registering again overwrites. Empty notifier &#45;&gt; kInvalidHandler." alt="" coords="108,198,331,253"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="61,163,109,183,129,191,127,196,107,188,59,168"/>
+<area shape="rect" id="Node000010" href="$classara_1_1nm_1_1NetworkHandle.html#a5f5837b3b23fd6d91fd23e720a66b4d4" title="kFullCom requests the network, kNoCom releases it (SWS_ANM_00084). Idempotent." alt="" coords="115,133,324,173"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="60,151,101,151,101,156,60,156"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="397,133,533,173"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="297,107,384,130,383,135,296,112"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="397,5,533,45"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="296,67,383,44,384,49,297,72"/>
+<area shape="rect" id="Node000005" href="$classara_1_1nm_1_1internal_1_1PortRegistry.html#a652e55f9a0fa4d3f31459793f12c3853" title="All live channels bound to the port (several channels are aggregated, SWS_ANM_00083/00084)." alt="" coords="379,69,551,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="325,87,365,87,365,92,325,92"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="311,43,332,55,349,71,357,88,365,104,380,119,388,124,385,129,377,123,361,107,353,90,344,74,329,59,308,48"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="310,23,383,23,383,28,310,28"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="297,43,375,63,374,68,296,48"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="312,195,383,174,384,180,314,200"/>
+<area shape="poly" id="edge13_Node000008_Node000005" title=" " alt="" coords="309,195,329,183,344,168,352,152,361,136,377,119,385,114,388,118,380,123,365,139,357,155,348,171,332,187,312,200"/>
+<area shape="rect" id="Node000009" href="$Testing_2crypto_2CMakeLists_8txt.html#a8c8f99e75122d6d25dc50972856ea684" title=" " alt="" coords="445,262,484,287"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="332,245,432,266,431,271,330,250"/>
+<area shape="poly" id="edge15_Node000010_Node000003" title=" " alt="" coords="324,151,383,151,383,156,324,156"/>
+<area shape="poly" id="edge16_Node000010_Node000004" title=" " alt="" coords="308,131,329,119,344,104,353,89,361,72,377,55,385,50,388,54,380,59,365,75,357,91,349,107,332,123,311,135"/>
+<area shape="poly" id="edge18_Node000010_Node000005" title=" " alt="" coords="296,131,374,110,375,115,297,136"/>
+<area shape="poly" id="edge17_Node000010_Node000007" title=" " alt="" coords="297,171,384,194,383,199,296,176"/>
+</map>

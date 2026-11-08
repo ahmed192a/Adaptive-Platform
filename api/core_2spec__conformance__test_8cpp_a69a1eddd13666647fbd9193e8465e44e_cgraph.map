@@ -1,0 +1,11 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,60,105"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1core.html#a9710eb1c94d60696776ffe50fdf86054" title=" " alt="" coords="112,5,331,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="47,78,74,58,107,40,128,32,130,37,109,44,77,62,50,82"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1core.html#a7bfbe8daf558cc608d99f20f6ec272df" title=" " alt="" coords="112,55,331,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,86,113,79,113,85,61,92"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1core.html#a71ce1aeb3b3285cac32493e1b1633c3c" title=" " alt="" coords="108,104,335,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="61,93,108,100,108,105,60,99"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1core.html#af5eec6e6c86cc435f2e7d266c50e9c28" title=" " alt="" coords="113,153,329,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="52,103,78,122,109,138,135,147,133,152,107,143,75,126,49,108"/>
+</map>

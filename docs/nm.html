@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::nm - Network Management</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / docs</div><h1 id="aranm-network-management">ara::nm - Network Management</h1>
+<p>Transport-independent NM state machine in the style of AUTOSAR CAN-NM, one <code>NmChannel</code> per bus.
+The handle never touches a bus: you feed it received NM messages and it hands back messages to send
+through a callback, so it runs unchanged on CAN, Ethernet or in tests.</p>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; BusSleep
+    BusSleep --&gt; RepeatMessage: Request / NM message
+    PrepareBusSleep --&gt; RepeatMessage: Request / NM message
+    RepeatMessage --&gt; NormalOperation: repeatMessageTime, requested
+    RepeatMessage --&gt; ReadySleep: repeatMessageTime, not requested
+    NormalOperation --&gt; ReadySleep: Release
+    ReadySleep --&gt; NormalOperation: Request
+    NormalOperation --&gt; RepeatMessage: NM message with RMR
+    ReadySleep --&gt; RepeatMessage: NM message with RMR
+    ReadySleep --&gt; PrepareBusSleep: nmTimeout of silence
+    PrepareBusSleep --&gt; BusSleep: waitBusSleepTime
+</code></pre>
+<h2 id="api">API</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NetworkManager</code></td>
+<td>registry: <code>CreateNetwork(name, cfg)</code>, <code>GetNetwork(name)</code>, <code>ProcessAll()</code></td>
+</tr>
+<tr>
+<td><code>NmChannel</code></td>
+<td><code>Request()/Release()</code>, <code>Request/ReleasePartialNetwork(id)</code>, <code>IsPartialNetworkRequested(id)</code>, <code>OnPduReceived()/OnBytesReceived()</code>, <code>Process()</code>, <code>SetStateChangeHandler()</code>, <code>SetTxHandler()</code></td>
+</tr>
+<tr>
+<td><code>NmPdu</code></td>
+<td>8 byte message: node id, control bits (RMR, PNI), 32 bit PN bitmap, 2 bytes user data</td>
+</tr>
+<tr>
+<td><code>NmClock</code></td>
+<td>injectable time source: <code>SteadyNmClock</code> (production), <code>ManualClock</code> (tests)</td>
+</tr>
+<tr>
+<td><code>NmErrc</code></td>
+<td><code>kUnknownNetwork kNetworkExists kNotRequested kBadPdu kInvalidConfig</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="behaviour-notes">Behaviour notes</h2>
+<ul>
+<li>Timers only advance in public calls and <code>Process()</code>; a long gap walks every due transition at its exact deadline.</li>
+<li>Entering <code>RepeatMessage</code> transmits immediately; afterwards a message goes out every <code>messageCycleTime</code> in <code>RepeatMessage</code> and <code>NormalOperation</code>.</li>
+<li><code>Request()</code> is idempotent; <code>Release()</code> without a request returns <code>kNotRequested</code>.</li>
+<li>Partial networks: a node transmits its local PN requests masked by <code>pnFilterMask</code>; remote requests are filtered by the same mask and expire after <code>pnResetTime</code>.</li>
+<li>Callbacks run without the internal lock, so they may call back into the handle.</li>
+</ul>
+<h2 id="not-implemented">Not implemented</h2>
+<p>Real bus drivers (CAN/Ethernet), PN routing/aggregation between buses, the SWS <code>ara::nm</code> Adaptive facade (<code>NmChannel</code> naming from ara::com), NM coordinator, and wake-up/sleep indication towards <code>ara::exec</code>.</p>
+<blockquote>
+<p><strong>Spec conformance:</strong> see <a href="spec-conformance/nm.md">spec-conformance/nm.md</a>. The engine class is <code>NmChannel</code>; <code>ara::nm::NetworkHandle</code> is the SWS facade (<code>kNoCom</code>/<code>kFullCom</code>) bound with <code>NetworkManager::BindPort</code>.</p>
+</blockquote></div><footer>Adaptive Platform</footer></body></html>

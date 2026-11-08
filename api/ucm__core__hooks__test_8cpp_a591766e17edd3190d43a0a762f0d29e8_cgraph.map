@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,60,38"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#aaf85dc247199516ba220a3a911ebf38f" title="Persist the UCM state ([SWS_UCM_00184] &#45; UCM state must survive a reboot, e.g." alt="" coords="108,5,319,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,23,95,23,95,28,60,28"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1ucm_1_1pkgmgr_1_1core.html#af7a11871be65ddb9170cda8b99e95d8c" title="Stable, filesystem&#45;safe textual form of a TransferId (32 lower&#45;case hex digits)." alt="" coords="367,5,540,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,23,353,23,353,28,319,28"/>
+</map>

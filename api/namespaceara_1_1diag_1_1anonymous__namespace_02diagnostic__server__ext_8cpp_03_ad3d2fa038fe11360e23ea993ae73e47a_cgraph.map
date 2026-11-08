@@ -1,0 +1,7 @@
+<map id="ara::diag::anonymous_namespace{diagnostic_server_ext::cpp}::ParseAddressAndLength" name="ara::diag::anonymous_namespace{diagnostic_server_ext::cpp}::ParseAddressAndLength">
+<area shape="rect" id="Node000001" title="Parses an addressAndLengthFormatIdentifier block: [alfid, address(m), length(n)] starting at pos." alt="" coords="5,29,237,99"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="69,28,71,18,81,10,98,5,121,3,150,6,167,14,165,19,149,11,121,8,99,10,84,15,76,21,74,30"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1diag_1_1anonymous__namespace_02diagnostic__server__ext_8cpp_03.html#aa2ef476c634352e4bf6889adbd513d22" title="Reads a big&#45;endian unsigned integer of n bytes (1..8) at pos." alt="" coords="285,37,491,91"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="238,61,272,61,272,67,238,67"/>
+<area shape="poly" id="edge3_Node000002_Node000002" title=" " alt="" coords="336,37,337,26,346,18,363,12,388,10,418,13,435,21,433,26,417,18,388,15,364,17,349,22,341,29,342,37"/>
+</map>

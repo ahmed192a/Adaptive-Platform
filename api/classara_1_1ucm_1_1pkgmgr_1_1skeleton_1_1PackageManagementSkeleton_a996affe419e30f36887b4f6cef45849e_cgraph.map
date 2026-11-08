@@ -1,0 +1,50 @@
+<map id="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::method_dispatch" name="ara::ucm::pkgmgr::skeleton::PackageManagementSkeleton::method_dispatch">
+<area shape="rect" id="Node000001" title="Dispatch the requested methods from package management server." alt="" coords="5,328,231,383"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html#aa7babe23f8160b2e88a4334ff28aa978" title="Activate the software package." alt="" coords="279,5,504,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,327,144,273,175,204,219,132,246,99,277,69,282,65,285,70,280,73,250,102,224,135,180,207,149,275,130,329"/>
+<area shape="rect" id="Node000011" href="$classSocket.html#a5aa350ff51f6db7919316c94643acbf2" title="Close the socket." alt="" coords="315,84,467,109"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="128,327,149,281,181,225,224,168,249,142,277,120,301,108,303,112,280,124,253,146,228,171,185,227,154,283,133,329"/>
+<area shape="rect" id="Node000012" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#ae1494c3a94fce086c6f68ab31785c490" title="Get message data payload." alt="" coords="287,134,495,174"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="136,326,194,255,233,216,277,184,289,177,292,182,280,188,236,221,198,258,140,329"/>
+<area shape="rect" id="Node000013" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html#a7a882a2c5213fec6adb8a1be1e18ac10" title="Get the Sw Process Progress." alt="" coords="279,199,504,253"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="162,326,217,294,278,264,295,256,297,261,280,268,219,299,165,330"/>
+<area shape="rect" id="Node000014" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a90c6210a76dd8551fd4c93cc79cfde0d" title="Get message ID." alt="" coords="287,278,495,318"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="230,329,282,318,283,323,232,334"/>
+<area shape="rect" id="Node000015" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html#acc49011f1dd2a762d81a07a3b4dfd5f2" title="start processing the Software package" alt="" coords="552,377,777,432"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="231,358,362,366,504,378,538,382,538,387,504,383,362,371,231,363"/>
+<area shape="rect" id="Node000016" href="$classSocket.html#a1d18a3588387679df50f18c057adef37" title="Send the data to the client TCP." alt="" coords="339,393,444,419"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="231,374,326,391,325,396,230,379"/>
+<area shape="rect" id="Node000017" href="$classara_1_1com_1_1Serializer.html#a91674f7b07fb10179e02cd39a209bb77" title="Construct a new Serializer object." alt="" coords="317,443,465,483"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="174,380,280,428,305,437,303,442,278,432,172,385"/>
+<area shape="rect" id="Node000018" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html#a7e63eb495266b207300edf5966f016cb" title="Trasfer the data of SwPAckage from Client to server." alt="" coords="825,485,1051,540"/>
+<area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="143,381,167,410,200,441,238,471,280,493,347,515,417,530,489,540,560,544,695,542,811,531,812,537,696,548,560,550,488,545,416,535,346,520,278,498,235,475,196,445,163,414,138,385"/>
+<area shape="rect" id="Node000019" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html#ab6431abadbd95b00762aad0cb150faf1" title="Request Trasfer Exit." alt="" coords="279,559,504,613"/>
+<area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="139,382,197,458,236,500,280,537,301,550,298,554,277,541,233,504,193,461,135,385"/>
+<area shape="rect" id="Node000020" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html#a461c9cae20af63f8e4931928768d7481" title="Request Trasfer start." alt="" coords="279,637,504,692"/>
+<area shape="poly" id="edge22_Node000001_Node000020" title=" " alt="" coords="131,382,151,433,182,497,226,564,252,595,280,623,288,628,284,632,277,627,248,599,221,568,178,500,146,435,126,384"/>
+<area shape="rect" id="Node000003" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a83bc1a98ee57331e522fe9524bb7f149" title="Activate: kReady &#45;&gt; kActivating, State Management PrepareUpdate ([00258] UpdateSessionRejected or [00..." alt="" coords="575,80,754,135"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="493,57,563,77,561,82,491,63"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#abdffa0361b13a41de07dd8cf27e1ed75" title="[SWS_UCM_00241] OperationNotPermitted unless kReady; enters kActivating." alt="" coords="849,41,1027,96"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="754,92,835,81,836,86,755,97"/>
+<area shape="rect" id="Node000007" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#afc8b9c63073236a73e871d0570b0fdcc" title="Success: kActivated ([00107])." alt="" coords="849,120,1027,175"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="755,118,836,130,835,135,754,123"/>
+<area shape="rect" id="Node000009" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a5cf71c7418222b33dbdb999100a9d603" title=" " alt="" coords="849,243,1027,297"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="713,133,881,233,878,238,711,137"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a473e91a8fc068cc50119c8ce2cd4a2f5" title=" " alt="" coords="1109,44,1287,99"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1028,67,1095,68,1095,73,1028,72"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a9900209d243b182bccef73a1608a045c" title=" " alt="" coords="1345,81,1524,136"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1288,83,1332,90,1331,95,1287,88"/>
+<area shape="rect" id="Node000008" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a1d4daca029b4b1965aa16e5ae379e1ad" title=" " alt="" coords="1099,126,1297,166"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1028,144,1085,144,1085,149,1028,150"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="1297,128,1331,122,1332,127,1298,133"/>
+<area shape="rect" id="Node000010" href="$namespaceara_1_1ucm_1_1pkgmgr_1_1core.html#af7a11871be65ddb9170cda8b99e95d8c" title="Stable, filesystem&#45;safe textual form of a TransferId (32 lower&#45;case hex digits)." alt="" coords="1111,434,1285,474"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="979,295,1159,424,1156,428,976,300"/>
+<area shape="poly" id="edge16_Node000015_Node000010" title=" " alt="" coords="778,412,1098,442,1097,447,778,418"/>
+<area shape="poly" id="edge20_Node000018_Node000010" title=" " alt="" coords="1050,485,1097,474,1098,479,1051,490"/>
+<area shape="poly" id="edge26_Node000020_Node000010" title=" " alt="" coords="469,635,503,622,527,612,551,603,627,589,692,583,804,585,858,585,914,582,977,571,1050,549,1081,535,1111,518,1162,481,1165,485,1114,522,1083,540,1052,554,979,576,915,587,858,591,804,590,692,588,627,594,553,609,529,617,505,627,471,640"/>
+<area shape="rect" id="Node000021" href="$classUUIDv4_1_1UUID.html#abc557ab3feaab0d63076847636180109" title=" " alt="" coords="585,643,744,668"/>
+<area shape="poly" id="edge23_Node000020_Node000021" title=" " alt="" coords="504,658,571,656,571,661,504,663"/>
+<area shape="rect" id="Node000022" href="$classUUIDv4_1_1UUIDGenerator.html#aecd2386a4d700720119ba1354c32abb9" title=" " alt="" coords="575,693,754,733"/>
+<area shape="poly" id="edge25_Node000020_Node000022" title=" " alt="" coords="505,682,562,692,561,697,504,687"/>
+<area shape="poly" id="edge24_Node000021_Node000021" title=" " alt="" coords="621,644,611,634,616,624,634,618,665,616,704,620,714,625,718,631,713,634,711,629,702,625,665,621,635,623,620,628,617,634,625,641"/>
+</map>

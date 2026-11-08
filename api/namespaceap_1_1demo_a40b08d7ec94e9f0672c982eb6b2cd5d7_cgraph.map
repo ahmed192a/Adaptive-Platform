@@ -1,0 +1,12 @@
+<map id="ap::demo::RunScenario" name="ap::demo::RunScenario">
+<area shape="rect" id="Node000001" title="Runs the scripted session; when out is given a readable trace is printed as it goes." alt="" coords="5,77,177,102"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1DiagnosticServer.html#a138664716f1a8862cb97ae812c87159b" title="Event memory: report a DTC test result (ignored while 0x85 switched DTC setting off)." alt="" coords="225,5,424,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,74,237,46,239,52,140,79"/>
+<area shape="rect" id="Node000004" href="$classap_1_1demo_1_1DemoEcu.html#afdddbf9cd085822699bedcfbf29eb320" title=" " alt="" coords="244,69,405,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="178,87,230,87,230,92,178,92"/>
+<area shape="rect" id="Node000005" href="$classara_1_1diag_1_1DiagnosticServer.html#a035027c70570794e128baf42486b5086" title="Attaches a snapshot record (freeze frame): the DIDs are encoded as 0x19 sub 0x04 expects them." alt="" coords="225,133,424,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="140,100,239,127,237,132,138,105"/>
+<area shape="rect" id="Node000003" href="$classara_1_1diag_1_1DiagnosticServer.html#ac9fac7561e934c25871f8c5a3f560c78" title=" " alt="" coords="472,69,671,109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="403,43,481,63,480,68,402,48"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="402,131,480,110,481,115,403,136"/>
+</map>

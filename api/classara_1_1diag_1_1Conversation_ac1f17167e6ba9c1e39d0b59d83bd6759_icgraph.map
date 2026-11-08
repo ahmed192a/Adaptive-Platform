@@ -1,0 +1,7 @@
+<map id="ara::diag::Conversation::Request" name="ara::diag::Conversation::Request">
+<area shape="rect" id="Node000001" title="Processes a request; nullopt = no response (suppressPositiveResponse / functional &quot;not supported&quot;)." alt="" coords="123,23,296,63"/>
+<area shape="rect" id="Node000002" href="$diag__gap__test_8cpp.html#a53f76dc6467c04b308af7342f765a934" title=" " alt="" coords="5,5,75,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,31,74,26,75,20,109,26"/>
+<area shape="rect" id="Node000003" href="$diag__gap__test_8cpp.html#aac721af6f9bd33b5bba2032b370da2d3" title=" " alt="" coords="5,55,75,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,60,75,65,74,60,108,55"/>
+</map>

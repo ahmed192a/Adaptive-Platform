@@ -1,0 +1,11 @@
+<map id="ara::per::RecoverKeyValueStorage" name="ara::per::RecoverKeyValueStorage">
+<area shape="rect" id="Node000001" title="The following only succeed while the storage is not open (kResourceBusy)." alt="" coords="5,35,199,75"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="287,5,460,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,42,273,33,274,39,199,47"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per.html#a3230707f204bbd8e76b28167a3e6303a" title=" " alt="" coords="247,70,500,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,62,237,66,236,71,199,67"/>
+<area shape="rect" id="Node000004" href="$structara_1_1per_1_1KvsAccess.html#a64af718f07aaeed336e09fc7eefda741" title=" " alt="" coords="548,63,697,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="500,80,534,80,534,85,500,85"/>
+<area shape="rect" id="Node000005" href="$classara_1_1per_1_1KeyValueStorage.html#aeb179de630774d53853d8f4971126417" title=" " alt="" coords="745,63,936,103"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="698,80,732,80,732,85,698,85"/>
+</map>

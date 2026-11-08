@@ -1,0 +1,14 @@
+<map id="anonymous_namespace{extras_test::cpp}::TEST" name="anonymous_namespace{extras_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,188,109"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1PrivateKey.html#a5de9d3ce0a89515470af700852f54e08" title=" " alt="" coords="251,5,422,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,67,247,46,249,51,173,72"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a1eea06f48bd3eee220ae2c10e999c325" title=" " alt="" coords="247,69,427,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,87,233,87,233,92,188,92"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1crypto.html#a216ae2d8a59a64a834197aedb90608df" title="Issues a certificate signed by issuerKey." alt="" coords="236,134,437,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="182,107,270,128,269,133,180,112"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="704,134,879,159"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="437,141,485,140,656,140,690,141,690,146,656,145,485,145,438,146"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1PrivateKey.html#aeb7194c011a8b79790de496d547d55a4" title="Serialises as unencrypted PKCS#8. The caller must SecureZero the result." alt="" coords="485,155,656,195"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="438,156,472,160,472,166,437,161"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="656,161,690,157,691,162,657,166"/>
+</map>

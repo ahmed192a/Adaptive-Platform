@@ -1,0 +1,294 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::log — conformance with AUTOSAR AP SWS Log and Trace</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="aralog-conformance-with-autosar-ap-sws-log-and-trace">ara::log — conformance with AUTOSAR AP SWS Log and Trace</h1>
+<p><strong>Reference:</strong> <code>AUTOSAR_AP_SWS_LogAndTrace</code> <strong>R25-11</strong> (fetched from autosar.org; the
+excerpt available to this audit omitted the enumerator tables of chapter 8).
+Requirement IDs below are only those that appeared in the retrieved text.
+Anything not confirmed there is marked <strong>Unverified</strong> and is <em>not</em> claimed as
+conformant.</p>
+<p>Status legend: <strong>Implemented</strong> · <strong>Partial</strong> · <strong>Missing</strong> · <strong>Extension</strong>
+(implementation-specific, not in the SWS) · <strong>Unverified</strong> (could not be
+checked against the R25-11 text).</p>
+<h2 id="initialization-and-logger-creation">Initialization and logger creation</h2>
+<table>
+<thead>
+<tr>
+<th>Spec item</th>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logging framework initialized via manifest <code>LogAndTraceInterface</code>, <code>ara::core::Initialize()</code></td>
+<td>SWS_LOG_00004</td>
+<td>Partial</td>
+<td>Initialization is lazy on first <code>CreateLogger</code>; <code>ara::core::Deinitialize()</code> resets state. No manifest reader — console sink is the default.</td>
+</tr>
+<tr>
+<td><code>CreateLogger(InstanceSpecifier const&amp;)</code></td>
+<td>SWS_LOG_00251</td>
+<td>Implemented</td>
+<td>Context id = last path element of the specifier; threshold <code>kWarn</code>. Added in this audit.</td>
+</tr>
+<tr>
+<td><code>CreateLogger(StringView ctxId, StringView ctxDescription)</code></td>
+<td>SWS_LOG_00253</td>
+<td>Implemented</td>
+<td>Default threshold <code>kWarn</code> (no <code>DltLogSink.defaultLogThreshold</code> manifest source). Added as an explicit overload.</td>
+</tr>
+<tr>
+<td><code>CreateLogger(StringView, StringView, LogLevel)</code></td>
+<td>SWS_LOG_00006</td>
+<td>Implemented</td>
+<td>Same context id returns the same <code>Logger&amp;</code>.</td>
+</tr>
+<tr>
+<td>Context id limited to 4 characters</td>
+<td>—</td>
+<td>Unverified</td>
+<td>Truncation to 4 chars is applied (DLT convention); not confirmed in R25-11 text.</td>
+</tr>
+<tr>
+<td><code>InitLogging(appId, desc, level, mode, dir)</code></td>
+<td>—</td>
+<td><strong>Extension</strong></td>
+<td><strong>Not part of R25-11</strong> (the spec has no such function; it existed in R18-03–R20-11 era drafts). Kept for backward compatibility, documented as non-standard.</td>
+</tr>
+<tr>
+<td><code>GetClientState()</code></td>
+<td>—</td>
+<td>Extension</td>
+<td><code>ClientState</code> enum exists in the SWS, but no free function was found in the retrieved text. Always <code>kNotConnected</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="logger">Logger</h2>
+<table>
+<thead>
+<tr>
+<th>Spec item</th>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Logger::IsEnabled(LogLevel)</code></td>
+<td>SWS_LOG_00007</td>
+<td>Implemented</td>
+<td><code>kOff</code> is never enabled.</td>
+</tr>
+<tr>
+<td><code>LogFatal/LogError/LogWarn/LogInfo/LogDebug/LogVerbose</code></td>
+<td>SWS_LOG_00008–00013</td>
+<td>Implemented</td>
+<td>Return <code>LogStream</code>, <code>noexcept</code>.</td>
+</tr>
+<tr>
+<td><code>WithLevel(LogLevel)</code></td>
+<td>SWS_LOG_00130</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SetThreshold(LogLevel)</code></td>
+<td>SWS_LOG_00254</td>
+<td>Implemented</td>
+<td>Added in this audit. <code>SetLevel</code> kept as an alias.</td>
+</tr>
+<tr>
+<td><code>Log(MsgId, Params...)</code>, <code>LogWith(attributes, MsgId, Params...)</code></td>
+<td>SWS_LOG_00240/00241</td>
+<td><strong>Missing</strong></td>
+<td>Modeled-message API needs generated <code>MsgId</code> types from the Log and Trace model; out of scope until the model generator exists.</td>
+</tr>
+<tr>
+<td>All <code>Log*()</code> are no-throw and return no error values</td>
+<td>SWS_LOG_00002</td>
+<td>Implemented</td>
+<td>Sink exceptions are swallowed in <code>Flush()</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="logstream">LogStream</h2>
+<table>
+<thead>
+<tr>
+<th>Spec item</th>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Flush()</code></td>
+<td>—</td>
+<td>Implemented</td>
+<td>Emits now; later insertions start a new record.</td>
+</tr>
+<tr>
+<td><code>WithLocation(file, line)</code></td>
+<td>—</td>
+<td>Implemented</td>
+<td>Added; recorded in <code>LogRecord::file/line</code> and appended by <code>FormatRecord</code>.</td>
+</tr>
+<tr>
+<td><code>WithTag(StringView)</code></td>
+<td>—</td>
+<td>Implemented</td>
+<td>Added; recorded in <code>LogRecord::tag</code>.</td>
+</tr>
+<tr>
+<td><code>WithPrivacy(...)</code></td>
+<td>—</td>
+<td><strong>Missing</strong></td>
+<td>The privacy enum is not in the retrieved text.</td>
+</tr>
+<tr>
+<td><code>operator&lt;&lt;</code> bool, integers (8–64 bit), float, double, <code>const char*</code>, <code>StringView</code>, <code>std::string</code>, <code>LogLevel</code></td>
+<td>SWS_LOG_00227–00238 (binding rules)</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operator&lt;&lt;</code> <code>const void*</code></td>
+<td>—</td>
+<td>Implemented</td>
+<td>Rendered as <code>0x</code> + full-width hex. Added.</td>
+</tr>
+<tr>
+<td><code>operator&lt;&lt;</code> <code>core::ErrorCode</code></td>
+<td>—</td>
+<td>Implemented</td>
+<td>Rendered as <code>Domain:value (message)</code>. Added.</td>
+</tr>
+<tr>
+<td><code>operator&lt;&lt;</code> <code>InstanceSpecifier</code></td>
+<td>—</td>
+<td>Implemented</td>
+<td>Added.</td>
+</tr>
+<tr>
+<td><code>operator&lt;&lt;</code> <code>std::chrono::duration</code></td>
+<td>—</td>
+<td>Partial</td>
+<td>Rendered as integer nanoseconds + <code>ns</code>; the SWS wire format is <strong>Unverified</strong>. Added.</td>
+</tr>
+<tr>
+<td><code>operator&lt;&lt;</code> <code>Span&lt;const Byte&gt;</code></td>
+<td>—</td>
+<td><strong>Fixed (was Missing)</strong></td>
+<td><code>ara::core::Span</code> now compiles and is complete; a byte span is rendered as space-separated two-digit lowercase hex (<code>0a ff 10</code>). The SWS wire format of a byte span is <strong>Unverified</strong>. Test <code>LogTest.ByteSpanIsLoggedAsHex</code>.</td>
+</tr>
+<tr>
+<td><code>operator&lt;&lt;</code> <code>Argument&lt;T&gt;</code> / <code>Arg(value, Format)</code></td>
+<td>—</td>
+<td>Implemented</td>
+<td>Added.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="formatting-modifiers">Formatting modifiers</h2>
+<table>
+<thead>
+<tr>
+<th>Spec item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Fmt</code> enum (<code>kDefault</code>=0 … <code>kAutoFloat</code>=8)</td>
+<td>Implemented</td>
+<td>Values as published in the R25-11 tooling reference; added.</td>
+</tr>
+<tr>
+<td><code>Format { fmt, precision }</code></td>
+<td>Implemented</td>
+<td>Added.</td>
+</tr>
+<tr>
+<td><code>Hex()</code>, <code>Hex(uint16_t)</code>, <code>Bin</code>, <code>Dec</code>, <code>Oct</code>, <code>DecFloat</code>, <code>EngFloat</code>, <code>HexFloat</code>, <code>AutoFloat</code> (+<code>…Max</code>)</td>
+<td>Implemented</td>
+<td>Added. The <code>…Max</code> variants use 17 significant digits (<strong>Unverified</strong> exact value). Integer prefixes <code>0x</code>/<code>0b</code>/<code>0o</code> and the meaning of <code>precision</code> (minimum digits / fractional digits) are implementation choices — <strong>Unverified</strong>.</td>
+</tr>
+<tr>
+<td><code>Dflt()</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>LogHex8/16/32/64</code>, <code>LogBin8/16/32/64</code></td>
+<td>Implemented</td>
+<td>Fixed-width structs. <strong>Deviation fixed:</strong> previously the free functions <code>Hex(T)</code>/<code>Bin(T)</code> took a <em>value</em>; the SWS uses <code>Hex(...)</code> as a <em>modifier</em>. They were replaced by the <code>LogHexN</code>/<code>LogBinN</code> types.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enums-and-error-handling">Enums and error handling</h2>
+<table>
+<thead>
+<tr>
+<th>Spec item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LogLevel</code> kOff=0 … kVerbose=6</td>
+<td>Implemented</td>
+<td>Values match the published enumerator table.</td>
+</tr>
+<tr>
+<td><code>ClientState</code> kUnknown=-1, kNotConnected=0, kConnected=1</td>
+<td>Implemented</td>
+<td>Matches the published table.</td>
+</tr>
+<tr>
+<td><code>LogMode</code></td>
+<td><strong>Extension</strong></td>
+<td>R25-11 text defines no <code>LogMode</code>; sink selection is by manifest <code>DltLogSink</code>. Kept with <code>InitLogging</code>.</td>
+</tr>
+<tr>
+<td><code>LogErrc</code> / <code>LogErrorDomain</code></td>
+<td><strong>Extension</strong></td>
+<td>R25-11: <em>"interfaces neither return error values nor throw exceptions"</em>; no error domain is defined. Domain id <code>0x8000000000000403</code> is an implementation choice.</td>
+</tr>
+<tr>
+<td>Manifest <code>DltLogSink</code> categories (Remote/Dlt/File/Console)</td>
+<td>Missing</td>
+<td>No manifest binding; console and file sinks are selected via <code>InitLogging</code> or environment variables.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tests">Tests</h2>
+<p><code>Testing/log/log_test.cpp</code> — 20 tests, label <code>log</code>.</p></div><footer>Adaptive Platform</footer></body></html>

@@ -1,0 +1,5 @@
+<map id="ara::log::Logger::SetThreshold" name="ara::log::Logger::SetThreshold">
+<area shape="rect" id="Node000001" title="SWS_LOG_00254: sets the severity threshold of this logger." alt="" coords="240,5,456,31"/>
+<area shape="rect" id="Node000002" href="$classara_1_1log_1_1Logger.html#aeb1c20d2a8c3db13fc83a72ccc9f964a" title="Deprecated alias kept for older callers of this repository." alt="" coords="5,5,192,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,21,192,21,192,15,226,15"/>
+</map>

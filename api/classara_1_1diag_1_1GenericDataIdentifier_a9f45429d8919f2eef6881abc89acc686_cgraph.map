@@ -1,0 +1,7 @@
+<map id="ara::diag::GenericDataIdentifier::StopOffer" name="ara::diag::GenericDataIdentifier::StopOffer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,232,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1DiagnosticServer.html#aca034de1cca5aef32323f4313940bffa" title="Removal counterparts, used by the facade classes&#39; StopOffer()." alt="" coords="280,5,479,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,23,266,23,266,28,232,28"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="527,5,663,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="479,23,513,23,513,28,479,28"/>
+</map>

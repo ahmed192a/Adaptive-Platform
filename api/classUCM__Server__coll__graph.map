@@ -1,0 +1,14 @@
+<map id="UCM_Server" name="UCM_Server">
+<area shape="rect" id="Node000001" title=" " alt="" coords="440,172,543,197"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1InstanceIdentifier.html" title=" " alt="" coords="9,44,209,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,54,271,59,321,68,370,82,417,102,439,117,458,136,484,170,480,174,454,139,436,121,415,107,369,87,319,73,270,64,223,59"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="67,30,79,21,109,17,134,20,148,26,152,36,145,46,141,42,147,35,145,30,132,25,109,23,81,26,71,34"/>
+<area shape="rect" id="Node000003" href="$structara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton_1_1SK__Handle.html" title=" " alt="" coords="11,93,208,148"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="222,120,318,128,417,147,469,170,467,174,415,153,317,133,221,125"/>
+<area shape="rect" id="Node000004" href="$classCServer.html" title="CServer class for any tcp or udp server sockets." alt="" coords="73,172,146,197"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="160,182,440,182,440,187,160,187"/>
+<area shape="rect" id="Node000005" href="$structara_1_1com_1_1FindServiceHandle.html" title=" " alt="" coords="5,221,213,247"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="227,225,319,216,416,202,447,195,448,200,416,207,320,221,227,230"/>
+<area shape="rect" id="Node000006" href="$classara_1_1exec_1_1ExecutionClient.html" title="ExecutionClient Class to implement operations on Execution Client." alt="" coords="14,271,205,296"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="218,283,316,273,367,262,415,245,451,222,477,196,481,200,454,226,417,250,368,267,317,278,219,288"/>
+</map>

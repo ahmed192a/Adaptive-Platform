@@ -1,0 +1,15 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,189,75,214"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="200,5,336,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="42,188,51,160,67,124,90,87,121,55,152,38,185,29,187,34,154,43,124,59,94,90,72,126,56,162,47,189"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="200,69,336,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="49,187,78,152,99,134,121,119,153,105,186,96,187,101,155,110,124,124,102,138,82,156,53,190"/>
+<area shape="rect" id="Node000004" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html#ac6b62853343b6b60a12142c48244e2bd" title=" " alt="" coords="178,134,358,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="75,193,164,177,165,182,76,198"/>
+<area shape="rect" id="Node000005" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a3aea5ddb20a72cbb9f55bf59e3d427d6" title="SWS_TS_01114/01115: one validation notifier, a new registration overwrites the previous one." alt="" coords="150,213,386,267"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="76,204,137,215,136,220,75,210"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a60acf5e1bd1336200b4979fc4701b135" title="SWS_TS_00425/00427: hand master timing / pdelay responder data to the validation notifications." alt="" coords="123,292,413,332"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="53,213,83,245,124,276,142,285,139,289,121,281,79,249,49,216"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a5ba34c27e4f207d45fdb220fcd819056" title=" " alt="" coords="159,357,377,411"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="47,213,73,275,95,311,124,342,148,356,145,361,121,346,91,315,68,278,43,215"/>
+</map>

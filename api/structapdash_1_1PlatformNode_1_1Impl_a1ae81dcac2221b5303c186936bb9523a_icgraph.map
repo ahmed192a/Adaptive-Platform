@@ -1,0 +1,8 @@
+<map id="apdash::PlatformNode::Impl::EmRunning" name="apdash::PlatformNode::Impl::EmRunning">
+<area shape="rect" id="Node000001" title=" " alt="" coords="435,5,601,45"/>
+<area shape="rect" id="Node000002" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="5,5,172,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="421,25,387,24,220,24,172,25,172,20,220,19,387,19,421,19"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#aebfd0be9942bc400bee3828b05b277d1" title=" " alt="" coords="220,33,387,73"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="421,41,387,45,387,40,420,35"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="206,43,172,39,173,34,206,38"/>
+</map>

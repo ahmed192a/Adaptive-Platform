@@ -1,0 +1,75 @@
+var namespaceara_1_1com =
+[
+    [ "entry", "namespaceara_1_1com_1_1entry.html", "namespaceara_1_1com_1_1entry" ],
+    [ "helper", "namespaceara_1_1com_1_1helper.html", "namespaceara_1_1com_1_1helper" ],
+    [ "internal", "namespaceara_1_1com_1_1internal.html", [
+      [ "kComErrorDomain", "namespaceara_1_1com_1_1internal.html#a50ff71158002e175bcca2536d95317c1", null ]
+    ] ],
+    [ "option", "namespaceara_1_1com_1_1option.html", "namespaceara_1_1com_1_1option" ],
+    [ "proxy_skeleton", "namespaceara_1_1com_1_1proxy__skeleton.html", "namespaceara_1_1com_1_1proxy__skeleton" ],
+    [ "someip", "namespaceara_1_1com_1_1someip.html", "namespaceara_1_1com_1_1someip" ],
+    [ "SOMEIP_MESSAGE", "namespaceara_1_1com_1_1SOMEIP__MESSAGE.html", "namespaceara_1_1com_1_1SOMEIP__MESSAGE" ],
+    [ "ArgumentTypeImpl", "structara_1_1com_1_1ArgumentTypeImpl.html", "structara_1_1com_1_1ArgumentTypeImpl" ],
+    [ "ArgumentTypeImpl< 0, Head, Tail... >", "structara_1_1com_1_1ArgumentTypeImpl_3_010_00_01Head_00_01Tail_8_8_8_01_4.html", "structara_1_1com_1_1ArgumentTypeImpl_3_010_00_01Head_00_01Tail_8_8_8_01_4" ],
+    [ "ComErrorDomain", "classara_1_1com_1_1ComErrorDomain.html", "classara_1_1com_1_1ComErrorDomain" ],
+    [ "ComException", "classara_1_1com_1_1ComException.html", "classara_1_1com_1_1ComException" ],
+    [ "Deserializer", "classara_1_1com_1_1Deserializer.html", "classara_1_1com_1_1Deserializer" ],
+    [ "FindServiceHandle", "structara_1_1com_1_1FindServiceHandle.html", "structara_1_1com_1_1FindServiceHandle" ],
+    [ "InstanceIdentifier", "classara_1_1com_1_1InstanceIdentifier.html", "classara_1_1com_1_1InstanceIdentifier" ],
+    [ "Marshal", "classara_1_1com_1_1Marshal.html", "classara_1_1com_1_1Marshal" ],
+    [ "MessageIndexerImpl", "structara_1_1com_1_1MessageIndexerImpl.html", "structara_1_1com_1_1MessageIndexerImpl" ],
+    [ "MessageIndexerImpl< 0, Args... >", "structara_1_1com_1_1MessageIndexerImpl_3_010_00_01Args_8_8_8_01_4.html", "structara_1_1com_1_1MessageIndexerImpl_3_010_00_01Args_8_8_8_01_4" ],
+    [ "ProxyEventBuffer", "classara_1_1com_1_1ProxyEventBuffer.html", "classara_1_1com_1_1ProxyEventBuffer" ],
+    [ "Serializer", "classara_1_1com_1_1Serializer.html", "classara_1_1com_1_1Serializer" ],
+    [ "ServiceIdentifierType", "classara_1_1com_1_1ServiceIdentifierType.html", "classara_1_1com_1_1ServiceIdentifierType" ],
+    [ "ServiceVersionType", "classara_1_1com_1_1ServiceVersionType.html", "classara_1_1com_1_1ServiceVersionType" ],
+    [ "ArgumentType", "namespaceara_1_1com.html#ad1eb07c3b0ba50cc7edf6b211189bff8", null ],
+    [ "EventReceiveHandler", "namespaceara_1_1com.html#a5cb1ddad7d4d1518003ec6fff7d32a0f", null ],
+    [ "FilterFunction", "namespaceara_1_1com.html#a8ec9003b3e279f3737706436b1469c21", null ],
+    [ "FindServiceHandler", "namespaceara_1_1com.html#a755f96a19a627b1272459fcd7ebea35d", null ],
+    [ "FindServiceHandlerExt", "namespaceara_1_1com.html#a0b8c1883274fcd1ee71a9723bd1796f8", null ],
+    [ "SampleAllocateePtr", "namespaceara_1_1com.html#a0dcfd938fd6b6dbc9a36617e4a0f8d56", null ],
+    [ "SampleContainer", "namespaceara_1_1com.html#acb489df13578122654c05f5fd973946d", null ],
+    [ "SamplePtr", "namespaceara_1_1com.html#a1be83b7e6122356ce57c98b387186326", null ],
+    [ "ServiceHandleContainer", "namespaceara_1_1com.html#a4e8a4eeaaef707a38eb979bd6d83011a", null ],
+    [ "SubscriptionStateChangeHandler", "namespaceara_1_1com.html#a243ee68e912a5d2e1ae6676b702302ab", null ],
+    [ "ComErrc", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6", [
+      [ "kServiceNotAvailable", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a2888470f6f567fbb94c1a5db8ce57b24", null ],
+      [ "kMaxSamplesReached", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6ad0cfb74de995ce2587ce24f257dc1a2f", null ],
+      [ "kBindingFailure", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a742000e6e785981ccef6baf610896846", null ],
+      [ "kGrantEnforcementError", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6ac5cba2c9b9e123c30822073ffcd2bc63", null ],
+      [ "kPeerIsUnreachable", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6abf2eafe14e291117f3a276cdee3a4a56", null ],
+      [ "kFieldValueIsNotValid", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6aa987bd28e73361bb72d3f59983f3afb0", null ],
+      [ "kSetHandlerNotSet", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6ab1cdc574be99971a509caf6be5628b36", null ],
+      [ "kUnsetFailure", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a50341a4d67bb5386a8f36fa72e23d168", null ],
+      [ "kSampleAllocationFailure", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a85d8b1f781ae937aa0003d6c1dab5b0b", null ],
+      [ "kIllegalUseOfAllocate", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a890a8d1aa524f7760a8a45639d437e90", null ],
+      [ "kServiceNotOffered", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6ad15b8f0f3ed1066c1797eca842f4aae2", null ],
+      [ "kCommunicationLinkError", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a72ed1f4c2079879ce4a0551ba7ca414b", null ],
+      [ "kNoClients", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a3d8899a637e8e92341a5ad8935664c6d", null ],
+      [ "kCommunicationStackError", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a121190dc99ba3c4e751bde54892dace8", null ],
+      [ "kMaxSampleCountNotRealizable", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6aa6a34b1929e3355a34c2c81c59d0b66e", null ],
+      [ "kMaxSubscribersExceeded", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6ae0030d9196e434138b66a87f6e18ac6e", null ],
+      [ "kWrongMethodCallProcessingMode", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a581e57a8486460c70f4756e0f0ffe371", null ],
+      [ "kErroneousFileHandle", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a059ed6a9c5079804eaafabd4117c263a", null ],
+      [ "kCouldNotExecute", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6aea915870a6ed1eca8923eb0a5bb6535d", null ],
+      [ "kInvalidInstanceIdentifierString", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a92fa9930d8e48be16a2746cb6a6a1891", null ],
+      [ "kInvalidMetaModelShortname", "namespaceara_1_1com.html#a69e1cbd59b0ae139aa3b893a39177bb6a110e0ba479656d0ecd4e7397c7980993", null ]
+    ] ],
+    [ "EventCacheUpdatePolicy", "namespaceara_1_1com.html#af5543cf9721e55908d23a41290ae788b", [
+      [ "kLastN", "namespaceara_1_1com.html#af5543cf9721e55908d23a41290ae788ba9daa8bb79f6449246fe100948789d3c8", null ],
+      [ "kNewestN", "namespaceara_1_1com.html#af5543cf9721e55908d23a41290ae788ba612b65862866007fb4b60d679608c1b4", null ]
+    ] ],
+    [ "MethodCallProcessingMode", "namespaceara_1_1com.html#aac839a97a90a31ca32009d9056eb51df", [
+      [ "kPoll", "namespaceara_1_1com.html#aac839a97a90a31ca32009d9056eb51dfa9399e6d620dc4c7809f09084c2de883e", null ],
+      [ "kEvent", "namespaceara_1_1com.html#aac839a97a90a31ca32009d9056eb51dfab38bfe9b7b9eafa5a368e22761e21c41", null ],
+      [ "kEventSingleThread", "namespaceara_1_1com.html#aac839a97a90a31ca32009d9056eb51dfac459dd84ad42680138adb733d31b596f", null ]
+    ] ],
+    [ "SubscriptionState", "namespaceara_1_1com.html#a7a0549e7dc29588df7a5963f914476dd", [
+      [ "kSubscribed", "namespaceara_1_1com.html#a7a0549e7dc29588df7a5963f914476dda42041b611472e5b4fa5b4a1137de4a66", null ],
+      [ "kNotSubscribed", "namespaceara_1_1com.html#a7a0549e7dc29588df7a5963f914476dda92328fe39107890e5ea75689d9e5d32f", null ],
+      [ "kSubscriptionPending", "namespaceara_1_1com.html#a7a0549e7dc29588df7a5963f914476dda0753cb583573784f32f13c297d4eeba0", null ]
+    ] ],
+    [ "GetComDomain", "namespaceara_1_1com.html#ab6b865daa1f22c77abb4d190e45fbd68", null ],
+    [ "MakeErrorCode", "namespaceara_1_1com.html#ab8ba850aab7f0df8ffd3d3d682055946", null ]
+];

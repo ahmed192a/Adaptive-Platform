@@ -1,0 +1,14 @@
+<map id="ara::nm::NmChannel::OnPduReceived" name="ara::nm::NmChannel::OnPduReceived">
+<area shape="rect" id="Node000001" title="Feed a received NM message (already decoded)." alt="" coords="5,63,161,103"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NmChannel.html#a3e7c8035808e00acaeca753b5e49ab49" title=" " alt="" coords="209,5,365,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,60,202,47,203,52,156,65"/>
+<area shape="rect" id="Node000003" href="$classara_1_1nm_1_1NmChannel.html#a9a4146eda5b7b143b721097e2c8c3802" title=" " alt="" coords="617,124,773,164"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="162,79,348,83,459,91,570,105,623,118,622,123,569,111,459,96,348,88,162,84"/>
+<area shape="rect" id="Node000004" href="$classara_1_1nm_1_1NmChannel.html#a5083082f6bc8dd3db72f69eb61d99bd3" title=" " alt="" coords="209,120,365,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="156,100,203,114,202,119,154,105"/>
+<area shape="rect" id="Node000005" href="$classara_1_1nm_1_1NmChannel.html#afdacc58d1cdcca50ee3d45acf5c071ea" title=" " alt="" coords="413,120,569,160"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="365,137,400,137,400,143,365,143"/>
+<area shape="rect" id="Node000006" href="$classara_1_1nm_1_1NmChannel.html#ae6c0a6d76eb81f297558c773c114afdc" title=" " alt="" coords="413,184,569,224"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="353,158,415,177,413,182,351,163"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="560,181,613,165,614,171,561,186"/>
+</map>

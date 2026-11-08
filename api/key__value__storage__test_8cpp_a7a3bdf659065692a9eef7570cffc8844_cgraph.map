@@ -1,0 +1,15 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,75,95"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#a0629a9c4fda9f58138d47a9ae469b475" title="Opening the same specifier twice returns the same underlying storage." alt="" coords="124,13,348,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,67,122,48,157,39,158,44,123,53,72,72"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1per.html#a8208d7daeaaa2ff33ac97aa6f53cc92b" title="Registers the callback invoked after a successful Recover*‍/Reset* of a storage." alt="" coords="139,63,333,103"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="75,80,125,80,125,85,75,85"/>
+<area shape="rect" id="Node000007" href="$namespaceara_1_1per.html#ad7e7a8c7aebf26d59e830724ca6116a4" title=" " alt="" coords="123,127,349,153"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="72,93,123,112,158,122,157,127,122,117,70,98"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per.html#a3230707f204bbd8e76b28167a3e6303a" title=" " alt="" coords="397,13,651,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="348,23,384,23,384,28,348,28"/>
+<area shape="rect" id="Node000004" href="$structara_1_1per_1_1KvsAccess.html#a64af718f07aaeed336e09fc7eefda741" title=" " alt="" coords="699,5,848,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="651,23,685,23,685,28,651,28"/>
+<area shape="rect" id="Node000005" href="$classara_1_1per_1_1KeyValueStorage.html#aeb179de630774d53853d8f4971126417" title=" " alt="" coords="896,5,1087,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="848,23,882,23,882,28,848,28"/>
+</map>

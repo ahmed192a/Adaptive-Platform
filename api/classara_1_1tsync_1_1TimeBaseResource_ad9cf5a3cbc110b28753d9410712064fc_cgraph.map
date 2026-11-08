@@ -1,0 +1,16 @@
+<map id="ara::tsync::TimeBaseResource::Apply" name="ara::tsync::TimeBaseResource::Apply">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,127,224,167"/>
+<area shape="rect" id="Node000002" href="$classara_1_1tsync_1_1TimeBaseResource.html#a480640b93b66174601ee9c9d7515da06" title=" " alt="" coords="291,5,509,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,124,201,89,271,55,293,47,295,52,273,60,204,94,147,129"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="332,69,468,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,124,318,103,319,108,215,129"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1TimeBaseResource.html#ac1e5ae06af03471e4655cc9cae9849ee" title=" " alt="" coords="272,134,528,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="224,144,258,144,258,149,224,149"/>
+<area shape="rect" id="Node000005" href="$classara_1_1tsync_1_1TimeBaseResource.html#a80f3ee4ec19ed4fc306c87c72d9699b9" title=" " alt="" coords="291,184,509,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="215,164,287,179,286,184,214,169"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1TimeBaseResource.html#a2d8a2980c8a4ed2cc7f827eb1f445e9a" title=" " alt="" coords="576,241,795,281"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="144,165,201,202,236,220,273,233,346,251,422,261,495,265,562,266,562,271,495,270,421,266,345,256,271,239,234,224,199,206,141,169"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1TimeBaseResource.html#abc7bbf8fd1161af2e5ed424b0a9748c6" title=" " alt="" coords="576,177,795,217"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="509,199,563,198,563,203,509,204"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="501,221,572,236,571,241,500,227"/>
+</map>

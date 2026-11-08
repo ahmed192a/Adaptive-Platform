@@ -1,0 +1,5 @@
+<map id="ara::com::ProxyEventBuffer::Subscribe" name="ara::com::ProxyEventBuffer::Subscribe">
+<area shape="rect" id="Node000001" title="Subscribe with room for maxSampleCount samples (queued + held by the application)." alt="" coords="108,5,308,45"/>
+<area shape="rect" id="Node000002" href="$com__api__test_8cpp.html#a23b16220dff5d10147c9ccc978dee765" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="ara::com::Marshal::get_args" name="ara::com::Marshal::get_args">
+<area shape="rect" id="Node000001" title=" " alt="" coords="543,266,689,306"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#aa346a9135cc9bc860cb16868c7064f1d" title="1&#45; HandleCall R ARGS" alt="" coords="297,101,495,156"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="588,257,546,213,493,170,473,158,476,154,496,165,550,209,592,254"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a7391d54d3dda83707960fc6125c03d3d" title="2&#45; HandleCall future&lt;void&gt; ARGS" alt="" coords="297,180,495,235"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="546,264,472,237,474,232,548,259"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a53d3f41d0ebb303513d672431dd50e7f" title="5&#45; HandleCall void ARGS" alt="" coords="297,259,495,313"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="529,289,495,289,495,283,529,283"/>
+<area shape="rect" id="Node000009" href="$marshal__test_8cpp.html#ab5515fa0c344fb08393c66aa133d9a17" title=" " alt="" coords="369,337,423,363"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="546,313,495,329,424,347,423,342,494,323,544,308"/>
+<area shape="rect" id="Node000010" href="$marshal__test_8cpp.html#a3ee3630af261221469947893e8af4a51" title=" " alt="" coords="369,387,423,412"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="585,317,544,349,496,378,459,391,424,398,423,393,457,386,494,373,541,345,581,313"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1diagnostic__reset_1_1skeleton_1_1diagnostic__reset__skeleton.html#ab3d42eb692496e3ef109d696574ad895" title=" " alt="" coords="5,5,249,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="314,99,248,74,216,63,217,58,250,69,316,94"/>
+<area shape="rect" id="Node000004" href="$classskeleton.html#a917c59464ea1dfa646a29dd652ab9314" title=" " alt="" coords="29,84,226,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="283,118,226,111,227,106,284,113"/>
+<area shape="rect" id="Node000005" href="$classara_1_1sm_1_1powermode_1_1skeleton_1_1PowerMode__Skeleton.html#a8219ad10bac9dc9bfd503652b8dcb711" title=" " alt="" coords="25,133,230,188"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="284,145,231,151,230,146,283,139"/>
+<area shape="rect" id="Node000006" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a49ae6571a4e635ae85ad4dffd346c1c0" title=" " alt="" coords="25,212,230,267"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="310,164,299,170,275,186,251,202,221,214,219,210,248,197,272,181,296,165,307,159"/>
+</map>

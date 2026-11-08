@@ -1,0 +1,5 @@
+<map id="ara::per::FileStorage::ResetFile" name="ara::per::FileStorage::ResetFile">
+<area shape="rect" id="Node000001" title="Restores &lt;storage dir&gt;/initial/&lt;fileName&gt;; kInitValueNotAvailable if absent." alt="" coords="5,5,159,45"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="207,5,380,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,23,193,23,193,28,159,28"/>
+</map>

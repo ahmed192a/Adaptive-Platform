@@ -1,0 +1,5 @@
+<map id="ara::crypto::KeyStorageProvider::Seal" name="ara::crypto::KeyStorageProvider::Seal">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,233,45"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a4ea4b377692218936d9a296d18e79381" title="Generates a random nonce: output = nonce(12) || ciphertext || tag." alt="" coords="281,13,443,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,23,268,23,268,28,234,28"/>
+</map>

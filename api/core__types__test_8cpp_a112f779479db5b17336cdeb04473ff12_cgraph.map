@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,60,31"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1core.html#aa955d443c5af12d3664c7c911e382a1f" title="Tear the runtime down (reverse order of Initialize())." alt="" coords="108,5,269,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,15,94,15,94,21,60,21"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Span.html#a260334aa0d529250e49339699d09fdda" title=" " alt="" coords="317,5,471,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,15,303,15,303,21,270,21"/>
+</map>

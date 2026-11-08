@@ -1,0 +1,5 @@
+<map id="ara::nm::NetworkManager::GetNetwork" name="ara::nm::NetworkManager::GetNetwork">
+<area shape="rect" id="Node000001" title="kUnknownNetwork if the name was never created." alt="" coords="108,5,300,45"/>
+<area shape="rect" id="Node000002" href="$nm__channel__test_8cpp.html#abc25808cfbb153c88c21a997c487cf36" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,28,60,28,60,23,95,23"/>
+</map>

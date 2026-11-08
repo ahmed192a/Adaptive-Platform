@@ -1,0 +1,5 @@
+<map id="ara::sm::state_machine::NetworkHandleBridge" name="ara::sm::state_machine::NetworkHandleBridge">
+<area shape="rect" id="Node000001" title="[SWS_SM_00620] / [00621]: a network handle changing between NoCom and FullCom triggers the state&#45;mach..." alt="" coords="5,108,180,148"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1state__machine_1_1StateMachine.html" title=" " alt="" coords="5,5,180,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,59,95,108,90,108,90,59"/>
+</map>

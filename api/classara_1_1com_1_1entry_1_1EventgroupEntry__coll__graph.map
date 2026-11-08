@@ -1,0 +1,5 @@
+<map id="ara::com::entry::EventgroupEntry" name="ara::com::entry::EventgroupEntry">
+<area shape="rect" id="Node000001" title="Entry to subscribe/unsubscribe to/from an event&#45;group." alt="" coords="5,79,208,119"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1entry_1_1Entry.html" title="Communication message abstract entry." alt="" coords="25,5,188,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,44,109,79,104,79,104,44"/>
+</map>

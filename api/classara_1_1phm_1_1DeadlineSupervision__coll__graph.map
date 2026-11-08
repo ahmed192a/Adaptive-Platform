@@ -1,0 +1,9 @@
+<map id="ara::phm::DeadlineSupervision" name="ara::phm::DeadlineSupervision">
+<area shape="rect" id="Node000001" title=" " alt="" coords="88,211,311,236"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1ElementarySupervision.html" title=" " alt="" coords="5,115,244,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,149,192,209,188,212,140,153"/>
+<area shape="rect" id="Node000003" href="$structara_1_1phm_1_1DeadlineSupervision_1_1Config.html" title=" " alt="" coords="268,108,491,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="332,157,223,213,220,208,330,152"/>
+<area shape="rect" id="Node000004" href="$structara_1_1phm_1_1CheckpointRef.html" title="Reference to a checkpoint of a supervised entity." alt="" coords="288,5,471,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="382,45,382,108,377,108,377,45"/>
+</map>

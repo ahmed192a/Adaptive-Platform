@@ -1,0 +1,7 @@
+<map id="ara::per::ResetPersistency" name="ara::per::ResetPersistency">
+<area shape="rect" id="Node000001" title="Resets every configured storage to its initial state." alt="" coords="123,31,315,56"/>
+<area shape="rect" id="Node000002" href="$key__value__storage__test_8cpp.html#a2d551704e6f8aa5ed197d191c33f3b94" title=" " alt="" coords="5,5,75,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,31,75,25,75,20,116,26"/>
+<area shape="rect" id="Node000003" href="$key__value__storage__test_8cpp.html#a7e0f694222682ea78a993b1b98ed4367" title=" " alt="" coords="5,55,75,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,61,75,65,75,60,110,55"/>
+</map>

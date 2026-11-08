@@ -1,0 +1,7 @@
+<map id="ara::log::HasMode" name="ara::log::HasMode">
+<area shape="rect" id="Node000001" title=" " alt="" coords="307,5,447,31"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1log.html#ac867eb6c1621d55310b6c26240c0b9c0" title="SWS_LOG_00001. Idempotent; the first call wins. Console is the default sink." alt="" coords="108,5,259,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,21,259,21,259,15,293,15"/>
+<area shape="rect" id="Node000003" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,235,75,261"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="181,5,317,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="40,235,47,199,61,151,85,99,101,76,121,55,143,41,167,32,169,37,145,46,124,59,105,79,89,102,66,152,52,200,46,236"/>
+<area shape="rect" id="Node000003" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html#ac6b62853343b6b60a12142c48244e2bd" title=" " alt="" coords="159,70,339,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="45,234,73,185,95,158,121,134,144,120,147,125,124,138,99,161,77,188,49,237"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#ab79639ba60e01930a3d9340ad43f1391" title="SWS_TS_00800/00803: kFunctionNotSupported for a system&#45;wide global time master base,..." alt="" coords="125,149,373,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="71,233,122,213,146,205,148,210,124,219,73,238"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1TimeBaseProvider.html#a69547d803da789905d717d80249694be" title="Simulates the sync daemon: record a precision measurement with the given path delay and deliver it to..." alt="" coords="137,228,360,268"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="75,245,123,245,123,251,75,251"/>
+<area shape="rect" id="Node000008" href="$namespaceanonymous__namespace_02tsync__gap__test_8cpp_03.html#a92784b631788a06672efee80ab002ad7" title=" " alt="" coords="157,292,340,332"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="72,258,124,277,151,286,150,291,122,283,70,263"/>
+<area shape="rect" id="Node000009" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a55a80e06c7ec24970ce289a3dfed9344" title=" " alt="" coords="123,357,375,411"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="51,260,80,300,101,323,124,342,135,348,132,353,121,346,97,326,76,304,47,263"/>
+<area shape="rect" id="Node000010" href="$classara_1_1tsync_1_1TimeBaseProvider.html#a017a9e66936018591646f26e1fd8145a" title="Provide a new synchronized time. rateDeviation of the local clock vs. the master." alt="" coords="142,436,355,476"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="46,260,53,293,68,337,91,383,106,404,124,422,132,427,128,432,121,426,102,407,86,386,63,339,48,295,41,261"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="461,124,597,164"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="372,159,447,151,448,156,373,165"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="423,188,636,228"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="373,187,409,192,409,197,372,193"/>
+</map>

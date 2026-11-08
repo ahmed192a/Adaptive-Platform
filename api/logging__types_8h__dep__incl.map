@@ -1,0 +1,29 @@
+<map id="src/ara/log/logging_types.h" name="src/ara/log/logging_types.h">
+<area shape="rect" id="Node000001" title="ara::log basic types (SWS_LOG): LogLevel, LogMode, ClientState and helpers." alt="" coords="542,5,685,45"/>
+<area shape="rect" id="Node000002" href="$log__sink_8h.html" title="Pluggable output of the logging framework (implementation extension)." alt="" coords="289,93,449,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="543,52,406,96,404,91,541,47"/>
+<area shape="rect" id="Node000004" href="$logging_8h.html" title="ara::log public API: InitLogging, CreateLogger, sinks (SWS_LOG)." alt="" coords="435,240,589,265"/>
+<area shape="poly" id="edge15_Node000001_Node000004" title=" " alt="" coords="555,54,532,72,514,95,502,133,500,174,505,212,511,239,506,240,500,213,495,175,497,132,510,92,528,68,552,50"/>
+<area shape="rect" id="Node000010" href="$log__stream_8h.html" title="ara::log::LogStream and the Hex/Bin formatting helpers (SWS_LOG_00xxx)." alt="" coords="524,93,703,119"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="616,59,616,93,611,93,611,59"/>
+<area shape="rect" id="Node000011" href="$logger_8h.html" title="ara::log::Logger (SWS_LOG_00018...) &#45; one logger per logging context." alt="" coords="575,167,721,192"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="674,50,698,68,717,92,721,104,720,115,709,137,690,155,670,169,667,164,687,151,705,133,715,114,716,104,712,95,695,72,671,54"/>
+<area shape="rect" id="Node000012" href="$log__types_8cpp.html" title=" " alt="" coords="777,93,961,119"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="688,47,833,91,831,96,687,52"/>
+<area shape="rect" id="Node000003" href="$log__sink_8cpp.html" title=" " alt="" coords="223,167,398,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="353,131,322,168,318,165,349,128"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="393,127,502,238,499,242,389,131"/>
+<area shape="rect" id="Node000005" href="$platform__node_8cpp.html" title=" " alt="" coords="5,313,184,353"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="439,270,185,318,184,313,438,265"/>
+<area shape="rect" id="Node000006" href="$demo_2persist__logger__app_2main_8cpp.html" title=" " alt="" coords="208,313,392,353"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="469,273,352,316,350,311,467,268"/>
+<area shape="rect" id="Node000007" href="$examples_2phm__demo_2main_8cpp.html" title=" " alt="" coords="416,313,608,353"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="515,279,515,313,509,313,509,279"/>
+<area shape="rect" id="Node000008" href="$log__test_8cpp.html" title=" " alt="" coords="633,321,807,346"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="556,268,691,318,689,323,554,273"/>
+<area shape="rect" id="Node000009" href="$logging_8cpp.html" title=" " alt="" coords="831,321,1001,346"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="585,265,821,311,858,318,857,323,819,316,584,271"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="596,130,565,168,520,241,516,239,560,165,592,127"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="627,130,645,165,640,168,623,132"/>
+<area shape="poly" id="edge11_Node000011_Node000004" title=" " alt="" coords="616,201,535,242,533,237,613,196"/>
+</map>

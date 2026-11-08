@@ -1,0 +1,37 @@
+<map id="src/ara/com/marshal.h" name="src/ara/com/marshal.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="449,5,615,31"/>
+<area shape="rect" id="Node000002" href="$deserializer_8h.html" title=" " alt="" coords="206,79,373,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="494,33,342,77,341,72,492,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,152,85,177"/>
+<area shape="poly" id="edge18_Node000001_Node000008" title=" " alt="" coords="449,29,327,47,260,61,196,81,129,112,74,146,71,142,126,108,194,76,259,56,326,41,448,23"/>
+<area shape="rect" id="Node000009" href="$serializer_8h.html" title=" " alt="" coords="401,79,495,104"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="520,33,474,72,471,67,517,29"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="651,152,728,177"/>
+<area shape="poly" id="edge19_Node000001_Node000011" title=" " alt="" coords="535,31,542,66,549,85,561,102,578,118,597,130,639,148,637,153,595,135,574,122,557,106,545,87,537,67,530,32"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="570,79,657,104"/>
+<area shape="poly" id="edge17_Node000001_Node000012" title=" " alt="" coords="547,29,592,68,588,72,543,33"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="681,79,756,104"/>
+<area shape="poly" id="edge20_Node000001_Node000013" title=" " alt="" coords="563,28,676,71,675,76,561,33"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="781,79,835,104"/>
+<area shape="poly" id="edge21_Node000001_Node000014" title=" " alt="" coords="580,28,768,76,767,81,578,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="256,152,323,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="292,104,292,138,287,138,287,104"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="347,152,397,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="304,102,350,141,346,145,301,106"/>
+<area shape="rect" id="Node000005" href="$string_8h.html" title="ara::core::String (SWS_CORE_03000) &#45;&gt; std::string" alt="" coords="161,152,231,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="276,106,224,146,220,141,273,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="167,225,225,251"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="224,106,183,124,166,137,152,153,147,168,151,184,173,214,169,217,146,186,142,168,147,151,162,133,181,119,222,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="422,152,485,177"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="317,102,415,144,413,149,315,106"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="251,107,99,151,97,146,249,101"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="199,178,199,212,193,212,193,178"/>
+<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="424,106,329,149,327,144,421,102"/>
+<area shape="poly" id="edge13_Node000009_Node000004" title=" " alt="" coords="438,106,396,144,393,141,434,102"/>
+<area shape="poly" id="edge15_Node000009_Node000006" title=" " alt="" coords="496,100,537,112,574,129,588,139,597,151,598,165,590,179,565,197,528,211,483,221,432,229,327,237,239,240,239,234,326,232,431,224,482,216,527,206,563,192,586,176,593,164,592,153,584,143,571,133,535,117,494,105"/>
+<area shape="poly" id="edge16_Node000009_Node000007" title=" " alt="" coords="452,104,454,138,449,139,446,105"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="402,104,386,107,100,157,99,151,385,101,401,99"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="509,152,576,177"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="465,102,518,141,515,146,462,106"/>
+<area shape="poly" id="edge14_Node000009_Node000011" title=" " alt="" coords="488,101,638,146,637,151,486,107"/>
+</map>

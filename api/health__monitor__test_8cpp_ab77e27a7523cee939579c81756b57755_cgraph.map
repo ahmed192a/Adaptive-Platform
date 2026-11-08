@@ -1,0 +1,17 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,157,60,182"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1SupervisedEntity.html#a4e93f55a67d2de9b04f76c0bb1b0b4ec" title="Validating factory; kUnknownEntity if the entity is not configured in PHM." alt="" coords="110,5,309,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="37,155,62,107,82,79,106,55,114,50,117,54,110,59,86,83,66,110,41,158"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02health__monitor__test_8cpp_03.html#a80cbd3201802b55a99e29fb80c02fe18" title=" " alt="" coords="119,70,299,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="59,155,107,135,125,127,127,132,109,140,61,160"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1HealthMonitor.html#a61212990572cc05161d2457f4475fbc5" title="Process wide instance used by the default SupervisedEntity transport." alt="" coords="119,149,300,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="60,167,105,167,105,172,60,172"/>
+<area shape="rect" id="Node000005" href="$namespacephmtest.html#abd92b86bc7b6c12ec3ec838310760e74" title=" " alt="" coords="133,214,285,239"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="61,179,109,199,139,208,137,213,107,204,59,184"/>
+<area shape="rect" id="Node000008" href="$classara_1_1core_1_1SteadyClock.html#a30932f525e6cd0ea71c7258f57478d73" title=" " alt="" coords="108,263,311,289"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="44,181,71,215,89,233,109,248,125,256,122,261,107,253,85,237,67,219,40,184"/>
+<area shape="rect" id="Node000006" href="$namespacephmtest.html#acd85b21ea142070ea69c9ac50dd0d568" title=" " alt="" coords="359,189,461,214"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="285,214,345,207,346,212,286,220"/>
+<area shape="rect" id="Node000007" href="$namespacephmtest.html#a296c31ed366f3fa2be3e0a13f08740cb" title=" " alt="" coords="359,238,461,263"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="286,233,345,240,345,246,285,238"/>
+</map>

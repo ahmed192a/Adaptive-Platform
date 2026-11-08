@@ -1,0 +1,7 @@
+<map id="ara::log::LogStream::operator&lt;&lt;" name="ara::log::LogStream::operator&lt;&lt;">
+<area shape="rect" id="Node000001" title="A byte span is rendered as space&#45;separated two&#45;digit lowercase hex values (&quot;0a ff 10&quot;)." alt="" coords="5,35,155,75"/>
+<area shape="rect" id="Node000002" href="$classara_1_1log_1_1LogStream.html#a884f21dc9248837fd458aefbfe4f3c63" title=" " alt="" coords="205,5,354,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,41,191,36,191,41,156,46"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Span.html#a260334aa0d529250e49339699d09fdda" title=" " alt="" coords="203,70,356,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="156,63,190,67,189,73,155,68"/>
+</map>

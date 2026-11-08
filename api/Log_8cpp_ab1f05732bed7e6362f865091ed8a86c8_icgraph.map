@@ -1,0 +1,9 @@
+<map id="return_current_time_and_date" name="return_current_time_and_date">
+<area shape="rect" id="Node000001" title="Get the current time in the string format (YYYY&#45;MM&#45;DD HH:MM:SS)" alt="" coords="184,47,335,87"/>
+<area shape="rect" id="Node000002" href="$classLog.html#a5c2fa9c7007182c49527ebe54f3e4f54" title="Insert log information to file." alt="" coords="25,5,116,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,47,116,32,117,27,172,42"/>
+<area shape="rect" id="Node000003" href="$classLog.html#a957b0a292c1a501145b760ed101c7736" title="Construct a new Log object." alt="" coords="33,55,109,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="171,70,109,70,109,65,171,65"/>
+<area shape="rect" id="Node000004" href="$classLog.html#a882e37292c5392728ec2845bc64d65a5" title="insert log information to file" alt="" coords="5,104,136,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="171,93,121,106,119,101,170,88"/>
+</map>

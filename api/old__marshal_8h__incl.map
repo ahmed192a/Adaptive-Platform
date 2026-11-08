@@ -1,0 +1,19 @@
+<map id="src/ara/com/old_marshal.h" name="src/ara/com/old_marshal.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="243,5,437,31"/>
+<area shape="rect" id="Node000002" href="$deserializer_8h.html" title=" " alt="" coords="197,79,363,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="332,33,301,70,296,66,328,29"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="405,152,485,177"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="351,30,431,139,427,142,346,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,72,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="242,107,86,152,85,147,240,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="96,152,147,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="256,106,160,149,158,144,253,102"/>
+<area shape="rect" id="Node000005" href="$string_8h.html" title="ara::core::String (SWS_CORE_03000) &#45;&gt; std::string" alt="" coords="171,152,242,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="270,106,230,144,227,140,266,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="213,225,272,251"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="280,105,252,213,246,211,274,104"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="318,152,381,177"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="293,102,331,140,327,144,290,106"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="308,102,407,144,405,149,306,106"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="215,176,233,212,228,214,210,179"/>
+</map>

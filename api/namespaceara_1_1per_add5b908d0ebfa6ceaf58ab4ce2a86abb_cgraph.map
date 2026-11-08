@@ -1,0 +1,9 @@
+<map id="ara::per::RecoverAllFiles" name="ara::per::RecoverAllFiles">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,185,70"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per_1_1detail.html#ac11cf4e43255725e1f06d8e34c62c1aa" title=" " alt="" coords="233,5,419,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,42,219,37,220,43,186,48"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per_1_1detail.html#ad6bfea468dee4e1df71bedcddb83711c" title=" " alt="" coords="237,69,415,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,67,223,72,223,78,185,72"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per_1_1detail.html#a220e578c2fa16c8fa87f7a083686cb49" title="CRC&#45;32 (IEEE 802.3, reflected, poly 0xEDB88320)." alt="" coords="467,77,629,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="416,87,453,87,453,92,416,92"/>
+</map>

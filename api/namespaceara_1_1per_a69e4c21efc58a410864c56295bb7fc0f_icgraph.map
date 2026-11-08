@@ -1,0 +1,36 @@
+<map id="ara::per::Configure" name="ara::per::Configure">
+<area shape="rect" id="Node000001" title="Installs the deployment configuration (replaces a previous one; only allowed while no storage is open..." alt="" coords="793,280,936,305"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#a39edf274d9c966320ca48ad6d578eb0c" title=" " alt="" coords="547,44,745,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="854,268,839,227,817,177,785,126,766,104,744,84,722,72,724,67,747,80,769,100,789,123,821,174,844,225,859,266"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1PlatformNode_1_1Impl.html#aec60a47cde8a1755a408569950ee6ddd" title=" " alt="" coords="563,94,729,134"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="847,269,806,208,777,176,744,148,723,136,725,132,747,144,781,172,810,205,852,266"/>
+<area shape="rect" id="Node000007" href="$classpertest_1_1PerFixture.html#a45a3d68f601b3a895e2b35a36992fb77" title=" " alt="" coords="575,158,717,198"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="836,273,794,242,744,212,716,201,718,196,747,208,797,238,839,269"/>
+<area shape="rect" id="Node000009" href="$demo_2persist__logger__app_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="619,223,673,248"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="803,279,745,263,673,245,674,239,746,258,804,274"/>
+<area shape="rect" id="Node000010" href="$classanonymous__namespace_02main_8cpp_03_1_1Vault.html#a0a1680abce6ed1a1424a37569c6d1bb2" title=" " alt="" coords="553,273,739,313"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="780,295,739,295,739,290,780,290"/>
+<area shape="rect" id="Node000013" href="$structanonymous__namespace_02diag__gap__test_8cpp_03_1_1PerFixture.html#aeda7e073b074b65b8717e049f09e4a42" title=" " alt="" coords="556,337,736,392"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="813,312,730,340,729,335,812,307"/>
+<area shape="rect" id="Node000014" href="$classanonymous__namespace_02key__slot__test_8cpp_03_1_1KeySlotTest.html#aacdcf1c70d5babf4c8bbbc119ab0cb3e" title=" " alt="" coords="556,416,736,471"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="846,318,803,362,747,407,727,418,724,414,744,402,799,358,842,314"/>
+<area shape="rect" id="Node000015" href="$classpertest_1_1PerFixture.html#a9c7785c618cfe0b8090b545227a80e18" title=" " alt="" coords="575,495,717,535"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="857,319,841,356,817,401,786,446,747,485,719,502,716,497,744,481,782,443,813,398,836,354,852,317"/>
+<area shape="rect" id="Node000016" href="$key__value__storage__test_8cpp.html#addcab642330a51065d418d78a59df0e2" title=" " alt="" coords="611,560,681,585"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="861,320,850,369,828,431,795,495,773,524,747,549,715,566,682,574,680,569,713,561,744,545,769,520,790,492,823,429,844,367,856,318"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per.html#a679da96a60174122a7e76ec82bd05e3e" title="Reads the file named by $ARA_PER_CONFIG (kNotInitialized if unset)." alt="" coords="240,44,499,69"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="533,59,499,59,499,54,533,54"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per_1_1anonymous__namespace_02persistency_8cpp_03.html#ab06412eca5f76fa3e6bfd55be9bb4493" title=" " alt="" coords="5,29,192,84"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,59,192,59,192,54,226,54"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="144,18,128,11,99,8,74,10,59,15,52,21,52,29,46,29,47,19,56,10,73,5,99,3,129,6,146,14"/>
+<area shape="rect" id="Node000006" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="286,94,453,134"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="549,117,453,117,453,111,549,111"/>
+<area shape="rect" id="Node000008" href="$classpertest_1_1PerFixture.html#a53953d56fec0b79aee9563e29f244852" title=" " alt="" coords="298,158,441,198"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="561,181,441,181,441,175,561,175"/>
+<area shape="rect" id="Node000011" href="$demo_2secure__vault_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="71,291,126,316"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="539,291,397,288,240,291,127,302,126,297,240,286,397,283,539,285"/>
+<area shape="rect" id="Node000012" href="$namespaceanonymous__namespace_02main_8cpp_03.html#abf7b03395a702152d98c82c313e04b24" title=" " alt="" coords="279,325,459,365"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="540,315,460,330,459,325,539,310"/>
+<area shape="poly" id="edge13_Node000012_Node000011" title=" " alt="" coords="265,332,126,310,127,305,266,326"/>
+<area shape="poly" id="edge14_Node000012_Node000012" title=" " alt="" coords="415,313,399,306,369,303,343,305,327,310,322,316,325,323,319,325,316,315,325,306,342,300,369,298,401,301,418,308"/>
+</map>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Crypto key slots</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / docs</div><h1 id="crypto-key-slots">Crypto key slots</h1>
+<p><code>ara::crypto::KeyStorageProvider</code> (<code>src/ara/crypto/key_slot.h</code>) is a SWS-style <em>KeySlot</em> facade over the
+OpenSSL primitives. A slot is declared with a prototype and holds at most one key.</p>
+<pre><code class="language-cpp">auto kvs = ara::per::OpenKeyValueStorage(ara::core::InstanceSpecifier(&quot;Sec/Keys&quot;)).Value();
+auto prov = KeyStorageProvider::Create(kvs, wrappingKey32).Value();   // or CreateVolatile()
+
+prov.DefineSlot({&quot;fw.sign&quot;, SlotAlgorithm::kEd25519, kSlotSign, /*exportable*/ false, /*persistent*/ true});
+prov.Generate(&quot;fw.sign&quot;);                         // or Import(name, raw | PKCS#8 DER)
+auto sig = prov.Sign(&quot;fw.sign&quot;, message).Value();
+auto pub = prov.GetPublicKeyDer(&quot;fw.sign&quot;).Value();   // public part is always available
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Allowed usage</th>
+<th>Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kAes256Gcm</code></td>
+<td>encrypt, decrypt</td>
+<td><code>Seal</code>, <code>Open</code></td>
+</tr>
+<tr>
+<td><code>kHmacSha256</code></td>
+<td>mac</td>
+<td><code>ComputeMac</code>, <code>VerifyMac</code></td>
+</tr>
+<tr>
+<td><code>kEd25519</code>, <code>kEcdsaP256</code></td>
+<td>sign, verify</td>
+<td><code>Sign</code>, <code>Verify</code>, <code>GetPublicKeyDer</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Usage is enforced</strong> per slot (<code>kUsageViolation</code>); a prototype that asks for a usage its algorithm cannot
+  provide is rejected. Only symmetric slots can be <code>exportable</code>.</li>
+<li><strong>Persistence:</strong> persistent slots are stored in the given <code>KeyValueStorage</code> under <code>keyslot/&lt;name&gt;</code> as
+  <code>nonce || AES-256-GCM(wrappingKey)(material) || tag</code> (hex). The AAD binds slot name, algorithm, usage and
+  exportable flag, so editing the blob, copying it to another slot, or widening the policy makes the slot
+  <code>kCorrupted</code> on the next <code>DefineSlot</code>. Corrupted slots refuse every operation (<code>kAuthTagNotValid</code>) until
+  <code>Generate</code>/<code>Import</code>/<code>Clear</code> repairs them.</li>
+<li>The wrapping key is supplied by the caller (on a target: derive/unseal it from an HSM/TPM or secure boot
+  chain). It is never stored.</li>
+<li>A volatile provider (<code>CreateVolatile</code>) accepts only non-persistent slots.</li>
+</ul></div><footer>Adaptive Platform</footer></body></html>

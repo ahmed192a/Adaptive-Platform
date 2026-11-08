@@ -1,0 +1,7 @@
+<map id="ara::log::apext::AddSink" name="ara::log::apext::AddSink">
+<area shape="rect" id="Node000001" title="Adds a sink (e.g. a capturing sink in tests). Not part of the AUTOSAR API." alt="" coords="233,49,411,74"/>
+<area shape="rect" id="Node000002" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="12,5,179,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,49,178,41,179,36,229,44"/>
+<area shape="rect" id="Node000003" href="$classanonymous__namespace_02log__test_8cpp_03_1_1LogTest.html#a24bb6bff4f2f803a25431ee5a34d7f6b" title=" " alt="" coords="5,70,185,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,79,186,86,185,80,228,74"/>
+</map>

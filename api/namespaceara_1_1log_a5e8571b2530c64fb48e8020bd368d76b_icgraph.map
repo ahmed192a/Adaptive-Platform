@@ -1,0 +1,11 @@
+<map id="ara::log::FormatRecord" name="ara::log::FormatRecord">
+<area shape="rect" id="Node000001" title=" " alt="" coords="233,109,404,134"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#aa35eeb984fa58f74d5c2452cfae998bc" title=" " alt="" coords="5,5,185,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,105,184,60,154,48,156,43,186,55,282,100"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#acf6c487f3971f1c07edbd3b5684d4fb7" title=" " alt="" coords="5,69,185,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,110,185,105,186,100,220,105"/>
+<area shape="rect" id="Node000004" href="$classara_1_1log_1_1ConsoleSink.html#af82fb7780bac6b8b1844fdc1b60ff8d2" title=" " alt="" coords="16,133,175,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="220,138,175,145,174,139,220,133"/>
+<area shape="rect" id="Node000005" href="$classara_1_1log_1_1FileSink.html#abc38a607c50178faf32ede57029dd1d9" title=" " alt="" coords="30,197,161,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="282,143,186,188,156,200,154,195,184,183,280,138"/>
+</map>

@@ -1,0 +1,101 @@
+<map id="CClient::OpenSocket" name="CClient::OpenSocket">
+<area shape="rect" id="Node000001" title="Open the socket." alt="" coords="545,492,700,517"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a206ed919173e8c0b6b1a108be3fd71df" title="EventSubscribe." alt="" coords="305,5,492,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="619,478,614,401,597,293,582,234,560,177,532,122,495,73,483,62,486,58,499,70,536,119,565,174,587,233,603,292,620,400,624,478"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a3783cf67439284116087a4d3296e44ff" title="EventUnsubscribe." alt="" coords="305,84,492,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="617,479,608,414,588,327,572,280,552,234,527,191,495,152,482,141,486,137,499,148,531,187,557,231,577,278,593,325,613,413,622,478"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a3a1cbb17e8e0354695cdf68c33375579" title="Field_get." alt="" coords="305,163,492,217"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="614,479,601,427,578,361,544,292,521,259,496,231,481,220,485,215,499,227,525,256,548,289,583,359,606,426,619,478"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a185a4103c4edf8f2cf040633ed8c984f" title="Field_set." alt="" coords="305,241,492,296"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="609,480,592,443,567,397,535,350,496,309,480,298,483,294,499,305,539,347,572,394,597,440,614,478"/>
+<area shape="rect" id="Node000010" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a66fe1efad4069b8940a7fc6323908d4b" title="FindService." alt="" coords="305,320,492,375"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="600,483,555,436,527,411,496,388,476,377,479,372,499,384,530,407,559,432,604,480"/>
+<area shape="rect" id="Node000013" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a0a913114d49ea82357872896c02d862c" title="Offer Service." alt="" coords="300,399,497,453"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="572,490,476,456,478,451,574,485"/>
+<area shape="rect" id="Node000014" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a3a95fa49b72ea5bd4fe6b4f632cbd6f1" title="SendEvent send an event update to clients." alt="" coords="300,477,497,532"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="532,507,497,507,497,502,532,502"/>
+<area shape="rect" id="Node000019" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a6421860e37a0640c43ef36377425b4a3" title="SendFireAndForgetRequest." alt="" coords="300,556,497,611"/>
+<area shape="poly" id="edge15_Node000001_Node000019" title=" " alt="" coords="574,524,478,558,476,553,572,519"/>
+<area shape="rect" id="Node000020" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#ad5e795aecffca5a39f91a1d64afaaea4" title="SendRequest." alt="" coords="300,635,497,689"/>
+<area shape="poly" id="edge16_Node000001_Node000020" title=" " alt="" coords="604,530,558,577,499,624,476,637,473,632,496,620,555,573,600,526"/>
+<area shape="rect" id="Node000021" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a05b42d92680e217e2489881ca7487a90" title="SendRequest." alt="" coords="305,713,492,768"/>
+<area shape="poly" id="edge17_Node000001_Node000021" title=" " alt="" coords="614,531,596,569,571,614,539,661,499,703,481,716,477,711,496,699,535,658,567,612,592,566,609,529"/>
+<area shape="rect" id="Node000022" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#aedc0251ddb173c44bf14c534c8b3b1b6" title="SendRequest." alt="" coords="305,1339,492,1393"/>
+<area shape="poly" id="edge18_Node000001_Node000022" title=" " alt="" coords="617,531,410,1339,404,1338,612,530"/>
+<area shape="rect" id="Node000052" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html#a42c15604e2cdbac4552003ec7d8d6552" title="SendRequest." alt="" coords="305,1417,492,1472"/>
+<area shape="poly" id="edge48_Node000001_Node000052" title=" " alt="" coords="624,531,619,704,602,965,587,1102,565,1228,537,1333,519,1374,499,1406,487,1419,483,1415,495,1403,514,1372,532,1331,560,1227,582,1101,597,965,614,704,618,531"/>
+<area shape="rect" id="Node000053" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a0cdcb2dcb86ff315bda38bb3cc8a6b8a" title="StopOfferService." alt="" coords="300,1496,497,1551"/>
+<area shape="poly" id="edge49_Node000001_Node000053" title=" " alt="" coords="624,531,622,717,616,853,607,1001,592,1151,570,1289,556,1350,539,1404,521,1450,499,1485,487,1498,483,1494,495,1482,516,1447,534,1403,550,1349,564,1288,586,1150,601,1001,611,853,616,717,619,531"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html#aaba2a38e3539af13a6cf07ff124e8426" title="Subscribe to event." alt="" coords="35,13,222,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="292,35,222,35,222,30,292,30"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Event.html#a11f1e9d3b03f243ccedc5c3becaddf1c" title="Unsubscribe from event." alt="" coords="29,91,229,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="292,114,229,114,229,109,292,109"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Field.html#a7f879d55bf5f0d177a34714b930d5cc8" title="Get the value of the field." alt="" coords="35,163,222,203"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="292,190,222,188,222,183,292,185"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1Field.html#a0f19cf9fb7bbe435a279214cedad93da" title="Set the value of the field." alt="" coords="35,227,222,267"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="292,263,222,257,222,252,292,258"/>
+<area shape="rect" id="Node000011" href="$classotaServer.html#a5109d67e39acaea1a251fb5608c95f3e" title=" " alt="" coords="51,292,207,317"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="292,333,207,320,207,314,292,328"/>
+<area shape="rect" id="Node000012" href="$classUCM__Server.html#ad139b03077161224dc80ac9ca7a9d1b6" title=" " alt="" coords="33,341,224,367"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="292,353,225,354,224,349,292,347"/>
+<area shape="rect" id="Node000015" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1Event.html#a11870951b3cefd83b6b41b4ee507f572" title=" " alt="" coords="35,391,222,431"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="316,474,299,467,251,446,213,434,215,429,253,441,301,462,318,469"/>
+<area shape="rect" id="Node000023" href="$classara_1_1sm_1_1diagnostic__reset_1_1message__diagnostic.html#ad40b08a76dfcdee0509e370aa950c1e9" title=" " alt="" coords="27,456,230,511"/>
+<area shape="poly" id="edge19_Node000022_Node000023" title=" " alt="" coords="388,1325,311,864,250,523,229,507,232,502,254,521,316,863,393,1324"/>
+<area shape="rect" id="Node000024" href="$classara_1_1sm_1_1diagnostic__reset_1_1event__diagnostic.html#a4e6eac743e2a5b9f8b8168e5c48e8b4b" title=" " alt="" coords="38,535,219,589"/>
+<area shape="poly" id="edge20_Node000022_Node000024" title=" " alt="" coords="388,1326,319,916,278,704,261,634,250,602,235,590,218,580,221,575,239,585,254,599,267,633,283,703,324,915,393,1325"/>
+<area shape="rect" id="Node000025" href="$classara_1_1sm_1_1powermode_1_1proxy_1_1methods_1_1MessagePowerMode.html#a44acc8df31fb2b8a45bafa15ffbbfb34" title=" " alt="" coords="10,613,247,668"/>
+<area shape="poly" id="edge21_Node000022_Node000025" title=" " alt="" coords="388,1326,364,1172,327,968,287,782,267,716,250,681,238,670,241,666,254,678,272,714,292,780,333,967,369,1171,394,1325"/>
+<area shape="rect" id="Node000026" href="$classara_1_1sm_1_1powermode_1_1proxy_1_1methods_1_1EventPowerMode.html#a86e4dbf8c6241a8655f92c40e7ee6dc8" title=" " alt="" coords="21,692,237,747"/>
+<area shape="poly" id="edge22_Node000022_Node000026" title=" " alt="" coords="390,1326,373,1198,343,1029,324,944,302,867,277,804,250,761,235,748,239,744,254,758,282,802,307,865,329,943,349,1028,378,1197,395,1325"/>
+<area shape="rect" id="Node000027" href="$classara_1_1sm_1_1update__request_1_1ResetMachine.html#a94f8c9cb349d8d34209b0b2f3e3299f2" title=" " alt="" coords="31,771,226,811"/>
+<area shape="poly" id="edge23_Node000022_Node000027" title=" " alt="" coords="389,1326,371,1209,340,1059,321,985,300,917,276,862,250,825,225,808,228,804,254,821,280,860,305,915,326,983,345,1058,376,1208,394,1325"/>
+<area shape="rect" id="Node000028" href="$classara_1_1sm_1_1update__request_1_1StopUpdateSession.html#af83dd2b66701fb1ffb9be7d52d0e1f10" title=" " alt="" coords="14,835,243,875"/>
+<area shape="poly" id="edge24_Node000022_Node000028" title=" " alt="" coords="395,1325,389,1235,381,1178,368,1117,350,1055,325,995,292,939,250,889,235,878,238,873,254,885,296,935,330,992,355,1054,374,1116,386,1177,394,1234,400,1325"/>
+<area shape="rect" id="Node000029" href="$classara_1_1sm_1_1update__request_1_1StartUpdateSession.html#a57bad63d5bc26330b66cc2e59af0e4e5" title=" " alt="" coords="39,900,219,955"/>
+<area shape="poly" id="edge25_Node000022_Node000029" title=" " alt="" coords="391,1325,380,1249,356,1153,338,1103,314,1054,285,1008,250,968,217,947,220,942,254,964,290,1005,319,1051,343,1101,361,1152,386,1248,397,1324"/>
+<area shape="rect" id="Node000030" href="$classara_1_1sm_1_1update__request_1_1RequestUpdateSession.html#a046e94bec422ab6c4650536e080412b7" title=" " alt="" coords="39,979,219,1033"/>
+<area shape="poly" id="edge26_Node000022_Node000030" title=" " alt="" coords="387,1326,372,1264,345,1190,305,1114,280,1079,250,1048,217,1028,220,1023,254,1044,284,1075,310,1111,350,1188,377,1263,392,1324"/>
+<area shape="rect" id="Node000031" href="$classara_1_1ucm_1_1pkgmgr_1_1Activate.html#a2ca2663718f54a118c0f1a8a0eed6236" title="PackageManagement ActivateOutput operator." alt="" coords="29,1058,228,1098"/>
+<area shape="poly" id="edge27_Node000022_Node000031" title=" " alt="" coords="383,1327,364,1277,337,1219,299,1161,276,1135,250,1112,227,1099,230,1094,254,1108,280,1131,303,1158,341,1216,369,1275,388,1325"/>
+<area shape="rect" id="Node000032" href="$classara_1_1ucm_1_1pkgmgr_1_1Finish.html#a959a97840178f0c43e3fcf73cad1db6c" title="PackageManagement FinishOutput operator." alt="" coords="37,1122,220,1162"/>
+<area shape="poly" id="edge28_Node000022_Node000032" title=" " alt="" coords="375,1328,354,1291,326,1250,291,1210,251,1176,219,1161,221,1156,253,1172,295,1206,330,1247,358,1288,380,1325"/>
+<area shape="rect" id="Node000033" href="$classara_1_1ucm_1_1pkgmgr_1_1GetId.html#a6cdb805c93a534ba618882d3de631f53" title="PackageManagement GetIdOutput operator." alt="" coords="39,1186,219,1226"/>
+<area shape="poly" id="edge29_Node000022_Node000033" title=" " alt="" coords="362,1330,312,1283,282,1260,251,1240,218,1227,220,1222,253,1236,285,1256,316,1279,366,1326"/>
+<area shape="rect" id="Node000034" href="$classara_1_1ucm_1_1pkgmgr_1_1GetSwClusterChangeInfo.html#aa2e6b6727ff3c307daa4b67afce0e369" title="PackageManagement GetSwClusterChangeInfoOutput operator." alt="" coords="12,1250,245,1290"/>
+<area shape="poly" id="edge30_Node000022_Node000034" title=" " alt="" coords="328,1336,251,1305,213,1293,215,1288,253,1299,330,1331"/>
+<area shape="rect" id="Node000035" href="$classara_1_1ucm_1_1pkgmgr_1_1GetSwClusterDescription.html#a67635317bcbd4946f5e25df819c30775" title="GetSwClusterDescriptionOutput operator." alt="" coords="12,1314,245,1354"/>
+<area shape="poly" id="edge31_Node000022_Node000035" title=" " alt="" coords="291,1356,245,1351,246,1345,292,1351"/>
+<area shape="rect" id="Node000036" href="$classara_1_1ucm_1_1pkgmgr_1_1GetSwClusterInfo.html#abe84504b8471d03c2c5f219609827716" title="PackageManagement GetSwClusterInfoOutput operator." alt="" coords="12,1378,245,1418"/>
+<area shape="poly" id="edge32_Node000022_Node000036" title=" " alt="" coords="292,1381,246,1387,245,1381,291,1376"/>
+<area shape="rect" id="Node000037" href="$classara_1_1ucm_1_1pkgmgr_1_1GetSwPackages.html#ac80160b74f1f10039be53bfb6f099865" title="PackageManagement GetSwPackagesOutput operator." alt="" coords="5,1442,252,1482"/>
+<area shape="poly" id="edge33_Node000022_Node000037" title=" " alt="" coords="314,1401,301,1407,277,1420,253,1432,218,1444,216,1439,251,1428,275,1415,299,1402,312,1396"/>
+<area shape="rect" id="Node000038" href="$classara_1_1ucm_1_1pkgmgr_1_1RevertProcessedSwPackages.html#a44bd793224e2b13dc17b2907531c07a0" title="RevertProcessedSwPackagesOutput operator." alt="" coords="9,1506,249,1546"/>
+<area shape="poly" id="edge34_Node000022_Node000038" title=" " alt="" coords="306,1403,302,1406,286,1429,279,1451,272,1474,254,1496,234,1508,232,1504,250,1492,267,1471,274,1449,281,1426,298,1403,302,1399"/>
+<area shape="rect" id="Node000039" href="$classara_1_1ucm_1_1pkgmgr_1_1Rollback.html#a910626e45e65c0b828e5990491de123d" title="PackageManagement RollbackOutput operator." alt="" coords="28,1570,229,1610"/>
+<area shape="poly" id="edge35_Node000022_Node000039" title=" " alt="" coords="304,1404,302,1406,288,1425,282,1444,280,1483,277,1521,269,1541,254,1560,231,1576,228,1571,250,1556,265,1538,272,1520,274,1482,277,1443,284,1423,298,1403,300,1401"/>
+<area shape="rect" id="Node000040" href="$classara_1_1ucm_1_1pkgmgr_1_1Cancel.html#ae50e98a225040e6662b8bb4ba5db72a7" title="PackageManagement CancelOutput operator." alt="" coords="34,1634,223,1674"/>
+<area shape="poly" id="edge36_Node000022_Node000040" title=" " alt="" coords="304,1405,302,1406,285,1434,278,1461,277,1488,280,1515,283,1542,282,1569,274,1596,254,1624,225,1643,222,1639,250,1620,269,1594,277,1568,278,1542,275,1515,272,1488,272,1460,280,1432,298,1403,300,1401"/>
+<area shape="rect" id="Node000041" href="$classara_1_1ucm_1_1pkgmgr_1_1DeleteTransfer.html#a34eb30fc29d30ec1d571236f3b8d7e61" title="PackageManagement DeleteTransferOutput operator." alt="" coords="35,1698,223,1738"/>
+<area shape="poly" id="edge37_Node000022_Node000041" title=" " alt="" coords="304,1404,302,1406,281,1442,274,1477,275,1512,281,1547,286,1582,287,1617,278,1652,254,1688,225,1708,222,1704,250,1684,273,1650,282,1616,281,1582,276,1548,270,1513,268,1477,276,1440,298,1403,300,1401"/>
+<area shape="rect" id="Node000042" href="$classara_1_1ucm_1_1pkgmgr_1_1GetSwProcessProgress.html#afedb07866ed60bc98377aef153219a5e" title="GetSwProcessProgressOutput operator." alt="" coords="10,1762,247,1802"/>
+<area shape="poly" id="edge38_Node000022_Node000042" title=" " alt="" coords="303,1405,302,1406,287,1429,277,1451,269,1494,273,1537,281,1579,290,1622,292,1665,282,1708,271,1730,254,1752,240,1764,237,1760,250,1748,266,1727,277,1706,287,1664,285,1622,276,1580,267,1537,264,1494,272,1449,282,1426,298,1403,299,1401"/>
+<area shape="rect" id="Node000043" href="$classara_1_1ucm_1_1pkgmgr_1_1ProcessSwPackage.html#a5ca402826ca17553e497f5b4b2ce3111" title="PackageManagement ProcessSwPackageOutput operator." alt="" coords="31,1826,226,1866"/>
+<area shape="poly" id="edge39_Node000022_Node000043" title=" " alt="" coords="303,1405,302,1406,285,1433,273,1459,267,1485,265,1510,270,1561,282,1611,293,1662,297,1712,294,1738,286,1764,273,1790,254,1816,228,1835,225,1831,250,1812,269,1787,282,1762,289,1737,292,1712,288,1662,277,1613,265,1562,260,1511,262,1484,268,1457,280,1430,298,1403,299,1401"/>
+<area shape="rect" id="Node000044" href="$classara_1_1ucm_1_1pkgmgr_1_1TransferExit.html#aeccc6a367526c41546f1a3f57db52571" title="PackageManagement TransferExitOutput operator." alt="" coords="30,1890,227,1930"/>
+<area shape="poly" id="edge40_Node000022_Node000044" title=" " alt="" coords="303,1405,302,1406,282,1437,270,1468,263,1498,261,1527,268,1586,282,1644,297,1702,302,1760,299,1790,291,1819,276,1849,254,1880,229,1899,226,1894,250,1876,272,1847,286,1817,294,1789,297,1760,291,1703,277,1645,262,1587,255,1527,257,1497,264,1466,278,1435,298,1403,299,1401"/>
+<area shape="rect" id="Node000045" href="$classara_1_1ucm_1_1pkgmgr_1_1TransferData.html#a44e865e3598fcfdb458ff8f4bdc4b6ae" title="PackageManagement TransferDataOutput operator." alt="" coords="30,1954,227,1994"/>
+<area shape="poly" id="edge41_Node000022_Node000045" title=" " alt="" coords="303,1405,302,1406,291,1427,283,1452,276,1516,276,1593,281,1675,285,1757,285,1833,276,1897,267,1923,254,1944,230,1963,226,1958,250,1940,262,1921,271,1896,279,1833,280,1757,275,1675,271,1593,270,1516,278,1451,286,1424,298,1403,299,1402"/>
+<area shape="rect" id="Node000046" href="$classara_1_1sm_1_1update__request_1_1VerifyUpdate.html#a01b0914e230d160b0759b6c1695027fc" title=" " alt="" coords="35,2018,222,2058"/>
+<area shape="poly" id="edge42_Node000022_Node000046" title=" " alt="" coords="303,1405,302,1406,290,1429,281,1458,274,1530,275,1615,281,1707,287,1799,287,1884,278,1956,268,1985,254,2008,240,2021,223,2030,221,2025,237,2016,250,2004,263,1982,273,1954,282,1884,281,1799,276,1707,270,1615,268,1530,276,1457,285,1427,298,1403,299,1402"/>
+<area shape="rect" id="Node000047" href="$classara_1_1sm_1_1update__request_1_1PrepareRollback.html#ab9b0d27c83f54c15637888250c1425ca" title=" " alt="" coords="24,2082,233,2122"/>
+<area shape="poly" id="edge43_Node000022_Node000047" title=" " alt="" coords="303,1405,302,1406,289,1432,279,1463,272,1543,274,1638,281,1739,288,1841,290,1935,287,1977,280,2014,270,2046,254,2072,235,2088,232,2083,250,2068,265,2044,275,2013,281,1976,284,1935,283,1841,276,1740,269,1638,266,1543,274,1462,284,1430,298,1403,299,1402"/>
+<area shape="rect" id="Node000048" href="$classara_1_1sm_1_1update__request_1_1PrepareUpdate.html#a9088fd1c513bd895b2ecf1be2388c796" title=" " alt="" coords="29,2146,229,2186"/>
+<area shape="poly" id="edge44_Node000022_Node000048" title=" " alt="" coords="303,1405,302,1406,287,1434,277,1469,272,1510,269,1556,273,1660,282,1771,290,1883,292,1986,289,2032,282,2073,271,2108,254,2136,231,2154,228,2150,250,2132,266,2105,277,2071,284,2031,287,1986,285,1883,276,1772,267,1660,264,1556,266,1510,272,1468,282,1432,298,1403,299,1402"/>
+<area shape="rect" id="Node000049" href="$classsaam_1_1add__output.html#a04fd0e834f1502982c4a43e102b4daa7" title="operator function" alt="" coords="23,2211,235,2236"/>
+<area shape="poly" id="edge45_Node000022_Node000049" title=" " alt="" coords="303,1405,302,1406,286,1437,276,1475,270,1520,268,1570,272,1683,283,1805,293,1926,296,2038,293,2088,286,2132,273,2170,254,2200,236,2214,233,2210,250,2196,268,2168,280,2131,288,2087,291,2038,288,1926,278,1805,267,1684,262,1570,264,1519,270,1474,281,1435,298,1403,299,1402"/>
+<area shape="rect" id="Node000050" href="$classara_1_1ucm_1_1pkgmgr_1_1TransferStart.html#a8fd1f8d2da382d3693c0b88c2416b2ed" title="PackageManagement::TransferStartOutput operator." alt="" coords="30,2261,227,2301"/>
+<area shape="poly" id="edge46_Node000022_Node000050" title=" " alt="" coords="303,1405,302,1406,285,1439,274,1479,268,1527,265,1580,270,1700,282,1828,293,1957,297,2076,294,2129,286,2176,273,2217,254,2249,229,2269,226,2265,250,2246,268,2214,281,2175,288,2128,291,2076,287,1957,276,1829,265,1700,260,1580,262,1526,269,1478,280,1437,298,1403,299,1402"/>
+<area shape="rect" id="Node000051" href="$classara_1_1ucm_1_1pkgmgr_1_1GetHistory.html#ab5c62443134741a3867391fbb3042a51" title="PackageManagement GetHistoryOutput operator." alt="" coords="21,2325,236,2365"/>
+<area shape="poly" id="edge47_Node000022_Node000051" title=" " alt="" coords="303,1405,302,1406,284,1441,272,1485,265,1536,263,1594,269,1723,282,1861,295,2000,299,2128,296,2185,288,2236,275,2280,254,2314,238,2329,234,2325,250,2311,270,2277,283,2235,291,2184,294,2128,290,2000,277,1862,264,1723,258,1594,260,1536,267,1484,279,1439,298,1403,299,1402"/>
+</map>

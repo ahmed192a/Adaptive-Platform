@@ -1,0 +1,20 @@
+<map id="anonymous_namespace{extras_test::cpp}::TEST" name="anonymous_namespace{extras_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,133,188,173"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1X509Provider.html#adc1fc983ba90a88c9c588742b681fd07" title="Anchors must be CA certificates." alt="" coords="243,5,430,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,131,171,93,235,55,251,48,253,53,237,60,174,98,124,135"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1PrivateKey.html#a5de9d3ce0a89515470af700852f54e08" title=" " alt="" coords="251,69,422,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,131,247,110,249,115,173,136"/>
+<area shape="rect" id="Node000005" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a1eea06f48bd3eee220ae2c10e999c325" title=" " alt="" coords="247,133,427,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="188,151,233,151,233,156,188,156"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1crypto.html#a216ae2d8a59a64a834197aedb90608df" title="Issues a certificate signed by issuerKey." alt="" coords="236,198,437,223"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="182,171,270,192,269,197,180,176"/>
+<area shape="rect" id="Node000009" href="$classara_1_1crypto_1_1X509Provider.html#adf6c437636276afdcc42d8d19a6df90e" title="Validates leaf through intermediates to a trust anchor at time at (0 = now): signatures,..." alt="" coords="243,248,430,288"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="129,171,178,203,237,234,254,241,252,246,235,238,176,207,126,176"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1X509Certificate.html#adbf28a78b7c38888fdbfc234db3b2309" title=" " alt="" coords="485,5,685,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="430,23,471,23,471,28,430,28"/>
+<area shape="rect" id="Node000007" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="733,199,908,225"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="437,206,485,205,685,205,720,206,720,211,685,211,485,211,437,211"/>
+<area shape="rect" id="Node000008" href="$classara_1_1crypto_1_1PrivateKey.html#aeb7194c011a8b79790de496d547d55a4" title="Serialises as unencrypted PKCS#8. The caller must SecureZero the result." alt="" coords="500,220,671,260"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="438,220,487,226,486,231,437,225"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="671,227,719,221,720,227,672,232"/>
+</map>

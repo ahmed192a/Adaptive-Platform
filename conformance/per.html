@@ -1,0 +1,265 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::per — conformance with AUTOSAR AP SWS Persistency</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="araper-conformance-with-autosar-ap-sws-persistency">ara::per — conformance with AUTOSAR AP SWS Persistency</h1>
+<p><strong>References actually retrieved during this audit</strong> (autosar.org):</p>
+<ul>
+<li><code>AUTOSAR_AP_SWS_Persistency</code> <strong>R24-11</strong> — chapters 1–7.2.4 only (error handling, <code>PerErrc</code> table
+  with requirement IDs); section 8 (API signatures) was <em>not</em> in the retrieved excerpt.</li>
+<li>NeuSAR API reference (R-series Doxygen mirror) for the free functions, <code>KeyValueStorage</code> and
+  <code>ReadAccessor</code> signatures.</li>
+<li><code>AUTOSAR_AP_SWS_Persistency</code> <strong>R19-03</strong> — <code>FileStorage</code> lifecycle methods only (older release).</li>
+</ul>
+<p>The R25-11 Persistency PDF itself could not be fetched from this environment, so <strong>no item below is
+claimed verified against R25-11</strong>; items taken from R24-11 or the mirror are noted. Requirement IDs
+listed are only those that appeared in the retrieved text. Status legend: <strong>Implemented</strong> ·
+<strong>Partial</strong> · <strong>Missing</strong> · <strong>Extension</strong> · <strong>Unverified</strong>.</p>
+<h2 id="free-functions-araper">Free functions (<code>ara::per</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OpenKeyValueStorage(InstanceSpecifier) noexcept</code> → <code>Result&lt;SharedHandle&lt;KeyValueStorage&gt;&gt;</code></td>
+<td>Implemented</td>
+<td><code>noexcept</code> added in this audit. Same specifier ⇒ same storage.</td>
+</tr>
+<tr>
+<td><code>OpenFileStorage(InstanceSpecifier) noexcept</code> (SWS_PER_00116 in R19-03)</td>
+<td>Implemented</td>
+<td><code>noexcept</code> added.</td>
+</tr>
+<tr>
+<td><code>RecoverKeyValueStorage</code>, <code>ResetKeyValueStorage</code></td>
+<td>Implemented</td>
+<td>Require the storage to be closed (<code>kResourceBusy</code>). <code>noexcept</code> added.</td>
+</tr>
+<tr>
+<td><code>RecoverAllFiles</code>, <code>ResetAllFiles</code></td>
+<td><strong>Fixed (was Partial)</strong></td>
+<td>File storages now keep a <strong>CRC-protected redundancy copy</strong> of every written file in <code>&lt;storage&gt;/backup/&lt;name&gt;</code> + <code>&lt;name&gt;.crc</code>, refreshed by <code>SyncToFile()</code>, on closing a writable accessor, and after <code>ResetFile</code>; removed by <code>DeleteFile</code>/<code>ResetAllFiles</code>. <code>RecoverAllFiles</code> restores every file that is missing or whose CRC differs, reports each via the recovery callback (<code>kRecovered</code>), and returns <code>kValidationFailed</code> when no copy exists or a copy is corrupt. Redundancy layout is an implementation choice (<strong>Unverified</strong> vs SWS). Tests in <code>Testing/per/file_storage_test.cpp</code>.</td>
+</tr>
+<tr>
+<td><code>GetCurrentKeyValueStorageSize</code>, <code>GetCurrentFileStorageSize</code></td>
+<td>Implemented</td>
+<td><code>noexcept</code> added.</td>
+</tr>
+<tr>
+<td><code>ResetPersistency() noexcept</code></td>
+<td>Implemented</td>
+<td>Resets every configured storage.</td>
+</tr>
+<tr>
+<td><code>UpdatePersistency() noexcept</code></td>
+<td><strong>Partial</strong></td>
+<td>Added. There is no manifest/update source: returns <code>kNotInitialized</code> if unconfigured, <code>kResourceBusy</code> while a storage is open, otherwise success. Update semantics <strong>Unverified</strong>.</td>
+</tr>
+<tr>
+<td><code>RegisterRecoveryReportCallback(std::function&lt;…&gt;) noexcept</code></td>
+<td><strong>Partial</strong></td>
+<td>Added. Invoked (outside internal locks) after a successful Recover/Reset of a KVS or file storage with one reported element. The <code>RecoveryReportKind</code> enumerators (<code>kRecovered</code>, <code>kReset</code>) are this implementation's choice — <strong>Unverified</strong>. <code>reportedInstances</code> is always empty.</td>
+</tr>
+<tr>
+<td><code>RegisterApplicationDataUpdateCallback(std::function&lt;…&gt;) noexcept</code></td>
+<td><strong>Partial</strong></td>
+<td>Added; stored but never invoked (no update source).</td>
+</tr>
+<tr>
+<td><code>GetPersistencySize</code></td>
+<td>n/a</td>
+<td>Named in the audit request but <strong>not an API in the retrieved spec</strong>; the spec has <code>GetCurrentKeyValueStorageSize</code> / <code>GetCurrentFileStorageSize</code>, which exist.</td>
+</tr>
+<tr>
+<td><code>Configure</code>, <code>ConfigureFromFile</code>, <code>ConfigureFromEnvironment</code></td>
+<td>Extension</td>
+<td>Stand-in for the manifest (<code>ARA_PER_CONFIG</code> JSON).</td>
+</tr>
+<tr>
+<td><code>OpenMode</code> <code>operator\|</code>, <code>operator\|=</code> (and <code>&amp;</code>, R19-03 SWS_PER_00144/00145)</td>
+<td>Implemented</td>
+<td><code>OpenMode</code> enumerator values <strong>Unverified</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="keyvaluestorage">KeyValueStorage</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetAllKeys() const noexcept</code></td>
+<td>Implemented</td>
+<td><code>noexcept</code> added to all methods below.</td>
+</tr>
+<tr>
+<td><code>KeyExists(StringView) const noexcept</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>GetValue&lt;T&gt;(StringView) const noexcept</code> → <code>Result&lt;T&gt;</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>GetValue&lt;T&gt;(StringView, T&amp;) const noexcept</code> → <code>Result&lt;void&gt;</code></td>
+<td>Implemented</td>
+<td><strong>Added.</strong> Output parameter is untouched on error.</td>
+</tr>
+<tr>
+<td><code>SetValue&lt;T&gt;(StringView, T const&amp;) noexcept</code></td>
+<td>Implemented</td>
+<td>Non-JSON-representable values return <code>kDataTypeMismatch</code> instead of throwing.</td>
+</tr>
+<tr>
+<td><code>RemoveKey</code>, <code>RemoveAllKeys</code>, <code>SyncToStorage</code>, <code>DiscardPendingChanges</code></td>
+<td>Implemented</td>
+<td>Atomic w.r.t. each other (mutex). Sync is temp-file + fsync + rename with CRC-32.</td>
+</tr>
+<tr>
+<td><code>RecoverKey</code>, <code>ResetKey</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Deleted copy/move/default construction</td>
+<td>Implemented</td>
+<td>Copy deleted; type is non-movable via the shared handle.</td>
+</tr>
+<tr>
+<td>Storage-level redundancy, encryption, authentication (<code>kEncryptionFailed</code>, <code>kAuthenticationFailed</code>)</td>
+<td>Partial</td>
+<td>Error codes exist; no encryption/MAC of the KVS file itself (key slots are encrypted separately in <code>ara::crypto</code>).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="filestorage-accessors">FileStorage / accessors</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetAllFileNames</code>, <code>FileExists</code>, <code>DeleteFile</code>, <code>RecoverFile</code> <code>noexcept</code> (R19-03 SWS_PER_00110/00111/00112/00337)</td>
+<td>Implemented</td>
+<td><code>noexcept</code> added. <code>RecoverFile</code> now restores from the redundancy copy (see <code>RecoverAllFiles</code>).</td>
+</tr>
+<tr>
+<td><code>ResetFile</code>, <code>GetCurrentFileSize</code>, <code>GetFileInfo</code>, <code>GetCurrentStorageSize</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OpenFileReadOnly</code> / <code>OpenFileReadWrite</code> / <code>OpenFileWriteOnly</code></td>
+<td>Implemented</td>
+<td>Spec signatures <strong>Unverified</strong> (not in retrieved text). One open handle per file (<code>kResourceBusy</code>).</td>
+</tr>
+<tr>
+<td><code>ReadAccessor</code>: <code>PeekChar</code>, <code>PeekByte</code>, <code>GetChar</code>, <code>GetByte</code>, <code>ReadText(n)</code>, <code>ReadText()</code>, <code>ReadBinary(n)</code>, <code>ReadBinary()</code>, <code>ReadLine(char)</code>, <code>GetPosition</code>, <code>SetPosition</code>, <code>IsEof</code>, <code>GetSize</code></td>
+<td>Implemented</td>
+<td><code>noexcept</code> added to the <code>Result</code>-returning ones. <code>ReadText()/ReadBinary()</code> are the defaulted-argument forms.</td>
+</tr>
+<tr>
+<td><code>ReadAccessor::MovePosition(Origin, int64) → Result&lt;uint64_t&gt;</code></td>
+<td>Implemented</td>
+<td><strong>Deviation fixed:</strong> previously returned <code>Result&lt;void&gt;</code>; the spec returns the new position.</td>
+</tr>
+<tr>
+<td><code>ReadAccessor::Origin</code> enumerators</td>
+<td>Unverified</td>
+<td><code>kBeginning/kCurrent/kEnd</code> — names not confirmed.</td>
+</tr>
+<tr>
+<td><code>ReadWriteAccessor</code>: <code>SyncToFile</code>, <code>SetFileSize</code>, <code>WriteText</code>, <code>WriteBinary</code></td>
+<td>Partial</td>
+<td>Names exist in the spec text; exact signatures <strong>Unverified</strong> (class page not retrieved). R19-03 stream helpers <code>endl</code>/<code>flush</code>/<code>operator&lt;&lt;</code> exist only as <code>operator&lt;&lt;(StringView)</code>.</td>
+</tr>
+<tr>
+<td><code>FileInfo</code></td>
+<td>Unverified</td>
+<td>Fields <code>modificationTime</code>, <code>fileSize</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="errors">Errors</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PerErrc</code> enumerator <em>names</em>: <code>kStorageNotFound</code>, <code>kKeyNotFound</code>, <code>kIllegalWriteAccess</code>, <code>kPhysicalStorageFailure</code>, <code>kIntegrityCorrupted</code>, <code>kValidationFailed</code>, <code>kEncryptionFailed</code>, <code>kAuthenticationFailed</code>, <code>kDataTypeMismatch</code>, <code>kInitValueNotAvailable</code>, <code>kResourceBusy</code>, <code>kOutOfStorageSpace</code>, <code>kEof</code>, <code>kTooManyFiles</code>, <code>kQuotaExceeded</code></td>
+<td>Implemented</td>
+<td>IDs seen in R24-11: SWS_PER_00536 (<code>kPhysicalStorageFailure</code>), 00537 (<code>kIllegalWriteAccess</code>), 00538 (<code>kStorageNotFound</code>), 00539 (<code>kIntegrityCorrupted</code>), 00540 (<code>kEncryptionFailed</code>), 00564 (<code>kAuthenticationFailed</code>), 00541 (<code>kEof</code>, renamed from <code>kIsEof</code> in R24-11), 00542 (<code>kTooManyFiles</code>), 00543 (<code>kQuotaExceeded</code>), 00544 (<code>kOutOfStorageSpace</code>), 00545/00546 (<code>kResourceBusy</code>).</td>
+</tr>
+<tr>
+<td><code>PerErrc</code> <strong>numeric values</strong></td>
+<td><strong>Unverified</strong></td>
+<td>The retrieved text lists names and requirement IDs but not the numeric codes; ours (1–21) are an implementation choice. Vendor codes are specified above 255 (SWS_PER_00472) — ours stay below.</td>
+</tr>
+<tr>
+<td>Extra enumerators <code>kFileNotFound</code>, <code>kInvalidPosition</code>, <code>kInvalidOpenMode</code>, <code>kInvalidSize</code>, <code>kNotInitialized</code>, <code>kUnsupported</code></td>
+<td>Extension</td>
+<td>Not in the retrieved <code>PerErrc</code> table. <code>kFileNotFound</code> may exist in the spec (file storage page not retrieved).</td>
+</tr>
+<tr>
+<td><code>GetPerDomain</code>, <code>MakeErrorCode</code>, <code>PerErrorDomain::Name() == "Per"</code>, <code>Message</code>, <code>ThrowAsException</code> → <code>PerException</code> (SWS_PER_00473–00476, 00353)</td>
+<td>Implemented</td>
+<td>Domain id <code>0x8000000000000406</code> is an implementation choice (<strong>Unverified</strong>).</td>
+</tr>
+<tr>
+<td>Manifest inconsistency ⇒ <code>ara::core::Abort</code> (SWS_PER_00571)</td>
+<td><strong>Deviation</strong></td>
+<td>A bad/missing configuration returns an error (<code>kStorageNotFound</code> / <code>kNotInitialized</code>) rather than aborting. Kept deliberately for testability.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tests">Tests</h2>
+<p><code>Testing/per</code> — 39 tests (label <code>per</code>), including compile-time <code>noexcept</code> checks for the public API, the
+out-parameter <code>GetValue</code>, <code>MovePosition</code> return value, recovery-report callbacks (including
+re-entrancy and a throwing callback) and <code>UpdatePersistency</code>.</p>
+<h2 id="demo">Demo</h2>
+<p><code>App/demo/persist_logger_app</code> (target <code>persist_logger_app</code>) exercises the key-value storage, file storage with
+redundancy and <code>RecoverAllFiles</code>, together with <code>ara::log</code> (levels, byte-span logging):
+<code>persist_logger_app --dir /tmp/pla [--corrupt]</code>.</p></div><footer>Adaptive Platform</footer></body></html>

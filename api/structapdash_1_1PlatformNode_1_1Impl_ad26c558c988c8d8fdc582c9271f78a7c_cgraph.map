@@ -1,0 +1,41 @@
+<map id="apdash::PlatformNode::Impl::SetupPhm" name="apdash::PlatformNode::Impl::SetupPhm">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,317,172,357"/>
+<area shape="rect" id="Node000002" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2cc2eb554885270e65e0226a8b3947b6" title=" " alt="" coords="238,5,405,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,316,104,264,127,194,165,120,189,86,218,55,225,50,228,54,222,59,193,89,169,123,132,196,109,266,96,318"/>
+<area shape="rect" id="Node000003" href="$structara_1_1phm_1_1PhmConfig.html#af1a97dbdad3438574b86f56ddbfa0765" title=" " alt="" coords="242,69,401,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,316,112,276,138,226,174,173,218,126,237,113,240,118,222,130,178,176,143,228,117,279,100,318"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Promise.html#a2c04164c07b45b8f0f56249f4d423662" title="May be called once; a second call fails with FutureErrc::future_already_retrieved." alt="" coords="499,260,639,300"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,316,113,282,140,241,175,201,196,183,219,170,273,149,320,144,367,152,424,170,458,185,490,205,541,248,537,252,487,209,455,189,422,174,366,157,320,149,274,154,221,174,199,188,179,204,144,244,118,285,101,318"/>
+<area shape="rect" id="Node000007" href="$classara_1_1phm_1_1HealthMonitor.html#a61212990572cc05161d2457f4475fbc5" title="Process wide instance used by the default SupervisedEntity transport." alt="" coords="231,184,412,224"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="109,315,157,274,219,234,233,227,235,232,221,238,160,279,113,319"/>
+<area shape="rect" id="Node000008" href="$classara_1_1log_1_1Logger.html#a0658545f75297e82ad31cd4d70d1156c" title=" " alt="" coords="229,249,414,274"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="148,315,219,291,266,276,268,281,221,296,150,320"/>
+<area shape="rect" id="Node000009" href="$classara_1_1log_1_1Logger.html#adbadc165b5959ea0241367f488a11212" title=" " alt="" coords="471,325,667,350"/>
+<area shape="poly" id="edge22_Node000001_Node000009" title=" " alt="" coords="172,335,457,335,457,340,172,340"/>
+<area shape="rect" id="Node000010" href="$classara_1_1log_1_1Logger.html#abbd5d44b6576faa50f427eccf7be0032" title=" " alt="" coords="228,350,415,375"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="173,344,215,348,214,354,172,349"/>
+<area shape="rect" id="Node000011" href="$namespaceara_1_1phm.html#abb6fe3f0751d3be45a6915242e9f2723" title=" " alt="" coords="228,399,415,425"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="138,355,221,385,248,393,247,398,219,391,136,360"/>
+<area shape="rect" id="Node000013" href="$classara_1_1core_1_1SteadyClock.html#a30932f525e6cd0ea71c7258f57478d73" title=" " alt="" coords="220,449,423,474"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="112,355,160,396,189,417,221,435,238,442,236,447,219,440,187,422,156,400,108,359"/>
+<area shape="rect" id="Node000014" href="$classara_1_1core_1_1Promise.html#a7478fdf24009f05708e12c99009f9675" title=" " alt="" coords="251,499,391,539"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="104,356,151,419,184,454,221,484,240,494,237,499,219,489,180,458,147,423,100,359"/>
+<area shape="rect" id="Node000016" href="$classara_1_1core_1_1Promise.html#a82bc19a5a441e9bc5475f4032346ac8d" title=" " alt="" coords="251,563,391,603"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="99,357,115,397,141,449,177,503,198,527,222,549,240,560,237,565,218,553,194,531,172,506,137,452,111,399,94,359"/>
+<area shape="rect" id="Node000017" href="$namespaceara_1_1phm.html#ae2d06d66f0747af41e570783abbc785e" title=" " alt="" coords="251,627,391,653"/>
+<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="96,357,108,409,131,478,148,515,168,551,193,584,222,613,240,624,237,628,218,617,189,588,164,554,143,518,126,480,103,411,91,358"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Promise.html#a047314a51465bb45cad8ad8d34c891d9" title=" " alt="" coords="715,381,855,421"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="640,296,668,310,693,332,716,355,739,372,736,376,713,359,690,335,665,314,638,301"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1core_1_1detail.html#aa0d6888e1da01601881236a1258230a4" title=" " alt="" coords="903,381,1035,421"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="636,297,890,375,889,380,635,303"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="855,399,889,399,889,404,855,404"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="365,271,424,291,472,309,502,319,501,324,470,315,422,296,363,277"/>
+<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="415,350,457,346,457,351,415,356"/>
+<area shape="rect" id="Node000012" href="$namespaceara_1_1phm.html#a5780501656f47b73d802ef7ab495a142" title=" " alt="" coords="473,399,664,425"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="415,409,460,409,460,415,415,415"/>
+<area shape="rect" id="Node000015" href="$classara_1_1core_1_1Promise.html#a21a31cf7fc3e15e9a6a3155a021e5752" title=" " alt="" coords="484,477,653,502"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="391,508,470,498,471,504,392,513"/>
+<area shape="poly" id="edge17_Node000015_Node000005" title=" " alt="" coords="600,474,721,424,723,429,602,479"/>
+<area shape="poly" id="edge18_Node000015_Node000006" title=" " alt="" coords="643,474,854,431,889,422,890,427,855,436,644,479"/>
+<area shape="poly" id="edge20_Node000016_Node000015" title=" " alt="" coords="388,560,422,548,526,505,528,510,424,553,389,565"/>
+</map>

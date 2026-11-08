@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::tsync – Time Synchronization</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / docs</div><h1 id="aratsync-time-synchronization">ara::tsync – Time Synchronization</h1>
+<p><code>ara::tsync</code> offers a <strong>synchronized time base</strong> to applications. A provider feeds in
+times from a master (gPTP, NTP, GNSS, …); consumers read a continuous time derived from the local
+steady clock.</p>
+<pre><code>T(now) = T_sync + (now - local_at_sync) * (1 + rateDeviation) + slewed offset
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TimeBaseResource</code></td>
+<td>consumer view: <code>GetCurrentTime()</code>, <code>GetRateDeviation()</code>, <code>GetStatus()</code>, <code>GetUserData()</code>, <code>SetUpdateCallback()</code>, <code>Poll()</code></td>
+</tr>
+<tr>
+<td><code>TimeBaseProvider</code></td>
+<td>provider: <code>Update(time, rateDeviation, syncToGateway, userData)</code></td>
+</tr>
+<tr>
+<td><code>TimeBaseConfig</code></td>
+<td>name, injectable <code>clock</code>, <code>timeout</code>, <code>stepThreshold</code>, <code>slewWindow</code></td>
+</tr>
+<tr>
+<td><code>StatusFlag</code></td>
+<td><code>kSynchronized</code>, <code>kTimeout</code>, <code>kSyncToGateway</code>, <code>kTimeLeap</code>, <code>kPendingRateCorr</code></td>
+</tr>
+</tbody>
+</table>
+<p>Behaviour:</p>
+<ul>
+<li><strong>First update</strong> synchronizes (no leap flag). Before that <code>GetCurrentTime()</code> returns <code>kNotSynchronized</code>.</li>
+<li><strong>Offset correction</strong>: an update that differs from the current time base by at most <code>stepThreshold</code>
+  is slewed in linearly over <code>slewWindow</code> (time stays continuous, <code>kPendingRateCorr</code> is set).
+  A larger difference <em>steps</em> the time, sets <code>kTimeLeap</code> and notifies with <code>ChangeReason::kTimeStep</code>.</li>
+<li><strong>Timeout</strong>: no update within <code>timeout</code> → <code>kTimeout</code> instead of <code>kSynchronized</code>; the extrapolated time stays readable.
+  The next update clears it.</li>
+<li><strong>Callback</strong>: delivered on status changes and time steps (and on every update if requested). Timeouts
+  have no event of their own, so call <code>Poll()</code> periodically to get the notification.</li>
+</ul>
+<pre><code class="language-cpp">auto tb = ara::tsync::TimeBaseResource::Create({.name = &quot;GlobalTime&quot;}).Value();
+ara::tsync::TimeBaseProvider provider(tb);
+provider.Update(masterTime, /*rateDeviation=*/2e-6);
+auto now = tb-&gt;GetCurrentTime();           // Result&lt;TimeBaseSnapshot&gt;
+</code></pre>
+<p>Tests: <code>ctest --preset debug -L tsync</code> (14 tests, deterministic via the injected clock).</p>
+<blockquote>
+<p><strong>Spec conformance:</strong> see <a href="spec-conformance/tsync.md">spec-conformance/tsync.md</a>. The SWS API is <code>SynchronizedTimeBaseConsumer/Provider/Status</code> (<code>synchronized_time_base.h</code>), bound with <code>TimeBaseRegistry::Bind</code>.</p>
+</blockquote></div><footer>Adaptive Platform</footer></body></html>

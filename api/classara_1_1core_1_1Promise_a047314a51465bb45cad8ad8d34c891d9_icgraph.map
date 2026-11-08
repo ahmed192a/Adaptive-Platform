@@ -1,0 +1,32 @@
+<map id="ara::core::Promise::Checked" name="ara::core::Promise::Checked">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1269,134,1409,174"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Promise.html#a2c04164c07b45b8f0f56249f4d423662" title="May be called once; a second call fails with FutureErrc::future_already_retrieved." alt="" coords="1067,41,1207,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1282,131,1180,84,1182,79,1284,126"/>
+<area shape="rect" id="Node000008" href="$classara_1_1core_1_1Promise.html#a21a31cf7fc3e15e9a6a3155a021e5752" title=" " alt="" coords="1052,170,1221,195"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="1256,169,1222,173,1221,168,1255,163"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad26c558c988c8d8fdc582c9271f78a7c" title=" " alt="" coords="649,162,816,202"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1080,38,1032,22,977,11,919,10,892,15,865,25,843,38,823,54,789,92,763,131,745,164,741,161,758,128,785,88,820,50,840,33,863,20,890,10,919,5,977,6,1033,17,1081,33"/>
+<area shape="rect" id="Node000004" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,194,172,234"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="635,176,547,171,443,168,331,171,220,181,150,197,149,192,220,176,331,166,443,163,547,166,636,171"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2b31526623d8f784530296aa9d7b19de" title=" " alt="" coords="435,190,601,230"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="636,198,602,202,601,197,635,192"/>
+<area shape="rect" id="Node000006" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="220,190,387,230"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="421,213,387,213,387,208,421,208"/>
+<area shape="rect" id="Node000007" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad0033341236167451f81b059a96c2eb0" title=" " alt="" coords="220,254,387,294"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="438,237,372,257,370,252,436,232"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="217,253,160,237,162,232,219,248"/>
+<area shape="rect" id="Node000009" href="$classara_1_1core_1_1Promise.html#aac103334977098d5fe9ea683790dd78f" title=" " alt="" coords="864,34,1004,74"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1108,163,1060,127,1003,89,981,77,983,72,1005,84,1063,122,1111,159"/>
+<area shape="rect" id="Node000010" href="$classara_1_1core_1_1Promise.html#a27267a0ef98fd28fe672fda251004b81" title=" " alt="" coords="864,98,1004,138"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="1082,168,997,141,999,136,1083,163"/>
+<area shape="rect" id="Node000011" href="$classara_1_1core_1_1Promise.html#a7478fdf24009f05708e12c99009f9675" title=" " alt="" coords="864,162,1004,202"/>
+<area shape="poly" id="edge11_Node000008_Node000011" title=" " alt="" coords="1038,185,1004,185,1004,180,1038,180"/>
+<area shape="rect" id="Node000012" href="$classara_1_1core_1_1Promise.html#a5d28830ef5d6e0f124f5ceb9b59422ba" title=" " alt="" coords="864,226,1004,266"/>
+<area shape="poly" id="edge13_Node000008_Node000012" title=" " alt="" coords="1083,202,999,229,997,224,1082,197"/>
+<area shape="rect" id="Node000013" href="$classara_1_1core_1_1Promise.html#a82bc19a5a441e9bc5475f4032346ac8d" title=" " alt="" coords="864,290,1004,330"/>
+<area shape="poly" id="edge14_Node000008_Node000013" title=" " alt="" coords="1111,206,1063,243,1005,281,983,293,981,288,1003,276,1060,238,1108,202"/>
+<area shape="rect" id="Node000014" href="$classara_1_1core_1_1Promise.html#a6ac60b7a3d78609383ddce028c8bc0cc" title=" " alt="" coords="864,354,1004,394"/>
+<area shape="poly" id="edge16_Node000008_Node000014" title=" " alt="" coords="1123,208,1075,274,1042,311,1006,344,987,357,984,352,1002,340,1039,308,1071,271,1118,205"/>
+<area shape="poly" id="edge12_Node000011_Node000003" title=" " alt="" coords="850,185,816,185,816,180,850,180"/>
+<area shape="poly" id="edge15_Node000013_Node000003" title=" " alt="" coords="873,286,863,281,805,242,757,205,760,201,808,237,865,276,876,282"/>
+</map>

@@ -1,0 +1,361 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::nm - conformance to AUTOSAR AP R25-11 (SWS_NetworkManagement)</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="aranm-conformance-to-autosar-ap-r25-11-sws_networkmanagement">ara::nm - conformance to AUTOSAR AP R25-11 (SWS_NetworkManagement)</h1>
+<p>Source: <em>AUTOSAR_AP_SWS_NetworkManagement.pdf</em>, R25-11 (requirement prefix <code>SWS_ANM_</code>).
+Status values: <strong>Implemented</strong>, <strong>Partial</strong>, <strong>Missing</strong>, <strong>Deviation</strong> (implemented differently),
+<strong>Unverified</strong> (the retrievable SWS text does not settle it - nothing is guessed).
+Every row below is covered by <code>Testing/nm</code> unless noted.</p>
+<h2 id="architecture-note-the-main-deviation-now-fixed">Architecture note (the main deviation, now fixed)</h2>
+<p>The SWS defines <code>ara::nm::NetworkHandle</code> as the <em>State Management facing</em> API with only two
+states, <code>kNoCom</code> / <code>kFullCom</code> (<code>SWS_ANM_01000</code>, <code>01358</code>). The first implementation used that name for
+the NM state-machine engine. The engine is now <code>ara::nm::NmChannel</code> (<code>nm_channel.h</code>), and
+<code>ara::nm::NetworkHandle</code> (<code>network_handle.h</code>) is the spec facade on top of it. A handle is bound to a
+channel through its port <code>InstanceSpecifier</code>: <code>NetworkManager::BindPort(specifier, network)</code>.
+An unbound handle reports <code>kServiceNotAvailable</code>, like a lost daemon connection.</p>
+<h2 id="public-api-networkhandle-error-domain">Public API (NetworkHandle, error domain)</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement / API</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWS_ANM_01000 <code>NetworkHandle</code>, namespace <code>ara::nm</code></td>
+<td>Implemented</td>
+<td>"Use by State Management only" is not enforced.</td>
+</tr>
+<tr>
+<td>SWS_ANM_01001 <code>NetworkHandle(const InstanceSpecifier&amp;) noexcept</code></td>
+<td>Implemented</td>
+<td>Binding to the NM daemon is modelled by <code>NetworkManager::BindPort</code>.</td>
+</tr>
+<tr>
+<td>SWS_ANM_01002-01006 dtor, move ctor/assign, copy deleted</td>
+<td>Implemented</td>
+<td>Observers are removed on destruction; moved-from handles must not be used.</td>
+</tr>
+<tr>
+<td>SWS_ANM_01007 <code>GetNetworkState()</code></td>
+<td>Implemented</td>
+<td><code>kFullCom</code> in Repeat Message / Normal Operation / Ready Sleep, else <code>kNoCom</code> (00029, 00083).</td>
+</tr>
+<tr>
+<td>SWS_ANM_01008 <code>GetNetworkRequestedState()</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_01009 <code>SetNetworkRequestedState(NetworkStateType)</code></td>
+<td>Implemented</td>
+<td><code>kNoCom</code> without a prior request is a no-op (idempotent).</td>
+</tr>
+<tr>
+<td>SWS_ANM_01010, 01012 <code>Register...ChangeNotifier(notifier)</code></td>
+<td>Implemented</td>
+<td>One notifier per kind, overwrite on re-register, empty -&gt; <code>kInvalidHandler</code>.</td>
+</tr>
+<tr>
+<td>SWS_ANM_01011, 01013 <code>Unregister...</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_01014, 01015 overloads with <code>ExecutorT&amp;&amp;</code></td>
+<td>Implemented</td>
+<td>Template overloads; the executor receives each notification as a <code>std::function&lt;void()&gt;</code> (<code>Wrap</code>). 00086 covered the same way. Executor concept itself is not in the retrievable text - callable-with-<code>std::function</code> is the assumed contract (<strong>Unverified</strong>). Tests <code>Executor*</code>.</td>
+</tr>
+<tr>
+<td>SWS_ANM_01020 <code>NetworkStateChangeNotifier</code></td>
+<td>Implemented</td>
+<td><code>std::function&lt;void(const NetworkStateType&amp;)&gt;</code>.</td>
+</tr>
+<tr>
+<td>SWS_ANM_01358 <code>NetworkStateType {kNoCom=0, kFullCom=1}</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_01100 <code>NmException</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_01101 <code>NmErrorDomain</code> (+01103/01104 <code>Errc</code>, <code>Exception</code> aliases, 01105-01108)</td>
+<td>Implemented</td>
+<td>Aliases added in this audit.</td>
+</tr>
+<tr>
+<td>SWS_ANM_01109 <code>GetNmDomain()</code>, 01110 <code>MakeErrorCode(NmErrc, SupportDataType)</code></td>
+<td>Implemented</td>
+<td><code>MakeErrorCode</code> has an extra defaulted <code>message</code> parameter (compatible).</td>
+</tr>
+<tr>
+<td>SWS_ANM_01111 <code>NmErrc {kServiceNotAvailable=1, kInvalidHandler=2}</code></td>
+<td>Implemented</td>
+<td>Values corrected (they were different before).</td>
+</tr>
+<tr>
+<td>Extra codes <code>kUnknownNetwork</code>... <code>kInvalidConfig</code> (0x100+)</td>
+<td>Deviation</td>
+<td>Implementation extensions in the NM domain, placed outside the normative range.</td>
+</tr>
+<tr>
+<td>NmErrorDomain id / name</td>
+<td><strong>Unverified</strong></td>
+<td>The SWS defers to SWS_CORE_90023, which the retrievable Core text (R21-11) does not contain beyond Future <code>0x8000'0000'0000'0013</code> and Core <code>...0014</code>. <code>0x8000000000000501</code> is an implementation choice; the former clash with ara::tsync is resolved (tsync = <code>...0502</code>).</td>
+</tr>
+<tr>
+<td>SWS_ANM_CONSTR_00001 (no <code>NetworkManagementPortInterface.namespace</code>)</td>
+<td>n/a</td>
+<td>Model constraint, nothing in code.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network-state-semantics">Network state semantics</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWS_ANM_00083 <code>GetNetworkState</code> lowest-wins over PNCs/VLANs/channels</td>
+<td>Implemented</td>
+<td>A port maps to several channels; <code>kNoCom</code> if any channel is NoCom. Notifiers fire only when the aggregate changes. PNC aggregation is by channel only.</td>
+</tr>
+<tr>
+<td>SWS_ANM_00084 <code>SetNetworkRequestedState(kFullCom)</code> highest-wins</td>
+<td>Implemented</td>
+<td>Applied to every channel of the port; requested state is <code>kFullCom</code> if any channel requests.</td>
+</tr>
+<tr>
+<td>SWS_ANM_00029 Bus-Sleep reports <code>kNoCom</code></td>
+<td>Implemented</td>
+<td>Prepare Bus-Sleep also maps to <code>kNoCom</code>.</td>
+</tr>
+<tr>
+<td>SWS_ANM_00088 default state after start is NO_COM</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00090 on SIGTERM withdraw requests, <code>GetNetworkState</code> -&gt; <code>kNoCom</code></td>
+<td>Implemented</td>
+<td><code>NetworkManager::InstallSigtermHook()</code> (async-signal-safe flag, previous handler chained); the next <code>ProcessAll()</code> runs <code>ShutdownAll()</code> which withdraws and enters Prepare Bus-Sleep (<code>kNoCom</code>) at once. Tests <code>Sigterm*</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="operational-state-machine-per-channel">Operational state machine (per channel)</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWS_ANM_00005 Network Mode sub-states</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00006 Bus-Sleep/Prepare Bus-Sleep -&gt; Network Mode defaults to Repeat Message</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00007-00009 NM-Timeout timer: started on entering Network Mode, restarted on NM Rx <strong>and Tx</strong></td>
+<td>Implemented</td>
+<td>Tx restart added in this audit.</td>
+</tr>
+<tr>
+<td>SWS_ANM_00013 <code>nmRepeatMessageTime</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00014 / 00015 Repeat Message -&gt; Normal Operation if requested / Ready Sleep if released</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00018 Normal Operation -&gt; Ready Sleep on release</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00019, 00023 Repeat Message Request bit received -&gt; Repeat Message</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00020 Ready Sleep stops NM transmission</td>
+<td>Implemented</td>
+<td>Test <code>ReadySleepDoesNotTransmit</code>.</td>
+</tr>
+<tr>
+<td>SWS_ANM_00021 Ready Sleep -&gt; Prepare Bus-Sleep on NM-Timeout</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00022 Ready Sleep -&gt; Normal Operation when requested</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00024 Prepare Bus-Sleep -&gt; Bus-Sleep after <code>nmWaitBusSleepTime</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00025 NM message in Prepare Bus-Sleep -&gt; Network Mode</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00062 / 91002 operational state machine</td>
+<td>Implemented</td>
+<td>Flattened into one enum (<code>NmState</code>).</td>
+</tr>
+<tr>
+<td><code>nmMsgCycleTime</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>nmMsgCycleOffset</code></td>
+<td>Implemented</td>
+<td><code>NmConfig::messageCycleOffset</code>: first Repeat Message transmission is delayed by it; ignored when <code>immediateNmTransmissions &gt; 0</code>. Config is validated. Semantics from SWS_ANM section 7.6.1 as cited in the original audit (R25-11 text for the exact requirement id not retrievable).</td>
+</tr>
+<tr>
+<td><code>nmImmediateNmCycleTime</code>, <code>nmImmediateNmTransmissions</code></td>
+<td>Implemented</td>
+<td>New: <code>NmConfig::immediateNmCycleTime</code> / <code>immediateNmTransmissions</code> (default 0 = disabled).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="partial-networking">Partial networking</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWS_ANM_00051 PNI=1 processed only with <code>nmPncParticipation</code></td>
+<td>Partial</td>
+<td>Participation = <code>pnFilterMask != 0</code>. A non-participating node still treats a PNI=1 message as an ordinary NM message (wakes, restarts timer); whether the SWS wants it ignored entirely is <strong>Unverified</strong> from the extract.</td>
+</tr>
+<tr>
+<td>SWS_ANM_00052 PNI=0 messages still processed</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00053, 00056 PN reset timer, must exceed <code>nmMsgCycleTime</code></td>
+<td>Implemented</td>
+<td><code>NmChannel::Create</code> -&gt; <code>kInvalidConfig</code> otherwise (when PN is active).</td>
+</tr>
+<tr>
+<td>SWS_ANM_00054 PNI transmitted when participating</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>SWS_ANM_00055 PN bit vector located by <code>pncVectorOffset</code>/<code>pncVectorLength</code></td>
+<td>Implemented</td>
+<td><code>NmPduLayout::pnVectorOffset/pnVectorLength</code> (0..4 bytes), little endian; <code>Create</code> rejects a <code>pnFilterMask</code> that does not fit. Default layout equals the former fixed one.</td>
+</tr>
+<tr>
+<td>SWS_ANM_00081, 00089 drop messages with no served PN bit unless <code>allNmMessagesKeepAwake</code></td>
+<td>Implemented</td>
+<td>New: <code>NmConfig::allNmMessagesKeepAwake</code> (default false). Dropped messages neither wake the node nor restart the timer.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="message-format-and-control-bit-vector">Message format and Control Bit Vector</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWS_ANM_00033, 00034 <code>nmNidPosition</code>, <code>nmNodeId</code></td>
+<td>Implemented</td>
+<td><code>NmPduLayout::nidPosition</code> (0, 1 or absent).</td>
+</tr>
+<tr>
+<td>SWS_ANM_00035 <code>nmCbvPosition</code></td>
+<td>Implemented</td>
+<td><code>NmPduLayout::cbvPosition</code> (0, 1 or absent; PNI requires a CBV).</td>
+</tr>
+<tr>
+<td>SWS_ANM_00037 transmitted Repeat Message Request bit always 0</td>
+<td>Implemented</td>
+<td><strong>Fixed</strong>: the engine used to set RMR while in Repeat Message.</td>
+</tr>
+<tr>
+<td>SWS_ANM_00038, 00071, 00091 Active Wakeup / NM Coordinator Sleep Ready / PNL bits always 0 on Tx</td>
+<td>Implemented</td>
+<td>Those bits are reserved (written 0, ignored on Rx).</td>
+</tr>
+<tr>
+<td>SWS_ANM_00040, 00095 <code>nmUserDataLength</code></td>
+<td>Implemented</td>
+<td>Derived from <code>pduLength</code> (2..64) minus header/PN bytes; first 2 bytes in <code>NmPdu::userData</code>, rest in <code>moreUserData</code>. Wire encoding via <code>NmChannel::EncodeTx</code> / <code>OnBytesReceived</code>; the fixed 8-byte <code>Encode()/Decode()</code> remain.</td>
+</tr>
+<tr>
+<td>CBV bit positions (RMR bit 0, PNI bit 4 here)</td>
+<td><strong>Unverified</strong></td>
+<td>The AP text defers to the classic NM layout; classic CanNm is believed to use bit 6 for PNI, but that is not confirmed by the retrieved text.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-gaps-not-implemented">Known gaps (not implemented)</h2>
+<p>NM coordinator functions; bus drivers (the engine only produces/consumes PDU objects); the exact CBV
+bit positions and the ara::core executor concept stay <strong>Unverified</strong> (see above). Nothing else is open.</p>
+<h2 id="release-notes-for-this-gap-closing-pass">Release notes for this gap-closing pass</h2>
+<p>R25-11 text was tried first; where a requirement id could not be retrieved the earlier-release
+extract used by the original audit applies (the NM state machine and PDU rules are unchanged between
+releases per the project owner's guidance). No requirement id above was invented.
+Demo: <code>App/demo/nm_bus_monitor</code> (3 ECUs, partial networks, state timeline).</p></div><footer>Adaptive Platform</footer></body></html>

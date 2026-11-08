@@ -1,0 +1,55 @@
+<map id="ara::log::LogStream::Append" name="ara::log::LogStream::Append">
+<area shape="rect" id="Node000001" title=" " alt="" coords="203,805,352,845"/>
+<area shape="rect" id="Node000002" href="$classara_1_1log_1_1LogStream.html#a87966b5d7e06490a181f799a7fe8d4cc" title=" " alt="" coords="5,5,155,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,792,264,638,244,419,229,307,209,204,183,118,169,85,153,59,140,47,144,43,157,56,173,82,188,116,214,203,234,306,250,419,269,638,278,792"/>
+<area shape="rect" id="Node000003" href="$classara_1_1log_1_1LogStream.html#a48f287067abc1d40ddfa9edc157c5eb1" title=" " alt="" coords="5,69,155,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="272,792,262,650,241,450,225,348,205,254,181,177,167,146,153,123,140,111,144,107,157,120,172,144,186,175,210,253,230,347,246,449,267,649,277,792"/>
+<area shape="rect" id="Node000004" href="$classara_1_1log_1_1LogStream.html#a4187562a22aa992c881d61483505e673" title="A byte span is rendered as space&#45;separated two&#45;digit lowercase hex values (&quot;0a ff 10&quot;)." alt="" coords="5,133,155,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="271,792,260,661,237,480,221,389,202,305,179,235,153,187,140,175,144,172,157,184,184,233,207,303,226,388,242,480,265,660,276,791"/>
+<area shape="rect" id="Node000005" href="$classara_1_1log_1_1LogStream.html#ae2bd4fb97d0e43f813b0ac9a63df8d83" title=" " alt="" coords="5,197,155,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="270,792,257,672,233,511,217,430,198,355,177,294,153,251,140,240,143,236,157,248,182,291,203,354,222,428,238,510,262,672,276,791"/>
+<area shape="rect" id="Node000006" href="$classara_1_1log_1_1LogStream.html#ae2b3126b48188d25be693534215800d0" title=" " alt="" coords="5,261,155,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="269,792,254,685,229,543,213,471,195,406,175,352,153,315,139,303,143,299,157,312,179,350,200,404,218,470,234,542,260,684,275,791"/>
+<area shape="rect" id="Node000007" href="$classara_1_1log_1_1LogStream.html#af5cd68a1d96dfaa23819d3aa118f97dc" title=" " alt="" coords="5,325,155,365"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="274,792,269,710,253,601,237,542,216,484,188,429,153,379,139,368,143,364,157,376,193,426,221,482,242,541,258,600,274,710,279,791"/>
+<area shape="rect" id="Node000008" href="$classara_1_1log_1_1LogStream.html#a14ce0eb0b398be4f3f2eb0ef8f4b7401" title=" " alt="" coords="5,389,155,429"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="272,792,264,721,245,628,229,579,209,530,184,484,153,443,139,432,142,427,157,439,188,482,214,528,234,577,250,627,269,720,277,791"/>
+<area shape="rect" id="Node000009" href="$classara_1_1log_1_1LogStream.html#a338bba1429cb57ddc6c7605876b2bc05" title=" " alt="" coords="5,453,155,493"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="269,792,258,732,237,657,203,577,180,540,153,507,138,496,142,491,157,503,184,537,207,575,242,655,263,731,275,791"/>
+<area shape="rect" id="Node000010" href="$classara_1_1log_1_1LogStream.html#afe7186e751453500b5db10c376b1afad" title=" " alt="" coords="5,517,155,557"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="266,793,251,745,228,686,196,625,176,597,153,571,137,560,140,555,156,567,180,593,200,622,233,683,256,743,271,791"/>
+<area shape="rect" id="Node000011" href="$classara_1_1log_1_1LogStream.html#a03c34c4a28a7ba0e3fc1d2c7ecff67fd" title=" " alt="" coords="5,581,155,621"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="260,794,219,715,189,673,153,635,136,624,139,619,156,631,193,670,224,713,265,791"/>
+<area shape="rect" id="Node000012" href="$classara_1_1log_1_1LogStream.html#a6349486c9e265113fea2e21770c36906" title=" " alt="" coords="5,645,155,685"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="251,796,208,747,153,699,133,688,136,683,156,695,212,744,255,793"/>
+<area shape="rect" id="Node000013" href="$classara_1_1log_1_1LogStream.html#a7acccf9eba807c80e5cf92bb668dbf7e" title=" " alt="" coords="5,709,155,749"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="227,801,154,764,128,752,130,747,156,759,229,797"/>
+<area shape="rect" id="Node000014" href="$classara_1_1log_1_1LogStream.html#a8be4ed035e6b0f03caaba483b2d6dd8a" title=" " alt="" coords="5,773,155,813"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="189,814,155,808,155,803,190,808"/>
+<area shape="rect" id="Node000015" href="$classara_1_1log_1_1LogStream.html#a7d09a11bcf0e37427b2f78b835b8493b" title=" " alt="" coords="5,837,155,877"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="190,842,155,848,155,843,189,837"/>
+<area shape="rect" id="Node000016" href="$classara_1_1log_1_1LogStream.html#a904a4bc179b00d5aa84e7ed01de042cf" title=" " alt="" coords="5,901,155,941"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="229,854,156,892,130,904,128,899,154,887,227,849"/>
+<area shape="rect" id="Node000017" href="$classara_1_1log_1_1LogStream.html#ac0e2e172f58fc9a380bbbce308ffecbe" title=" " alt="" coords="5,965,155,1005"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="255,858,212,907,156,955,136,968,133,963,153,951,208,903,251,855"/>
+<area shape="rect" id="Node000018" href="$classara_1_1log_1_1LogStream.html#ad6e9a350b80330e758d50e31b3b8e360" title="Durations are rendered as an integer number of nanoseconds followed by &quot;ns&quot;." alt="" coords="5,1029,155,1069"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="265,859,224,938,193,981,156,1019,139,1032,136,1027,153,1015,189,978,219,935,260,857"/>
+<area shape="rect" id="Node000019" href="$classara_1_1log_1_1LogStream.html#a46b67b6e23db09cac55b31a9ed3673ee" title=" " alt="" coords="5,1093,155,1133"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="271,859,256,908,233,967,200,1029,180,1057,156,1083,140,1095,137,1091,153,1079,176,1054,196,1026,228,965,251,906,266,858"/>
+<area shape="rect" id="Node000020" href="$classara_1_1log_1_1LogStream.html#aff2040f1a882346148bf7f1c966bab53" title=" " alt="" coords="5,1157,155,1197"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="275,859,263,919,242,996,207,1076,184,1113,157,1147,142,1159,138,1155,153,1143,180,1110,203,1073,237,994,258,918,269,858"/>
+<area shape="rect" id="Node000021" href="$classara_1_1log_1_1LogStream.html#aaa24aff8bec1a73c7dab1845660987c9" title=" " alt="" coords="5,1221,155,1261"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="277,860,269,931,250,1024,234,1073,214,1123,188,1169,157,1211,142,1223,139,1219,153,1207,184,1166,209,1120,229,1072,245,1022,264,930,272,859"/>
+<area shape="rect" id="Node000022" href="$classara_1_1log_1_1LogStream.html#a3839c4688069f9f5b539e1d6ffe0081d" title=" " alt="" coords="5,1285,155,1325"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="279,859,274,941,258,1051,242,1110,221,1169,193,1225,157,1275,143,1287,139,1283,153,1272,188,1222,216,1167,237,1109,253,1050,269,941,274,859"/>
+<area shape="rect" id="Node000023" href="$classara_1_1log_1_1LogStream.html#a06554dc1d0dc6f04cc60035580ef7d4d" title=" " alt="" coords="5,1349,155,1389"/>
+<area shape="poly" id="edge22_Node000001_Node000023" title=" " alt="" coords="275,859,260,966,234,1109,218,1181,200,1246,179,1301,157,1339,143,1351,139,1347,153,1336,175,1298,195,1245,213,1179,229,1108,254,966,269,858"/>
+<area shape="rect" id="Node000024" href="$classara_1_1log_1_1LogStream.html#acda74c033bd4d6832ed0fd3f81b70981" title=" " alt="" coords="5,1413,155,1453"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="276,860,262,979,238,1140,222,1222,203,1297,182,1359,157,1403,143,1415,140,1411,153,1400,177,1357,198,1296,217,1221,233,1139,257,978,270,859"/>
+<area shape="rect" id="Node000025" href="$classara_1_1log_1_1LogStream.html#ac5f661a901be4bb36bde7a7347151966" title=" " alt="" coords="5,1477,155,1517"/>
+<area shape="poly" id="edge24_Node000001_Node000025" title=" " alt="" coords="276,859,265,990,242,1171,226,1263,207,1348,184,1418,157,1467,144,1479,140,1475,153,1464,179,1416,202,1346,221,1262,237,1170,260,990,271,859"/>
+<area shape="rect" id="Node000026" href="$classara_1_1log_1_1LogStream.html#a7d5da2bc8f2e75fe720f64556955a1e5" title=" " alt="" coords="5,1541,155,1581"/>
+<area shape="poly" id="edge25_Node000001_Node000026" title=" " alt="" coords="277,859,267,1002,246,1201,230,1304,210,1398,186,1476,172,1507,157,1531,144,1543,140,1539,153,1528,167,1504,181,1474,205,1396,225,1303,241,1201,262,1001,272,859"/>
+<area shape="rect" id="Node000027" href="$classara_1_1log_1_1LogStream.html#a869340735ac47f5562c113306277c17e" title=" " alt="" coords="5,1605,155,1645"/>
+<area shape="poly" id="edge26_Node000001_Node000027" title=" " alt="" coords="278,859,269,1013,250,1232,234,1344,214,1448,188,1534,173,1568,157,1595,144,1607,140,1603,153,1592,169,1566,183,1532,209,1447,229,1344,244,1231,264,1013,272,859"/>
+</map>

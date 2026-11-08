@@ -1,0 +1,17 @@
+<map id="ara::log::ToString" name="ara::log::ToString">
+<area shape="rect" id="Node000001" title="Textual form used by the console / file sinks (&quot;FATL&quot;, &quot;ERRO&quot;, ...)." alt="" coords="576,166,707,191"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1log.html#a5e8571b2530c64fb48e8020bd368d76b" title=" " alt="" coords="295,109,466,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="586,165,527,149,464,137,465,131,529,144,587,160"/>
+<area shape="rect" id="Node000007" href="$classara_1_1log_1_1LogStream.html#a8be4ed035e6b0f03caaba483b2d6dd8a" title=" " alt="" coords="306,159,455,199"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="562,181,456,181,456,176,562,176"/>
+<area shape="rect" id="Node000008" href="$classapdash_1_1anonymous__namespace_02platform__node_8cpp_03_1_1CaptureSink.html#ad3feb0967186d6f1a1b3a4efc3d6cc44" title=" " alt="" coords="233,223,528,263"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="585,198,529,213,478,225,477,220,527,208,584,193"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#aa35eeb984fa58f74d5c2452cfae998bc" title=" " alt="" coords="5,5,185,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="328,107,155,48,157,43,330,102"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02log__test_8cpp_03.html#acf6c487f3971f1c07edbd3b5684d4fb7" title=" " alt="" coords="5,69,185,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="281,113,185,102,186,97,282,108"/>
+<area shape="rect" id="Node000005" href="$classara_1_1log_1_1ConsoleSink.html#af82fb7780bac6b8b1844fdc1b60ff8d2" title=" " alt="" coords="16,133,175,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="282,135,175,147,175,142,281,130"/>
+<area shape="rect" id="Node000006" href="$classara_1_1log_1_1FileSink.html#abc38a607c50178faf32ede57029dd1d9" title=" " alt="" coords="30,197,161,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="283,134,234,149,220,158,211,167,187,188,161,200,159,195,184,183,207,163,217,153,232,144,281,129"/>
+</map>

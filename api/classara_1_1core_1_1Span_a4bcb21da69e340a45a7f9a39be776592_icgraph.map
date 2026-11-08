@@ -1,0 +1,13 @@
+<map id="ara::core::Span::begin" name="ara::core::Span::begin">
+<area shape="rect" id="Node000001" title=" " alt="" coords="324,106,487,131"/>
+<area shape="rect" id="Node000002" href="$classara_1_1per_1_1FileStorage.html#ad1e655324ab443c0c5ae7740e6dce284" title=" " alt="" coords="115,5,269,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,102,275,60,246,48,248,43,277,55,368,97"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1core_1_1detail.html#acd52031898653f353ec137df71f1a60a" title="Registers a hook (idempotent per name). Hooks run in registration order." alt="" coords="108,69,276,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="310,108,276,104,277,98,311,103"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Span.html#a16625ed358182824615b65f66b43d40f" title=" " alt="" coords="114,134,270,159"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="311,134,271,139,270,134,310,128"/>
+<area shape="rect" id="Node000006" href="$core__types__test_8cpp.html#a35df1d205bbf98e5e12d1357762d1eb7" title=" " alt="" coords="165,183,219,209"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="363,139,277,173,220,191,219,186,275,168,361,134"/>
+<area shape="rect" id="Node000004" href="$core__types__test_8cpp.html#add2fed9caa611d8b48616250157ec6a1" title=" " alt="" coords="5,77,60,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,92,60,92,60,87,94,87"/>
+</map>

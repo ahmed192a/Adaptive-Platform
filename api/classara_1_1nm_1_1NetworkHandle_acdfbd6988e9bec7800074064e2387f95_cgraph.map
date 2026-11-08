@@ -1,0 +1,9 @@
+<map id="ara::nm::NetworkHandle::GetNetworkRequestedState" name="ara::nm::NetworkHandle::GetNetworkRequestedState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,216,109"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="282,5,418,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,67,268,44,269,50,187,72"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="282,69,418,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,87,268,87,268,92,216,92"/>
+<area shape="rect" id="Node000004" href="$classara_1_1nm_1_1internal_1_1PortRegistry.html#a652e55f9a0fa4d3f31459793f12c3853" title="All live channels bound to the port (several channels are aggregated, SWS_ANM_00083/00084)." alt="" coords="264,133,436,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="187,107,262,127,261,132,186,112"/>
+</map>

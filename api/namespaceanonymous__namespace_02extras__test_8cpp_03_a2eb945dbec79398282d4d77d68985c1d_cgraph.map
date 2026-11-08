@@ -1,0 +1,32 @@
+<map id="anonymous_namespace{extras_test::cpp}::TEST" name="anonymous_namespace{extras_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,160,188,200"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1SecretKey.html#a8a778d61b17062c585c9cb1cda69f6a6" title=" " alt="" coords="243,72,409,112"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,157,235,123,257,114,259,119,237,128,149,162"/>
+<area shape="rect" id="Node000009" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a1eea06f48bd3eee220ae2c10e999c325" title=" " alt="" coords="236,241,416,281"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="155,198,257,234,255,239,153,203"/>
+<area shape="rect" id="Node000010" href="$namespaceara_1_1crypto.html#ab9724c5e7f26e7ac7e1d43165d83b3a8" title=" " alt="" coords="239,138,413,163"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="188,166,225,161,226,166,189,171"/>
+<area shape="rect" id="Node000012" href="$namespaceara_1_1crypto.html#a807b8982d6e5ef1493f00f000a63bea6" title="RFC 3394." alt="" coords="247,191,405,217"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="189,187,233,192,233,197,188,192"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#ae0bd797acf0d62500a3cdc76d104d79c" title=" " alt="" coords="464,19,679,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="405,69,463,55,502,45,503,50,465,60,406,75"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="489,69,654,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="409,88,475,88,475,93,409,94"/>
+<area shape="rect" id="Node000008" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="484,134,659,159"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="409,108,501,128,500,134,408,113"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="727,5,889,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="645,67,720,46,721,51,647,72"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="727,69,889,109"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="655,87,713,87,713,92,655,92"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="727,133,889,173"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="647,107,721,127,720,132,645,112"/>
+<area shape="poly" id="edge10_Node000010_Node000004" title=" " alt="" coords="377,135,477,110,478,115,378,141"/>
+<area shape="poly" id="edge11_Node000010_Node000008" title=" " alt="" coords="414,147,470,146,470,151,414,152"/>
+<area shape="rect" id="Node000011" href="$classara_1_1crypto_1_1SecretKey.html#a730875eeb7b62dde79c743dc5678b6e5" title=" " alt="" coords="489,184,654,224"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="386,161,476,181,475,186,385,166"/>
+<area shape="poly" id="edge16_Node000012_Node000011" title=" " alt="" coords="405,201,475,201,475,207,405,207"/>
+<area shape="rect" id="Node000013" href="$structara_1_1crypto_1_1KeyAccess.html#a9a811db06bcea043ad20fa9debe17522" title=" " alt="" coords="487,248,656,288"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="377,214,481,242,480,247,375,219"/>
+<area shape="rect" id="Node000014" href="$classara_1_1crypto_1_1SecretKey.html#a28000741ac51d93a4177224afc85c401" title=" " alt="" coords="489,312,654,352"/>
+<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="394,214,418,227,434,245,443,264,450,281,466,298,478,305,475,310,462,302,446,284,438,266,430,248,414,231,391,219"/>
+</map>

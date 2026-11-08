@@ -1,0 +1,11 @@
+<map id="ara::log::detail::FormatErrorCode" name="ara::log::detail::FormatErrorCode">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,176,89"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1ErrorCode.html#aa452d9fe447a099f35a0ba71dfd9cd7e" title=" " alt="" coords="423,5,573,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,47,224,35,319,25,409,22,409,28,319,31,224,40,164,52"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1ErrorCode.html#a69e4dc8ebf4b79ef3f872f02d39c07af" title=" " alt="" coords="224,49,375,89"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,67,210,67,210,72,176,72"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1ErrorCode.html#a5bfb28af1c00fac9664644813f5db2c2" title=" " alt="" coords="423,81,573,121"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="162,87,224,99,319,105,409,104,409,109,319,110,224,104,161,92"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="374,50,409,42,410,48,375,55"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="375,79,410,84,409,90,374,84"/>
+</map>

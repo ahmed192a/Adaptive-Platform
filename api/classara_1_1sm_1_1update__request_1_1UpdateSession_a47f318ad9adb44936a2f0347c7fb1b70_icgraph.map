@@ -1,0 +1,24 @@
+<map id="ara::sm::update_request::UpdateSession::StopUpdateSession" name="ara::sm::update_request::UpdateSession::StopUpdateSession">
+<area shape="rect" id="Node000001" title="[SWS_SM_00205]" alt="" coords="561,254,823,294"/>
+<area shape="rect" id="Node000002" href="$namespaceap_1_1demo.html#aa008d60b80abe3ff12d61fa359adf852" title="Run one update; progress is printed to out unless options.quiet." alt="" coords="323,84,485,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="662,245,598,182,557,150,512,123,483,112,485,107,515,118,560,146,601,178,666,241"/>
+<area shape="rect" id="Node000005" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a37cfe1bfabe8cce065b2ca0957ce4b6e" title="[SWS_SM_00205]" alt="" coords="295,133,513,188"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="631,251,512,202,482,191,484,186,514,197,633,246"/>
+<area shape="rect" id="Node000007" href="$update__session__test_8cpp.html#abe25709cefa951ccd5d670df78761187" title=" " alt="" coords="377,212,431,237"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="560,254,431,232,432,227,561,249"/>
+<area shape="rect" id="Node000008" href="$update__session__test_8cpp.html#a71509fa5d602537ec3a92519d3dc861b" title=" " alt="" coords="377,261,431,287"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="547,277,431,277,431,271,547,271"/>
+<area shape="rect" id="Node000009" href="$update__session__test_8cpp.html#a5fa835d84c7fe63203541776e804bca7" title=" " alt="" coords="377,311,431,336"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="561,299,432,321,431,316,560,294"/>
+<area shape="rect" id="Node000010" href="$update__session__test_8cpp.html#a18fe8111ae7078fe31a8115c42d3eae3" title=" " alt="" coords="377,360,431,385"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="637,302,578,327,514,350,432,370,431,365,513,345,576,322,634,297"/>
+<area shape="rect" id="Node000011" href="$update__session__test_8cpp.html#accc773c32c9d1e9d66f38370855d2157" title=" " alt="" coords="377,409,431,435"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="660,305,595,354,556,379,514,400,472,414,432,422,431,416,470,409,512,396,553,375,592,350,657,301"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="454,75,451,71,443,67,404,63,374,65,358,70,355,75,363,82,359,86,350,76,355,66,373,59,404,57,444,62,455,67,458,73"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1anonymous__namespace_02dash__features_8cpp_03_1_1UpdateSim.html#a3dee4fb23da01d66811fadeb671984ef" title=" " alt="" coords="5,5,247,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="334,83,245,63,246,58,335,78"/>
+<area shape="rect" id="Node000004" href="$demo_2ota__updater_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="99,84,153,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="309,99,154,99,154,94,309,94"/>
+<area shape="rect" id="Node000006" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a49ae6571a4e635ae85ad4dffd346c1c0" title=" " alt="" coords="23,133,229,188"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="281,163,229,163,229,158,281,158"/>
+</map>

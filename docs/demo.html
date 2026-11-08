@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Demo: the Platform Console and the demo applications</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / docs</div><h1 id="demo-the-platform-console-and-the-demo-applications">Demo: the Platform Console and the demo applications</h1>
+<p>The console (<code>ap_dashboard</code>) is a small HTTP node that drives the <strong>real in-process <code>ara::</code> libraries</strong>
+and the real demo binaries. Nothing on screen is mocked.</p>
+<h2 id="run-it">Run it</h2>
+<pre><code class="language-bash">cmake --preset release &amp;&amp; cmake --build --preset release -j
+build/release/App/dashboard/ap_dashboard --port 8080 --data-dir /tmp/ap
+# open http://127.0.0.1:8080   (binds to loopback by default)
+</code></pre>
+<p>Useful flags: <code>--bind ADDR</code>, <code>--platform-dir DIR</code> (where <code>Adaptive_Platform</code> lives), <code>--demo-dir DIR</code>
+(where <code>&lt;name&gt;/&lt;name&gt;</code> demo binaries live; default <code>&lt;platform-dir&gt;/demo</code>), <code>--web-root DIR</code>.</p>
+<h2 id="cards">Cards</h2>
+<table>
+<thead>
+<tr>
+<th>Card</th>
+<th>Library behind it</th>
+<th>API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Execution Management, PHM, Diagnostics, Persistency, Crypto</td>
+<td><code>exec</code>, <code>phm</code>, <code>diag</code>, <code>per</code>, <code>crypto</code></td>
+<td><code>/api/em</code>, <code>/api/phm</code>, <code>/api/diag</code>, <code>/api/per</code>, <code>/api/crypto</code></td>
+</tr>
+<tr>
+<td>Network Management (3 virtual ECUs, partial networks, virtual clock)</td>
+<td><code>ara::nm</code></td>
+<td><code>/api/nm/{request,release,advance,reset}</code></td>
+</tr>
+<tr>
+<td>Time Synchronization (slew, step, rate correction, timeout)</td>
+<td><code>ara::tsync</code></td>
+<td><code>/api/tsync/{sync,advance,reset}</code></td>
+</tr>
+<tr>
+<td>Diagnostics lab (security access, routines, DTC memory)</td>
+<td><code>ara::diag</code> demo ECU</td>
+<td><code>/api/udsx/{request,unlock,fault,advance,reset}</code></td>
+</tr>
+<tr>
+<td>Software Update (block transfer, rollback, tamper)</td>
+<td><code>ara::ucm</code> + <code>ara::sm</code></td>
+<td><code>/api/update/run</code></td>
+</tr>
+<tr>
+<td>Key slots (generate, use, tamper, reload)</td>
+<td><code>ara::crypto</code> KeyStorageProvider</td>
+<td><code>/api/keys/*</code></td>
+</tr>
+<tr>
+<td>Demo applications launcher</td>
+<td>whitelisted binaries only</td>
+<td><code>/api/apps/run</code></td>
+</tr>
+</tbody>
+</table>
+<p>Every POST endpoint is unit tested in <code>Testing/dashboard</code>. The node is hardened: loopback by default, request body limit,
+no path traversal, and the launcher only runs a fixed whitelist of binaries with fixed argument sets.</p>
+<h2 id="record-the-demo">Record the demo</h2>
+<pre><code class="language-bash">build/release/App/dashboard/ap_dashboard --port 8099 --data-dir /tmp/ap &amp;
+pip install playwright imageio-ffmpeg          # plus a system Chrome/Chromium; ffmpeg on PATH
+python3 Tools/demo/record_demo.py --url http://127.0.0.1:8099 --out doc/img --gif
+</code></pre>
+<p>This regenerates the screenshots, <code>doc/img/platform-demo.mp4</code> (about 90 s with captions) and
+<code>doc/img/platform-demo.gif</code> (at most 8 MB). <code>--steps nm,tsync</code> runs a subset, <code>--list</code> shows the step names. The script
+asserts the behaviour of every step and exits non-zero if the platform misbehaves, so CI uses it as the end-to-end test.</p>
+<h2 id="rule-when-you-add-a-feature">Rule: when you add a feature</h2>
+<ol>
+<li>Add a <strong>card</strong> (HTML in <code>App/dashboard/web</code>, backend in <code>App/dashboard/dash_features.cpp</code>).</li>
+<li>Add <strong>one scenario step</strong> (a <code>step_*</code> function in <code>Tools/demo/record_demo.py</code>) that exercises it and asserts the outcome.</li>
+<li>Add <strong>one screenshot</strong> (<code>d.card("NN-name.png", "#cardX")</code>) and reference it in the README gallery.</li>
+<li>Add unit tests for the new endpoints, then re-record the demo.</li>
+</ol></div><footer>Adaptive Platform</footer></body></html>

@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,60,70"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1state__machine_1_1RecoveryHandler.html#aad7582e79f3a5db9beb10a772b3a53ec" title=" " alt="" coords="112,5,308,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,50,98,43,99,48,61,55"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1state__machine_1_1RecoveryHandler.html#adba046f47ffc4c1acd9d6251168999b9" title=" " alt="" coords="108,69,312,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,60,95,66,94,71,60,65"/>
+</map>

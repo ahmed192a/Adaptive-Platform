@@ -1,0 +1,15 @@
+<map id="ara::nm::NetworkHandle::GetNetworkState" name="ara::nm::NetworkHandle::GetNetworkState">
+<area shape="rect" id="Node000001" title="kFullCom iff the network is in Network Mode (RepeatMessage/NormalOperation/ReadySleep),..." alt="" coords="123,122,304,162"/>
+<area shape="rect" id="Node000002" href="$nm__gap__test_8cpp.html#ae347f5a37e9f03978b8ccd42e9dde6ed" title=" " alt="" coords="13,5,67,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,116,73,44,57,33,61,29,76,40,175,111"/>
+<area shape="rect" id="Node000003" href="$nm__spec__test_8cpp.html#a5abe0d01101f1d681cb872c72d2f581b" title=" " alt="" coords="13,55,67,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,119,66,81,69,76,155,114"/>
+<area shape="rect" id="Node000004" href="$nm__gap__test_8cpp.html#af67b17cb47628be4d494f11e99fde871" title=" " alt="" coords="5,104,75,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="108,129,75,124,75,119,109,124"/>
+<area shape="rect" id="Node000005" href="$nm__gap__test_8cpp.html#abe895511be8b9c6206384a750323c861" title=" " alt="" coords="5,153,75,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="109,159,75,164,75,159,108,154"/>
+<area shape="rect" id="Node000006" href="$nm__spec__test_8cpp.html#aaca60e6a4d1d5c7b386862d7297dfd0a" title=" " alt="" coords="5,203,75,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="154,170,72,205,70,200,152,165"/>
+<area shape="rect" id="Node000007" href="$nm__spec__test_8cpp.html#a48fb3b15d8c739e89e04dfff45e8b264" title=" " alt="" coords="5,252,75,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="174,172,61,254,58,250,171,168"/>
+</map>

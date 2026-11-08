@@ -1,0 +1,11 @@
+<map id="anonymous_namespace{log_test::cpp}::LogTest::SetUp" name="anonymous_namespace{log_test::cpp}::LogTest::SetUp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,40,185,95"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1log_1_1apext.html#a38cb4ad3a14a609f6919afbb2dbf3e46" title="Adds a sink (e.g. a capturing sink in tests). Not part of the AUTOSAR API." alt="" coords="241,5,419,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,46,255,31,256,36,186,51"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1log_1_1apext.html#a5083f4566b78f2e9fc4e3a79e6da8e3f" title=" " alt="" coords="233,55,427,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,65,220,65,220,70,186,70"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1core.html#aa955d443c5af12d3664c7c911e382a1f" title="Tear the runtime down (reverse order of Initialize())." alt="" coords="249,104,411,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,84,256,98,255,104,185,89"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Span.html#a260334aa0d529250e49339699d09fdda" title=" " alt="" coords="475,104,628,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="411,114,461,114,461,119,411,119"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="ara::diag::Monitor::ReportMonitorAction" name="ara::diag::Monitor::ReportMonitorAction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,169,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1DiagnosticServer.html#a138664716f1a8862cb97ae812c87159b" title="Event memory: report a DTC test result (ignored while 0x85 switched DTC setting off)." alt="" coords="217,5,416,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,23,204,23,204,28,170,28"/>
+<area shape="rect" id="Node000003" href="$classara_1_1diag_1_1DiagnosticServer.html#ac9fac7561e934c25871f8c5a3f560c78" title=" " alt="" coords="464,5,663,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="416,23,450,23,450,28,416,28"/>
+</map>

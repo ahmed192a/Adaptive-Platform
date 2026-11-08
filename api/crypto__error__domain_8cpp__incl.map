@@ -1,0 +1,32 @@
+<map id="src/ara/crypto/crypto_error_domain.cpp" name="src/ara/crypto/crypto_error_domain.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="273,5,429,45"/>
+<area shape="rect" id="Node000002" href="$crypto__error__domain_8h.html" title="ara::crypto::CryptoErrc / CryptoErrorDomain." alt="" coords="265,93,436,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="353,46,353,79,348,79,348,46"/>
+<area shape="rect" id="Node000003" href="$error__code_8h.html" title=" " alt="" coords="5,255,165,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,136,119,250,116,245,316,131"/>
+<area shape="rect" id="Node000004" href="$error__domain_8h.html" title=" " alt="" coords="289,328,468,353"/>
+<area shape="poly" id="edge9_Node000002_Node000004" title=" " alt="" coords="423,131,470,149,519,175,564,209,583,230,600,253,606,272,604,289,594,302,578,313,534,328,482,337,481,332,533,323,576,308,591,298,599,287,601,273,595,256,579,233,561,213,516,179,467,154,421,136"/>
+<area shape="rect" id="Node000009" href="$exception_8h.html" title=" " alt="" coords="273,181,428,207"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="353,134,353,167,348,167,348,134"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="133,277,319,322,317,327,132,283"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="169,401,236,427"/>
+<area shape="poly" id="edge8_Node000003_Node000005" title=" " alt="" coords="97,279,187,389,183,392,93,282"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="38,328,114,353"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="86,281,82,315,77,314,81,280"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="351,356,245,398,243,394,349,351"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="335,401,422,427"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="381,354,381,388,376,388,376,354"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="545,401,604,427"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="411,351,533,395,532,400,409,356"/>
+<area shape="poly" id="edge17_Node000009_Node000003" title=" " alt="" coords="309,209,142,254,141,248,307,204"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="304,209,264,227,245,240,230,256,213,288,205,324,202,358,203,387,197,388,197,358,200,323,209,286,226,253,242,236,261,223,302,204"/>
+<area shape="poly" id="edge15_Node000009_Node000007" title=" " alt="" coords="429,201,530,220,572,234,599,253,609,269,614,287,613,324,603,360,590,390,585,388,598,359,608,324,609,288,604,271,595,256,570,239,528,225,428,206"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="325,255,376,280"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="353,207,353,241,348,241,348,207"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="400,255,475,280"/>
+<area shape="poly" id="edge13_Node000009_Node000011" title=" " alt="" coords="366,205,414,244,411,248,363,209"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="499,255,586,280"/>
+<area shape="poly" id="edge14_Node000009_Node000012" title=" " alt="" coords="382,204,499,247,497,252,381,209"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="241,255,301,280"/>
+<area shape="poly" id="edge16_Node000009_Node000013" title=" " alt="" coords="340,209,296,248,292,244,336,205"/>
+</map>

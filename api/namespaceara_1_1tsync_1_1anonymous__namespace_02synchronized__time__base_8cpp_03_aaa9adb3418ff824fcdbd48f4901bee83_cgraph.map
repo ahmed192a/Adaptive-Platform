@@ -1,0 +1,9 @@
+<map id="ara::tsync::anonymous_namespace{synchronized_time_base::cpp}::EnsureObserver" name="ara::tsync::anonymous_namespace{synchronized_time_base::cpp}::EnsureObserver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,252,93"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="71,39,71,28,81,19,101,14,129,12,162,15,182,23,179,28,161,20,129,17,101,19,84,24,76,31,76,39"/>
+<area shape="rect" id="Node000002" href="$classara_1_1tsync_1_1SynchronizedTimeBaseStatus.html#afc85dccfb05a1648f3adc5fbf910e5c2" title=" " alt="" coords="300,5,563,60"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="252,50,286,46,287,51,252,55"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1tsync.html#aec8356265e026be72eea717fe5770013" title="Maps the internal flag mask to the exclusive SWS status." alt="" coords="611,46,823,86"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="252,68,300,69,563,69,597,68,597,73,563,74,300,74,252,73"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="563,45,597,49,597,55,563,51"/>
+</map>

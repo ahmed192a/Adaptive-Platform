@@ -1,0 +1,14 @@
+<map id="ara::diag::GenericDataIdentifier::Offer" name="ara::diag::GenericDataIdentifier::Offer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,232,141"/>
+<area shape="rect" id="Node000002" href="$classara_1_1diag_1_1GenericDataIdentifier.html#ab1b783d46596c8cf6d9ba58ebda63272" title="Return true when the DID is writable; Write() is then called by 0x2E." alt="" coords="280,5,507,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,99,279,55,304,47,305,52,281,60,167,104"/>
+<area shape="rect" id="Node000003" href="$classara_1_1diag_1_1GenericDataIdentifier.html#aa1ce2a211a32256b62940c9b627441fa" title=" " alt="" coords="280,69,507,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,105,266,101,267,107,233,111"/>
+<area shape="rect" id="Node000004" href="$classara_1_1diag_1_1DiagnosticServer.html#a82f35f3add07bccb1f8371a3b31241bd" title=" " alt="" coords="294,133,493,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="233,132,281,138,280,143,232,137"/>
+<area shape="rect" id="Node000006" href="$classara_1_1diag_1_1GenericDataIdentifier.html#ab7138ef877db8b289d6794be95ce6c6a" title=" " alt="" coords="280,197,507,237"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="167,139,281,183,305,191,304,196,279,188,165,144"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="555,165,691,205"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="493,165,541,171,541,177,492,170"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="506,199,541,194,541,199,507,204"/>
+</map>

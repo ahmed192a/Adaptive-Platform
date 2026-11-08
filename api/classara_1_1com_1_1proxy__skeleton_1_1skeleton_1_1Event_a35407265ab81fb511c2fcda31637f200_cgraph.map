@@ -1,0 +1,7 @@
+<map id="ara::com::proxy_skeleton::skeleton::Event::set_subscriber" name="ara::com::proxy_skeleton::skeleton::Event::set_subscriber">
+<area shape="rect" id="Node000001" title="Set the subscriber object." alt="" coords="5,5,192,60"/>
+<area shape="rect" id="Node000002" href="$classSubscriber.html#a2d1df203e9328d3743d9b70cf0098d4f" title=" " alt="" coords="240,20,371,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,30,227,30,227,35,192,35"/>
+<area shape="rect" id="Node000003" href="$classSubscriber.html#a278618480d9bbc5b5e9d5c38600bbbe8" title=" " alt="" coords="419,20,555,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="371,30,405,30,405,35,371,35"/>
+</map>

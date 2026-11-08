@@ -1,0 +1,5 @@
+<map id="CSV::write" name="CSV::write">
+<area shape="rect" id="Node000001" title="Function to write the service_info which was received from the server in a CSV File." alt="" coords="5,5,93,31"/>
+<area shape="rect" id="Node000002" href="$classCSV.html#acba77d3b664e91f6b9289ae5da9af3b5" title="Function to check if the received service_info already exists in the CSV file." alt="" coords="141,5,235,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,15,127,15,127,21,94,21"/>
+</map>

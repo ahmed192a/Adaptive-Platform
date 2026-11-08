@@ -1,0 +1,7 @@
+<map id="ara::ucm::pkgmgr::core::PackageManagerCore::Cancel" name="ara::ucm::pkgmgr::core::PackageManagerCore::Cancel">
+<area shape="rect" id="Node000001" title="[SWS_UCM_00234] OperationNotPermitted, [00235] InvalidTransferId." alt="" coords="108,16,287,71"/>
+<area shape="rect" id="Node000002" href="$ucm__core__test_8cpp.html#a9099f6076d321b307973eb97faf5b769" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,30,60,25,61,19,95,25"/>
+<area shape="rect" id="Node000003" href="$ucm__core__test_8cpp.html#ab14dabdcb7c577d6783b384c910e70ac" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,61,61,66,60,61,94,56"/>
+</map>

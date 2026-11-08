@@ -1,0 +1,9 @@
+<map id="ara::per::OpenFileStorage" name="ara::per::OpenFileStorage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,192,38"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#ad085258bd3d47ca7b9926bc81dbb2f1c" title=" " alt="" coords="240,13,456,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,23,226,23,226,28,192,28"/>
+<area shape="rect" id="Node000003" href="$structara_1_1per_1_1FsAccess.html#af88b38dd45b644b62c1b30421d8d7bef" title=" " alt="" coords="504,5,644,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="456,23,490,23,490,28,456,28"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="692,5,865,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="644,23,678,23,678,28,644,28"/>
+</map>

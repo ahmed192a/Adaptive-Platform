@@ -1,0 +1,17 @@
+<map id="ara::per::ReadAccessor::GetSize" name="ara::per::ReadAccessor::GetSize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="697,69,868,109"/>
+<area shape="rect" id="Node000002" href="$classara_1_1per_1_1ReadAccessor.html#ab357d579e97c56f9b7d16a5d43872241" title=" " alt="" coords="461,5,631,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="694,68,620,48,621,43,696,63"/>
+<area shape="rect" id="Node000003" href="$classara_1_1per_1_1ReadAccessor.html#a05ad7729f821d87db78654fa9c5f09d6" title=" " alt="" coords="461,69,631,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="683,92,632,92,632,87,683,87"/>
+<area shape="rect" id="Node000008" href="$classara_1_1per_1_1ReadWriteAccessor.html#aadb293ea45c55b1583bb0c20b33b8f6e" title=" " alt="" coords="443,133,649,173"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="696,116,621,136,620,131,694,110"/>
+<area shape="rect" id="Node000004" href="$classara_1_1per_1_1ReadAccessor.html#a5bd39cf30ce5173fd6edfab683ab7a73" title=" " alt="" coords="224,37,395,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="446,79,395,72,395,66,447,73"/>
+<area shape="rect" id="Node000006" href="$classara_1_1per_1_1ReadAccessor.html#ab4f856fc169b14ac6dff6f80eb5cc6bd" title=" " alt="" coords="224,101,395,141"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="447,105,395,112,395,107,446,100"/>
+<area shape="rect" id="Node000005" href="$classara_1_1per_1_1ReadAccessor.html#a70bc59d962f5f5132a7195dbbbedcca9" title=" " alt="" coords="5,37,176,77"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="210,60,176,60,176,55,210,55"/>
+<area shape="rect" id="Node000007" href="$classara_1_1per_1_1ReadAccessor.html#a238049c37a6427d4b7bb531c5e508a74" title=" " alt="" coords="5,101,176,141"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="210,124,176,124,176,119,210,119"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="ara::ucm::pkgmgr::core::PackageManagerCore::History" name="ara::ucm::pkgmgr::core::PackageManagerCore::History">
+<area shape="rect" id="Node000001" title="GetHistory: every state&#45;changing operation, oldest first." alt="" coords="108,16,287,71"/>
+<area shape="rect" id="Node000002" href="$ucm__core__hooks__test_8cpp.html#a6d288eacf2e6d258a93adadf739cfb4b" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,30,60,25,61,19,95,25"/>
+<area shape="rect" id="Node000003" href="$ucm__core__hooks__test_8cpp.html#a8c434d634e43a0f7fa6e5d62f2c2142f" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,61,61,66,60,61,94,56"/>
+</map>

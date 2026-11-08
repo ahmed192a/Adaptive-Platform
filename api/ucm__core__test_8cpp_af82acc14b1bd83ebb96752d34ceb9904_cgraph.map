@@ -1,0 +1,15 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,100,60,125"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#aa144335cdee6596c14c198951b1a469a" title="ProcessSwPackage entry checks: [00218] InvalidTransferId, [00017] ServiceBusy, [00219] OperationNotPe..." alt="" coords="109,25,287,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,101,109,82,111,87,61,106"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02ucm__core__test_8cpp_03.html#a4f5f2c7aeac458a8e70b0ed8daa894de" title=" " alt="" coords="108,124,288,179"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="61,116,95,124,94,130,60,121"/>
+<area shape="rect" id="Node000003" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a9900209d243b182bccef73a1608a045c" title=" " alt="" coords="336,5,515,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="287,42,322,39,322,44,288,47"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ad576575f6ec3a029459a5540a8dc9a97" title="Checks in the order of the SWS (00208, 00203, 00204, 00243, 00205)." alt="" coords="336,84,515,139"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="288,133,322,127,323,132,289,138"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a193b8a198cde01925f64b9366d52c149" title="[SWS_UCM_00148] OperationNotPermitted, [00212] InvalidTransferId, [00087] InsufficientData; success s..." alt="" coords="336,163,515,217"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="289,164,323,170,322,175,288,169"/>
+<area shape="rect" id="Node000007" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a14f004a851d15b2c23406ae99b889850" title="[SWS_UCM_00140] InsufficientMemory when the package cannot be stored." alt="" coords="336,241,515,296"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="247,177,337,226,351,233,348,238,335,231,244,181"/>
+</map>

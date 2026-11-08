@@ -1,0 +1,27 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,252,120,277"/>
+<area shape="rect" id="Node000001" href="$classara_1_1core_1_1Exception.html" title=" " alt="" coords="168,252,319,277"/>
+<area shape="poly" id="edge73_Node000000_Node000001" title=" " alt="" coords="134,262,168,262,168,267,134,267"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1ComException.html" title=" " alt="" coords="379,5,561,31"/>
+<area shape="poly" id="edge74_Node000001_Node000002" title=" " alt="" coords="249,237,263,194,287,140,320,86,341,61,365,40,385,28,388,33,368,44,345,65,325,89,291,143,268,196,254,239"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1CoreException.html" title=" " alt="" coords="379,55,561,80"/>
+<area shape="poly" id="edge75_Node000001_Node000003" title=" " alt="" coords="253,238,270,204,294,164,326,123,365,89,388,78,390,82,368,94,330,127,299,167,275,207,258,241"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1FutureException.html" title=" " alt="" coords="374,104,566,129"/>
+<area shape="poly" id="edge76_Node000001_Node000004" title=" " alt="" coords="259,239,303,188,333,161,365,138,392,127,394,132,368,143,336,165,307,191,263,243"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1CryptoException.html" title=" " alt="" coords="367,153,573,179"/>
+<area shape="poly" id="edge77_Node000001_Node000005" title=" " alt="" coords="271,242,315,214,366,188,400,176,402,181,368,192,317,218,274,246"/>
+<area shape="rect" id="Node000006" href="$classara_1_1diag_1_1DiagException.html" title=" " alt="" coords="379,203,561,228"/>
+<area shape="poly" id="edge78_Node000001_Node000006" title=" " alt="" coords="315,246,410,225,411,231,316,252"/>
+<area shape="rect" id="Node000007" href="$classara_1_1exec_1_1ExecException.html" title="ExecException Defines a class for exceptions to be thrown by the Execution Management." alt="" coords="379,252,561,277"/>
+<area shape="poly" id="edge79_Node000001_Node000007" title=" " alt="" coords="333,262,378,262,378,267,333,267"/>
+<area shape="rect" id="Node000008" href="$classara_1_1log_1_1LogException.html" title=" " alt="" coords="387,301,553,327"/>
+<area shape="poly" id="edge80_Node000001_Node000008" title=" " alt="" coords="316,278,411,299,410,304,315,283"/>
+<area shape="rect" id="Node000009" href="$classara_1_1nm_1_1NmException.html" title=" " alt="" coords="387,351,553,376"/>
+<area shape="poly" id="edge81_Node000001_Node000009" title=" " alt="" coords="275,283,318,310,368,336,405,348,404,353,366,340,315,315,272,288"/>
+<area shape="rect" id="Node000010" href="$classara_1_1per_1_1PerException.html" title=" " alt="" coords="387,400,553,425"/>
+<area shape="poly" id="edge82_Node000001_Node000010" title=" " alt="" coords="264,287,308,337,336,363,368,385,397,397,395,402,365,390,333,367,304,341,260,290"/>
+<area shape="rect" id="Node000011" href="$classara_1_1phm_1_1PhmException.html" title=" " alt="" coords="379,449,561,475"/>
+<area shape="poly" id="edge83_Node000001_Node000011" title=" " alt="" coords="258,288,275,322,299,362,330,401,368,434,393,447,390,452,365,439,327,405,295,365,270,325,253,291"/>
+<area shape="rect" id="Node000012" href="$classara_1_1tsync_1_1TsyncException.html" title=" " alt="" coords="373,499,567,524"/>
+<area shape="poly" id="edge84_Node000001_Node000012" title=" " alt="" coords="254,290,268,333,292,386,325,439,345,463,368,484,390,496,387,501,365,488,341,467,321,442,287,388,264,335,249,292"/>
+</map>

@@ -1,0 +1,274 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::diag - conformance to AUTOSAR AP Diagnostics</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="aradiag-conformance-to-autosar-ap-diagnostics">ara::diag - conformance to AUTOSAR AP Diagnostics</h1>
+<h2 id="verification-basis-read-this-first">Verification basis (read this first)</h2>
+<ul>
+<li>Target release: <strong>R25-11</strong>. The R25-11 SWS PDF could not be fetched from the build environment (host not
+  allow-listed), and the R24-11 copy that could be reached returned only its front matter and table of contents.</li>
+<li>So <strong>requirement IDs and numeric values are not verified</strong> and none are quoted here. What <em>is</em> confirmed (R24-11
+  table of contents) is the <strong>class and function names</strong>: <code>Conversation</code>, <code>GenericUDSService</code>
+  (<code>HandleMessage</code>, <code>Offer</code>, <code>StopOffer</code>), <code>GenericDataIdentifier</code>, <code>DataTransfer*</code>, <code>GenericRoutine</code>
+  (<code>Offer</code>, <code>Start</code>, <code>Stop</code>, <code>RequestResults</code>, <code>StopOffer</code>), <code>Monitor</code> (<code>Offer</code>, <code>ReportMonitorAction</code>,
+  <code>StopOffer</code>), <code>DTCInformation</code>, <code>Event</code>, and the error enumerations <code>DiagErrc</code>, <code>DiagOfferErrc</code>,
+  <code>DiagReportingErrc</code>, <code>DiagUdsNrcErrc</code>.</li>
+<li><strong>Fallback to earlier releases</strong>: R22-11 (and the nearest reachable releases) SWS PDFs are also not on the
+  allow-list, and third-party Doxygen mirrors only list names without values. The gap work below therefore follows
+  ISO 14229-1 for service behaviour and the confirmed ara::diag class names for the API; no SWS requirement text
+  or numeric <code>DiagErrc</code> value was available to quote. Scope changes between releases are small for this cluster.</li>
+<li>UDS behaviour is checked against ISO 14229-1 knowledge, which is what the SWS defers to; status "Implemented"
+  below means "behaves as ISO 14229-1 describes and is covered by a test", not "SWS-certified".</li>
+</ul>
+<h2 id="what-aradiag-is-today">What ara::diag is today</h2>
+<p><code>DiagnosticServer</code> is a <strong>transport-independent UDS engine</strong> (call <code>Dispatch(request, Addressing)</code> from DoIP/ISO-TP).
+<code>diag_facade.h</code> adds pragmatic counterparts of the SWS classes (<code>Conversation</code>, <code>GenericUDSService</code>,
+<code>GenericRoutine</code>, <code>GenericDataIdentifier</code>, <code>Monitor</code>) on top of it, using <code>ara::core::Result</code> and byte vectors
+rather than the SWS <code>Future</code>/<code>OperationOutput</code> signatures. <code>App/demo/uds_tester</code> drives the whole server through
+a scripted session (see the demo section).</p>
+<h2 id="service-status-iso-14229-1">Service status (ISO 14229-1)</h2>
+<table>
+<thead>
+<tr>
+<th>SID</th>
+<th>Service</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x10</td>
+<td>DiagnosticSessionControl</td>
+<td>Implemented</td>
+<td>default/programming/extended, P2/P2* in response, S3 timeout, relocks security on change</td>
+</tr>
+<tr>
+<td>0x11</td>
+<td>ECUReset</td>
+<td>Implemented</td>
+<td>sub 0x01-0x05 via reset handler; 0x04 (enableRapidPowerShutDown) returns powerDownTime; session falls back to default afterwards</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>ClearDiagnosticInformation</td>
+<td>Partial</td>
+<td>0xFFFFFF, one exact DTC, or a group registered with <code>RegisterDtcGroup</code>; no memory selection</td>
+</tr>
+<tr>
+<td>0x19</td>
+<td>ReadDTCInformation</td>
+<td>Partial</td>
+<td>sub 0x01, 0x02, 0x03, 0x04, 0x06, 0x0A; no severity (0x07/0x08) and other subs -&gt; 0x12</td>
+</tr>
+<tr>
+<td>0x22</td>
+<td>ReadDataByIdentifier</td>
+<td>Implemented</td>
+<td>multi-DID; answers the supported DIDs, 0x31 only if none is available</td>
+</tr>
+<tr>
+<td>0x27</td>
+<td>SecurityAccess</td>
+<td>Implemented</td>
+<td>seed/key, sequence error, attempt counter, lockout delay; seed/key algorithm is user-provided</td>
+</tr>
+<tr>
+<td>0x2E</td>
+<td>WriteDataByIdentifier</td>
+<td>Implemented</td>
+<td>per-DID session mask, length check, security level</td>
+</tr>
+<tr>
+<td>0x31</td>
+<td>RoutineControl</td>
+<td>Implemented</td>
+<td>start/stop/requestResults, session + security gating</td>
+</tr>
+<tr>
+<td>0x3E</td>
+<td>TesterPresent</td>
+<td>Implemented</td>
+<td>sub 0x00 (and 0x80 suppress); keeps the S3 timer alive</td>
+</tr>
+<tr>
+<td>0x85</td>
+<td>ControlDTCSetting</td>
+<td>Implemented</td>
+<td>on/off freezes event-memory updates</td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>CommunicationControl</td>
+<td>Implemented</td>
+<td>sub 0-5 (4/5 need node id), communicationType validated, user handler; <code>RestrictBuiltinService</code> gates sessions</td>
+</tr>
+<tr>
+<td>0x23 / 0x3D</td>
+<td>Read/WriteMemoryByAddress</td>
+<td>Implemented</td>
+<td>addressAndLengthFormatIdentifier parsing, registered <code>MemoryRegion</code>s, session + security gating</td>
+</tr>
+<tr>
+<td>0x34 / 0x35 / 0x36 / 0x37</td>
+<td>RequestDownload/Upload, TransferData, RequestTransferExit</td>
+<td>Implemented</td>
+<td>block sequence counter with wrap (NRC 0x73), size checks, cancelled on session change</td>
+</tr>
+<tr>
+<td>0x38, 0x2A, 0x2C, 0x86, 0x87</td>
+<td>RequestFileTransfer, periodic DIDs, DynamicallyDefineDID, ResponseOnEvent, LinkControl</td>
+<td>Missing</td>
+<td>custom services can be added with <code>RegisterService</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="cross-cutting-behaviour">Cross-cutting behaviour</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SID validity (0x01-0x3E, 0x80-0xBE)</td>
+<td>Implemented</td>
+<td>invalid SIDs rejected at registration</td>
+</tr>
+<tr>
+<td>Unknown SID -&gt; NRC 0x11</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Wrong length -&gt; NRC 0x13, unknown sub-function -&gt; 0x12</td>
+<td>Implemented</td>
+<td>per built-in service</td>
+</tr>
+<tr>
+<td>Service/sub-function not in active session</td>
+<td>Implemented</td>
+<td>custom services, routines and built-ins restricted via <code>RestrictBuiltinService</code> -&gt; 0x7F</td>
+</tr>
+<tr>
+<td>suppressPositiveResponse</td>
+<td>Implemented</td>
+<td>never suppresses negative responses</td>
+</tr>
+<tr>
+<td>Functional addressing (suppress 0x11/0x12/0x31/0x7E/0x7F)</td>
+<td>Implemented</td>
+<td><code>Dispatch(request, Addressing::kFunctional)</code></td>
+</tr>
+<tr>
+<td>NRC 0x78 responsePending</td>
+<td>Implemented</td>
+<td>a handler returning 0x78 triggers <code>7F sid 78</code> on the response sink and a re-poll, bounded by <code>maxPendingRetries</code></td>
+</tr>
+<tr>
+<td>Concurrency</td>
+<td>Implemented</td>
+<td>mutex-protected registries; handlers run outside the lock</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sws-api-surface">SWS API surface</h2>
+<table>
+<thead>
+<tr>
+<th>SWS element</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Conversation</code>, <code>ConversationIdentifierType</code></td>
+<td>Partial</td>
+<td><code>diag_facade.h</code> <code>Conversation</code> wraps a server; signatures are pragmatic, not SWS <code>Future</code>-based</td>
+</tr>
+<tr>
+<td><code>GenericUDSService</code> (Offer/StopOffer/HandleMessage)</td>
+<td>Partial</td>
+<td><code>Offer</code>/<code>StopOffer</code> over <code>RegisterService</code>/<code>UnregisterService</code>; byte-vector signatures</td>
+</tr>
+<tr>
+<td><code>GenericDataIdentifier</code> / data-transfer classes</td>
+<td>Partial</td>
+<td>read/write DIDs plus <code>SetTransferHandler</code> for 0x34-0x37; no SWS <code>DataTransfer*</code> class hierarchy</td>
+</tr>
+<tr>
+<td><code>GenericRoutine</code></td>
+<td>Partial</td>
+<td>Offer/StopOffer lifecycle, start/stop/results; no routine-specific serialization</td>
+</tr>
+<tr>
+<td><code>Monitor</code>, <code>Event</code>, <code>DTCInformation</code></td>
+<td>Partial</td>
+<td><code>Monitor</code> with counter debounce (failed/passed thresholds, freeze, reset, fault detection counter -128..127), occurrence counter, snapshot and extended data; no time-based debouncing or aging</td>
+</tr>
+<tr>
+<td><code>DiagErrc</code> enumerators</td>
+<td>Partial</td>
+<td>names kAlreadyOffered/kConflict/kNotOffered/... are used; <strong>numeric values and domain id are implementation choices (Unverified)</strong>; <code>DiagOfferErrc</code>, <code>DiagReportingErrc</code>, <code>DiagUdsNrcErrc</code> do not exist yet</td>
+</tr>
+<tr>
+<td>Persistent DTC memory (via ara::per)</td>
+<td>Implemented</td>
+<td><code>MakePerDtcStorage(kvs)</code> saves after every change and reloads on start (<code>per_dtc_storage.h</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="remaining-gaps">Remaining gaps</h2>
+<ol>
+<li><code>DiagOfferErrc</code>, <code>DiagReportingErrc</code>, <code>DiagUdsNrcErrc</code> are not created: their enumerators and values could not be
+   verified and inventing them would be misleading. <code>DiagErrc</code> numeric values and domain id stay <strong>Unverified</strong>.</li>
+<li>SIDs 0x2A, 0x2C, 0x38, 0x86, 0x87 and ReadDTCInformation sub-functions beyond the six above (severity, mirror
+   memory, user-defined memory) are not implemented.</li>
+<li>DTC aging and debouncing state are not persisted; only status, occurrence counter, snapshots and extended data are.</li>
+<li>The facade uses <code>ara::core::Result</code> and byte vectors instead of the SWS <code>Future</code>, <code>OperationOutput</code> and
+   <code>MetaInfo</code> types.</li>
+<li>No ISO-TP / DoIP transport: <code>Dispatch</code> is the integration point.</li>
+</ol>
+<h2 id="known-deviations">Known deviations</h2>
+<ol>
+<li>Status-of-DTC availability mask is fixed (0x2B).</li>
+<li>Built-in SIDs cannot be overridden through <code>RegisterService</code> (returns <code>kAlreadyOffered</code>); use
+   <code>RestrictBuiltinService</code> to change which sessions may call one.</li>
+</ol>
+<h2 id="demo">Demo</h2>
+<p><code>App/demo/uds_tester</code> builds a small body-control ECU on top of the server and a tester that runs 35 checks:
+default session, identification DIDs, functional TesterPresent, extended session and write, security access
+(wrong key, then right key), routine, DTC count/list/snapshot/extended data/clear, memory read/write, firmware
+download with a block sequence error, communication control and reset. Run <code>uds_tester</code> for the trace, or
+<code>uds_tester --repl</code> to type hex requests (<code>f 3E 80</code> = functional, <code>wait 6000</code> advances the S3 clock).</p>
+<h2 id="tests">Tests</h2>
+<p><code>Testing/diag</code>: <code>ara_diag_ut</code> (existing 24 tests plus 21 gap tests: functional addressing, partial multi-DID,
+session restriction, ECUReset 4/5, CommunicationControl, memory access, download/upload with counter and session
+cancel, responsePending, DTC snapshot/extended/occurrence, group clear, persistent restart, codec, facade, monitor
+debounce) and <code>uds_tester_ut</code> (4 tests: the scripted session, hex parsing/description, S3 timeout).</p></div><footer>Adaptive Platform</footer></body></html>

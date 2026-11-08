@@ -1,0 +1,12 @@
+<map id="ara::phm::HealthMonitor::StopBackgroundEvaluation" name="ara::phm::HealthMonitor::StopBackgroundEvaluation">
+<area shape="rect" id="Node000001" title=" " alt="" coords="475,92,680,132"/>
+<area shape="rect" id="Node000002" href="$classara_1_1phm_1_1HealthMonitor.html#a9595a115fa56c11677c0cc46d1584456" title="Removes all configuration and state." alt="" coords="233,5,414,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="504,90,382,48,384,43,506,85"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2654c632043219fe1a9a9ad254da40f3" title=" " alt="" coords="5,35,172,75"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="460,101,172,67,172,62,461,96"/>
+<area shape="rect" id="Node000004" href="$classara_1_1phm_1_1HealthMonitor.html#a2a7ae97de4cdec1b0f6497232e6f702d" title="Starts a thread calling Evaluate(now) every period." alt="" coords="220,120,427,160"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="461,127,427,131,427,126,461,122"/>
+<area shape="rect" id="Node000005" href="$classara_1_1phm_1_1HealthMonitor.html#a555fa619689d0dbf068a5c1b9d3757b1" title=" " alt="" coords="233,184,414,224"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="517,140,428,175,392,186,390,181,426,169,516,135"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="219,41,173,47,172,42,218,36"/>
+</map>

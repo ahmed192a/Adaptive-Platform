@@ -1,0 +1,5 @@
+<map id="ara::com::SOMEIP_MESSAGE::Message::ValidateHeader" name="ara::com::SOMEIP_MESSAGE::Message::ValidateHeader">
+<area shape="rect" id="Node000001" title="Check the header against what a receiver must accept." alt="" coords="108,5,316,45"/>
+<area shape="rect" id="Node000002" href="$someip__message__test_8cpp.html#ac9ff93fe24f0aedb87a2f168eb096032" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="ara::com::helper::TtlTimer::countdown" name="ara::com::helper::TtlTimer::countdown">
+<area shape="rect" id="Node000001" title=" " alt="" coords="512,5,703,45"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1helper_1_1TtlTimer.html#a1620c04d90fab1ecd7929545e000620d" title="Set the TTL timer." alt="" coords="244,13,464,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="498,28,464,28,464,23,498,23"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1helper_1_1TtlTimer.html#a4757e83ed69036a40e19a9b71977d83c" title="Reset the TTL timer." alt="" coords="5,5,196,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="230,28,196,28,196,23,230,23"/>
+</map>

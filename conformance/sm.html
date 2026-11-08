@@ -1,0 +1,307 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::sm - conformance to AUTOSAR AP R25-11 (SWS State Management)</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="arasm-conformance-to-autosar-ap-r25-11-sws-state-management">ara::sm - conformance to AUTOSAR AP R25-11 (SWS State Management)</h1>
+<p>Audited against
+<a href="https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_SWS_StateManagement.pdf">AUTOSAR_AP_SWS_StateManagement.pdf (R25-11)</a>.</p>
+<p><strong>Verification limits.</strong> Only the first ~100 000 characters of the PDF could be read (chapters 1-7 and
+parts of 8). Method signatures, argument types and the <em>numeric</em> values of error codes (chapter 8/9) were
+not readable, so they are marked <em>Unverified</em>. Requirement ids below are copied from the text that was read;
+nothing was inferred.</p>
+<p>Status legend: <strong>Implemented</strong> (behaviour present and unit-tested), <strong>Partial</strong>, <strong>Missing</strong>,
+<strong>Deviation</strong> (present but different from the spec / obsolete), <strong>Unverified</strong> (cannot be confirmed from
+the readable text).</p>
+<h2 id="updaterequest-service-interface-sections-51-73">UpdateRequest service interface (sections 5.1, 7.3)</h2>
+<table>
+<thead>
+<tr>
+<th>Spec item</th>
+<th>Id</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RequestUpdateSession</code></td>
+<td>SWS_SM_00203</td>
+<td>Implemented</td>
+<td><code>UpdateSession::RequestUpdateSession</code></td>
+</tr>
+<tr>
+<td><code>kNotAllowedMultipleUpdateSessions</code> on a second request</td>
+<td>SWS_SM_00209</td>
+<td>Implemented</td>
+<td>tested, also under 16 racing threads</td>
+</tr>
+<tr>
+<td>Definition of an active session</td>
+<td>SWS_SM_00210</td>
+<td>Implemented</td>
+<td>active from a successful <code>RequestUpdateSession</code> until <code>StopUpdateSession</code></td>
+</tr>
+<tr>
+<td><code>PrepareUpdate</code></td>
+<td>SWS_SM_00206</td>
+<td>Partial</td>
+<td>session rules done; the function-group list is accepted but nothing is prepared (no call into Execution Management)</td>
+</tr>
+<tr>
+<td><code>VerifyUpdate</code></td>
+<td>SWS_SM_00207</td>
+<td>Partial</td>
+<td>same as above</td>
+</tr>
+<tr>
+<td><code>PrepareRollback</code></td>
+<td>SWS_SM_00208</td>
+<td>Partial</td>
+<td>same as above</td>
+</tr>
+<tr>
+<td><code>StopUpdateSession</code></td>
+<td>SWS_SM_00205</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td><code>kOperationRejected</code> outside an active session</td>
+<td>SWS_SM_00213</td>
+<td>Implemented</td>
+<td>enumerator added; <code>kRejected</code> kept as an alias with the same value</td>
+</tr>
+<tr>
+<td><code>ResetMachine</code></td>
+<td>SWS_SM_00202</td>
+<td>Partial</td>
+<td>accepted only inside an active session (the legacy doc comment says so; the R25-11 text for this id was not readable - <em>Unverified</em>). The restart itself is a handler (<code>SetResetHandler</code>) that the SM application has to install</td>
+</tr>
+<tr>
+<td>Persist the session status across a restart</td>
+<td>SWS_SM_00204</td>
+<td>Partial</td>
+<td><code>UpdateSession::Save/Load</code> exist and are tested; the SM application does not call them yet</td>
+</tr>
+<tr>
+<td><code>ResetMachineNotifier</code> field (default <code>kIdle</code>)</td>
+<td>SWS_SM_00211, SWS_SM_00212</td>
+<td>Missing</td>
+<td></td>
+</tr>
+<tr>
+<td>Reject Suspend-to-RAM during an active session (DRAFT)</td>
+<td>SWS_SM_00214</td>
+<td>Missing</td>
+<td>no S2R support</td>
+</tr>
+<tr>
+<td>Extra errors <code>kVerifyFailed</code>, <code>kPrepareFailed</code>, <code>kRollbackFailed</code></td>
+<td>-</td>
+<td>Deviation</td>
+<td>from an older SWS release; not in the R25-11 text that was read. Kept for compatibility</td>
+</tr>
+<tr>
+<td>Numeric error values (<code>kOperationRejected</code>, ...)</td>
+<td>-</td>
+<td>Unverified</td>
+<td>legacy values 5..9 kept</td>
+</tr>
+<tr>
+<td>Interface offered by the SM process</td>
+<td>-</td>
+<td>Missing</td>
+<td><code>App/SM</code> only offers the two TriggerIn services; the UpdateRequest skeleton is not instantiated there</td>
+</tr>
+</tbody>
+</table>
+<h2 id="state-machines-and-function-group-handling-sections-76-77">State machines and Function Group handling (sections 7.6, 7.7)</h2>
+<table>
+<thead>
+<tr>
+<th>Spec item</th>
+<th>Id</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request any Function Group state through <code>StateClient::SetState</code></td>
+<td>SWS_SM_00400</td>
+<td>Partial</td>
+<td><code>App/SM/state_manage.cpp</code> requests <code>MachineFG=Running</code>, <code>FG_1=on/off</code> - hard-coded</td>
+</tr>
+<tr>
+<td>Evaluate the returned <code>ExecErrc</code></td>
+<td>SWS_SM_00401</td>
+<td>Partial</td>
+<td>only "has value / has error" is printed; no per-error handling</td>
+</tr>
+<tr>
+<td><code>GetInitialMachineStateTransitionResult</code></td>
+<td>section 5.2</td>
+<td>Missing</td>
+<td>call is commented out in <code>StateManager::init</code></td>
+</tr>
+<tr>
+<td><code>StateMachineService::RequestTransition</code> and its errors (<code>kTransitionNotAllowed</code>, <code>kInvalidValue</code>, <code>kRecoveryTransitionOngoing</code>, <code>kOperationCanceled</code>, <code>kTransitionFailed</code>)</td>
+<td>SWS_SM_00600, 00603-00606, 00650</td>
+<td>Missing</td>
+<td>no configurable state-machine model</td>
+</tr>
+<tr>
+<td><code>StateMachineNotification</code></td>
+<td>SWS_SM_00665</td>
+<td>Missing</td>
+<td></td>
+</tr>
+<tr>
+<td>Offer / StopOffer timing</td>
+<td>SWS_SM_00618, 00619</td>
+<td>Missing</td>
+<td></td>
+</tr>
+<tr>
+<td>Valid request aborts the running ActionList</td>
+<td>SWS_SM_00607</td>
+<td>Missing</td>
+<td></td>
+</tr>
+<tr>
+<td>Minimum states per StateMachine (Initial, Off, PrepareUpdate, VerifyUpdate, PrepareRollback) and the configuration constraints</td>
+<td>section 7.7.1, SWS_SM_CONSTR_00011/13/17/18/24/31</td>
+<td>Missing</td>
+<td>SM has one fixed FSM (<code>STATE_INITIAL/RUNNING/UPDATE</code>)</td>
+</tr>
+<tr>
+<td><code>RecoveryHandler</code> returning <code>kSMCanNotHandleRecovery</code> for an unknown Function Group</td>
+<td>SWS_SM_00030, 00031</td>
+<td>Missing in <code>ara::sm</code></td>
+<td>the dashboard node (<code>App/dashboard</code>) implements such a handler for its own workers</td>
+</tr>
+<tr>
+<td>NetworkHandle integration (<code>FullCom</code> / <code>NoCom</code> triggering transitions, <code>SetNetworkHandle</code>)</td>
+<td>SWS_SM_00620, 00621</td>
+<td>Missing</td>
+<td><code>ara::nm</code> now exists but is not wired into SM</td>
+</tr>
+<tr>
+<td>Suspend-to-RAM: <code>S2RHub</code>, <code>S2RSatellite</code> (DRAFT)</td>
+<td>SWS_SM_00701-00716</td>
+<td>Missing</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="legacy-services-that-are-not-in-the-r25-11-text">Legacy services that are not in the R25-11 text</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TriggerIn</code> (UCM_State, OTA_State), <code>TriggerOut</code>, <code>TriggerInOut</code></td>
+<td>Deviation</td>
+<td>not mentioned anywhere in the readable R25-11 text; used by the OTA/UCM demo to tell SM when to run an update. Kept</td>
+</tr>
+<tr>
+<td><code>DiagnosticReset</code></td>
+<td>Deviation</td>
+<td>the R24-11 change history says support was removed</td>
+</tr>
+<tr>
+<td><code>PowerMode</code></td>
+<td>Deviation</td>
+<td>R25-11 describes <code>apext::sm::PowerStateInterface</code> (Annex C) instead - <em>Unverified</em>, only the table of contents was visible</td>
+</tr>
+<tr>
+<td><code>ComMode</code></td>
+<td>Deviation</td>
+<td>the spec uses NetworkHandle states <code>NoCom</code> / <code>FullCom</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-changed-in-this-audit">What changed in this audit</h2>
+<ul>
+<li><code>ara/sm/update_request/update_session.h</code> - the session rules, thread-safe, unit-tested (12 tests in
+  <code>Testing/sm</code>).</li>
+<li><code>updaterequest_skeleton.h</code> previously could not link (an undefined <code>static activeSession</code>, undeclared
+  bodies for <code>VerifyUpdate</code>/<code>PrepareRollback</code>, a reference to a non-existent <code>StateManager::EM</code>) and its
+  <code>ResetMachine</code> could never succeed. It now delegates to <code>UpdateSession</code> and is compile/link-checked by a
+  test.</li>
+<li><code>kOperationRejected</code> added to <code>errorDomains</code>.</li>
+</ul>
+<h2 id="suggested-next-steps">Suggested next steps</h2>
+<ol>
+<li>Instantiate the UpdateRequest skeleton in <code>App/SM</code>, install a reset handler, call <code>Save/Load</code> at start-up.</li>
+<li>Replace the hard-coded FSM by a configurable StateMachine model and <code>RequestTransition</code>.</li>
+<li>Read chapters 8/9 of the PDF (needs a full copy of the document) to confirm signatures and error values.</li>
+</ol>
+<h2 id="gap-closure-featuregap-com-sm-ucm">Gap closure (feature/gap-com-sm-ucm)</h2>
+<p>Verified against R25-11 where readable, otherwise R22-11 / R24-11. Numeric values and signatures remain
+<em>Unverified</em>. Tests: <code>Testing/sm/state_machine_test.cpp</code> (24 tests; 36 in the cluster).</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configurable StateMachine model, <code>RequestTransition</code></td>
+<td>Implemented</td>
+<td><code>ara/sm/state_machine/state_machine.h</code>; errors kTransitionNotAllowed, kInvalidValue, kRecoveryTransitionOngoing, kOperationCanceled, kTransitionFailed (00600, 00603-00607, 00650). Superseded requests are cancelled by a generation counter</td>
+</tr>
+<tr>
+<td>Initial state + <code>GetInitialMachineStateTransitionResult</code></td>
+<td>Implemented</td>
+<td><code>StateManager::Start</code></td>
+</tr>
+<tr>
+<td>RecoveryHandler</td>
+<td>Implemented</td>
+<td>register/handle per function group, kSMCanNotHandleRecovery (00030, 00031)</td>
+</tr>
+<tr>
+<td>NetworkHandle integration</td>
+<td>Implemented</td>
+<td><code>NetworkHandleBridge</code> maps machine states to kNoCom/kFullCom (00620, 00621)</td>
+</tr>
+<tr>
+<td>UpdateRequest &lt;-&gt; UCM</td>
+<td>Implemented</td>
+<td>UCM <code>UpdateHooks</code> drive <code>UpdateSession</code>; used by the <code>ota_updater</code> demo</td>
+</tr>
+</tbody>
+</table>
+<p>Still missing: instantiating the UpdateRequest skeleton in <code>App/SM</code> as a SOME/IP service, ResetMachineNotifier,
+suspend-to-RAM (S2R). Shutdown after an OTA reset stays opt-in via <code>AP_SM_SHUTDOWN_ON_OTA=1</code>.</p></div><footer>Adaptive Platform</footer></body></html>

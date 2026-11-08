@@ -1,0 +1,18 @@
+<map id="App/demo/ota_updater/main.cpp" name="App/demo/ota_updater/main.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="251,5,421,45"/>
+<area shape="rect" id="Node000002" href="$ota__updater_8h.html" title="Demo application: a complete software update driven through the UCM PackageManagement rules (ara::ucm..." alt="" coords="153,93,263,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="306,48,240,88,237,84,304,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="272,167,331,192"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="334,46,310,154,304,152,329,45"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="339,93,405,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="347,44,363,79,358,82,342,47"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="429,93,509,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="369,43,439,84,437,89,367,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,72,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="182,121,80,164,78,159,180,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="96,167,160,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="197,121,153,160,149,156,193,117"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="225,117,277,156,274,160,221,121"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="185,167,247,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="212,119,216,153,211,153,207,119"/>
+</map>

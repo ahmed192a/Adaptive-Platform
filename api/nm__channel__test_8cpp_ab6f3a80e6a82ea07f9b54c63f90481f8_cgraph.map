@@ -1,0 +1,11 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,75,74"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02nm__channel__test_8cpp_03.html#add418bcf14a275d5de68f2bb828ebae3" title=" " alt="" coords="123,5,333,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,52,110,45,111,51,75,57"/>
+<area shape="rect" id="Node000003" href="$structanonymous__namespace_02nm__channel__test_8cpp_03_1_1Fx.html#aeb4c94e3b2b110fc2758dc0e7e808bca" title=" " alt="" coords="138,70,318,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="75,65,125,75,124,80,74,70"/>
+<area shape="rect" id="Node000004" href="$classara_1_1nm_1_1NmChannel.html#a5a8012f64056de7224a7708ea78d2ee3" title="Fails with kInvalidConfig when a timer is zero. Starts in BusSleep." alt="" coords="381,77,537,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="318,95,368,95,368,100,318,100"/>
+<area shape="rect" id="Node000005" href="$structara_1_1nm_1_1NmPduLayout.html#aaff681d2cba1e8d2098fd90acaf971cc" title="True if the layout is consistent (positions in range, no overlap, PNI needs a CBV)." alt="" coords="585,77,756,117"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="538,95,572,95,572,100,538,100"/>
+</map>

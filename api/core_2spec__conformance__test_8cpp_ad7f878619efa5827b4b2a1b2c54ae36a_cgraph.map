@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,60,56"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1core.html#a66a1844ac65bd391431146ffe1086387" title="Prints text to stderr, runs the abort handler (if any) and terminates the process." alt="" coords="144,5,267,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,37,130,26,131,32,61,42"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1core.html#ae7ba4c4f43f5b318edb237f9de634da7" title="Installs a handler (nullptr restores the default); returns the previous one. Thread&#45;safe." alt="" coords="108,55,303,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,44,101,50,100,55,60,50"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="src/ara/core/map.h" name="src/ara/core/map.h">
+<area shape="rect" id="Node000001" title="ara::core::Map (SWS_CORE_01400) &#45;&gt; std::map" alt="" coords="71,5,213,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,92,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,33,76,72,73,68,125,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="117,79,167,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,31,145,65,139,65,139,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="191,79,269,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="158,29,207,68,203,72,154,33"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,199,75,225"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="179,5,315,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="42,198,51,169,66,130,89,90,121,55,142,42,164,34,166,39,144,47,124,59,94,93,71,132,56,170,47,200"/>
+<area shape="rect" id="Node000003" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html#ac6b62853343b6b60a12142c48244e2bd" title=" " alt="" coords="157,70,337,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="50,197,80,165,121,134,143,123,145,128,124,138,84,169,54,201"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#ab79639ba60e01930a3d9340ad43f1391" title="SWS_TS_00800/00803: kFunctionNotSupported for a system&#45;wide global time master base,..." alt="" coords="123,149,371,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="75,203,109,197,110,203,75,209"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1TimeBaseProvider.html#a69547d803da789905d717d80249694be" title="Simulates the sync daemon: record a precision measurement with the given path delay and deliver it to..." alt="" coords="135,228,358,268"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="75,215,122,224,122,229,75,221"/>
+<area shape="rect" id="Node000008" href="$namespaceanonymous__namespace_02tsync__gap__test_8cpp_03.html#a92784b631788a06672efee80ab002ad7" title=" " alt="" coords="155,292,338,332"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="55,223,85,251,124,278,143,286,141,291,121,282,81,255,51,227"/>
+<area shape="rect" id="Node000009" href="$classara_1_1tsync_1_1TimeBaseProvider.html#a017a9e66936018591646f26e1fd8145a" title="Provide a new synchronized time. rateDeviation of the local clock vs. the master." alt="" coords="140,356,353,396"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="48,224,74,281,96,314,124,342,132,347,129,351,121,346,92,318,69,284,43,226"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="457,124,593,164"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="371,159,443,151,444,156,371,164"/>
+<area shape="rect" id="Node000006" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="419,188,632,228"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="371,188,405,192,405,197,371,193"/>
+</map>

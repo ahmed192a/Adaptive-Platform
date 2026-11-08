@@ -1,0 +1,24 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,198,60,223"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02main_8cpp_03.html#a03f9a1d32c0a1586611f00d9ef094198" title=" " alt="" coords="127,5,307,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="34,197,41,168,55,130,76,90,106,55,114,50,117,54,110,59,81,93,60,132,47,170,39,198"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#af50bbb68e7bae435e3f1cff7965db96c" title=" " alt="" coords="111,69,324,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="39,196,65,158,84,137,106,119,117,113,119,118,110,124,88,141,70,161,44,199"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1TimeBaseResource.html#a81fb2b3d04fdd4fd9766c3cb4f22d8e1" title=" " alt="" coords="108,133,327,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="59,200,139,175,140,180,61,205"/>
+<area shape="rect" id="Node000005" href="$namespaceanonymous__namespace_02main_8cpp_03.html#ac60e91c67a62db3550f703080ae62647" title=" " alt="" coords="408,184,588,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="60,208,394,203,394,208,60,213"/>
+<area shape="rect" id="Node000006" href="$namespaceanonymous__namespace_02main_8cpp_03.html#a18cefd6c70ead7255b9c908e0c27a711" title=" " alt="" coords="127,248,307,288"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="61,216,140,241,139,246,59,221"/>
+<area shape="rect" id="Node000010" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#a7a76b4dba08ae1e9eaf2b86202a9bfe3" title=" " alt="" coords="111,312,324,352"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="44,222,70,260,88,280,110,298,119,304,117,308,106,302,84,284,65,263,39,225"/>
+<area shape="rect" id="Node000011" href="$classara_1_1tsync_1_1TimeBaseProvider.html#a017a9e66936018591646f26e1fd8145a" title="Provide a new synchronized time. rateDeviation of the local clock vs. the master." alt="" coords="111,376,324,416"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="39,223,47,252,60,289,81,328,110,362,116,367,113,371,106,366,76,331,55,291,41,253,34,224"/>
+<area shape="poly" id="edge9_Node000006_Node000005" title=" " alt="" coords="305,245,396,224,397,230,306,251"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a14a65d129949695e442cb17f6d56f290" title="SWS_TS_14218: samples time + status atomically." alt="" coords="375,249,621,303"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="307,268,361,269,360,275,307,273"/>
+<area shape="rect" id="Node000009" href="$namespaceanonymous__namespace_02main_8cpp_03.html#a1f51eef98e05c518207d1809971597ae" title=" " alt="" coords="408,328,588,368"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="287,285,327,297,375,312,410,322,408,327,374,317,326,303,286,291"/>
+<area shape="rect" id="Node000008" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="669,256,883,296"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="622,273,656,273,656,279,622,279"/>
+</map>

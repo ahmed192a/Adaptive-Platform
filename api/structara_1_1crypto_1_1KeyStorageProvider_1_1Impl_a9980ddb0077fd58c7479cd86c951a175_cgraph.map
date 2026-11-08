@@ -1,0 +1,7 @@
+<map id="ara::crypto::KeyStorageProvider::Impl::Persist" name="ara::crypto::KeyStorageProvider::Impl::Persist">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,233,75"/>
+<area shape="rect" id="Node000002" href="$structara_1_1crypto_1_1KeyStorageProvider_1_1Impl.html#adbd5f5488c1fee2e4e898f94bf5ffec4" title=" " alt="" coords="281,5,509,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,40,267,36,268,42,234,45"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#a4ea4b377692218936d9a296d18e79381" title="Generates a random nonce: output = nonce(12) || ciphertext || tag." alt="" coords="315,70,476,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="234,64,301,71,301,76,233,69"/>
+</map>

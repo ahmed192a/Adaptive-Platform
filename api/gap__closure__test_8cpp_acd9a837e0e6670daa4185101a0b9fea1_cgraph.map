@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,60,70"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1exec.html#a5ca1981ef818d0f3644e54de0b1c3bbb" title="Formats one execution&#45;error line." alt="" coords="108,5,307,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,50,94,43,95,49,61,55"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1exec.html#a44a1bfe08a99228cf66b79f9ed8ec23f" title="Parses a line WITHOUT its trailing newline; nullopt when malformed." alt="" coords="114,69,301,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,60,101,67,100,72,60,65"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ara::phm::ElementarySupervision::Activate" name="ara::phm::ElementarySupervision::Activate">
+<area shape="rect" id="Node000001" title="(Re&#45;)start supervising at now; status becomes kOK." alt="" coords="108,5,347,45"/>
+<area shape="rect" id="Node000002" href="$phm_2spec__conformance__test_8cpp.html#a0a139bd8c8dd1900b495d1d811a77883" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

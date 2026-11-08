@@ -1,0 +1,15 @@
+<map id="anonymous_namespace{extras_test::cpp}::TEST" name="anonymous_namespace{extras_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,119,188,159"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#afdfe3e901f88bdc562b7102a696252e9" title=" " alt="" coords="236,5,453,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,117,170,78,235,41,258,32,260,37,237,46,173,83,123,121"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02extras__test_8cpp_03.html#a1eea06f48bd3eee220ae2c10e999c325" title=" " alt="" coords="255,55,435,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,117,253,96,254,101,176,122"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1crypto_1_1cryp.html#ae80a1ec720700ae7eb3db00993448de0" title="SWS factory function. Always succeeds for the built&#45;in provider." alt="" coords="269,119,420,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,137,256,137,256,142,188,142"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1crypto_1_1cryp.html#ae8c7d7d73daddcd1304f8173fec735eb" title="SWS factory: a shared volatile key storage provider (persistent slots need KeyStorageProvider::Create..." alt="" coords="254,183,435,223"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="176,157,254,177,253,182,174,162"/>
+<area shape="rect" id="Node000007" href="$namespaceara_1_1crypto_1_1cryp.html#a96090f58b84f86bdead54a372880d3b6" title="SWS factory: the shared X.509 provider (trust anchors + chain validation)." alt="" coords="275,247,415,287"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="124,157,174,195,237,233,263,244,261,248,235,238,171,200,120,162"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1KeyStorageProvider.html#aa2bced07570cbcd0070df3f1184135f1" title="Volatile provider: only non&#45;persistent slots." alt="" coords="501,183,729,223"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="436,201,488,201,488,206,436,206"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,163,75,189"/>
+<area shape="rect" id="Node000002" href="$classara_1_1tsync_1_1SynchronizedTimeBaseStatus.html#a59fc079eb1a42169aa71cfe479094017" title="RATE_EXCEEDED: |rate deviation| exceeds rateCorrectionThreshold; 0 disables (SWS_TS_14228)." alt="" coords="123,5,375,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="44,162,71,110,94,80,121,55,130,49,133,54,124,59,98,84,76,113,49,164"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a14a65d129949695e442cb17f6d56f290" title="SWS_TS_14218: samples time + status atomically." alt="" coords="125,70,372,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="64,161,122,134,140,127,142,132,124,138,66,166"/>
+<area shape="rect" id="Node000005" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html#ac6b62853343b6b60a12142c48244e2bd" title=" " alt="" coords="159,149,339,203"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="75,173,145,173,145,179,75,179"/>
+<area shape="rect" id="Node000006" href="$namespaceanonymous__namespace_02tsync__gap__test_8cpp_03.html#a92784b631788a06672efee80ab002ad7" title=" " alt="" coords="157,228,340,268"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="66,186,124,212,152,222,150,227,122,217,64,191"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1TimeBaseProvider.html#a017a9e66936018591646f26e1fd8145a" title="Provide a new synchronized time. rateDeviation of the local clock vs. the master." alt="" coords="142,292,355,332"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="50,187,78,232,99,257,124,278,134,284,131,288,121,282,95,261,74,235,45,190"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="423,77,636,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="372,95,409,95,409,100,372,100"/>
+</map>

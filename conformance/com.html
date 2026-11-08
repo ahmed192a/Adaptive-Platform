@@ -1,0 +1,381 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::com – conformance against AUTOSAR R25-11</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="aracom-conformance-against-autosar-r25-11">ara::com – conformance against AUTOSAR R25-11</h1>
+<p>Scope: the legacy <code>ara::com</code> cluster (<code>src/ara/com</code>): SOME/IP message, SOME/IP-SD message,
+entries/options, and the proxy/skeleton API. Audited on branch <code>feature/spec-com</code>.</p>
+<h2 id="sources-and-how-far-they-could-be-verified">Sources and how far they could be verified</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Used for</th>
+<th>Verification level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.autosar.org/fileadmin/standards/R25-11/FO/AUTOSAR_FO_PRS_SOMEIPProtocol.pdf">AUTOSAR_FO_PRS_SOMEIPProtocol (R25-11)</a></td>
+<td>header, message types, session ID</td>
+<td><strong>Verified</strong> against the PDF text (IDs below are quoted from it). The return-code table body ([PRS_SOMEIP_00191]) and the payload serialization chapter were <em>not</em> in the retrievable text.</td>
+</tr>
+<tr>
+<td><a href="https://www.autosar.org/fileadmin/standards/R25-11/FO/AUTOSAR_FO_PRS_SOMEIPServiceDiscoveryProtocol.pdf">AUTOSAR_FO_PRS_SOMEIPServiceDiscoveryProtocol (R25-11)</a></td>
+<td>SD header, entries, options, flags, reboot/session rules</td>
+<td><strong>Verified</strong>; the SD_PORT / multicast values (configuration chapter) were not retrievable.</td>
+</tr>
+<tr>
+<td><a href="https://www.autosar.org/fileadmin/standards/R24-11/AP/AUTOSAR_AP_SWS_CommunicationManagement.pdf">AUTOSAR_AP_SWS_CommunicationManagement (R24-11)</a></td>
+<td><code>ara::com</code> API names</td>
+<td><strong>Names only.</strong> The fetchable text contained the table of contents and traceability tables but not the chapter-8 signatures, and the R25-11 AP document was not reachable. API rows are therefore <em>by name</em> and carry no per-signature <code>SWS_CM_</code> IDs.</td>
+</tr>
+</tbody>
+</table>
+<p>Rule used: no requirement ID is cited unless it appeared in the retrieved text. "Unverified" means
+the spec body could not be read, not that the code is believed wrong.</p>
+<p>Status legend: <strong>Implemented</strong>, <strong>Fixed</strong> (deviation found and corrected in this branch, with a test),
+<strong>Partial</strong>, <strong>Deviation</strong> (known, not changed), <strong>Missing</strong>, <strong>Unverified</strong>.</p>
+<p>Tests: <code>Testing/COM</code> (<code>ctest -L com</code>, 20 tests). Expected byte strings are written out by hand from the
+spec, independent of the implementation.</p>
+<h2 id="someip-message-someipmessagehcpp">SOME/IP message (<code>SOMEIP/Message.{h,cpp}</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field order of the 16 byte header [PRS_SOMEIP_00031]</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>All fields big endian [PRS_SOMEIP_00368]</td>
+<td><strong>Fixed</strong></td>
+<td>Header was a packed bit-field struct memcpy'd in host (little-endian) order. Now encoded/decoded explicitly.</td>
+</tr>
+<tr>
+<td>Length = bytes from Request ID to end [PRS_SOMEIP_00042]</td>
+<td><strong>Fixed</strong></td>
+<td>Started at 16 and accumulated on every <code>SetPayload</code>; now <code>8 + payload</code> and replaced, not added. <code>Message::EmptyLength</code> exposes the constant; <code>SD_s/skeleton.cpp</code> (<code>Length() &gt; 16</code>) updated to use it.</td>
+</tr>
+<tr>
+<td>Protocol Version = 1 [PRS_SOMEIP_00051]</td>
+<td><strong>Fixed</strong> / Partial</td>
+<td>All senders used 2, 3 or 5; they now use <code>kProtocolVersion</code>. <code>ValidateHeader()</code> returns <code>E_WRONG_PROTOCOL_VERSION</code>, but the existing dispatchers do not call it yet.</td>
+</tr>
+<tr>
+<td>Interface Version = service major version [PRS_SOMEIP_00053]</td>
+<td>Deviation</td>
+<td>Senders hard-code 7 (and 4 for notifications). <code>InterfaceVersion()</code> returned the <em>protocol</em> version – <strong>fixed</strong>.</td>
+</tr>
+<tr>
+<td>Message types and values [PRS_SOMEIP_00055]</td>
+<td><strong>Fixed</strong></td>
+<td><code>TP_RESPONSE</code>/<code>TP_ERROR</code> were 0x23/0x24, now 0xA0/0xA1.</td>
+</tr>
+<tr>
+<td>TP flag / segmentation [PRS_SOMEIP_00367]</td>
+<td>Missing</td>
+<td>Only the enum values exist; no SOME/IP-TP segmentation or header.</td>
+</tr>
+<tr>
+<td>Return code table [PRS_SOMEIP_00191]</td>
+<td>Unverified</td>
+<td>Values 0x00–0x0F match the sequence of earlier PRS revisions; the R25-11 table body was not retrievable.</td>
+</tr>
+<tr>
+<td>Request → E_OK; ERROR ≠ E_OK [PRS_SOMEIP_00757]</td>
+<td>Partial</td>
+<td>Not enforced by the constructors.</td>
+</tr>
+<tr>
+<td>Session ID range 1..0xFFFF, wrap to 1 [PRS_SOMEIP_00933, 00521]</td>
+<td><strong>Fixed</strong></td>
+<td>Wrapped at 0xFF.</td>
+</tr>
+<tr>
+<td>Session ID 0 when session handling inactive / for REQUEST_NO_RETURN [PRS_SOMEIP_00932, 00939]</td>
+<td>Missing</td>
+<td>Not modelled.</td>
+</tr>
+<tr>
+<td>Session ID incremented per call, response matching [PRS_SOMEIP_00533, 00739]</td>
+<td>Deviation</td>
+<td>Proxies/skeletons use constant <code>Request_ID{5, 6}</code>; no matching of responses to requests.</td>
+</tr>
+<tr>
+<td>Method ID 0x0000–0x7FFF, event ID 0x8xxx (recommendation, [PRS_SOMEIP_00245])</td>
+<td>Implemented</td>
+<td><code>check_Methode_ID()</code>. One proxy call site masks the method id with <code>0x7F</code>, limiting methods to 128 per service.</td>
+</tr>
+<tr>
+<td>Consumers of the Length field (<code>sm::triggerin/triggerinout/triggerout</code>, <code>ucm::PackageManagementSkeleton</code>)</td>
+<td><strong>Fixed</strong></td>
+<td>They tested <code>Length() &gt; 16</code> (the old, wrong "empty message" value) to tell a field SET from a GET. With the spec value 8 + payload a one byte SET was treated as GET and silently dropped, so SM never saw <code>UCM_STATE_INITIALIZED</code> and the platform stalled. They now compare against <code>Message::EmptyLength</code>. Found by the end-to-end platform scenario, not by the unit tests.</td>
+</tr>
+<tr>
+<td>Malformed input handling</td>
+<td><strong>Fixed</strong></td>
+<td><code>Deserialize</code> memcpy'd without any size check. Now <code>TryDeserialize</code> (non-throwing) / <code>Deserialize</code> (throws <code>std::invalid_argument</code>) reject short buffers and Length/buffer mismatches.</td>
+</tr>
+<tr>
+<td>Payload serialization (<code>serializer.h</code>, <code>deserializer.h</code>, <code>marshal.h</code>)</td>
+<td>Deviation (not verified)</td>
+<td>Values are <code>memcpy</code>'d in host byte order; strings/vectors use a host-order <code>int</code> length prefix. The SOME/IP serialization chapter was not retrievable, and changing it alters every service payload, so it was left unchanged. Likely not wire-compatible with other SOME/IP stacks.</td>
+</tr>
+<tr>
+<td>E2E protection</td>
+<td>Missing</td>
+<td>Only the return-code enumerators exist.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="someip-sd-message-someipsomeipsdmessage-entry-option">SOME/IP-SD message (<code>SOMEIP/SomeipSDMessage.*</code>, <code>entry/</code>, <code>option/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Message ID 0xFFFF8100, client ID 0, versions 1/1, NOTIFICATION, E_OK [PRS_SOMEIPSD_00151, 00152, 00154, 00161–00164]</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Length field [PRS_SOMEIPSD_00153]</td>
+<td><strong>Fixed</strong></td>
+<td><code>Length()</code> used a wrong formula and the serialized header still carried the payload-less value (16). Now <code>8 + 4 + (4 + entries) + (4 + options)</code> and written to the wire.</td>
+</tr>
+<tr>
+<td>Flags byte: Reboot (bit 7), Unicast always 1, other bits 0; 24 reserved bits 0 [PRS_SOMEIPSD_00254, 00259, 00540, 00702, 00261]</td>
+<td><strong>Fixed</strong></td>
+<td>Code sent 0xE0/0x60, setting the <em>Explicit Initial Data Control</em> bit that R25-11 removed (change history: removed in R21-11). Now 0xC0/0x40. Receivers ignore undefined bits.</td>
+</tr>
+<tr>
+<td>Session ID starts at 1, wraps to 1, never 0; Reboot flag cleared on first wrap [PRS_SOMEIPSD_00157–00159, 00255]</td>
+<td><strong>Fixed</strong></td>
+<td>Wrap point was 0xFF (shared <code>Message</code> bug).</td>
+</tr>
+<tr>
+<td>Per-peer unicast/multicast session counters and reboot detection on receive [PRS_SOMEIPSD_00160, 00256, 00258, 00631]</td>
+<td>Missing</td>
+<td>One counter per message object; no receiver-side reboot detection.</td>
+</tr>
+<tr>
+<td>Entries and options arrays with uint32 lengths [PRS_SOMEIPSD_00262, 00264, 00265]</td>
+<td><strong>Fixed</strong></td>
+<td>Deserializer had no bounds checks. <code>Deserialize</code> now returns <code>bool</code>, validates every length, and leaves the object unchanged on failure.</td>
+</tr>
+<tr>
+<td>Service entries: Find 0x00, Offer 0x01, StopOffer = Offer with TTL 0; TTL 0xFFFFFF = until reboot [PRS_SOMEIPSD_00268, 00356, 00364]</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Find TTL is ignored [PRS_SOMEIPSD_00351]</td>
+<td>Deviation (minor)</td>
+<td><code>CreateFindServiceEntry</code> rejects TTL 0.</td>
+</tr>
+<tr>
+<td>Eventgroup entries: Subscribe/StopSubscribe 0x06, Ack/Nack 0x07; Reserved(12)=0, Counter(4), Eventgroup ID [PRS_SOMEIPSD_00270, 00386, 00389]</td>
+<td><strong>Fixed</strong> / Partial</td>
+<td>The 16-bit field was written as 0x0080, putting a bit into <em>Reserved</em>. Now 0x0000. The Counter is not exposed (always 0).</td>
+</tr>
+<tr>
+<td>Option runs: index of first option, count; empty run has index 0 [PRS_SOMEIPSD_00341–00343, 00833, 00834]</td>
+<td><strong>Fixed</strong></td>
+<td>The running index was advanced twice for every option (wrong indices from the second entry on), and an empty run carried the running index instead of 0. Receive side: out-of-range runs are ignored instead of reading past the array.</td>
+</tr>
+<tr>
+<td>Option header: Length (excl. length and type), Type, Discardable flag = MSB [PRS_SOMEIPSD_00273, 00275]</td>
+<td><strong>Fixed</strong></td>
+<td>Discardable was written/read as bit 0.</td>
+</tr>
+<tr>
+<td>IPv4 endpoint 0x04 / multicast 0x14 / SD endpoint 0x24, length 0x0009 [PRS_SOMEIPSD_00307, 00326, 00552]</td>
+<td>Implemented</td>
+<td>Layout checked byte by byte.</td>
+</tr>
+<tr>
+<td>Load-balancing option 0x02, length 0x0005 [PRS_SOMEIPSD_00544]</td>
+<td>Partial</td>
+<td>Can be serialized; not parsed on receive.</td>
+</tr>
+<tr>
+<td>Configuration option 0x01</td>
+<td>Partial</td>
+<td>Type exists; no payload class, not parsed.</td>
+</tr>
+<tr>
+<td>IPv6 endpoint/multicast/SD options 0x06 / 0x16 / 0x26</td>
+<td>Missing</td>
+<td>Enumerators only.</td>
+</tr>
+<tr>
+<td>Unknown option / entry types on receive</td>
+<td><strong>Fixed</strong></td>
+<td>Unknown options produced a <code>nullptr</code> that was dereferenced; unknown entries were stored as <code>nullptr</code>. Both are now skipped (options by their on-wire length).</td>
+</tr>
+<tr>
+<td>SD transport: UDP, SD_PORT, SD_MULTICAST_IP [PRS_SOMEIPSD_00600–00603]</td>
+<td>Deviation (by design)</td>
+<td>Service discovery is a local daemon reached over TCP on 127.0.0.1 with a 4-byte host-order size prefix; there is no multicast SD. SD_PORT/multicast values were not retrievable.</td>
+</tr>
+<tr>
+<td>SD phases (initial wait, repetition, main), TTL expiry</td>
+<td>Partial</td>
+<td><code>TtlTimer</code> implements expiry (unit is seconds – comment corrected); no repetition/initial-wait phases.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="proxy-skeleton-api-proxy_skeleton-by-name-r24-11-chapter-8">Proxy / skeleton API (<code>proxy_skeleton/</code>) – by name, R24-11 chapter 8</h2>
+<p>These rows compare names and shapes only; signatures could not be read from the available text.</p>
+<table>
+<thead>
+<tr>
+<th>API element (SWS_CommunicationManagement)</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ComErrc</code>, <code>ComErrorDomain</code>, <code>ComException</code></td>
+<td>Missing</td>
+<td>No <code>ara::com</code> error domain; errors are <code>std::cout</code> messages and return codes.</td>
+</tr>
+<tr>
+<td><code>SamplePtr</code>, <code>SampleAllocateePtr</code>, <code>SampleContainer</code></td>
+<td>Partial</td>
+<td><code>SampleAllocateePtr</code> (= <code>unique_ptr</code>) and <code>SampleContainer</code> (= <code>vector&lt;Sample&gt;</code>, not of <code>SamplePtr</code>) are declared but unused by the event classes; <code>SamplePtr</code> is missing.</td>
+</tr>
+<tr>
+<td><code>ServiceHandleContainer</code>, <code>FindServiceHandler</code>, <code>FindServiceHandle</code></td>
+<td>Implemented / Unverified</td>
+<td>Aliases and a handle struct with <code>==</code>/<code>&lt;</code> exist.</td>
+</tr>
+<tr>
+<td><code>FindService(InstanceIdentifier)</code>, <code>StartFindService</code>, <code>StopFindService</code></td>
+<td>Deviation / Missing</td>
+<td>Only a blocking <code>ServiceProxy::FindService(FindServiceHandle)</code> that retries forever. Now also survives malformed SD answers instead of indexing <code>entries[0]</code> blindly.</td>
+</tr>
+<tr>
+<td><code>InstanceIdentifier</code></td>
+<td>Partial</td>
+<td>Constructors, <code>toString</code>, <code>operator==</code>/<code>&lt;</code> present; no <code>Create</code>.</td>
+</tr>
+<tr>
+<td><code>ProxyEvent</code>: <code>Subscribe(maxSampleCount)</code>, <code>Unsubscribe</code>, <code>GetNewSamples</code>, <code>SetReceiveHandler</code>/<code>UnsetReceiveHandler</code>, <code>GetFreeSampleCount</code>, <code>GetSubscriptionState</code>, <code>SetSubscriptionStateChangeHandler</code></td>
+<td>Deviation</td>
+<td><code>Event&lt;T&gt;</code> has <code>Subscribe()</code> (no count), <code>UnSubscribe()</code>, <code>handlecall()</code> and <code>get_value()</code> – a single latest value, no sample queue, no handlers.</td>
+</tr>
+<tr>
+<td><code>SubscriptionState</code></td>
+<td>Implemented</td>
+<td><code>kSubscribed/kNotSubscribed/kSubscriptionPending</code> declared; not returned by any API.</td>
+</tr>
+<tr>
+<td><code>ProxyField</code> <code>Get</code>/<code>Set</code></td>
+<td>Partial</td>
+<td><code>Get()</code>/<code>Set()</code> exist and are synchronous (spec: <code>Future</code>-returning).</td>
+</tr>
+<tr>
+<td><code>ProxyMethod::operator()</code> returning a <code>Future&lt;Output&gt;</code></td>
+<td>Deviation</td>
+<td>Synchronous <code>SendRequest&lt;R&gt;(method_id, args...)</code> over a new TCP connection per call.</td>
+</tr>
+<tr>
+<td>Skeleton <code>OfferService</code> / <code>StopOfferService</code></td>
+<td>Implemented</td>
+<td></td>
+</tr>
+<tr>
+<td>Skeleton <code>ProcessNextMethodCall</code>, <code>SkeletonEvent::Allocate/Send</code></td>
+<td>Deviation / Missing</td>
+<td>Method dispatch is socket-thread driven; events use <code>Event::notify()</code>.</td>
+</tr>
+<tr>
+<td>E2E: <code>ProfileCheckStatus</code>, <code>SMState</code>, <code>ComE2EErrc</code>, <code>TransportFaultCondition(Handler)</code></td>
+<td>Missing</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Verified items fixed: 17 (header byte order, Length, protocol version, interface-version getter, message
+  types, session wrap, malformed handling; SD Length, flags, session wrap, bounds, eventgroup reserved bits,
+  option indices, discardable flag, unknown option/entry handling).</li>
+<li>Remaining gaps with the largest impact: payload serialization format, <code>Request_ID</code>/session handling and
+  response matching, SOME/IP-TP, SD over UDP multicast with reboot detection, the whole
+  chapter-8 API surface (sample queues, handlers, <code>ComErrc</code>, async <code>Future</code>s), and E2E.</li>
+<li>To close the "Unverified" rows, the R25-11 AP communication-management PDF (chapter 8 text) and the SOME/IP
+  return-code / serialization chapters need to be supplied.</li>
+</ul>
+<h2 id="gap-closure-featuregap-com-sm-ucm">Gap closure (feature/gap-com-sm-ucm)</h2>
+<p>Verified against R25-11 where readable, otherwise R22-11 / R24-11. The SOME/IP wire format is unchanged
+(Length = 8 + payload). Tests: <code>Testing/COM/com_api_test.cpp</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ComErrc</code> / <code>ComErrorDomain</code> / <code>ComException</code></td>
+<td>Implemented</td>
+<td><code>ara/com/com_error_domain.h</code>, codes 1..21. Domain id 0x8000000000000503 is an implementation choice (Unverified)</td>
+</tr>
+<tr>
+<td>Proxy event sample queue</td>
+<td>Implemented</td>
+<td><code>SamplePtr</code>, <code>ProxyEventBuffer</code>: Subscribe(maxSampleCount), GetNewSamples, GetFreeSampleCount, SubscriptionState. Overflow drops the oldest sample; re-subscribing is a no-op (design decisions)</td>
+</tr>
+<tr>
+<td>SOME/IP session IDs</td>
+<td>Implemented</td>
+<td><code>SessionIdCounter</code> wrap rules, <code>RequestTracker</code> response matching (PRS_SOMEIP_00932, 00933, 00521, 00533, 00739)</td>
+</tr>
+<tr>
+<td>SD reboot detection</td>
+<td>Implemented</td>
+<td><code>SdRebootDetector</code> (PRS_SOMEIPSD_00160, 00255, 00256, 00258)</td>
+</tr>
+</tbody>
+</table>
+<p>Still missing: SOME/IP-TP, E2E, payload serialization format, wiring the queue and detector into the
+socket transport, async <code>Future</code> based method calls.</p></div><footer>Adaptive Platform</footer></body></html>

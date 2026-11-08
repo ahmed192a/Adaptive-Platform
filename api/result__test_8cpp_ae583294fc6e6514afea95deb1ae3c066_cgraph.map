@@ -1,0 +1,20 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,198,60,223"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a4561d1c6fd989b38a44e338cb6e09bb0" title=" " alt="" coords="130,12,266,52"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="35,197,59,137,79,101,106,69,122,57,125,61,110,73,84,104,63,139,40,199"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="336,69,472,109"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="37,197,62,154,82,131,107,112,160,91,216,80,271,76,322,77,322,82,272,81,217,85,161,96,109,117,86,135,67,157,42,199"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#a36d40985b89bafca5abd3153c1990889" title=" " alt="" coords="130,127,266,167"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="59,196,107,176,125,169,127,174,109,181,61,201"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1Result.html#a901ddab5a89431aef552a8ff2cb5366f" title=" " alt="" coords="130,191,266,231"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="60,208,117,208,117,213,60,213"/>
+<area shape="rect" id="Node000007" href="$namespaceanonymous__namespace_02result__test_8cpp_03.html#a534bf42d05a8b2a0d14a7de51a585f49" title=" " alt="" coords="108,255,288,295"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="61,220,109,240,127,247,125,252,107,245,59,225"/>
+<area shape="rect" id="Node000008" href="$classara_1_1core_1_1Result.html#a3faca2beef0b3e415e6974b9392f7d52" title=" " alt="" coords="113,319,283,345"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="43,222,68,263,87,285,110,304,122,311,119,316,106,309,83,289,64,266,38,225"/>
+<area shape="rect" id="Node000009" href="$classara_1_1core_1_1Result.html#a035d79b1e06e79e9c2d09b6d38b4b5e3" title=" " alt="" coords="130,369,266,409"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="40,223,62,286,82,323,110,355,120,363,116,367,106,359,78,326,57,288,35,225"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="336,5,472,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,27,322,25,322,31,267,32"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="267,48,323,64,322,69,266,53"/>
+</map>

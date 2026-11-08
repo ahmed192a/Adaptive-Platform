@@ -1,0 +1,17 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,173,60,198"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a2edc750251fbea7e6247f0dd6158b2db" title=" " alt="" coords="135,5,315,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="35,172,59,116,79,83,106,55,121,46,124,50,110,59,83,86,63,118,40,174"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a2415b8db640c53b9353344008be99e99" title=" " alt="" coords="127,69,324,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="43,171,71,145,107,119,121,112,124,117,109,124,74,149,47,175"/>
+<area shape="rect" id="Node000004" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#aea0cadd3e3fa05f082f738b289d57886" title=" " alt="" coords="135,133,315,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="60,178,121,168,122,173,60,184"/>
+<area shape="rect" id="Node000005" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#ad5e269206d86c2987de71646acde0ead" title="[SWS_SM_00206]" alt="" coords="109,197,341,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="60,187,97,193,96,198,60,192"/>
+<area shape="rect" id="Node000007" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a7409d862945b88570552f0b735914a88" title="[SWS_SM_00203] kNotAllowedMultipleUpdateSessions when one is active." alt="" coords="108,262,343,317"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="48,196,75,222,109,247,122,254,119,258,107,252,71,226,44,200"/>
+<area shape="rect" id="Node000008" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a9702c9bb5f1a3565b46f7b7de24bc0fa" title="[SWS_SM_00204] Persist / restore the session status (one small text file)." alt="" coords="135,341,315,381"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="39,197,61,259,82,295,110,326,125,336,122,340,106,330,78,298,57,261,34,199"/>
+<area shape="rect" id="Node000006" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a705e9bd59bb777be7b705fa288f22c75" title=" " alt="" coords="391,197,588,237"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="342,215,377,215,377,220,342,220"/>
+</map>

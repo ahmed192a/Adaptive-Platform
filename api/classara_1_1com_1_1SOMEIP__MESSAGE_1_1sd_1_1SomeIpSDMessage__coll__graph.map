@@ -1,0 +1,11 @@
+<map id="ara::com::SOMEIP_MESSAGE::sd::SomeIpSDMessage" name="ara::com::SOMEIP_MESSAGE::sd::SomeIpSDMessage">
+<area shape="rect" id="Node000001" title="Class for SOME/IP SD Message." alt="" coords="597,69,805,109"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html" title="Class SOME IP Message." alt="" coords="311,5,519,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="519,46,612,67,611,72,518,51"/>
+<area shape="rect" id="Node000003" href="$structara_1_1com_1_1SOMEIP__MESSAGE_1_1Message_1_1header__t.html" title="Host&#45;order copy of the SOME/IP header." alt="" coords="5,5,213,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="227,23,310,23,310,28,227,28"/>
+<area shape="rect" id="Node000004" href="$structara_1_1com_1_1SOMEIP__MESSAGE_1_1Request__ID.html" title="Request_ID struct is used to identify the client id and session id of the request message." alt="" coords="311,69,519,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="533,87,597,87,597,92,533,92"/>
+<area shape="rect" id="Node000005" href="$structara_1_1com_1_1SOMEIP__MESSAGE_1_1Message__ID.html" title="Message_ID struct is used to identify the service id and method id of the message." alt="" coords="311,133,519,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="518,128,611,107,612,112,519,133"/>
+</map>

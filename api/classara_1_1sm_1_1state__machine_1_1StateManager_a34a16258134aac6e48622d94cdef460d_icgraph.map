@@ -1,0 +1,9 @@
+<map id="ara::sm::state_machine::StateManager::GetInitialMachineStateTransitionResult" name="ara::sm::state_machine::StateManager::GetInitialMachineStateTransitionResult">
+<area shape="rect" id="Node000001" title="nullopt (as outer value) until Start() ran; then the transition outcome." alt="" coords="108,40,352,95"/>
+<area shape="rect" id="Node000002" href="$state__machine__test_8cpp.html#aed3225eb2115fe12e162527064c9ca17" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,39,59,27,61,22,108,34"/>
+<area shape="rect" id="Node000003" href="$state__machine__test_8cpp.html#ae5c2eecec01a185c4846c3bbc951a4e9" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+<area shape="rect" id="Node000004" href="$state__machine__test_8cpp.html#aa0d1a0e52668c6607a5c6c331331d49f" title=" " alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="108,101,61,113,59,107,107,95"/>
+</map>

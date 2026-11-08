@@ -1,0 +1,222 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ara::crypto - conformance to AUTOSAR AP Cryptography</title>
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#24304f;--fg:#e6ebf7;--mut:#9aa6c4;--acc:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{padding:56px 20px 32px;text-align:center;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:2.4rem}header p{margin:0 auto;max-width:760px;color:var(--mut)}
+nav{margin-top:20px}nav a{margin:0 10px;font-weight:600}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h2{margin-top:44px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.demo img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gallery img{width:100%;border-radius:8px;border:1px solid var(--line);background:#000}
+.gallery figcaption{font-size:.85rem;color:var(--mut);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#5be08a}.warn{color:#f1c24f}.bad{color:#ff7b7b}.mut{color:var(--mut)}
+code,pre{background:#0a0f1f;border:1px solid var(--line);border-radius:6px}code{padding:1px 5px}
+pre{padding:12px;overflow:auto}pre code{border:0;padding:0}
+.doc{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.doc img{max-width:100%}.crumb{font-size:.9rem;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:20px;font-size:.9rem}
+</style></head><body><div class="doc"><div class="crumb"><a href="../index.html">Home</a> / conformance</div><h1 id="aracrypto-conformance-to-autosar-ap-cryptography">ara::crypto - conformance to AUTOSAR AP Cryptography</h1>
+<h2 id="verification-basis-read-this-first">Verification basis (read this first)</h2>
+<ul>
+<li><strong>Spec sources.</strong> R25-11 first; its PDF could not be fetched. The <strong>R22-11</strong> SWS Cryptography was reachable but only an
+  excerpt (up to chapter 7.4.1.1) came back, so chapter 8 (class/method definitions) and the numeric error values are still not
+  readable. Everything below that says "confirmed" was read in R22-11/R24-11; scope changes between those releases are minor.</li>
+<li>Target release: <strong>R25-11</strong>. Its SWS PDF could not be fetched from the build environment (host not allow-listed).
+  The R24-11 SWS was reachable but only an excerpt came back, so <strong>no requirement ID and no numeric error value is
+  verified or quoted</strong>.</li>
+<li>Confirmed from that excerpt (R24-11): the global factories <code>LoadCryptoProvider</code>, <code>LoadKeyStorageProvider</code>,
+  <code>LoadX509Provider</code>; the provider factories <code>CreateRandomGeneratorCtx</code>, <code>CreateKeyDerivationFunctionCtx</code>,
+  <code>CreateHashFunctionCtx</code>, <code>CreateMessageAuthnCodeCtx</code>, <code>CreateSymmetricBlockCipherCtx</code>, <code>CreateStreamCipherCtx</code>,
+  <code>CreateAuthCipherCtx</code>, <code>CreateSymmetricKeyWrapperCtx</code>, <code>CreateVerifierPublicCtx</code>, <code>CreateSignerPrivateCtx</code>,
+  <code>CreateSigEncodePrivateCtx</code>, <code>CreateMsgRecoveryPublicCtx</code>, <code>CreateEncryptorPublicCtx</code>,
+  <code>CreateKeyEncapsulatorPublicCtx</code>; and the error names <code>kUnknownIdentifier</code>, <code>kInvalidArgument</code>, <code>kUnsupported</code>,
+  <code>kInsufficientCapacity</code>, <code>kBusyResource</code>; R22-11 adds <code>kInvalidInputSize</code>, <code>kIncompatibleArguments</code>, <code>kAlgIdUndefined</code>.</li>
+</ul>
+<h2 id="the-honest-summary">The honest summary</h2>
+<p><strong>The crypto layer is a pragmatic, OpenSSL-backed subset, not an implementation of the SWS object model.</strong>
+It provides working, tested primitives and a key-slot store. <code>ara::crypto::cryp</code> is a thin SWS-<em>shaped</em> facade over
+those primitives: factory names match, method signatures are simplified. There is no <code>CryptoObject</code> hierarchy,
+no <code>ReadOnlyMemRegion</code>/<code>WritableMemRegion</code>, no <code>CryptoPrimitiveId</code>. "Implemented (shape)" below means the factory name and a working,
+tested capability exist; method signatures remain simplified.</p>
+<h2 id="primitives-cryptoh-and-facade-providerh">Primitives (crypto.h) and facade (provider.h)</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LoadCryptoProvider</code></td>
+<td>Partial</td>
+<td>returns a shared built-in provider (<code>ap-openssl</code>)</td>
+</tr>
+<tr>
+<td><code>CreateRandomGeneratorCtx</code></td>
+<td>Partial</td>
+<td>OpenSSL CSPRNG, <code>Generate(n)</code>; no seeding/<code>SetSeed</code>, no entropy-state API</td>
+</tr>
+<tr>
+<td><code>CreateHashFunctionCtx</code></td>
+<td>Partial</td>
+<td>SHA-256/384/512; Start/Update/Finish; no SHA-3, no <code>Reset</code>/<code>GetDigest</code> split</td>
+</tr>
+<tr>
+<td><code>CreateMessageAuthnCodeCtx</code></td>
+<td>Partial</td>
+<td>HMAC-SHA-2; key usage <code>kUsageMac</code> enforced; context must be re-keyed after Finish; no CMAC/GMAC</td>
+</tr>
+<tr>
+<td><code>CreateSignerPrivateCtx</code> / <code>CreateVerifierPublicCtx</code></td>
+<td>Partial</td>
+<td>Ed25519 and ECDSA-P256/SHA-256; algorithm/key mismatch -&gt; <code>kIncompatibleArguments</code>; no RSA, no hash-pre-image/context-string API</td>
+</tr>
+<tr>
+<td><code>CreateAuthCipherCtx</code></td>
+<td>Implemented (shape)</td>
+<td><code>AuthCipherCtx</code> over AES-GCM (<code>SetKey</code>, <code>Encrypt</code>/<code>Decrypt</code> with nonce + AAD); also free functions <code>AeadEncrypt/Decrypt/Seal/Open</code></td>
+</tr>
+<tr>
+<td><code>CreateSymmetricBlockCipherCtx</code> (AES-CBC)</td>
+<td>Implemented (shape)</td>
+<td><code>SymmetricBlockCipherCtx</code>, 128/192/256-bit keys, PKCS#7 padding switch, usage bits enforced; NIST SP 800-38A vector in tests</td>
+</tr>
+<tr>
+<td><code>CreateStreamCipherCtx</code> (AES-CTR)</td>
+<td>Implemented (shape)</td>
+<td><code>StreamCipherCtx</code>; NIST SP 800-38A vector in tests</td>
+</tr>
+<tr>
+<td><code>CreateKeyDerivationFunctionCtx</code> (HKDF/PBKDF2)</td>
+<td>Implemented (shape)</td>
+<td><code>KeyDerivationFunctionCtx</code> (<code>KdfKind::kHkdf</code>/<code>kPbkdf2</code>); RFC 5869 and PBKDF2-SHA256 vectors; PBKDF2 enforces OpenSSL minimums by default</td>
+</tr>
+<tr>
+<td><code>CreateSymmetricKeyWrapperCtx</code> (AES-KW)</td>
+<td>Implemented (shape)</td>
+<td>RFC 3394 vectors; wrapped key must be exportable; tamper -&gt; <code>kAuthTagNotValid</code></td>
+</tr>
+<tr>
+<td><code>CreateEncryptorPublicCtx</code> / <code>CreateDecryptorPrivateCtx</code> (RSA-OAEP, SHA-256)</td>
+<td>Implemented (shape)</td>
+<td><code>RsaPublicKey</code>/<code>RsaPrivateKey</code> 2048/3072/4096</td>
+</tr>
+<tr>
+<td>RSA signatures (RSASSA-PSS, SHA-256)</td>
+<td>Implemented (shape)</td>
+<td><code>RsaSignerPrivateCtx</code>/<code>RsaVerifierPublicCtx</code> (separate from the Ed25519/ECDSA ctxs)</td>
+</tr>
+<tr>
+<td><code>CreateKeyEncapsulatorPublicCtx</code>, <code>CreateSigEncodePrivateCtx</code>, <code>CreateMsgRecoveryPublicCtx</code></td>
+<td>Unsupported</td>
+<td>factories exist and return <code>kUnsupported</code> (no KEM, signature-with-encoding or message-recovery schemes)</td>
+</tr>
+<tr>
+<td>Constant-time compare, secure zeroing</td>
+<td>Implemented</td>
+<td><code>ConstantTimeEquals</code>, <code>SecureZero</code>; keys zeroised on destruction</td>
+</tr>
+</tbody>
+</table>
+<h2 id="keys-and-storage">Keys and storage</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KeyStorageProvider</code> / <code>KeySlot</code> (<code>LoadKeyStorageProvider</code>)</td>
+<td>Partial</td>
+<td><code>KeyStorageProvider</code> with prototypes (algorithm, usage, exportable, persistent), generate/import/export/clear, per-slot usage enforcement, AES-256-GCM persistence via ara::per with tamper/copy detection. Slot API is name-based, not <code>KeySlot</code> objects; no transactions (<code>BeginTransaction/Commit</code>), no slot-content-change listeners, no <code>Reserve</code></td>
+</tr>
+<tr>
+<td><code>SecretSeed</code></td>
+<td>Implemented (shape)</td>
+<td><code>Generate</code>/<code>Import</code>, <code>XorWith</code>, <code>Jump</code>/<code>Next</code> (big-endian counter), <code>ToKey</code>, <code>DeriveKey</code> (HKDF); exact SWS method set is Unverified</td>
+</tr>
+<tr>
+<td>Key usage restrictions</td>
+<td>Partial</td>
+<td>whitelist bits {encrypt, decrypt, MAC}; the SWS allowed-usage set is larger</td>
+</tr>
+<tr>
+<td><code>CryptoObject</code>/<code>KeyMaterial</code> serialization</td>
+<td>Partial</td>
+<td>PKCS#8 / SPKI DER for asymmetric keys only; no <code>ExportPublicly</code>/<code>ExportSecurely</code> object model</td>
+</tr>
+<tr>
+<td>X.509: <code>LoadX509Provider</code>, certificates, chain validation</td>
+<td>Implemented (shape)</td>
+<td><code>X509Certificate</code> (DER/PEM, names, serial, validity, CA flag, SPKI, fingerprint), <code>IssueCertificate</code> (root/intermediate/leaf), <code>X509Provider</code> (trust anchors, <code>VerifyChain</code> with time, CA/basicConstraints, signatures; failure carries the OpenSSL <code>X509_V_ERR_*</code> as support data)</td>
+</tr>
+<tr>
+<td>X.509: CSR, CRL/OCSP revocation, certificate storage/<code>CertMgmt</code></td>
+<td>Missing</td>
+<td></td>
+</tr>
+<tr>
+<td><code>LoadKeyStorageProvider</code></td>
+<td>Partial</td>
+<td>shared <em>volatile</em> provider; persistent slots use <code>KeyStorageProvider::Create</code></td>
+</tr>
+<tr>
+<td>Keys bound to Crypto Stack / HSM</td>
+<td>Missing</td>
+<td>software only</td>
+</tr>
+</tbody>
+</table>
+<h2 id="errors">Errors</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kUnknownIdentifier</code>, <code>kInvalidArgument</code>, <code>kUnsupported</code>, <code>kInsufficientCapacity</code>, <code>kBusyResource</code></td>
+<td>Names confirmed</td>
+<td><code>kBusyResource</code> added in this change</td>
+</tr>
+<tr>
+<td><code>kAlgIdUndefined</code></td>
+<td>Name confirmed (R22-11)</td>
+<td>added; numeric value unverified</td>
+</tr>
+<tr>
+<td>Other enumerators (<code>kUsageViolation</code>, <code>kAuthTagNotValid</code>, ...)</td>
+<td>Unverified</td>
+<td>names follow the SWS style; <strong>numeric values and domain id are implementation choices</strong></td>
+</tr>
+<tr>
+<td><code>ThrowAsException</code> / <code>ErrorDomain</code> plumbing</td>
+<td>Implemented</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tests">Tests</h2>
+<p><code>Testing/crypto</code>: 73 tests (primitives, key slots with restart and tamper, provider facade, 29 for the extras: HKDF RFC 5869,
+PBKDF2, NIST SP 800-38A CBC/CTR, RFC 3394 key wrap, SecretSeed, RSA, X.509 chains incl. expiry/tamper/non-CA).</p>
+<h2 id="demo-application">Demo application</h2>
+<p><code>App/demo/secure_vault</code> (<code>secure_vault demo &lt;dir&gt;</code>) walks through PBKDF2 -&gt; persistent key slots -&gt; AES-GCM seal/unseal -&gt;
+Ed25519 signatures -&gt; restart and wrong-passphrase checks -&gt; RSA-OAEP key transport -&gt; X.509 chain validation, with a readable
+trace; it runs as the <code>secure_vault_demo</code> ctest.</p></div><footer>Adaptive Platform</footer></body></html>

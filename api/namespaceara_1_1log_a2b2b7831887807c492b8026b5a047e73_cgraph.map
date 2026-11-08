@@ -1,0 +1,5 @@
+<map id="ara::log::CreateLogger" name="ara::log::CreateLogger">
+<area shape="rect" id="Node000001" title="SWS_LOG_00253. Threshold defaults to kWarn (no manifest DltLogSink here)." alt="" coords="5,5,172,31"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1log.html#abc73a5eae1c236833d302de2cc6bab52" title="SWS_LOG_00006." alt="" coords="220,5,387,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,15,206,15,206,21,173,21"/>
+</map>

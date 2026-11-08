@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html" title="class ServiceSkeleton" alt="" coords="5,289,203,329"/>
+<area shape="rect" id="Node000001" href="$classara_1_1sm_1_1diagnostic__reset_1_1skeleton_1_1diagnostic__reset__skeleton.html" title=" " alt="" coords="263,5,463,60"/>
+<area shape="poly" id="edge32_Node000000_Node000001" title=" " alt="" coords="115,274,134,229,163,174,201,118,249,69,266,58,269,62,252,73,206,121,168,176,139,231,120,277"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1powermode_1_1skeleton_1_1PowerMode__Skeleton.html" title=" " alt="" coords="279,84,448,139"/>
+<area shape="poly" id="edge33_Node000000_Node000002" title=" " alt="" coords="124,276,177,212,211,177,249,148,277,133,280,138,252,152,214,181,180,215,129,279"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1triggerin_1_1skeleton_1_1Trigger__In__skeleton.html" title=" " alt="" coords="293,163,434,217"/>
+<area shape="poly" id="edge34_Node000000_Node000003" title=" " alt="" coords="148,279,250,226,291,210,293,215,252,231,151,284"/>
+<area shape="rect" id="Node000004" href="$classara_1_1sm_1_1triggerinout_1_1proxy__skeleton_1_1skeleton_1_1Trigger__InOut__Skeleton.html" title=" " alt="" coords="255,241,472,296"/>
+<area shape="poly" id="edge35_Node000000_Node000004" title=" " alt="" coords="216,289,254,283,255,288,216,294"/>
+<area shape="rect" id="Node000005" href="$classara_1_1sm_1_1triggerout_1_1skeleton_1_1Trigger__Out__Skeleton.html" title=" " alt="" coords="287,320,440,375"/>
+<area shape="poly" id="edge36_Node000000_Node000005" title=" " alt="" coords="217,323,287,333,286,339,216,328"/>
+<area shape="rect" id="Node000006" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html" title="class update_request_Skeleton The session rules live in UpdateSession (unit tested); this class adapt..." alt="" coords="266,399,461,453"/>
+<area shape="poly" id="edge37_Node000000_Node000006" title=" " alt="" coords="153,333,252,384,282,396,280,401,250,388,151,338"/>
+<area shape="rect" id="Node000007" href="$classara_1_1ucm_1_1pkgmgr_1_1skeleton_1_1PackageManagementSkeleton.html" title="implementation of PackageManagementSkeleton interface" alt="" coords="251,478,476,518"/>
+<area shape="poly" id="edge38_Node000000_Node000007" title=" " alt="" coords="129,339,181,402,214,434,252,462,278,475,276,480,249,467,211,438,177,405,125,342"/>
+<area shape="rect" id="Node000008" href="$classskeleton.html" title=" " alt="" coords="325,543,402,568"/>
+<area shape="poly" id="edge39_Node000000_Node000008" title=" " alt="" coords="120,340,139,384,168,435,206,486,228,508,252,528,288,544,325,551,324,556,286,549,249,532,224,512,202,489,164,438,135,386,115,343"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="ara::crypto::UnwrapKey" name="ara::crypto::UnwrapKey">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,134,180,159"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="233,69,398,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,131,223,110,225,115,143,137"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="228,134,403,159"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="180,144,214,144,214,149,180,149"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1SecretKey.html#a730875eeb7b62dde79c743dc5678b6e5" title=" " alt="" coords="233,184,398,224"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="143,157,225,178,223,183,142,162"/>
+<area shape="rect" id="Node000003" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="451,5,613,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="383,67,450,47,452,52,385,72"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="451,69,613,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="398,87,437,87,437,92,398,92"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="451,133,613,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="385,107,452,127,450,132,383,112"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="ara::per::ReadAccessor::GetByte" name="ara::per::ReadAccessor::GetByte">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,176,77"/>
+<area shape="rect" id="Node000002" href="$classara_1_1per_1_1ReadAccessor.html#a5bd39cf30ce5173fd6edfab683ab7a73" title=" " alt="" coords="224,37,395,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,55,210,55,210,60,176,60"/>
+<area shape="rect" id="Node000003" href="$classara_1_1per_1_1ReadAccessor.html#a05ad7729f821d87db78654fa9c5f09d6" title=" " alt="" coords="443,37,613,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="395,55,429,55,429,60,395,60"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="661,5,835,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="613,42,647,37,648,43,614,48"/>
+<area shape="rect" id="Node000005" href="$classara_1_1per_1_1ReadAccessor.html#ac3ea93def9b173e1862a2f3ea0db0947" title=" " alt="" coords="663,69,833,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="614,67,650,72,649,78,613,72"/>
+</map>

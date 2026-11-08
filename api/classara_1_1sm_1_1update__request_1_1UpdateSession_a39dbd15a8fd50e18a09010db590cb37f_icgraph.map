@@ -1,0 +1,18 @@
+<map id="ara::sm::update_request::UpdateSession::ResetMachine" name="ara::sm::update_request::UpdateSession::ResetMachine">
+<area shape="rect" id="Node000001" title="[SWS_SM_00202] The machine restart itself is done by the caller; this only decides whether the reques..." alt="" coords="537,126,764,166"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a06aba4c1ffd98a608d6d5a07abe358b9" title="Requests a reset of the machine [SWS_SM_00202]." alt="" coords="295,5,489,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="594,122,488,74,462,63,464,58,490,69,596,117"/>
+<area shape="rect" id="Node000004" href="$namespaceap_1_1demo.html#aa008d60b80abe3ff12d61fa359adf852" title="Run one update; progress is printed to out unless options.quiet." alt="" coords="311,108,473,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="523,136,473,131,474,126,524,131"/>
+<area shape="rect" id="Node000007" href="$update__session__test_8cpp.html#abe25709cefa951ccd5d670df78761187" title=" " alt="" coords="365,157,419,183"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="524,160,420,170,419,165,523,155"/>
+<area shape="rect" id="Node000008" href="$update__session__test_8cpp.html#a71509fa5d602537ec3a92519d3dc861b" title=" " alt="" coords="365,207,419,232"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="572,173,490,197,420,215,419,210,489,191,570,167"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a49ae6571a4e635ae85ad4dffd346c1c0" title=" " alt="" coords="23,5,229,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,35,229,35,229,30,281,30"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="438,99,435,94,427,90,392,87,364,89,349,94,346,99,354,106,350,110,341,100,346,90,363,83,392,81,429,85,439,90,443,96"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1anonymous__namespace_02dash__features_8cpp_03_1_1UpdateSim.html#a3dee4fb23da01d66811fadeb671984ef" title=" " alt="" coords="5,88,247,143"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="297,121,247,120,247,115,297,116"/>
+<area shape="rect" id="Node000006" href="$demo_2ota__updater_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="99,167,153,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="324,139,247,157,154,177,153,171,246,151,323,134"/>
+</map>

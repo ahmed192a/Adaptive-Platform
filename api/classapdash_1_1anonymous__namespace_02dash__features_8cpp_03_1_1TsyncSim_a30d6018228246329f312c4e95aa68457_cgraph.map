@@ -1,0 +1,9 @@
+<map id="apdash::anonymous_namespace{dash_features::cpp}::TsyncSim::Handle" name="apdash::anonymous_namespace{dash_features::cpp}::TsyncSim::Handle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,66,240,121"/>
+<area shape="rect" id="Node000002" href="$namespaceapdash_1_1anonymous__namespace_02dash__features_8cpp_03.html#a10f63c4efcb5f8f2cfa9c6692130baa1" title="Integer field with a default and a clamp; non&#45;numbers fall back to the default." alt="" coords="288,29,523,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,72,274,67,275,72,241,78"/>
+<area shape="rect" id="Node000003" href="$namespaceapdash_1_1anonymous__namespace_02dash__features_8cpp_03.html#a82ed6d577f0f6e05826ab610244f4207" title=" " alt="" coords="288,117,523,157"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="241,109,275,114,274,120,240,114"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="354,30,350,20,359,10,377,5,405,3,438,5,455,13,453,18,436,11,405,8,378,10,362,15,356,21,359,28"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="354,118,350,108,359,98,377,93,405,91,438,93,455,101,453,106,436,99,405,96,378,98,362,103,356,109,359,116"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,173,60,198"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1ProxyEventBuffer.html#ab068a2b15a42482644fa19b1c514059f" title="Hand every new sample (oldest first), at most maxNumberOfSamples, to f(SamplePtr&lt;T&gt;)." alt="" coords="108,101,308,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,171,107,151,128,143,130,148,109,156,61,176"/>
+<area shape="rect" id="Node000007" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="140,165,276,205"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="60,183,126,183,126,188,60,188"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1ProxyEventBuffer.html#a1a8993ec7b1a436cf1579a25d6b50594" title="Binding: the service acknowledged (true) or refused (false) the subscription." alt="" coords="108,229,308,269"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="61,195,109,215,130,222,128,227,107,220,59,200"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1ProxyEventBuffer.html#a463ee087a66a155d8facd742f9522fa5" title="Binding: a new event arrived." alt="" coords="108,293,308,333"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="43,197,69,238,88,260,110,279,118,285,115,289,106,283,84,264,65,241,39,200"/>
+<area shape="rect" id="Node000010" href="$classara_1_1com_1_1ProxyEventBuffer.html#af011d02134839f1d0c64bd8d465d52c8" title="Subscribe with room for maxSampleCount samples (queued + held by the application)." alt="" coords="108,37,308,77"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="39,171,65,130,84,107,106,87,115,81,118,86,110,91,88,111,69,133,43,174"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="381,5,517,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="278,99,307,87,331,71,355,55,370,48,372,53,357,60,334,76,309,92,280,104"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="381,69,517,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="308,105,367,97,368,103,308,111"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1com.html#ab8ba850aab7f0df8ffd3d3d682055946" title=" " alt="" coords="356,158,543,183"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="307,139,374,153,373,158,306,144"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="411,160,403,150,407,140,423,134,449,131,482,135,495,145,492,149,480,140,449,137,424,139,411,144,408,149,415,156"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1com.html#ab6b865daa1f22c77abb4d190e45fbd68" title=" " alt="" coords="591,158,781,183"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="543,168,577,168,577,173,543,173"/>
+<area shape="poly" id="edge11_Node000010_Node000003" title=" " alt="" coords="308,41,367,33,368,39,308,47"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="308,68,368,76,367,81,308,73"/>
+<area shape="poly" id="edge13_Node000010_Node000005" title=" " alt="" coords="280,75,309,87,334,102,357,119,412,149,409,154,355,124,331,107,307,92,278,80"/>
+</map>

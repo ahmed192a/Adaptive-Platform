@@ -1,0 +1,7 @@
+<map id="UCM_Server::stop" name="UCM_Server::stop">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,144,60"/>
+<area shape="rect" id="Node000002" href="$classCServer.html#a6f0c61349b89255c1289ed10438d8c35" title="Close the socket." alt="" coords="207,5,367,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,35,194,28,194,34,145,40"/>
+<area shape="rect" id="Node000003" href="$classara_1_1exec_1_1ExecutionClient.html#a9e38e2714f64eaf7a0ff8d5feb988cd3" title="Interface for a Process to report its proxy_skeleton state to Execution Management." alt="" coords="192,55,383,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,54,179,58,178,64,144,59"/>
+</map>

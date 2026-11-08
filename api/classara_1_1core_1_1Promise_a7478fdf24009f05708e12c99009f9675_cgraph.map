@@ -1,0 +1,10 @@
+<map id="ara::core::Promise::set_value" name="ara::core::Promise::set_value">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,145,75"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Promise.html#a21a31cf7fc3e15e9a6a3155a021e5752" title=" " alt="" coords="193,42,363,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,52,180,52,180,57,145,57"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Promise.html#a047314a51465bb45cad8ad8d34c891d9" title=" " alt="" coords="411,5,551,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,40,397,35,397,40,363,45"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1core_1_1detail.html#aa0d6888e1da01601881236a1258230a4" title=" " alt="" coords="599,35,731,75"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="363,54,411,55,551,55,585,54,585,59,551,60,411,60,363,59"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="551,34,586,39,585,45,551,39"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="ara::crypto::KeyStorageProvider::Impl::Load" name="ara::crypto::KeyStorageProvider::Impl::Load">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,92,233,132"/>
+<area shape="rect" id="Node000002" href="$structara_1_1crypto_1_1KeyStorageProvider_1_1Impl.html#adbd5f5488c1fee2e4e898f94bf5ffec4" title=" " alt="" coords="281,5,509,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,89,281,55,307,47,309,52,282,60,178,94"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#aee84c82ad27f539829b804f9916690e2" title=" " alt="" coords="312,70,479,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="233,97,298,90,299,96,234,103"/>
+<area shape="rect" id="Node000004" href="$structara_1_1crypto_1_1KeyStorageProvider_1_1Impl.html#a37224b9951b7e89b00c18a519abf7d36" title=" " alt="" coords="281,120,509,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="234,121,268,124,267,130,233,126"/>
+<area shape="rect" id="Node000010" href="$namespaceara_1_1crypto.html#a9ea2bf41fb438a200206cd105fb35433" title="Overwrites memory in a way the optimizer cannot remove." alt="" coords="308,185,483,210"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="170,130,282,169,318,179,317,184,281,175,168,135"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1PrivateKey.html#a407f07d0ae90e47455f7c78343b66d58" title="Imports an unencrypted PKCS#8 PrivateKeyInfo (Ed25519 or EC P&#45;256 only)." alt="" coords="557,120,728,160"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="510,137,544,137,544,143,510,143"/>
+<area shape="rect" id="Node000008" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="776,177,939,217"/>
+<area shape="poly" id="edge12_Node000004_Node000008" title=" " alt="" coords="489,157,558,169,664,182,763,189,762,195,663,187,557,175,488,163"/>
+<area shape="rect" id="Node000009" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="560,56,725,96"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="473,117,551,97,552,102,474,123"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="776,113,939,153"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="728,135,762,134,762,139,728,140"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="776,49,939,89"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="703,117,782,91,784,96,705,122"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="719,157,769,171,768,176,717,163"/>
+<area shape="poly" id="edge9_Node000009_Node000006" title=" " alt="" coords="719,93,769,107,768,112,717,99"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="725,71,762,70,763,75,725,76"/>
+<area shape="poly" id="edge11_Node000009_Node000008" title=" " alt="" coords="709,94,730,106,745,121,754,135,763,149,778,163,785,168,782,173,774,167,759,153,750,138,741,124,726,110,706,98"/>
+</map>

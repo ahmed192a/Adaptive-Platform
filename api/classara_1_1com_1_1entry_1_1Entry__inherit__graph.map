@@ -1,0 +1,7 @@
+<map id="ara::com::entry::Entry" name="ara::com::entry::Entry">
+<area shape="rect" id="Node000001" title="Communication message abstract entry." alt="" coords="132,5,295,31"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1entry_1_1EventgroupEntry.html" title="Entry to subscribe/unsubscribe to/from an event&#45;group." alt="" coords="5,79,208,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,41,134,81,131,76,185,37"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1entry_1_1ServiceEntry.html" title="Entry to find and offer a service." alt="" coords="232,79,408,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,37,296,76,293,81,239,41"/>
+</map>

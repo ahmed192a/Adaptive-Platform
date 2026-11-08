@@ -1,0 +1,15 @@
+<map id="apdash::PlatformNode::Impl::BootCount" name="apdash::PlatformNode::Impl::BootCount">
+<area shape="rect" id="Node000001" title=" " alt="" coords="899,66,1065,106"/>
+<area shape="rect" id="Node000002" href="$structapdash_1_1PlatformNode_1_1Impl.html#a6ea4542438ab1c18d023e8e20a27bfa2" title=" " alt="" coords="649,34,851,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="885,75,851,71,851,65,885,70"/>
+<area shape="rect" id="Node000006" href="$structapdash_1_1PlatformNode_1_1Impl.html#ad0033341236167451f81b059a96c2eb0" title=" " alt="" coords="220,97,387,137"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="885,93,387,116,387,110,885,88"/>
+<area shape="rect" id="Node000003" href="$structapdash_1_1PlatformNode_1_1Impl.html#a57fa600d38e78a1e0d7b22b5f2e6bf66" title=" " alt="" coords="5,37,172,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="657,34,601,25,494,13,410,8,327,11,220,23,150,39,149,34,220,18,327,6,411,3,495,8,602,19,658,28"/>
+<area shape="rect" id="Node000004" href="$structapdash_1_1PlatformNode_1_1Impl.html#a2b31526623d8f784530296aa9d7b19de" title=" " alt="" coords="435,34,601,74"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="636,57,602,57,602,51,636,51"/>
+<area shape="rect" id="Node000005" href="$structapdash_1_1PlatformNode_1_1Impl.html#a44b4b0a008a931f926972b2c034d6e4b" title=" " alt="" coords="220,33,387,73"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="421,56,387,56,387,50,421,51"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="437,80,373,99,372,94,435,75"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="217,95,160,79,162,74,219,90"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,135,75,160"/>
+<area shape="rect" id="Node000002" href="$classara_1_1tsync_1_1SynchronizedTimeBaseStatus.html#afc85dccfb05a1648f3adc5fbf910e5c2" title=" " alt="" coords="123,5,385,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,133,80,102,121,70,135,63,137,68,124,75,84,106,54,136"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a14a65d129949695e442cb17f6d56f290" title="SWS_TS_14218: samples time + status atomically." alt="" coords="131,84,377,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="74,139,117,132,118,137,75,144"/>
+<area shape="rect" id="Node000006" href="$namespaceanonymous__namespace_02tsync__spec__test_8cpp_03.html#a38895b8ec19741869aec021e5e475dec" title=" " alt="" coords="159,163,349,203"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="75,150,146,162,145,168,74,156"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1TimeBaseProvider.html#a017a9e66936018591646f26e1fd8145a" title="Provide a new synchronized time. rateDeviation of the local clock vs. the master." alt="" coords="147,227,361,267"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="55,158,85,186,124,213,140,220,137,225,121,218,81,190,51,162"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1tsync.html#aec8356265e026be72eea717fe5770013" title="Maps the internal flag mask to the exclusive SWS status." alt="" coords="434,13,646,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="385,30,420,30,420,35,385,35"/>
+<area shape="rect" id="Node000005" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="433,91,647,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="378,109,420,109,420,114,378,114"/>
+</map>

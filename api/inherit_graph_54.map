@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classara_1_1com_1_1proxy__skeleton_1_1proxy_1_1ServiceProxy.html" title="ServiceProxy is the main class for the proxy skeleton." alt="" coords="5,245,192,285"/>
+<area shape="rect" id="Node000001" href="$classara_1_1sm_1_1diagnostic__reset_1_1proxy_1_1DiagnosticReset.html" title=" " alt="" coords="240,5,460,45"/>
+<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="111,231,131,191,159,143,195,96,238,55,259,43,261,48,242,59,199,99,163,146,135,193,116,233"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1powermode_1_1proxy_1_1PowerMode.html" title=" " alt="" coords="272,69,428,109"/>
+<area shape="poly" id="edge18_Node000000_Node000002" title=" " alt="" coords="120,232,170,175,203,145,239,119,271,104,273,109,241,124,206,149,174,178,124,236"/>
+<area shape="rect" id="Node000003" href="$classara_1_1sm_1_1triggerin_1_1proxy_1_1Trigger__In.html" title=" " alt="" coords="263,133,437,173"/>
+<area shape="poly" id="edge19_Node000000_Node000003" title=" " alt="" coords="141,236,187,208,239,183,271,171,273,176,241,188,190,213,143,240"/>
+<area shape="rect" id="Node000004" href="$classara_1_1sm_1_1triggerinout_1_1proxy_1_1Trigger__InOut__Proxy.html" title=" " alt="" coords="270,198,430,253"/>
+<area shape="poly" id="edge20_Node000000_Node000004" title=" " alt="" coords="205,246,269,235,270,241,206,251"/>
+<area shape="rect" id="Node000005" href="$classara_1_1sm_1_1triggerout_1_1proxy_1_1Trigger__Out__Proxy.html" title=" " alt="" coords="276,277,424,331"/>
+<area shape="poly" id="edge21_Node000000_Node000005" title=" " alt="" coords="206,279,276,290,276,295,206,284"/>
+<area shape="rect" id="Node000006" href="$classara_1_1sm_1_1update__request_1_1proxy_1_1update__request__proxy.html" title=" " alt="" coords="241,356,459,396"/>
+<area shape="poly" id="edge22_Node000000_Node000006" title=" " alt="" coords="145,290,191,316,241,340,276,353,275,358,239,345,188,321,142,295"/>
+<area shape="rect" id="Node000007" href="$classara_1_1ucm_1_1pkgmgr_1_1proxy_1_1PackageManagementProxy.html" title="implementation of PackageManagementProxy interface" alt="" coords="247,420,453,460"/>
+<area shape="poly" id="edge23_Node000000_Node000007" title=" " alt="" coords="124,294,174,351,206,381,241,406,266,418,263,422,239,410,203,385,171,355,120,298"/>
+<area shape="rect" id="Node000008" href="$classsaam_1_1proxy.html" title=" " alt="" coords="299,485,401,510"/>
+<area shape="poly" id="edge24_Node000000_Node000008" title=" " alt="" coords="115,297,135,337,162,384,198,431,241,470,269,483,299,491,298,496,267,488,239,474,194,435,158,387,130,340,111,299"/>
+</map>

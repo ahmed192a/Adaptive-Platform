@@ -1,0 +1,9 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,60,80"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1diag.html#ab0bcafac0d0a24f80323ebcd05454741" title=" " alt="" coords="108,5,320,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,55,107,39,138,31,140,36,109,45,61,60"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1diag.html#a02de429cd05e7fe7ac8773594be55039" title="Text codec used for the stored value (exposed for tests): one line per DTC." alt="" coords="109,55,319,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,65,95,65,95,70,60,70"/>
+<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02diag__gap__test_8cpp_03.html#aa4fe73cc21d307a5bbab9d05335da8bb" title=" " alt="" coords="124,105,304,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="61,73,109,89,137,98,136,103,107,94,59,78"/>
+</map>

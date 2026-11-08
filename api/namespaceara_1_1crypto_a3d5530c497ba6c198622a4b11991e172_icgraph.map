@@ -1,0 +1,9 @@
+<map id="ara::crypto::ConstantTimeEquals" name="ara::crypto::ConstantTimeEquals">
+<area shape="rect" id="Node000001" title="Constant&#45;time comparison." alt="" coords="249,85,440,125"/>
+<area shape="rect" id="Node000002" href="$classara_1_1crypto_1_1cryp_1_1MessageAuthnCodeCtx.html#a6c0ab231801cacb1943d5823f1b3f795" title="Compares in constant time." alt="" coords="17,5,190,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,83,189,61,191,56,265,78"/>
+<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02crypto__test_8cpp_03.html#a4ed9a18ec834ef3b798d8d35152f59a6" title=" " alt="" coords="12,85,195,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="235,107,195,107,195,102,235,102"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1MessageAuthnCode.html#a3084bf983388c80bd4eeb68d80ecdf90" title="Convenience: computes the tag over data and compares in constant time." alt="" coords="5,149,201,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="256,131,180,151,179,146,255,126"/>
+</map>

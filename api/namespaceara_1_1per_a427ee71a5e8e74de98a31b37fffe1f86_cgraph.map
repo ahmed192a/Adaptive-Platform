@@ -1,0 +1,9 @@
+<map id="ara::per::ResetPersistency" name="ara::per::ResetPersistency">
+<area shape="rect" id="Node000001" title="Resets every configured storage to its initial state." alt="" coords="5,38,197,63"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1per.html#a416f3f5994a26c398b0ea9e9ab406081" title=" " alt="" coords="277,13,441,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,39,263,32,263,37,198,44"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1per.html#ad7e7a8c7aebf26d59e830724ca6116a4" title=" " alt="" coords="245,62,472,87"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,57,232,60,231,65,197,62"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1per_1_1detail.html#ade24da1af9c8155630015d33b01a894c" title="Maps errno to the matching PerErrc error code (ENOSPC &#45;&gt; kOutOfStorageSpace, ...)." alt="" coords="520,5,693,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="441,23,507,23,507,28,441,28"/>
+</map>

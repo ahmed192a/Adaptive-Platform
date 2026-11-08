@@ -1,0 +1,19 @@
+<map id="ara::com::entry::Entry::BasePayload" name="ara::com::entry::Entry::BasePayload">
+<area shape="rect" id="Node000001" title="Get baseentity payload." alt="" coords="5,216,168,256"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1entry_1_1Entry.html#a85e5f1abd837569c4ebd3b1a4a966c7d" title="Get first (general) options." alt="" coords="231,5,393,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,214,113,180,139,137,173,93,214,55,222,50,225,54,218,59,177,97,144,140,117,183,100,217"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1com_1_1helper.html#a5a2498fade7c5196c42e3023252eb941" title="Inject a short value into a byte vector." alt="" coords="226,70,398,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="101,214,147,160,179,131,215,106,231,98,234,102,217,110,182,135,151,164,105,218"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1entry_1_1Entry.html#a4566ea830dd123a7a53e3bb0fa5fcc57" title="Get instance ID." alt="" coords="231,120,393,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="124,213,215,170,233,162,235,167,217,174,126,218"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1entry_1_1Entry.html#a520938c3807fff98feeac5e7e8bfae15" title="Get major version." alt="" coords="231,184,393,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="168,222,217,215,217,220,169,227"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1entry_1_1Entry.html#a4689b80b37280f3660024a10a094e5be" title="Get second (specific) options." alt="" coords="231,248,393,288"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="169,245,217,252,217,257,168,250"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1entry_1_1Entry.html#a498a02847eb03549cb49c3986b075c59" title="Get service ID." alt="" coords="231,312,393,352"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="126,254,217,298,235,305,233,310,215,302,124,259"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1entry_1_1Entry.html#a075705f87c458a532adf96d644290c27" title="Get TTL." alt="" coords="216,377,408,402"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="105,254,151,308,182,337,217,362,234,370,231,374,215,366,179,341,147,312,101,258"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1entry_1_1Entry.html#a04cbc058f079ae37e873db0e8aeee376" title="Get entry type." alt="" coords="231,427,393,467"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="100,255,118,289,144,331,177,374,218,411,228,418,225,422,214,415,174,377,139,334,113,291,95,257"/>
+</map>

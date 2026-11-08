@@ -1,0 +1,14 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,75,74"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="398,5,534,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,56,384,29,385,35,75,61"/>
+<area shape="rect" id="Node000003" href="$classara_1_1nm_1_1NetworkHandle.html#a5f5837b3b23fd6d91fd23e720a66b4d4" title="kFullCom requests the network, kNoCom releases it (SWS_ANM_00084). Idempotent." alt="" coords="123,69,332,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="75,64,109,69,108,74,74,69"/>
+<area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="302,67,384,44,385,50,303,72"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="398,69,534,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="332,87,384,87,384,92,332,92"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="398,133,534,173"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="303,107,385,129,384,134,302,112"/>
+<area shape="rect" id="Node000006" href="$classara_1_1nm_1_1internal_1_1PortRegistry.html#a652e55f9a0fa4d3f31459793f12c3853" title="All live channels bound to the port (several channels are aggregated, SWS_ANM_00083/00084)." alt="" coords="380,197,552,237"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="258,107,314,145,381,183,395,189,393,194,379,188,311,149,255,112"/>
+</map>

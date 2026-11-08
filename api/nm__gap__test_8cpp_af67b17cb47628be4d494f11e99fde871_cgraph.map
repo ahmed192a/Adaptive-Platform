@@ -1,0 +1,19 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,141,75,166"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NetworkHandle.html#a9c1c358cb07b86f4ee8a3605147d2ee6" title="kFullCom iff the network is in Network Mode (RepeatMessage/NormalOperation/ReadySleep),..." alt="" coords="137,69,318,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,138,122,119,145,111,146,116,124,124,73,143"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1Result.html#a90e193cb7c0198137d0c38b964cd18c5" title=" " alt="" coords="398,197,534,237"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="69,164,123,183,191,196,260,205,384,213,384,219,260,210,190,201,122,188,67,169"/>
+<area shape="rect" id="Node000007" href="$classara_1_1nm_1_1NetworkHandle.html#a5f5837b3b23fd6d91fd23e720a66b4d4" title="kFullCom requests the network, kNoCom releases it (SWS_ANM_00084). Idempotent." alt="" coords="123,133,332,173"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="75,151,109,151,109,156,75,156"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="398,5,534,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="302,67,384,44,385,50,303,72"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="398,69,534,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="318,87,384,87,384,92,318,92"/>
+<area shape="rect" id="Node000005" href="$classara_1_1nm_1_1internal_1_1PortRegistry.html#a652e55f9a0fa4d3f31459793f12c3853" title="All live channels bound to the port (several channels are aggregated, SWS_ANM_00083/00084)." alt="" coords="380,133,552,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="303,107,379,127,377,132,302,112"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="310,131,330,119,346,104,354,88,362,72,378,55,386,50,389,54,382,59,367,75,359,91,350,107,334,123,312,135"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="302,131,384,108,385,114,303,136"/>
+<area shape="poly" id="edge10_Node000007_Node000005" title=" " alt="" coords="332,151,366,151,366,156,332,156"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="303,171,385,193,384,198,302,176"/>
+</map>

@@ -1,0 +1,48 @@
+<map id="ara::sm::update_request::skeleton::update_request_Skeleton::method_dispatch" name="ara::sm::update_request::skeleton::update_request_Skeleton::method_dispatch">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,381,211,435"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#aa346a9135cc9bc860cb16868c7064f1d" title="1&#45; HandleCall R ARGS" alt="" coords="281,118,479,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,379,139,336,169,284,209,230,257,183,268,176,271,180,260,187,213,233,173,287,143,339,123,382"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a90c6210a76dd8551fd4c93cc79cfde0d" title="Get message ID." alt="" coords="276,197,484,237"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="126,379,179,313,216,277,257,247,269,241,272,245,260,252,219,281,183,316,130,382"/>
+<area shape="rect" id="Node000009" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a564d4216b97cb021277344f3b8331c12" title="[SWS_SM_00208]" alt="" coords="281,262,479,317"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="154,378,203,351,258,326,274,319,276,324,260,330,206,356,157,383"/>
+<area shape="rect" id="Node000012" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#ae95b4bdb4d2a2a70bb45d19646640bc0" title="[SWS_SM_00206]" alt="" coords="283,341,477,395"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="210,390,269,382,270,387,211,396"/>
+<area shape="rect" id="Node000014" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#af4586a7a62500f3d12cd96086ca9a3b9" title="[SWS_SM_00203] kNotAllowedMultipleUpdateSessions when one is active." alt="" coords="259,419,501,474"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="211,420,245,425,244,430,210,425"/>
+<area shape="rect" id="Node000016" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a06aba4c1ffd98a608d6d5a07abe358b9" title="Requests a reset of the machine [SWS_SM_00202]." alt="" coords="283,498,477,553"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="159,433,260,483,279,491,277,496,258,488,156,438"/>
+<area shape="rect" id="Node000019" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a37cfe1bfabe8cce065b2ca0957ce4b6e" title="[SWS_SM_00205]" alt="" coords="271,582,489,637"/>
+<area shape="poly" id="edge19_Node000001_Node000019" title=" " alt="" coords="131,434,185,498,221,533,260,563,278,574,276,578,257,568,217,537,181,502,127,437"/>
+<area shape="rect" id="Node000021" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a537ab3bc094f44f14210c10b3502a421" title="[SWS_SM_00207]" alt="" coords="283,671,477,726"/>
+<area shape="poly" id="edge22_Node000001_Node000021" title=" " alt="" coords="122,434,142,480,172,537,212,596,260,647,283,663,279,667,257,651,207,599,167,539,137,482,117,436"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1Marshal.html#a88e63db5dd754649f0f6dfa7bde66073" title=" " alt="" coords="607,5,753,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="425,116,483,84,548,55,593,41,594,46,550,60,485,89,428,120"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1Serializer.html#a6c5ec394bb39cb758b2590b8d1ac16fb" title="Get the Payload object of the serializer." alt="" coords="606,69,754,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="478,124,592,103,593,108,479,130"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1Serializer.html#af9f0e3e083c607e2e8a5fb3fae6bf793" title="serialize the data into the vector of bytes" alt="" coords="606,133,754,173"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="479,145,592,148,592,154,479,151"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a18ebdf47d3f6ce89bf537a61a3be18f6" title="Set message payload." alt="" coords="576,197,784,237"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="479,166,584,192,582,197,478,172"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1Deserializer.html#a03fc838db428148be027c71ec2f02548" title="Deserialize the vector of bytes into the required data type." alt="" coords="875,5,1040,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="753,23,861,23,861,28,753,28"/>
+<area shape="rect" id="Node000010" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a40ac2906550489e27e54bffccf99933d" title="[SWS_SM_00208]" alt="" coords="559,269,801,309"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="480,287,545,287,545,292,480,292"/>
+<area shape="rect" id="Node000011" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a705e9bd59bb777be7b705fa288f22c75" title=" " alt="" coords="859,476,1056,516"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="789,307,812,319,853,351,889,389,918,428,940,462,936,465,914,431,885,393,850,355,809,324,786,312"/>
+<area shape="rect" id="Node000013" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#ad5e269206d86c2987de71646acde0ead" title="[SWS_SM_00206]" alt="" coords="564,333,796,373"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="477,361,550,357,550,362,478,366"/>
+<area shape="poly" id="edge13_Node000013_Node000011" title=" " alt="" coords="782,371,812,383,875,422,927,465,924,469,872,427,809,388,780,376"/>
+<area shape="rect" id="Node000015" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a7409d862945b88570552f0b735914a88" title="[SWS_SM_00203] kNotAllowedMultipleUpdateSessions when one is active." alt="" coords="563,398,797,453"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="501,435,549,432,549,437,502,441"/>
+<area shape="rect" id="Node000017" href="$classara_1_1sm_1_1update__request_1_1skeleton_1_1update__request__Skeleton.html#a614f7291fed90459eb4524b58ce510ab" title=" " alt="" coords="583,477,777,531"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="477,516,569,509,569,515,478,521"/>
+<area shape="rect" id="Node000018" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a39dbd15a8fd50e18a09010db590cb37f" title="[SWS_SM_00202] The machine restart itself is done by the caller; this only decides whether the reques..." alt="" coords="567,556,793,596"/>
+<area shape="poly" id="edge18_Node000016_Node000018" title=" " alt="" coords="478,539,554,552,553,557,477,544"/>
+<area shape="rect" id="Node000020" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a47f318ad9adb44936a2f0347c7fb1b70" title="[SWS_SM_00205]" alt="" coords="549,620,811,660"/>
+<area shape="poly" id="edge20_Node000019_Node000020" title=" " alt="" coords="490,618,536,623,535,628,489,623"/>
+<area shape="poly" id="edge21_Node000020_Node000011" title=" " alt="" coords="780,617,809,606,873,566,924,523,928,527,876,570,812,610,782,622"/>
+<area shape="rect" id="Node000022" href="$classara_1_1sm_1_1update__request_1_1UpdateSession.html#a5e173f94a619aec9772f777e73c9d64d" title="[SWS_SM_00207]" alt="" coords="571,684,789,724"/>
+<area shape="poly" id="edge23_Node000021_Node000022" title=" " alt="" coords="478,698,557,699,557,704,477,703"/>
+<area shape="poly" id="edge24_Node000022_Node000011" title=" " alt="" coords="786,681,809,670,850,638,885,600,914,561,936,527,940,530,918,564,889,603,853,642,812,674,789,686"/>
+</map>

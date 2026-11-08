@@ -1,0 +1,21 @@
+<map id="ara::sm::powermode::skeleton::PowerMode_Skeleton::method_dispatch" name="ara::sm::powermode::skeleton::PowerMode_Skeleton::method_dispatch">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,130,211,185"/>
+<area shape="rect" id="Node000002" href="$classara_1_1sm_1_1powermode_1_1skeleton_1_1PowerMode__Skeleton.html#a770d1d6d7b513bd762971b48d7d1c3de" title=" " alt="" coords="269,15,475,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,127,258,79,273,72,275,77,260,84,160,132"/>
+<area shape="rect" id="Node000003" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#aa346a9135cc9bc860cb16868c7064f1d" title="1&#45; HandleCall R ARGS" alt="" coords="273,94,471,149"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,141,259,134,260,139,211,146"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a90c6210a76dd8551fd4c93cc79cfde0d" title="Get message ID." alt="" coords="268,173,476,213"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="211,169,255,175,254,180,210,174"/>
+<area shape="rect" id="Node000010" href="$classara_1_1sm_1_1powermode_1_1skeleton_1_1PowerMode__Skeleton.html#a0bf98dd7a6ebdccdc77aebc11c8fb885" title=" " alt="" coords="259,238,485,293"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="168,182,260,223,279,231,277,236,258,228,166,187"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1Marshal.html#a88e63db5dd754649f0f6dfa7bde66073" title=" " alt="" coords="564,5,711,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="453,91,484,79,532,55,552,47,554,52,534,60,486,84,455,96"/>
+<area shape="rect" id="Node000006" href="$classara_1_1com_1_1Serializer.html#a6c5ec394bb39cb758b2590b8d1ac16fb" title="Get the Payload object of the serializer." alt="" coords="563,69,711,109"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="470,107,549,97,550,103,471,112"/>
+<area shape="rect" id="Node000007" href="$classara_1_1com_1_1Serializer.html#af9f0e3e083c607e2e8a5fb3fae6bf793" title="serialize the data into the vector of bytes" alt="" coords="563,133,711,173"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="471,131,550,140,549,145,470,136"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a18ebdf47d3f6ce89bf537a61a3be18f6" title="Set message payload." alt="" coords="533,197,741,237"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="455,146,486,159,534,183,554,190,552,195,532,188,484,164,453,151"/>
+<area shape="rect" id="Node000005" href="$classara_1_1com_1_1Deserializer.html#a03fc838db428148be027c71ec2f02548" title="Deserialize the vector of bytes into the required data type." alt="" coords="789,5,955,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="711,23,776,23,776,28,711,28"/>
+</map>

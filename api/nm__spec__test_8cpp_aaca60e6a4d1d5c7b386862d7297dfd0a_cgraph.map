@@ -1,0 +1,16 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,75,102"/>
+<area shape="rect" id="Node000002" href="$classara_1_1nm_1_1NetworkHandle.html#acdfbd6988e9bec7800074064e2387f95" title=" " alt="" coords="123,37,333,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,81,108,75,109,80,75,86"/>
+<area shape="rect" id="Node000006" href="$classara_1_1nm_1_1NetworkHandle.html#a9c1c358cb07b86f4ee8a3605147d2ee6" title="kFullCom iff the network is in Network Mode (RepeatMessage/NormalOperation/ReadySleep),..." alt="" coords="137,101,319,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="75,93,124,101,123,106,74,98"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="399,5,535,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="333,41,386,34,386,39,334,46"/>
+<area shape="rect" id="Node000004" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="399,69,535,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="334,69,386,76,386,81,333,74"/>
+<area shape="rect" id="Node000005" href="$classara_1_1nm_1_1internal_1_1PortRegistry.html#a652e55f9a0fa4d3f31459793f12c3853" title="All live channels bound to the port (several channels are aggregated, SWS_ANM_00083/00084)." alt="" coords="381,133,553,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="305,75,335,87,359,103,383,119,396,125,394,130,380,124,356,107,332,92,303,80"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="303,99,332,87,356,71,380,55,394,48,396,53,383,60,359,76,335,92,305,104"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="318,107,385,98,386,103,319,112"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="319,131,368,137,367,143,318,136"/>
+</map>

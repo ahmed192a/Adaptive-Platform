@@ -1,0 +1,26 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,135,75,160"/>
+<area shape="rect" id="Node000002" href="$classanonymous__namespace_02key__slot__test_8cpp_03_1_1KeySlotTest.html#a53cbbba9afe0d96347d8e4ac263bbed9" title=" " alt="" coords="123,5,327,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,133,80,101,121,69,130,64,133,68,124,74,84,105,54,136"/>
+<area shape="rect" id="Node000003" href="$classanonymous__namespace_02key__slot__test_8cpp_03_1_1KeySlotTest.html#abf9514c7cea6de316259007fe80a3eeb" title="Simulates a reboot: drops the provider and storage handle and opens them again." alt="" coords="135,84,315,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="74,138,120,129,121,134,75,143"/>
+<area shape="rect" id="Node000008" href="$classara_1_1crypto_1_1PublicKey.html#a0b42d0b1cc2e8d378b85f265838ee12e" title=" " alt="" coords="143,163,306,203"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="75,151,130,162,129,167,74,157"/>
+<area shape="rect" id="Node000012" href="$namespaceanonymous__namespace_02key__slot__test_8cpp_03.html#a16f89db659e9e4e9477d45de2866703f" title=" " alt="" coords="135,252,315,307"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="58,158,124,213,168,243,165,247,121,217,54,163"/>
+<area shape="rect" id="Node000004" href="$classara_1_1per_1_1PersistencyConfig.html#a9dc8b5081acad03050421159d5a38ec2" title="Parses a JSON document (see file comment)." alt="" coords="375,63,571,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="315,99,361,93,361,99,315,104"/>
+<area shape="rect" id="Node000005" href="$classara_1_1core_1_1InstanceSpecifier.html#a587c1f9313e327df7b11aa7bbc7c4472" title="Validating factory (SWS_CORE_08032)." alt="" coords="619,63,817,103"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="571,81,605,81,605,86,571,86"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1InstanceSpecifier.html#a84c7f9c1710724dc9fec6551d05f46cc" title=" " alt="" coords="865,63,1064,103"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="818,81,851,81,851,86,818,86"/>
+<area shape="rect" id="Node000007" href="$classara_1_1core_1_1Span.html#a224112dc4480cdf4136499a740f277f9" title=" " alt="" coords="1112,71,1281,96"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1065,81,1098,81,1098,86,1065,86"/>
+<area shape="rect" id="Node000009" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="391,127,554,167"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="306,169,377,158,378,164,307,174"/>
+<area shape="rect" id="Node000010" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="391,191,554,231"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="307,190,378,198,377,203,306,195"/>
+<area shape="rect" id="Node000011" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="391,255,554,295"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="294,201,328,214,376,241,394,248,392,253,374,246,326,219,292,206"/>
+<area shape="poly" id="edge12_Node000012_Node000012" title=" " alt="" coords="188,252,188,242,195,233,207,227,225,225,245,228,257,236,255,240,244,233,225,231,209,233,198,237,193,244,194,252"/>
+</map>

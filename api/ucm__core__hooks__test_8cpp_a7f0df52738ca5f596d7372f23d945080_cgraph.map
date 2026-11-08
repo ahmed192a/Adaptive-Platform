@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,60,70"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#ad3fdea53ba040f91888d0c014cc74c92" title=" " alt="" coords="108,5,321,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,50,94,44,95,49,61,55"/>
+<area shape="rect" id="Node000003" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a1c90272f1d3c56ad0da729934e6e38a3" title="GetId: the identifier of this UCM instance." alt="" coords="109,69,320,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,59,96,66,95,71,60,65"/>
+</map>

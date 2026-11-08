@@ -1,0 +1,17 @@
+<map id="anonymous_namespace{crypto_test::cpp}::TEST" name="anonymous_namespace{crypto_test::cpp}::TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,188,117"/>
+<area shape="rect" id="Node000002" href="$namespaceara_1_1crypto.html#a81163d120b4e5700a531671d417d110d" title="Input = ciphertext || tag. kAuthTagNotValid on any tampering." alt="" coords="239,5,423,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,74,235,39,262,32,263,37,237,45,146,79"/>
+<area shape="rect" id="Node000003" href="$namespaceara_1_1crypto.html#a8d9080bc7ca332f16c20f70095d86e41" title="Output = ciphertext || tag(16). Nonce must be 12 bytes and never reused with a key." alt="" coords="240,55,423,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,83,226,78,227,83,189,88"/>
+<area shape="rect" id="Node000004" href="$classara_1_1crypto_1_1SecretKey.html#ae2c02e8db2050b1b7ea4c97701b2b10e" title=" " alt="" coords="249,105,414,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="189,105,235,111,235,116,188,110"/>
+<area shape="rect" id="Node000008" href="$namespaceanonymous__namespace_02crypto__test_8cpp_03.html#a1af93018a7227362a117689197f989c6" title=" " alt="" coords="236,169,427,209"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="143,114,237,154,257,162,255,167,235,159,141,119"/>
+<area shape="rect" id="Node000005" href="$classara_1_1crypto_1_1ByteView.html#ae8f3f5ca4c719904b13135c7db4b9127" title=" " alt="" coords="475,41,637,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="402,102,471,82,473,87,403,107"/>
+<area shape="rect" id="Node000006" href="$classara_1_1crypto_1_1ByteView.html#ab188c670bb242f92ff5b9d8086874f7d" title=" " alt="" coords="475,105,637,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="414,122,461,122,461,127,414,127"/>
+<area shape="rect" id="Node000007" href="$classara_1_1crypto_1_1ByteView.html#a8115d61c6da22fa2407ef8c9b52740e9" title=" " alt="" coords="475,169,637,209"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="403,142,473,162,471,167,402,147"/>
+</map>

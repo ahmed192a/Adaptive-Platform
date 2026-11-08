@@ -1,0 +1,27 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,141,60,166"/>
+<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02nm__channel__test_8cpp_03.html#add418bcf14a275d5de68f2bb828ebae3" title=" " alt="" coords="108,5,319,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="38,139,64,98,84,75,106,55,115,49,118,54,110,59,88,79,69,101,43,141"/>
+<area shape="rect" id="Node000003" href="$classara_1_1nm_1_1NetworkManager.html#a1f01eafed33418bc3ea6c409e873e63b" title="kNetworkExists for a duplicate name, kInvalidConfig for a bad config." alt="" coords="117,69,309,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="59,139,107,119,129,111,130,116,109,124,61,144"/>
+<area shape="rect" id="Node000008" href="$classara_1_1nm_1_1NetworkManager.html#a4a7c03c5cb25c950cce97627d5876c8c" title="kUnknownNetwork if the name was never created." alt="" coords="117,133,309,173"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="60,151,103,151,103,156,60,156"/>
+<area shape="rect" id="Node000009" href="$classara_1_1nm_1_1NetworkManager.html#aee18a58efa77d5d3862bb85d12fd1043" title="Process() every network (first ServiceSignals())." alt="" coords="117,197,309,237"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="61,163,109,183,130,190,129,195,107,188,59,168"/>
+<area shape="rect" id="Node000012" href="$classara_1_1nm_1_1NetworkManager.html#a29d3e5066d2e9afd51c93b1f4ad6f761" title=" " alt="" coords="117,261,309,301"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="43,165,69,206,88,228,110,247,118,253,115,257,106,251,84,232,64,209,38,168"/>
+<area shape="rect" id="Node000004" href="$classara_1_1nm_1_1NmChannel.html#a5a8012f64056de7224a7708ea78d2ee3" title="Fails with kInvalidConfig when a timer is zero. Starts in BusSleep." alt="" coords="385,5,541,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="291,67,371,46,372,51,293,72"/>
+<area shape="rect" id="Node000006" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="395,69,531,109"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="310,87,381,87,381,92,310,92"/>
+<area shape="rect" id="Node000007" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="395,133,531,173"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="293,107,382,130,381,135,291,112"/>
+<area shape="rect" id="Node000005" href="$structara_1_1nm_1_1NmPduLayout.html#aaff681d2cba1e8d2098fd90acaf971cc" title="True if the layout is consistent (positions in range, no overlap, PNI needs a CBV)." alt="" coords="617,5,788,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="541,23,604,23,604,28,541,28"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="291,131,381,107,382,113,293,136"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="310,151,381,151,381,156,310,156"/>
+<area shape="rect" id="Node000010" href="$classara_1_1nm_1_1NetworkManager.html#a7bc510ef23642307c9346cde576527ec" title="Runs ShutdownAll() if a SIGTERM is pending; returns true if it did." alt="" coords="367,197,559,237"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="310,215,353,215,353,220,310,220"/>
+<area shape="rect" id="Node000011" href="$classara_1_1nm_1_1NetworkManager.html#a7d1c362b0005c3541df1b6e1d9dfdcec" title="SWS_ANM_00090: SIGTERM behaviour." alt="" coords="607,197,799,237"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="559,215,593,215,593,220,559,220"/>
+</map>

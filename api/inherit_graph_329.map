@@ -1,0 +1,49 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,761,107,787"/>
+<area shape="rect" id="Node000001" href="$classanonymous__namespace_02dashboard__test_8cpp_03_1_1NodeTest.html" title=" " alt="" coords="174,5,354,60"/>
+<area shape="poly" id="edge87_Node000000_Node000001" title=" " alt="" coords="55,748,58,609,72,407,84,303,101,207,123,127,137,95,153,71,172,54,176,58,157,74,142,98,128,129,106,208,89,303,77,408,64,609,60,748"/>
+<area shape="rect" id="Node000002" href="$structanonymous__namespace_02diag__gap__test_8cpp_03_1_1Gap.html" title=" " alt="" coords="169,85,359,125"/>
+<area shape="poly" id="edge88_Node000000_Node000002" title=" " alt="" coords="55,747,60,618,74,435,86,341,103,255,125,184,138,156,153,135,167,123,170,127,157,138,143,159,130,186,108,257,91,342,79,436,65,619,60,747"/>
+<area shape="rect" id="Node000004" href="$structanonymous__namespace_02diag__gap__test_8cpp_03_1_1PerFixture.html" title=" " alt="" coords="174,149,354,204"/>
+<area shape="poly" id="edge90_Node000000_Node000004" title=" " alt="" coords="56,747,63,634,80,475,93,394,109,320,129,258,153,215,172,198,175,202,157,218,133,260,114,321,98,395,85,476,69,634,61,748"/>
+<area shape="rect" id="Node000005" href="$structanonymous__namespace_02diag__services__test_8cpp_03_1_1Svc.html" title=" " alt="" coords="155,229,373,269"/>
+<area shape="poly" id="edge91_Node000000_Node000005" title=" " alt="" coords="56,747,65,645,83,505,96,434,111,369,130,316,153,279,167,267,170,271,157,282,135,318,116,371,101,435,88,506,70,646,62,748"/>
+<area shape="rect" id="Node000006" href="$structanonymous__namespace_02diag__test_8cpp_03_1_1Fixture.html" title=" " alt="" coords="174,293,354,333"/>
+<area shape="poly" id="edge92_Node000000_Node000006" title=" " alt="" coords="57,747,68,657,87,536,115,420,133,374,153,343,172,328,175,332,157,346,137,377,120,422,92,537,73,658,63,748"/>
+<area shape="rect" id="Node000007" href="$classanonymous__namespace_02exec__test_8cpp_03_1_1ExecTest.html" title=" " alt="" coords="169,357,359,397"/>
+<area shape="poly" id="edge93_Node000000_Node000007" title=" " alt="" coords="54,748,55,680,67,589,79,540,97,492,121,447,153,407,168,395,171,399,157,411,126,450,102,494,84,542,72,590,60,681,59,748"/>
+<area shape="rect" id="Node000008" href="$structanonymous__namespace_02gap__closure__test_8cpp_03_1_1GapExec.html" title=" " alt="" coords="174,421,354,476"/>
+<area shape="poly" id="edge94_Node000000_Node000008" title=" " alt="" coords="56,747,63,693,79,624,91,586,107,550,128,516,153,485,172,471,175,475,157,489,132,519,112,553,96,588,84,625,68,694,62,748"/>
+<area shape="rect" id="Node000009" href="$classanonymous__namespace_02health__monitor__test_8cpp_03_1_1HealthMonitorTest.html" title=" " alt="" coords="166,500,362,555"/>
+<area shape="poly" id="edge95_Node000000_Node000009" title=" " alt="" coords="60,747,71,707,89,658,116,608,153,564,168,553,171,557,157,568,121,611,94,660,76,709,65,748"/>
+<area shape="rect" id="Node000010" href="$classanonymous__namespace_02key__slot__test_8cpp_03_1_1KeySlotTest.html" title=" " alt="" coords="174,579,354,633"/>
+<area shape="poly" id="edge96_Node000000_Node000010" title=" " alt="" coords="68,748,102,696,126,668,153,644,174,631,176,636,156,648,130,672,106,699,72,751"/>
+<area shape="rect" id="Node000011" href="$classanonymous__namespace_02log__test_8cpp_03_1_1LogTest.html" title=" " alt="" coords="174,658,354,698"/>
+<area shape="poly" id="edge97_Node000000_Node000011" title=" " alt="" coords="83,751,116,729,154,708,184,696,186,700,156,712,118,733,86,756"/>
+<area shape="rect" id="Node000012" href="$structanonymous__namespace_02nm__channel__test_8cpp_03_1_1Fx.html" title=" " alt="" coords="164,722,364,762"/>
+<area shape="poly" id="edge98_Node000000_Node000012" title=" " alt="" coords="120,762,164,755,164,760,121,767"/>
+<area shape="rect" id="Node000013" href="$structanonymous__namespace_02nm__gap__test_8cpp_03_1_1Multi.html" title=" " alt="" coords="169,786,359,826"/>
+<area shape="poly" id="edge99_Node000000_Node000013" title=" " alt="" coords="121,781,169,789,168,794,120,786"/>
+<area shape="rect" id="Node000014" href="$structanonymous__namespace_02nm__spec__test_8cpp_03_1_1Eng.html" title=" " alt="" coords="171,850,357,890"/>
+<area shape="poly" id="edge100_Node000000_Node000014" title=" " alt="" coords="86,792,118,815,156,836,186,848,184,852,154,840,116,819,83,797"/>
+<area shape="rect" id="Node000015" href="$structanonymous__namespace_02nm__spec__test_8cpp_03_1_1Spec.html" title=" " alt="" coords="167,914,361,954"/>
+<area shape="poly" id="edge101_Node000000_Node000015" title=" " alt="" coords="72,797,106,849,129,877,156,900,177,912,175,916,153,904,125,880,101,853,67,800"/>
+<area shape="rect" id="Node000016" href="$structanonymous__namespace_02provider__test_8cpp_03_1_1ProviderTest.html" title=" " alt="" coords="174,979,354,1033"/>
+<area shape="poly" id="edge102_Node000000_Node000016" title=" " alt="" coords="66,799,78,836,97,880,123,925,156,964,176,978,172,982,153,968,118,928,92,882,73,838,61,801"/>
+<area shape="rect" id="Node000017" href="$structanonymous__namespace_02spec__conformance__test_8cpp_03_1_1SpecExec.html" title=" " alt="" coords="155,1057,373,1112"/>
+<area shape="poly" id="edge103_Node000000_Node000017" title=" " alt="" coords="62,800,70,850,86,915,114,983,133,1015,157,1043,172,1055,168,1059,153,1047,129,1018,109,986,81,917,65,851,57,800"/>
+<area shape="rect" id="Node000018" href="$structanonymous__namespace_02spec__conformance__test_8cpp_03_1_1SpecFixture.html" title=" " alt="" coords="155,1136,373,1191"/>
+<area shape="poly" id="edge104_Node000000_Node000018" title=" " alt="" coords="60,800,63,864,76,950,88,996,105,1041,128,1084,157,1122,171,1134,168,1138,153,1125,123,1086,101,1043,83,997,71,951,58,865,54,801"/>
+<area shape="rect" id="Node000019" href="$structanonymous__namespace_02time__base__test_8cpp_03_1_1TimeBaseTest.html" title=" " alt="" coords="174,1215,354,1269"/>
+<area shape="poly" id="edge105_Node000000_Node000019" title=" " alt="" coords="63,800,74,889,93,1009,121,1124,138,1169,157,1200,175,1216,172,1220,153,1204,133,1172,116,1126,88,1010,68,890,57,801"/>
+<area shape="rect" id="Node000020" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html" title=" " alt="" coords="165,1294,363,1334"/>
+<area shape="poly" id="edge106_Node000000_Node000020" title=" " alt="" coords="62,800,70,904,87,1048,100,1121,116,1187,135,1242,157,1279,172,1292,169,1296,153,1282,130,1244,111,1189,95,1122,82,1049,65,905,56,800"/>
+<area shape="rect" id="Node000021" href="$structanonymous__namespace_02tsync__spec__test_8cpp_03_1_1Spec.html" title=" " alt="" coords="160,1358,368,1398"/>
+<area shape="poly" id="edge107_Node000000_Node000021" title=" " alt="" coords="61,800,67,916,83,1080,96,1163,112,1239,132,1302,144,1326,157,1344,170,1356,167,1360,153,1348,139,1329,127,1304,107,1241,90,1164,78,1080,62,917,56,800"/>
+<area shape="rect" id="Node000022" href="$classara_1_1exec_1_1FunctionGroupTest.html" title="FunctionGroupTest class." alt="" coords="159,1423,369,1448"/>
+<area shape="poly" id="edge108_Node000000_Node000022" title=" " alt="" coords="60,800,64,929,78,1112,90,1205,107,1291,129,1361,142,1388,157,1408,173,1421,169,1425,153,1412,137,1391,124,1363,102,1292,85,1206,73,1112,59,929,55,801"/>
+<area shape="rect" id="Node000023" href="$classpertest_1_1PerFixture.html" title="Creates a unique storage root, writes a config with one kvs and one file storage and installs it." alt="" coords="193,1472,335,1497"/>
+<area shape="poly" id="edge109_Node000000_Node000023" title=" " alt="" coords="60,801,63,938,75,1136,87,1237,104,1330,127,1406,141,1436,157,1457,173,1470,193,1478,191,1483,171,1475,153,1461,136,1438,122,1408,99,1331,82,1238,70,1136,57,938,55,801"/>
+<area shape="rect" id="Node000003" href="$structanonymous__namespace_02diag__gap__test_8cpp_03_1_1Xfer.html" title=" " alt="" coords="421,85,612,125"/>
+<area shape="poly" id="edge89_Node000002_Node000003" title=" " alt="" coords="373,102,421,102,421,107,373,107"/>
+</map>

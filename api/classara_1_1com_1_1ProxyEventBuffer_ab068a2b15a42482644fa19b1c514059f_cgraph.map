@@ -1,0 +1,12 @@
+<map id="ara::com::ProxyEventBuffer::GetNewSamples" name="ara::com::ProxyEventBuffer::GetNewSamples">
+<area shape="rect" id="Node000001" title="Hand every new sample (oldest first), at most maxNumberOfSamples, to f(SamplePtr&lt;T&gt;)." alt="" coords="5,69,205,109"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="279,5,415,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,67,265,44,266,49,182,72"/>
+<area shape="rect" id="Node000003" href="$classara_1_1core_1_1Result.html#aa8922bbbf545fc1684d8199ac7e2a357" title=" " alt="" coords="279,69,415,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,87,265,87,265,92,205,92"/>
+<area shape="rect" id="Node000004" href="$namespaceara_1_1com.html#ab8ba850aab7f0df8ffd3d3d682055946" title=" " alt="" coords="253,158,440,183"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,107,296,151,294,156,165,112"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="309,160,300,150,305,140,320,134,347,131,380,135,392,145,389,149,378,140,347,137,322,139,308,144,305,149,312,156"/>
+<area shape="rect" id="Node000005" href="$namespaceara_1_1com.html#ab6b865daa1f22c77abb4d190e45fbd68" title=" " alt="" coords="488,158,679,183"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="440,168,474,168,474,173,440,173"/>
+</map>

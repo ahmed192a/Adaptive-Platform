@@ -1,0 +1,13 @@
+<map id="skeleton" name="skeleton">
+<area shape="rect" id="Node000001" title=" " alt="" coords="413,212,491,237"/>
+<area shape="rect" id="Node000002" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html" title="class ServiceSkeleton" alt="" coords="224,123,421,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,168,435,210,432,214,364,172"/>
+<area shape="rect" id="Node000003" href="$structara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton_1_1SK__Handle.html" title=" " alt="" coords="5,5,203,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,72,118,86,127,97,142,106,165,114,224,127,223,132,164,119,140,111,124,101,114,89,108,75"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1InstanceIdentifier.html" title=" " alt="" coords="375,20,575,45"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="497,55,507,76,509,99,500,133,486,165,461,213,457,211,482,163,495,131,504,98,502,77,492,58"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="449,56,351,125,348,120,446,51"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="590,23,601,32,593,41,575,45,574,40,591,37,596,33,587,27"/>
+<area shape="rect" id="Node000005" href="$classCClient.html" title="CClient class for any tcp or udp client sockets." alt="" coords="231,20,300,45"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="264,59,264,79,269,98,278,110,289,120,286,124,274,113,264,100,258,79,258,59"/>
+</map>

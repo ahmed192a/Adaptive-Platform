@@ -1,0 +1,40 @@
+<map id="ara::sm::server::StateManager::run" name="ara::sm::server::StateManager::run">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,375,253,400"/>
+<area shape="rect" id="Node000002" href="$classCServer.html#aadf6ba3bbb8ce91a51f5d87ef53f121c" title="Accept the Client connection." alt="" coords="327,5,494,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,374,144,313,175,222,197,173,225,124,259,79,300,40,314,31,316,36,303,44,263,82,230,127,202,175,180,224,150,315,136,375"/>
+<area shape="rect" id="Node000003" href="$classCServer.html#a7cf49da9921aad34bc023706b234a02d" title="Bind the socket to the port number." alt="" coords="335,55,487,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,373,149,320,182,243,204,202,231,161,263,123,300,90,321,79,323,83,303,95,267,127,236,164,209,204,186,246,154,322,137,375"/>
+<area shape="rect" id="Node000004" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a8ba1c6b428d3a5394ff7154e3116ac4e" title=" " alt="" coords="301,105,520,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="135,373,157,333,193,276,241,215,269,186,300,161,321,148,324,153,303,166,273,190,245,219,197,279,161,336,139,376"/>
+<area shape="rect" id="Node000005" href="$classSocket.html#a5aa350ff51f6db7919316c94643acbf2" title="Close the socket." alt="" coords="596,167,748,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="137,373,162,340,199,298,246,255,300,221,371,195,446,180,518,173,582,172,582,177,518,178,446,185,373,200,303,226,249,260,202,302,166,344,142,376"/>
+<area shape="rect" id="Node000006" href="$classCServer.html#a6f0c61349b89255c1289ed10438d8c35" title="Close the socket." alt="" coords="331,349,491,375"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="253,373,317,368,317,373,254,379"/>
+<area shape="rect" id="Node000007" href="$classCServer.html#ad93287e15f18418dc772c6832aa7f56c" title="Listen for the client connection." alt="" coords="329,399,492,424"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="254,395,316,401,315,406,253,401"/>
+<area shape="rect" id="Node000008" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#a90c6210a76dd8551fd4c93cc79cfde0d" title="Get message ID." alt="" coords="568,217,776,257"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="141,372,204,313,250,281,300,256,364,238,430,227,495,223,554,224,554,229,495,229,430,233,365,243,302,260,252,285,207,317,144,376"/>
+<area shape="rect" id="Node000009" href="$classara_1_1com_1_1proxy__skeleton_1_1skeleton_1_1ServiceSkeleton.html#a9fb5c015b920bfc8b7aab330d138fba8" title="NoServiceHandler &#45;&#45;&gt; handle error." alt="" coords="312,271,509,325"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="170,372,310,327,312,332,171,377"/>
+<area shape="rect" id="Node000013" href="$classCServer.html#a08db35b65177614622c7ec0d4c3eccbd" title="Open the server socket." alt="" coords="331,448,490,473"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="175,398,302,433,341,442,339,447,301,438,173,403"/>
+<area shape="rect" id="Node000014" href="$classSocket.html#a26c209a9db0d993d3112f3615c8ff652" title="Receive the data from the client TCP." alt="" coords="348,497,473,523"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="151,398,216,439,258,462,302,482,335,493,334,498,300,487,256,467,213,444,148,403"/>
+<area shape="rect" id="Node000015" href="$classara_1_1exec_1_1ExecutionClient.html#a9e38e2714f64eaf7a0ff8d5feb988cd3" title="Interface for a Process to report its proxy_skeleton state to Execution Management." alt="" coords="315,547,506,587"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="144,398,208,462,253,499,303,532,319,540,317,544,300,536,250,503,204,466,140,402"/>
+<area shape="rect" id="Node000016" href="$classara_1_1exec_1_1StateClient.html#a9018016f82d12fdfe3f64cd29a9f9ebd" title="Method to request state transition for a single Function Group." alt="" coords="591,633,753,673"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="139,399,160,439,196,494,244,551,272,576,303,597,351,614,422,628,578,644,577,650,421,633,350,619,300,602,269,580,240,555,191,497,156,442,134,401"/>
+<area shape="rect" id="Node000017" href="$classara_1_1sm_1_1server_1_1StateManager.html#a9bc4beac1ff7dca9bd6d0512dbeee84e" title=" " alt="" coords="301,662,520,702"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="138,399,158,444,193,509,242,580,271,612,303,641,323,654,320,658,300,645,267,616,238,583,189,512,154,447,133,401"/>
+<area shape="rect" id="Node000018" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#afa9f023803bab52032714b4e9b73710c" title="Non&#45;throwing variant of Deserialize()" alt="" coords="307,726,515,766"/>
+<area shape="poly" id="edge20_Node000001_Node000018" title=" " alt="" coords="136,400,152,457,184,541,206,587,233,633,266,675,303,712,309,717,306,721,300,716,262,679,229,636,201,590,179,543,147,458,131,401"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="449,268,504,234,567,202,592,193,594,198,569,207,506,239,452,273"/>
+<area shape="poly" id="edge10_Node000009_Node000008" title=" " alt="" coords="509,272,572,257,573,263,510,277"/>
+<area shape="rect" id="Node000010" href="$classSocket.html#a1d18a3588387679df50f18c057adef37" title="Send the data to the client TCP." alt="" coords="619,345,725,371"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="510,318,606,340,605,346,509,323"/>
+<area shape="rect" id="Node000011" href="$classara_1_1com_1_1SOMEIP__MESSAGE_1_1Message.html#add68ba38d899785288237fe71eb399b0" title="Get message payload." alt="" coords="568,281,776,321"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="509,296,554,297,554,302,509,302"/>
+<area shape="rect" id="Node000012" href="$namespaceara_1_1com_1_1helper.html#a5a2498fade7c5196c42e3023252eb941" title="Inject a short value into a byte vector." alt="" coords="824,288,996,313"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="776,298,810,298,810,303,776,303"/>
+<area shape="poly" id="edge19_Node000017_Node000016" title=" " alt="" coords="520,667,578,661,578,666,520,672"/>
+</map>

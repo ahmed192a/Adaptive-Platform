@@ -1,0 +1,28 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,268,75,293"/>
+<area shape="rect" id="Node000002" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html#ab8f777d65703ded48318cd5e05f5f782" title=" " alt="" coords="164,5,344,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="40,267,46,229,59,176,83,120,100,94,121,71,150,51,153,56,124,75,104,97,88,123,64,178,51,230,45,268"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#a29145e0446f3fc5a453d02a540837708" title=" " alt="" coords="155,85,353,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="42,267,51,239,67,204,90,166,121,135,140,123,143,127,124,139,94,169,72,206,56,241,47,269"/>
+<area shape="rect" id="Node000005" href="$classara_1_1tsync_1_1SynchronizedTimeBaseStatus.html#afc85dccfb05a1648f3adc5fbf910e5c2" title=" " alt="" coords="123,357,385,412"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="56,292,86,317,124,342,139,350,137,355,121,347,83,321,53,296"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a14a65d129949695e442cb17f6d56f290" title="SWS_TS_14218: samples time + status atomically." alt="" coords="131,149,377,204"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="53,266,83,240,121,214,137,207,139,212,124,219,86,244,56,270"/>
+<area shape="rect" id="Node000008" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#af563a9b1f32059c7f62391f31e3137e3" title=" " alt="" coords="155,229,353,269"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="74,273,141,263,141,268,75,278"/>
+<area shape="rect" id="Node000009" href="$structanonymous__namespace_02tsync__gap__test_8cpp_03_1_1Gap.html#ac6b62853343b6b60a12142c48244e2bd" title=" " alt="" coords="164,436,344,491"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="47,293,73,355,95,392,124,423,153,439,150,444,121,427,91,395,68,358,43,295"/>
+<area shape="rect" id="Node000010" href="$classara_1_1tsync_1_1OffsetTimeBaseProvider.html#a58f85ae243bd23ec4a12a1a4a1346813" title="SWS_TS_01207: sets a new offset time (unconditional step)." alt="" coords="155,293,353,333"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="75,283,141,293,141,298,74,288"/>
+<area shape="rect" id="Node000012" href="$namespaceanonymous__namespace_02tsync__gap__test_8cpp_03.html#a92784b631788a06672efee80ab002ad7" title=" " alt="" coords="163,515,345,555"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="45,293,49,334,62,390,86,450,103,478,124,501,151,518,148,523,121,505,99,481,81,453,57,392,44,335,39,294"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="433,193,647,233"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="349,122,386,134,443,158,493,184,491,189,440,163,384,139,347,127"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1tsync.html#aec8356265e026be72eea717fe5770013" title="Maps the internal flag mask to the exclusive SWS status." alt="" coords="434,365,646,405"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="385,382,420,382,420,387,385,387"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="378,190,420,195,420,200,377,195"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="353,234,419,225,420,230,354,239"/>
+<area shape="poly" id="edge13_Node000010_Node000004" title=" " alt="" coords="345,290,384,278,485,236,487,241,386,283,347,295"/>
+<area shape="rect" id="Node000011" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="472,293,608,333"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="354,310,458,310,458,315,354,315"/>
+</map>

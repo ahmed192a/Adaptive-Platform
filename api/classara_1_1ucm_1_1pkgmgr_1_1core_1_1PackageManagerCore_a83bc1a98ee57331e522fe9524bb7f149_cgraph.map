@@ -1,0 +1,18 @@
+<map id="ara::ucm::pkgmgr::core::PackageManagerCore::Activate" name="ara::ucm::pkgmgr::core::PackageManagerCore::Activate">
+<area shape="rect" id="Node000001" title="Activate: kReady &#45;&gt; kActivating, State Management PrepareUpdate ([00258] UpdateSessionRejected or [00..." alt="" coords="5,84,184,139"/>
+<area shape="rect" id="Node000002" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#abdffa0361b13a41de07dd8cf27e1ed75" title="[SWS_UCM_00241] OperationNotPermitted unless kReady; enters kActivating." alt="" coords="232,5,411,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,81,228,62,230,67,175,86"/>
+<area shape="rect" id="Node000005" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#afc8b9c63073236a73e871d0570b0fdcc" title="Success: kActivated ([00107])." alt="" coords="232,84,411,139"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="185,109,218,109,218,114,185,114"/>
+<area shape="rect" id="Node000007" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a5cf71c7418222b33dbdb999100a9d603" title=" " alt="" coords="232,163,411,217"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="175,136,230,156,228,161,173,141"/>
+<area shape="rect" id="Node000003" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a473e91a8fc068cc50119c8ce2cd4a2f5" title=" " alt="" coords="469,8,647,63"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="411,31,455,32,455,37,411,36"/>
+<area shape="rect" id="Node000004" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a9900209d243b182bccef73a1608a045c" title=" " alt="" coords="705,45,884,100"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="648,47,692,54,691,59,647,52"/>
+<area shape="rect" id="Node000006" href="$classara_1_1ucm_1_1pkgmgr_1_1core_1_1PackageManagerCore.html#a1d4daca029b4b1965aa16e5ae379e1ad" title=" " alt="" coords="459,90,657,130"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="411,108,445,108,445,113,411,113"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="657,92,691,86,692,91,658,97"/>
+<area shape="rect" id="Node000008" href="$namespaceara_1_1ucm_1_1pkgmgr_1_1core.html#af7a11871be65ddb9170cda8b99e95d8c" title="Stable, filesystem&#45;safe textual form of a TransferId (32 lower&#45;case hex digits)." alt="" coords="471,170,645,210"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="411,187,458,187,458,193,411,193"/>
+</map>

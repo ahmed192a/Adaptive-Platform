@@ -1,0 +1,20 @@
+var ucm__return__types_8h =
+[
+    [ "ara::ucm::pkgmgr::PackageManagement::TransferStartOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1TransferStartOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1TransferStartOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::TransferDataOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1TransferDataOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1TransferDataOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::TransferExitOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1TransferExitOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1TransferExitOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::ActivateOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1ActivateOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1ActivateOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::CancelOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1CancelOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1CancelOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::DeleteTransferOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1DeleteTransferOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1DeleteTransferOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::FinishOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1FinishOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1FinishOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::GetSwPackagesOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwPackagesOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwPackagesOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::GetSwProcessProgressOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwProcessProgressOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwProcessProgressOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::GetSwClusterInfoOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwClusterInfoOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwClusterInfoOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::ProcessSwPackageOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1ProcessSwPackageOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1ProcessSwPackageOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::RevertProcessedSwPackagesOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1RevertProcessedSwPackagesOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1RevertProcessedSwPackagesOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::RollbackOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1RollbackOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1RollbackOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::GetSwClusterDescriptionOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwClusterDescriptionOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwClusterDescriptionOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::GetSwClusterChangeInfoOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwClusterChangeInfoOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetSwClusterChangeInfoOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::GetIdOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetIdOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetIdOutput" ],
+    [ "ara::ucm::pkgmgr::PackageManagement::GetHistoryOutput", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetHistoryOutput.html", "structara_1_1ucm_1_1pkgmgr_1_1PackageManagement_1_1GetHistoryOutput" ]
+];

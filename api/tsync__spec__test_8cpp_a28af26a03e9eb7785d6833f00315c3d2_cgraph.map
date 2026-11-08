@@ -1,0 +1,32 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,285,75,310"/>
+<area shape="rect" id="Node000002" href="$classara_1_1core_1_1Result.html#a3e9748447d8b26ef58a8c7ad2bfbff44" title=" " alt="" coords="193,5,329,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="39,284,42,241,54,179,64,145,79,113,97,82,121,55,148,38,179,28,181,33,151,43,124,59,101,85,83,115,69,147,59,180,48,241,44,285"/>
+<area shape="rect" id="Node000003" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a6b8aba9a4fa1ffb342b67423ab699d69" title="SWS_TS_00202 / 00070: 0.0 if no rate deviation has been calculated." alt="" coords="123,69,400,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="41,284,48,250,63,206,86,159,102,138,121,119,127,114,131,119,124,123,106,141,91,162,68,208,53,252,46,285"/>
+<area shape="rect" id="Node000005" href="$classara_1_1tsync_1_1SynchronizedTimeBaseStatus.html#afc85dccfb05a1648f3adc5fbf910e5c2" title=" " alt="" coords="130,421,393,475"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="49,309,77,357,98,384,124,407,131,412,128,416,121,411,95,388,73,360,45,312"/>
+<area shape="rect" id="Node000007" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a14a65d129949695e442cb17f6d56f290" title="SWS_TS_14218: samples time + status atomically." alt="" coords="138,134,385,189"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="47,282,76,241,97,219,121,199,133,192,135,197,124,204,101,223,80,245,51,286"/>
+<area shape="rect" id="Node000008" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a906234ef2ed7f38bf4d706510a2ca3ba" title=" " alt="" coords="145,213,378,253"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="70,282,122,263,152,254,153,259,123,268,72,287"/>
+<area shape="rect" id="Node000009" href="$classara_1_1tsync_1_1SynchronizedTimeBaseConsumer.html#a0689e0b54ed127cc48d06bd3f983dd40" title="One notifier per kind, a new registration overwrites." alt="" coords="133,342,389,397"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="73,308,124,327,150,335,148,340,122,332,71,312"/>
+<area shape="rect" id="Node000011" href="$classara_1_1tsync_1_1SynchronizedTimeBaseProvider.html#a7736d7a013ba7c2db28f82edb3d99929" title="Sets the time unconditionally (no slewing)." alt="" coords="160,277,363,317"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="75,295,146,295,146,300,75,300"/>
+<area shape="rect" id="Node000012" href="$namespaceanonymous__namespace_02tsync__spec__test_8cpp_03.html#a38895b8ec19741869aec021e5e475dec" title=" " alt="" coords="167,500,356,540"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="45,310,52,345,66,393,89,444,105,466,124,486,155,504,152,508,121,490,101,470,84,446,61,395,47,347,40,311"/>
+<area shape="rect" id="Node000013" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#a7a76b4dba08ae1e9eaf2b86202a9bfe3" title=" " alt="" coords="155,564,368,604"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="44,310,47,356,57,421,68,456,82,490,100,522,124,550,144,564,141,568,121,554,96,526,77,493,62,458,52,422,41,356,39,310"/>
+<area shape="rect" id="Node000004" href="$classara_1_1tsync_1_1TimeBaseRegistry.html#aef8b7ae871e90d546a42b8bce9d2aadf" title=" " alt="" coords="448,213,661,253"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="369,107,401,119,436,137,469,159,523,202,520,206,466,163,433,142,399,124,367,112"/>
+<area shape="rect" id="Node000006" href="$namespaceara_1_1tsync.html#aec8356265e026be72eea717fe5770013" title="Maps the internal flag mask to the exclusive SWS status." alt="" coords="449,428,661,468"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="393,445,435,445,435,451,393,451"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="374,186,460,207,458,213,373,191"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="378,231,435,231,435,236,378,236"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="367,339,399,327,509,259,512,263,401,332,369,344"/>
+<area shape="rect" id="Node000010" href="$classara_1_1core_1_1Result.html#ae9807b31de4ffd5fb2ae8820b18ed48f" title=" " alt="" coords="487,313,623,353"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="389,351,473,341,473,346,390,356"/>
+<area shape="poly" id="edge15_Node000011_Node000004" title=" " alt="" coords="353,275,449,254,450,259,354,280"/>
+<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="363,307,474,321,473,326,362,312"/>
+</map>

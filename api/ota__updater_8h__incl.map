@@ -1,0 +1,11 @@
+<map id="App/demo/ota_updater/ota_updater.h" name="App/demo/ota_updater/ota_updater.h">
+<area shape="rect" id="Node000001" title="Demo application: a complete software update driven through the UCM PackageManagement rules (ara::ucm..." alt="" coords="85,5,256,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,72,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,48,72,88,69,84,138,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,93,160,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,47,143,83,138,80,158,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="184,93,243,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="183,44,203,80,198,83,179,47"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="267,93,330,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="203,43,270,84,267,88,200,48"/>
+</map>
