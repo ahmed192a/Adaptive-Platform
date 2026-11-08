@@ -5,6 +5,16 @@ on:
     branches: [ master, 'feature/**' ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
+
+# Least privilege by default; the docs job raises it for the Pages publish only.
+permissions:
+  contents: read
+
+# A push to a feature branch and its pull request share one group, so a newer run cancels the older one.
+concurrency:
+  group: ci-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   build-test:
@@ -46,7 +56,7 @@ jobs:
           lcov --remove coverage.info '/usr/*' '*/_deps/*' '*/Testing/*' --output-file coverage.info --ignore-errors unused,inconsistent,empty
           lcov --list coverage.info --ignore-errors inconsistent,empty | tail -5
       - uses: actions/upload-artifact@v4
-        with: { name: coverage-info, path: coverage.info }
+        with: { name: coverage-info, path: coverage.info, retention-days: 14 }
 
   e2e-console:
     name: End-to-end console scenario
@@ -90,6 +100,7 @@ jobs:
         with:
           name: console-demo
           path: out/
+          retention-days: 14
 
   docs:
     name: Doxygen documentation
@@ -102,12 +113,16 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y doxygen graphviz
           doxygen doxygen.conf
+      - name: Build the site (landing page, conformance reports, API reference)
+        run: |
+          pip install markdown
+          python3 Tools/site/build_site.py --out site --api doc/html
       - name: Publish to GitHub Pages (master only)
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ github.workspace }}/doc/html
+          publish_dir: ${{ github.workspace }}/site
           publish_branch: gh-pages
           force_orphan: true
           commit_message: 'update the documentation'
